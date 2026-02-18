@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -24,6 +23,7 @@ import { SunriseCTA } from '@/components/sections/SunriseCTA';
 import { CinematicQuote } from '@/components/sections/CinematicQuote';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { KilimanjaroSummit } from '@/components/sections/KilimanjaroSummit';
+import { ZanzibarEscape } from '@/components/sections/ZanzibarEscape';
 
 export default function Home() {
   const firestore = useFirestore();
@@ -68,7 +68,6 @@ export default function Home() {
     <div className="relative">
       {sections.map((section: any, idx: number) => {
         if (section.type === 'hero') {
-          // Default background rotation for Hero if no specific list is provided
           const heroImages = [
             { src: section.data.backgroundImage || heroImg?.imageUrl || 'https://picsum.photos/seed/safari-hero/1920/1080', hint: "serengeti safari" },
             { src: zanzibarImg?.imageUrl || 'https://picsum.photos/seed/zanzibar-h/1920/1080', hint: "zanzibar beach" },
@@ -170,7 +169,6 @@ export default function Home() {
       </section>
 
       <section className="py-32 relative overflow-hidden transition-colors duration-1000">
-        {/* Dynamic Background Image that follows the carousel index */}
         <div className="absolute inset-0 z-0">
           <AnimatePresence mode="popLayout">
             <motion.div
@@ -249,6 +247,8 @@ export default function Home() {
       <SafariMap />
 
       <KilimanjaroSummit />
+
+      <ZanzibarEscape />
 
       <ImmersiveReveal />
 
