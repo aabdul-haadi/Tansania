@@ -1,0 +1,938 @@
+{
+  "entities": {
+    "User": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "User",
+      "type": "object",
+      "description": "Represents a user of the application, including their authentication details (excluding sensitive credentials) and role.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the User entity."
+        },
+        "email": {
+          "type": "string",
+          "description": "The user's email address.",
+          "format": "email"
+        },
+        "name": {
+          "type": "string",
+          "description": "The user's full name or display name."
+        },
+        "role": {
+          "type": "string",
+          "description": "The role of the user within the application (e.g., USER or ADMIN)."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the user account was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the user account was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "email",
+        "name",
+        "role",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "Destination": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Destination",
+      "type": "object",
+      "description": "Represents a travel destination offered by the agency, such as Serengeti or Zanzibar.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Destination entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "The common name of the destination."
+        },
+        "slug": {
+          "type": "string",
+          "description": "A URL-friendly identifier for the destination, unique across destinations."
+        },
+        "description": {
+          "type": "string",
+          "description": "A detailed description of the destination."
+        },
+        "bestTimeToVisit": {
+          "type": "string",
+          "description": "Information about the optimal time to visit this destination."
+        },
+        "sampleItineraries": {
+          "type": "array",
+          "description": "An array of sample itinerary items, each describing a day's activities.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "mapImageUrl": {
+          "type": "string",
+          "description": "URL of an image showing a map of the destination.",
+          "format": "uri"
+        },
+        "faqs": {
+          "type": "array",
+          "description": "An array of frequently asked questions and their answers related to the destination.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "relatedPackageIds": {
+          "type": "array",
+          "description": "References to Package entities that include this destination. (Relationship: Destination N:N Package)",
+          "items": {
+            "type": "string"
+          }
+        },
+        "mediaRefs": {
+          "type": "array",
+          "description": "References to Media entities associated with this destination (e.g., images, videos). (Relationship: Destination N:N Media)",
+          "items": {
+            "type": "string"
+          }
+        },
+        "seo": {
+          "type": "string",
+          "description": "JSON string containing SEO metadata for the page (title, description, canonical, etc.)."
+        },
+        "isPublished": {
+          "type": "boolean",
+          "description": "Indicates whether the destination page is publicly visible."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the destination record was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the destination record was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "slug",
+        "description",
+        "isPublished",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "Package": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Package",
+      "type": "object",
+      "description": "Represents a safari package offered to customers.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Package entity."
+        },
+        "title": {
+          "type": "string",
+          "description": "The title of the safari package."
+        },
+        "slug": {
+          "type": "string",
+          "description": "A URL-friendly identifier for the package, unique across packages."
+        },
+        "destinationIds": {
+          "type": "array",
+          "description": "References to Destination entities included in this package. (Relationship: Package N:N Destination)",
+          "items": {
+            "type": "string"
+          }
+        },
+        "durationDays": {
+          "type": "number",
+          "description": "The total number of days for the package."
+        },
+        "tier": {
+          "type": "string",
+          "description": "The comfort or luxury tier of the package (e.g., Budget, Mid, Luxury)."
+        },
+        "seasonTags": {
+          "type": "array",
+          "description": "Tags indicating suitable seasons for the package (e.g., 'dry', 'wet').",
+          "items": {
+            "type": "string"
+          }
+        },
+        "categories": {
+          "type": "array",
+          "description": "Categories the package belongs to (e.g., 'honeymoon', 'family', 'group').",
+          "items": {
+            "type": "string"
+          }
+        },
+        "startingPrice": {
+          "type": "number",
+          "description": "The starting price for the package."
+        },
+        "rating": {
+          "type": "number",
+          "description": "The average rating of the package, typically from 1 to 5."
+        },
+        "highlights": {
+          "type": "array",
+          "description": "Key selling points or features of the package.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "itineraryDays": {
+          "type": "array",
+          "description": "A structured array detailing the day-by-day itinerary of the package.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "inclusions": {
+          "type": "array",
+          "description": "List of items or services included in the package price.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "exclusions": {
+          "type": "array",
+          "description": "List of items or services not included in the package price.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "addOns": {
+          "type": "array",
+          "description": "Optional add-on services or upgrades available for the package.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "mediaRefs": {
+          "type": "array",
+          "description": "References to Media entities (images, videos) showcasing the package. (Relationship: Package N:N Media)",
+          "items": {
+            "type": "string"
+          }
+        },
+        "limitedSlots": {
+          "type": "boolean",
+          "description": "Indicates if the package has limited availability or slots."
+        },
+        "isPublished": {
+          "type": "boolean",
+          "description": "Indicates whether the package is publicly visible on the website."
+        },
+        "seo": {
+          "type": "string",
+          "description": "JSON string containing SEO metadata for the package (title, description, canonical, etc.)."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the package record was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the package record was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "slug",
+        "destinationIds",
+        "durationDays",
+        "tier",
+        "startingPrice",
+        "isPublished",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "Booking": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Booking",
+      "type": "object",
+      "description": "Represents a customer's booking for a safari package.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Booking entity."
+        },
+        "userId": {
+          "type": "string",
+          "description": "Reference to the User who made the booking. (Relationship: User 1:N Booking)"
+        },
+        "packageId": {
+          "type": "string",
+          "description": "Reference to the Package that was booked. (Relationship: Package 1:N Booking)"
+        },
+        "departureDate": {
+          "type": "string",
+          "description": "The selected departure date for the safari.",
+          "format": "date"
+        },
+        "travelers": {
+          "type": "number",
+          "description": "The number of travelers included in this booking."
+        },
+        "addOnsSelected": {
+          "type": "array",
+          "description": "An array of selected add-on services for this booking.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "totalPrice": {
+          "type": "number",
+          "description": "The total calculated price for the booking, including package and add-ons."
+        },
+        "status": {
+          "type": "string",
+          "description": "The current status of the booking (e.g., PENDING, CONFIRMED, CANCELLED)."
+        },
+        "paymentStatus": {
+          "type": "string",
+          "description": "The payment status of the booking (e.g., PENDING, PAID, REFUNDED)."
+        },
+        "stripeCheckoutSessionId": {
+          "type": "string",
+          "description": "Optional: The ID of the Stripe Checkout Session if payment was initiated via Stripe."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the booking record was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the booking record was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "userId",
+        "packageId",
+        "departureDate",
+        "travelers",
+        "totalPrice",
+        "status",
+        "paymentStatus",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "Inquiry": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Inquiry",
+      "type": "object",
+      "description": "Represents a customer inquiry, either from the contact form or the trip planner.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Inquiry entity."
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of inquiry (e.g., TRIP_PLANNER, CONTACT)."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the person making the inquiry."
+        },
+        "email": {
+          "type": "string",
+          "description": "The email address of the person making the inquiry.",
+          "format": "email"
+        },
+        "phone": {
+          "type": "string",
+          "description": "Optional: The phone number of the person making the inquiry."
+        },
+        "message": {
+          "type": "string",
+          "description": "The free-form message content of the inquiry (primarily for CONTACT type)."
+        },
+        "preferences": {
+          "type": "string",
+          "description": "Specific travel preferences indicated in a trip planner inquiry."
+        },
+        "budget": {
+          "type": "string",
+          "description": "The estimated budget for the trip indicated in a trip planner inquiry."
+        },
+        "travelDates": {
+          "type": "string",
+          "description": "The preferred travel dates or date range indicated in a trip planner inquiry."
+        },
+        "destinationChoices": {
+          "type": "array",
+          "description": "A list of preferred destinations indicated in a trip planner inquiry. (Relationship: Inquiry N:N Destination)",
+          "items": {
+            "type": "string"
+          }
+        },
+        "travelers": {
+          "type": "number",
+          "description": "The number of travelers indicated in a trip planner inquiry."
+        },
+        "status": {
+          "type": "string",
+          "description": "The current status of the inquiry (e.g., NEW, PENDING, RESOLVED)."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the inquiry was submitted.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the inquiry was last updated by an admin.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "name",
+        "email",
+        "status",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "Review": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Review",
+      "type": "object",
+      "description": "Represents a customer's review or testimonial for the agency or a specific package.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Review entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the reviewer."
+        },
+        "rating": {
+          "type": "number",
+          "description": "The rating given by the reviewer, typically on a scale of 1 to 5."
+        },
+        "text": {
+          "type": "string",
+          "description": "The full text content of the review."
+        },
+        "isPublished": {
+          "type": "boolean",
+          "description": "Indicates whether the review is approved and publicly displayed."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the review was submitted.",
+          "format": "date-time"
+        },
+        "packageId": {
+          "type": "string",
+          "description": "Optional: Reference to the Package this review is for. (Relationship: Package 1:N Review)"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Optional: Reference to the User who submitted the review. (Relationship: User 1:N Review)"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "rating",
+        "text",
+        "isPublished",
+        "createdAt"
+      ]
+    },
+    "BlogPost": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "BlogPost",
+      "type": "object",
+      "description": "Represents a blog post published on the website.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the BlogPost entity."
+        },
+        "slug": {
+          "type": "string",
+          "description": "A URL-friendly identifier for the blog post, unique across blog posts."
+        },
+        "title": {
+          "type": "string",
+          "description": "The title of the blog post."
+        },
+        "excerpt": {
+          "type": "string",
+          "description": "A brief summary or excerpt of the blog post content."
+        },
+        "contentMarkdown": {
+          "type": "string",
+          "description": "The full content of the blog post in Markdown format."
+        },
+        "coverImageRef": {
+          "type": "string",
+          "description": "Reference to the Media entity used as the cover image for the blog post. (Relationship: Media 1:N BlogPost)"
+        },
+        "category": {
+          "type": "string",
+          "description": "The category the blog post belongs to (e.g., 'Safari Tips', 'Zanzibar Guides')."
+        },
+        "tags": {
+          "type": "array",
+          "description": "An array of tags associated with the blog post for filtering and discovery.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "authorName": {
+          "type": "string",
+          "description": "The name of the author of the blog post."
+        },
+        "status": {
+          "type": "string",
+          "description": "The publication status of the blog post (e.g., DRAFT, PUBLISHED)."
+        },
+        "publishedAt": {
+          "type": "string",
+          "description": "Timestamp when the blog post was published. Null if not yet published.",
+          "format": "date-time"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the blog post was first created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the blog post was last updated.",
+          "format": "date-time"
+        },
+        "seo": {
+          "type": "string",
+          "description": "JSON string containing SEO metadata for the blog post (title, description, canonical, ogTitle, ogDescription, ogImage, noindex)."
+        }
+      },
+      "required": [
+        "id",
+        "slug",
+        "title",
+        "excerpt",
+        "contentMarkdown",
+        "coverImageRef",
+        "category",
+        "authorName",
+        "status",
+        "createdAt",
+        "updatedAt",
+        "seo"
+      ]
+    },
+    "Media": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Media",
+      "type": "object",
+      "description": "Represents an uploaded media item, typically an image or video.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Media entity."
+        },
+        "url": {
+          "type": "string",
+          "description": "The URL where the media item is hosted (e.g., Cloudinary URL).",
+          "format": "uri"
+        },
+        "altText": {
+          "type": "string",
+          "description": "Alternative text for accessibility purposes, describing the media content."
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of media (e.g., IMAGE, VIDEO)."
+        },
+        "uploadedBy": {
+          "type": "string",
+          "description": "Reference to the User who uploaded this media item. (Relationship: User 1:N Media)"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the media item was uploaded.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "url",
+        "altText",
+        "type",
+        "uploadedBy",
+        "createdAt"
+      ]
+    },
+    "Page": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Page",
+      "type": "object",
+      "description": "Represents a dynamic content page managed by the CMS.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Page entity. This typically serves as the 'page key' (e.g., 'home', 'about', 'destinations/serengeti')."
+        },
+        "key": {
+          "type": "string",
+          "description": "A unique string identifier for the page, also used as the document ID in Firestore (e.g., 'home', 'about', 'destinations/serengeti')."
+        },
+        "path": {
+          "type": "string",
+          "description": "The URL path of the page (e.g., '/', '/about', '/destinations/serengeti')."
+        },
+        "title": {
+          "type": "string",
+          "description": "The title of the page, primarily for admin display and internal reference."
+        },
+        "status": {
+          "type": "string",
+          "description": "The publication status of the page (e.g., DRAFT, PUBLISHED)."
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the page content was last updated.",
+          "format": "date-time"
+        },
+        "updatedBy": {
+          "type": "string",
+          "description": "Reference to the User who last updated this page. (Relationship: User 1:N Page)"
+        },
+        "seo": {
+          "type": "string",
+          "description": "JSON string containing SEO metadata for the page (title, description, canonical, ogTitle, ogDescription, ogImage, noindex)."
+        },
+        "sections": {
+          "type": "array",
+          "description": "An ordered list of content sections that compose the page. Each item is an object with 'type' (e.g., 'hero', 'featureGrid', 'content', 'faq', 'testimonials', 'ctaBanner') and a 'data' object containing the specific fields for that section type. For example, a 'hero' section's data might include {heading: string, subheading: string, ctaPrimaryLabel: string, ctaPrimaryHref: string, backgroundImage?: string, trustBadges[]: string[]}.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "key",
+        "path",
+        "title",
+        "status",
+        "updatedAt",
+        "updatedBy",
+        "seo",
+        "sections"
+      ]
+    },
+    "SiteSetting": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "SiteSetting",
+      "type": "object",
+      "description": "Stores global site-wide settings and configurations.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the SiteSetting entity. Typically a single document with ID 'global'."
+        },
+        "whatsappNumber": {
+          "type": "string",
+          "description": "The WhatsApp contact number for the agency."
+        },
+        "heroTagline": {
+          "type": "string",
+          "description": "The main tagline displayed in the hero section of the homepage."
+        },
+        "trustBadges": {
+          "type": "array",
+          "description": "An array of trust badge objects, each with an 'icon' and 'text'.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "officeLocation": {
+          "type": "string",
+          "description": "The physical address of the agency's main office."
+        },
+        "officeHours": {
+          "type": "string",
+          "description": "The operating hours of the agency's office."
+        },
+        "contactEmail": {
+          "type": "string",
+          "description": "The primary email address for general inquiries.",
+          "format": "email"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the site settings were last updated.",
+          "format": "date-time"
+        },
+        "updatedBy": {
+          "type": "string",
+          "description": "Reference to the User who last updated these settings. (Relationship: User 1:N SiteSetting)"
+        }
+      },
+      "required": [
+        "id",
+        "updatedAt",
+        "updatedBy"
+      ]
+    },
+    "SiteKnowledgeGraphNode": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "SiteKnowledgeGraphNode",
+      "type": "object",
+      "description": "Represents a node in the Site Knowledge Graph, used by the AI Planner for site intelligence and suggestions.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the SiteKnowledgeGraphNode entity."
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of node (e.g., PAGE, COMPONENT, DATA_TYPE, ROUTE, LINK_RECOMMENDATION, NAVIGATION_SUGGESTION, AUDIT_ISSUE)."
+        },
+        "label": {
+          "type": "string",
+          "description": "A human-readable label for the node."
+        },
+        "data": {
+          "type": "string",
+          "description": "JSON string containing specific data relevant to the node's type. For example, for a 'PAGE' type, it might contain { pageId: string, url: string, title: string, status: string }. For a 'LINK_RECOMMENDATION', it might contain { sourcePageId: string, targetPageId: string, anchorText: string, status: 'PENDING'|'APPROVED'|'REJECTED' }."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when this node was first created or discovered.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when this node's data was last updated.",
+          "format": "date-time"
+        },
+        "generatedAt": {
+          "type": "string",
+          "description": "Timestamp when the AI Planner last generated or analyzed this node's information.",
+          "format": "date-time"
+        },
+        "status": {
+          "type": "string",
+          "description": "The status of a suggestion (e.g., PENDING, APPROVED, REJECTED, APPLIED) or state of an audit issue."
+        },
+        "reviewedBy": {
+          "type": "string",
+          "description": "Reference to the User who last reviewed or approved a suggestion related to this node. (Relationship: User 1:N SiteKnowledgeGraphNode)"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "label",
+        "data",
+        "createdAt",
+        "updatedAt",
+        "generatedAt"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/users/{userId}",
+        "definition": {
+          "entityName": "User",
+          "schema": {
+            "$ref": "#/backend/entities/User"
+          },
+          "description": "Stores user profiles including their authentication details and role. Accessible by the user themselves and by administrators. Includes denormalized 'role' for authorization logic (though '/roles_admin' is preferred for rules)."
+        }
+      },
+      {
+        "path": "/roles_admin/{userId}",
+        "definition": {
+          "entityName": "User",
+          "schema": {
+            "$ref": "#/backend/entities/User"
+          },
+          "description": "A dedicated collection used for efficient admin role verification. A document's existence in this collection for a given userId indicates administrator privileges. Only writable by Firebase Admin SDK. Read-only for admin verification in rules."
+        }
+      },
+      {
+        "path": "/destinations/{destinationId}",
+        "definition": {
+          "entityName": "Destination",
+          "schema": {
+            "$ref": "#/backend/entities/Destination"
+          },
+          "description": "Stores details about travel destinations. Publicly readable if 'isPublished' is true. Fully accessible by administrators. Includes denormalized 'isPublished' for authorization independence."
+        }
+      },
+      {
+        "path": "/packages/{packageId}",
+        "definition": {
+          "entityName": "Package",
+          "schema": {
+            "$ref": "#/backend/entities/Package"
+          },
+          "description": "Stores details about safari packages. Publicly readable if 'isPublished' is true. Fully accessible by administrators. Includes denormalized 'isPublished' for authorization independence."
+        }
+      },
+      {
+        "path": "/bookings/{bookingId}",
+        "definition": {
+          "entityName": "Booking",
+          "schema": {
+            "$ref": "#/backend/entities/Booking"
+          },
+          "description": "Stores customer booking records. Users can read/write their own bookings based on 'userId'. Administrators have full access. Includes denormalized 'userId' for authorization independence.",
+          "params": [
+            {
+              "name": "bookingId",
+              "description": "The unique identifier for the booking."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/inquiries/{inquiryId}",
+        "definition": {
+          "entityName": "Inquiry",
+          "schema": {
+            "$ref": "#/backend/entities/Inquiry"
+          },
+          "description": "Stores customer inquiries from contact forms or the trip planner. Users can read/write their own inquiries if 'userId' is present and matches their UID. Administrators have full access. Includes optional denormalized 'userId' for authorization independence.",
+          "params": [
+            {
+              "name": "inquiryId",
+              "description": "The unique identifier for the inquiry."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/reviews/{reviewId}",
+        "definition": {
+          "entityName": "Review",
+          "schema": {
+            "$ref": "#/backend/entities/Review"
+          },
+          "description": "Stores customer reviews and testimonials. Publicly readable if 'isPublished' is true. Fully accessible by administrators for moderation. Includes denormalized 'isPublished' for authorization independence.",
+          "params": [
+            {
+              "name": "reviewId",
+              "description": "The unique identifier for the review."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/blogPosts/{blogPostSlug}",
+        "definition": {
+          "entityName": "BlogPost",
+          "schema": {
+            "$ref": "#/backend/entities/BlogPost"
+          },
+          "description": "Stores blog post content. Publicly readable if 'status' is 'PUBLISHED'. Fully accessible by administrators for CRUD operations and previewing drafts. Document ID is the 'slug'. Includes denormalized 'status' for authorization independence.",
+          "params": [
+            {
+              "name": "blogPostSlug",
+              "description": "The URL-friendly slug, which also serves as the document ID for the blog post."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/media/{mediaId}",
+        "definition": {
+          "entityName": "Media",
+          "schema": {
+            "$ref": "#/backend/entities/Media"
+          },
+          "description": "Stores metadata for uploaded media items (e.g., Cloudinary URLs). Accessible only by administrators. Public access to the media content is handled directly via the URL, not through Firestore rules. Includes denormalized 'uploadedBy' for audit.",
+          "params": [
+            {
+              "name": "mediaId",
+              "description": "The unique identifier for the media item."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/pages/{pageKey}",
+        "definition": {
+          "entityName": "Page",
+          "schema": {
+            "$ref": "#/backend/entities/Page"
+          },
+          "description": "Stores CMS-managed page content. Publicly readable if 'status' is 'PUBLISHED'. Fully accessible by administrators for CRUD and previewing drafts. Document ID is the 'key'. The 'sections' field is an array of objects, where each object represents a SectionBlock with 'type' and 'data' fields. Includes denormalized 'status' and 'updatedBy' for authorization independence and audit.",
+          "params": [
+            {
+              "name": "pageKey",
+              "description": "The unique key (e.g., 'home', 'about', 'destinations/serengeti') which serves as the document ID for the page."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/siteSettings/global",
+        "definition": {
+          "entityName": "SiteSetting",
+          "schema": {
+            "$ref": "#/backend/entities/SiteSetting"
+          },
+          "description": "A single document ('global') storing site-wide configurations. Publicly readable for frontend display. Writable only by administrators. Includes denormalized 'updatedBy' for audit."
+        }
+      },
+      {
+        "path": "/siteKnowledgeGraphNodes/{nodeId}",
+        "definition": {
+          "entityName": "SiteKnowledgeGraphNode",
+          "schema": {
+            "$ref": "#/backend/entities/SiteKnowledgeGraphNode"
+          },
+          "description": "Stores nodes for the AI Planner's internal site knowledge graph. Accessible only by administrators. Not directly exposed to public users.",
+          "params": [
+            {
+              "name": "nodeId",
+              "description": "The unique identifier for the knowledge graph node."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore structure is designed to adhere strictly to the core design principles, prioritizing Authorization Independence, Structural Segregation, and clear Access Modeling for a secure, scalable, and debuggable system.\n\n1.  **Authorization Independence (CRITICAL):** This is achieved by extensively denormalizing authorization-relevant fields directly into the documents where they are needed. For instance:\n    *   `Page` and `BlogPost` documents explicitly contain a `status` field (`DRAFT` | `PUBLISHED`). This allows security rules to check `resource.data.status == 'PUBLISHED'` directly on the document being accessed, eliminating the need for `get()` calls to parent documents or external configuration to determine if content is public. The same applies to `Destination`, `Package`, and `Review` documents which include an `isPublished` field.\n    *   `Booking` and `Inquiry` documents store the `userId` directly. This enables users to retrieve only their own records by filtering `where('userId', '==', request.auth.uid)` client-side, with rules enforcing that `resource.data.userId == request.auth.uid` for reads and writes. This avoids `get()` calls to a user's profile to ascertain ownership.\n    *   Admin role checking is independent and efficient. Instead of querying a user's `role` field from their `/users/{uid}` document, a dedicated `/roles_admin/{uid}` collection is used. A simple `exists(/databases/$(database)/documents/roles_admin/$(request.auth.uid))` check in security rules provides atomic and highly performant authorization for administrative access across the entire system, without relying on hierarchical data reads.\n\n2.  **Clarity of Intent (Debuggability):** The collection paths are semantic and directly reflect the entity they contain (e.g., `/pages`, `/blogPosts`, `/users`). Authorization fields like `status`, `isPublished`, `userId`, `updatedBy` are consistently named and their purpose is explicit within the document schema, making security rules straightforward to write and debug.\n\n3.  **DBAC (No Custom Claims):** User roles are managed via the database. The `User` entity includes a `role` field, and for robust admin authorization, a dedicated `/roles_admin/{uid}` collection serves as the definitive source for admin checks, using `request.auth.uid` directly in rule evaluations.\n\n4.  **QAPs (Rules are not Filters):** This design significantly supports Queryable Authorization Policies:\n    *   **Public Content (Pages, Blog Posts, Destinations, Packages, Reviews):** These collections store content that can be both `DRAFT` (admin-only) and `PUBLISHED` (public). Public users querying these collections **must** include a client-side filter like `where('status', '==', 'PUBLISHED')` or `where('isPublished', '==', true)`. The Firestore security rules then **enforce** this filter, denying any reads of `DRAFT` content to non-admins, even if a malicious client attempts to bypass the filter. This ensures that only authorized content is returned, and any `list` operation by a public user is inherently secure.\n    *   **User-Specific Data (Bookings, Inquiries):** For authenticated users, `list` operations for their own data are secured by requiring `where('userId', '==', request.auth.uid)` in client queries. Security rules validate that `resource.data.userId` matches `request.auth.uid` for any read/write, ensuring users only access their own records. Admins, by virtue of their `roles_admin` status, have full `list` access to these collections.\n    *   **Admin-Only Data (Media, SiteKnowledgeGraphNodes, roles_admin):** These collections are entirely segregated for admin access. Security rules allow `list` operations only if `request.auth.uid` exists in `/roles_admin`, making them secure by default.\n\n5.  **Invariants:** Timestamps (`createdAt`, `updatedAt`) and ownership (`updatedBy`, `userId`) are standard fields across relevant entities, supporting data integrity and audit trails. The explicit `status` field (e.g., `DRAFT`, `PUBLISHED`) ensures the state of content is always clear and consistently managed.\n\nBy implementing these strategies, the Firestore structure achieves a highly secure, performant, and maintainable data layer, enabling simple yet robust security rules that directly reflect the application's authorization requirements."
+  }
+}
