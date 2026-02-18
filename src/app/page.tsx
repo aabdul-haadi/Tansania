@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -20,12 +19,12 @@ import {
 } from "@/components/ui/carousel";
 import { SafariMap } from '@/components/sections/SafariMap';
 import { ImmersiveReveal } from '@/components/sections/ImmersiveReveal';
-import { SunriseCTA } from '@/components/sections/SunriseCTA';
 import { CinematicQuote } from '@/components/sections/CinematicQuote';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { KilimanjaroSummit } from '@/components/sections/KilimanjaroSummit';
 import { ZanzibarEscape } from '@/components/sections/ZanzibarEscape';
 import { SafariVideo } from '@/components/sections/SafariVideo';
+import { FAQ } from '@/components/sections/FAQ';
 
 export default function Home() {
   const firestore = useFirestore();
@@ -260,7 +259,7 @@ export default function Home() {
 
       <CinematicQuote />
 
-      <SunriseCTA />
+      <FAQ />
     </div>
   );
 }
