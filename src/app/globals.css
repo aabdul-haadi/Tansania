@@ -5,48 +5,48 @@
 
 @layer base {
   :root {
-    --background: 206 45% 98%;
-    --foreground: 206 45% 10%;
+    --background: 33 40% 97%;
+    --foreground: 24 20% 12%;
     --card: 0 0% 100%;
-    --card-foreground: 206 45% 10%;
+    --card-foreground: 24 20% 12%;
     --popover: 0 0% 100%;
-    --popover-foreground: 206 45% 10%;
-    --primary: 54 77% 75%;
-    --primary-foreground: 206 45% 15%;
-    --secondary: 178 60% 55%;
-    --secondary-foreground: 206 45% 98%;
-    --muted: 206 20% 92%;
-    --muted-foreground: 206 20% 40%;
-    --accent: 178 60% 55%;
-    --accent-foreground: 206 45% 98%;
+    --popover-foreground: 24 20% 12%;
+    --primary: 38 75% 55%;
+    --primary-foreground: 33 40% 98%;
+    --secondary: 85 25% 35%;
+    --secondary-foreground: 33 40% 98%;
+    --muted: 33 20% 90%;
+    --muted-foreground: 24 15% 40%;
+    --accent: 85 25% 35%;
+    --accent-foreground: 33 40% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 206 20% 88%;
-    --input: 206 20% 88%;
-    --ring: 178 60% 55%;
-    --radius: 1rem;
+    --border: 33 20% 85%;
+    --input: 33 20% 85%;
+    --ring: 38 75% 55%;
+    --radius: 1.25rem;
   }
 
   .dark {
-    --background: 206 45% 15%;
-    --foreground: 54 77% 95%;
-    --card: 206 45% 18%;
-    --card-foreground: 54 77% 95%;
-    --popover: 206 45% 18%;
-    --popover-foreground: 54 77% 95%;
-    --primary: 54 77% 75%;
-    --primary-foreground: 206 45% 15%;
-    --secondary: 178 60% 55%;
-    --secondary-foreground: 206 45% 15%;
-    --muted: 206 45% 25%;
-    --muted-foreground: 206 10% 70%;
-    --accent: 178 60% 55%;
-    --accent-foreground: 206 45% 15%;
+    --background: 24 20% 10%;
+    --foreground: 33 40% 95%;
+    --card: 24 20% 12%;
+    --card-foreground: 33 40% 95%;
+    --popover: 24 20% 12%;
+    --popover-foreground: 33 40% 95%;
+    --primary: 38 75% 65%;
+    --primary-foreground: 24 20% 10%;
+    --secondary: 85 25% 45%;
+    --secondary-foreground: 24 20% 10%;
+    --muted: 24 20% 20%;
+    --muted-foreground: 33 10% 70%;
+    --accent: 85 25% 45%;
+    --accent-foreground: 24 20% 10%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 206 45% 25%;
-    --input: 206 45% 25%;
-    --ring: 178 60% 55%;
+    --border: 24 20% 20%;
+    --input: 24 20% 20%;
+    --ring: 38 75% 65%;
   }
 }
 
@@ -56,7 +56,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-image: radial-gradient(circle at 2px 2px, rgba(240, 230, 140, 0.03) 1px, transparent 0);
+    background-image: radial-gradient(circle at 2px 2px, rgba(139, 115, 85, 0.05) 1px, transparent 0);
     background-size: 40px 40px;
   }
   h1, h2, h3, h4, h5, h6 {
@@ -65,11 +65,17 @@
 }
 
 .luxury-gradient {
-  background: linear-gradient(135deg, hsl(var(--background)), hsl(var(--primary) / 0.1));
+  background: linear-gradient(135deg, hsl(var(--background)), hsl(var(--primary) / 0.08));
 }
 
 .dune-divider {
-  height: 50px;
+  height: 60px;
   width: 100%;
-  background: radial-gradient(ellipse at 50% 0%, hsl(var(--primary) / 0.2) 0%, transparent 70%);
+  background: radial-gradient(ellipse at 50% 0%, hsl(var(--primary) / 0.15) 0%, transparent 75%);
+}
+
+.safari-pattern {
+  background-color: hsl(var(--background));
+  background-image:  linear-gradient(30deg, hsl(var(--primary) / 0.03) 12%, transparent 12.5%, transparent 87%, hsl(var(--primary) / 0.03) 87.5%, hsl(var(--primary) / 0.03)), linear-gradient(150deg, hsl(var(--primary) / 0.03) 12%, transparent 12.5%, transparent 87%, hsl(var(--primary) / 0.03) 87.5%, hsl(var(--primary) / 0.03)), linear-gradient(30deg, hsl(var(--primary) / 0.03) 12%, transparent 12.5%, transparent 87%, hsl(var(--primary) / 0.03) 87.5%, hsl(var(--primary) / 0.03)), linear-gradient(150deg, hsl(var(--primary) / 0.03) 12%, transparent 12.5%, transparent 87%, hsl(var(--primary) / 0.03) 87.5%, hsl(var(--primary) / 0.03)), linear-gradient(60deg, hsl(var(--secondary) / 0.02) 25%, transparent 25.5%, transparent 75%, hsl(var(--secondary) / 0.02) 75%, hsl(var(--secondary) / 0.02)), linear-gradient(60deg, hsl(var(--secondary) / 0.02) 25%, transparent 25.5%, transparent 75%, hsl(var(--secondary) / 0.02) 75%, hsl(var(--secondary) / 0.02));
+  background-size: 80px 140px;
 }
