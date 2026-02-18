@@ -1,3 +1,34 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "serengeti-hero",
+      "description": "Graceful Hartebeests in the golden light of the Serengeti savannah",
+      "imageUrl": "https://picsum.photos/seed/hartebeest-safari/1920/1080",
+      "imageHint": "serengeti harbebeest"
+    },
+    {
+      "id": "zanzibar-beach",
+      "description": "Turquoise waters of Zanzibar with white sandy shores",
+      "imageUrl": "https://images.unsplash.com/photo-1646668072507-b2215b873c70?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx6YW56aWJhciUyMGJlYWNofGVufDB8fHx8MTc3MTM2MDI4OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "zanzibar beach"
+    },
+    {
+      "id": "safari-jeep",
+      "description": "Elegant safari vehicle in the tall grass of the savannah",
+      "imageUrl": "https://images.unsplash.com/photo-1731355775887-e6b2484f494c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzYWZhcmklMjBzYXZhbm5haHxlbnwwfHx8fDE3NzE0Mzk5NDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "safari savannah"
+    },
+    {
+      "id": "luxury-camp",
+      "description": "Boutique safari tent under a baobab tree",
+      "imageUrl": "https://images.unsplash.com/photo-1577971132997-c10be9372519?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxzYWZhcmklMjBsb2RnZXxlbnwwfHx8fDE3NzE0MDk0MzB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "safari lodge"
+    },
+    {
+      "id": "egypt-office",
+      "description": "Sophisticated Cairo travel lounge",
+      "imageUrl": "https://images.unsplash.com/photo-1640109229792-a26a0ee366ff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bHV4dXJ5JTIwbG91bmdlfGVufDB8fHx8MTc3MTQwNTIzNnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "luxury lounge"
+    }
+  ]
 }

@@ -1,20 +1,20 @@
+
 "use client";
 
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, ShieldCheck, Heart, Map, Clock, Star, ChevronDown } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Heart, Map, Clock, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Card, CardContent } from '@/components/ui/card';
 import { useDoc, useFirestore } from '@/firebase';
 import { doc } from 'firebase/firestore';
 
 export default function Home() {
   const firestore = useFirestore();
   const docRef = React.useMemo(() => (firestore ? doc(firestore, 'pages', 'home') : null), [firestore]);
-  const { data: page, isLoading } = useDoc(docRef);
+  const { data: page } = useDoc(docRef);
 
   // Fallback content if CMS is not seeded
   const heroImg = PlaceHolderImages.find(img => img.id === 'serengeti-hero');
@@ -36,15 +36,17 @@ export default function Home() {
     <div className="relative">
       {sections.map((section: any, idx: number) => {
         if (section.type === 'hero') {
+          const heroSrc = section.data.backgroundImage || heroImg?.imageUrl || 'https://picsum.photos/seed/safari-hero/1920/1080';
           return (
             <section key={idx} className="relative h-screen flex items-center justify-center overflow-hidden">
               <div className="absolute inset-0 z-0">
                 <Image
-                  src={section.data.backgroundImage || heroImg?.imageUrl || ''}
+                  src={heroSrc}
                   alt="Serengeti Hero"
                   fill
                   className="object-cover scale-105"
                   priority
+                  data-ai-hint="serengeti safari"
                 />
                 <div className="absolute inset-0 hero-overlay z-10" />
               </div>
@@ -119,7 +121,6 @@ export default function Home() {
         return null;
       })}
 
-      {/* Static Sections (Trust & Destinations) - Remained static for now as requested for specific parts */}
       <section className="py-16 bg-white border-y border-border/50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 items-center">
@@ -158,10 +159,11 @@ export default function Home() {
               className="relative aspect-[16/11] rounded-[2.5rem] overflow-hidden group shadow-2xl"
             >
               <Image
-                src={zanzibarImg?.imageUrl || ''}
+                src={zanzibarImg?.imageUrl || 'https://picsum.photos/seed/zanzibar-fallback/1200/800'}
                 alt="Zanzibar"
                 fill
                 className="object-cover group-hover:scale-110 transition-transform duration-1000"
+                data-ai-hint="zanzibar beach"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-12 flex flex-col justify-end">
                 <h3 className="text-white text-4xl font-headline font-bold mb-3">Zanzibar Shores</h3>
@@ -177,10 +179,11 @@ export default function Home() {
               className="relative aspect-[16/11] rounded-[2.5rem] overflow-hidden group shadow-2xl"
             >
               <Image
-                src={safariImg?.imageUrl || ''}
+                src={safariImg?.imageUrl || 'https://picsum.photos/seed/safari-fallback/1200/800'}
                 alt="Serengeti"
                 fill
                 className="object-cover group-hover:scale-110 transition-transform duration-1000"
+                data-ai-hint="serengeti wildlife"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-12 flex flex-col justify-end">
                 <h3 className="text-white text-4xl font-headline font-bold mb-3">Serengeti Plains</h3>
