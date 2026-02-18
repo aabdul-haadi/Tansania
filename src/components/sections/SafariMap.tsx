@@ -25,25 +25,24 @@ export function SafariMap() {
     restDelta: 0.001
   });
 
-  // SVG Path for the journey - shorter gaps
   const journeyPath = "M 100 40 L 80 160 L 100 190 L 140 230";
 
   return (
-    <section ref={containerRef} className="py-20 lg:py-32 bg-secondary text-white overflow-hidden relative">
+    <section ref={containerRef} className="pt-12 pb-20 lg:pt-16 lg:pb-24 bg-secondary text-white overflow-hidden relative">
       <div className="container mx-auto px-4 max-w-6xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           
           {/* Map Textual Content */}
           <div className="max-w-xl order-2 lg:order-1">
-            <span className="text-primary font-bold uppercase tracking-widest text-xs mb-4 block">Our Signature Route</span>
-            <h2 className="font-headline text-3xl md:text-5xl lg:text-6xl font-bold mb-6 lg:mb-8 leading-tight">
+            <span className="text-primary font-bold uppercase tracking-widest text-[10px] mb-2 block">Our Signature Route</span>
+            <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl font-bold mb-4 lg:mb-6 leading-tight">
               A Journey Across <br className="hidden sm:block"/> the <span className="text-primary italic">Cradle of Life</span>
             </h2>
-            <p className="text-white/60 text-base lg:text-lg font-light leading-relaxed mb-8 lg:mb-12">
+            <p className="text-white/60 text-sm lg:text-base font-light leading-relaxed mb-6 lg:mb-8 max-w-md">
               From our headquarters in Cairo to the untamed wild of the Serengeti, we bridge the gap between ancient civilizations and raw majesty.
             </p>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6 lg:space-y-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 lg:space-y-4">
               {destinations.map((dest, i) => (
                 <motion.div 
                   key={dest.id}
@@ -51,14 +50,14 @@ export function SafariMap() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="flex items-start gap-4 group"
+                  className="flex items-center gap-4 group"
                 >
-                  <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors border border-white/5">
-                    <span className="text-[10px] lg:text-xs font-bold">{i + 1}</span>
+                  <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors border border-white/5">
+                    <span className="text-[10px] font-bold">{i + 1}</span>
                   </div>
                   <div>
-                    <h4 className="font-bold text-sm lg:text-lg mb-0.5 lg:mb-1 group-hover:text-primary transition-colors">{dest.name}</h4>
-                    <p className="text-[10px] lg:text-sm text-white/40">{dest.desc}</p>
+                    <h4 className="font-bold text-sm lg:text-base mb-0 group-hover:text-primary transition-colors">{dest.name}</h4>
+                    <p className="text-[10px] lg:text-xs text-white/40">{dest.desc}</p>
                   </div>
                 </motion.div>
               ))}
@@ -66,14 +65,13 @@ export function SafariMap() {
           </div>
 
           {/* Map Visualization */}
-          <div className="relative aspect-[4/5] w-full max-w-[320px] lg:max-w-md mx-auto order-1 lg:order-2">
+          <div className="relative aspect-[4/5] w-full max-w-[280px] lg:max-w-sm mx-auto order-1 lg:order-2">
             <svg 
               viewBox="0 0 200 300" 
               className="w-full h-full drop-shadow-2xl"
               fill="none" 
               xmlns="http://www.w3.org/2000/svg"
             >
-              {/* Mapping Area Lines (Background Grid/Lines) */}
               <defs>
                 <pattern id="mapGrid" width="20" height="20" patternUnits="userSpaceOnUse">
                   <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="0.5"/>
@@ -81,7 +79,6 @@ export function SafariMap() {
               </defs>
               <rect width="100%" height="100%" fill="url(#mapGrid)" />
 
-              {/* Stylized Outlines with "Mapping Lines" */}
               <g className="opacity-40">
                 {/* Egypt Area */}
                 <motion.path
@@ -145,16 +142,14 @@ export function SafariMap() {
               ))}
             </svg>
             
-            {/* Background Texture Element */}
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent pointer-events-none rounded-full blur-3xl opacity-50" />
           </div>
 
         </div>
       </div>
       
-      {/* Decorative Compass Icon */}
-      <div className="absolute bottom-8 right-8 opacity-5 hidden lg:block">
-        <Compass className="w-24 h-24 animate-spin-slow" />
+      <div className="absolute bottom-4 right-4 opacity-5 hidden lg:block">
+        <Compass className="w-16 h-16 animate-spin-slow" />
       </div>
     </section>
   );
