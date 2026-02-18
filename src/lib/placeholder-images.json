@@ -9,7 +9,7 @@
     {
       "id": "zanzibar-beach",
       "description": "Turquoise waters of Zanzibar with white sandy shores",
-      "imageUrl": "https://images.unsplash.com/photo-1646668072507-b2215b873c70?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx6YW56aWJhciUyMGJlYWNofGVufDB8fHx8MTc3MTM2MDI4OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1646668072507-b2215b873c70?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHhzfHx6YW56aWJhciUyMGJlYWNofGVufDB8fHx8MTc3MTM2MDI4OXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "zanzibar beach"
     },
     {
@@ -29,6 +29,24 @@
       "description": "Sophisticated Cairo travel lounge",
       "imageUrl": "https://images.unsplash.com/photo-1640109229792-a26a0ee366ff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bHV4dXJ5JTIwbG91bmdlfGVufDB8fHx8MTc3MTQwNTIzNnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "luxury lounge"
+    },
+    {
+      "id": "desert-dunes",
+      "description": "Golden desert dunes at sunrise",
+      "imageUrl": "https://images.unsplash.com/photo-1511860810434-a92f84c6f01e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxkZXNlcnQlMjBkdW5lc3xlbnwwfHx8fDE3NzEzNDg0Njl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "desert dunes"
+    },
+    {
+      "id": "serengeti-wildlife",
+      "description": "Majestic wildlife on the Serengeti plains",
+      "imageUrl": "https://images.unsplash.com/photo-1723643373005-3a705346add5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxzZXJlbmdldGklMjB3aWxkbGlmZXxlbnwwfHx8fDE3NzEzNjAyOTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "serengeti wildlife"
+    },
+    {
+      "id": "zanzibar-coast",
+      "description": "Crystal clear Zanzibar coastline",
+      "imageUrl": "https://images.unsplash.com/photo-1683323935247-ac5105bcea4e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx6YW56aWJhciUyMGNvYXN0fGVufDB8fHx8MTc3MTQ0MTY1MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "zanzibar coast"
     }
   ]
 }

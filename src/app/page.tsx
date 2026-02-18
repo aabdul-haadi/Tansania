@@ -17,6 +17,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { SafariMap } from '@/components/sections/SafariMap';
+import { ImmersiveReveal } from '@/components/sections/ImmersiveReveal';
 
 export default function Home() {
   const firestore = useFirestore();
@@ -211,6 +212,8 @@ export default function Home() {
       </section>
 
       <SafariMap />
+
+      <ImmersiveReveal />
     </div>
   );
 }
