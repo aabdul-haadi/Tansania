@@ -25,6 +25,7 @@ import { KilimanjaroSummit } from '@/components/sections/KilimanjaroSummit';
 import { ZanzibarEscape } from '@/components/sections/ZanzibarEscape';
 import { SafariVideo } from '@/components/sections/SafariVideo';
 import { FAQ } from '@/components/sections/FAQ';
+import { LastMinuteOffer } from '@/components/sections/LastMinuteOffer';
 
 export default function Home() {
   const firestore = useFirestore();
@@ -106,9 +107,30 @@ export default function Home() {
                       </Button>
                     </Link>
                     <Link href="/trip-planner">
-                      <Button size="lg" variant="outline" className="w-full sm:w-auto rounded-full px-12 h-16 text-lg border-white/40 text-white hover:bg-white/20 backdrop-blur-md transition-all">
-                        Custom Planner
-                      </Button>
+                      <motion.div
+                        whileHover="hover"
+                        className="relative w-full sm:w-auto overflow-hidden rounded-full p-[1px]"
+                      >
+                        <motion.div
+                          variants={{
+                            hover: {
+                              background: [
+                                "conic-gradient(from 0deg at 50% 50%, rgba(181, 142, 69, 0) 0deg, rgba(181, 142, 69, 0.5) 180deg, rgba(181, 142, 69, 0) 360deg)",
+                                "conic-gradient(from 360deg at 50% 50%, rgba(181, 142, 69, 0) 0deg, rgba(181, 142, 69, 0.5) 180deg, rgba(181, 142, 69, 0) 360deg)",
+                              ],
+                            }
+                          }}
+                          transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+                          className="absolute inset-[-100%] z-0"
+                        />
+                        <Button 
+                          size="lg" 
+                          variant="outline" 
+                          className="relative z-10 w-full sm:w-auto rounded-full px-12 h-16 text-lg border-white/40 text-white hover:bg-white/10 backdrop-blur-md transition-all bg-black/20"
+                        >
+                          Custom Planner
+                        </Button>
+                      </motion.div>
                     </Link>
                   </div>
                 </motion.div>
@@ -140,6 +162,8 @@ export default function Home() {
         }
         return null;
       })}
+
+      <LastMinuteOffer />
 
       <section className="py-12 bg-white border-y border-border/50">
         <div className="container mx-auto px-4">
