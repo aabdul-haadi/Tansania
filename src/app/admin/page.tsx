@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from 'react';
@@ -20,7 +21,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import { useFirestore, useUser } from '@/firebase';
-import { doc, setDoc } from 'firebase/firestore';
+import { doc, setDoc, collection } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
 
 export default function AdminDashboard() {
@@ -80,7 +81,36 @@ export default function AdminDashboard() {
         }, { merge: true });
       }
 
-      toast({ title: "Environment Ready", description: "Admin access granted and core pages registered." });
+      // 3. Seed sample package
+      const pkgId = 'great-migration-luxury';
+      await setDoc(doc(firestore, 'packages', pkgId), {
+        id: pkgId,
+        title: 'The Great Migration: Luxury Expedition',
+        slug: 'great-migration-luxury',
+        durationDays: 8,
+        tier: 'Luxury',
+        startingPrice: 5400,
+        rating: 4.9,
+        isPublished: true,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        categories: ['Big Five', 'Photography', 'Private'],
+        mediaRefs: ['https://picsum.photos/seed/migration/1200/800']
+      }, { merge: true });
+
+      // 4. Seed global settings
+      await setDoc(doc(firestore, 'siteSettings', 'global'), {
+        id: 'global',
+        whatsappNumber: '+20 123 456 7890',
+        contactEmail: 'concierge@serengetidreams.com',
+        officeLocation: '123 Zamalek St, Cairo, Egypt',
+        officeHours: 'Mon - Fri: 9am - 6pm (EET)',
+        heroTagline: 'The Soul of the Serengeti',
+        updatedAt: new Date().toISOString(),
+        updatedBy: user.uid
+      }, { merge: true });
+
+      toast({ title: "Environment Ready", description: "Admin access granted and knowledge graph initialized." });
     } catch (error: any) {
       console.error(error);
       toast({ variant: "destructive", title: "Setup Failed", description: error.message });
