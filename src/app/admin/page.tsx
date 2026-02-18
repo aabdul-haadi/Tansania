@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -16,7 +17,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
-import { useFirestore, useUser, useCollection, useMemoFirebase } from '@/firebase';
+import { useFirestore, useUser, useCollection, useDoc, useMemoFirebase } from '@/firebase';
 import { doc, setDoc, collection, query, orderBy, limit } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
 
@@ -31,10 +32,15 @@ export default function AdminDashboard() {
     setIsMounted(true);
   }, []);
 
-  const pagesQuery = useMemoFirebase(() => firestore ? collection(firestore, 'pages') : null, [firestore]);
-  const blogsQuery = useMemoFirebase(() => firestore ? collection(firestore, 'blogPosts') : null, [firestore]);
-  const bookingsQuery = useMemoFirebase(() => firestore ? collection(firestore, 'bookings') : null, [firestore]);
-  const inquiriesQuery = useMemoFirebase(() => firestore ? collection(firestore, 'inquiries') : null, [firestore]);
+  // Check if current user has admin role in database
+  const adminDocRef = useMemoFirebase(() => (firestore && user ? doc(firestore, 'roles_admin', user.uid) : null), [firestore, user]);
+  const { data: adminRole } = useDoc(adminDocRef);
+
+  // Only run admin-level queries if the admin role exists
+  const pagesQuery = useMemoFirebase(() => (firestore && adminRole) ? collection(firestore, 'pages') : null, [firestore, adminRole]);
+  const blogsQuery = useMemoFirebase(() => (firestore && adminRole) ? collection(firestore, 'blogPosts') : null, [firestore, adminRole]);
+  const bookingsQuery = useMemoFirebase(() => (firestore && adminRole) ? collection(firestore, 'bookings') : null, [firestore, adminRole]);
+  const inquiriesQuery = useMemoFirebase(() => (firestore && adminRole) ? collection(firestore, 'inquiries') : null, [firestore, adminRole]);
 
   const { data: pages } = useCollection(pagesQuery);
   const { data: blogs } = useCollection(blogsQuery);
@@ -42,9 +48,9 @@ export default function AdminDashboard() {
   const { data: inquiries } = useCollection(inquiriesQuery);
 
   const recentBlogsQuery = useMemoFirebase(() => {
-    if (!firestore) return null;
+    if (!firestore || !adminRole) return null;
     return query(collection(firestore, 'blogPosts'), orderBy('createdAt', 'desc'), limit(5));
-  }, [firestore]);
+  }, [firestore, adminRole]);
   const { data: recentBlogs } = useCollection(recentBlogsQuery);
 
   const stats = [
@@ -61,12 +67,14 @@ export default function AdminDashboard() {
     }
     setLoading(true);
     try {
+      // 1. Grant admin role
       await setDoc(doc(firestore, 'roles_admin', user.uid), {
         uid: user.uid,
         email: user.email,
         createdAt: new Date().toISOString()
       });
 
+      // 2. Seed Pages
       const corePages = [
         { key: 'home', path: '/', title: 'Home Page' },
         { key: 'about', path: '/about', title: 'About Us' },
@@ -96,6 +104,7 @@ export default function AdminDashboard() {
         }, { merge: true });
       }
 
+      // 3. Seed Blog
       const blogId = 'welcoming-the-migration';
       await setDoc(doc(firestore, 'blogPosts', blogId), {
         id: blogId,
@@ -109,6 +118,34 @@ export default function AdminDashboard() {
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
         coverImage: 'https://picsum.photos/seed/migration-blog/1200/800'
+      }, { merge: true });
+
+      // 4. Seed Mock Lead Inquiries for "Real Numbers"
+      const mockInquiryId = 'sample-lead-1';
+      await setDoc(doc(firestore, 'inquiries', mockInquiryId), {
+        id: mockInquiryId,
+        name: 'Sarah Thompson',
+        email: 'sarah.t@example.com',
+        type: 'TRIP_PLANNER',
+        status: 'new',
+        message: 'Looking for a 10-day honeymoon package including Serengeti and Zanzibar.',
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+      }, { merge: true });
+
+      // 5. Seed Mock Bookings for "Real Numbers"
+      const mockBookingId = 'sample-booking-1';
+      await setDoc(doc(firestore, 'bookings', mockBookingId), {
+        id: mockBookingId,
+        userId: user.uid,
+        packageId: 'great-migration-luxury',
+        departureDate: '2025-07-15',
+        travelers: 2,
+        totalPrice: 12500,
+        status: 'CONFIRMED',
+        paymentStatus: 'PAID',
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
       }, { merge: true });
 
       toast({ title: "Environment Ready", description: "Admin access granted and knowledge graph initialized." });
@@ -145,6 +182,16 @@ export default function AdminDashboard() {
         </div>
       </div>
 
+      {!adminRole && (
+        <Card className="bg-primary/5 border-primary/20 rounded-[2rem] p-8 text-center border-2 border-dashed">
+          <ShieldCheck className="w-12 h-12 text-primary mx-auto mb-4" />
+          <h2 className="text-xl font-bold mb-2">Pending Initialization</h2>
+          <p className="text-muted-foreground max-w-md mx-auto mb-6">
+            Your admin profile hasn't been set up in the database yet. Click the <strong>Initialize CMS</strong> button above to activate full control and real-time metrics.
+          </p>
+        </Card>
+      )}
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat, i) => (
           <Card key={i} className="border-none shadow-sm rounded-[2rem] overflow-hidden">
@@ -153,7 +200,7 @@ export default function AdminDashboard() {
               <stat.icon className="w-4 h-4 text-primary" />
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold">{stat.value}</div>
+              <div className="text-3xl font-bold">{adminRole ? stat.value : '--'}</div>
               <p className="text-xs text-muted-foreground mt-2 flex items-center gap-1 font-bold">
                 {stat.trend}
               </p>
@@ -170,7 +217,9 @@ export default function AdminDashboard() {
           </CardHeader>
           <CardContent className="p-8">
             <div className="space-y-4">
-              {recentBlogs?.length === 0 ? (
+              {!adminRole ? (
+                <div className="py-10 text-center text-muted-foreground">Admin session not initialized.</div>
+              ) : recentBlogs?.length === 0 ? (
                 <div className="py-10 text-center text-muted-foreground">No recent activity detected.</div>
               ) : (
                 recentBlogs?.map((item: any, i: number) => (
@@ -213,7 +262,9 @@ export default function AdminDashboard() {
               <div className="space-y-3">
                 <div className="flex justify-between items-center text-xs">
                   <span className="text-muted-foreground">Database Connectivity</span>
-                  <Badge className="bg-green-500/10 text-green-600 hover:bg-green-500/10 border-none">Stable</Badge>
+                  <Badge className={`border-none ${adminRole ? 'bg-green-500/10 text-green-600' : 'bg-yellow-500/10 text-yellow-600'}`}>
+                    {adminRole ? 'Stable' : 'Awaiting Auth'}
+                  </Badge>
                 </div>
                 <div className="flex justify-between items-center text-xs">
                   <span className="text-muted-foreground">Auth Security</span>
