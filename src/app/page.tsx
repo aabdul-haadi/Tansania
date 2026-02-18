@@ -1,9 +1,9 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ShieldCheck, Heart, Map, Clock, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -15,6 +15,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel";
 import { SafariMap } from '@/components/sections/SafariMap';
 import { ImmersiveReveal } from '@/components/sections/ImmersiveReveal';
@@ -23,6 +24,16 @@ export default function Home() {
   const firestore = useFirestore();
   const docRef = React.useMemo(() => (firestore ? doc(firestore, 'pages', 'home') : null), [firestore]);
   const { data: page } = useDoc(docRef);
+
+  const [tanzaniaApi, setTanzaniaApi] = useState<CarouselApi>();
+  const [tanzaniaIndex, setTanzaniaIndex] = useState(0);
+
+  useEffect(() => {
+    if (!tanzaniaApi) return;
+    tanzaniaApi.on("select", () => {
+      setTanzaniaIndex(tanzaniaApi.selectedScrollSnap());
+    });
+  }, [tanzaniaApi]);
 
   // Fallback content if CMS is not seeded
   const heroImg = PlaceHolderImages.find(img => img.id === 'serengeti-hero');
@@ -52,20 +63,16 @@ export default function Home() {
     <div className="relative">
       {sections.map((section: any, idx: number) => {
         if (section.type === 'hero') {
-          const heroSrc = section.data.backgroundImage || heroImg?.imageUrl || 'https://picsum.photos/seed/safari-hero/1920/1080';
+          // Default background rotation for Hero if no specific list is provided
+          const heroImages = [
+            { src: section.data.backgroundImage || heroImg?.imageUrl || 'https://picsum.photos/seed/safari-hero/1920/1080', hint: "serengeti safari" },
+            { src: zanzibarImg?.imageUrl || 'https://picsum.photos/seed/zanzibar-h/1920/1080', hint: "zanzibar beach" },
+            { src: 'https://picsum.photos/seed/lodge-h/1920/1080', hint: "safari lodge" }
+          ];
+
           return (
             <section key={idx} className="relative h-screen flex items-center justify-center overflow-hidden">
-              <div className="absolute inset-0 z-0">
-                <Image
-                  src={heroSrc}
-                  alt="Serengeti Hero"
-                  fill
-                  className="object-cover scale-105"
-                  priority
-                  data-ai-hint="serengeti safari"
-                />
-                <div className="absolute inset-0 hero-overlay z-10" />
-              </div>
+              <HeroBackgroundSlider images={heroImages} />
               
               <div className="container relative z-20 mx-auto px-4">
                 <motion.div
@@ -157,9 +164,32 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-32 luxury-gradient overflow-hidden">
-        <div className="container mx-auto px-4">
+      <section className="py-32 relative overflow-hidden transition-colors duration-1000">
+        {/* Dynamic Background Image that follows the carousel index */}
+        <div className="absolute inset-0 z-0">
+          <AnimatePresence mode="popLayout">
+            <motion.div
+              key={tanzaniaIndex}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1 }}
+              className="absolute inset-0"
+            >
+              <Image 
+                src={highlights[tanzaniaIndex].img} 
+                alt="Background" 
+                fill 
+                className="object-cover opacity-10 blur-sm scale-110"
+              />
+              <div className="absolute inset-0 bg-background/80" />
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
           <Carousel
+            setApi={setTanzaniaApi}
             opts={{
               align: "start",
               loop: true,
@@ -214,6 +244,42 @@ export default function Home() {
       <SafariMap />
 
       <ImmersiveReveal />
+    </div>
+  );
+}
+
+function HeroBackgroundSlider({ images }: { images: { src: string, hint: string }[] }) {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [images.length]);
+
+  return (
+    <div className="absolute inset-0 z-0">
+      <AnimatePresence mode="popLayout">
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={{ duration: 2, ease: "easeInOut" }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={images[index].src}
+            alt="Hero Background"
+            fill
+            className="object-cover"
+            priority
+            data-ai-hint={images[index].hint}
+          />
+        </motion.div>
+      </AnimatePresence>
+      <div className="absolute inset-0 hero-overlay z-10" />
     </div>
   );
 }

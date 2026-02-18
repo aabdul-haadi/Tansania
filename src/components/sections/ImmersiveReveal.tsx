@@ -1,10 +1,17 @@
 "use client";
 
-import React, { useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { useIsMobile } from '@/hooks/use-mobile';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 
 const scenes = [
   {
@@ -25,74 +32,96 @@ const scenes = [
 ];
 
 export function ImmersiveReveal() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const isMobile = useIsMobile();
-  
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
+  const [api, setApi] = useState<CarouselApi>();
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+    api.on("select", () => {
+      setActiveIndex(api.selectedScrollSnap());
+    });
+  }, [api]);
 
   return (
-    <section ref={containerRef} className="relative h-[300vh]">
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
-        {scenes.map((scene, index) => {
-          const start = index / scenes.length;
-          const end = (index + 1) / scenes.length;
-          
-          // Crossfade logic
-          const opacity = useTransform(
-            scrollYProgress,
-            [start, start + 0.1, end - 0.1, end],
-            [0, 1, 1, index === scenes.length - 1 ? 1 : 0]
-          );
-
-          // Subtle zoom logic (disabled on mobile)
-          const scale = useTransform(
-            scrollYProgress,
-            [start, end],
-            isMobile === true ? [1, 1] : [1, 1.05]
-          );
-
-          const imgData = PlaceHolderImages.find(img => img.id === scene.imgId);
-
-          return (
-            <motion.div
-              key={scene.id}
-              style={{ opacity, zIndex: scenes.length - index }}
-              className="absolute inset-0"
-            >
-              <motion.div style={{ scale }} className="relative w-full h-full">
+    <section className="relative h-screen w-full bg-black overflow-hidden group">
+      {/* Background Images Layer */}
+      <div className="absolute inset-0 pointer-events-none">
+        <AnimatePresence mode="popLayout">
+          {scenes.map((scene, idx) => (
+            idx === activeIndex && (
+              <motion.div
+                key={scene.id}
+                initial={{ opacity: 0, scale: 1.1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.05 }}
+                transition={{ duration: 1.5, ease: "easeInOut" }}
+                className="absolute inset-0"
+              >
                 <Image
-                  src={imgData?.imageUrl || 'https://picsum.photos/seed/fallback/1920/1080'}
+                  src={PlaceHolderImages.find(img => img.id === scene.imgId)?.imageUrl || 'https://picsum.photos/seed/fallback/1920/1080'}
                   alt={scene.title}
                   fill
                   className="object-cover"
-                  loading={index === 0 ? "eager" : "lazy"}
-                  data-ai-hint={imgData?.imageHint}
+                  priority={idx === 0}
+                  data-ai-hint={PlaceHolderImages.find(img => img.id === scene.imgId)?.imageHint}
                 />
                 <div className="absolute inset-0 bg-black/40" />
               </motion.div>
-              
-              <div className="absolute inset-0 flex items-center justify-center p-6 md:p-12">
+            )
+          ))}
+        </AnimatePresence>
+      </div>
+
+      {/* Slider Content Layer */}
+      <Carousel
+        setApi={setApi}
+        opts={{ loop: true }}
+        className="relative h-full w-full"
+      >
+        <CarouselContent className="h-full ml-0">
+          {scenes.map((scene, idx) => (
+            <CarouselItem key={scene.id} className="h-full pl-0 flex items-center justify-center">
+              <div className="container mx-auto px-4">
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
+                  animate={activeIndex === idx ? { opacity: 1, y: 0 } : { opacity: 0, y: -30 }}
+                  transition={{ duration: 0.8, delay: 0.5 }}
                   className="text-center"
                 >
-                  <h2 className="font-headline text-4xl md:text-7xl font-bold text-white max-w-5xl leading-tight">
+                  <h2 className="font-headline text-4xl md:text-7xl lg:text-8xl font-bold text-white max-w-5xl mx-auto leading-tight">
                     {scene.title}
                   </h2>
                   <div className="mt-8 flex justify-center">
-                    <div className="w-12 h-1 bg-primary rounded-full" />
+                    <motion.div 
+                      initial={{ scaleX: 0 }}
+                      animate={activeIndex === idx ? { scaleX: 1 } : { scaleX: 0 }}
+                      transition={{ duration: 1, delay: 0.8 }}
+                      className="w-24 h-1 bg-primary rounded-full origin-center" 
+                    />
                   </div>
                 </motion.div>
               </div>
-            </motion.div>
-          );
-        })}
-      </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+
+        {/* Custom Navigation Overlay */}
+        <div className="absolute inset-x-0 bottom-12 flex justify-center items-center gap-8 z-30">
+          <CarouselPrevious className="static translate-y-0 bg-white/10 border-white/20 text-white hover:bg-white/20 h-14 w-14 rounded-full" />
+          <div className="flex gap-2">
+            {scenes.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => api?.scrollTo(idx)}
+                className={`w-2 h-2 rounded-full transition-all duration-500 ${
+                  activeIndex === idx ? "bg-primary w-8" : "bg-white/30"
+                }`}
+              />
+            ))}
+          </div>
+          <CarouselNext className="static translate-y-0 bg-white/10 border-white/20 text-white hover:bg-white/20 h-14 w-14 rounded-full" />
+        </div>
+      </Carousel>
     </section>
   );
 }
