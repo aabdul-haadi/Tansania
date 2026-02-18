@@ -1,11 +1,10 @@
-
 "use client";
 
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, ArrowLeft, ShieldCheck, Heart, Map, Clock, Star } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Heart, Map, Clock, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { useDoc, useFirestore } from '@/firebase';
@@ -17,6 +16,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { SafariMap } from '@/components/sections/SafariMap';
 
 export default function Home() {
   const firestore = useFirestore();
@@ -209,6 +209,8 @@ export default function Home() {
           </Carousel>
         </div>
       </section>
+
+      <SafariMap />
     </div>
   );
 }
