@@ -27,18 +27,20 @@ export function SafariMap() {
   const journeyPath = "M 100 40 L 80 160 L 100 190 L 140 230";
 
   return (
-    <section ref={containerRef} className="py-4 lg:py-6 bg-secondary text-white overflow-hidden relative">
-      <div className="container mx-auto px-4 max-w-5xl">
-        <div className="flex flex-row items-center justify-between gap-4 md:gap-12">
+    <section ref={containerRef} className="py-6 md:py-10 bg-secondary text-white overflow-hidden relative border-y border-white/5">
+      <div className="container mx-auto px-4 max-w-6xl">
+        <div className="flex flex-row items-stretch justify-between gap-6 md:gap-16">
           
-          {/* Map Textual Content */}
-          <div className="flex-1 max-w-[180px] md:max-w-md">
-            <span className="text-primary font-bold uppercase tracking-widest text-[8px] mb-0.5 block">Our Route</span>
-            <h2 className="font-headline text-lg md:text-3xl font-bold mb-2 leading-tight">
-              Cairo to <span className="text-primary italic">Savannah</span>
-            </h2>
+          {/* Map Textual Content - Left Aligned */}
+          <div className="flex-1 flex flex-col justify-center">
+            <div className="mb-4">
+              <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] mb-1 block">Our Route</span>
+              <h2 className="font-headline text-2xl md:text-5xl font-bold leading-tight">
+                Cairo to <span className="text-primary italic">Savannah</span>
+              </h2>
+            </div>
             
-            <div className="space-y-1.5 md:space-y-3">
+            <div className="space-y-3 md:space-y-6 max-w-xs md:max-w-md">
               {destinations.map((dest, i) => (
                 <motion.div 
                   key={dest.id}
@@ -46,50 +48,59 @@ export function SafariMap() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="flex items-center gap-2 group"
+                  className="flex items-center gap-3 md:gap-5 group"
                 >
-                  <div className="w-4 h-4 md:w-5 md:h-5 rounded-full bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors border border-white/5">
-                    <span className="text-[7px] md:text-[8px] font-bold">{i + 1}</span>
+                  <div className="w-6 h-6 md:w-10 md:h-10 rounded-full bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-primary transition-all border border-white/10 shadow-lg">
+                    <span className="text-[10px] md:text-xs font-bold">{i + 1}</span>
                   </div>
                   <div className="min-w-0">
-                    <h4 className="font-bold text-[9px] md:text-sm mb-0 group-hover:text-primary transition-colors leading-none truncate">{dest.name}</h4>
-                    <p className="text-[7px] md:text-[10px] text-white/40 leading-none truncate">{dest.desc}</p>
+                    <h4 className="font-bold text-xs md:text-xl mb-0 group-hover:text-primary transition-colors leading-none truncate">{dest.name}</h4>
+                    <p className="text-[9px] md:text-xs text-white/40 leading-none mt-1 truncate font-light uppercase tracking-widest">{dest.desc}</p>
                   </div>
                 </motion.div>
               ))}
             </div>
           </div>
 
-          {/* Map Visualization - Compacted for side-by-side even on mobile */}
-          <div className="relative aspect-[4/5] w-24 md:w-64 lg:w-80 shrink-0">
+          {/* Map Visualization - Side-by-side even on mobile */}
+          <div className="relative w-32 md:w-[40%] shrink-0 flex items-center">
             <svg 
               viewBox="0 0 200 300" 
-              className="w-full h-full drop-shadow-xl"
+              className="w-full h-auto drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
               fill="none" 
               xmlns="http://www.w3.org/2000/svg"
             >
               <defs>
-                <pattern id="mapGrid" width="25" height="25" patternUnits="userSpaceOnUse">
-                  <path d="M 25 0 L 0 0 0 25" fill="none" stroke="rgba(255,255,255,0.02)" strokeWidth="0.5"/>
+                <pattern id="mapGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="0.5"/>
                 </pattern>
+                <filter id="glow">
+                  <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+                  <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
               </defs>
               <rect width="100%" height="100%" fill="url(#mapGrid)" />
 
-              <g className="opacity-30">
-                <path d="M80 15 Q120 5 145 35 L155 75 Q115 85 75 65 Z" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" strokeWidth="0.5" />
-                <path d="M65 140 Q105 130 155 160 L165 220 Q115 260 65 230 Z" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" strokeWidth="0.5" />
+              {/* Topographic hint lines */}
+              <g className="opacity-20">
+                <path d="M50 100 Q100 80 150 120 T180 200" stroke="white" strokeWidth="0.2" fill="none" />
+                <path d="M30 150 Q80 130 130 170 T160 250" stroke="white" strokeWidth="0.2" fill="none" />
               </g>
 
-              <motion.path d={journeyPath} stroke="rgba(181, 142, 69, 0.2)" strokeWidth="1" strokeDasharray="3 3" />
-              <motion.path d={journeyPath} stroke="hsl(var(--primary))" strokeWidth="2" style={{ pathLength }} />
+              <motion.path d={journeyPath} stroke="rgba(181, 142, 69, 0.15)" strokeWidth="1.5" strokeDasharray="4 4" />
+              <motion.path d={journeyPath} stroke="hsl(var(--primary))" strokeWidth="3" style={{ pathLength }} filter="url(#glow)" />
 
               {destinations.map((dest, i) => (
                 <g key={dest.id}>
-                  <circle cx={dest.x} cy={dest.y} r="2.5" className="fill-primary" />
+                  <circle cx={dest.x} cy={dest.y} r="3.5" className="fill-primary" />
+                  <circle cx={dest.x} cy={dest.y} r="7" className="stroke-primary/20 fill-none animate-pulse" />
                   <motion.text
-                    x={dest.x + 6}
-                    y={dest.y + 2}
-                    className="fill-white/40 text-[6px] font-bold uppercase tracking-widest hidden md:block"
+                    x={dest.x + 10}
+                    y={dest.y + 3}
+                    className="fill-white/60 text-[8px] font-bold uppercase tracking-[0.2em] hidden md:block pointer-events-none"
                   >
                     {dest.name}
                   </motion.text>
