@@ -21,6 +21,7 @@ import { SafariMap } from '@/components/sections/SafariMap';
 import { ImmersiveReveal } from '@/components/sections/ImmersiveReveal';
 import { SunriseCTA } from '@/components/sections/SunriseCTA';
 import { CinematicQuote } from '@/components/sections/CinematicQuote';
+import { Testimonials } from '@/components/sections/Testimonials';
 
 export default function Home() {
   const firestore = useFirestore();
@@ -246,6 +247,8 @@ export default function Home() {
       <SafariMap />
 
       <ImmersiveReveal />
+
+      <Testimonials />
 
       <CinematicQuote />
 
