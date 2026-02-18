@@ -1,31 +1,40 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    /* Sophisticated Safari Palette: Linen, Acacia, and Savannah Gold */
+    /* Refined Luxury Safari Palette */
     --background: 30 20% 98%;
     --foreground: 24 10% 12%;
     --card: 0 0% 100%;
     --card-foreground: 24 10% 12%;
     --popover: 0 0% 100%;
     --popover-foreground: 24 10% 12%;
-    --primary: 35 65% 45%; /* Savannah Gold */
-    --primary-foreground: 30 20% 98%;
-    --secondary: 150 25% 20%; /* Acacia Green */
+    --primary: 38 60% 50%; /* Golden Savannah */
+    --primary-foreground: 24 10% 12%; /* Dark text for better contrast */
+    --secondary: 150 25% 18%; /* Deep Acacia Green */
     --secondary-foreground: 30 20% 98%;
     --muted: 30 10% 94%;
     --muted-foreground: 24 10% 45%;
-    --accent: 150 25% 20%;
-    --accent-foreground: 30 20% 98%;
+    --accent: 38 60% 50%;
+    --accent-foreground: 24 10% 12%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 30 15% 88%;
     --input: 30 15% 88%;
-    --ring: 35 65% 45%;
+    --ring: 38 60% 50%;
     --radius: 1.25rem;
+
+    /* Sidebar Variables */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 24 10% 12%;
+    --sidebar-primary: 38 60% 50%;
+    --sidebar-primary-foreground: 24 10% 12%;
+    --sidebar-accent: 30 10% 94%;
+    --sidebar-accent-foreground: 24 10% 12%;
+    --sidebar-border: 30 15% 88%;
+    --sidebar-ring: 38 60% 50%;
   }
 
   .dark {
@@ -35,19 +44,19 @@
     --card-foreground: 40 15% 95%;
     --popover: 24 10% 10%;
     --popover-foreground: 40 15% 95%;
-    --primary: 35 65% 55%;
+    --primary: 38 60% 55%;
     --primary-foreground: 24 10% 8%;
-    --secondary: 150 20% 30%;
+    --secondary: 150 20% 25%;
     --secondary-foreground: 40 15% 95%;
     --muted: 24 10% 15%;
     --muted-foreground: 40 10% 65%;
-    --accent: 150 20% 30%;
-    --accent-foreground: 40 15% 95%;
+    --accent: 38 60% 55%;
+    --accent-foreground: 24 10% 8%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     --border: 24 10% 18%;
     --input: 24 10% 18%;
-    --ring: 35 65% 55%;
+    --ring: 38 60% 55%;
   }
 }
 
@@ -70,7 +79,7 @@
 }
 
 .hero-overlay {
-  background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.6) 100%);
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0.5) 100%);
 }
 
 .safari-card {
