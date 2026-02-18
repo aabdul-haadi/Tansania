@@ -27,14 +27,14 @@ export function SafariMap() {
   const journeyPath = "M 100 40 L 80 160 L 100 190 L 140 230";
 
   return (
-    <section ref={containerRef} className="py-4 lg:py-8 bg-secondary text-white overflow-hidden relative">
+    <section ref={containerRef} className="py-4 lg:py-6 bg-secondary text-white overflow-hidden relative">
       <div className="container mx-auto px-4 max-w-5xl">
         <div className="flex flex-row items-center justify-between gap-4 md:gap-12">
           
           {/* Map Textual Content */}
-          <div className="flex-1 max-w-md">
-            <span className="text-primary font-bold uppercase tracking-widest text-[9px] mb-0.5 block">Our Route</span>
-            <h2 className="font-headline text-2xl md:text-4xl font-bold mb-2 leading-tight">
+          <div className="flex-1 max-w-[180px] md:max-w-md">
+            <span className="text-primary font-bold uppercase tracking-widest text-[8px] mb-0.5 block">Our Route</span>
+            <h2 className="font-headline text-lg md:text-3xl font-bold mb-2 leading-tight">
               Cairo to <span className="text-primary italic">Savannah</span>
             </h2>
             
@@ -48,20 +48,20 @@ export function SafariMap() {
                   transition={{ delay: i * 0.1 }}
                   className="flex items-center gap-2 group"
                 >
-                  <div className="w-5 h-5 rounded-full bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors border border-white/5">
-                    <span className="text-[8px] font-bold">{i + 1}</span>
+                  <div className="w-4 h-4 md:w-5 md:h-5 rounded-full bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors border border-white/5">
+                    <span className="text-[7px] md:text-[8px] font-bold">{i + 1}</span>
                   </div>
-                  <div>
-                    <h4 className="font-bold text-[10px] md:text-sm mb-0 group-hover:text-primary transition-colors leading-none">{dest.name}</h4>
-                    <p className="text-[8px] md:text-[10px] text-white/40 leading-none">{dest.desc}</p>
+                  <div className="min-w-0">
+                    <h4 className="font-bold text-[9px] md:text-sm mb-0 group-hover:text-primary transition-colors leading-none truncate">{dest.name}</h4>
+                    <p className="text-[7px] md:text-[10px] text-white/40 leading-none truncate">{dest.desc}</p>
                   </div>
                 </motion.div>
               ))}
             </div>
           </div>
 
-          {/* Map Visualization - Compacted for side-by-side on mobile */}
-          <div className="relative aspect-[4/5] w-32 md:w-64 lg:w-80 shrink-0">
+          {/* Map Visualization - Compacted for side-by-side even on mobile */}
+          <div className="relative aspect-[4/5] w-24 md:w-64 lg:w-80 shrink-0">
             <svg 
               viewBox="0 0 200 300" 
               className="w-full h-full drop-shadow-xl"
