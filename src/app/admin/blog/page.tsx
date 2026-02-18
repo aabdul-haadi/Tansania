@@ -20,11 +20,12 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
-import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
+import { useCollection, useFirestore, useMemoFirebase, useUser, useDoc } from '@/firebase';
 import { collection, query, orderBy, deleteDoc, doc } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
 
 export default function BlogList() {
+  const { user } = useUser();
   const firestore = useFirestore();
   const { toast } = useToast();
   const [isMounted, setIsMounted] = useState(false);
@@ -32,11 +33,15 @@ export default function BlogList() {
   useEffect(() => {
     setIsMounted(true);
   }, []);
+
+  // Guard: Only fetch if authenticated and admin role is confirmed
+  const adminDocRef = useMemoFirebase(() => (firestore && user ? doc(firestore, 'roles_admin', user.uid) : null), [firestore, user]);
+  const { data: adminRole } = useDoc(adminDocRef);
   
   const blogQuery = useMemoFirebase(() => {
-    if (!firestore) return null;
+    if (!firestore || !adminRole) return null;
     return query(collection(firestore, 'blogPosts'), orderBy('createdAt', 'desc'));
-  }, [firestore]);
+  }, [firestore, adminRole]);
 
   const { data: posts, isLoading } = useCollection(blogQuery);
 
@@ -82,6 +87,8 @@ export default function BlogList() {
           <div className="py-20 text-center text-muted-foreground animate-pulse font-bold text-xs uppercase tracking-widest">
             Syncing content library...
           </div>
+        ) : !adminRole ? (
+          <div className="py-20 text-center text-muted-foreground">Verifying admin access...</div>
         ) : posts?.length === 0 ? (
           <Card className="p-24 text-center border-dashed border-2 bg-muted/20 rounded-[3rem]">
             <FileText className="w-16 h-16 mx-auto mb-6 opacity-10" />
