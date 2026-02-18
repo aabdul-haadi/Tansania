@@ -20,8 +20,8 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
-import { useFirestore, useUser } from '@/firebase';
-import { doc, setDoc, collection } from 'firebase/firestore';
+import { useFirestore, useUser, useCollection, useMemoFirebase } from '@/firebase';
+import { doc, setDoc, collection, query, orderBy, limit } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
 
 export default function AdminDashboard() {
@@ -30,11 +30,29 @@ export default function AdminDashboard() {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
 
+  // Real data queries for stats
+  const pagesQuery = useMemoFirebase(() => firestore ? collection(firestore, 'pages') : null, [firestore]);
+  const blogsQuery = useMemoFirebase(() => firestore ? collection(firestore, 'blogPosts') : null, [firestore]);
+  const bookingsQuery = useMemoFirebase(() => firestore ? collection(firestore, 'bookings') : null, [firestore]);
+  const inquiriesQuery = useMemoFirebase(() => firestore ? collection(firestore, 'inquiries') : null, [firestore]);
+
+  const { data: pages } = useCollection(pagesQuery);
+  const { data: blogs } = useCollection(blogsQuery);
+  const { data: bookings } = useCollection(bookingsQuery);
+  const { data: inquiries } = useCollection(inquiriesQuery);
+
+  // Recent activity query
+  const recentBlogsQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
+    return query(collection(firestore, 'blogPosts'), orderBy('createdAt', 'desc'), limit(5));
+  }, [firestore]);
+  const { data: recentBlogs } = useCollection(recentBlogsQuery);
+
   const stats = [
-    { label: 'Total Bookings', value: '48', icon: CalendarCheck, trend: '+12% this month' },
-    { label: 'New Inquiries', value: '15', icon: MessageSquare, trend: '5 pending' },
-    { label: 'Blog Posts', value: '32', icon: FileText, trend: '4 published recently' },
-    { label: 'Active Users', value: '1,240', icon: Users, trend: '+8% vs last week' },
+    { label: 'Total Pages', value: pages?.length || 0, icon: Globe, trend: 'Managed routes' },
+    { label: 'Blog Posts', value: blogs?.length || 0, icon: FileText, trend: 'Published stories' },
+    { label: 'Inquiries', value: inquiries?.length || 0, icon: MessageSquare, trend: 'New leads' },
+    { label: 'Bookings', value: bookings?.length || 0, icon: CalendarCheck, trend: 'Confirmed trips' },
   ];
 
   const handleSeedData = async () => {
@@ -44,14 +62,12 @@ export default function AdminDashboard() {
     }
     setLoading(true);
     try {
-      // 1. Grant admin role
       await setDoc(doc(firestore, 'roles_admin', user.uid), {
         uid: user.uid,
         email: user.email,
         createdAt: new Date().toISOString()
       });
 
-      // 2. Initialize core pages
       const corePages = [
         { key: 'home', path: '/', title: 'Home Page' },
         { key: 'about', path: '/about', title: 'About Us' },
@@ -81,33 +97,19 @@ export default function AdminDashboard() {
         }, { merge: true });
       }
 
-      // 3. Seed sample package
-      const pkgId = 'great-migration-luxury';
-      await setDoc(doc(firestore, 'packages', pkgId), {
-        id: pkgId,
-        title: 'The Great Migration: Luxury Expedition',
-        slug: 'great-migration-luxury',
-        durationDays: 8,
-        tier: 'Luxury',
-        startingPrice: 5400,
-        rating: 4.9,
-        isPublished: true,
+      const blogId = 'welcoming-the-migration';
+      await setDoc(doc(firestore, 'blogPosts', blogId), {
+        id: blogId,
+        title: 'Welcoming the Great Migration 2025',
+        slug: 'welcoming-migration-2025',
+        excerpt: 'Everything you need to know about the upcoming season.',
+        contentMarkdown: '# The Journey Begins\n\nThe Great Migration is one of nature\'s most spectacular events...',
+        category: 'Guides',
+        authorName: 'Admin Team',
+        status: 'PUBLISHED',
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
-        categories: ['Big Five', 'Photography', 'Private'],
-        mediaRefs: ['https://picsum.photos/seed/migration/1200/800']
-      }, { merge: true });
-
-      // 4. Seed global settings
-      await setDoc(doc(firestore, 'siteSettings', 'global'), {
-        id: 'global',
-        whatsappNumber: '+20 123 456 7890',
-        contactEmail: 'concierge@serengetidreams.com',
-        officeLocation: '123 Zamalek St, Cairo, Egypt',
-        officeHours: 'Mon - Fri: 9am - 6pm (EET)',
-        heroTagline: 'The Soul of the Serengeti',
-        updatedAt: new Date().toISOString(),
-        updatedBy: user.uid
+        coverImage: 'https://picsum.photos/seed/migration-blog/1200/800'
       }, { merge: true });
 
       toast({ title: "Environment Ready", description: "Admin access granted and knowledge graph initialized." });
@@ -124,7 +126,7 @@ export default function AdminDashboard() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
           <h1 className="text-4xl font-bold tracking-tight">Overview</h1>
-          <p className="text-muted-foreground mt-2 text-lg">Managing the "Nile to Savannah" digital experience.</p>
+          <p className="text-muted-foreground mt-2 text-lg">Real-time status of the "Nile to Savannah" digital experience.</p>
         </div>
         <div className="flex items-center gap-3">
           <Button 
@@ -153,8 +155,8 @@ export default function AdminDashboard() {
             </CardHeader>
             <CardContent>
               <div className="text-3xl font-bold">{stat.value}</div>
-              <p className="text-xs text-muted-foreground mt-2 flex items-center gap-1">
-                <TrendingUp className="w-3 h-3 text-green-500" /> {stat.trend}
+              <p className="text-xs text-muted-foreground mt-2 flex items-center gap-1 font-bold">
+                {stat.trend}
               </p>
             </CardContent>
           </Card>
@@ -164,29 +166,29 @@ export default function AdminDashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <Card className="lg:col-span-2 border-none shadow-sm rounded-[2.5rem] overflow-hidden">
           <CardHeader className="p-8 pb-0">
-            <CardTitle className="text-2xl font-bold">Recent Updates</CardTitle>
-            <CardDescription>Content and booking activity from the last 24 hours.</CardDescription>
+            <CardTitle className="text-2xl font-bold">Recent Content Activity</CardTitle>
+            <CardDescription>Latest blog posts and updates from the team.</CardDescription>
           </CardHeader>
           <CardContent className="p-8">
             <div className="space-y-4">
-              {[
-                { title: 'New Booking: Luxury Serengeti', user: 'Sherif Aly', time: '1h ago', status: 'Confirmed' },
-                { title: 'Page Edited: "Home"', user: 'System Admin', time: '3h ago', status: 'Published' },
-                { title: 'Inquiry: Honeymoon Combo', user: 'Sara Jones', time: '5h ago', status: 'Pending' },
-              ].map((item, i) => (
-                <div key={i} className="flex items-center justify-between p-5 bg-muted/30 rounded-[1.5rem] hover:bg-muted/50 transition-colors">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-secondary/10 rounded-2xl flex items-center justify-center text-secondary font-bold">
-                      {item.user[0]}
+              {recentBlogs?.length === 0 ? (
+                <div className="py-10 text-center text-muted-foreground">No recent activity detected.</div>
+              ) : (
+                recentBlogs?.map((item: any, i: number) => (
+                  <div key={i} className="flex items-center justify-between p-5 bg-muted/30 rounded-[1.5rem] hover:bg-muted/50 transition-colors">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 bg-secondary/10 rounded-2xl flex items-center justify-center text-secondary font-bold">
+                        {item.authorName?.[0] || 'A'}
+                      </div>
+                      <div>
+                        <p className="font-bold text-sm">{item.title}</p>
+                        <p className="text-xs text-muted-foreground">{item.authorName} • {new Date(item.createdAt).toLocaleDateString()}</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="font-bold text-sm">{item.title}</p>
-                      <p className="text-xs text-muted-foreground">{item.user} • {item.time}</p>
-                    </div>
+                    <Badge variant="outline" className="rounded-full">{item.status}</Badge>
                   </div>
-                  <Badge variant="outline" className="rounded-full">{item.status}</Badge>
-                </div>
-              ))}
+                ))
+              )}
             </div>
           </CardContent>
         </Card>
@@ -194,30 +196,27 @@ export default function AdminDashboard() {
         <Card className="border-none shadow-sm rounded-[2.5rem] overflow-hidden">
           <CardHeader className="p-8 pb-0">
             <CardTitle className="flex items-center gap-2 text-2xl font-bold">
-              <ShieldCheck className="w-6 h-6 text-primary" /> Shortcuts
+              <ShieldCheck className="w-6 h-6 text-primary" /> Quick Actions
             </CardTitle>
           </CardHeader>
           <CardContent className="p-8 space-y-4">
             <Button asChild className="w-full justify-start gap-4 rounded-2xl h-14 hover:scale-[1.02] transition-transform" variant="outline">
-              <Link href="/admin/pages/home"><Globe className="w-5 h-5" /> Edit Home Page</Link>
+              <Link href="/admin/pages"><Globe className="w-5 h-5" /> All Web Pages</Link>
             </Button>
             <Button asChild className="w-full justify-start gap-4 rounded-2xl h-14 hover:scale-[1.02] transition-transform" variant="outline">
-              <Link href="/admin/blog/new"><Plus className="w-5 h-5" /> Create Article</Link>
-            </Button>
-            <Button asChild className="w-full justify-start gap-4 rounded-2xl h-14 hover:scale-[1.02] transition-transform" variant="outline">
-              <Link href="/admin/inquiries"><MessageSquare className="w-5 h-5" /> Review Inquiries</Link>
+              <Link href="/admin/blog/new"><Plus className="w-5 h-5" /> New Blog Article</Link>
             </Button>
             
             <div className="mt-8 pt-8 border-t">
-              <p className="text-[11px] uppercase tracking-widest text-muted-foreground font-bold mb-4">CMS Status</p>
+              <p className="text-[11px] uppercase tracking-widest text-muted-foreground font-bold mb-4">System Integrity</p>
               <div className="space-y-3">
                 <div className="flex justify-between items-center text-xs">
-                  <span className="text-muted-foreground">Database Sync</span>
-                  <Badge className="bg-green-500/10 text-green-600 hover:bg-green-500/10 border-none">Active</Badge>
+                  <span className="text-muted-foreground">Database Connectivity</span>
+                  <Badge className="bg-green-500/10 text-green-600 hover:bg-green-500/10 border-none">Stable</Badge>
                 </div>
                 <div className="flex justify-between items-center text-xs">
-                  <span className="text-muted-foreground">AI Planner</span>
-                  <Badge className="bg-primary/10 text-primary hover:bg-primary/10 border-none">Ready</Badge>
+                  <span className="text-muted-foreground">Auth Security</span>
+                  <Badge className="bg-primary/10 text-primary hover:bg-primary/10 border-none">Active</Badge>
                 </div>
               </div>
             </div>

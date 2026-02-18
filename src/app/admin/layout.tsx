@@ -6,20 +6,15 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { 
   LayoutDashboard, 
-  Package, 
-  CalendarCheck, 
-  MessageSquare, 
   FileText, 
-  Settings, 
-  Brain,
+  Globe,
   LogOut,
   ChevronRight,
-  Globe,
   Lock,
   Loader2
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useUser, useDoc, useFirestore, useAuth } from '@/firebase';
+import { useUser, useDoc, useFirestore, useAuth, useMemoFirebase } from '@/firebase';
 import { doc } from 'firebase/firestore';
 import { Button } from '@/components/ui/button';
 import { signOut } from 'firebase/auth';
@@ -28,11 +23,6 @@ const adminLinks = [
   { name: 'Dashboard', href: '/admin', icon: LayoutDashboard },
   { name: 'Page Registry', href: '/admin/pages', icon: Globe },
   { name: 'Blog Posts', href: '/admin/blog', icon: FileText },
-  { name: 'AI Planner', href: '/admin/ai-planner', icon: Brain },
-  { name: 'Safari Packages', href: '/admin/packages', icon: Package },
-  { name: 'Bookings', href: '/admin/bookings', icon: CalendarCheck },
-  { name: 'Inquiries', href: '/admin/inquiries', icon: MessageSquare },
-  { name: 'Site Settings', href: '/admin/settings', icon: Settings },
 ];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -42,8 +32,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const firestore = useFirestore();
   const auth = useAuth();
   
-  // Check for admin role in Firestore
-  const adminDocRef = React.useMemo(() => (firestore && user ? doc(firestore, 'roles_admin', user.uid) : null), [firestore, user]);
+  const adminDocRef = useMemoFirebase(() => (firestore && user ? doc(firestore, 'roles_admin', user.uid) : null), [firestore, user]);
   const { data: adminRole, isLoading: isAdminRoleLoading } = useDoc(adminDocRef);
 
   const [isAuthorized, setIsAuthorized] = useState<boolean | null>(null);
@@ -53,7 +42,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       if (user && adminRole) {
         setIsAuthorized(true);
       } else if (user && !adminRole && pathname === '/admin') {
-        // Allow the dashboard for the "Initialize" flow if the user is authenticated
         setIsAuthorized(true);
       } else {
         setIsAuthorized(false);
@@ -79,7 +67,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     );
   }
 
-  // If not authorized, show a restricted access screen
   if (isAuthorized === false) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#0a0a0a] p-6">
@@ -107,7 +94,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   return (
     <div className="flex min-h-screen bg-muted/20">
-      {/* Sidebar Navigation */}
       <aside className="w-72 bg-background border-r flex flex-col hidden lg:flex shrink-0">
         <div className="p-8 border-b">
           <Link href="/" className="flex items-center gap-2">
@@ -154,7 +140,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </div>
       </aside>
 
-      {/* Main Panel */}
       <main className="flex-grow overflow-y-auto">
         <header className="sticky top-0 z-10 bg-background/80 backdrop-blur-md border-b px-8 py-4 flex items-center justify-between lg:hidden">
            <h2 className="font-headline text-lg font-bold">Admin Hub</h2>
