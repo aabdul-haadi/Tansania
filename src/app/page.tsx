@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -19,6 +20,7 @@ import {
 } from "@/components/ui/carousel";
 import { SafariMap } from '@/components/sections/SafariMap';
 import { ImmersiveReveal } from '@/components/sections/ImmersiveReveal';
+import { SunriseCTA } from '@/components/sections/SunriseCTA';
 
 export default function Home() {
   const firestore = useFirestore();
@@ -244,6 +246,8 @@ export default function Home() {
       <SafariMap />
 
       <ImmersiveReveal />
+
+      <SunriseCTA />
     </div>
   );
 }
