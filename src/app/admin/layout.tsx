@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -13,18 +12,20 @@ import {
   Settings, 
   Brain,
   LogOut,
-  ChevronRight
+  ChevronRight,
+  Globe
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const adminLinks = [
-  { name: 'Overview', href: '/admin', icon: LayoutDashboard },
-  { name: 'Packages', href: '/admin/packages', icon: Package },
+  { name: 'Dashboard', href: '/admin', icon: LayoutDashboard },
+  { name: 'Page Registry', href: '/admin/pages', icon: Globe },
+  { name: 'Blog Posts', href: '/admin/blog', icon: FileText },
+  { name: 'AI Planner', href: '/admin/ai-planner', icon: Brain },
+  { name: 'Safari Packages', href: '/admin/packages', icon: Package },
   { name: 'Bookings', href: '/admin/bookings', icon: CalendarCheck },
   { name: 'Inquiries', href: '/admin/inquiries', icon: MessageSquare },
-  { name: 'Blog', href: '/admin/blog', icon: FileText },
-  { name: 'AI Planner', href: '/admin/ai-planner', icon: Brain },
-  { name: 'Settings', href: '/admin/settings', icon: Settings },
+  { name: 'Site Settings', href: '/admin/settings', icon: Settings },
 ];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -32,32 +33,35 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   return (
     <div className="flex min-h-screen bg-muted/20">
-      {/* Admin Sidebar */}
-      <aside className="w-64 bg-background border-r flex flex-col hidden lg:flex">
-        <div className="p-6 border-b">
-          <h2 className="font-headline text-xl font-bold flex items-center gap-2">
-            Admin <span className="text-secondary">Panel</span>
-          </h2>
+      {/* Sidebar Navigation */}
+      <aside className="w-72 bg-background border-r flex flex-col hidden lg:flex">
+        <div className="p-8 border-b">
+          <Link href="/" className="flex items-center gap-2">
+            <h2 className="font-headline text-2xl font-bold tracking-tight">
+              Admin<span className="text-secondary">Hub</span>
+            </h2>
+          </Link>
+          <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold mt-1">Serengeti Dreams CMS</p>
         </div>
         
-        <nav className="flex-grow p-4 space-y-2">
+        <nav className="flex-grow p-6 space-y-1">
           {adminLinks.map((link) => {
             const Icon = link.icon;
-            const isActive = pathname === link.href;
+            const isActive = pathname === link.href || (link.href !== '/admin' && pathname.startsWith(link.href));
             return (
               <Link
                 key={link.name}
                 href={link.href}
                 className={cn(
-                  "flex items-center justify-between p-3 rounded-xl transition-colors group",
+                  "flex items-center justify-between p-3.5 rounded-2xl transition-all duration-300 group",
                   isActive 
-                    ? "bg-secondary text-white" 
-                    : "hover:bg-muted text-muted-foreground"
+                    ? "bg-secondary text-white shadow-lg shadow-secondary/20" 
+                    : "hover:bg-muted text-muted-foreground hover:text-foreground"
                 )}
               >
                 <div className="flex items-center gap-3">
-                  <Icon className="w-5 h-5" />
-                  <span className="font-medium">{link.name}</span>
+                  <Icon className={cn("w-5 h-5", isActive ? "text-primary" : "text-muted-foreground/60")} />
+                  <span className="font-bold text-sm">{link.name}</span>
                 </div>
                 {isActive && <ChevronRight className="w-4 h-4" />}
               </Link>
@@ -65,21 +69,25 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           })}
         </nav>
 
-        <div className="p-4 border-t">
-          <button className="flex items-center gap-3 w-full p-3 text-red-500 hover:bg-red-50 rounded-xl transition-colors">
+        <div className="p-6 border-t">
+          <button className="flex items-center gap-3 w-full p-4 text-destructive hover:bg-destructive/5 rounded-2xl transition-colors font-bold text-sm">
             <LogOut className="w-5 h-5" />
-            <span className="font-medium">Sign Out</span>
+            <span>Sign Out</span>
           </button>
         </div>
       </aside>
 
-      {/* Main Content Area */}
+      {/* Main Panel */}
       <main className="flex-grow overflow-y-auto">
-        <div className="sticky top-0 z-10 bg-background/80 backdrop-blur-md border-b p-4 lg:hidden">
-          {/* Mobile Admin Header Placeholder */}
-           <h2 className="font-headline text-lg font-bold">Admin Panel</h2>
+        <header className="sticky top-0 z-10 bg-background/80 backdrop-blur-md border-b px-8 py-4 flex items-center justify-between lg:hidden">
+           <h2 className="font-headline text-lg font-bold">Admin Hub</h2>
+           <button className="p-2 bg-muted rounded-lg">
+             <LayoutDashboard className="w-5 h-5" />
+           </button>
+        </header>
+        <div className="min-h-full">
+          {children}
         </div>
-        {children}
       </main>
     </div>
   );

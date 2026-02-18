@@ -10,17 +10,23 @@ import {
   Eye, 
   Filter,
   Calendar,
-  User
+  User,
+  ExternalLink,
+  ChevronRight
 } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import { useCollection, useFirestore } from '@/firebase';
-import { collection, query, orderBy } from 'firebase/firestore';
+import { collection, query, orderBy, deleteDoc, doc } from 'firebase/firestore';
+import { useToast } from '@/hooks/use-toast';
 
 export default function BlogList() {
   const firestore = useFirestore();
+  const { toast } = useToast();
+  
   const blogQuery = React.useMemo(() => {
     if (!firestore) return null;
     return query(collection(firestore, 'blogPosts'), orderBy('createdAt', 'desc'));
@@ -28,81 +34,106 @@ export default function BlogList() {
 
   const { data: posts, isLoading } = useCollection(blogQuery);
 
+  const handleDelete = async (id: string) => {
+    if (!firestore || !confirm('Are you sure you want to delete this post?')) return;
+    try {
+      await deleteDoc(doc(firestore, 'blogPosts', id));
+      toast({ title: "Post Deleted", description: "The article has been removed." });
+    } catch (error) {
+      toast({ variant: "destructive", title: "Delete Failed", description: "Insufficient permissions." });
+    }
+  };
+
   return (
-    <div className="p-8 max-w-7xl mx-auto">
-      <div className="flex items-center justify-between mb-8">
+    <div className="p-10 max-w-7xl mx-auto space-y-10">
+      <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold">Blog Management</h1>
-          <p className="text-muted-foreground mt-1">Create and publish safari stories and tips.</p>
+          <h1 className="text-4xl font-bold tracking-tight">Blog Management</h1>
+          <p className="text-muted-foreground mt-2 text-lg">Create and publish safari stories for your travelers.</p>
         </div>
-        <Button asChild className="gap-2 rounded-full">
-          <Link href="/admin/blog/new"><Plus className="w-4 h-4" /> New Article</Link>
+        <Button asChild className="gap-2 rounded-2xl h-12 px-6">
+          <Link href="/admin/blog/new"><Plus className="w-5 h-5" /> New Article</Link>
         </Button>
       </div>
 
-      <div className="flex items-center gap-4 mb-8">
-        <div className="relative flex-grow">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-          <Input placeholder="Search articles..." className="pl-10 h-12 rounded-xl" />
+      <div className="flex items-center gap-4">
+        <div className="relative flex-grow max-w-md">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+          <Input placeholder="Search articles..." className="pl-12 h-14 rounded-2xl border-none shadow-sm bg-background" />
         </div>
-        <Button variant="outline" className="h-12 rounded-xl flex gap-2">
+        <Button variant="outline" className="h-14 rounded-2xl px-6 flex gap-2 border-none shadow-sm bg-background">
           <Filter className="w-4 h-4" /> Filter
         </Button>
       </div>
 
       <div className="grid grid-cols-1 gap-4">
         {isLoading ? (
-          <p className="text-center py-12 text-muted-foreground">Fetching articles...</p>
+          <div className="py-20 text-center text-muted-foreground animate-pulse">Fetching articles from the savannah...</div>
         ) : posts?.length === 0 ? (
-          <Card className="p-20 text-center border-dashed border-2 bg-muted/20 rounded-[3rem]">
-            <FileText className="w-12 h-12 mx-auto mb-4 opacity-10" />
-            <p className="text-lg font-bold">No articles yet</p>
-            <p className="text-muted-foreground mb-6">Start sharing your safari expertise with the world.</p>
-            <Button asChild className="rounded-full">
+          <Card className="p-24 text-center border-dashed border-2 bg-muted/20 rounded-[3rem]">
+            <FileText className="w-16 h-16 mx-auto mb-6 opacity-10" />
+            <h3 className="text-2xl font-bold mb-2">No articles found</h3>
+            <p className="text-muted-foreground mb-8 max-w-xs mx-auto">Start sharing your safari expertise and travel tips with the world.</p>
+            <Button asChild className="rounded-2xl h-12 px-8">
               <Link href="/admin/blog/new">Create First Post</Link>
             </Button>
           </Card>
-        ) : posts?.map((post: any) => (
-          <Card key={post.id} className="border-none shadow-sm hover:shadow-md transition-all group overflow-hidden">
-            <CardContent className="p-0 flex flex-col md:flex-row">
-              <div className="w-full md:w-48 h-48 md:h-auto bg-muted relative overflow-hidden">
-                <img 
-                  src={post.coverImage || 'https://picsum.photos/seed/blog/400/400'} 
-                  alt={post.title} 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-              <div className="flex-grow p-6">
-                <div className="flex items-start justify-between mb-2">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="px-2 py-0.5 bg-secondary/10 text-secondary text-[10px] font-bold rounded-full uppercase tracking-wider">
-                      {post.category}
-                    </span>
-                    <span className={`px-2 py-0.5 text-[10px] font-bold rounded-full uppercase tracking-wider ${
-                      post.status === 'PUBLISHED' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
-                    }`}>
-                      {post.status}
-                    </span>
+        ) : (
+          posts?.map((post: any) => (
+            <Card key={post.id} className="border-none shadow-sm hover:shadow-md transition-all group overflow-hidden rounded-[2rem]">
+              <CardContent className="p-0 flex flex-col md:flex-row h-full">
+                <div className="w-full md:w-64 h-48 md:h-auto bg-muted relative overflow-hidden shrink-0">
+                  <img 
+                    src={post.coverImage || 'https://picsum.photos/seed/blog-fallback/600/600'} 
+                    alt={post.title} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+                <div className="flex-grow p-8 flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center gap-3">
+                        <Badge variant="secondary" className="px-3 py-1 text-[10px] font-bold uppercase tracking-widest bg-secondary/10 text-secondary border-none">
+                          {post.category}
+                        </Badge>
+                        <Badge className={`px-3 py-1 text-[10px] font-bold uppercase tracking-widest border-none ${
+                          post.status === 'PUBLISHED' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
+                        }`}>
+                          {post.status}
+                        </Badge>
+                      </div>
+                      <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                        <Button size="icon" variant="ghost" asChild className="rounded-xl h-10 w-10">
+                          <Link href={`/admin/blog/${post.id}/edit`}><Edit className="w-4 h-4" /></Link>
+                        </Button>
+                        <Button size="icon" variant="ghost" asChild className="rounded-xl h-10 w-10">
+                          <Link href={`/blog/${post.slug}`} target="_blank"><ExternalLink className="w-4 h-4" /></Link>
+                        </Button>
+                        <Button size="icon" variant="ghost" onClick={() => handleDelete(post.id)} className="rounded-xl h-10 w-10 text-destructive hover:bg-destructive/10">
+                          <Trash2 className="w-4 h-4" />
+                        </Button>
+                      </div>
+                    </div>
+                    <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors leading-tight">{post.title}</h3>
+                    <p className="text-muted-foreground line-clamp-2 mb-6 font-light leading-relaxed">
+                      {post.excerpt}
+                    </p>
                   </div>
-                  <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Button size="icon" variant="ghost" asChild>
-                      <Link href={`/admin/blog/${post.id}/edit`}><Edit className="w-4 h-4" /></Link>
-                    </Button>
-                    <Button size="icon" variant="ghost" className="text-destructive"><Trash2 className="w-4 h-4" /></Button>
+                  
+                  <div className="flex items-center justify-between pt-6 border-t">
+                    <div className="flex items-center gap-8 text-[11px] text-muted-foreground font-bold uppercase tracking-widest">
+                      <span className="flex items-center gap-2"><Calendar className="w-3.5 h-3.5" /> {new Date(post.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}</span>
+                      <span className="flex items-center gap-2"><User className="w-3.5 h-3.5" /> {post.authorName}</span>
+                    </div>
+                    <Link href={`/admin/blog/${post.id}/edit`} className="flex items-center gap-2 text-xs font-bold text-secondary hover:text-primary transition-colors">
+                      Edit Draft <ChevronRight className="w-4 h-4" />
+                    </Link>
                   </div>
                 </div>
-                <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{post.title}</h3>
-                <p className="text-sm text-muted-foreground line-clamp-2 mb-4 font-light leading-relaxed">
-                  {post.excerpt}
-                </p>
-                <div className="flex items-center gap-6 text-[10px] text-muted-foreground font-bold uppercase tracking-widest">
-                  <span className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {new Date(post.createdAt).toLocaleDateString()}</span>
-                  <span className="flex items-center gap-1"><User className="w-3 h-3" /> {post.authorName}</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
+              </CardContent>
+            </Card>
+          ))
+        )}
       </div>
     </div>
   );

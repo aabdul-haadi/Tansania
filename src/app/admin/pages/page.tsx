@@ -7,12 +7,17 @@ import {
   Plus, 
   Edit, 
   Eye, 
-  ExternalLink
+  ExternalLink,
+  RefreshCw,
+  Globe,
+  Settings,
+  ChevronRight
 } from 'lucide-react';
-import { Card } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Badge } from '@/components/ui/badge';
 import {
   Dialog,
   DialogContent,
@@ -54,144 +59,136 @@ export default function PagesRegistry() {
         seo: { title: newPage.title, description: '' }
       });
       setIsCreateOpen(false);
-      toast({ title: "Page Created", description: "Taking you to the editor..." });
+      toast({ title: "Page Registered", description: "You can now edit its dynamic sections." });
       router.push(`/admin/pages/${newPage.key}`);
     } catch (error) {
-      toast({ variant: "destructive", title: "Error", description: "Could not create page." });
+      toast({ variant: "destructive", title: "Error", description: "Could not register page." });
     }
   };
 
   return (
-    <div className="p-8 max-w-7xl mx-auto">
-      <div className="flex items-center justify-between mb-8">
+    <div className="p-10 max-w-7xl mx-auto space-y-10">
+      <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold">Page Registry</h1>
-          <p className="text-muted-foreground mt-1">Manage dynamic content and SEO for every route.</p>
+          <h1 className="text-4xl font-bold tracking-tight">Page Registry</h1>
+          <p className="text-muted-foreground mt-2 text-lg">Manage sections and SEO for all your website routes.</p>
         </div>
         
         <Dialog open={isCreateOpen} onOpenChange={setIsCreateOpen}>
           <DialogTrigger asChild>
-            <Button className="gap-2 rounded-full">
-              <Plus className="w-4 h-4" /> Create New Page
+            <Button className="gap-2 rounded-2xl h-12 px-6">
+              <Plus className="w-5 h-5" /> Register New Page
             </Button>
           </DialogTrigger>
-          <DialogContent>
+          <DialogContent className="rounded-[2.5rem] p-8">
             <DialogHeader>
-              <DialogTitle>Create New Page</DialogTitle>
-              <DialogDescription>
-                Define the key and path for your new content page.
+              <DialogTitle className="text-2xl font-bold">Register Content Page</DialogTitle>
+              <DialogDescription className="text-base">
+                Define the unique key and URL path for your new dynamic page.
               </DialogDescription>
             </DialogHeader>
-            <div className="grid gap-4 py-4">
-              <div className="grid gap-2">
-                <Label htmlFor="title">Page Title</Label>
+            <div className="grid gap-6 py-6">
+              <div className="space-y-2">
+                <Label htmlFor="title" className="font-bold">Display Title</Label>
                 <Input 
                   id="title" 
-                  placeholder="e.g. About Us" 
+                  placeholder="e.g. About Our Agency" 
                   value={newPage.title}
                   onChange={(e) => setNewPage({ ...newPage, title: e.target.value })}
+                  className="h-12 rounded-xl"
                 />
               </div>
-              <div className="grid gap-2">
-                <Label htmlFor="key">Unique Key (Doc ID)</Label>
-                <Input 
-                  id="key" 
-                  placeholder="e.g. about" 
-                  value={newPage.key}
-                  onChange={(e) => setNewPage({ ...newPage, key: e.target.value.toLowerCase().replace(/\s+/g, '-') })}
-                />
-              </div>
-              <div className="grid gap-2">
-                <Label htmlFor="path">URL Path</Label>
-                <Input 
-                  id="path" 
-                  placeholder="e.g. /about" 
-                  value={newPage.path}
-                  onChange={(e) => setNewPage({ ...newPage, path: e.target.value })}
-                />
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="key" className="font-bold">Page Key (Doc ID)</Label>
+                  <Input 
+                    id="key" 
+                    placeholder="e.g. about" 
+                    value={newPage.key}
+                    onChange={(e) => setNewPage({ ...newPage, key: e.target.value.toLowerCase().replace(/\s+/g, '-') })}
+                    className="h-12 rounded-xl"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="path" className="font-bold">URL Path</Label>
+                  <Input 
+                    id="path" 
+                    placeholder="e.g. /about" 
+                    value={newPage.path}
+                    onChange={(e) => setNewPage({ ...newPage, path: e.target.value })}
+                    className="h-12 rounded-xl"
+                  />
+                </div>
               </div>
             </div>
-            <DialogFooter>
-              <Button variant="outline" onClick={() => setIsCreateOpen(false)}>Cancel</Button>
-              <Button onClick={handleCreatePage} disabled={!newPage.key || !newPage.title}>Create Page</Button>
+            <DialogFooter className="gap-2">
+              <Button variant="outline" onClick={() => setIsCreateOpen(false)} className="rounded-xl h-12 px-6">Cancel</Button>
+              <Button onClick={handleCreatePage} disabled={!newPage.key || !newPage.title} className="rounded-xl h-12 px-6">Register Page</Button>
             </DialogFooter>
           </DialogContent>
         </Dialog>
       </div>
 
-      <div className="flex items-center gap-4 mb-8">
-        <div className="relative flex-grow">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-          <Input placeholder="Search pages by title or path..." className="pl-10 h-12 rounded-xl" />
+      <div className="flex items-center gap-4">
+        <div className="relative flex-grow max-w-md">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+          <Input placeholder="Find pages by title or route..." className="pl-12 h-14 rounded-2xl border-none shadow-sm bg-background" />
         </div>
-        <Button variant="outline" className="h-12 rounded-xl">Filters</Button>
+        <Button variant="outline" className="h-14 rounded-2xl px-6 border-none shadow-sm bg-background">Filters</Button>
       </div>
 
-      <Card className="border-none shadow-sm overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full text-left">
-            <thead>
-              <tr className="bg-muted/50 border-b">
-                <th className="px-6 py-4 font-bold text-xs uppercase tracking-wider text-muted-foreground">Page Title &amp; Path</th>
-                <th className="px-6 py-4 font-bold text-xs uppercase tracking-wider text-muted-foreground">Key</th>
-                <th className="px-6 py-4 font-bold text-xs uppercase tracking-wider text-muted-foreground">Status</th>
-                <th className="px-6 py-4 font-bold text-xs uppercase tracking-wider text-muted-foreground">Last Updated</th>
-                <th className="px-6 py-4 font-bold text-xs uppercase tracking-wider text-muted-foreground text-right">Actions</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y">
-              {isLoading ? (
-                <tr><td colSpan={5} className="px-6 py-12 text-center text-muted-foreground">Loading pages...</td></tr>
-              ) : pages?.length === 0 ? (
-                <tr><td colSpan={5} className="px-6 py-12 text-center text-muted-foreground">No pages found. Create your first page!</td></tr>
-              ) : pages?.map((page: any) => (
-                <tr key={page.id} className="hover:bg-muted/10 transition-colors group">
-                  <td className="px-6 py-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-secondary/10 rounded-xl flex items-center justify-center">
-                        <FileText className="w-5 h-5 text-secondary" />
-                      </div>
-                      <div>
-                        <p className="font-bold text-sm">{page.title}</p>
-                        <p className="text-xs text-muted-foreground flex items-center gap-1">
-                          {page.path} <ExternalLink className="w-3 h-3" />
-                        </p>
-                      </div>
+      <div className="grid grid-cols-1 gap-3">
+        {isLoading ? (
+          <div className="py-20 text-center text-muted-foreground animate-pulse">Syncing site map...</div>
+        ) : pages?.length === 0 ? (
+          <Card className="p-24 text-center border-dashed border-2 bg-muted/20 rounded-[3rem]">
+            <Globe className="w-16 h-16 mx-auto mb-6 opacity-10" />
+            <h3 className="text-2xl font-bold mb-2">Registry is empty</h3>
+            <p className="text-muted-foreground mb-8 max-w-xs mx-auto">Use the <strong>Initialize CMS</strong> button on the dashboard or register a page manually.</p>
+          </Card>
+        ) : (
+          pages?.map((page: any) => (
+            <Card key={page.id} className="border-none shadow-sm hover:shadow-md transition-all group rounded-[1.5rem] overflow-hidden">
+              <CardContent className="p-6 flex items-center justify-between">
+                <div className="flex items-center gap-5">
+                  <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center">
+                    <Globe className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-3 mb-1">
+                      <h3 className="font-bold text-lg">{page.title}</h3>
+                      <Badge className={`px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider border-none ${
+                        page.status === 'PUBLISHED' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
+                      }`}>
+                        {page.status}
+                      </Badge>
                     </div>
-                  </td>
-                  <td className="px-6 py-4 text-sm font-mono text-muted-foreground">{page.key}</td>
-                  <td className="px-6 py-4">
-                    <span className={`px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-                      page.status === 'PUBLISHED' 
-                        ? 'bg-green-100 text-green-700' 
-                        : 'bg-yellow-100 text-yellow-700'
-                    }`}>
-                      {page.status}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4 text-xs text-muted-foreground">
-                    {new Date(page.updatedAt).toLocaleDateString()}
-                  </td>
-                  <td className="px-6 py-4 text-right">
-                    <div className="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <Button size="icon" variant="ghost" asChild>
-                        <Link href={`/admin/pages/${page.key}`}>
-                          <Edit className="w-4 h-4" />
-                        </Link>
-                      </Button>
-                      <Button size="icon" variant="ghost" asChild>
-                        <Link href={page.path || '/'} target="_blank">
-                          <Eye className="w-4 h-4" />
-                        </Link>
-                      </Button>
+                    <div className="flex items-center gap-4 text-xs text-muted-foreground font-medium">
+                      <span className="flex items-center gap-1.5"><FileText className="w-3.5 h-3.5" /> {page.sections?.length || 0} Sections</span>
+                      <span className="flex items-center gap-1.5"><ExternalLink className="w-3.5 h-3.5" /> {page.path}</span>
                     </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </Card>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-3">
+                  <div className="text-right mr-4 hidden md:block">
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Updated</p>
+                    <p className="text-xs font-bold">{new Date(page.updatedAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short' })}</p>
+                  </div>
+                  <Button size="icon" variant="ghost" asChild className="rounded-xl h-12 w-12 opacity-0 group-hover:opacity-100 transition-all">
+                    <Link href={page.path || '/'} target="_blank"><Eye className="w-5 h-5" /></Link>
+                  </Button>
+                  <Button asChild className="rounded-xl h-12 px-6 gap-2">
+                    <Link href={`/admin/pages/${page.key}`}>
+                      <Edit className="w-4 h-4" /> Manage Content
+                    </Link>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          ))
+        )}
+      </div>
     </div>
   );
 }

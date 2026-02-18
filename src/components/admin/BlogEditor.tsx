@@ -1,15 +1,15 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Save, ArrowLeft, Image as ImageIcon } from 'lucide-react';
+import { Save, ArrowLeft, Image as ImageIcon, Sparkles, Globe, Layout, Search } from 'lucide-react';
 import Link from 'next/link';
+import { cn } from '@/lib/utils';
 
 interface BlogEditorProps {
   initialData?: any;
@@ -30,6 +30,7 @@ export function BlogEditor({ initialData, onSave }: BlogEditorProps) {
   });
 
   const [saving, setSaving] = useState(false);
+  const [activeTab, setActiveTab] = useState('content');
 
   const handleTitleChange = (val: string) => {
     setFormData({
@@ -46,138 +47,246 @@ export function BlogEditor({ initialData, onSave }: BlogEditorProps) {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center bg-background/80 backdrop-blur sticky top-0 z-20 py-4 border-b">
-        <Button variant="ghost" asChild className="gap-2">
-          <Link href="/admin/blog"><ArrowLeft className="w-4 h-4" /> Back to List</Link>
-        </Button>
-        <div className="flex gap-2">
-          <Button variant="outline" onClick={() => handleSave('DRAFT')} disabled={saving}>Save Draft</Button>
-          <Button onClick={() => handleSave('PUBLISHED')} disabled={saving} className="gap-2">
-            <Save className="w-4 h-4" /> Publish
+    <div className="space-y-8">
+      {/* Dynamic Header */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 bg-background/80 backdrop-blur sticky top-0 z-30 py-6 border-b">
+        <div className="flex items-center gap-4">
+          <Button variant="ghost" asChild className="rounded-xl h-11 px-4 hover:bg-muted">
+            <Link href="/admin/blog"><ArrowLeft className="w-4 h-4 mr-2" /> All Posts</Link>
+          </Button>
+          <div className="h-6 w-px bg-border hidden md:block" />
+          <div>
+            <h1 className="font-bold text-xl truncate max-w-[300px]">{formData.title || 'New Article'}</h1>
+            <p className="text-xs text-muted-foreground font-mono">/blog/{formData.slug || '...'}</p>
+          </div>
+        </div>
+        <div className="flex gap-3 w-full md:w-auto">
+          <Button variant="outline" onClick={() => handleSave('DRAFT')} disabled={saving} className="flex-grow md:flex-grow-0 rounded-xl h-11 px-6">
+            Save Draft
+          </Button>
+          <Button onClick={() => handleSave('PUBLISHED')} disabled={saving} className="flex-grow md:flex-grow-0 gap-2 rounded-xl h-11 px-8 shadow-lg shadow-primary/20">
+            <Save className="w-4 h-4" /> Publish Post
           </Button>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 space-y-6">
-          <Card className="border-none shadow-sm">
-            <CardContent className="p-6 space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="title">Article Title</Label>
-                <Input 
-                  id="title" 
-                  value={formData.title} 
-                  onChange={(e) => handleTitleChange(e.target.value)} 
-                  className="text-lg font-bold h-12"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="slug">Slug (URL identifier)</Label>
-                <Input 
-                  id="slug" 
-                  value={formData.slug} 
-                  onChange={(e) => setFormData({ ...formData, slug: e.target.value })} 
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="excerpt">Excerpt / Summary</Label>
-                <Textarea 
-                  id="excerpt" 
-                  value={formData.excerpt} 
-                  onChange={(e) => setFormData({ ...formData, excerpt: e.target.value })}
-                  placeholder="A brief summary for cards and search results..."
-                />
-              </div>
-            </CardContent>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        {/* Navigation Sidebar */}
+        <div className="lg:col-span-3 space-y-4">
+          <Card className="border-none shadow-sm rounded-[2rem] p-4">
+            <div className="space-y-1">
+              {[
+                { id: 'content', label: 'Article Content', icon: Layout },
+                { id: 'media', label: 'Media & Hero', icon: ImageIcon },
+                { id: 'seo', label: 'SEO & Meta', icon: Search },
+                { id: 'settings', label: 'Publication Settings', icon: Globe },
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={cn(
+                    "w-full flex items-center gap-3 p-3.5 rounded-xl transition-all font-bold text-sm",
+                    activeTab === tab.id 
+                      ? "bg-secondary text-white shadow-md" 
+                      : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                  )}
+                >
+                  <tab.icon className="w-4 h-4" />
+                  {tab.label}
+                </button>
+              ))}
+            </div>
           </Card>
 
-          <Card className="border-none shadow-sm">
-            <CardContent className="p-6">
-              <div className="space-y-2">
-                <Label htmlFor="content">Content (Markdown)</Label>
-                <Textarea 
-                  id="content" 
-                  className="min-h-[400px] font-mono text-sm leading-relaxed"
-                  value={formData.contentMarkdown} 
-                  onChange={(e) => setFormData({ ...formData, contentMarkdown: e.target.value })}
-                  placeholder="# Your amazing story starts here..."
-                />
-              </div>
-            </CardContent>
+          <Card className="border-none shadow-sm rounded-[2rem] bg-primary/5 p-6 border border-primary/10">
+            <div className="flex items-center gap-2 text-primary font-bold text-xs mb-3">
+              <Sparkles className="w-4 h-4" /> AI WRITER ASSIST
+            </div>
+            <p className="text-xs text-muted-foreground leading-relaxed mb-4">
+              Need help with the excerpt or meta description? Our AI can generate compelling safari copy.
+            </p>
+            <Button size="sm" variant="outline" className="w-full rounded-lg h-9 border-primary/20 hover:bg-primary/10 text-primary font-bold">
+              Magic Draft
+            </Button>
           </Card>
         </div>
 
-        <div className="space-y-6">
-          <Card className="border-none shadow-sm">
-            <CardContent className="p-6 space-y-4">
-              <div className="space-y-2">
-                <Label>Category</Label>
-                <Select 
-                  value={formData.category} 
-                  onValueChange={(val) => setFormData({ ...formData, category: val })}
-                >
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Planning">Planning</SelectItem>
-                    <SelectItem value="Guides">Guides</SelectItem>
-                    <SelectItem value="Tips">Tips</SelectItem>
-                    <SelectItem value="Culture">Culture</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="space-y-2">
-                <Label>Author Display Name</Label>
-                <Input 
-                  value={formData.authorName} 
-                  onChange={(e) => setFormData({ ...formData, authorName: e.target.value })} 
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label>Cover Image URL</Label>
-                <div className="flex gap-2">
+        {/* Editor Main Area */}
+        <div className="lg:col-span-9">
+          {activeTab === 'content' && (
+            <Card className="border-none shadow-sm rounded-[2.5rem] p-8 space-y-8">
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <Label className="text-sm font-bold ml-1">Article Title</Label>
                   <Input 
-                    value={formData.coverImage} 
-                    onChange={(e) => setFormData({ ...formData, coverImage: e.target.value })} 
-                    placeholder="https://..."
+                    value={formData.title} 
+                    onChange={(e) => handleTitleChange(e.target.value)} 
+                    placeholder="Enter a captivating safari title..."
+                    className="text-2xl font-bold h-16 rounded-2xl border-none bg-muted/30 px-6 focus:bg-background transition-all"
                   />
-                  <Button size="icon" variant="outline"><ImageIcon className="w-4 h-4" /></Button>
                 </div>
-                {formData.coverImage && (
-                  <div className="mt-2 aspect-video rounded-lg overflow-hidden bg-muted">
-                    <img src={formData.coverImage} alt="Preview" className="w-full h-full object-cover" />
+                
+                <div className="space-y-2">
+                  <Label className="text-sm font-bold ml-1">Short Excerpt</Label>
+                  <Textarea 
+                    value={formData.excerpt} 
+                    onChange={(e) => setFormData({ ...formData, excerpt: e.target.value })}
+                    placeholder="A brief summary for cards and search results..."
+                    className="min-h-[100px] rounded-2xl p-6 bg-muted/30 border-none focus:bg-background transition-all italic text-lg font-light leading-relaxed"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between mb-2">
+                    <Label className="text-sm font-bold ml-1">Body Content (Markdown)</Label>
+                    <Badge variant="outline" className="text-[9px] uppercase tracking-widest font-bold border-muted">Format: MD</Badge>
+                  </div>
+                  <Textarea 
+                    className="min-h-[500px] font-mono text-sm leading-relaxed rounded-2xl p-8 bg-muted/30 border-none focus:bg-background transition-all"
+                    value={formData.contentMarkdown} 
+                    onChange={(e) => setFormData({ ...formData, contentMarkdown: e.target.value })}
+                    placeholder="# Start your story with a level 1 heading..."
+                  />
+                </div>
+              </div>
+            </Card>
+          )}
+
+          {activeTab === 'media' && (
+            <Card className="border-none shadow-sm rounded-[2.5rem] p-8 space-y-8">
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <Label className="text-sm font-bold ml-1">Cover Image URL</Label>
+                  <div className="flex gap-3">
+                    <Input 
+                      value={formData.coverImage} 
+                      onChange={(e) => setFormData({ ...formData, coverImage: e.target.value })} 
+                      placeholder="https://images.unsplash.com/..."
+                      className="h-12 rounded-xl bg-muted/30 border-none focus:bg-background"
+                    />
+                    <Button size="icon" variant="outline" className="rounded-xl h-12 w-12 shrink-0"><ImageIcon className="w-5 h-5" /></Button>
+                  </div>
+                </div>
+
+                {formData.coverImage ? (
+                  <div className="relative aspect-video rounded-[2rem] overflow-hidden shadow-2xl group">
+                    <img src={formData.coverImage} alt="Cover Preview" className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <p className="text-white font-bold text-sm">Cover Preview</p>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="aspect-video rounded-[2rem] bg-muted/30 border-2 border-dashed flex flex-col items-center justify-center text-muted-foreground p-12">
+                    <ImageIcon className="w-12 h-12 mb-4 opacity-10" />
+                    <p className="font-bold text-sm">No cover image set</p>
+                    <p className="text-xs">Paste a URL above to see the preview</p>
                   </div>
                 )}
               </div>
-            </CardContent>
-          </Card>
+            </Card>
+          )}
 
-          <Card className="border-none shadow-sm">
-            <CardContent className="p-6 space-y-4">
-              <h3 className="font-bold text-sm uppercase tracking-wider text-muted-foreground">SEO Settings</h3>
-              <div className="space-y-2">
-                <Label className="text-xs">Meta Title</Label>
-                <Input 
-                  value={formData.seo.title} 
-                  onChange={(e) => setFormData({ ...formData, seo: { ...formData.seo, title: e.target.value } })}
-                  placeholder={formData.title}
-                />
+          {activeTab === 'seo' && (
+            <Card className="border-none shadow-sm rounded-[2.5rem] p-8 space-y-8">
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <Label className="text-sm font-bold ml-1">SEO Meta Title</Label>
+                  <Input 
+                    value={formData.seo.title} 
+                    onChange={(e) => setFormData({ ...formData, seo: { ...formData.seo, title: e.target.value } })}
+                    placeholder={formData.title}
+                    className="h-12 rounded-xl bg-muted/30 border-none"
+                  />
+                  <p className="text-[10px] text-muted-foreground font-medium px-1">Recommended: 50-60 characters.</p>
+                </div>
+                
+                <div className="space-y-2">
+                  <Label className="text-sm font-bold ml-1">SEO Meta Description</Label>
+                  <Textarea 
+                    value={formData.seo.description} 
+                    onChange={(e) => setFormData({ ...formData, seo: { ...formData.seo, description: e.target.value } })}
+                    placeholder={formData.excerpt}
+                    className="min-h-[120px] rounded-xl bg-muted/30 border-none text-sm p-4"
+                  />
+                  <p className="text-[10px] text-muted-foreground font-medium px-1">Recommended: 150-160 characters.</p>
+                </div>
+
+                <div className="p-6 bg-secondary/5 rounded-2xl border border-secondary/10">
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-3 h-3 rounded-full bg-green-500" />
+                    <span className="text-xs font-bold uppercase tracking-widest text-secondary">Google Preview</span>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-[#1a0dab] text-xl font-medium hover:underline cursor-pointer truncate">
+                      {formData.seo.title || formData.title || 'Untitled Post'}
+                    </p>
+                    <p className="text-[#006621] text-sm truncate">serengetidreams.com/blog/{formData.slug}</p>
+                    <p className="text-[#545454] text-sm line-clamp-2">
+                      {formData.seo.description || formData.excerpt || 'Write a meta description to see how your article appears in search results...'}
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className="space-y-2">
-                <Label className="text-xs">Meta Description</Label>
-                <Textarea 
-                  value={formData.seo.description} 
-                  onChange={(e) => setFormData({ ...formData, seo: { ...formData.seo, description: e.target.value } })}
-                  placeholder={formData.excerpt}
-                  className="text-xs"
-                />
+            </Card>
+          )}
+
+          {activeTab === 'settings' && (
+            <Card className="border-none shadow-sm rounded-[2.5rem] p-8 space-y-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="space-y-2">
+                  <Label className="text-sm font-bold">Category</Label>
+                  <Select 
+                    value={formData.category} 
+                    onValueChange={(val) => setFormData({ ...formData, category: val })}
+                  >
+                    <SelectTrigger className="h-12 rounded-xl bg-muted/30 border-none">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Planning">Planning</SelectItem>
+                      <SelectItem value="Guides">Guides</SelectItem>
+                      <SelectItem value="Tips">Tips</SelectItem>
+                      <SelectItem value="Culture">Culture</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label className="text-sm font-bold">Author Name</Label>
+                  <Input 
+                    value={formData.authorName} 
+                    onChange={(e) => setFormData({ ...formData, authorName: e.target.value })} 
+                    className="h-12 rounded-xl bg-muted/30 border-none"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label className="text-sm font-bold">URL Slug</Label>
+                  <Input 
+                    value={formData.slug} 
+                    onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
+                    className="h-12 rounded-xl bg-muted/30 border-none font-mono text-xs"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label className="text-sm font-bold">Initial Status</Label>
+                  <Select 
+                    value={formData.status} 
+                    onValueChange={(val) => setFormData({ ...formData, status: val })}
+                  >
+                    <SelectTrigger className="h-12 rounded-xl bg-muted/30 border-none">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="DRAFT">Draft</SelectItem>
+                      <SelectItem value="PUBLISHED">Published</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
               </div>
-            </CardContent>
-          </Card>
+            </Card>
+          )}
         </div>
       </div>
     </div>
