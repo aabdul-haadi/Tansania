@@ -5,11 +5,18 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, ShieldCheck, Heart, Map, Clock, Star } from 'lucide-react';
+import { ArrowRight, ArrowLeft, ShieldCheck, Heart, Map, Clock, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { useDoc, useFirestore } from '@/firebase';
 import { doc } from 'firebase/firestore';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 export default function Home() {
   const firestore = useFirestore();
@@ -20,6 +27,14 @@ export default function Home() {
   const heroImg = PlaceHolderImages.find(img => img.id === 'serengeti-hero');
   const zanzibarImg = PlaceHolderImages.find(img => img.id === 'zanzibar-beach');
   const safariImg = PlaceHolderImages.find(img => img.id === 'safari-jeep');
+
+  const highlights = [
+    { title: "Zanzibar Shores", desc: "Pristine white sands and ancient spice markets.", img: zanzibarImg?.imageUrl || 'https://picsum.photos/seed/zanzibar/1200/800', link: "/destinations/zanzibar", hint: "zanzibar beach" },
+    { title: "Serengeti Plains", desc: "Witness the legendary Great Migration across endless horizons.", img: safariImg?.imageUrl || 'https://picsum.photos/seed/serengeti/1200/800', link: "/destinations/serengeti", hint: "serengeti wildlife" },
+    { title: "Ngorongoro Crater", desc: "A natural amphitheater of wildlife inside a dormant volcano.", img: 'https://picsum.photos/seed/crater/1200/800', link: "/destinations/ngorongoro", hint: "ngorongoro crater" },
+    { title: "Tarangire Giants", desc: "Home to massive baobabs and the largest elephant herds.", img: 'https://picsum.photos/seed/tarangire/1200/800', link: "/destinations/tarangire", hint: "tarangire elephants" },
+    { title: "Mount Kilimanjaro", desc: "The Roof of Africa, standing tall above the clouds.", img: 'https://picsum.photos/seed/kili/1200/800', link: "/destinations/kilimanjaro", hint: "mount kilimanjaro" },
+  ];
 
   const sections = page?.sections || [
     {
@@ -141,59 +156,57 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-32 luxury-gradient">
+      <section className="py-32 luxury-gradient overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row justify-between items-end mb-20 gap-8">
-            <div className="max-w-2xl">
-              <span className="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">The Best of Tanzania</span>
-              <h2 className="font-headline text-4xl md:text-6xl font-bold mb-6 leading-tight">Where Wild Nature <br/>Meets Timeless Luxury</h2>
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <div className="flex flex-col lg:flex-row justify-between items-end mb-20 gap-8">
+              <div className="max-w-2xl">
+                <span className="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">The Best of Tanzania</span>
+                <h2 className="font-headline text-4xl md:text-6xl font-bold mb-6 leading-tight">Where Wild Nature <br/>Meets Timeless Luxury</h2>
+              </div>
+              <div className="flex flex-col items-end gap-6">
+                <Link href="/destinations" className="group flex items-center gap-3 text-secondary font-bold text-lg hover:text-primary transition-colors">
+                  Explore All Regions <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                </Link>
+                <div className="flex gap-4">
+                  <CarouselPrevious className="static translate-y-0 h-12 w-12 border-secondary/20 hover:bg-secondary hover:text-white transition-all rounded-full" />
+                  <CarouselNext className="static translate-y-0 h-12 w-12 border-secondary/20 hover:bg-secondary hover:text-white transition-all rounded-full" />
+                </div>
+              </div>
             </div>
-            <Link href="/destinations" className="group flex items-center gap-3 text-secondary font-bold text-lg hover:text-primary transition-colors">
-              Explore All Regions <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-            </Link>
-          </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            <motion.div
-              whileHover={{ y: -10 }}
-              className="relative aspect-[16/11] rounded-[2.5rem] overflow-hidden group shadow-2xl"
-            >
-              <Image
-                src={zanzibarImg?.imageUrl || 'https://picsum.photos/seed/zanzibar-fallback/1200/800'}
-                alt="Zanzibar"
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-1000"
-                data-ai-hint="zanzibar beach"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-12 flex flex-col justify-end">
-                <h3 className="text-white text-4xl font-headline font-bold mb-3">Zanzibar Shores</h3>
-                <p className="text-white/70 mb-8 max-w-sm text-lg font-light leading-relaxed">Pristine white sands and ancient spice markets.</p>
-                <Link href="/destinations/zanzibar">
-                  <Button variant="secondary" className="rounded-full px-8 h-12 font-bold shadow-xl">Experience the Island</Button>
-                </Link>
-              </div>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ y: -10 }}
-              className="relative aspect-[16/11] rounded-[2.5rem] overflow-hidden group shadow-2xl"
-            >
-              <Image
-                src={safariImg?.imageUrl || 'https://picsum.photos/seed/safari-fallback/1200/800'}
-                alt="Serengeti"
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-1000"
-                data-ai-hint="serengeti wildlife"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-12 flex flex-col justify-end">
-                <h3 className="text-white text-4xl font-headline font-bold mb-3">Serengeti Plains</h3>
-                <p className="text-white/70 mb-8 max-w-sm text-lg font-light leading-relaxed">Witness the legendary Great Migration across endless horizons.</p>
-                <Link href="/destinations/serengeti">
-                  <Button variant="secondary" className="rounded-full px-8 h-12 font-bold shadow-xl">Venture into the Wild</Button>
-                </Link>
-              </div>
-            </motion.div>
-          </div>
+            <CarouselContent className="-ml-10">
+              {highlights.map((item, idx) => (
+                <CarouselItem key={idx} className="pl-10 md:basis-1/2 lg:basis-1/2">
+                  <motion.div
+                    whileHover={{ y: -10 }}
+                    className="relative aspect-[16/11] rounded-[2.5rem] overflow-hidden group shadow-2xl h-full"
+                  >
+                    <Image
+                      src={item.img}
+                      alt={item.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-1000"
+                      data-ai-hint={item.hint}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-12 flex flex-col justify-end">
+                      <h3 className="text-white text-4xl font-headline font-bold mb-3">{item.title}</h3>
+                      <p className="text-white/70 mb-8 max-w-sm text-lg font-light leading-relaxed">{item.desc}</p>
+                      <Link href={item.link}>
+                        <Button variant="secondary" className="rounded-full px-8 h-12 font-bold shadow-xl">Experience the Region</Button>
+                      </Link>
+                    </div>
+                  </motion.div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
         </div>
       </section>
     </div>
