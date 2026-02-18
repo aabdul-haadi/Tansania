@@ -25,7 +25,7 @@ import { KilimanjaroSummit } from '@/components/sections/KilimanjaroSummit';
 import { ZanzibarEscape } from '@/components/sections/ZanzibarEscape';
 import { SafariVideo } from '@/components/sections/SafariVideo';
 import { FAQ } from '@/components/sections/FAQ';
-import { LastMinuteOffer } from '@/components/sections/LastMinuteOffer';
+import { OfferPopup } from '@/components/sections/OfferPopup';
 
 export default function Home() {
   const firestore = useFirestore();
@@ -163,7 +163,7 @@ export default function Home() {
         return null;
       })}
 
-      <LastMinuteOffer />
+      <OfferPopup />
 
       <section className="py-12 bg-white border-y border-border/50">
         <div className="container mx-auto px-4">
