@@ -13,14 +13,16 @@ const destinations = [
 export function SafariMap() {
   const containerRef = useRef<HTMLDivElement>(null);
   
+  // Faster tracking: we adjust the scroll offset to trigger the animation more quickly as it enters view
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"]
+    offset: ["start 90%", "end 20%"]
   });
 
+  // Snappier spring for "fast tracking" feel
   const pathLength = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
+    stiffness: 200,
+    damping: 40,
     restDelta: 0.001
   });
 
@@ -34,7 +36,7 @@ export function SafariMap() {
           {/* Map Textual Content - Left Aligned */}
           <div className="flex-1 flex flex-col justify-center min-w-0">
             <div className="mb-3 md:mb-6">
-              <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] mb-1 block">Our Route</span>
+              <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] mb-1 block">Our Signature Route</span>
               <h2 className="font-headline text-xl md:text-4xl lg:text-5xl font-bold leading-tight whitespace-nowrap overflow-hidden text-ellipsis">
                 Cairo to <span className="text-primary italic">Savannah</span>
               </h2>
@@ -62,7 +64,7 @@ export function SafariMap() {
             </div>
           </div>
 
-          {/* Map Visualization - Side-by-side layout preserved on all screens */}
+          {/* Map Visualization - Advanced Modern SVG */}
           <div className="relative w-28 md:w-[35%] shrink-0 flex items-center">
             <svg 
               viewBox="0 0 200 300" 
@@ -71,36 +73,76 @@ export function SafariMap() {
               xmlns="http://www.w3.org/2000/svg"
             >
               <defs>
-                <pattern id="mapGrid" width="40" height="40" patternUnits="userSpaceOnUse">
-                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="0.5"/>
+                {/* Advanced Grid Pattern */}
+                <pattern id="mapGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+                  <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="0.5"/>
                 </pattern>
-                <filter id="glow">
-                  <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                  <feMerge>
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                  </feMerge>
+                {/* Glow Filter for the Path */}
+                <filter id="pathGlow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
                 </filter>
+                {/* Gradient for the path */}
+                <linearGradient id="pathGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="hsl(var(--primary))" />
+                  <stop offset="100%" stopColor="hsl(var(--primary))" />
+                </linearGradient>
               </defs>
-              <rect width="100%" height="100%" fill="url(#mapGrid)" />
+              
+              <rect width="100%" height="100%" fill="url(#mapGrid)" rx="20" />
 
-              {/* Topographic hint lines */}
-              <g className="opacity-15">
-                <path d="M50 100 Q100 80 150 120 T180 200" stroke="white" strokeWidth="0.2" fill="none" />
-                <path d="M30 150 Q80 130 130 170 T160 250" stroke="white" strokeWidth="0.2" fill="none" />
+              {/* Topographic and Mapping lines */}
+              <g className="opacity-10">
+                <circle cx="100" cy="150" r="140" stroke="white" strokeWidth="0.5" strokeDasharray="5 5" />
+                <path d="M0 80 Q100 60 200 100" stroke="white" strokeWidth="0.3" />
+                <path d="M0 160 Q100 140 200 180" stroke="white" strokeWidth="0.3" />
+                <path d="M0 240 Q100 220 200 260" stroke="white" strokeWidth="0.3" />
               </g>
 
-              <motion.path d={journeyPath} stroke="rgba(181, 142, 69, 0.15)" strokeWidth="1.2" strokeDasharray="3 3" />
-              <motion.path d={journeyPath} stroke="hsl(var(--primary))" strokeWidth="2.5" style={{ pathLength }} filter="url(#glow)" />
+              {/* Background trace of the path */}
+              <path 
+                d={journeyPath} 
+                stroke="rgba(255,255,255,0.1)" 
+                strokeWidth="1.5" 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+              />
 
+              {/* Active Animated Path */}
+              <motion.path 
+                d={journeyPath} 
+                stroke="url(#pathGradient)" 
+                strokeWidth="3" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+                style={{ pathLength }} 
+                filter="url(#pathGlow)"
+              />
+
+              {/* Destination Nodes */}
               {destinations.map((dest, i) => (
                 <g key={dest.id}>
-                  <circle cx={dest.x} cy={dest.y} r="3" className="fill-primary" />
-                  <circle cx={dest.x} cy={dest.y} r="6" className="stroke-primary/20 fill-none animate-pulse" />
+                  <motion.circle 
+                    cx={dest.x} 
+                    cy={dest.y} 
+                    r="4" 
+                    className="fill-primary"
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 + i * 0.1 }}
+                  />
+                  <circle 
+                    cx={dest.x} 
+                    cy={dest.y} 
+                    r="8" 
+                    className="stroke-primary/30 fill-none animate-ping" 
+                    style={{ animationDuration: '3s' }}
+                  />
                   <motion.text
-                    x={dest.x + 8}
-                    y={dest.y + 3}
-                    className="fill-white/60 text-[7px] font-bold uppercase tracking-[0.2em] hidden md:block pointer-events-none"
+                    x={dest.x + 10}
+                    y={dest.y + 4}
+                    className="fill-white/40 text-[8px] font-bold uppercase tracking-[0.2em] hidden md:block pointer-events-none font-sans"
                   >
                     {dest.name}
                   </motion.text>
