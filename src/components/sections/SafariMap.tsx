@@ -35,7 +35,7 @@ export function SafariMap() {
           <div className="flex-1 flex flex-col justify-center">
             <div className="mb-4">
               <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] mb-1 block">Our Route</span>
-              <h2 className="font-headline text-2xl md:text-5xl font-bold leading-tight">
+              <h2 className="font-headline text-2xl md:text-5xl font-bold leading-tight whitespace-nowrap">
                 Cairo to <span className="text-primary italic">Savannah</span>
               </h2>
             </div>
