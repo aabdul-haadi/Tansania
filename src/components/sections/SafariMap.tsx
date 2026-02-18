@@ -28,21 +28,21 @@ export function SafariMap() {
   const journeyPath = "M 100 40 L 80 160 L 100 190 L 140 230";
 
   return (
-    <section ref={containerRef} className="pt-12 pb-20 lg:pt-16 lg:pb-24 bg-secondary text-white overflow-hidden relative">
+    <section ref={containerRef} className="pt-6 pb-12 lg:pt-10 lg:pb-16 bg-secondary text-white overflow-hidden relative">
       <div className="container mx-auto px-4 max-w-6xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center">
           
           {/* Map Textual Content */}
           <div className="max-w-xl order-2 lg:order-1">
-            <span className="text-primary font-bold uppercase tracking-widest text-[10px] mb-2 block">Our Signature Route</span>
-            <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl font-bold mb-4 lg:mb-6 leading-tight">
+            <span className="text-primary font-bold uppercase tracking-widest text-[10px] mb-1 block">Our Signature Route</span>
+            <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl font-bold mb-3 lg:mb-4 leading-tight">
               A Journey Across <br className="hidden sm:block"/> the <span className="text-primary italic">Cradle of Life</span>
             </h2>
-            <p className="text-white/60 text-sm lg:text-base font-light leading-relaxed mb-6 lg:mb-8 max-w-md">
+            <p className="text-white/60 text-xs lg:text-sm font-light leading-relaxed mb-4 lg:mb-6 max-w-md">
               From our headquarters in Cairo to the untamed wild of the Serengeti, we bridge the gap between ancient civilizations and raw majesty.
             </p>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 lg:space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 lg:space-y-3">
               {destinations.map((dest, i) => (
                 <motion.div 
                   key={dest.id}
@@ -50,14 +50,14 @@ export function SafariMap() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="flex items-center gap-4 group"
+                  className="flex items-center gap-3 group"
                 >
-                  <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors border border-white/5">
-                    <span className="text-[10px] font-bold">{i + 1}</span>
+                  <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors border border-white/5">
+                    <span className="text-[9px] font-bold">{i + 1}</span>
                   </div>
                   <div>
-                    <h4 className="font-bold text-sm lg:text-base mb-0 group-hover:text-primary transition-colors">{dest.name}</h4>
-                    <p className="text-[10px] lg:text-xs text-white/40">{dest.desc}</p>
+                    <h4 className="font-bold text-xs lg:text-sm mb-0 group-hover:text-primary transition-colors">{dest.name}</h4>
+                    <p className="text-[9px] lg:text-[10px] text-white/40">{dest.desc}</p>
                   </div>
                 </motion.div>
               ))}
@@ -65,7 +65,7 @@ export function SafariMap() {
           </div>
 
           {/* Map Visualization */}
-          <div className="relative aspect-[4/5] w-full max-w-[280px] lg:max-w-sm mx-auto order-1 lg:order-2">
+          <div className="relative aspect-[4/5] w-full max-w-[240px] lg:max-w-sm mx-auto order-1 lg:order-2">
             <svg 
               viewBox="0 0 200 300" 
               className="w-full h-full drop-shadow-2xl"
@@ -86,7 +86,6 @@ export function SafariMap() {
                   className="fill-white/5 stroke-white/20"
                   strokeWidth="0.5"
                 />
-                <path d="M85 25 L140 25 M90 35 L145 35 M95 45 L150 45" stroke="rgba(255,255,255,0.1)" strokeWidth="0.2" />
                 
                 {/* Tanzania Area */}
                 <motion.path
@@ -94,7 +93,6 @@ export function SafariMap() {
                   className="fill-white/5 stroke-white/20"
                   strokeWidth="0.5"
                 />
-                <path d="M75 155 L145 155 M80 175 L150 175 M85 195 L155 195 M90 215 L160 215" stroke="rgba(255,255,255,0.1)" strokeWidth="0.2" />
               </g>
 
               {/* Connecting Journey Line */}
@@ -131,7 +129,7 @@ export function SafariMap() {
                   <motion.text
                     x={dest.x + 8}
                     y={dest.y + 3}
-                    className="fill-white/60 text-[6px] font-bold uppercase tracking-widest"
+                    className="fill-white/60 text-[5px] font-bold uppercase tracking-widest"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ delay: 0.5 + i * 0.1 }}
@@ -141,15 +139,8 @@ export function SafariMap() {
                 </g>
               ))}
             </svg>
-            
-            <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent pointer-events-none rounded-full blur-3xl opacity-50" />
           </div>
-
         </div>
-      </div>
-      
-      <div className="absolute bottom-4 right-4 opacity-5 hidden lg:block">
-        <Compass className="w-16 h-16 animate-spin-slow" />
       </div>
     </section>
   );

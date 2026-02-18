@@ -41,7 +41,6 @@ export default function Home() {
     });
   }, [tanzaniaApi]);
 
-  // Fallback content if CMS is not seeded
   const heroImg = PlaceHolderImages.find(img => img.id === 'serengeti-hero');
   const zanzibarImg = PlaceHolderImages.find(img => img.id === 'zanzibar-beach');
   const safariImg = PlaceHolderImages.find(img => img.id === 'safari-jeep');
@@ -78,7 +77,6 @@ export default function Home() {
           return (
             <section key={idx} className="relative h-screen flex items-center justify-center overflow-hidden">
               <HeroBackgroundSlider images={heroImages} />
-              
               <div className="container relative z-20 mx-auto px-4">
                 <motion.div
                   initial={{ opacity: 0, y: 40 }}
@@ -90,20 +88,17 @@ export default function Home() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.5 }}
-                    className="inline-flex items-center gap-2 px-5 py-2 mb-8 text-xs font-bold uppercase tracking-[0.2em] text-primary bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-xl"
+                    className="inline-flex items-center gap-2 px-5 py-2 mb-6 text-xs font-bold uppercase tracking-[0.2em] text-primary bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-xl"
                   >
                     <Star className="w-3 h-3 fill-primary" /> Premium Tanzania Experiences
                   </motion.span>
-                  
-                  <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-[1.1]">
+                  <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-[1.1]">
                     {section.data.heading?.split(' ').slice(0, -1).join(' ')} <br />
                     <span className="text-primary italic">{section.data.heading?.split(' ').pop()}</span>
                   </h1>
-                  
-                  <p className="max-w-2xl mx-auto text-lg md:text-xl text-white/90 mb-12 leading-relaxed font-body font-light">
+                  <p className="max-w-2xl mx-auto text-lg md:text-xl text-white/90 mb-10 leading-relaxed font-body font-light">
                     {section.data.subheading}
                   </p>
-                  
                   <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
                     <Link href="/safaris">
                       <Button size="lg" className="w-full sm:w-auto rounded-full px-12 h-16 text-lg font-bold shadow-2xl transition-all hover:scale-105">
@@ -118,7 +113,6 @@ export default function Home() {
                   </div>
                 </motion.div>
               </div>
-              
               <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-white/40 z-20">
                 <span className="text-[10px] uppercase tracking-[0.3em] font-bold">Discover More</span>
                 <motion.div 
@@ -130,13 +124,12 @@ export default function Home() {
             </section>
           );
         }
-
         if (section.type === 'content') {
           return (
-            <section key={idx} className="py-24 bg-white">
+            <section key={idx} className="py-16 bg-white">
               <div className="container mx-auto px-4 max-w-4xl">
                 {section.data.heading && (
-                  <h2 className="text-3xl font-headline font-bold mb-8 text-center">{section.data.heading}</h2>
+                  <h2 className="text-3xl font-headline font-bold mb-6 text-center">{section.data.heading}</h2>
                 )}
                 <div className="prose prose-lg max-w-none text-muted-foreground font-light leading-relaxed">
                   {section.data.bodyMarkdown}
@@ -145,31 +138,30 @@ export default function Home() {
             </section>
           );
         }
-
         return null;
       })}
 
-      <section className="py-16 bg-white border-y border-border/50">
+      <section className="py-12 bg-white border-y border-border/50">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 items-center">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 items-center">
             {[
               { icon: ShieldCheck, label: "Secure Cairo Booking" },
               { icon: Heart, label: "Eco-Conscious Travel" },
               { icon: Map, label: "Private Guided Expeditions" },
               { icon: Clock, label: "24/7 Local Concierge" }
             ].map((item, idx) => (
-              <div key={idx} className="flex flex-col items-center gap-4 group">
-                <div className="w-12 h-12 rounded-2xl bg-muted flex items-center justify-center group-hover:bg-primary/10 transition-colors">
-                  <item.icon className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors" />
+              <div key={idx} className="flex flex-col items-center gap-3 group">
+                <div className="w-10 h-10 rounded-2xl bg-muted flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                  <item.icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
                 </div>
-                <span className="text-sm font-bold tracking-wider text-muted-foreground uppercase text-center">{item.label}</span>
+                <span className="text-[10px] font-bold tracking-wider text-muted-foreground uppercase text-center">{item.label}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-32 relative overflow-hidden transition-colors duration-1000">
+      <section className="py-20 relative overflow-hidden transition-colors duration-1000">
         <div className="absolute inset-0 z-0">
           <AnimatePresence mode="popLayout">
             <motion.div
@@ -190,51 +182,33 @@ export default function Home() {
             </motion.div>
           </AnimatePresence>
         </div>
-
         <div className="container mx-auto px-4 relative z-10">
-          <Carousel
-            setApi={setTanzaniaApi}
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            className="w-full"
-          >
-            <div className="flex flex-col lg:flex-row justify-between items-end mb-20 gap-8">
+          <Carousel setApi={setTanzaniaApi} opts={{ align: "start", loop: true }} className="w-full">
+            <div className="flex flex-col lg:flex-row justify-between items-end mb-12 gap-6">
               <div className="max-w-2xl">
-                <span className="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">The Best of Tanzania</span>
-                <h2 className="font-headline text-4xl md:text-6xl font-bold mb-6 leading-tight">Where Wild Nature <br/>Meets Timeless Luxury</h2>
+                <span className="text-primary font-bold uppercase tracking-widest text-sm mb-2 block">The Best of Tanzania</span>
+                <h2 className="font-headline text-4xl md:text-6xl font-bold mb-4 leading-tight">Where Wild Nature <br/>Meets Timeless Luxury</h2>
               </div>
-              <div className="flex flex-col items-end gap-6">
+              <div className="flex flex-col items-end gap-4">
                 <Link href="/destinations" className="group flex items-center gap-3 text-secondary font-bold text-lg hover:text-primary transition-colors">
                   Explore All Regions <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
                 </Link>
                 <div className="flex gap-4">
-                  <CarouselPrevious className="static translate-y-0 h-12 w-12 border-secondary/20 hover:bg-secondary hover:text-white transition-all rounded-full" />
-                  <CarouselNext className="static translate-y-0 h-12 w-12 border-secondary/20 hover:bg-secondary hover:text-white transition-all rounded-full" />
+                  <CarouselPrevious className="static translate-y-0 h-10 w-10 border-secondary/20 hover:bg-secondary hover:text-white transition-all rounded-full" />
+                  <CarouselNext className="static translate-y-0 h-10 w-10 border-secondary/20 hover:bg-secondary hover:text-white transition-all rounded-full" />
                 </div>
               </div>
             </div>
-
-            <CarouselContent className="-ml-10">
+            <CarouselContent className="-ml-6">
               {highlights.map((item, idx) => (
-                <CarouselItem key={idx} className="pl-10 md:basis-1/2 lg:basis-1/2">
-                  <motion.div
-                    whileHover={{ y: -10 }}
-                    className="relative aspect-[16/11] rounded-[2.5rem] overflow-hidden group shadow-2xl h-full"
-                  >
-                    <Image
-                      src={item.img}
-                      alt={item.title}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-1000"
-                      data-ai-hint={item.hint}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-12 flex flex-col justify-end">
-                      <h3 className="text-white text-4xl font-headline font-bold mb-3">{item.title}</h3>
-                      <p className="text-white/70 mb-8 max-w-sm text-lg font-light leading-relaxed">{item.desc}</p>
+                <CarouselItem key={idx} className="pl-6 md:basis-1/2 lg:basis-1/2">
+                  <motion.div whileHover={{ y: -5 }} className="relative aspect-[16/11] rounded-[2rem] overflow-hidden group shadow-xl h-full">
+                    <Image src={item.img} alt={item.title} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" data-ai-hint={item.hint} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-8 flex flex-col justify-end">
+                      <h3 className="text-white text-3xl font-headline font-bold mb-2">{item.title}</h3>
+                      <p className="text-white/70 mb-6 max-w-sm text-sm font-light leading-relaxed">{item.desc}</p>
                       <Link href={item.link}>
-                        <Button variant="secondary" className="rounded-full px-8 h-12 font-bold shadow-xl">Experience the Region</Button>
+                        <Button variant="secondary" className="rounded-full px-6 h-10 font-bold shadow-xl text-xs">Experience the Region</Button>
                       </Link>
                     </div>
                   </motion.div>
@@ -246,19 +220,12 @@ export default function Home() {
       </section>
 
       <SafariMap />
-
       <SafariVideo />
-
       <KilimanjaroSummit />
-
       <ZanzibarEscape />
-
       <ImmersiveReveal />
-
       <Testimonials />
-
       <CinematicQuote />
-
       <FAQ />
     </div>
   );
@@ -266,7 +233,6 @@ export default function Home() {
 
 function HeroBackgroundSlider({ images }: { images: { src: string, hint: string }[] }) {
   const [index, setIndex] = useState(0);
-
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % images.length);
@@ -285,14 +251,7 @@ function HeroBackgroundSlider({ images }: { images: { src: string, hint: string 
           transition={{ duration: 2, ease: "easeInOut" }}
           className="absolute inset-0"
         >
-          <Image
-            src={images[index].src}
-            alt="Hero Background"
-            fill
-            className="object-cover"
-            priority
-            data-ai-hint={images[index].hint}
-          />
+          <Image src={images[index].src} alt="Hero Background" fill className="object-cover" priority data-ai-hint={images[index].hint} />
         </motion.div>
       </AnimatePresence>
       <div className="absolute inset-0 hero-overlay z-10" />
