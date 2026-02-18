@@ -57,6 +57,20 @@ export function Footer() {
             </ul>
           </div>
 
+          {/* Services */}
+          <div>
+            <h4 className="font-headline text-base font-bold mb-4 text-primary italic">Services</h4>
+            <ul className="flex flex-col gap-2 text-[11px] uppercase tracking-wider font-bold">
+              <li><Link href="/services/agency-services" className="text-white/40 hover:text-primary transition-colors">Agency services</Link></li>
+              <li><Link href="/services/adventure-app" className="text-white/40 hover:text-primary transition-colors">Adventure app</Link></li>
+              <li><Link href="/services/guest-protection" className="text-white/40 hover:text-primary transition-colors">Protection Program</Link></li>
+              <li><Link href="/services/passport-visa" className="text-white/40 hover:text-primary transition-colors">Passport & Visa</Link></li>
+              <li><Link href="/services/guest-form" className="text-white/40 hover:text-primary transition-colors">Guest form</Link></li>
+              <li><Link href="/services/fly-with-us" className="text-white/40 hover:text-primary transition-colors">Fly with us</Link></li>
+              <li><Link href="/services/travel-shop" className="text-white/40 hover:text-primary transition-colors">Travel Shop</Link></li>
+            </ul>
+          </div>
+
           {/* Contact */}
           <div>
             <h4 className="font-headline text-base font-bold mb-4 text-primary italic">Cairo Office</h4>
@@ -74,18 +88,6 @@ export function Footer() {
                 <span>concierge@serengetidreams.com</span>
               </li>
             </ul>
-          </div>
-
-          {/* Expertise */}
-          <div>
-            <h4 className="font-headline text-base font-bold mb-4 text-primary italic">Legacy</h4>
-            <p className="text-[10px] text-white/30 leading-relaxed font-light mb-4">
-              Registered in Egypt as a premium operator specializing in high-end Tanzania expeditions.
-            </p>
-            <div className="flex flex-wrap gap-2">
-              <span className="px-2 py-0.5 border border-white/10 rounded-full text-[8px] font-bold text-white/30 uppercase tracking-widest">IATA Certified</span>
-              <span className="px-2 py-0.5 border border-white/10 rounded-full text-[8px] font-bold text-white/30 uppercase tracking-widest">Egypt Licensed</span>
-            </div>
           </div>
         </div>
 
