@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -22,6 +23,7 @@ import { ImmersiveReveal } from '@/components/sections/ImmersiveReveal';
 import { SunriseCTA } from '@/components/sections/SunriseCTA';
 import { CinematicQuote } from '@/components/sections/CinematicQuote';
 import { Testimonials } from '@/components/sections/Testimonials';
+import { KilimanjaroSummit } from '@/components/sections/KilimanjaroSummit';
 
 export default function Home() {
   const firestore = useFirestore();
@@ -245,6 +247,8 @@ export default function Home() {
       </section>
 
       <SafariMap />
+
+      <KilimanjaroSummit />
 
       <ImmersiveReveal />
 
