@@ -19,9 +19,10 @@ import {
   Loader2
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useUser, useDoc, useFirestore } from '@/firebase';
+import { useUser, useDoc, useFirestore, useAuth } from '@/firebase';
 import { doc } from 'firebase/firestore';
 import { Button } from '@/components/ui/button';
+import { signOut } from 'firebase/auth';
 
 const adminLinks = [
   { name: 'Dashboard', href: '/admin', icon: LayoutDashboard },
@@ -39,6 +40,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const router = useRouter();
   const { user, isUserLoading } = useUser();
   const firestore = useFirestore();
+  const auth = useAuth();
   
   // Check for admin role in Firestore
   const adminDocRef = React.useMemo(() => (firestore && user ? doc(firestore, 'roles_admin', user.uid) : null), [firestore, user]);
@@ -51,13 +53,22 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       if (user && adminRole) {
         setIsAuthorized(true);
       } else if (user && !adminRole && pathname === '/admin') {
-        // Allow the dashboard for the "Initialize" flow
+        // Allow the dashboard for the "Initialize" flow if the user is authenticated
         setIsAuthorized(true);
       } else {
         setIsAuthorized(false);
       }
     }
   }, [user, isUserLoading, adminRole, isAdminRoleLoading, pathname]);
+
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      router.push('/auth/login');
+    } catch (error) {
+      console.error('Sign out error:', error);
+    }
+  };
 
   if (isUserLoading || isAdminRoleLoading) {
     return (
@@ -97,7 +108,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   return (
     <div className="flex min-h-screen bg-muted/20">
       {/* Sidebar Navigation */}
-      <aside className="w-72 bg-background border-r flex flex-col hidden lg:flex">
+      <aside className="w-72 bg-background border-r flex flex-col hidden lg:flex shrink-0">
         <div className="p-8 border-b">
           <Link href="/" className="flex items-center gap-2">
             <h2 className="font-headline text-2xl font-bold tracking-tight">
@@ -133,7 +144,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </nav>
 
         <div className="p-6 border-t">
-          <button className="flex items-center gap-3 w-full p-4 text-destructive hover:bg-destructive/5 rounded-2xl transition-colors font-bold text-sm">
+          <button 
+            onClick={handleSignOut}
+            className="flex items-center gap-3 w-full p-4 text-destructive hover:bg-destructive/5 rounded-2xl transition-colors font-bold text-sm"
+          >
             <LogOut className="w-5 h-5" />
             <span>Sign Out</span>
           </button>
@@ -144,11 +158,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <main className="flex-grow overflow-y-auto">
         <header className="sticky top-0 z-10 bg-background/80 backdrop-blur-md border-b px-8 py-4 flex items-center justify-between lg:hidden">
            <h2 className="font-headline text-lg font-bold">Admin Hub</h2>
-           <button className="p-2 bg-muted rounded-lg">
+           <button className="p-2 bg-muted rounded-lg" onClick={() => router.push('/admin')}>
              <LayoutDashboard className="w-5 h-5" />
            </button>
         </header>
-        <div className="min-h-full">
+        <div className="min-h-full pb-20">
           {children}
         </div>
       </main>
