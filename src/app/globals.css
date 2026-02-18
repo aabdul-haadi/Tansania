@@ -1,52 +1,51 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 33 40% 97%;
-    --foreground: 24 20% 12%;
+    --background: 40 25% 98%;
+    --foreground: 24 10% 10%;
     --card: 0 0% 100%;
-    --card-foreground: 24 20% 12%;
+    --card-foreground: 24 10% 10%;
     --popover: 0 0% 100%;
-    --popover-foreground: 24 20% 12%;
-    --primary: 38 75% 55%;
-    --primary-foreground: 33 40% 98%;
-    --secondary: 85 25% 35%;
-    --secondary-foreground: 33 40% 98%;
-    --muted: 33 20% 90%;
-    --muted-foreground: 24 15% 40%;
-    --accent: 85 25% 35%;
-    --accent-foreground: 33 40% 98%;
+    --popover-foreground: 24 10% 10%;
+    --primary: 42 80% 45%;
+    --primary-foreground: 40 25% 98%;
+    --secondary: 145 20% 25%;
+    --secondary-foreground: 40 25% 98%;
+    --muted: 40 15% 92%;
+    --muted-foreground: 24 10% 40%;
+    --accent: 145 20% 25%;
+    --accent-foreground: 40 25% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 33 20% 85%;
-    --input: 33 20% 85%;
-    --ring: 38 75% 55%;
-    --radius: 1.25rem;
+    --border: 40 15% 85%;
+    --input: 40 15% 85%;
+    --ring: 42 80% 45%;
+    --radius: 1.5rem;
   }
 
   .dark {
-    --background: 24 20% 10%;
-    --foreground: 33 40% 95%;
-    --card: 24 20% 12%;
-    --card-foreground: 33 40% 95%;
-    --popover: 24 20% 12%;
-    --popover-foreground: 33 40% 95%;
-    --primary: 38 75% 65%;
-    --primary-foreground: 24 20% 10%;
-    --secondary: 85 25% 45%;
-    --secondary-foreground: 24 20% 10%;
-    --muted: 24 20% 20%;
-    --muted-foreground: 33 10% 70%;
-    --accent: 85 25% 45%;
-    --accent-foreground: 24 20% 10%;
+    --background: 24 10% 8%;
+    --foreground: 40 15% 95%;
+    --card: 24 10% 10%;
+    --card-foreground: 40 15% 95%;
+    --popover: 24 10% 10%;
+    --popover-foreground: 40 15% 95%;
+    --primary: 42 80% 55%;
+    --primary-foreground: 24 10% 8%;
+    --secondary: 145 20% 35%;
+    --secondary-foreground: 40 15% 95%;
+    --muted: 24 10% 15%;
+    --muted-foreground: 40 10% 65%;
+    --accent: 145 20% 35%;
+    --accent-foreground: 40 15% 95%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 24 20% 20%;
-    --input: 24 20% 20%;
-    --ring: 38 75% 65%;
+    --border: 24 10% 18%;
+    --input: 24 10% 18%;
+    --ring: 42 80% 55%;
   }
 }
 
@@ -56,26 +55,22 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-image: radial-gradient(circle at 2px 2px, rgba(139, 115, 85, 0.05) 1px, transparent 0);
-    background-size: 40px 40px;
+    background-image: radial-gradient(circle at 2px 2px, rgba(145, 125, 95, 0.03) 1px, transparent 0);
+    background-size: 48px 48px;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-headline;
+    @apply font-headline tracking-tight;
   }
 }
 
 .luxury-gradient {
-  background: linear-gradient(135deg, hsl(var(--background)), hsl(var(--primary) / 0.08));
+  background: linear-gradient(180deg, hsl(var(--background)), hsl(var(--primary) / 0.04) 50%, hsl(var(--background)));
 }
 
-.dune-divider {
-  height: 60px;
-  width: 100%;
-  background: radial-gradient(ellipse at 50% 0%, hsl(var(--primary) / 0.15) 0%, transparent 75%);
+.hero-overlay {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.7) 100%);
 }
 
-.safari-pattern {
-  background-color: hsl(var(--background));
-  background-image:  linear-gradient(30deg, hsl(var(--primary) / 0.03) 12%, transparent 12.5%, transparent 87%, hsl(var(--primary) / 0.03) 87.5%, hsl(var(--primary) / 0.03)), linear-gradient(150deg, hsl(var(--primary) / 0.03) 12%, transparent 12.5%, transparent 87%, hsl(var(--primary) / 0.03) 87.5%, hsl(var(--primary) / 0.03)), linear-gradient(30deg, hsl(var(--primary) / 0.03) 12%, transparent 12.5%, transparent 87%, hsl(var(--primary) / 0.03) 87.5%, hsl(var(--primary) / 0.03)), linear-gradient(150deg, hsl(var(--primary) / 0.03) 12%, transparent 12.5%, transparent 87%, hsl(var(--primary) / 0.03) 87.5%, hsl(var(--primary) / 0.03)), linear-gradient(60deg, hsl(var(--secondary) / 0.02) 25%, transparent 25.5%, transparent 75%, hsl(var(--secondary) / 0.02) 75%, hsl(var(--secondary) / 0.02)), linear-gradient(60deg, hsl(var(--secondary) / 0.02) 25%, transparent 25.5%, transparent 75%, hsl(var(--secondary) / 0.02) 75%, hsl(var(--secondary) / 0.02));
-  background-size: 80px 140px;
+.safari-card {
+  @apply transition-all duration-500 hover:shadow-[0_20px_50px_rgba(145,125,95,0.15)] hover:-translate-y-2;
 }

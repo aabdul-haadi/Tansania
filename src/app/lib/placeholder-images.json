@@ -1,41 +1,34 @@
-
 {
   "placeholderImages": [
     {
       "id": "serengeti-hero",
-      "description": "Sunset over the Serengeti plains with acacia trees",
-      "imageUrl": "https://picsum.photos/seed/serengeti/1920/1080",
-      "imageHint": "serengeti sunset"
+      "description": "Breathtaking sunset over the Serengeti with acacia silhouettes",
+      "imageUrl": "https://picsum.photos/seed/serengeti8/1920/1080",
+      "imageHint": "serengeti sunrise"
     },
     {
       "id": "zanzibar-beach",
-      "description": "Crystal clear turquoise water and white sand beach in Zanzibar",
-      "imageUrl": "https://picsum.photos/seed/zanzibar/1920/1080",
+      "description": "Turquoise waters of Zanzibar with white sandy shores",
+      "imageUrl": "https://picsum.photos/seed/zanzibar12/1920/1080",
       "imageHint": "zanzibar beach"
     },
     {
       "id": "safari-jeep",
-      "description": "Luxury safari jeep approaching a pride of lions",
-      "imageUrl": "https://picsum.photos/seed/safari/1200/800",
-      "imageHint": "safari jeep"
+      "description": "Elegant safari vehicle in the tall grass of the savannah",
+      "imageUrl": "https://picsum.photos/seed/safari22/1200/800",
+      "imageHint": "safari savannah"
     },
     {
       "id": "luxury-camp",
-      "description": "Elegant luxury tented camp in the heart of the savannah",
-      "imageUrl": "https://picsum.photos/seed/camp/1200/800",
-      "imageHint": "luxury camp"
+      "description": "Boutique safari tent under a baobab tree",
+      "imageUrl": "https://picsum.photos/seed/camp99/1200/800",
+      "imageHint": "safari lodge"
     },
     {
       "id": "egypt-office",
-      "description": "Modern travel agency office with subtle Egyptian decor",
-      "imageUrl": "https://picsum.photos/seed/office/1200/800",
-      "imageHint": "modern office"
-    },
-    {
-      "id": "lion-closeup",
-      "description": "Close up of a majestic lion in the wild",
-      "imageUrl": "https://picsum.photos/seed/lion/800/600",
-      "imageHint": "lion wildlife"
+      "description": "Sophisticated Cairo travel lounge",
+      "imageUrl": "https://picsum.photos/seed/cairo-office/1200/800",
+      "imageHint": "luxury lounge"
     }
   ]
 }
