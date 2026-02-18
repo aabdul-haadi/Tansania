@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ShieldCheck, Heart, Map, Clock, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { useDoc, useFirestore } from '@/firebase';
+import { useDoc, useFirestore, useMemoFirebase } from '@/firebase';
 import { doc } from 'firebase/firestore';
 import {
   Carousel,
@@ -28,7 +28,7 @@ import { FAQ } from '@/components/sections/FAQ';
 
 export default function Home() {
   const firestore = useFirestore();
-  const docRef = React.useMemo(() => (firestore ? doc(firestore, 'pages', 'home') : null), [firestore]);
+  const docRef = useMemoFirebase(() => (firestore ? doc(firestore, 'pages', 'home') : null), [firestore]);
   const { data: page } = useDoc(docRef);
 
   const [tanzaniaApi, setTanzaniaApi] = useState<CarouselApi>();

@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from 'react';
@@ -19,8 +18,8 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { useCollection, useFirestore } from '@/firebase';
-import { collection, query, orderBy, deleteDoc, doc, setDoc } from 'firebase/firestore';
+import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
+import { collection, query, orderBy, deleteDoc, doc } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
 
@@ -28,7 +27,7 @@ export default function PackagesManagement() {
   const firestore = useFirestore();
   const { toast } = useToast();
   
-  const packagesQuery = React.useMemo(() => {
+  const packagesQuery = useMemoFirebase(() => {
     if (!firestore) return null;
     return query(collection(firestore, 'packages'), orderBy('createdAt', 'desc'));
   }, [firestore]);

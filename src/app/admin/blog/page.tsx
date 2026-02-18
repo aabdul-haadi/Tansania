@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -21,7 +20,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
-import { useCollection, useFirestore } from '@/firebase';
+import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { collection, query, orderBy, deleteDoc, doc } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
 
@@ -29,7 +28,7 @@ export default function BlogList() {
   const firestore = useFirestore();
   const { toast } = useToast();
   
-  const blogQuery = React.useMemo(() => {
+  const blogQuery = useMemoFirebase(() => {
     if (!firestore) return null;
     return query(collection(firestore, 'blogPosts'), orderBy('createdAt', 'desc'));
   }, [firestore]);

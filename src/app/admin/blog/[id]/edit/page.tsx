@@ -3,8 +3,8 @@
 import React from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { BlogEditor } from '@/components/admin/BlogEditor';
-import { useDoc, useFirestore } from '@/firebase';
-import { doc, updateDoc } from 'firebase/firestore';
+import { useDoc, useFirestore, useMemoFirebase, updateDocumentNonBlocking } from '@/firebase';
+import { doc } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
 
 export default function EditBlogPost() {
@@ -13,21 +13,17 @@ export default function EditBlogPost() {
   const firestore = useFirestore();
   const { toast } = useToast();
   
-  const docRef = React.useMemo(() => (firestore && id ? doc(firestore, 'blogPosts', id as string) : null), [firestore, id]);
+  const docRef = useMemoFirebase(() => (firestore && id ? doc(firestore, 'blogPosts', id as string) : null), [firestore, id]);
   const { data: post, isLoading } = useDoc(docRef);
 
   const handleSave = async (data: any) => {
     if (!docRef) return;
-    try {
-      await updateDoc(docRef, {
-        ...data,
-        updatedAt: new Date().toISOString(),
-      });
-      toast({ title: "Article Updated", description: "Changes saved successfully." });
-      router.push('/admin/blog');
-    } catch (error) {
-      toast({ variant: "destructive", title: "Error", description: "Failed to update article." });
-    }
+    updateDocumentNonBlocking(docRef, {
+      ...data,
+      updatedAt: new Date().toISOString(),
+    });
+    toast({ title: "Article Updated", description: "Changes saved successfully." });
+    router.push('/admin/blog');
   };
 
   if (isLoading) return <div className="p-12 text-center">Loading article...</div>;

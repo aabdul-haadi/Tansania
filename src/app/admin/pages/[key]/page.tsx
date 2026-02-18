@@ -21,8 +21,8 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { useDoc, useFirestore } from '@/firebase';
-import { doc, updateDoc, serverTimestamp } from 'firebase/firestore';
+import { useDoc, useFirestore, useMemoFirebase, updateDocumentNonBlocking } from '@/firebase';
+import { doc } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 
@@ -31,7 +31,7 @@ export default function PageEditor() {
   const router = useRouter();
   const { toast } = useToast();
   const firestore = useFirestore();
-  const docRef = React.useMemo(() => (firestore && key ? doc(firestore, 'pages', key as string) : null), [firestore, key]);
+  const docRef = useMemoFirebase(() => (firestore && key ? doc(firestore, 'pages', key as string) : null), [firestore, key]);
   const { data: page, isLoading } = useDoc(docRef);
 
   const [localPage, setLocalPage] = useState<any>(null);
@@ -46,17 +46,13 @@ export default function PageEditor() {
 
   const handleSave = async (status: 'DRAFT' | 'PUBLISHED' = 'DRAFT') => {
     if (!docRef || !localPage) return;
-    try {
-      await updateDoc(docRef, {
-        ...localPage,
-        status,
-        updatedAt: new Date().toISOString(),
-      });
-      setDirty(false);
-      toast({ title: "Page Saved", description: `Successfully saved as ${status}.` });
-    } catch (error) {
-      toast({ variant: "destructive", title: "Save Failed", description: "Check permissions or network." });
-    }
+    updateDocumentNonBlocking(docRef, {
+      ...localPage,
+      status,
+      updatedAt: new Date().toISOString(),
+    });
+    setDirty(false);
+    toast({ title: "Page Saved", description: `Successfully saved as ${status}.` });
   };
 
   const updateSection = (idx: number, data: any) => {

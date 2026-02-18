@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -18,8 +17,8 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { useDoc, useFirestore, useUser } from '@/firebase';
-import { doc, setDoc } from 'firebase/firestore';
+import { useDoc, useFirestore, useUser, useMemoFirebase, setDocumentNonBlocking } from '@/firebase';
+import { doc } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
 
 export default function SiteSettings() {
@@ -28,7 +27,7 @@ export default function SiteSettings() {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
 
-  const docRef = React.useMemo(() => (firestore ? doc(firestore, 'siteSettings', 'global') : null), [firestore]);
+  const docRef = useMemoFirebase(() => (firestore ? doc(firestore, 'siteSettings', 'global') : null), [firestore]);
   const { data: settings, isLoading: isFetching } = useDoc(docRef);
   const [formData, setFormData] = useState<any>(null);
 
@@ -39,10 +38,10 @@ export default function SiteSettings() {
   }, [settings]);
 
   const handleSave = async () => {
-    if (!firestore || !user || !formData) return;
+    if (!firestore || !user || !formData || !docRef) return;
     setLoading(true);
     try {
-      await setDoc(docRef!, {
+      setDocumentNonBlocking(docRef, {
         ...formData,
         updatedAt: new Date().toISOString(),
         updatedBy: user.uid

@@ -28,7 +28,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import Link from 'next/link';
-import { useCollection, useFirestore } from '@/firebase';
+import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { collection, query, orderBy, doc, setDoc } from 'firebase/firestore';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
@@ -40,7 +40,7 @@ export default function PagesRegistry() {
   const [isCreateOpen, setIsCreateOpen] = useState(false);
   const [newPage, setNewPage] = useState({ title: '', key: '', path: '' });
 
-  const pagesQuery = React.useMemo(() => {
+  const pagesQuery = useMemoFirebase(() => {
     if (!firestore) return null;
     return query(collection(firestore, 'pages'), orderBy('updatedAt', 'desc'));
   }, [firestore]);

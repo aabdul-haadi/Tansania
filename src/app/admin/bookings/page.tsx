@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -25,12 +24,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useCollection, useFirestore } from '@/firebase';
+import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { collection, query, orderBy } from 'firebase/firestore';
 
 export default function BookingsManagement() {
   const firestore = useFirestore();
-  const bookingsQuery = React.useMemo(() => {
+  const bookingsQuery = useMemoFirebase(() => {
     if (!firestore) return null;
     return query(collection(firestore, 'bookings'), orderBy('createdAt', 'desc'));
   }, [firestore]);
