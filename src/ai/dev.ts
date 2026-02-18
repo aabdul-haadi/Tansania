@@ -1,1 +1,6 @@
-// Flows will be imported for their side effects in this file.
+import { config } from 'dotenv';
+config();
+
+import '@/ai/flows/admin-seo-and-linking-suggestions.ts';
+import '@/ai/flows/admin-content-checklist-generation.ts';
+import '@/ai/flows/admin-navigation-sitemap-suggestions.ts';

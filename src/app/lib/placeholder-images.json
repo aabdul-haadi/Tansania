@@ -1,0 +1,41 @@
+
+{
+  "placeholderImages": [
+    {
+      "id": "serengeti-hero",
+      "description": "Sunset over the Serengeti plains with acacia trees",
+      "imageUrl": "https://picsum.photos/seed/serengeti/1920/1080",
+      "imageHint": "serengeti sunset"
+    },
+    {
+      "id": "zanzibar-beach",
+      "description": "Crystal clear turquoise water and white sand beach in Zanzibar",
+      "imageUrl": "https://picsum.photos/seed/zanzibar/1920/1080",
+      "imageHint": "zanzibar beach"
+    },
+    {
+      "id": "safari-jeep",
+      "description": "Luxury safari jeep approaching a pride of lions",
+      "imageUrl": "https://picsum.photos/seed/safari/1200/800",
+      "imageHint": "safari jeep"
+    },
+    {
+      "id": "luxury-camp",
+      "description": "Elegant luxury tented camp in the heart of the savannah",
+      "imageUrl": "https://picsum.photos/seed/camp/1200/800",
+      "imageHint": "luxury camp"
+    },
+    {
+      "id": "egypt-office",
+      "description": "Modern travel agency office with subtle Egyptian decor",
+      "imageUrl": "https://picsum.photos/seed/office/1200/800",
+      "imageHint": "modern office"
+    },
+    {
+      "id": "lion-closeup",
+      "description": "Close up of a majestic lion in the wild",
+      "imageUrl": "https://picsum.photos/seed/lion/800/600",
+      "imageHint": "lion wildlife"
+    }
+  ]
+}
