@@ -1,20 +1,16 @@
-
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
-  LayoutDashboard, 
   FileText, 
   MessageSquare, 
   CalendarCheck, 
-  Eye, 
-  TrendingUp,
-  Users,
   Database,
   RefreshCw,
   ShieldCheck,
   Globe,
-  Plus
+  Plus,
+  Eye
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -29,8 +25,12 @@ export default function AdminDashboard() {
   const firestore = useFirestore();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
-  // Real data queries for stats
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   const pagesQuery = useMemoFirebase(() => firestore ? collection(firestore, 'pages') : null, [firestore]);
   const blogsQuery = useMemoFirebase(() => firestore ? collection(firestore, 'blogPosts') : null, [firestore]);
   const bookingsQuery = useMemoFirebase(() => firestore ? collection(firestore, 'bookings') : null, [firestore]);
@@ -41,7 +41,6 @@ export default function AdminDashboard() {
   const { data: bookings } = useCollection(bookingsQuery);
   const { data: inquiries } = useCollection(inquiriesQuery);
 
-  // Recent activity query
   const recentBlogsQuery = useMemoFirebase(() => {
     if (!firestore) return null;
     return query(collection(firestore, 'blogPosts'), orderBy('createdAt', 'desc'), limit(5));
@@ -182,7 +181,9 @@ export default function AdminDashboard() {
                       </div>
                       <div>
                         <p className="font-bold text-sm">{item.title}</p>
-                        <p className="text-xs text-muted-foreground">{item.authorName} • {new Date(item.createdAt).toLocaleDateString()}</p>
+                        <p className="text-xs text-muted-foreground">
+                          {item.authorName} • {isMounted ? new Date(item.createdAt).toLocaleDateString() : '...'}
+                        </p>
                       </div>
                     </div>
                     <Badge variant="outline" className="rounded-full">{item.status}</Badge>

@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   FileText, 
   Search, 
@@ -27,6 +27,11 @@ import { useToast } from '@/hooks/use-toast';
 export default function BlogList() {
   const firestore = useFirestore();
   const { toast } = useToast();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
   
   const blogQuery = useMemoFirebase(() => {
     if (!firestore) return null;
@@ -132,7 +137,10 @@ export default function BlogList() {
                   
                   <div className="flex items-center justify-between pt-6 border-t border-muted">
                     <div className="flex items-center gap-8 text-[11px] text-muted-foreground font-bold uppercase tracking-widest">
-                      <span className="flex items-center gap-2"><Calendar className="w-3.5 h-3.5" /> {new Date(post.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}</span>
+                      <span className="flex items-center gap-2">
+                        <Calendar className="w-3.5 h-3.5" /> 
+                        {isMounted ? new Date(post.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : '...'}
+                      </span>
                       <span className="flex items-center gap-2"><User className="w-3.5 h-3.5" /> {post.authorName}</span>
                     </div>
                     <Link href={`/admin/blog/${post.id}/edit`} className="flex items-center gap-2 text-xs font-bold text-secondary hover:text-primary transition-colors">

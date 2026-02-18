@@ -23,8 +23,6 @@ export default function LoginPage() {
     e.preventDefault();
     setLoading(true);
 
-    // Default credentials mapping
-    // Map "admin" to a valid email format for Firebase Auth
     const email = username === 'admin' ? 'admin@serengetidreams.com' : username;
 
     try {
@@ -32,7 +30,6 @@ export default function LoginPage() {
       toast({ title: "Welcome Back", description: "Identity verified. Accessing CMS..." });
       router.push('/admin');
     } catch (error: any) {
-      // Prototype convenience: if the default admin doesn't exist yet, create it
       if (
         (error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential') && 
         username === 'admin' && 
@@ -83,6 +80,7 @@ export default function LoginPage() {
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     required
+                    suppressHydrationWarning
                   />
                 </div>
               </div>
@@ -98,6 +96,7 @@ export default function LoginPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
+                    suppressHydrationWarning
                   />
                 </div>
               </div>

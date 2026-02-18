@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   CalendarCheck, 
   Search, 
@@ -29,6 +29,12 @@ import { collection, query, orderBy } from 'firebase/firestore';
 
 export default function BookingsManagement() {
   const firestore = useFirestore();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   const bookingsQuery = useMemoFirebase(() => {
     if (!firestore) return null;
     return query(collection(firestore, 'bookings'), orderBy('createdAt', 'desc'));
@@ -103,7 +109,7 @@ export default function BookingsManagement() {
                     </TableCell>
                     <TableCell className="font-bold text-sm">{booking.travelers} Persons</TableCell>
                     <TableCell className="text-sm font-medium">
-                      {new Date(booking.departureDate).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}
+                      {isMounted ? new Date(booking.departureDate).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : '...'}
                     </TableCell>
                     <TableCell className="font-bold text-sm text-secondary">${booking.totalPrice.toLocaleString()}</TableCell>
                     <TableCell>{getStatusBadge(booking.status)}</TableCell>

@@ -1,32 +1,33 @@
-
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   MessageSquare, 
   Search, 
-  Filter, 
   Mail, 
   Phone, 
   Calendar,
-  ChevronRight,
   ArrowUpRight,
-  Trash2,
-  CheckCircle2
+  Trash2
 } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { useCollection, useFirestore } from '@/firebase';
+import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { collection, query, orderBy, deleteDoc, doc } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
 
 export default function InquiriesManagement() {
   const firestore = useFirestore();
   const { toast } = useToast();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
   
-  const inquiriesQuery = React.useMemo(() => {
+  const inquiriesQuery = useMemoFirebase(() => {
     if (!firestore) return null;
     return query(collection(firestore, 'inquiries'), orderBy('createdAt', 'desc'));
   }, [firestore]);
@@ -90,7 +91,7 @@ export default function InquiriesManagement() {
                       <div className="flex flex-wrap items-center gap-4 text-xs text-muted-foreground font-medium">
                         <span className="flex items-center gap-1.5"><Mail className="w-3.5 h-3.5" /> {inquiry.email}</span>
                         {inquiry.phone && <span className="flex items-center gap-1.5"><Phone className="w-3.5 h-3.5" /> {inquiry.phone}</span>}
-                        <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" /> {new Date(inquiry.createdAt).toLocaleDateString()}</span>
+                        <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" /> {isMounted ? new Date(inquiry.createdAt).toLocaleDateString() : '...'}</span>
                       </div>
                     </div>
                   </div>

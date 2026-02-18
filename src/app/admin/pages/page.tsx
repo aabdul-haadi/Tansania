@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   FileText, 
   Search, 
@@ -8,9 +8,7 @@ import {
   Edit, 
   Eye, 
   ExternalLink,
-  RefreshCw,
   Globe,
-  Settings,
   ChevronRight
 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
@@ -39,6 +37,11 @@ export default function PagesRegistry() {
   const { toast } = useToast();
   const [isCreateOpen, setIsCreateOpen] = useState(false);
   const [newPage, setNewPage] = useState({ title: '', key: '', path: '' });
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const pagesQuery = useMemoFirebase(() => {
     if (!firestore) return null;
@@ -173,7 +176,7 @@ export default function PagesRegistry() {
                 <div className="flex items-center gap-3">
                   <div className="text-right mr-4 hidden md:block">
                     <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Updated</p>
-                    <p className="text-xs font-bold">{new Date(page.updatedAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short' })}</p>
+                    <p className="text-xs font-bold">{isMounted ? new Date(page.updatedAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short' }) : '...'}</p>
                   </div>
                   <Button size="icon" variant="ghost" asChild className="rounded-xl h-12 w-12 opacity-0 group-hover:opacity-100 transition-all">
                     <Link href={page.path || '/'} target="_blank"><Eye className="w-5 h-5" /></Link>
