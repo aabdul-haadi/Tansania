@@ -12,7 +12,6 @@ import {
   User, 
   Share2, 
   Bookmark, 
-  MessageCircle, 
   ChevronRight,
   Sparkles,
   Facebook,
@@ -23,11 +22,10 @@ import {
   Zap
 } from 'lucide-react';
 import { useDoc, useFirestore, useMemoFirebase, useCollection } from '@/firebase';
-import { doc, collection, query, where, limit, orderBy } from 'firebase/firestore';
+import { doc, collection, query, where, limit } from 'firebase/firestore';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { BlogSidebar } from '@/components/blog/BlogSidebar';
-import { cn } from '@/lib/utils';
 
 export default function BlogPostDetail() {
   const { slug } = useParams();
@@ -44,7 +42,7 @@ export default function BlogPostDetail() {
   const docRef = useMemoFirebase(() => (firestore && slug ? doc(firestore, 'blogPosts', slug as string) : null), [firestore, slug]);
   const { data: post, isLoading } = useDoc(docRef);
 
-  // Fetch recent posts for the sidebar and related section
+  // Automated Discovery: Fetch recent posts for the sidebar
   const recentQuery = useMemoFirebase(() => (firestore ? query(collection(firestore, 'blogPosts'), where('status', '==', 'PUBLISHED'), limit(4)) : null), [firestore]);
   const { data: recentPosts } = useCollection(recentQuery);
 
@@ -61,7 +59,7 @@ export default function BlogPostDetail() {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center text-center p-4">
         <h2 className="text-3xl font-headline font-bold mb-4">Story Not Found</h2>
-        <p className="text-muted-foreground mb-8">This part of the savannah seems to be unexplored.</p>
+        <p className="text-muted-foreground mb-8 italic">This part of the savannah seems to be unexplored.</p>
         <Button asChild className="rounded-full px-8 h-12">
           <Link href="/blog">Back to Journal</Link>
         </Button>

@@ -16,7 +16,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useFirestore, useUser, useCollection, useMemoFirebase } from '@/firebase';
-import { doc, setDoc, collection, serverTimestamp } from 'firebase/firestore';
+import { doc, setDoc, collection } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
 
 export default function AdminDashboard() {
@@ -48,7 +48,7 @@ export default function AdminDashboard() {
     if (!firestore || !user) return;
     setLoading(true);
     try {
-      // 1. SEED PACKAGE
+      // 1. SEED 15-DAY PACKAGE (Traumabenteuer)
       const pkgId = '15-day-safari-zanzibar';
       await setDoc(doc(firestore, 'packages', pkgId), {
         id: pkgId,
@@ -90,7 +90,7 @@ export default function AdminDashboard() {
         updatedAt: new Date().toISOString()
       }, { merge: true });
 
-      // 2. SEED BLOG POST
+      // 2. SEED FLAGSHIP BLOG POST
       const blogId = 'packing-guide-savannah-to-shore';
       await setDoc(doc(firestore, 'blogPosts', blogId), {
         id: blogId,
