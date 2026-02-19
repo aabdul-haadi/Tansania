@@ -74,6 +74,12 @@ const PACKAGE_CONTENT = {
   ]
 };
 
+const hotels = [
+  { name: 'Ashura Planet Hotel', tag: 'Boutique', img: 'https://picsum.photos/seed/h1/600/800' },
+  { name: 'Funbeach Hotel', tag: 'Lifestyle', img: 'https://picsum.photos/seed/h2/600/800' },
+  { name: 'Nugiwi Hotel', tag: 'Luxury', img: 'https://picsum.photos/seed/h3/600/800' }
+];
+
 export default function PackageDetailPage() {
   const { slug } = useParams();
   const router = useRouter();
@@ -141,7 +147,7 @@ export default function PackageDetailPage() {
       <section className="py-12 md:py-20 container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
           <div className="lg:col-span-7 space-y-8">
-            <div className="space-y-4">
+            <div className="space-y-4 text-center lg:text-left">
               <h2 className="font-headline text-3xl md:text-5xl font-bold leading-tight">
                 Ein Abenteuer, das <br />
                 <span className="text-primary italic">alle Sinne weckt</span>
@@ -194,13 +200,12 @@ export default function PackageDetailPage() {
       {/* Itinerary Section - Creative Timeline Design */}
       <section className="py-12 bg-white overflow-hidden">
         <div className="container mx-auto px-4 max-w-6xl">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 px-4">
             <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] mb-2 block">Tag für Tag</span>
-            <h2 className="font-headline text-4xl md:text-6xl font-bold">Ihre Reise <span className="text-primary italic">Schritt für Schritt</span></h2>
+            <h2 className="font-headline text-3xl md:text-6xl font-bold leading-tight">Ihre Reise <span className="text-primary italic text-2xl md:text-6xl block md:inline">Schritt für Schritt</span></h2>
           </div>
 
           <div className="space-y-24 relative">
-            {/* Background Line for Desktop */}
             <div className="absolute left-[50%] top-0 bottom-0 w-px bg-muted hidden lg:block" />
 
             {packageData.itinerary.map((day, idx) => (
@@ -211,7 +216,7 @@ export default function PackageDetailPage() {
                 viewport={{ once: true, margin: "-100px" }}
                 className={`flex flex-col ${idx % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 md:gap-16 items-center`}
               >
-                <div className="w-full lg:w-1/2 relative">
+                <div className="w-full lg:w-1/2 relative px-4 md:px-0">
                   <div className="aspect-[16/10] rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white group">
                     <Image 
                       src={day.img} 
@@ -231,18 +236,18 @@ export default function PackageDetailPage() {
                   </div>
                 </div>
 
-                <div className="w-full lg:w-1/2 space-y-4 px-4">
+                <div className="w-full lg:w-1/2 space-y-4 px-6 md:px-0 text-center lg:text-left">
                   <div className="inline-flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest">
-                    <div className="w-8 h-px bg-primary" />
+                    <div className="w-8 h-px bg-primary hidden lg:block" />
                     <span>Tag {day.day} Expedition</span>
                   </div>
                   <h3 className="font-headline text-3xl md:text-4xl font-bold text-secondary leading-tight">{day.title}</h3>
                   <p className="text-muted-foreground font-light leading-relaxed text-sm md:text-lg italic">
                     "{day.desc}"
                   </p>
-                  <div className="flex gap-4 pt-4">
-                    <div className="px-4 py-2 bg-muted/50 rounded-xl text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Inkl. Vollpension</div>
-                    <div className="px-4 py-2 bg-muted/50 rounded-xl text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Privatguide</div>
+                  <div className="flex gap-2 md:gap-4 pt-4 justify-center lg:justify-start">
+                    <div className="px-3 py-1.5 bg-muted/50 rounded-xl text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Inkl. Vollpension</div>
+                    <div className="px-3 py-1.5 bg-muted/50 rounded-xl text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Privatguide</div>
                   </div>
                 </div>
               </motion.div>
@@ -251,24 +256,21 @@ export default function PackageDetailPage() {
         </div>
       </section>
 
-      {/* Hotels Showcase - Focused on Quality */}
-      <section className="py-20 bg-secondary text-white relative overflow-hidden">
+      {/* Hotels Showcase - Optimized for Phone with Carousel */}
+      <section className="py-16 md:py-20 bg-secondary text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+        <div className="container mx-auto px-4 max-w-6xl relative z-10">
+          <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 gap-6 text-center md:text-left">
             <div className="max-w-xl">
               <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] mb-2 block">Sanctuaries in the Wild</span>
-              <h2 className="font-headline text-4xl md:text-6xl font-bold">Wohnen wie <br /><span className="text-primary italic">im Paradies</span></h2>
+              <h2 className="font-headline text-3xl md:text-6xl font-bold leading-tight">Wohnen wie <br /><span className="text-primary italic">im Paradies</span></h2>
+              <p className="text-white/40 text-xs font-light mt-4 max-w-[300px] mx-auto md:mx-0">Handverlesene Lodges und Strandresorts für höchste Ansprüche.</p>
             </div>
-            <p className="text-white/40 text-xs font-light max-w-[200px]">Handverlesene Lodges und Strandresorts für höchste Ansprüche.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { name: 'Ashura Planet Hotel', tag: 'Boutique', img: 'https://picsum.photos/seed/h1/600/800' },
-              { name: 'Funbeach Hotel', tag: 'Lifestyle', img: 'https://picsum.photos/seed/h2/600/800' },
-              { name: 'Nugiwi Hotel', tag: 'Luxury', img: 'https://picsum.photos/seed/h3/600/800' }
-            ].map((hotel, i) => (
+          {/* Desktop Grid / Mobile Carousel */}
+          <div className="hidden md:grid grid-cols-3 gap-6">
+            {hotels.map((hotel, i) => (
               <div key={i} className="group relative aspect-[3/4] rounded-[3rem] overflow-hidden shadow-2xl">
                 <Image src={hotel.img} alt={hotel.name} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
@@ -282,42 +284,67 @@ export default function PackageDetailPage() {
               </div>
             ))}
           </div>
+
+          <div className="md:hidden">
+            <Carousel opts={{ align: "start", loop: true }} className="w-full">
+              <CarouselContent className="-ml-4">
+                {hotels.map((hotel, i) => (
+                  <CarouselItem key={i} className="pl-4 basis-[85%]">
+                    <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-xl">
+                      <Image src={hotel.img} alt={hotel.name} fill className="object-cover" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
+                      <div className="absolute bottom-6 left-6 right-6">
+                        <Badge className="bg-primary text-secondary mb-1.5 uppercase tracking-widest font-bold text-[8px]">{hotel.tag}</Badge>
+                        <h4 className="text-lg font-bold font-headline">{hotel.name}</h4>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+          </div>
         </div>
       </section>
 
-      {/* FAQ & Support Section */}
-      <section className="py-20 container mx-auto px-4 max-w-4xl">
-        <div className="text-center mb-16">
-          <h2 className="font-headline text-3xl md:text-5xl font-bold mb-4">Häufig gestellte <span className="text-primary italic">Fragen</span></h2>
-          <p className="text-muted-foreground font-light">Alles, was Sie für Ihre 15-tägige Reise wissen müssen.</p>
+      {/* FAQ & Support Section - Improved Mobile Design */}
+      <section className="py-16 md:py-24 container mx-auto px-4 max-w-4xl">
+        <div className="text-center mb-12">
+          <h2 className="font-headline text-3xl md:text-5xl font-bold mb-4 leading-tight">Häufig gestellte <br className="md:hidden"/><span className="text-primary italic">Fragen</span></h2>
+          <p className="text-muted-foreground font-light text-sm">Alles, was Sie für Ihre 15-tägige Reise wissen müssen.</p>
         </div>
 
         <Accordion type="single" collapsible className="space-y-4">
           {packageData.faqs.map((faq, i) => (
-            <AccordionItem key={i} value={`item-${i}`} className="border-none bg-white rounded-[2rem] px-8 py-2 shadow-sm hover:shadow-md transition-shadow">
-              <AccordionTrigger className="font-bold text-lg hover:no-underline hover:text-primary text-left">{faq.q}</AccordionTrigger>
-              <AccordionContent className="text-muted-foreground leading-relaxed pb-6 italic">
+            <AccordionItem key={i} value={`item-${i}`} className="border-none bg-white rounded-[1.5rem] md:rounded-[2rem] px-6 md:px-8 py-1 shadow-sm hover:shadow-md transition-shadow">
+              <AccordionTrigger className="font-bold text-base md:text-lg hover:no-underline hover:text-primary text-left">{faq.q}</AccordionTrigger>
+              <AccordionContent className="text-muted-foreground leading-relaxed pb-6 italic text-xs md:text-base">
                 {faq.a}
               </AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>
 
-        <div className="mt-20 p-8 md:p-12 rounded-[3rem] bg-muted/30 border border-border/50 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div>
-            <h3 className="font-headline text-3xl font-bold mb-2">Haben Sie <br />weitere Fragen?</h3>
-            <p className="text-muted-foreground text-sm font-light">Unsere Experten in Kairo und Arusha beraten Sie persönlich.</p>
-          </div>
-          <div className="flex gap-4">
-            <Button size="icon" className="w-14 h-14 rounded-2xl bg-white border border-border shadow-sm text-secondary hover:bg-secondary hover:text-white">
-              <Phone className="w-6 h-6" />
-            </Button>
-            <Button size="icon" className="w-14 h-14 rounded-2xl bg-white border border-border shadow-sm text-secondary hover:bg-secondary hover:text-white">
-              <Mail className="w-6 h-6" />
-            </Button>
-            <Button size="lg" className="rounded-2xl px-8 h-14 font-bold bg-primary text-secondary">
-              Rückruf anfordern
-            </Button>
+        {/* Compact Support CTA */}
+        <div className="mt-16 md:mt-24 p-6 md:p-12 rounded-[2.5rem] md:rounded-[3rem] bg-muted/30 border border-border/50">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+            <div className="space-y-3">
+              <h3 className="font-headline text-2xl md:text-4xl font-bold leading-tight text-secondary">Haben Sie <br className="hidden md:block" />weitere Fragen?</h3>
+              <p className="text-muted-foreground text-sm font-light max-w-xs mx-auto md:mx-0">Unsere Experten in Kairo und Arusha beraten Sie persönlich.</p>
+            </div>
+            
+            <div className="flex flex-col gap-3 w-full sm:w-auto">
+              <div className="flex gap-3 justify-center md:justify-end">
+                <Button size="icon" className="w-12 h-12 rounded-2xl bg-white border border-border shadow-sm text-secondary hover:bg-secondary hover:text-white transition-all">
+                  <Phone className="w-5 h-5" />
+                </Button>
+                <Button size="icon" className="w-12 h-12 rounded-2xl bg-white border border-border shadow-sm text-secondary hover:bg-secondary hover:text-white transition-all">
+                  <Mail className="w-5 h-5" />
+                </Button>
+              </div>
+              <Button size="lg" className="rounded-xl px-8 h-14 font-bold bg-primary text-secondary shadow-lg shadow-primary/20 w-full sm:w-auto">
+                Rückruf anfordern
+              </Button>
+            </div>
           </div>
         </div>
       </section>
