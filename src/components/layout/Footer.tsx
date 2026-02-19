@@ -21,9 +21,9 @@ export function Footer() {
       </div>
 
       <div className="container relative z-10 mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand */}
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 lg:col-span-1">
             <Link href="/" className="flex items-center gap-2">
               <Compass className="w-7 h-7 text-primary" />
               <span className="font-headline text-xl font-bold tracking-tight">
@@ -57,6 +57,17 @@ export function Footer() {
             </ul>
           </div>
 
+          {/* Legal */}
+          <div>
+            <h4 className="font-headline text-base font-bold mb-4 text-primary italic">Legal</h4>
+            <ul className="flex flex-col gap-2 text-[11px] uppercase tracking-wider font-bold">
+              <li><Link href="/legal/imprint" className="text-white/40 hover:text-primary transition-colors">Imprint</Link></li>
+              <li><Link href="/legal/terms" className="text-white/40 hover:text-primary transition-colors">Terms and Conditions</Link></li>
+              <li><Link href="/legal/privacy" className="text-white/40 hover:text-primary transition-colors">Data Protection</Link></li>
+              <li><Link href="/legal/directive" className="text-white/40 hover:text-primary transition-colors">Package Travel Directive</Link></li>
+            </ul>
+          </div>
+
           {/* Services */}
           <div>
             <h4 className="font-headline text-base font-bold mb-4 text-primary italic">Services</h4>
@@ -65,9 +76,7 @@ export function Footer() {
               <li><Link href="/services/adventure-app" className="text-white/40 hover:text-primary transition-colors">Adventure app</Link></li>
               <li><Link href="/services/guest-protection" className="text-white/40 hover:text-primary transition-colors">Protection Program</Link></li>
               <li><Link href="/services/passport-visa" className="text-white/40 hover:text-primary transition-colors">Passport & Visa</Link></li>
-              <li><Link href="/services/guest-form" className="text-white/40 hover:text-primary transition-colors">Guest form</Link></li>
               <li><Link href="/services/fly-with-us" className="text-white/40 hover:text-primary transition-colors">Fly with us</Link></li>
-              <li><Link href="/services/travel-shop" className="text-white/40 hover:text-primary transition-colors">Travel Shop</Link></li>
             </ul>
           </div>
 
@@ -94,8 +103,8 @@ export function Footer() {
         <div className="mt-10 pt-4 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[9px] text-white/30 uppercase tracking-[0.2em] font-bold">
           <p>© {new Date().getFullYear()} Serengeti Dreams. Experience Africa Differently.</p>
           <div className="flex gap-4">
-            <Link href="/policies/privacy" className="hover:text-white transition-colors">Privacy</Link>
-            <Link href="/policies/terms" className="hover:text-white transition-colors">Terms</Link>
+            <Link href="/legal/privacy" className="hover:text-white transition-colors">Privacy</Link>
+            <Link href="/legal/terms" className="hover:text-white transition-colors">Terms</Link>
           </div>
         </div>
       </div>
