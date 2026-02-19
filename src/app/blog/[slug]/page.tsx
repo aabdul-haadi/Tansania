@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -31,6 +30,11 @@ export default function BlogPostDetail() {
   const firestore = useFirestore();
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const docRef = useMemoFirebase(() => (firestore && slug ? doc(firestore, 'blogPosts', slug as string) : null), [firestore, slug]);
   const { data: post, isLoading } = useDoc(docRef);
@@ -53,7 +57,7 @@ export default function BlogPostDetail() {
       <div className="min-h-screen flex flex-col items-center justify-center text-center p-4">
         <h2 className="text-3xl font-headline font-bold mb-4">Story Not Found</h2>
         <p className="text-muted-foreground mb-8">This part of the savannah seems to be unexplored.</p>
-        <Button asChild rounded-full px-8 h-12>
+        <Button asChild className="rounded-full px-8 h-12">
           <Link href="/blog">Back to Journal</Link>
         </Button>
       </div>
@@ -87,7 +91,7 @@ export default function BlogPostDetail() {
               <Button variant="ghost" size="icon" onClick={() => router.back()} className="rounded-full bg-white/10 backdrop-blur-md text-white hover:bg-white/20">
                 <ArrowLeft className="w-5 h-5" />
               </Button>
-              <Badge className="bg-primary text-secondary border-none px-4 py-1 text-[10px] font-bold uppercase tracking-widest shadow-xl">
+              <Badge className="bg-primary text-secondary border-none px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest shadow-xl">
                 {post.category}
               </Badge>
             </div>
@@ -98,7 +102,10 @@ export default function BlogPostDetail() {
 
             <div className="flex flex-wrap items-center gap-8 text-[10px] font-bold uppercase tracking-[0.2em] text-white/80">
               <span className="flex items-center gap-2"><User className="w-4 h-4 text-primary" /> {post.authorName}</span>
-              <span className="flex items-center gap-2"><Clock className="w-4 h-4 text-primary" /> {new Date(post.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}</span>
+              <span className="flex items-center gap-2">
+                <Clock className="w-4 h-4 text-primary" /> 
+                {isMounted ? new Date(post.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : '...'}
+              </span>
               <span className="hidden md:flex items-center gap-2"><MessageCircle className="w-4 h-4 text-primary" /> 0 Comments</span>
             </div>
           </motion.div>
@@ -121,13 +128,13 @@ export default function BlogPostDetail() {
                 ))}
               </div>
 
-              {/* Real Content Mockup */}
+              {/* Excerpt */}
               <div className="prose prose-xl max-w-none prose-headings:font-headline prose-headings:font-bold prose-p:font-light prose-p:leading-relaxed prose-p:text-muted-foreground prose-strong:text-secondary prose-a:text-primary hover:prose-a:underline">
                 <p className="text-2xl md:text-3xl font-light text-secondary italic mb-12 border-l-4 border-primary pl-8 py-2 leading-relaxed">
                   "{post.excerpt}"
                 </p>
 
-                {/* This is where post.contentMarkdown would be rendered */}
+                {/* Content */}
                 <div className="whitespace-pre-wrap leading-relaxed space-y-8">
                   {post.contentMarkdown || "No content available for this post."}
                 </div>
@@ -164,12 +171,12 @@ export default function BlogPostDetail() {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {recentPosts?.slice(0, 2).map((rp) => (
-                  <div key={rp.id} className="group cursor-pointer">
+                  <Link key={rp.id} href={`/blog/${rp.slug}`} className="group block">
                     <div className="aspect-video rounded-3xl overflow-hidden mb-4 bg-muted relative">
                       <img src={rp.coverImage || 'https://picsum.photos/seed/rel/600/400'} alt="" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <h4 className="font-bold text-lg leading-tight group-hover:text-primary transition-colors">{rp.title}</h4>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>
