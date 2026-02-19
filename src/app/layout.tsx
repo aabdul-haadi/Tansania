@@ -1,3 +1,4 @@
+
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
@@ -7,11 +8,6 @@ import { ConditionalLayout } from '@/components/layout/ConditionalLayout';
 export const metadata: Metadata = {
   title: 'Serengeti Dreams | Luxury Tanzania Safaris from Egypt',
   description: 'Expert Egypt-based travel agency specializing in premium Tanzania safari packages including Serengeti adventure and Zanzibar relaxation.',
-  openGraph: {
-    title: 'Serengeti Dreams | Luxury Tanzania Safaris',
-    description: 'Bespoke Tanzania safari experiences tailored by Egyptian travel experts.',
-    images: ['/og-image.jpg'],
-  },
 };
 
 export default function RootLayout({

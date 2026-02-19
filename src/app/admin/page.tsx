@@ -10,15 +10,14 @@ import {
   RefreshCw,
   ShieldCheck,
   Globe,
-  Plus,
   Eye
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
-import { useFirestore, useUser, useCollection, useDoc, useMemoFirebase } from '@/firebase';
-import { doc, setDoc, collection, query, orderBy, limit } from 'firebase/firestore';
+import { useFirestore, useUser, useCollection, useMemoFirebase } from '@/firebase';
+import { doc, setDoc, collection } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
 
 export default function AdminDashboard() {
@@ -26,11 +25,6 @@ export default function AdminDashboard() {
   const firestore = useFirestore();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   const canFetch = !!firestore && !!user;
 
@@ -52,25 +46,18 @@ export default function AdminDashboard() {
   ];
 
   const handleSeedData = async () => {
-    if (!firestore || !user) {
-      toast({ variant: "destructive", title: "Authentication Required", description: "Please sign in to initialize." });
-      return;
-    }
+    if (!firestore || !user) return;
     setLoading(true);
     try {
-      // 1. Seed the 15-Day Dream Adventure Package
-      const pkg15Id = '15-day-safari-zanzibar';
-      await setDoc(doc(firestore, 'packages', pkg15Id), {
-        id: pkg15Id,
+      const pkgId = '15-day-safari-zanzibar';
+      await setDoc(doc(firestore, 'packages', pkgId), {
+        id: pkgId,
         title: '15 Tage Safari in Tansania und Sansibar',
-        slug: pkg15Id,
+        slug: pkgId,
         subtitle: 'Erlebnisreise - Safari im Norden und Badeurlaub auf Sansibar',
         durationDays: 15,
-        tier: 'luxury',
         startingPrice: 5399,
         isPublished: true,
-        destinationIds: ['arusha', 'serengeti', 'ngorongoro', 'zanzibar'],
-        categories: ['honeymoon', 'family'],
         highlights: [
           'Atemberaubende Tierbeobachtungen',
           'Exklusive Lodge & Tented Camp',
@@ -78,13 +65,29 @@ export default function AdminDashboard() {
           'Alles gut organisiert',
           'Inklusive Intl. Flug'
         ],
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
+        description: 'Diese 15-tägige Pauschalreise vereint Abenteuer und Erholung in perfekter Weise: Nach der Landung am Kilimanjaro International Airport werden Sie herzlich empfangen und fahren nach Arusha, wo Sie das wahre Tansania in Ihrem eigenen Tempo erleben können.',
+        itinerary: [
+          { day: 1, title: 'Ankommen & Eintauchen', location: 'Arusha', desc: 'Fliegen Sie mit uns in den schönen tieferen Süden unserer Erdkugel und zwar nach Tanzania. Ihre Traumreise beginnt jetzt!' },
+          { day: 2, title: 'Ankunft in Tanzania', location: 'Arusha', desc: 'Nach der Ankunft am Kilimandscharo International Airport werden Sie von unserem Reiseleiter empfangen und mit dem Auto in Ihre Unterkunft gebracht.' },
+          { day: 3, title: 'Arusha Nationalpark', location: 'Arusha NP', desc: 'Der Arusha Nationalpark belohnt mit einer malerischen Aussicht auf die sieben Momella-Seen und den Ngurdoto Krater.' },
+          { day: 4, title: 'Tarangire Nationalpark', location: 'Tarangire', desc: 'Eines der Highlights dieses Parks ist die hohe Populationsdichte an Elefanten. Herden von bis zu 300 Elefanten.' },
+          { day: 5, title: 'Kulturelle Begegnung', location: 'Maasai Village', desc: 'Besuch eines Massai-Dorfes, einem Manyatta. Erhalten Sie Einblick in Bräuche und Alltag.' },
+          { day: 6, title: 'Serengeti Expedition', location: 'Serengeti', desc: 'Ganztägige Safari in der Serengeti. Chancen auf die große Migration, je nach Saison.' },
+          { day: 7, title: 'Ngorongoro-Krater', location: 'Ngorongoro', desc: 'Ein Naturwunder mit einer hohen Wilddichte. Die Chance, die Big Five zu erleben.' },
+          { day: 8, title: 'Insel-Transfer', location: 'Zanzibar', desc: 'Inlandsflug nach Sansibar. Beziehen Ihr Strandhotel und genießen unvergessliche Erholung.' },
+          { day: 9, title: 'Sansibar Auszeit', location: 'Beach', desc: 'Genießen Sie die wunderschönen, sauberen, weißen Strände von Sansibar.' },
+          { day: 10, title: 'Blaue Safari', location: 'Indian Ocean', desc: 'Optionale Bootstour. Schnorcheln in flachen, türkisfarbenen Gewässern.' },
+          { day: 11, title: 'Gewürz-Tour', location: 'Stone Town', desc: 'Besuch der duftenden Gewürzplantagen. Vanille, Kakao, Pfeffer und mehr.' },
+          { day: 12, title: 'Strand & Tauchen', location: 'Nungwi', desc: 'Erkunden Sie die farbenfrohe Unterwasserwelt oder entspannen Sie am Strand.' },
+          { day: 13, title: 'Goldener Sonnenuntergang', location: 'Paje', desc: 'Savor a refreshing cocktail and admire the golden sunset in the evening.' },
+          { day: 14, title: 'Abschied von Afrika', location: 'Airport', desc: 'Sicherer Transfer zum Flughafen. Wir hoffen, wir konnten Ihre Wünsche in Erinnerungen verwandeln.' },
+          { day: 15, title: 'Heimreise', location: 'Home', desc: 'Ankunft in der Heimat mit Koffern voller Erinnerungen an ein unvergleichliches Abenteuer.' }
+        ],
+        updatedAt: new Date().toISOString()
       }, { merge: true });
 
-      toast({ title: "CMS Synchronized", description: "15-day Traumabenteuer and core structures have been updated." });
+      toast({ title: "Database Synchronized", description: "15-day Traumabenteuer and core structures have been updated." });
     } catch (error: any) {
-      console.error(error);
       toast({ variant: "destructive", title: "Setup Failed", description: error.message });
     } finally {
       setLoading(false);
@@ -95,7 +98,7 @@ export default function AdminDashboard() {
     <div className="p-10 max-w-7xl mx-auto space-y-10">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
-          <h1 className="text-4xl font-bold tracking-tight text-secondary">Dashboard</h1>
+          <h1 className="text-4xl font-bold tracking-tight text-secondary">Admin Dashboard</h1>
           <p className="text-muted-foreground mt-2 text-lg">Digital operations for Serengeti Dreams.</p>
         </div>
         <div className="flex items-center gap-3">
@@ -131,46 +134,6 @@ export default function AdminDashboard() {
             </CardContent>
           </Card>
         ))}
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <Card className="lg:col-span-2 border-none shadow-sm rounded-[2.5rem] overflow-hidden bg-white">
-          <CardHeader className="p-8 pb-0">
-            <CardTitle className="text-2xl font-bold text-secondary">Content Management</CardTitle>
-            <CardDescription>Quickly manage your pages and stories.</CardDescription>
-          </CardHeader>
-          <CardContent className="p-8">
-            <div className="space-y-4">
-              <Button asChild variant="outline" className="w-full justify-start gap-4 rounded-2xl h-14 bg-muted/20 border-none">
-                <Link href="/admin/pages"><Globe className="w-5 h-5 text-primary" /> Manage Website Sections</Link>
-              </Button>
-              <Button asChild variant="outline" className="w-full justify-start gap-4 rounded-2xl h-14 bg-muted/20 border-none">
-                <Link href="/admin/blog"><FileText className="w-5 h-5 text-primary" /> Curate Expedition Journal</Link>
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card className="border-none shadow-sm rounded-[2.5rem] overflow-hidden bg-secondary text-white">
-          <CardHeader className="p-8">
-            <CardTitle className="flex items-center gap-2 text-2xl font-bold">
-              <ShieldCheck className="w-6 h-6 text-primary" /> System Access
-            </CardTitle>
-            <CardDescription className="text-white/40">Authorized personnel only.</CardDescription>
-          </CardHeader>
-          <CardContent className="p-8 pt-0">
-            <div className="p-6 bg-white/5 rounded-3xl border border-white/10 space-y-4">
-              <div className="flex justify-between items-center text-xs">
-                <span className="text-white/60">Status</span>
-                <Badge className="bg-primary text-secondary border-none">Active</Badge>
-              </div>
-              <div className="flex justify-between items-center text-xs">
-                <span className="text-white/60">Role</span>
-                <span className="font-bold">Administrator</span>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
       </div>
     </div>
   );

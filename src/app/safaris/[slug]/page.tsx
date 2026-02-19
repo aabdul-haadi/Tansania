@@ -8,8 +8,6 @@ import Link from 'next/link';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { 
   Clock, 
-  Users, 
-  Calendar, 
   MapPin, 
   CheckCircle2, 
   ArrowRight, 
@@ -35,51 +33,6 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { useDoc, useFirestore, useMemoFirebase } from '@/firebase';
 import { doc } from 'firebase/firestore';
 
-// Mock data based on the user's provided content for immediate visualization
-const PACKAGE_CONTENT = {
-  id: '15-day-safari-zanzibar',
-  title: '15 Tage Safari in Tansania und Sansibar',
-  subtitle: 'Erlebnisreise - Safari im Norden und Badeurlaub auf Sansibar',
-  price: '5.399',
-  duration: '15 Tage',
-  highlights: [
-    'Atemberaubende Tierbeobachtungen',
-    'Exklusive Lodge & Tented Camp',
-    'Abenteuer & Erholung',
-    'Alles gut organisiert',
-    'Inklusive Intl. Flug'
-  ],
-  description: 'Diese 15-tägige Pauschalreise vereint Abenteuer und Erholung in perfekter Weise: Nach der Landung am Kilimanjaro International Airport werden Sie herzlich empfangen und fahren nach Arusha, wo Sie das wahre Tansania in Ihrem eigenen Tempo erleben können.',
-  itinerary: [
-    { day: 1, title: 'Ankommen & Eintauchen', desc: 'Fliegen Sie mit uns in den schönen tieferen Süden unserer Erdkugel. Nach der Ankunft am Kilimandscharo International Airport werden Sie von unserem Reiseleiter empfangen.', img: 'https://picsum.photos/seed/safari1/800/600', location: 'Arusha' },
-    { day: 2, title: 'Ankunft in Tanzania', desc: 'Erholen Sie sich von der Anreise oder erkunden Sie die Stadt mithilfe eines lokalen Reiseleiters. Erleben Sie das turbulente afrikanische Stadtleben.', img: 'https://picsum.photos/seed/safari2/800/600', location: 'Arusha' },
-    { day: 3, title: 'Arusha Nationalpark', desc: 'Malerische Aussicht auf die sieben Momella-Seen und den Ngurdoto Krater. Beobachten Sie Flamingos und Affen im dichten Wald.', img: 'https://picsum.photos/seed/safari3/800/600', location: 'Arusha NP' },
-    { day: 4, title: 'Tarangire Nationalpark', desc: 'Hohe Populationsdichte an Elefanten. Herden von bis zu 300 Elefanten suchen täglich im trockenen Flussbett nach Wasser.', img: 'https://picsum.photos/seed/safari4/800/600', location: 'Tarangire' },
-    { day: 5, title: 'Besuch einer tansanischen Schule', desc: 'Authentische Begegnungen mit der lokalen Kultur der Massai, bevor Sie die weite Savanne der Serengeti entdecken.', img: 'https://picsum.photos/seed/safari5/800/600', location: 'Maasai Village' },
-    { day: 6, title: 'Serengeti Nationalpark', desc: 'Ganztägige Safari in der Serengeti. Chancen auf die große Migration, je nach Saison.', img: 'https://picsum.photos/seed/safari6/800/600', location: 'Serengeti' },
-    { day: 7, title: 'Ngorongoro-Krater', desc: 'Ein Naturwunder mit einer hohen Wilddichte. Außergewöhnliche Möglichkeiten, die „Big Five“ zu erleben.', img: 'https://picsum.photos/seed/safari7/800/600', location: 'Ngorongoro' },
-    { day: 8, title: 'Inlandsflug nach Sansibar', desc: 'Vom Festland auf die wunderschöne Insel Sansibar. Ihr Fahrer bringt Sie rechtzeitig zum Flughafen.', img: 'https://picsum.photos/seed/safari8/800/600', location: 'Zanzibar' },
-    { day: 9, title: 'Empfehlung: Freizeit', desc: 'Genießen Sie die wunderschönen, sauberen, weißen Strände von Sansibar. Schwimmen, schnorcheln oder tauchen.', img: 'https://picsum.photos/seed/safari9/800/600', location: 'Beach' },
-    { day: 10, title: 'Empfehlung: blaue Safari', desc: 'Bootstour zu unbewohnten Inseln und Sandbänken. Schnorcheln in flachen, türkisfarbenen Gewässern.', img: 'https://picsum.photos/seed/safari10/800/600', location: 'Indian Ocean' },
-    { day: 11, title: 'Empfehlung: Gewürztour', desc: 'Reisen Sie ins Inselinnere zu den duftenden Gewürzplantagen. Vanille, Kakao, Pfeffer und mehr.', img: 'https://picsum.photos/seed/safari11/800/600', location: 'Spice Farm' },
-    { day: 12, title: 'Empfehlung: Strand und Tauchen', desc: 'Erkunden Sie die farbenfrohe Unterwasserwelt oder entspannen Sie auf Ihrem Balkon.', img: 'https://picsum.photos/seed/safari12/800/600', location: 'Coastal' },
-    { day: 13, title: 'Empfehlung: Freizeit', desc: 'Savor a refreshing cocktail and admire the golden sunset in the evening.', img: 'https://picsum.photos/seed/safari13/800/600', location: 'Zanzibar' },
-    { day: 14, title: 'Abreise & Transfer', desc: 'Sicherer Transfer zum Flughafen. Wir hoffen, wir konnten Ihre Wünsche in Erinnerungen verwandeln.', img: 'https://picsum.photos/seed/safari14/800/600', location: 'Airport' },
-    { day: 15, title: 'Landung in der Heimat', desc: 'Willkommen zu Hause mit unvergesslichen Erinnerungen an Tansania.', img: 'https://picsum.photos/seed/safari15/800/600', location: 'Home' },
-  ],
-  faqs: [
-    { q: 'Was ist in dieser 15 tage safari enthalten?', a: 'Inklusive internationalem Flug, Inlandsflügen, Safaris in Arusha, Tarangire, Serengeti und Ngorongoro, Unterkünfte und Strandhotel auf Sansibar.' },
-    { q: 'Welche Nationalparks werden besucht?', a: 'Arusha NP, Tarangire NP, Serengeti und der Ngorongoro-Krater.' },
-    { q: 'Ist die Reise für Familien geeignet?', a: 'Ja, diese Pauschalreise ist perfekt für Familien konzipiert, die Abenteuer und Erholung suchen.' }
-  ]
-};
-
-const hotels = [
-  { name: 'Ashura Planet Hotel', tag: 'Boutique', img: 'https://picsum.photos/seed/h1/600/800' },
-  { name: 'Funbeach Hotel', tag: 'Lifestyle', img: 'https://picsum.photos/seed/h2/600/800' },
-  { name: 'Nugiwi Hotel', tag: 'Luxury', img: 'https://picsum.photos/seed/h3/600/800' }
-];
-
 export default function PackageDetailPage() {
   const { slug } = useParams();
   const router = useRouter();
@@ -87,27 +40,46 @@ export default function PackageDetailPage() {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
-  // In a real app, we fetch the actual slug. For now, we use the 15-day content as a template.
-  const packageData = PACKAGE_CONTENT; 
+  const docRef = useMemoFirebase(() => (firestore && slug ? doc(firestore, 'packages', slug as string) : null), [firestore, slug]);
+  const { data: pkg, isLoading } = useDoc(docRef);
 
-  const [activeDay, setActiveDay] = useState(1);
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center gap-4 bg-background">
+        <div className="w-12 h-12 rounded-full border-2 border-primary border-t-transparent animate-spin" />
+        <p className="text-[10px] uppercase font-bold tracking-[0.3em] text-muted-foreground">Accessing the Archive...</p>
+      </div>
+    );
+  }
+
+  if (!pkg) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center text-center p-4">
+        <h2 className="text-3xl font-headline font-bold mb-4">Package Not Found</h2>
+        <p className="text-muted-foreground mb-8 italic">This part of the savannah seems to be uncharted.</p>
+        <Button asChild className="rounded-full px-8 h-12 bg-secondary text-white">
+          <Link href="/safaris">Return to Catalog</Link>
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen pb-32 overflow-x-hidden">
       {/* Reading Progress Bar */}
       <motion.div className="fixed top-0 left-0 right-0 h-1 bg-primary z-[100] origin-left" style={{ scaleX }} />
 
-      {/* Modern Immersive Hero */}
+      {/* Unique Immersive Hero */}
       <section className="relative min-h-[85vh] flex flex-col justify-end overflow-hidden">
         <Image 
-          src={packageData.itinerary[5].img} 
-          alt={packageData.title} 
+          src={pkg.itinerary?.[5]?.img || 'https://picsum.photos/seed/safari-hero/1920/1080'} 
+          alt={pkg.title} 
           fill 
           priority
           className="object-cover"
           data-ai-hint="serengeti migration"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#fdfcfb] via-black/20 to-black/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#fdfcfb] via-black/20 to-transparent" />
         
         <div className="container relative z-10 mx-auto px-4 pb-12 md:pb-24">
           <div className="max-w-4xl">
@@ -117,17 +89,17 @@ export default function PackageDetailPage() {
               transition={{ duration: 0.8 }}
             >
               <Badge className="bg-primary text-secondary border-none px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] mb-6 shadow-xl">
-                {packageData.subtitle}
+                {pkg.subtitle || 'Exklusive Erlebnisreise'}
               </Badge>
-              <h1 className="font-headline text-4xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-[1.1] drop-shadow-sm">
-                Traumabenteuer <br />
+              <h1 className="font-headline text-4xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-[1.1] drop-shadow-lg">
+                {pkg.title.split(' - ')[0]} <br />
                 <span className="text-primary italic">in Afrika</span>
               </h1>
               
               <div className="flex flex-wrap gap-4 md:gap-8 text-white/90">
                 <div className="flex items-center gap-2 bg-black/20 backdrop-blur-md px-4 py-2 rounded-2xl border border-white/10">
                   <Clock className="w-5 h-5 text-primary" />
-                  <span className="text-sm font-bold">{packageData.duration} Expedition</span>
+                  <span className="text-sm font-bold">{pkg.durationDays} Tage Expedition</span>
                 </div>
                 <div className="flex items-center gap-2 bg-black/20 backdrop-blur-md px-4 py-2 rounded-2xl border border-white/10">
                   <Plane className="w-5 h-5 text-primary" />
@@ -135,7 +107,7 @@ export default function PackageDetailPage() {
                 </div>
                 <div className="flex items-center gap-2 bg-white text-secondary px-4 py-2 rounded-2xl shadow-2xl">
                   <span className="text-[10px] font-bold uppercase tracking-widest mr-1 opacity-60">Ab</span>
-                  <span className="text-xl font-bold">{packageData.price} €</span>
+                  <span className="text-xl font-bold">{pkg.startingPrice.toLocaleString()} €</span>
                 </div>
               </div>
             </motion.div>
@@ -153,12 +125,12 @@ export default function PackageDetailPage() {
                 <span className="text-primary italic">alle Sinne weckt</span>
               </h2>
               <p className="text-muted-foreground text-lg font-light leading-relaxed">
-                {packageData.description}
+                {pkg.description}
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {packageData.highlights.map((h, i) => (
+              {pkg.highlights?.map((h: string, i: number) => (
                 <div key={i} className="flex items-center gap-4 p-5 bg-white rounded-3xl shadow-sm border border-border/50 group hover:border-primary/30 transition-all">
                   <div className="w-10 h-10 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors">
                     <CheckCircle2 className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
@@ -197,7 +169,7 @@ export default function PackageDetailPage() {
         </div>
       </section>
 
-      {/* Itinerary Section - Creative Timeline Design */}
+      {/* Narrative Itinerary Section - Creative Timeline Design */}
       <section className="py-12 bg-white overflow-hidden">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-16 px-4">
@@ -208,9 +180,9 @@ export default function PackageDetailPage() {
           <div className="space-y-24 relative">
             <div className="absolute left-[50%] top-0 bottom-0 w-px bg-muted hidden lg:block" />
 
-            {packageData.itinerary.map((day, idx) => (
+            {pkg.itinerary?.map((day: any, idx: number) => (
               <motion.div 
-                key={day.day}
+                key={idx}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
@@ -219,7 +191,7 @@ export default function PackageDetailPage() {
                 <div className="w-full lg:w-1/2 relative px-4 md:px-0">
                   <div className="aspect-[16/10] rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white group">
                     <Image 
-                      src={day.img} 
+                      src={day.img || `https://picsum.photos/seed/safari-${idx}/800/600`} 
                       alt={day.title} 
                       fill 
                       className="object-cover group-hover:scale-110 transition-transform duration-1000" 
@@ -246,8 +218,8 @@ export default function PackageDetailPage() {
                     "{day.desc}"
                   </p>
                   <div className="flex gap-2 md:gap-4 pt-4 justify-center lg:justify-start">
-                    <div className="px-3 py-1.5 bg-muted/50 rounded-xl text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Inkl. Vollpension</div>
-                    <div className="px-3 py-1.5 bg-muted/50 rounded-xl text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Privatguide</div>
+                    <Badge variant="outline" className="text-[9px] uppercase font-bold tracking-widest border-muted text-muted-foreground px-3">Full Board</Badge>
+                    <Badge variant="outline" className="text-[9px] uppercase font-bold tracking-widest border-muted text-muted-foreground px-3">Private Guide</Badge>
                   </div>
                 </div>
               </motion.div>
@@ -256,7 +228,7 @@ export default function PackageDetailPage() {
         </div>
       </section>
 
-      {/* Hotels Showcase - Optimized for Phone with Carousel */}
+      {/* Lodges Showcase - Horizontal Carousel for Phones */}
       <section className="py-16 md:py-20 bg-secondary text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
@@ -268,45 +240,37 @@ export default function PackageDetailPage() {
             </div>
           </div>
 
-          {/* Desktop Grid / Mobile Carousel */}
-          <div className="hidden md:grid grid-cols-3 gap-6">
-            {hotels.map((hotel, i) => (
-              <div key={i} className="group relative aspect-[3/4] rounded-[3rem] overflow-hidden shadow-2xl">
-                <Image src={hotel.img} alt={hotel.name} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
-                <div className="absolute bottom-8 left-8 right-8">
-                  <Badge className="bg-primary text-secondary mb-2 uppercase tracking-widest font-bold text-[8px]">{hotel.tag}</Badge>
-                  <h4 className="text-xl font-bold font-headline">{hotel.name}</h4>
-                  <Link href="#" className="inline-flex items-center gap-2 text-[10px] uppercase font-bold text-white/60 group-hover:text-primary transition-colors mt-2">
-                    Details ansehen <ArrowRight className="w-3 h-3" />
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="md:hidden">
-            <Carousel opts={{ align: "start", loop: true }} className="w-full">
-              <CarouselContent className="-ml-4">
-                {hotels.map((hotel, i) => (
-                  <CarouselItem key={i} className="pl-4 basis-[85%]">
-                    <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-xl">
-                      <Image src={hotel.img} alt={hotel.name} fill className="object-cover" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
-                      <div className="absolute bottom-6 left-6 right-6">
-                        <Badge className="bg-primary text-secondary mb-1.5 uppercase tracking-widest font-bold text-[8px]">{hotel.tag}</Badge>
-                        <h4 className="text-lg font-bold font-headline">{hotel.name}</h4>
-                      </div>
+          <Carousel opts={{ align: "start", loop: true }} className="w-full">
+            <CarouselContent className="-ml-4">
+              {[
+                { name: 'Ashura Planet Hotel', tag: 'Boutique', img: 'https://picsum.photos/seed/h1/600/800' },
+                { name: 'Funbeach Hotel', tag: 'Lifestyle', img: 'https://picsum.photos/seed/h2/600/800' },
+                { name: 'Nugiwi Hotel', tag: 'Luxury', img: 'https://picsum.photos/seed/h3/600/800' }
+              ].map((hotel, i) => (
+                <CarouselItem key={i} className="pl-4 basis-[85%] md:basis-1/3">
+                  <div className="group relative aspect-[3/4] rounded-[3rem] overflow-hidden shadow-2xl">
+                    <Image src={hotel.img} alt={hotel.name} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
+                    <div className="absolute bottom-8 left-8 right-8">
+                      <Badge className="bg-primary text-secondary mb-2 uppercase tracking-widest font-bold text-[8px]">{hotel.tag}</Badge>
+                      <h4 className="text-xl font-bold font-headline">{hotel.name}</h4>
+                      <Link href="#" className="inline-flex items-center gap-2 text-[10px] uppercase font-bold text-white/60 group-hover:text-primary transition-colors mt-2">
+                        Details ansehen <ArrowRight className="w-3 h-3" />
+                      </Link>
                     </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-            </Carousel>
-          </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="hidden md:flex justify-end gap-4 mt-8">
+              <CarouselPrevious className="static translate-y-0 h-10 w-10 bg-white/10 border-white/20 hover:bg-white/20 text-white" />
+              <CarouselNext className="static translate-y-0 h-10 w-10 bg-white/10 border-white/20 hover:bg-white/20 text-white" />
+            </div>
+          </Carousel>
         </div>
       </section>
 
-      {/* FAQ & Support Section - Improved Mobile Design */}
+      {/* FAQ & Support Section - Improved Mobile UI */}
       <section className="py-16 md:py-24 container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-12">
           <h2 className="font-headline text-3xl md:text-5xl font-bold mb-4 leading-tight">Häufig gestellte <br className="md:hidden"/><span className="text-primary italic">Fragen</span></h2>
@@ -314,7 +278,7 @@ export default function PackageDetailPage() {
         </div>
 
         <Accordion type="single" collapsible className="space-y-4">
-          {packageData.faqs.map((faq, i) => (
+          {pkg.faqs?.map((faq: any, i: number) => (
             <AccordionItem key={i} value={`item-${i}`} className="border-none bg-white rounded-[1.5rem] md:rounded-[2rem] px-6 md:px-8 py-1 shadow-sm hover:shadow-md transition-shadow">
               <AccordionTrigger className="font-bold text-base md:text-lg hover:no-underline hover:text-primary text-left">{faq.q}</AccordionTrigger>
               <AccordionContent className="text-muted-foreground leading-relaxed pb-6 italic text-xs md:text-base">
@@ -349,7 +313,7 @@ export default function PackageDetailPage() {
         </div>
       </section>
 
-      {/* MOBILE OPTIMIZED STICKY BOOKING BAR */}
+      {/* MOBILE STICKY BOOKING BAR */}
       <div className="fixed bottom-0 left-0 right-0 z-50 p-4 lg:hidden pointer-events-none">
         <motion.div 
           initial={{ y: 100 }}
@@ -359,29 +323,15 @@ export default function PackageDetailPage() {
           <div className="flex flex-col pl-4">
             <p className="text-[10px] text-white/40 uppercase font-bold tracking-widest leading-none mb-1">Ab Preis</p>
             <div className="flex items-baseline gap-1">
-              <span className="text-xl font-bold text-white">{packageData.price} €</span>
-              <span className="text-[8px] text-white/40 font-light">/ person</span>
+              <span className="text-xl font-bold text-white">{pkg.startingPrice.toLocaleString()} €</span>
+              <span className="text-[8px] text-white/40 font-light">/ Person</span>
             </div>
           </div>
           <Button asChild size="lg" className="rounded-2xl h-12 px-8 bg-primary text-secondary font-bold shadow-xl">
-            <Link href="/trip-planner?package=15-day-safari-zanzibar">
+            <Link href={`/trip-planner?package=${pkg.id}`}>
               Anfragen <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
           </Button>
-        </motion.div>
-      </div>
-
-      {/* DESKTOP SIDEBAR ACTION (OPTIONAL OVERLAY) */}
-      <div className="hidden lg:block fixed right-8 top-[50%] -translate-y-[50%] z-40">
-        <motion.div 
-          whileHover={{ scale: 1.05 }}
-          className="bg-white p-2 rounded-full shadow-2xl border border-border/50 flex flex-col gap-2"
-        >
-          {[Phone, MessageSquare, Mail, Download].map((Icon, i) => (
-            <Button key={i} size="icon" variant="ghost" className="w-12 h-12 rounded-full hover:bg-primary/10 hover:text-primary transition-all">
-              <Icon className="w-5 h-5" />
-            </Button>
-          ))}
         </motion.div>
       </div>
     </div>

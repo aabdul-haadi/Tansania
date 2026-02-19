@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from 'react';
@@ -12,7 +13,7 @@ import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'fire
 import { useToast } from '@/hooks/use-toast';
 
 export default function LoginPage() {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -23,27 +24,21 @@ export default function LoginPage() {
     e.preventDefault();
     setLoading(true);
 
-    const email = username === 'admin' ? 'admin@serengetidreams.com' : username;
-
     try {
       await signInWithEmailAndPassword(auth, email, password);
       toast({ title: "Welcome Back", description: "Identity verified. Accessing CMS..." });
       router.push('/admin');
     } catch (error: any) {
-      if (
-        (error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential') && 
-        username === 'admin' && 
-        password === 'adminadmin'
-      ) {
+      if (error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential') {
         try {
           await createUserWithEmailAndPassword(auth, email, password);
-          toast({ title: "Admin Initialized", description: "Default credentials activated. Welcome." });
+          toast({ title: "Account Created", description: "Development account activated. Welcome." });
           router.push('/admin');
         } catch (createError: any) {
            toast({ variant: "destructive", title: "Access Denied", description: "Standard authentication failed." });
         }
       } else {
-        toast({ variant: "destructive", title: "Authentication Failed", description: "Invalid credentials. Please use the default admin access." });
+        toast({ variant: "destructive", title: "Authentication Failed", description: error.message });
       }
     } finally {
       setLoading(false);
@@ -64,23 +59,22 @@ export default function LoginPage() {
         <Card className="border-none shadow-2xl rounded-[2rem] overflow-hidden bg-white">
           <CardHeader className="p-8 pb-0">
             <CardTitle className="text-xl">Sign In</CardTitle>
-            <CardDescription>Use your assigned credentials to manage Serengeti Dreams.</CardDescription>
+            <CardDescription>Enter any email and password to access the development admin panel.</CardDescription>
           </CardHeader>
           <CardContent className="p-8">
-            <form onSubmit={handleLogin} className="space-y-6" suppressHydrationWarning>
+            <form onSubmit={handleLogin} className="space-y-6">
               <div className="space-y-2">
-                <Label htmlFor="username">Username</Label>
+                <Label htmlFor="email">Email</Label>
                 <div className="relative">
                   <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                   <Input 
-                    id="username" 
-                    type="text" 
-                    placeholder="admin" 
+                    id="email" 
+                    type="email" 
+                    placeholder="admin@example.com" 
                     className="pl-12 h-12 rounded-xl bg-muted/20 border-none"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     required
-                    suppressHydrationWarning
                   />
                 </div>
               </div>
@@ -96,7 +90,6 @@ export default function LoginPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
-                    suppressHydrationWarning
                   />
                 </div>
               </div>
@@ -105,22 +98,12 @@ export default function LoginPage() {
                 type="submit" 
                 disabled={loading} 
                 className="w-full h-12 rounded-xl text-base font-bold gap-2 shadow-lg shadow-primary/20"
-                suppressHydrationWarning
               >
                 {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <>Login to Dashboard <ArrowRight className="w-4 h-4" /></>}
               </Button>
-
-              <div className="bg-primary/5 rounded-xl p-4 border border-primary/10">
-                <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-primary mb-1">Developer Mode</p>
-                <p className="text-xs text-muted-foreground">User: <code className="text-foreground font-bold">admin</code> | Pass: <code className="text-foreground font-bold">adminadmin</code></p>
-              </div>
             </form>
           </CardContent>
         </Card>
-
-        <p className="text-center text-[10px] text-muted-foreground font-bold uppercase tracking-[0.2em]">
-          Powered by Nile to Savannah CMS
-        </p>
       </div>
     </div>
   );
