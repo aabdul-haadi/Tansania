@@ -11,18 +11,19 @@ import {
   LogOut,
   ChevronRight,
   Lock,
-  Loader2
+  Loader2,
+  Database
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useUser, useDoc, useFirestore, useAuth, useMemoFirebase } from '@/firebase';
-import { doc } from 'firebase/firestore';
+import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { Button } from '@/components/ui/button';
 import { signOut } from 'firebase/auth';
 
 const adminLinks = [
   { name: 'Dashboard', href: '/admin', icon: LayoutDashboard },
-  { name: 'Page Registry', href: '/admin/pages', icon: Globe },
-  { name: 'Blog Posts', href: '/admin/blog', icon: FileText },
+  { name: 'Content Registry', href: '/admin/pages', icon: Globe },
+  { name: 'Expedition Journal', href: '/admin/blog', icon: FileText },
 ];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -42,12 +43,25 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       if (user && adminRole) {
         setIsAuthorized(true);
       } else if (user && !adminRole && pathname === '/admin') {
+        // Special case: Let the dashboard handle "first initialization"
         setIsAuthorized(true);
       } else {
         setIsAuthorized(false);
       }
     }
   }, [user, isUserLoading, adminRole, isAdminRoleLoading, pathname]);
+
+  // Self-repair logic for the first admin
+  useEffect(() => {
+    if (user && user.email === 'admin@serengetidreams.com' && !adminRole && !isAdminRoleLoading && firestore) {
+      console.log('Detected uninitialized admin account. Self-registering...');
+      setDoc(doc(firestore, 'roles_admin', user.uid), {
+        uid: user.uid,
+        email: user.email,
+        createdAt: serverTimestamp()
+      }, { merge: true });
+    }
+  }, [user, adminRole, isAdminRoleLoading, firestore]);
 
   const handleSignOut = async () => {
     try {

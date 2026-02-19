@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -7,8 +8,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ShieldCheck, Heart, Map, Clock, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { useDoc, useFirestore, useMemoFirebase } from '@/firebase';
-import { doc } from 'firebase/firestore';
 import {
   Carousel,
   CarouselContent,
@@ -28,12 +27,9 @@ import { FAQ } from '@/components/sections/FAQ';
 import { OfferPopup } from '@/components/sections/OfferPopup';
 import { ExpertiseNarrative } from '@/components/sections/ExpertiseNarrative';
 import { MeetTheSpecialists } from '@/components/sections/MeetTheSpecialists';
+import { EditableContent } from '@/components/cms/EditableContent';
 
 export default function Home() {
-  const firestore = useFirestore();
-  const docRef = useMemoFirebase(() => (firestore ? doc(firestore, 'pages', 'home') : null), [firestore]);
-  const { data: page } = useDoc(docRef);
-
   const [tanzaniaApi, setTanzaniaApi] = useState<CarouselApi>();
   const [tanzaniaIndex, setTanzaniaIndex] = useState(0);
 
@@ -56,114 +52,92 @@ export default function Home() {
     { title: "Mount Kilimanjaro", desc: "The Roof of Africa, standing tall above the clouds.", img: 'https://picsum.photos/seed/kili/1200/800', link: "/destinations/kilimanjaro", hint: "mount kilimanjaro" },
   ];
 
-  const sections = page?.sections || [
-    {
-      type: 'hero',
-      data: {
-        heading: 'The Soul of the Serengeti',
-        subheading: "Egypt's premier gateway to the Great Migration. Bespoke safari adventures crafted with local expertise.",
-        backgroundImage: heroImg?.imageUrl,
-      }
-    }
-  ];
-
   return (
     <div className="relative">
-      {sections.map((section: any, idx: number) => {
-        if (section.type === 'hero') {
-          const heroImages = [
-            { src: section.data.backgroundImage || heroImg?.imageUrl || 'https://picsum.photos/seed/safari-hero/1920/1080', hint: "serengeti safari" },
-            { src: zanzibarImg?.imageUrl || 'https://picsum.photos/seed/zanzibar-h/1920/1080', hint: "zanzibar beach" },
-            { src: 'https://picsum.photos/seed/lodge-h/1920/1080', hint: "safari lodge" }
-          ];
-
-          return (
-            <section key={idx} className="relative h-screen flex items-center justify-center overflow-hidden">
-              <HeroBackgroundSlider images={heroImages} />
-              <div className="container relative z-20 mx-auto px-4">
-                <motion.div
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, ease: "easeOut" }}
-                  className="max-w-4xl mx-auto text-center"
-                >
-                  <motion.span 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.5 }}
-                    className="inline-flex items-center gap-2 px-5 py-2 mb-6 text-xs font-bold uppercase tracking-[0.2em] text-primary bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-xl"
+      <EditableContent 
+        pageKey="home" 
+        sectionId="hero" 
+        type="hero" 
+        defaultContent={{
+          heading: 'The Soul of the Serengeti',
+          subheading: "Egypt's premier gateway to the Great Migration. Bespoke safari adventures crafted with local expertise."
+        }}
+      >
+        <section className="relative h-screen flex items-center justify-center overflow-hidden">
+          <HeroBackgroundSlider 
+            images={[
+              { src: heroImg?.imageUrl || 'https://picsum.photos/seed/safari-hero/1920/1080', hint: "serengeti safari" },
+              { src: zanzibarImg?.imageUrl || 'https://picsum.photos/seed/zanzibar-h/1920/1080', hint: "zanzibar beach" },
+              { src: 'https://picsum.photos/seed/lodge-h/1920/1080', hint: "safari lodge" }
+            ]} 
+          />
+          <div className="container relative z-20 mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="max-w-4xl mx-auto text-center"
+            >
+              <motion.span 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+                className="inline-flex items-center gap-2 px-5 py-2 mb-6 text-xs font-bold uppercase tracking-[0.2em] text-primary bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-xl"
+              >
+                <Star className="w-3 h-3 fill-primary" /> Premium Tanzania Experiences
+              </motion.span>
+              <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-[1.1]">
+                The Soul of the <br />
+                <span className="text-primary italic">Serengeti</span>
+              </h1>
+              <p className="max-w-2xl mx-auto text-lg md:text-xl text-white/90 mb-10 leading-relaxed font-body font-light">
+                Egypt's premier gateway to the Great Migration. Bespoke safari adventures crafted with local expertise.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
+                <Link href="/safaris">
+                  <Button size="lg" className="w-full sm:w-auto rounded-full px-12 h-16 text-lg font-bold shadow-2xl transition-all hover:scale-105">
+                    Begin Your Journey
+                  </Button>
+                </Link>
+                <Link href="/trip-planner">
+                  <motion.div
+                    whileHover="hover"
+                    className="relative w-full sm:w-auto overflow-hidden rounded-full p-[1px]"
                   >
-                    <Star className="w-3 h-3 fill-primary" /> Premium Tanzania Experiences
-                  </motion.span>
-                  <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-[1.1]">
-                    {section.data.heading?.split(' ').slice(0, -1).join(' ')} <br />
-                    <span className="text-primary italic">{section.data.heading?.split(' ').pop()}</span>
-                  </h1>
-                  <p className="max-w-2xl mx-auto text-lg md:text-xl text-white/90 mb-10 leading-relaxed font-body font-light">
-                    {section.data.subheading}
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
-                    <Link href="/safaris">
-                      <Button size="lg" className="w-full sm:w-auto rounded-full px-12 h-16 text-lg font-bold shadow-2xl transition-all hover:scale-105">
-                        Begin Your Journey
-                      </Button>
-                    </Link>
-                    <Link href="/trip-planner">
-                      <motion.div
-                        whileHover="hover"
-                        className="relative w-full sm:w-auto overflow-hidden rounded-full p-[1px]"
-                      >
-                        <motion.div
-                          variants={{
-                            hover: {
-                              background: [
-                                "conic-gradient(from 0deg at 50% 50%, rgba(181, 142, 69, 0) 0deg, rgba(181, 142, 69, 0.5) 180deg, rgba(181, 142, 69, 0) 360deg)",
-                                "conic-gradient(from 360deg at 50% 50%, rgba(181, 142, 69, 0) 0deg, rgba(181, 142, 69, 0.5) 180deg, rgba(181, 142, 69, 0) 360deg)",
-                              ],
-                            }
-                          }}
-                          transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
-                          className="absolute inset-[-100%] z-0"
-                        />
-                        <Button 
-                          size="lg" 
-                          variant="outline" 
-                          className="relative z-10 w-full sm:w-auto rounded-full px-12 h-16 text-lg border-white/40 text-white hover:bg-white/10 backdrop-blur-md transition-all bg-black/20"
-                        >
-                          Custom Planner
-                        </Button>
-                      </motion.div>
-                    </Link>
-                  </div>
-                </motion.div>
+                    <motion.div
+                      variants={{
+                        hover: {
+                          background: [
+                            "conic-gradient(from 0deg at 50% 50%, rgba(181, 142, 69, 0) 0deg, rgba(181, 142, 69, 0.5) 180deg, rgba(181, 142, 69, 0) 360deg)",
+                            "conic-gradient(from 360deg at 50% 50%, rgba(181, 142, 69, 0) 0deg, rgba(181, 142, 69, 0.5) 180deg, rgba(181, 142, 69, 0) 360deg)",
+                          ],
+                        }
+                      }}
+                      transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+                      className="absolute inset-[-100%] z-0"
+                    />
+                    <Button 
+                      size="lg" 
+                      variant="outline" 
+                      className="relative z-10 w-full sm:w-auto rounded-full px-12 h-16 text-lg border-white/40 text-white hover:bg-white/10 backdrop-blur-md transition-all bg-black/20"
+                    >
+                      Custom Planner
+                    </Button>
+                  </motion.div>
+                </Link>
               </div>
-              <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-white/40 z-20">
-                <span className="text-[10px] uppercase tracking-[0.3em] font-bold">Discover More</span>
-                <motion.div 
-                  animate={{ y: [0, 8, 0] }}
-                  transition={{ repeat: Infinity, duration: 2 }}
-                  className="w-px h-12 bg-gradient-to-b from-white/40 to-transparent" 
-                />
-              </div>
-            </section>
-          );
-        }
-        if (section.type === 'content') {
-          return (
-            <section key={idx} className="py-16 bg-white">
-              <div className="container mx-auto px-4 max-w-4xl">
-                {section.data.heading && (
-                  <h2 className="text-3xl font-headline font-bold mb-6 text-center">{section.data.heading}</h2>
-                )}
-                <div className="prose prose-lg max-w-none text-muted-foreground font-light leading-relaxed">
-                  {section.data.bodyMarkdown}
-                </div>
-              </div>
-            </section>
-          );
-        }
-        return null;
-      })}
+            </motion.div>
+          </div>
+          <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-white/40 z-20">
+            <span className="text-[10px] uppercase tracking-[0.3em] font-bold">Discover More</span>
+            <motion.div 
+              animate={{ y: [0, 8, 0] }}
+              transition={{ repeat: Infinity, duration: 2 }}
+              className="w-px h-12 bg-gradient-to-b from-white/40 to-transparent" 
+            />
+          </div>
+        </section>
+      </EditableContent>
 
       <OfferPopup />
 

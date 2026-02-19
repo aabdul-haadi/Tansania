@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -7,22 +8,20 @@ import {
   Save, 
   Eye, 
   Layout, 
-  Search as SearchIcon, 
   Plus, 
   GripVertical,
   Trash2,
-  ChevronDown,
-  Settings,
-  Image as ImageIcon
+  Image as ImageIcon,
+  CheckCircle2,
+  Globe
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useDoc, useFirestore, useMemoFirebase, updateDocumentNonBlocking } from '@/firebase';
-import { doc } from 'firebase/firestore';
+import { doc, serverTimestamp } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 
@@ -36,7 +35,7 @@ export default function PageEditor() {
 
   const [localPage, setLocalPage] = useState<any>(null);
   const [dirty, setDirty] = useState(false);
-  const [activeSectionIdx, setActiveSectionIdx] = useState<number | null>(null);
+  const [activeSectionId, setActiveSectionId] = useState<string | null>(null);
 
   useEffect(() => {
     if (page) {
@@ -49,27 +48,22 @@ export default function PageEditor() {
     updateDocumentNonBlocking(docRef, {
       ...localPage,
       status,
-      updatedAt: new Date().toISOString(),
+      updatedAt: serverTimestamp(),
     });
     setDirty(false);
-    toast({ title: "Page Saved", description: `Successfully saved as ${status}.` });
+    toast({ title: "Content Sync Complete", description: `Successfully published changes to ${localPage.path}.` });
   };
 
-  const updateSection = (idx: number, data: any) => {
-    const newSections = [...localPage.sections];
-    newSections[idx] = { ...newSections[idx], data: { ...newSections[idx].data, ...data } };
+  const updateSectionData = (id: string, data: any) => {
+    const newSections = { ...localPage.sections };
+    newSections[id] = { ...newSections[id], data: { ...newSections[id].data, ...data } };
     setLocalPage({ ...localPage, sections: newSections });
     setDirty(true);
   };
 
-  const addSection = (type: string) => {
-    const defaultData = type === 'hero' ? { heading: 'New Heading', subheading: 'New Subheading' } : {};
-    const newSections = [...(localPage.sections || []), { type, data: defaultData }];
-    setLocalPage({ ...localPage, sections: newSections });
-    setDirty(true);
-  };
+  if (isLoading || !localPage) return <div className="p-12 text-center text-muted-foreground animate-pulse uppercase tracking-widest font-bold text-xs">Accessing Page Manifest...</div>;
 
-  if (isLoading || !localPage) return <div className="p-12 text-center">Loading editor...</div>;
+  const sectionIds = Object.keys(localPage.sections || {});
 
   return (
     <div className="min-h-screen bg-muted/10">
@@ -82,17 +76,16 @@ export default function PageEditor() {
             </Button>
             <div>
               <h1 className="font-bold text-lg">{localPage.title}</h1>
-              <p className="text-xs text-muted-foreground">{localPage.path}</p>
+              <p className="text-xs text-muted-foreground font-mono">{localPage.path}</p>
             </div>
-            {dirty && <span className="w-2 h-2 rounded-full bg-primary animate-pulse" title="Unsaved changes" />}
+            {dirty && <div className="flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded-full animate-pulse">Unsaved Changes</div>}
           </div>
           <div className="flex items-center gap-2">
-            <Button variant="outline" className="gap-2" asChild>
-              <a href={localPage.path} target="_blank"><Eye className="w-4 h-4" /> Preview</a>
+            <Button variant="outline" className="gap-2 rounded-xl" asChild>
+              <a href={localPage.path} target="_blank"><Eye className="w-4 h-4" /> View Site</a>
             </Button>
-            <Button variant="outline" onClick={() => handleSave('DRAFT')}>Save Draft</Button>
-            <Button onClick={() => handleSave('PUBLISHED')} className="gap-2">
-              <Save className="w-4 h-4" /> Publish
+            <Button onClick={() => handleSave('PUBLISHED')} className="gap-2 rounded-xl px-8 shadow-lg shadow-primary/20">
+              <Save className="w-4 h-4" /> Save & Sync
             </Button>
           </div>
         </div>
@@ -101,148 +94,128 @@ export default function PageEditor() {
       <div className="max-w-7xl mx-auto p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Left: Sections List */}
         <div className="lg:col-span-4 space-y-6">
-          <Card className="border-none shadow-sm">
-            <CardHeader className="flex flex-row items-center justify-between">
-              <CardTitle className="text-sm font-bold uppercase tracking-wider text-muted-foreground">Sections</CardTitle>
-              <Button size="icon" variant="ghost" onClick={() => addSection('content')}>
-                <Plus className="w-4 h-4" />
-              </Button>
+          <Card className="border-none shadow-sm rounded-3xl">
+            <CardHeader>
+              <CardTitle className="text-sm font-bold uppercase tracking-wider text-muted-foreground">Editable Sections</CardTitle>
+              <CardDescription>Regions detected in page code.</CardDescription>
             </CardHeader>
             <CardContent className="p-2 space-y-2">
-              {localPage.sections?.map((section: any, idx: number) => (
+              {sectionIds.map((id) => (
                 <div 
-                  key={idx}
-                  onClick={() => setActiveSectionIdx(idx)}
+                  key={id}
+                  onClick={() => setActiveSectionId(id)}
                   className={cn(
-                    "flex items-center gap-3 p-3 rounded-xl cursor-pointer transition-all border group",
-                    activeSectionIdx === idx 
-                      ? "bg-primary/5 border-primary shadow-sm" 
+                    "flex items-center gap-3 p-4 rounded-2xl cursor-pointer transition-all border group",
+                    activeSectionId === id 
+                      ? "bg-secondary text-white border-secondary shadow-lg" 
                       : "border-transparent hover:bg-muted"
                   )}
                 >
-                  <GripVertical className="w-4 h-4 text-muted-foreground" />
+                  <div className={cn("w-8 h-8 rounded-lg flex items-center justify-center shrink-0", activeSectionId === id ? "bg-white/10" : "bg-primary/10")}>
+                    <Layout className={cn("w-4 h-4", activeSectionId === id ? "text-white" : "text-primary")} />
+                  </div>
                   <div className="flex-grow">
-                    <p className="text-sm font-bold capitalize">{section.type}</p>
-                    <p className="text-[10px] text-muted-foreground truncate max-w-[150px]">
-                      {section.data.heading || section.data.title || 'No content'}
+                    <p className="text-sm font-bold capitalize">{id}</p>
+                    <p className={cn("text-[10px] uppercase font-bold tracking-widest", activeSectionId === id ? "text-white/60" : "text-muted-foreground")}>
+                      Type: {localPage.sections[id].type}
                     </p>
                   </div>
-                  <Button size="icon" variant="ghost" className="opacity-0 group-hover:opacity-100 h-8 w-8 text-destructive">
-                    <Trash2 className="w-3 h-3" />
-                  </Button>
                 </div>
               ))}
             </CardContent>
           </Card>
 
-          <Card className="border-none shadow-sm">
-            <CardHeader>
-              <CardTitle className="text-sm font-bold uppercase tracking-wider text-muted-foreground">Page SEO</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <Label className="text-xs">Meta Title</Label>
-                <Input 
-                  value={localPage.seo?.title || ''} 
-                  onChange={(e) => {
-                    setLocalPage({ ...localPage, seo: { ...localPage.seo, title: e.target.value } });
-                    setDirty(true);
-                  }}
-                  className="rounded-lg h-9"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label className="text-xs">Meta Description</Label>
-                <Textarea 
-                  value={localPage.seo?.description || ''} 
-                  onChange={(e) => {
-                    setLocalPage({ ...localPage, seo: { ...localPage.seo, description: e.target.value } });
-                    setDirty(true);
-                  }}
-                  className="rounded-lg text-xs"
-                />
-              </div>
+          <Card className="border-none shadow-sm rounded-3xl bg-secondary text-white overflow-hidden">
+            <CardContent className="p-8">
+              <Globe className="w-8 h-8 text-primary mb-4" />
+              <h4 className="font-bold text-lg mb-2">Live Content Sync</h4>
+              <p className="text-white/60 text-xs leading-relaxed font-light">
+                Changes made here are restricted to pure content. Your site's core layout and performance remain preserved in the source code.
+              </p>
             </CardContent>
           </Card>
         </div>
 
         {/* Right: Section Editor Panel */}
         <div className="lg:col-span-8">
-          {activeSectionIdx !== null ? (
-            <Card className="border-none shadow-sm min-h-[500px]">
+          {activeSectionId !== null ? (
+            <Card className="border-none shadow-sm min-h-[500px] rounded-[2.5rem]">
               <CardHeader className="border-b">
                 <div className="flex items-center justify-between">
                   <div>
-                    <CardTitle className="capitalize">{localPage.sections[activeSectionIdx].type} Section</CardTitle>
-                    <CardDescription>Configure the content and layout for this block.</CardDescription>
+                    <CardTitle className="capitalize">Edit Section: {activeSectionId}</CardTitle>
+                    <CardDescription>Update text and media for this registered region.</CardDescription>
                   </div>
+                  <Badge variant="outline" className="px-3 py-1 font-bold uppercase tracking-widest text-[9px]">
+                    Region: {localPage.sections[activeSectionId].type}
+                  </Badge>
                 </div>
               </CardHeader>
               <CardContent className="p-8 space-y-8">
-                {localPage.sections[activeSectionIdx].type === 'hero' && (
-                  <>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {localPage.sections[activeSectionId].type === 'hero' && (
+                  <div className="space-y-6">
+                    <div className="grid grid-cols-1 gap-6">
                       <div className="space-y-2">
-                        <Label>Heading</Label>
+                        <Label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Hero Heading</Label>
                         <Input 
-                          value={localPage.sections[activeSectionIdx].data.heading || ''} 
-                          onChange={(e) => updateSection(activeSectionIdx, { heading: e.target.value })}
+                          className="h-14 rounded-xl bg-muted/30 border-none text-lg font-bold px-6"
+                          value={localPage.sections[activeSectionId].data.heading || ''} 
+                          onChange={(e) => updateSectionData(activeSectionId, { heading: e.target.value })}
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label>Subheading</Label>
-                        <Input 
-                          value={localPage.sections[activeSectionIdx].data.subheading || ''} 
-                          onChange={(e) => updateSection(activeSectionIdx, { subheading: e.target.value })}
+                        <Label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Subheading / Description</Label>
+                        <Textarea 
+                          className="min-h-[120px] rounded-2xl bg-muted/30 border-none p-6 text-base italic font-light leading-relaxed"
+                          value={localPage.sections[activeSectionId].data.subheading || ''} 
+                          onChange={(e) => updateSectionData(activeSectionId, { subheading: e.target.value })}
                         />
                       </div>
-                    </div>
-                    <div className="space-y-2">
-                      <Label>Background Image URL</Label>
-                      <div className="flex gap-2">
-                        <Input 
-                          value={localPage.sections[activeSectionIdx].data.backgroundImage || ''} 
-                          onChange={(e) => updateSection(activeSectionIdx, { backgroundImage: e.target.value })}
-                        />
-                        <Button variant="outline" size="icon"><ImageIcon className="w-4 h-4" /></Button>
-                      </div>
-                    </div>
-                  </>
-                )}
-
-                {localPage.sections[activeSectionIdx].type === 'content' && (
-                  <div className="space-y-4">
-                    <div className="space-y-2">
-                      <Label>Section Heading (Optional)</Label>
-                      <Input 
-                        value={localPage.sections[activeSectionIdx].data.heading || ''} 
-                        onChange={(e) => updateSection(activeSectionIdx, { heading: e.target.value })}
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label>Body (Markdown supported)</Label>
-                      <Textarea 
-                        className="min-h-[300px] font-mono text-sm"
-                        value={localPage.sections[activeSectionIdx].data.bodyMarkdown || ''} 
-                        onChange={(e) => updateSection(activeSectionIdx, { bodyMarkdown: e.target.value })}
-                      />
                     </div>
                   </div>
                 )}
 
-                {/* Placeholder for other section types */}
-                {!['hero', 'content'].includes(localPage.sections[activeSectionIdx].type) && (
-                  <div className="py-20 text-center text-muted-foreground border border-dashed rounded-3xl">
-                    Custom editor for "{localPage.sections[activeSectionIdx].type}" coming soon.
+                {localPage.sections[activeSectionId].type === 'text' && (
+                  <div className="space-y-2">
+                    <Label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Simple Text Content</Label>
+                    <Input 
+                      className="h-12 rounded-xl bg-muted/30 border-none"
+                      value={localPage.sections[activeSectionId].data || ''} 
+                      onChange={(e) => {
+                        const newSections = { ...localPage.sections };
+                        newSections[activeSectionId].data = e.target.value;
+                        setLocalPage({ ...localPage, sections: newSections });
+                        setDirty(true);
+                      }}
+                    />
+                  </div>
+                )}
+
+                {localPage.sections[activeSectionId].type === 'markdown' && (
+                  <div className="space-y-2">
+                    <Label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Body (Markdown)</Label>
+                    <Textarea 
+                      className="min-h-[400px] font-mono text-sm leading-relaxed rounded-2xl p-8 bg-muted/30 border-none"
+                      value={localPage.sections[activeSectionId].data.bodyMarkdown || ''} 
+                      onChange={(e) => updateSectionData(activeSectionId, { bodyMarkdown: e.target.value })}
+                    />
+                  </div>
+                )}
+
+                {!['hero', 'text', 'markdown'].includes(localPage.sections[activeSectionId].type) && (
+                  <div className="py-20 text-center text-muted-foreground border border-dashed rounded-[3rem]">
+                    Custom editor for "{localPage.sections[activeSectionId].type}" detected. Please specify data schema.
                   </div>
                 )}
               </CardContent>
             </Card>
           ) : (
-            <div className="h-full flex flex-col items-center justify-center p-12 bg-muted/30 border border-dashed rounded-[3rem] text-muted-foreground">
-              <Layout className="w-12 h-12 mb-4 opacity-20" />
-              <p className="text-lg font-medium">Select a section to begin editing</p>
-              <p className="text-sm">Changes will be saved to your draft.</p>
+            <div className="h-full flex flex-col items-center justify-center p-12 bg-muted/30 border-2 border-dashed rounded-[3rem] text-muted-foreground">
+              <div className="w-20 h-20 bg-background rounded-3xl flex items-center justify-center shadow-xl mb-6">
+                <CheckCircle2 className="w-10 h-10 text-primary opacity-20" />
+              </div>
+              <p className="text-xl font-bold">Select a section to edit</p>
+              <p className="text-sm font-light">Only content regions registered in your code are available.</p>
             </div>
           )}
         </div>
