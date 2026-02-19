@@ -1,54 +1,32 @@
 
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { 
-  FileText, 
   Search, 
-  Plus, 
   Edit, 
-  Eye, 
   ExternalLink,
   Globe,
-  Settings,
   RefreshCw,
   Layout
 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
-import { useCollection, useFirestore, useMemoFirebase, useUser, useDoc } from '@/firebase';
-import { collection, query, where, orderBy, doc, setDoc } from 'firebase/firestore';
-import { useRouter } from 'next/navigation';
-import { useToast } from '@/hooks/use-toast';
+import { useCollection, useFirestore, useMemoFirebase, useUser } from '@/firebase';
+import { collection, query } from 'firebase/firestore';
 
 export default function PagesRegistry() {
   const { user } = useUser();
   const firestore = useFirestore();
-  const router = useRouter();
-  const { toast } = useToast();
-  const [isMounted, setIsMounted] = useState(false);
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  // Guard: Only fetch if authenticated and admin role is confirmed
-  const adminDocRef = useMemoFirebase(() => (firestore && user ? doc(firestore, 'roles_admin', user.uid) : null), [firestore, user]);
-  const { data: adminRole } = useDoc(adminDocRef);
-
-  // Registry logic: Show all pages that have been "registered" by an EditableContent component
+  // Simplified query to avoid index issues during dev
   const pagesQuery = useMemoFirebase(() => {
-    if (!firestore || !adminRole) return null;
-    return query(
-      collection(firestore, 'pages'), 
-      where('isRegistered', '==', true),
-      orderBy('updatedAt', 'desc')
-    );
-  }, [firestore, adminRole]);
+    if (!firestore || !user) return null;
+    return query(collection(firestore, 'pages'));
+  }, [firestore, user]);
 
   const { data: pages, isLoading } = useCollection(pagesQuery);
 
@@ -73,14 +51,12 @@ export default function PagesRegistry() {
 
       <div className="grid grid-cols-1 gap-3">
         {isLoading ? (
-          <div className="py-20 text-center text-muted-foreground animate-pulse font-bold text-xs uppercase tracking-widest">Scanning codebase for editable regions...</div>
-        ) : !adminRole ? (
-          <div className="py-20 text-center text-muted-foreground">Verifying admin access...</div>
+          <div className="py-20 text-center text-muted-foreground animate-pulse font-bold text-xs uppercase tracking-widest">Scanning codebase...</div>
         ) : pages?.length === 0 ? (
           <Card className="p-24 text-center border-dashed border-2 bg-muted/20 rounded-[3rem]">
             <Layout className="w-16 h-16 mx-auto mb-6 opacity-10" />
             <h3 className="text-2xl font-bold mb-2">No sections registered yet</h3>
-            <p className="text-muted-foreground mb-8 max-w-xs mx-auto">Add an <code>&lt;EditableContent /&gt;</code> component to any page in your code to see it appear here.</p>
+            <p className="text-muted-foreground mb-8 max-w-xs mx-auto">Add an <code>&lt;EditableContent /&gt;</code> component to any page.</p>
           </Card>
         ) : (
           pages?.map((page: any) => (

@@ -1,20 +1,18 @@
 
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { 
   FileText, 
   MessageSquare, 
   CalendarCheck, 
   Database,
   RefreshCw,
-  ShieldCheck,
   Globe,
   Eye
 } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import { useFirestore, useUser, useCollection, useMemoFirebase } from '@/firebase';
 import { doc, setDoc, collection } from 'firebase/firestore';
@@ -67,26 +65,30 @@ export default function AdminDashboard() {
         ],
         description: 'Diese 15-tägige Pauschalreise vereint Abenteuer und Erholung in perfekter Weise: Nach der Landung am Kilimanjaro International Airport werden Sie herzlich empfangen und fahren nach Arusha, wo Sie das wahre Tansania in Ihrem eigenen Tempo erleben können.',
         itinerary: [
-          { day: 1, title: 'Ankommen & Eintauchen', location: 'Arusha', desc: 'Fliegen Sie mit uns in den schönen tieferen Süden unserer Erdkugel und zwar nach Tanzania. Ihre Traumreise beginnt jetzt!' },
-          { day: 2, title: 'Ankunft in Tanzania', location: 'Arusha', desc: 'Nach der Ankunft am Kilimandscharo International Airport werden Sie von unserem Reiseleiter empfangen und mit dem Auto in Ihre Unterkunft gebracht.' },
-          { day: 3, title: 'Arusha Nationalpark', location: 'Arusha NP', desc: 'Der Arusha Nationalpark belohnt mit einer malerischen Aussicht auf die sieben Momella-Seen und den Ngurdoto Krater.' },
-          { day: 4, title: 'Tarangire Nationalpark', location: 'Tarangire', desc: 'Eines der Highlights dieses Parks ist die hohe Populationsdichte an Elefanten. Herden von bis zu 300 Elefanten.' },
-          { day: 5, title: 'Kulturelle Begegnung', location: 'Maasai Village', desc: 'Besuch eines Massai-Dorfes, einem Manyatta. Erhalten Sie Einblick in Bräuche und Alltag.' },
-          { day: 6, title: 'Serengeti Expedition', location: 'Serengeti', desc: 'Ganztägige Safari in der Serengeti. Chancen auf die große Migration, je nach Saison.' },
-          { day: 7, title: 'Ngorongoro-Krater', location: 'Ngorongoro', desc: 'Ein Naturwunder mit einer hohen Wilddichte. Die Chance, die Big Five zu erleben.' },
-          { day: 8, title: 'Insel-Transfer', location: 'Zanzibar', desc: 'Inlandsflug nach Sansibar. Beziehen Ihr Strandhotel und genießen unvergessliche Erholung.' },
-          { day: 9, title: 'Sansibar Auszeit', location: 'Beach', desc: 'Genießen Sie die wunderschönen, sauberen, weißen Strände von Sansibar.' },
-          { day: 10, title: 'Blaue Safari', location: 'Indian Ocean', desc: 'Optionale Bootstour. Schnorcheln in flachen, türkisfarbenen Gewässern.' },
-          { day: 11, title: 'Gewürz-Tour', location: 'Stone Town', desc: 'Besuch der duftenden Gewürzplantagen. Vanille, Kakao, Pfeffer und mehr.' },
-          { day: 12, title: 'Strand & Tauchen', location: 'Nungwi', desc: 'Erkunden Sie die farbenfrohe Unterwasserwelt oder entspannen Sie am Strand.' },
-          { day: 13, title: 'Goldener Sonnenuntergang', location: 'Paje', desc: 'Savor a refreshing cocktail and admire the golden sunset in the evening.' },
-          { day: 14, title: 'Abschied von Afrika', location: 'Airport', desc: 'Sicherer Transfer zum Flughafen. Wir hoffen, wir konnten Ihre Wünsche in Erinnerungen verwandeln.' },
-          { day: 15, title: 'Heimreise', location: 'Home', desc: 'Ankunft in der Heimat mit Koffern voller Erinnerungen an ein unvergleichliches Abenteuer.' }
+          { day: 1, title: 'Ankommen & Eintauchen', location: 'Arusha', desc: 'Fliegen Sie mit uns in den schönen tieferen Süden unserer Erdkugel und zwar nach Tanzania. Ihre Traumreise beginnt jetzt!', img: 'https://picsum.photos/seed/arrival/800/600' },
+          { day: 2, title: 'Ankunft in Tanzania', location: 'Arusha', desc: 'Nach der Ankunft am Kilimandscharo International Airport werden Sie von unserem Reiseleiter empfangen und mit dem Auto in Ihre Unterkunft gebracht.', img: 'https://picsum.photos/seed/city/800/600' },
+          { day: 3, title: 'Arusha Nationalpark', location: 'Arusha NP', desc: 'Der Arusha Nationalpark belohnt mit einer malerischen Aussicht auf die sieben Momella-Seen und den Ngurdoto Krater.', img: 'https://picsum.photos/seed/lakes/800/600' },
+          { day: 4, title: 'Tarangire Nationalpark', location: 'Tarangire', desc: 'Eines der Highlights dieses Parks ist die hohe Populationsdichte an Elefanten. Herden von bis zu 300 Elefanten.', img: 'https://picsum.photos/seed/elephants/800/600' },
+          { day: 5, title: 'Kulturelle Begegnung', location: 'Maasai Village', desc: 'Besuch eines Massai-Dorfes, einem Manyatta. Erhalten Sie Einblick in Bräuche und Alltag.', img: 'https://picsum.photos/seed/culture/800/600' },
+          { day: 6, title: 'Serengeti Expedition', location: 'Serengeti', desc: 'Ganztägige Safari in der Serengeti. Chancen auf die große Migration, je nach Saison.', img: 'https://picsum.photos/seed/migration/800/600' },
+          { day: 7, title: 'Ngorongoro-Krater', location: 'Ngorongoro', desc: 'Ein Naturwunder mit einer hohen Wilddichte. Die Chance, die Big Five zu erleben.', img: 'https://picsum.photos/seed/rhino/800/600' },
+          { day: 8, title: 'Insel-Transfer', location: 'Zanzibar', desc: 'Inlandsflug nach Sansibar. Beziehen Ihr Strandhotel und genießen unvergessliche Erholung.', img: 'https://picsum.photos/seed/plane/800/600' },
+          { day: 9, title: 'Sansibar Auszeit', location: 'Beach', desc: 'Genießen Sie die wunderschönen, sauberen, weißen Strände von Sansibar.', img: 'https://picsum.photos/seed/whitebeach/800/600' },
+          { day: 10, title: 'Blaue Safari', location: 'Indian Ocean', desc: 'Optionale Bootstour. Schnorcheln in flachen, türkisfarbenen Gewässern.', img: 'https://picsum.photos/seed/boat/800/600' },
+          { day: 11, title: 'Gewürz-Tour', location: 'Stone Town', desc: 'Besuch der duftenden Gewürzplantagen. Vanille, Kakao, Pfeffer und mehr.', img: 'https://picsum.photos/seed/spices/800/600' },
+          { day: 12, title: 'Strand & Tauchen', location: 'Nungwi', desc: 'Erkunden Sie die farbenfrohe Unterwasserwelt oder entspannen Sie am Strand.', img: 'https://picsum.photos/seed/dive/800/600' },
+          { day: 13, title: 'Goldener Sonnenuntergang', location: 'Paje', desc: 'Savor a refreshing cocktail and admire the golden sunset in the evening.', img: 'https://picsum.photos/seed/sunset/800/600' },
+          { day: 14, title: 'Abschied von Afrika', location: 'Airport', desc: 'Sicherer Transfer zum Flughafen. Wir hoffen, wir konnten Ihre Wünsche in Erinnerungen verwandeln.', img: 'https://picsum.photos/seed/airport/800/600' },
+          { day: 15, title: 'Heimreise', location: 'Home', desc: 'Ankunft in der Heimat mit Koffern voller Erinnerungen an ein unvergleichliches Abenteuer.', img: 'https://picsum.photos/seed/memory/800/600' }
+        ],
+        faqs: [
+          { q: 'Was ist in dieser 15 tage safari enthalten?', a: 'Internationale Flüge, Unterkünfte, alle Pirschfahrten, Inlandsflug nach Sansibar und Verpflegung laut Plan.' },
+          { q: 'Ist die Reise für Familien geeignet?', a: 'Ja, diese Kombination aus Abenteuer und Strand ist ideal für Familien mit Kindern ab 6 Jahren.' }
         ],
         updatedAt: new Date().toISOString()
       }, { merge: true });
 
-      toast({ title: "Database Synchronized", description: "15-day Traumabenteuer and core structures have been updated." });
+      toast({ title: "Database Synchronized", description: "15-day Traumabenteuer has been updated." });
     } catch (error: any) {
       toast({ variant: "destructive", title: "Setup Failed", description: error.message });
     } finally {

@@ -14,17 +14,15 @@ import {
   ChevronRight, 
   Plane, 
   Camera, 
-  Waves, 
   Heart,
   MessageSquare,
   Download,
   Phone,
   Mail,
-  X,
   Compass,
   Star,
   Zap,
-  Mountain
+  Waves
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -32,6 +30,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { useDoc, useFirestore, useMemoFirebase } from '@/firebase';
 import { doc } from 'firebase/firestore';
+import { cn } from '@/lib/utils';
 
 export default function PackageDetailPage() {
   const { slug } = useParams();
@@ -39,6 +38,11 @@ export default function PackageDetailPage() {
   const firestore = useFirestore();
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const docRef = useMemoFirebase(() => (firestore && slug ? doc(firestore, 'packages', slug as string) : null), [firestore, slug]);
   const { data: pkg, isLoading } = useDoc(docRef);
@@ -103,7 +107,7 @@ export default function PackageDetailPage() {
                 </div>
                 <div className="flex items-center gap-2 bg-black/20 backdrop-blur-md px-4 py-2 rounded-2xl border border-white/10">
                   <Plane className="w-5 h-5 text-primary" />
-                  <span className="text-sm font-bold">Inkl. Internationaler Flug</span>
+                  <span className="text-sm font-bold">Inkl. Intl. Flug</span>
                 </div>
                 <div className="flex items-center gap-2 bg-white text-secondary px-4 py-2 rounded-2xl shadow-2xl">
                   <span className="text-[10px] font-bold uppercase tracking-widest mr-1 opacity-60">Ab</span>
@@ -169,7 +173,7 @@ export default function PackageDetailPage() {
         </div>
       </section>
 
-      {/* Narrative Itinerary Section - Creative Timeline Design */}
+      {/* Narrative Itinerary Section - Timeline Design */}
       <section className="py-12 bg-white overflow-hidden">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-16 px-4">
@@ -186,7 +190,10 @@ export default function PackageDetailPage() {
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
-                className={`flex flex-col ${idx % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 md:gap-16 items-center`}
+                className={cn(
+                  "flex flex-col gap-8 md:gap-16 items-center",
+                  idx % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
+                )}
               >
                 <div className="w-full lg:w-1/2 relative px-4 md:px-0">
                   <div className="aspect-[16/10] rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white group">
@@ -270,7 +277,7 @@ export default function PackageDetailPage() {
         </div>
       </section>
 
-      {/* FAQ & Support Section - Improved Mobile UI */}
+      {/* FAQ Section */}
       <section className="py-16 md:py-24 container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-12">
           <h2 className="font-headline text-3xl md:text-5xl font-bold mb-4 leading-tight">Häufig gestellte <br className="md:hidden"/><span className="text-primary italic">Fragen</span></h2>
@@ -323,7 +330,7 @@ export default function PackageDetailPage() {
           <div className="flex flex-col pl-4">
             <p className="text-[10px] text-white/40 uppercase font-bold tracking-widest leading-none mb-1">Ab Preis</p>
             <div className="flex items-baseline gap-1">
-              <span className="text-xl font-bold text-white">{pkg.startingPrice.toLocaleString()} €</span>
+              <span className="text-xl font-bold text-white">{pkg.startingPrice?.toLocaleString()} €</span>
               <span className="text-[8px] text-white/40 font-light">/ Person</span>
             </div>
           </div>

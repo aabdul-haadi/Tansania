@@ -6,22 +6,16 @@ service cloud.firestore {
     /**
      * FIREBASE SECURITY RULES
      * 
-     * Simplified for development: Any signed-in user is an Admin.
-     * Public read access for content.
+     * Development Mode: Any signed-in user is an Admin.
+     * Public read access for all content.
      */
-
-    // --- GLOBAL HELPER FUNCTIONS ---
 
     function isSignedIn() {
       return request.auth != null;
     }
 
     function isAdmin() {
-      return isSignedIn(); // Allow any signed-in user to be admin for development
-    }
-
-    function isPublished(data) {
-      return data == null || data.status == 'PUBLISHED' || data.isPublished == true;
+      return isSignedIn(); 
     }
 
     // --- COLLECTION RULES ---
