@@ -4,7 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Compass, Menu, X, ChevronDown, User, ShoppingBag } from 'lucide-react';
+import { Compass, Menu, X, ChevronDown, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import {
@@ -15,9 +15,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const destinations = [
-  { name: 'Serengeti', href: '/destinations/serengeti' },
+  { name: 'Safaris', href: '/safaris' },
   { name: 'Zanzibar', href: '/destinations/zanzibar' },
-  { name: 'Combo: Bush & Beach', href: '/destinations/serengeti-zanzibar' },
+  { name: 'Kilimanjaro', href: '/destinations/kilimanjaro' },
 ];
 
 const safaris = [
@@ -58,10 +58,10 @@ export function Navbar() {
       <div className="container mx-auto px-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
           <div className="relative">
-            <Compass className="w-8 h-8 text-secondary transition-transform group-hover:rotate-45" />
+            <Compass className={cn("w-8 h-8 transition-transform group-hover:rotate-45", isScrolled ? "text-secondary" : "text-white lg:text-secondary")} />
             <div className="absolute inset-0 bg-secondary/20 blur-lg rounded-full animate-pulse" />
           </div>
-          <span className="font-headline text-2xl font-bold tracking-tight text-foreground">
+          <span className={cn("font-headline text-2xl font-bold tracking-tight", isScrolled ? "text-foreground" : "text-white lg:text-foreground")}>
             Serengeti<span className="text-secondary">Dreams</span>
           </span>
         </Link>
@@ -69,7 +69,7 @@ export function Navbar() {
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-8">
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1 font-medium hover:text-secondary transition-colors">
+            <DropdownMenuTrigger className={cn("flex items-center gap-1 font-medium transition-colors hover:text-secondary", isScrolled ? "text-foreground" : "text-white")}>
               Destinations <ChevronDown className="w-4 h-4" />
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56 p-2">
@@ -82,7 +82,7 @@ export function Navbar() {
           </DropdownMenu>
 
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1 font-medium hover:text-secondary transition-colors">
+            <DropdownMenuTrigger className={cn("flex items-center gap-1 font-medium transition-colors hover:text-secondary", isScrolled ? "text-foreground" : "text-white")}>
               Safaris <ChevronDown className="w-4 h-4" />
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56 p-2">
@@ -100,7 +100,7 @@ export function Navbar() {
               href={link.href}
               className={cn(
                 'font-medium transition-colors hover:text-secondary',
-                pathname === link.href ? 'text-secondary' : 'text-foreground'
+                pathname === link.href ? 'text-secondary' : (isScrolled ? 'text-foreground' : 'text-white')
               )}
             >
               {link.name}
@@ -110,12 +110,12 @@ export function Navbar() {
 
         <div className="hidden lg:flex items-center gap-4">
           <Link href="/trip-planner">
-            <Button variant="outline" className="border-secondary text-secondary hover:bg-secondary hover:text-white rounded-full px-6">
+            <Button variant={isScrolled ? "outline" : "secondary"} className="rounded-full px-6">
               Plan My Trip
             </Button>
           </Link>
           <Link href="/auth/login">
-            <Button variant="ghost" size="icon" className="rounded-full">
+            <Button variant="ghost" size="icon" className={cn("rounded-full", isScrolled ? "text-foreground" : "text-white")}>
               <User className="w-5 h-5" />
             </Button>
           </Link>
@@ -123,7 +123,7 @@ export function Navbar() {
 
         {/* Mobile Menu Toggle */}
         <button
-          className="lg:hidden p-2 text-foreground"
+          className={cn("lg:hidden p-2", isScrolled ? "text-foreground" : "text-white")}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
