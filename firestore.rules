@@ -15,6 +15,7 @@ service cloud.firestore {
     }
 
     function isAdmin() {
+      // For development: any logged-in user can manage content
       return isSignedIn(); 
     }
 
@@ -33,7 +34,7 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
 
-    match /blogPosts/{blogPostSlug} {
+    match /blogPosts/{blogPostId} {
       allow read: if true;
       allow write: if isAdmin();
     }

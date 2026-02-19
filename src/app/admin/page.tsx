@@ -9,13 +9,14 @@ import {
   Database,
   RefreshCw,
   Globe,
-  Eye
+  Eye,
+  Sparkles
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useFirestore, useUser, useCollection, useMemoFirebase } from '@/firebase';
-import { doc, setDoc, collection } from 'firebase/firestore';
+import { doc, setDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
 
 export default function AdminDashboard() {
@@ -47,6 +48,7 @@ export default function AdminDashboard() {
     if (!firestore || !user) return;
     setLoading(true);
     try {
+      // 1. SEED PACKAGE
       const pkgId = '15-day-safari-zanzibar';
       await setDoc(doc(firestore, 'packages', pkgId), {
         id: pkgId,
@@ -88,7 +90,40 @@ export default function AdminDashboard() {
         updatedAt: new Date().toISOString()
       }, { merge: true });
 
-      toast({ title: "Database Synchronized", description: "15-day Traumabenteuer has been updated." });
+      // 2. SEED BLOG POST
+      const blogId = 'packing-guide-savannah-to-shore';
+      await setDoc(doc(firestore, 'blogPosts', blogId), {
+        id: blogId,
+        slug: blogId,
+        title: 'The Ultimate Packing Guide: From Savannah to Shore',
+        excerpt: 'Packing for a 15-day journey through the rugged Serengeti and the humid beaches of Zanzibar requires precision. Here is our expert checklist.',
+        category: 'Planning',
+        status: 'PUBLISHED',
+        authorName: 'Sophie Williams',
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        coverImage: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=1200',
+        contentMarkdown: `Packing for Tanzania is about balancing utility with comfort. You'll be traversing dust-blown plains in the morning and dining by the ocean at night. 
+
+### The Safari Essentials
+Lightweight, breathable fabrics in neutral tones (khaki, beige, olive) are your best friends. Avoid bright colors that attract tsetse flies.
+- **Binoculars**: Don't rely on your guide's pair. Having your own makes every lion sighting personal.
+- **Layers**: Savannah mornings are cold. Bring a high-quality fleece or windbreaker.
+- **Sun Protection**: The equatorial sun is relentless. A wide-brimmed hat and SPF 50+ are mandatory.
+
+### Transitioning to Zanzibar
+When you fly from Arusha to Stone Town, the climate shifts from dry heat to tropical humidity. 
+- **Linen Apparel**: Perfect for the island breeze.
+- **Modest Wear**: Stone Town is culturally conservative. Ensure shoulders and knees are covered for city tours.
+- **Water Shoes**: Essential for exploring the coral reefs of Paje.
+
+### Technology & Gear
+- **Power Banks**: Many camps run on solar.
+- **Extra Memory Cards**: You will take more photos than you think.
+- **Universal Adapter**: Type G (UK style) is standard in Tanzania.`
+      }, { merge: true });
+
+      toast({ title: "CMS Registry Updated", description: "Package and flagship blog post have been seeded." });
     } catch (error: any) {
       toast({ variant: "destructive", title: "Setup Failed", description: error.message });
     } finally {
@@ -110,8 +145,8 @@ export default function AdminDashboard() {
             variant="secondary" 
             className="gap-2 rounded-2xl h-12 px-6"
           >
-            {loading ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Database className="w-4 h-4" />}
-            Sync Package Database
+            {loading ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Sparkles className="w-4 h-4" />}
+            Initialize CMS Data
           </Button>
           <Button asChild variant="outline" className="gap-2 rounded-2xl h-12 px-6">
             <Link href="/" target="_blank">
