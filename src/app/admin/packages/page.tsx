@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from 'react';
@@ -18,19 +19,24 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
+import { useCollection, useFirestore, useMemoFirebase, useUser, useDoc } from '@/firebase';
 import { collection, query, orderBy, deleteDoc, doc } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
 
 export default function PackagesManagement() {
+  const { user } = useUser();
   const firestore = useFirestore();
   const { toast } = useToast();
+
+  // Guard: Only fetch if authenticated and admin role is confirmed
+  const adminDocRef = useMemoFirebase(() => (firestore && user ? doc(firestore, 'roles_admin', user.uid) : null), [firestore, user]);
+  const { data: adminRole } = useDoc(adminDocRef);
   
   const packagesQuery = useMemoFirebase(() => {
-    if (!firestore) return null;
+    if (!firestore || !adminRole) return null;
     return query(collection(firestore, 'packages'), orderBy('createdAt', 'desc'));
-  }, [firestore]);
+  }, [firestore, adminRole]);
 
   const { data: packages, isLoading } = useCollection(packagesQuery);
 
@@ -67,6 +73,8 @@ export default function PackagesManagement() {
       <div className="grid grid-cols-1 gap-4">
         {isLoading ? (
           <div className="py-20 text-center text-muted-foreground animate-pulse font-bold text-xs tracking-widest uppercase">Fetching expeditions...</div>
+        ) : !adminRole ? (
+          <div className="py-20 text-center text-muted-foreground">Verifying admin access...</div>
         ) : packages?.length === 0 ? (
           <Card className="p-24 text-center border-dashed border-2 bg-muted/20 rounded-[3rem]">
             <Package className="w-16 h-16 mx-auto mb-6 opacity-10" />

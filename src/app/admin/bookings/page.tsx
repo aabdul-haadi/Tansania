@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -24,10 +25,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
-import { collection, query, orderBy } from 'firebase/firestore';
+import { useCollection, useFirestore, useMemoFirebase, useUser, useDoc } from '@/firebase';
+import { collection, query, orderBy, doc } from 'firebase/firestore';
 
 export default function BookingsManagement() {
+  const { user } = useUser();
   const firestore = useFirestore();
   const [isMounted, setIsMounted] = useState(false);
 
@@ -35,10 +37,14 @@ export default function BookingsManagement() {
     setIsMounted(true);
   }, []);
 
+  // Guard: Only fetch if authenticated and admin role is confirmed
+  const adminDocRef = useMemoFirebase(() => (firestore && user ? doc(firestore, 'roles_admin', user.uid) : null), [firestore, user]);
+  const { data: adminRole } = useDoc(adminDocRef);
+
   const bookingsQuery = useMemoFirebase(() => {
-    if (!firestore) return null;
+    if (!firestore || !adminRole) return null;
     return query(collection(firestore, 'bookings'), orderBy('createdAt', 'desc'));
-  }, [firestore]);
+  }, [firestore, adminRole]);
 
   const { data: bookings, isLoading } = useCollection(bookingsQuery);
 
@@ -88,6 +94,10 @@ export default function BookingsManagement() {
               {isLoading ? (
                 <TableRow>
                   <TableCell colSpan={6} className="py-20 text-center text-muted-foreground animate-pulse font-bold text-xs uppercase tracking-widest">Synchronizing records...</TableCell>
+                </TableRow>
+              ) : !adminRole ? (
+                <TableRow>
+                  <TableCell colSpan={6} className="py-20 text-center text-muted-foreground">Verifying admin access...</TableCell>
                 </TableRow>
               ) : bookings?.length === 0 ? (
                 <TableRow>

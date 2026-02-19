@@ -36,15 +36,19 @@ export default function PagesRegistry() {
     setIsMounted(true);
   }, []);
 
+  // Guard: Only fetch if authenticated and admin role is confirmed
+  const adminDocRef = useMemoFirebase(() => (firestore && user ? doc(firestore, 'roles_admin', user.uid) : null), [firestore, user]);
+  const { data: adminRole } = useDoc(adminDocRef);
+
   // Registry logic: Show all pages that have been "registered" by an EditableContent component
   const pagesQuery = useMemoFirebase(() => {
-    if (!firestore) return null;
+    if (!firestore || !adminRole) return null;
     return query(
       collection(firestore, 'pages'), 
       where('isRegistered', '==', true),
       orderBy('updatedAt', 'desc')
     );
-  }, [firestore]);
+  }, [firestore, adminRole]);
 
   const { data: pages, isLoading } = useCollection(pagesQuery);
 
@@ -70,6 +74,8 @@ export default function PagesRegistry() {
       <div className="grid grid-cols-1 gap-3">
         {isLoading ? (
           <div className="py-20 text-center text-muted-foreground animate-pulse font-bold text-xs uppercase tracking-widest">Scanning codebase for editable regions...</div>
+        ) : !adminRole ? (
+          <div className="py-20 text-center text-muted-foreground">Verifying admin access...</div>
         ) : pages?.length === 0 ? (
           <Card className="p-24 text-center border-dashed border-2 bg-muted/20 rounded-[3rem]">
             <Layout className="w-16 h-16 mx-auto mb-6 opacity-10" />
