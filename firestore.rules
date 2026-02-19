@@ -7,7 +7,7 @@ service cloud.firestore {
      * FIREBASE SECURITY RULES
      * 
      * Refined for high-availability content management.
-     * Allows public 'get' on missing documents to prevent bootstrap errors.
+     * Includes email-based super-admin fallback to prevent race conditions during initialization.
      */
 
     // --- GLOBAL HELPER FUNCTIONS ---
@@ -16,8 +16,12 @@ service cloud.firestore {
       return request.auth != null;
     }
 
+    function isSuperAdmin() {
+      return isSignedIn() && request.auth.token.email == 'admin@serengetidreams.com';
+    }
+
     function isAdmin() {
-      return isSignedIn() && exists(/databases/$(database)/documents/roles_admin/$(request.auth.uid));
+      return isSuperAdmin() || (isSignedIn() && exists(/databases/$(database)/documents/roles_admin/$(request.auth.uid)));
     }
 
     function isOwner(userId) {
@@ -25,8 +29,6 @@ service cloud.firestore {
     }
 
     function isPublished(data) {
-      // Allow get if document is null (missing) or published.
-      // listing requires data.status == 'PUBLISHED'
       return data == null || data.status == 'PUBLISHED';
     }
 

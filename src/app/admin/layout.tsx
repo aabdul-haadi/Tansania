@@ -42,8 +42,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     if (!isUserLoading && !isAdminRoleLoading) {
       if (user && adminRole) {
         setIsAuthorized(true);
-      } else if (user && !adminRole && pathname === '/admin') {
-        // Special case: Let the dashboard handle "first initialization"
+      } else if (user && user.email === 'admin@serengetidreams.com') {
+        // Special case: Primary admin is always authorized even if doc is being created
         setIsAuthorized(true);
       } else {
         setIsAuthorized(false);
@@ -72,7 +72,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     }
   };
 
-  if (isUserLoading || isAdminRoleLoading) {
+  // STRICT GUARD: Don't render layout or children until auth is confirmed
+  if (isUserLoading || isAdminRoleLoading || isAuthorized === null) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-muted/10 gap-4">
         <Loader2 className="w-10 h-10 text-primary animate-spin" />

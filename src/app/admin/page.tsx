@@ -34,13 +34,15 @@ export default function AdminDashboard() {
 
   // Check if current user has admin role in database
   const adminDocRef = useMemoFirebase(() => (firestore && user ? doc(firestore, 'roles_admin', user.uid) : null), [firestore, user]);
-  const { data: adminRole } = useDoc(adminDocRef);
+  const { data: adminRole, isLoading: isAdminRoleLoading } = useDoc(adminDocRef);
 
-  // Only run admin-level queries if the admin role exists
-  const pagesQuery = useMemoFirebase(() => (firestore && adminRole) ? collection(firestore, 'pages') : null, [firestore, adminRole]);
-  const blogsQuery = useMemoFirebase(() => (firestore && adminRole) ? collection(firestore, 'blogPosts') : null, [firestore, adminRole]);
-  const bookingsQuery = useMemoFirebase(() => (firestore && adminRole) ? collection(firestore, 'bookings') : null, [firestore, adminRole]);
-  const inquiriesQuery = useMemoFirebase(() => (firestore && adminRole) ? collection(firestore, 'inquiries') : null, [firestore, adminRole]);
+  // We allow fetching if the role doc exists OR if it's the default admin email (to handle first boot)
+  const canFetch = !!firestore && (!!adminRole || (user?.email === 'admin@serengetidreams.com' && !isAdminRoleLoading));
+
+  const pagesQuery = useMemoFirebase(() => canFetch ? collection(firestore!, 'pages') : null, [canFetch, firestore]);
+  const blogsQuery = useMemoFirebase(() => canFetch ? collection(firestore!, 'blogPosts') : null, [canFetch, firestore]);
+  const bookingsQuery = useMemoFirebase(() => canFetch ? collection(firestore!, 'bookings') : null, [canFetch, firestore]);
+  const inquiriesQuery = useMemoFirebase(() => canFetch ? collection(firestore!, 'inquiries') : null, [canFetch, firestore]);
 
   const { data: pages } = useCollection(pagesQuery);
   const { data: blogs } = useCollection(blogsQuery);
@@ -48,9 +50,9 @@ export default function AdminDashboard() {
   const { data: inquiries } = useCollection(inquiriesQuery);
 
   const recentBlogsQuery = useMemoFirebase(() => {
-    if (!firestore || !adminRole) return null;
-    return query(collection(firestore, 'blogPosts'), orderBy('createdAt', 'desc'), limit(5));
-  }, [firestore, adminRole]);
+    if (!canFetch) return null;
+    return query(collection(firestore!, 'blogPosts'), orderBy('createdAt', 'desc'), limit(5));
+  }, [canFetch, firestore]);
   const { data: recentBlogs } = useCollection(recentBlogsQuery);
 
   const stats = [
@@ -211,7 +213,7 @@ export default function AdminDashboard() {
         </div>
       </div>
 
-      {!adminRole && (
+      {!adminRole && user?.email !== 'admin@serengetidreams.com' && (
         <Card className="bg-primary/5 border-primary/20 rounded-[2rem] p-8 text-center border-2 border-dashed">
           <ShieldCheck className="w-12 h-12 text-primary mx-auto mb-4" />
           <h2 className="text-xl font-bold mb-2">Pending Initialization</h2>
@@ -229,7 +231,7 @@ export default function AdminDashboard() {
               <stat.icon className="w-4 h-4 text-primary" />
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold">{adminRole ? stat.value : '--'}</div>
+              <div className="text-3xl font-bold">{canFetch ? stat.value : '--'}</div>
               <p className="text-xs text-muted-foreground mt-2 flex items-center gap-1 font-bold">
                 {stat.trend}
               </p>
@@ -246,8 +248,8 @@ export default function AdminDashboard() {
           </CardHeader>
           <CardContent className="p-8">
             <div className="space-y-4">
-              {!adminRole ? (
-                <div className="py-10 text-center text-muted-foreground">Admin session not initialized.</div>
+              {!canFetch ? (
+                <div className="py-10 text-center text-muted-foreground">Admin session synchronizing...</div>
               ) : recentBlogs?.length === 0 ? (
                 <div className="py-10 text-center text-muted-foreground">No recent activity detected.</div>
               ) : (
@@ -291,8 +293,8 @@ export default function AdminDashboard() {
               <div className="space-y-3">
                 <div className="flex justify-between items-center text-xs">
                   <span className="text-muted-foreground">Database Connectivity</span>
-                  <Badge className={`border-none ${adminRole ? 'bg-green-500/10 text-green-600' : 'bg-yellow-500/10 text-yellow-600'}`}>
-                    {adminRole ? 'Stable' : 'Awaiting Auth'}
+                  <Badge className={`border-none ${canFetch ? 'bg-green-500/10 text-green-600' : 'bg-yellow-500/10 text-yellow-600'}`}>
+                    {canFetch ? 'Stable' : 'Connecting'}
                   </Badge>
                 </div>
                 <div className="flex justify-between items-center text-xs">
