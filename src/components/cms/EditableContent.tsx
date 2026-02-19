@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { useDoc, useFirestore, useMemoFirebase, setDocumentNonBlocking } from '@/firebase';
+import { useDoc, useFirestore, useMemoFirebase, setDocumentNonBlocking, useUser } from '@/firebase';
 import { doc, serverTimestamp } from 'firebase/firestore';
 import { Skeleton } from '@/components/ui/skeleton';
 
@@ -26,18 +26,23 @@ export function EditableContent({
   children 
 }: EditableContentProps) {
   const firestore = useFirestore();
+  const { user } = useUser();
   const [mounted, setMounted] = useState(false);
+
+  // Check if current user is an admin to allow registration
+  const adminDocRef = useMemoFirebase(() => (firestore && user ? doc(firestore, 'roles_admin', user.uid) : null), [firestore, user]);
+  const { data: adminRole } = useDoc(adminDocRef);
 
   // Reference to the page document
   const docRef = useMemoFirebase(() => (firestore ? doc(firestore, 'pages', pageKey) : null), [firestore, pageKey]);
-  const { data: pageData, isLoading } = useDoc(docRef);
+  const { data: pageData, isLoading: isPageLoading } = useDoc(docRef);
 
   useEffect(() => {
     setMounted(true);
     
     // Auto-registration logic: 
-    // If the component is in the code, ensure the page exists in the registry
-    if (firestore && docRef && !isLoading && !pageData) {
+    // ONLY attempt registration if we are an authenticated admin and the page doesn't exist yet
+    if (firestore && docRef && !isPageLoading && !pageData && adminRole) {
       setDocumentNonBlocking(docRef, {
         id: pageKey,
         key: pageKey,
@@ -54,7 +59,7 @@ export function EditableContent({
         isRegistered: true // Master toggle for admin visibility
       }, { merge: true });
     }
-  }, [firestore, docRef, isLoading, pageData, pageKey, sectionId, type, defaultContent]);
+  }, [firestore, docRef, isPageLoading, pageData, pageKey, sectionId, type, defaultContent, adminRole]);
 
   // If page data exists, try to get the specific section content
   const sectionData = pageData?.sections?.[sectionId]?.data;
@@ -62,7 +67,7 @@ export function EditableContent({
   // Hydration safety: Return children initially to avoid mismatch
   if (!mounted) return <>{children}</>;
 
-  if (isLoading) return <Skeleton className="w-full h-20 rounded-xl" />;
+  if (isPageLoading && !pageData) return <Skeleton className="w-full h-20 rounded-xl" />;
 
   // Render logic based on type and database presence
   if (sectionData) {

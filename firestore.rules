@@ -1,3 +1,4 @@
+
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
@@ -24,7 +25,9 @@ service cloud.firestore {
     }
 
     function isPublished(data) {
-      return data == null || data.status == 'PUBLISHED' || data.isPublished == true;
+      // Allow get if document is null (missing) or published.
+      // listing requires data.status == 'PUBLISHED'
+      return data == null || data.status == 'PUBLISHED';
     }
 
     function isExistingOwner(userId) {
@@ -49,27 +52,26 @@ service cloud.firestore {
     }
 
     match /pages/{pageKey} {
-      // Allow get if document is missing (null) or published
-      allow get: if isAdmin() || resource == null || isPublished(resource.data);
-      allow list: if isAdmin() || isPublished(resource.data);
+      allow get: if isAdmin() || isPublished(resource.data);
+      allow list: if isAdmin() || (resource != null && resource.data.status == 'PUBLISHED');
       allow create, update, delete: if isAdmin();
     }
 
     match /blogPosts/{blogPostSlug} {
-      allow get: if isAdmin() || resource == null || isPublished(resource.data);
-      allow list: if isAdmin() || isPublished(resource.data);
+      allow get: if isAdmin() || isPublished(resource.data);
+      allow list: if isAdmin() || (resource != null && resource.data.status == 'PUBLISHED');
       allow create, update, delete: if isAdmin();
     }
 
     match /destinations/{destinationId} {
-      allow get: if isAdmin() || resource == null || isPublished(resource.data);
-      allow list: if isAdmin() || isPublished(resource.data);
+      allow get: if isAdmin() || resource == null || resource.data.isPublished == true;
+      allow list: if isAdmin() || (resource != null && resource.data.isPublished == true);
       allow create, update, delete: if isAdmin();
     }
 
     match /packages/{packageId} {
-      allow get: if isAdmin() || resource == null || isPublished(resource.data);
-      allow list: if isAdmin() || isPublished(resource.data);
+      allow get: if isAdmin() || resource == null || resource.data.isPublished == true;
+      allow list: if isAdmin() || (resource != null && resource.data.isPublished == true);
       allow create, update, delete: if isAdmin();
     }
 
@@ -88,7 +90,7 @@ service cloud.firestore {
     }
 
     match /reviews/{reviewId} {
-      allow get, list: if isPublished(resource.data) || isAdmin();
+      allow get, list: if (resource != null && resource.data.isPublished == true) || isAdmin();
       allow create: if isSignedIn();
       allow update, delete: if isAdmin();
     }
