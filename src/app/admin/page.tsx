@@ -104,51 +104,80 @@ export default function AdminDashboard() {
         }, { merge: true });
       }
 
-      // 3. Seed Blog
-      const blogId = 'welcoming-the-migration';
-      await setDoc(doc(firestore, 'blogPosts', blogId), {
-        id: blogId,
-        title: 'Welcoming the Great Migration 2025',
-        slug: 'welcoming-migration-2025',
-        excerpt: 'Everything you need to know about the upcoming season.',
-        contentMarkdown: '# The Journey Begins\n\nThe Great Migration is one of nature\'s most spectacular events...',
-        category: 'Guides',
-        authorName: 'Admin Team',
-        status: 'PUBLISHED',
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-        coverImage: 'https://picsum.photos/seed/migration-blog/1200/800'
-      }, { merge: true });
+      // 3. Seed Blog Posts (5 Samples)
+      const sampleBlogs = [
+        {
+          id: 'the-great-migration-2025',
+          title: 'The Great Migration: A Month-by-Month Guide',
+          slug: 'great-migration-guide',
+          excerpt: 'Witness millions of animals crossing the Serengeti. Our guide breaks down the best times and locations for the spectacular river crossings.',
+          contentMarkdown: '## The Cycle of Life in the Serengeti\n\nThe Great Migration is not a single event but a continuous journey of nearly two million wildebeest, zebras, and gazelles across the Serengeti-Mara ecosystem. \n\n### January – March: The Calving Season\nIn the Southern Serengeti, hundreds of thousands of calves are born within a few weeks. This is a time of abundance but also high predator activity.\n\n### July – October: The River Crossings\nThis is the most dramatic phase. The herds cross the Mara River, facing crocodiles and steep banks. July is peak season for this spectacle.',
+          category: 'Guides',
+          authorName: 'Sophie',
+          status: 'PUBLISHED',
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+          coverImage: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200'
+        },
+        {
+          id: 'safari-packing-list',
+          title: 'Essential Safari Packing List: What to Bring',
+          slug: 'safari-packing-list',
+          excerpt: 'Packing for a Tanzanian safari requires careful planning. From dust-proof gear to the perfect binoculars, here is what you need.',
+          contentMarkdown: '## Don\'t Forget the Basics\n\n1. **Neutral Colors**: Tan, khaki, and olive help you blend into the background and don\'t attract tsetse flies.\n2. **Binoculars**: A high-quality pair makes a massive difference in spotting leopards hiding in acacia trees.\n3. **Layers**: Mornings are freezing, afternoons are hot.',
+          category: 'Tips',
+          authorName: 'Anna',
+          status: 'PUBLISHED',
+          createdAt: new Date(Date.now() - 86400000).toISOString(),
+          updatedAt: new Date(Date.now() - 86400000).toISOString(),
+          coverImage: 'https://images.unsplash.com/photo-1533055640609-24b498dfd74c?q=80&w=1200'
+        },
+        {
+          id: 'zanzibar-secrets',
+          title: "Zanzibar's Best Kept Secrets: Beyond the Beach",
+          slug: 'zanzibar-secrets',
+          excerpt: "Stone Town is more than just a gateway. Discover the hidden spice markets and the Jozani forest's unique Red Colobus monkeys.",
+          contentMarkdown: '## Stone Town after Dark\n\nThe Forodhani Gardens night market is a must-visit for local seafood. But have you explored the winding alleys of the old city at 6 AM when the bread ovens start?',
+          category: 'Culture',
+          authorName: 'Maria',
+          status: 'PUBLISHED',
+          createdAt: new Date(Date.now() - 172800000).toISOString(),
+          updatedAt: new Date(Date.now() - 172800000).toISOString(),
+          coverImage: 'https://images.unsplash.com/photo-1590001158193-79013ac7fa77?q=80&w=1200'
+        },
+        {
+          id: 'kili-routes-comparison',
+          title: 'Climbing Kilimanjaro: Machame vs Lemosho',
+          slug: 'kili-routes-guide',
+          excerpt: 'Choosing your route is the most important decision for a successful climb. We compare scenery, difficulty, and success rates.',
+          contentMarkdown: '## Machame: The Whiskey Route\nPopular, scenic, and well-organized. Good for acclimatization due to the "climb high, sleep low" profile.\n\n## Lemosho: The Premium Path\nQuieter, longer, and with the highest success rate. Ideal for those who want a more private mountain experience.',
+          category: 'Planning',
+          authorName: 'Sophie',
+          status: 'PUBLISHED',
+          createdAt: new Date(Date.now() - 259200000).toISOString(),
+          updatedAt: new Date(Date.now() - 259200000).toISOString(),
+          coverImage: 'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1200'
+        },
+        {
+          id: 'sustainable-tourism-tanzania',
+          title: 'Sustainable Tourism: Travel with a Purpose',
+          slug: 'sustainable-tourism',
+          excerpt: 'How your safari supports local communities and conservation projects in Tanzania’s most vulnerable ecosystems.',
+          contentMarkdown: '## More than just a vacation\n\nBy choosing local guides and eco-lodges, you contribute directly to the salaries of over 500 families in the Arusha and Serengeti regions.',
+          category: 'Tips',
+          authorName: 'Anna',
+          status: 'PUBLISHED',
+          createdAt: new Date(Date.now() - 345600000).toISOString(),
+          updatedAt: new Date(Date.now() - 345600000).toISOString(),
+          coverImage: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=1200'
+        }
+      ];
 
-      // 4. Seed Mock Lead Inquiries for "Real Numbers"
-      const mockInquiryId = 'sample-lead-1';
-      await setDoc(doc(firestore, 'inquiries', mockInquiryId), {
-        id: mockInquiryId,
-        name: 'Sarah Thompson',
-        email: 'sarah.t@example.com',
-        type: 'TRIP_PLANNER',
-        status: 'new',
-        message: 'Looking for a 10-day honeymoon package including Serengeti and Zanzibar.',
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString()
-      }, { merge: true });
+      for (const b of sampleBlogs) {
+        await setDoc(doc(firestore, 'blogPosts', b.id), b, { merge: true });
+      }
 
-      // 5. Seed Mock Bookings for "Real Numbers"
-      const mockBookingId = 'sample-booking-1';
-      await setDoc(doc(firestore, 'bookings', mockBookingId), {
-        id: mockBookingId,
-        userId: user.uid,
-        packageId: 'great-migration-luxury',
-        departureDate: '2025-07-15',
-        travelers: 2,
-        totalPrice: 12500,
-        status: 'CONFIRMED',
-        paymentStatus: 'PAID',
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString()
-      }, { merge: true });
-
-      toast({ title: "Environment Ready", description: "Admin access granted and knowledge graph initialized." });
+      toast({ title: "Journal Initialized", description: "Admin access granted and 5 sample articles have been published." });
     } catch (error: any) {
       console.error(error);
       toast({ variant: "destructive", title: "Setup Failed", description: error.message });
