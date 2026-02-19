@@ -67,7 +67,7 @@ export default function LoginPage() {
             <CardDescription>Use your assigned credentials to manage Serengeti Dreams.</CardDescription>
           </CardHeader>
           <CardContent className="p-8">
-            <form onSubmit={handleLogin} className="space-y-6">
+            <form onSubmit={handleLogin} className="space-y-6" suppressHydrationWarning>
               <div className="space-y-2">
                 <Label htmlFor="username">Username</Label>
                 <div className="relative">
@@ -104,7 +104,8 @@ export default function LoginPage() {
               <Button 
                 type="submit" 
                 disabled={loading} 
-                className="w-full h-12 rounded-xl text-base font-bold gap-2 shadow-lg shadow-primary/10"
+                className="w-full h-12 rounded-xl text-base font-bold gap-2 shadow-lg shadow-primary/20"
+                suppressHydrationWarning
               >
                 {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <>Login to Dashboard <ArrowRight className="w-4 h-4" /></>}
               </Button>
