@@ -43,7 +43,7 @@ export function ImmersiveReveal() {
   }, [api]);
 
   return (
-    <section className="relative h-screen w-full bg-black overflow-hidden group">
+    <section className="relative h-[60vh] md:h-screen w-full bg-black overflow-hidden group">
       {/* Background Images Layer */}
       <div className="absolute inset-0 pointer-events-none">
         <AnimatePresence mode="popLayout">
@@ -88,15 +88,15 @@ export function ImmersiveReveal() {
                   transition={{ duration: 0.8, delay: 0.5 }}
                   className="text-center"
                 >
-                  <h2 className="font-headline text-4xl md:text-7xl lg:text-8xl font-bold text-white max-w-5xl mx-auto leading-tight">
+                  <h2 className="font-headline text-3xl md:text-7xl lg:text-8xl font-bold text-white max-w-5xl mx-auto leading-tight px-4">
                     {scene.title}
                   </h2>
-                  <div className="mt-8 flex justify-center">
+                  <div className="mt-4 md:mt-8 flex justify-center">
                     <motion.div 
                       initial={{ scaleX: 0 }}
                       animate={activeIndex === idx ? { scaleX: 1 } : { scaleX: 0 }}
                       transition={{ duration: 1, delay: 0.8 }}
-                      className="w-24 h-1 bg-primary rounded-full origin-center" 
+                      className="w-16 md:w-24 h-1 bg-primary rounded-full origin-center" 
                     />
                   </div>
                 </motion.div>
@@ -106,20 +106,20 @@ export function ImmersiveReveal() {
         </CarouselContent>
 
         {/* Custom Navigation Overlay */}
-        <div className="absolute inset-x-0 bottom-12 flex justify-center items-center gap-8 z-30">
-          <CarouselPrevious className="static translate-y-0 bg-white/10 border-white/20 text-white hover:bg-white/20 h-14 w-14 rounded-full" />
+        <div className="absolute inset-x-0 bottom-8 md:bottom-12 flex justify-center items-center gap-4 md:gap-8 z-30">
+          <CarouselPrevious className="static translate-y-0 bg-white/10 border-white/20 text-white hover:bg-white/20 h-10 w-10 md:h-14 md:w-14 rounded-full" />
           <div className="flex gap-2">
             {scenes.map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => api?.scrollTo(idx)}
-                className={`w-2 h-2 rounded-full transition-all duration-500 ${
-                  activeIndex === idx ? "bg-primary w-8" : "bg-white/30"
+                className={`w-1.5 h-1.5 rounded-full transition-all duration-500 ${
+                  activeIndex === idx ? "bg-primary w-6 md:w-8" : "bg-white/30"
                 }`}
               />
             ))}
           </div>
-          <CarouselNext className="static translate-y-0 bg-white/10 border-white/20 text-white hover:bg-white/20 h-14 w-14 rounded-full" />
+          <CarouselNext className="static translate-y-0 bg-white/10 border-white/20 text-white hover:bg-white/20 h-10 w-10 md:h-14 md:w-14 rounded-full" />
         </div>
       </Carousel>
     </section>

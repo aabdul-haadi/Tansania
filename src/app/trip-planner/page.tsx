@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from 'react';
@@ -15,16 +14,20 @@ import {
   Send, 
   ArrowRight, 
   ArrowLeft,
-  CheckCircle2
+  CheckCircle2,
+  Leaf,
+  Sparkles,
+  Mountain,
+  Palmtree
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Checkbox } from '@/components/ui/checkbox';
 import { Card, CardContent } from '@/components/ui/card';
 import { submitInquiry } from '@/lib/actions/bookings';
 import { useToast } from '@/hooks/use-toast';
+import { cn } from '@/lib/utils';
 
 const formSchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -38,6 +41,19 @@ const formSchema = z.object({
 });
 
 type FormData = z.infer<typeof formSchema>;
+
+const destinationOptions = [
+  { id: 'Serengeti', name: 'Serengeti Plains', icon: Leaf, desc: 'Great Migration wildlife' },
+  { id: 'Zanzibar', name: 'Zanzibar Shores', icon: Palmtree, desc: 'White sands & spice islands' },
+  { id: 'Ngorongoro', name: 'Ngorongoro Crater', icon: Sparkles, desc: 'Natural volcanic amphitheater' },
+  { id: 'Kilimanjaro', name: 'Mount Kilimanjaro', icon: Mountain, desc: 'The Roof of Africa' },
+];
+
+const budgetOptions = [
+  { id: 'budget', name: 'Value / Comfort', desc: 'Standard lodges, high-end experience' },
+  { id: 'mid-range', name: 'Premium / Mid-Range', desc: 'Luxury tented camps & superior stays' },
+  { id: 'luxury', name: 'Bespoke / Ultra-Luxury', desc: 'Private estates & world-class exclusive lodging' },
+];
 
 export default function TripPlanner() {
   const [step, setStep] = useState(1);
@@ -60,7 +76,8 @@ export default function TripPlanner() {
     }
   });
 
-  const destinations = watch('destinations');
+  const selectedDestinations = watch('destinations');
+  const selectedBudget = watch('budget');
 
   const onSubmit = async (data: FormData) => {
     try {
@@ -92,29 +109,28 @@ export default function TripPlanner() {
   const prevStep = () => setStep(s => s - 1);
 
   const toggleDestination = (id: string) => {
-    const current = destinations;
-    const next = current.includes(id) 
-      ? current.filter(d => d !== id) 
-      : [...current, id];
+    const next = selectedDestinations.includes(id) 
+      ? selectedDestinations.filter(d => d !== id) 
+      : [...selectedDestinations, id];
     setValue('destinations', next, { shouldValidate: true });
   };
 
   if (submitted) {
     return (
-      <div className="min-h-screen flex items-center justify-center pt-20 pb-20 luxury-gradient">
+      <div className="min-h-screen flex items-center justify-center pt-20 pb-20 luxury-gradient px-4">
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }} 
           animate={{ opacity: 1, scale: 1 }}
-          className="text-center p-12 bg-white rounded-3xl shadow-2xl max-w-xl mx-4"
+          className="text-center p-12 bg-white rounded-3xl shadow-2xl max-w-xl w-full"
         >
           <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-8">
             <CheckCircle2 className="w-12 h-12 text-green-600" />
           </div>
           <h2 className="font-headline text-3xl font-bold mb-4">Journey Requested!</h2>
           <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
-            Thank you for choosing Serengeti Dreams. Our Egypt-based Tanzania experts are reviewing your preferences and will craft a bespoke proposal for you soon.
+            Thank you for choosing Serengeti Dreams. Our experts are reviewing your preferences and will craft a bespoke proposal for you soon.
           </p>
-          <Button asChild className="rounded-full px-10 bg-secondary text-white">
+          <Button asChild className="rounded-full px-10 h-14 bg-secondary text-white">
             <a href="/">Back to Home</a>
           </Button>
         </motion.div>
@@ -126,29 +142,31 @@ export default function TripPlanner() {
     <div className="min-h-screen pt-32 pb-20 luxury-gradient">
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-12">
-          <h1 className="font-headline text-4xl md:text-5xl font-bold mb-4">Design Your Perfect Safari</h1>
-          <p className="text-muted-foreground text-lg">Tell us your dreams, and we'll handle the logistics from Cairo to Kilimanjaro.</p>
+          <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] mb-3 block">Configurator</span>
+          <h1 className="font-headline text-4xl md:text-6xl font-bold mb-4">Design Your <span className="text-primary italic">Expedition</span></h1>
+          <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto font-light">Tell us your dreams, and we'll handle the logistics from Cairo to the Savannah.</p>
         </div>
 
-        <div className="flex justify-center mb-12">
-          <div className="flex items-center gap-4">
+        <div className="flex justify-center mb-16">
+          <div className="flex items-center gap-2">
             {[1, 2, 3].map(i => (
-              <div key={i} className="flex items-center">
+              <React.Fragment key={i}>
                 <div className={cn(
-                  "w-10 h-10 rounded-full flex items-center justify-center font-bold transition-colors",
-                  step >= i ? "bg-secondary text-white shadow-lg" : "bg-muted text-muted-foreground"
+                  "w-10 h-10 rounded-full flex items-center justify-center font-bold transition-all text-xs border-2",
+                  step === i ? "bg-secondary text-white border-secondary scale-110 shadow-lg" : 
+                  step > i ? "bg-green-500 text-white border-green-500" : "bg-white text-muted-foreground border-border"
                 )}>
-                  {i}
+                  {step > i ? <CheckCircle2 className="w-5 h-5" /> : i}
                 </div>
-                {i < 3 && <div className={cn("w-12 h-1 bg-muted mx-2", step > i && "bg-secondary")} />}
-              </div>
+                {i < 3 && <div className={cn("w-12 h-0.5 transition-colors", step > i ? "bg-green-500" : "bg-border")} />}
+              </React.Fragment>
             ))}
           </div>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Card className="rounded-3xl border-none shadow-2xl overflow-hidden">
-            <CardContent className="p-8 md:p-12">
+          <Card className="rounded-[2.5rem] border-none shadow-2xl overflow-hidden bg-white/80 backdrop-blur-xl">
+            <CardContent className="p-8 md:p-16">
               <AnimatePresence mode="wait">
                 {step === 1 && (
                   <motion.div
@@ -156,36 +174,47 @@ export default function TripPlanner() {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -20 }}
-                    className="space-y-8"
+                    className="space-y-10"
                   >
-                    <div className="flex items-center gap-3 mb-6">
-                      <Compass className="w-6 h-6 text-secondary" />
-                      <h3 className="text-2xl font-bold">Where would you like to go?</h3>
+                    <div className="text-center md:text-left">
+                      <h3 className="text-2xl md:text-3xl font-bold mb-2">Where would you like to go?</h3>
+                      <p className="text-muted-foreground text-sm font-light">Select one or more regions for your handcrafted itinerary.</p>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {['Serengeti Plains', 'Zanzibar Archipelago', 'Ngorongoro Crater', 'Tarangire National Park'].map(dest => (
+                      {destinationOptions.map((dest) => (
                         <div 
-                          key={dest} 
-                          onClick={() => toggleDestination(dest)}
+                          key={dest.id} 
+                          onClick={() => toggleDestination(dest.id)}
                           className={cn(
-                            "p-6 rounded-2xl border-2 cursor-pointer transition-all flex items-center justify-between group",
-                            destinations.includes(dest) ? "border-secondary bg-secondary/5 shadow-md" : "border-muted hover:border-secondary/50"
+                            "p-6 rounded-2xl border-2 cursor-pointer transition-all flex items-start gap-4 group",
+                            selectedDestinations.includes(dest.id) ? "border-secondary bg-secondary/5 shadow-md scale-[1.02]" : "border-border hover:border-secondary/30 bg-white"
                           )}
                         >
-                          <span className="font-medium">{dest}</span>
                           <div className={cn(
-                            "w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors",
-                            destinations.includes(dest) ? "bg-secondary border-secondary text-white" : "border-muted"
+                            "w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors",
+                            selectedDestinations.includes(dest.id) ? "bg-secondary text-white" : "bg-muted text-muted-foreground"
                           )}>
-                            {destinations.includes(dest) && <CheckCircle2 className="w-4 h-4" />}
+                            <dest.icon className="w-5 h-5" />
+                          </div>
+                          <div>
+                            <span className="font-bold text-sm block mb-1">{dest.name}</span>
+                            <p className="text-[10px] text-muted-foreground uppercase tracking-widest">{dest.desc}</p>
+                          </div>
+                          <div className="ml-auto">
+                            <div className={cn(
+                              "w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all",
+                              selectedDestinations.includes(dest.id) ? "bg-secondary border-secondary text-white" : "border-border"
+                            )}>
+                              {selectedDestinations.includes(dest.id) && <CheckCircle2 className="w-3 h-3" />}
+                            </div>
                           </div>
                         </div>
                       ))}
                     </div>
-                    {errors.destinations && <p className="text-destructive text-sm mt-2">{errors.destinations.message}</p>}
-                    <div className="flex justify-end pt-8">
-                      <Button type="button" onClick={nextStep} disabled={destinations.length === 0} className="rounded-full px-8 bg-secondary">
-                        Next Step <ArrowRight className="w-4 h-4 ml-2" />
+                    {errors.destinations && <p className="text-destructive text-xs text-center mt-2">{errors.destinations.message}</p>}
+                    <div className="flex justify-center pt-8">
+                      <Button type="button" onClick={nextStep} disabled={selectedDestinations.length === 0} className="rounded-full px-12 h-14 text-base font-bold bg-secondary shadow-lg transition-transform hover:scale-105">
+                        Next: Logistics <ArrowRight className="w-4 h-4 ml-2" />
                       </Button>
                     </div>
                   </motion.div>
@@ -197,15 +226,48 @@ export default function TripPlanner() {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -20 }}
-                    className="space-y-8"
+                    className="space-y-10"
                   >
-                    <h3 className="text-2xl font-bold mb-6">Details & Logistics</h3>
+                    <div className="text-center md:text-left">
+                      <h3 className="text-2xl md:text-3xl font-bold mb-2">Vibe & Logistics</h3>
+                      <p className="text-muted-foreground text-sm font-light">Tailoring the comfort level and timing of your journey.</p>
+                    </div>
+                    
+                    <div className="space-y-6">
+                      <Label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Select Comfort Tier</Label>
+                      <div className="grid grid-cols-1 gap-3">
+                        {budgetOptions.map((opt) => (
+                          <div 
+                            key={opt.id}
+                            onClick={() => setValue('budget', opt.id)}
+                            className={cn(
+                              "p-5 rounded-2xl border-2 cursor-pointer transition-all flex items-center justify-between",
+                              selectedBudget === opt.id ? "border-secondary bg-secondary/5" : "border-border hover:border-secondary/20"
+                            )}
+                          >
+                            <div>
+                              <p className="font-bold text-sm">{opt.name}</p>
+                              <p className="text-xs text-muted-foreground font-light">{opt.desc}</p>
+                            </div>
+                            <div className={cn(
+                              "w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all",
+                              selectedBudget === opt.id ? "bg-secondary border-secondary text-white" : "border-border"
+                            )}>
+                              {selectedBudget === opt.id && <CheckCircle2 className="w-3 h-3" />}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       <div className="space-y-3">
-                        <Label className="flex items-center gap-2"><Users className="w-4 h-4" /> Number of Travelers</Label>
+                        <Label className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                          <Users className="w-3 h-3 text-primary" /> Travelers
+                        </Label>
                         <select 
                           {...register('travelers')} 
-                          className="w-full h-12 rounded-xl border border-input bg-background px-4 text-sm outline-none focus:ring-2 focus:ring-secondary transition-all"
+                          className="w-full h-12 rounded-xl border border-border bg-white px-4 text-sm outline-none focus:ring-2 focus:ring-secondary/20 transition-all font-medium"
                         >
                           <option value="1">Solo Traveler</option>
                           <option value="2">Couple / 2 People</option>
@@ -215,32 +277,23 @@ export default function TripPlanner() {
                       </div>
 
                       <div className="space-y-3">
-                        <Label className="flex items-center gap-2"><Wallet className="w-4 h-4" /> Comfort Tier / Budget</Label>
-                        <select 
-                          {...register('budget')} 
-                          className="w-full h-12 rounded-xl border border-input bg-background px-4 text-sm outline-none focus:ring-2 focus:ring-secondary transition-all"
-                        >
-                          <option value="budget">Value / Comfort</option>
-                          <option value="mid-range">Mid-Range Premium</option>
-                          <option value="luxury">Ultra Luxury / Bespoke</option>
-                        </select>
-                      </div>
-
-                      <div className="space-y-3 md:col-span-2">
-                        <Label className="flex items-center gap-2"><Calendar className="w-4 h-4" /> Estimated Dates or Month</Label>
+                        <Label className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                          <Calendar className="w-3 h-3 text-primary" /> Estimated Dates
+                        </Label>
                         <Input 
-                          placeholder="e.g., September 2024 or Dec 15th - Jan 5th" 
+                          placeholder="e.g., September 2025" 
                           {...register('dates')}
-                          className="h-12 rounded-xl"
+                          className="h-12 rounded-xl bg-white border-border"
                         />
                       </div>
                     </div>
+
                     <div className="flex justify-between pt-8">
-                      <Button type="button" variant="ghost" onClick={prevStep} className="rounded-full px-8">
+                      <Button type="button" variant="ghost" onClick={prevStep} className="rounded-full px-8 h-12 text-muted-foreground">
                         <ArrowLeft className="w-4 h-4 mr-2" /> Back
                       </Button>
-                      <Button type="button" onClick={nextStep} className="rounded-full px-8 bg-secondary">
-                        Next Step <ArrowRight className="w-4 h-4 ml-2" />
+                      <Button type="button" onClick={nextStep} className="rounded-full px-12 h-14 text-base font-bold bg-secondary shadow-lg">
+                        Final Step <ArrowRight className="w-4 h-4 ml-2" />
                       </Button>
                     </div>
                   </motion.div>
@@ -252,35 +305,40 @@ export default function TripPlanner() {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -20 }}
-                    className="space-y-8"
+                    className="space-y-10"
                   >
-                    <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
+                    <div className="text-center md:text-left">
+                      <h3 className="text-2xl md:text-3xl font-bold mb-2">Final Touches</h3>
+                      <p className="text-muted-foreground text-sm font-light">Where should we send your handcrafted proposal?</p>
+                    </div>
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-3">
-                        <Label>Your Full Name</Label>
-                        <Input placeholder="John Doe" {...register('name')} className="h-12 rounded-xl" />
-                        {errors.name && <p className="text-destructive text-sm">{errors.name.message}</p>}
+                        <Label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Full Name</Label>
+                        <Input placeholder="John Doe" {...register('name')} className="h-14 rounded-2xl bg-white border-border text-base" />
+                        {errors.name && <p className="text-destructive text-[10px] uppercase font-bold tracking-wider">{errors.name.message}</p>}
                       </div>
                       <div className="space-y-3">
-                        <Label>Email Address</Label>
-                        <Input placeholder="john@example.com" {...register('email')} className="h-12 rounded-xl" />
-                        {errors.email && <p className="text-destructive text-sm">{errors.email.message}</p>}
+                        <Label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Email Address</Label>
+                        <Input placeholder="john@example.com" {...register('email')} className="h-14 rounded-2xl bg-white border-border text-base" />
+                        {errors.email && <p className="text-destructive text-[10px] uppercase font-bold tracking-wider">{errors.email.message}</p>}
                       </div>
                       <div className="space-y-3 md:col-span-2">
-                        <Label>Any special requests or preferences?</Label>
+                        <Label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Special Requests</Label>
                         <Textarea 
-                          placeholder="Dietary requirements, physical limitations, specific animals you want to see..." 
-                          className="min-h-[120px] rounded-2xl p-4"
+                          placeholder="Dietary requirements, specific animals you want to see, or physical limitations..." 
+                          className="min-h-[120px] rounded-3xl p-6 bg-white border-border text-base"
                           {...register('message')}
                         />
                       </div>
                     </div>
+
                     <div className="flex justify-between pt-8">
-                      <Button type="button" variant="ghost" onClick={prevStep} className="rounded-full px-8">
+                      <Button type="button" variant="ghost" onClick={prevStep} className="rounded-full px-8 h-12 text-muted-foreground">
                         <ArrowLeft className="w-4 h-4 mr-2" /> Back
                       </Button>
-                      <Button type="submit" className="rounded-full px-12 bg-secondary h-14 text-lg">
-                        Submit Inquiry <Send className="w-4 h-4 ml-2" />
+                      <Button type="submit" className="rounded-full px-16 h-16 text-lg font-bold bg-secondary shadow-2xl transition-all hover:scale-105 active:scale-95 group">
+                        Begin My Journey <Send className="w-4 h-4 ml-3 group-hover:translate-x-1 transition-transform" />
                       </Button>
                     </div>
                   </motion.div>

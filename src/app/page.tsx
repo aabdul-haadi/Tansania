@@ -26,6 +26,8 @@ import { ZanzibarEscape } from '@/components/sections/ZanzibarEscape';
 import { SafariVideo } from '@/components/sections/SafariVideo';
 import { FAQ } from '@/components/sections/FAQ';
 import { OfferPopup } from '@/components/sections/OfferPopup';
+import { ExpertiseNarrative } from '@/components/sections/ExpertiseNarrative';
+import { MeetTheSpecialists } from '@/components/sections/MeetTheSpecialists';
 
 export default function Home() {
   const firestore = useFirestore();
@@ -185,6 +187,8 @@ export default function Home() {
         </div>
       </section>
 
+      <ExpertiseNarrative />
+
       <section className="py-20 relative overflow-hidden transition-colors duration-1000">
         <div className="absolute inset-0 z-0">
           <AnimatePresence mode="popLayout">
@@ -247,6 +251,7 @@ export default function Home() {
       <SafariVideo />
       <KilimanjaroSummit />
       <ZanzibarEscape />
+      <MeetTheSpecialists />
       <ImmersiveReveal />
       <Testimonials />
       <CinematicQuote />
