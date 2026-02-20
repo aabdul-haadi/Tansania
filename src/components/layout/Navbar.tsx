@@ -46,12 +46,12 @@ export function Navbar() {
       className={cn(
         'fixed top-0 w-full z-50 transition-all duration-500 ease-in-out',
         isScrolled
-          ? 'bg-background/80 backdrop-blur-xl shadow-lg py-3'
+          ? 'bg-background/90 backdrop-blur-xl shadow-lg py-3'
           : 'bg-transparent py-6'
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        {/* Logo - No extra text needed */}
+        {/* Logo - Automatically inverts on transparent background */}
         <Link href="/" className="relative z-50 transition-transform duration-500 hover:scale-105 active:scale-95">
           <Image 
             src="https://storage.googleapis.com/firejet-30da1.appspot.com/users/clvlyszhf0000la086mjha62f/projects/clvlyszhf0000la086mjha62f/1740484124411-logo.png"
@@ -69,7 +69,7 @@ export function Navbar() {
         {/* Action Bar */}
         <div className="flex items-center gap-4">
           <Link href="/trip-planner" className="hidden sm:block">
-            <Button className="rounded-full px-8 h-11">
+            <Button className="rounded-full px-8 h-11 text-[10px] tracking-[0.2em] font-bold">
               JETZT ANFRAGEN
             </Button>
           </Link>
@@ -105,7 +105,7 @@ export function Navbar() {
                 </div>
 
                 {/* Static Content Area */}
-                <div className="flex-grow p-8 md:p-12">
+                <div className="flex-grow p-8 md:p-12 overflow-y-auto">
                   <div className="space-y-12">
                     {/* Destinations Section */}
                     <section>
@@ -143,10 +143,10 @@ export function Navbar() {
                     {/* Services */}
                     <section className="border-t border-white/5 pt-12">
                       <div className="flex flex-wrap gap-4">
-                        <Link href="/services/agency-services" className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-xs font-bold uppercase tracking-widest hover:bg-primary hover:text-white transition-all">
+                        <Link href="/services/agency-services" className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-[10px] font-bold uppercase tracking-widest hover:bg-primary hover:text-white transition-all">
                           DIENSTLEISTUNGEN
                         </Link>
-                        <Link href="/safaris" className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-xs font-bold uppercase tracking-widest hover:bg-primary hover:text-white transition-all">
+                        <Link href="/safaris" className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-[10px] font-bold uppercase tracking-widest hover:bg-primary hover:text-white transition-all">
                           REISEN 2026
                         </Link>
                       </div>
