@@ -97,7 +97,7 @@ export function ZanzibarEscape() {
                       className={cn(
                         "whitespace-nowrap px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all border",
                         activeExp.id === exp.id 
-                          ? "bg-secondary text-white border-secondary shadow-lg scale-105" 
+                          ? "bg-primary text-white border-primary shadow-lg scale-105" 
                           : "bg-muted/30 text-muted-foreground border-transparent hover:border-muted-foreground/20"
                       )}
                     >
@@ -131,7 +131,7 @@ export function ZanzibarEscape() {
                 className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-4"
               >
                 <Link href="/safaris?category=zanzibar">
-                  <Button size="lg" className="rounded-full px-10 h-14 font-bold shadow-xl text-xs bg-secondary text-white hover:bg-secondary/90">
+                  <Button size="lg" className="rounded-full px-10 h-14 font-bold shadow-xl text-xs">
                     Explore Add-Ons
                   </Button>
                 </Link>

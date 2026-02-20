@@ -32,7 +32,7 @@ export default function AdventureAppPage() {
               ))}
             </div>
 
-            <Button className="rounded-full px-10 h-14 font-bold bg-secondary text-white">Download for iOS / Android</Button>
+            <Button className="rounded-full px-10 h-14 font-bold">Download for iOS / Android</Button>
           </div>
 
           <div className="w-full lg:w-1/2 flex justify-center">

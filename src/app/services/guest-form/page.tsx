@@ -68,7 +68,7 @@ export default function GuestFormPage() {
                 </div>
               </section>
 
-              <Button className="w-full h-14 rounded-2xl text-lg font-bold bg-secondary text-white shadow-lg">Submit Information</Button>
+              <Button className="w-full h-14 rounded-2xl text-lg font-bold shadow-lg">Submit Information</Button>
             </CardContent>
           </Card>
         </form>

@@ -130,7 +130,7 @@ export default function TripPlanner() {
           <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
             Thank you for choosing Serengeti Dreams. Our experts are reviewing your preferences and will craft a bespoke proposal for you soon.
           </p>
-          <Button asChild className="rounded-full px-10 h-14 bg-secondary text-white">
+          <Button asChild className="rounded-full px-10 h-14">
             <a href="/">Back to Home</a>
           </Button>
         </motion.div>
@@ -153,7 +153,7 @@ export default function TripPlanner() {
               <React.Fragment key={i}>
                 <div className={cn(
                   "w-10 h-10 rounded-full flex items-center justify-center font-bold transition-all text-xs border-2",
-                  step === i ? "bg-secondary text-white border-secondary scale-110 shadow-lg" : 
+                  step === i ? "bg-primary text-white border-primary scale-110 shadow-lg" : 
                   step > i ? "bg-green-500 text-white border-green-500" : "bg-white text-muted-foreground border-border"
                 )}>
                   {step > i ? <CheckCircle2 className="w-5 h-5" /> : i}
@@ -187,12 +187,12 @@ export default function TripPlanner() {
                           onClick={() => toggleDestination(dest.id)}
                           className={cn(
                             "p-6 rounded-2xl border-2 cursor-pointer transition-all flex items-start gap-4 group",
-                            selectedDestinations.includes(dest.id) ? "border-secondary bg-secondary/5 shadow-md scale-[1.02]" : "border-border hover:border-secondary/30 bg-white"
+                            selectedDestinations.includes(dest.id) ? "border-primary bg-primary/5 shadow-md scale-[1.02]" : "border-border hover:border-primary/30 bg-white"
                           )}
                         >
                           <div className={cn(
                             "w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors",
-                            selectedDestinations.includes(dest.id) ? "bg-secondary text-white" : "bg-muted text-muted-foreground"
+                            selectedDestinations.includes(dest.id) ? "bg-primary text-white" : "bg-muted text-muted-foreground"
                           )}>
                             <dest.icon className="w-5 h-5" />
                           </div>
@@ -203,7 +203,7 @@ export default function TripPlanner() {
                           <div className="ml-auto">
                             <div className={cn(
                               "w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all",
-                              selectedDestinations.includes(dest.id) ? "bg-secondary border-secondary text-white" : "border-border"
+                              selectedDestinations.includes(dest.id) ? "bg-primary border-primary text-white" : "border-border"
                             )}>
                               {selectedDestinations.includes(dest.id) && <CheckCircle2 className="w-3 h-3" />}
                             </div>
@@ -213,7 +213,7 @@ export default function TripPlanner() {
                     </div>
                     {errors.destinations && <p className="text-destructive text-xs text-center mt-2">{errors.destinations.message}</p>}
                     <div className="flex justify-center pt-8">
-                      <Button type="button" onClick={nextStep} disabled={selectedDestinations.length === 0} className="rounded-full px-12 h-14 text-base font-bold bg-secondary shadow-lg transition-transform hover:scale-105">
+                      <Button type="button" onClick={nextStep} disabled={selectedDestinations.length === 0} className="rounded-full px-12 h-14 text-base font-bold shadow-lg transition-transform hover:scale-105">
                         Next: Logistics <ArrowRight className="w-4 h-4 ml-2" />
                       </Button>
                     </div>
@@ -242,7 +242,7 @@ export default function TripPlanner() {
                             onClick={() => setValue('budget', opt.id)}
                             className={cn(
                               "p-5 rounded-2xl border-2 cursor-pointer transition-all flex items-center justify-between",
-                              selectedBudget === opt.id ? "border-secondary bg-secondary/5" : "border-border hover:border-secondary/20"
+                              selectedBudget === opt.id ? "border-primary bg-primary/5" : "border-border hover:border-primary/20"
                             )}
                           >
                             <div>
@@ -251,7 +251,7 @@ export default function TripPlanner() {
                             </div>
                             <div className={cn(
                               "w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all",
-                              selectedBudget === opt.id ? "bg-secondary border-secondary text-white" : "border-border"
+                              selectedBudget === opt.id ? "bg-primary border-primary text-white" : "border-border"
                             )}>
                               {selectedBudget === opt.id && <CheckCircle2 className="w-3 h-3" />}
                             </div>
@@ -267,7 +267,7 @@ export default function TripPlanner() {
                         </Label>
                         <select 
                           {...register('travelers')} 
-                          className="w-full h-12 rounded-xl border border-border bg-white px-4 text-sm outline-none focus:ring-2 focus:ring-secondary/20 transition-all font-medium"
+                          className="w-full h-12 rounded-xl border border-border bg-white px-4 text-sm outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium"
                         >
                           <option value="1">Solo Traveler</option>
                           <option value="2">Couple / 2 People</option>
@@ -292,7 +292,7 @@ export default function TripPlanner() {
                       <Button type="button" variant="ghost" onClick={prevStep} className="rounded-full px-8 h-12 text-muted-foreground">
                         <ArrowLeft className="w-4 h-4 mr-2" /> Back
                       </Button>
-                      <Button type="button" onClick={nextStep} className="rounded-full px-12 h-14 text-base font-bold bg-secondary shadow-lg">
+                      <Button type="button" onClick={nextStep} className="rounded-full px-12 h-14 text-base font-bold shadow-lg">
                         Final Step <ArrowRight className="w-4 h-4 ml-2" />
                       </Button>
                     </div>
@@ -337,7 +337,7 @@ export default function TripPlanner() {
                       <Button type="button" variant="ghost" onClick={prevStep} className="rounded-full px-8 h-12 text-muted-foreground">
                         <ArrowLeft className="w-4 h-4 mr-2" /> Back
                       </Button>
-                      <Button type="submit" className="rounded-full px-16 h-16 text-lg font-bold bg-secondary shadow-2xl transition-all hover:scale-105 active:scale-95 group">
+                      <Button type="submit" className="rounded-full px-16 h-16 text-lg font-bold shadow-2xl transition-all hover:scale-105 active:scale-95 group">
                         Begin My Journey <Send className="w-4 h-4 ml-3 group-hover:translate-x-1 transition-transform" />
                       </Button>
                     </div>
