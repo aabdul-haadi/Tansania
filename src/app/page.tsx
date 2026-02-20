@@ -45,11 +45,11 @@ export default function Home() {
   const safariImg = PlaceHolderImages.find(img => img.id === 'safari-jeep');
 
   const highlights = [
-    { title: "Zanzibar Shores", desc: "Pristine white sands and ancient spice markets.", img: zanzibarImg?.imageUrl || 'https://picsum.photos/seed/zanzibar/1200/800', link: "/destinations/zanzibar", hint: "zanzibar beach" },
-    { title: "Serengeti Plains", desc: "Witness the legendary Great Migration across endless horizons.", img: safariImg?.imageUrl || 'https://picsum.photos/seed/serengeti/1200/800', link: "/destinations/serengeti", hint: "serengeti wildlife" },
-    { title: "Ngorongoro Crater", desc: "A natural amphitheater of wildlife inside a dormant volcano.", img: 'https://picsum.photos/seed/crater/1200/800', link: "/destinations/ngorongoro", hint: "ngorongoro crater" },
-    { title: "Tarangire Giants", desc: "Home to massive baobabs and the largest elephant herds.", img: 'https://picsum.photos/seed/tarangire/1200/800', link: "/destinations/tarangire", hint: "tarangire elephants" },
-    { title: "Mount Kilimanjaro", desc: "The Roof of Africa, standing tall above the clouds.", img: 'https://picsum.photos/seed/kili/1200/800', link: "/destinations/kilimanjaro", hint: "mount kilimanjaro" },
+    { title: "Sansibar Küste", desc: "Makellose weiße Sandstrände und historische Gewürzmärkte.", img: zanzibarImg?.imageUrl || 'https://picsum.photos/seed/zanzibar/1200/800', link: "/destinations/zanzibar", hint: "zanzibar beach" },
+    { title: "Serengeti Ebenen", desc: "Erleben Sie die legendäre Große Tierwanderung am Horizont.", img: safariImg?.imageUrl || 'https://picsum.photos/seed/serengeti/1200/800', link: "/destinations/serengeti", hint: "serengeti wildlife" },
+    { title: "Ngorongoro Krater", desc: "Ein natürliches Amphitheater der Wildnis in einem Vulkan.", img: 'https://picsum.photos/seed/crater/1200/800', link: "/destinations/ngorongoro", hint: "ngorongoro crater" },
+    { title: "Tarangire Giganten", desc: "Heimat riesiger Affenbrotbäume und großer Elefantenherden.", img: 'https://picsum.photos/seed/tarangire/1200/800', link: "/destinations/tarangire", hint: "tarangire elephants" },
+    { title: "Kilimandscharo", desc: "Das Dach Afrikas, majestätisch über den Wolken.", img: 'https://picsum.photos/seed/kili/1200/800', link: "/destinations/kilimanjaro", hint: "mount kilimanjaro" },
   ];
 
   return (
@@ -59,8 +59,8 @@ export default function Home() {
         sectionId="hero" 
         type="hero" 
         defaultContent={{
-          heading: 'The Soul of the Serengeti',
-          subheading: "Egypt's premier gateway to the Great Migration. Bespoke safari adventures crafted with local expertise."
+          heading: 'Die Seele der Serengeti',
+          subheading: "Ägyptens führendes Portal zur Großen Tierwanderung. Maßgeschneiderte Safari-Abenteuer mit lokaler Expertise."
         }}
       >
         <section className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -84,52 +84,35 @@ export default function Home() {
                 transition={{ delay: 0.5 }}
                 className="inline-flex items-center gap-2 px-5 py-2 mb-6 text-xs font-bold uppercase tracking-[0.2em] text-primary bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-xl"
               >
-                <Star className="w-3 h-3 fill-primary" /> Premium Tanzania Experiences
+                <Star className="w-3 h-3 fill-primary" /> Premium Tansania Erlebnisse
               </motion.span>
               <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-[1.1]">
-                The Soul of the <br />
+                Die Seele der <br />
                 <span className="text-primary italic">Serengeti</span>
               </h1>
               <p className="max-w-2xl mx-auto text-lg md:text-xl text-white/90 mb-10 leading-relaxed font-body font-light">
-                Egypt's premier gateway to the Great Migration. Bespoke safari adventures crafted with local expertise.
+                Ihr exklusives Tor zur Wildnis Afrikas. Wir gestalten Reisen, die Wünsche in unvergessliche Erinnerungen verwandeln.
               </p>
               <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
                 <Link href="/safaris">
                   <Button size="lg" className="w-full sm:w-auto rounded-full px-12 h-16 text-lg font-bold shadow-2xl transition-all hover:scale-105">
-                    Begin Your Journey
+                    Reise beginnen
                   </Button>
                 </Link>
                 <Link href="/trip-planner">
-                  <motion.div
-                    whileHover="hover"
-                    className="relative w-full sm:w-auto overflow-hidden rounded-full p-[1px]"
+                  <Button 
+                    size="lg" 
+                    variant="outline" 
+                    className="w-full sm:w-auto rounded-full px-12 h-16 text-lg border-white/40 text-white hover:bg-white/10 backdrop-blur-md transition-all bg-black/20"
                   >
-                    <motion.div
-                      variants={{
-                        hover: {
-                          background: [
-                            "conic-gradient(from 0deg at 50% 50%, rgba(181, 142, 69, 0) 0deg, rgba(181, 142, 69, 0.5) 180deg, rgba(181, 142, 69, 0) 360deg)",
-                            "conic-gradient(from 360deg at 50% 50%, rgba(181, 142, 69, 0) 0deg, rgba(181, 142, 69, 0.5) 180deg, rgba(181, 142, 69, 0) 360deg)",
-                          ],
-                        }
-                      }}
-                      transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
-                      className="absolute inset-[-100%] z-0"
-                    />
-                    <Button 
-                      size="lg" 
-                      variant="outline" 
-                      className="relative z-10 w-full sm:w-auto rounded-full px-12 h-16 text-lg border-white/40 text-white hover:bg-white/10 backdrop-blur-md transition-all bg-black/20"
-                    >
-                      Custom Planner
-                    </Button>
-                  </motion.div>
+                    Reiseplaner
+                  </Button>
                 </Link>
               </div>
             </motion.div>
           </div>
           <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-white/40 z-20">
-            <span className="text-[10px] uppercase tracking-[0.3em] font-bold">Discover More</span>
+            <span className="text-[10px] uppercase tracking-[0.3em] font-bold">Mehr entdecken</span>
             <motion.div 
               animate={{ y: [0, 8, 0] }}
               transition={{ repeat: Infinity, duration: 2 }}
@@ -145,10 +128,10 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 items-center">
             {[
-              { icon: ShieldCheck, label: "Secure Cairo Booking" },
-              { icon: Heart, label: "Eco-Conscious Travel" },
-              { icon: Map, label: "Private Guided Expeditions" },
-              { icon: Clock, label: "24/7 Local Concierge" }
+              { icon: ShieldCheck, label: "Sichere Buchung" },
+              { icon: Heart, label: "Umweltbewusstes Reisen" },
+              { icon: Map, label: "Private Expeditionen" },
+              { icon: Clock, label: "24/7 Vor-Ort Support" }
             ].map((item, idx) => (
               <div key={idx} className="flex flex-col items-center gap-3 group">
                 <div className="w-10 h-10 rounded-2xl bg-muted flex items-center justify-center group-hover:bg-primary/10 transition-colors">
@@ -188,12 +171,12 @@ export default function Home() {
           <Carousel setApi={setTanzaniaApi} opts={{ align: "start", loop: true }} className="w-full">
             <div className="flex flex-col lg:flex-row justify-between items-end mb-12 gap-6">
               <div className="max-w-2xl">
-                <span className="text-primary font-bold uppercase tracking-widest text-sm mb-2 block">The Best of Tanzania</span>
-                <h2 className="font-headline text-4xl md:text-6xl font-bold mb-4 leading-tight">Where Wild Nature <br/>Meets Timeless Luxury</h2>
+                <span className="text-primary font-bold uppercase tracking-widest text-sm mb-2 block">Das Beste von Tansania</span>
+                <h2 className="font-headline text-4xl md:text-6xl font-bold mb-4 leading-tight">Wo Wildnis auf <br/>zeitlosen Luxus trifft</h2>
               </div>
               <div className="flex flex-col items-end gap-4">
                 <Link href="/destinations" className="group flex items-center gap-3 text-secondary font-bold text-lg hover:text-primary transition-colors">
-                  Explore All Regions <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                  Alle Regionen erkunden <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
                 </Link>
                 <div className="flex gap-4">
                   <CarouselPrevious className="static translate-y-0 h-10 w-10 border-secondary/20 hover:bg-secondary hover:text-white transition-all rounded-full" />
@@ -210,7 +193,7 @@ export default function Home() {
                       <h3 className="text-white text-3xl font-headline font-bold mb-2">{item.title}</h3>
                       <p className="text-white/70 mb-6 max-w-sm text-sm font-light leading-relaxed">{item.desc}</p>
                       <Link href={item.link}>
-                        <Button variant="secondary" className="rounded-full px-6 h-10 font-bold shadow-xl text-xs">Experience the Region</Button>
+                        <Button variant="secondary" className="rounded-full px-6 h-10 font-bold shadow-xl text-xs">Region erleben</Button>
                       </Link>
                     </div>
                   </motion.div>
