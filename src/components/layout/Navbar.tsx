@@ -105,7 +105,7 @@ export function Navbar() {
               </button>
             </SheetTrigger>
             
-            <SheetContent side="right" className="w-full sm:max-w-xl p-0 border-none bg-secondary text-white overflow-hidden">
+            <SheetContent side="right" className="w-full sm:max-w-xl p-0 border-none bg-[#0a0a0a] text-white overflow-hidden">
               <div className="relative h-full flex flex-col">
                 
                 {/* Decorative Background Elements */}
@@ -119,10 +119,10 @@ export function Navbar() {
                 <div className="relative z-10 p-8 flex justify-between items-center border-b border-white/5 bg-black/10 backdrop-blur-md">
                   <div className="flex items-center gap-3">
                     <Compass className="w-5 h-5 text-primary animate-pulse" />
-                    <span className="font-headline text-xl font-bold tracking-tight">Menü</span>
+                    <span className="font-headline text-xl font-bold tracking-tight text-white">Menü</span>
                   </div>
-                  <SheetClose className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors">
-                    <X className="w-6 h-6" />
+                  <SheetClose className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors group">
+                    <X className="w-6 h-6 text-white group-hover:rotate-90 transition-transform" />
                   </SheetClose>
                 </div>
 
@@ -210,6 +210,7 @@ export function Navbar() {
                         </div>
                       </section>
 
+                      {/* Creative Promo Card inside Menu */}
                       <section className="p-8 rounded-[2rem] bg-white/5 border border-white/10 relative overflow-hidden group">
                         <div className="absolute top-0 right-0 p-4 opacity-10">
                           <Sparkles className="w-12 h-12" />
@@ -227,7 +228,7 @@ export function Navbar() {
                   </div>
                 </div>
 
-                {/* Footer Section */}
+                {/* Footer Section inside Drawer */}
                 <div className="relative z-10 p-8 md:p-12 border-t border-white/5 bg-black/20 backdrop-blur-xl">
                   <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
                     <div className="space-y-4">
