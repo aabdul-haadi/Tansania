@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -51,44 +50,44 @@ export function Navbar() {
       className={cn(
         'fixed top-0 w-full z-50 transition-all duration-300',
         isScrolled
-          ? 'bg-background/80 backdrop-blur-md shadow-sm py-2'
+          ? 'bg-background/90 backdrop-blur-md shadow-md py-2'
           : 'bg-transparent py-4'
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
           <div className="relative">
-            <Compass className={cn("w-8 h-8 transition-transform group-hover:rotate-45", isScrolled ? "text-secondary" : "text-white lg:text-secondary")} />
-            <div className="absolute inset-0 bg-secondary/20 blur-lg rounded-full animate-pulse" />
+            <Compass className={cn("w-8 h-8 transition-transform group-hover:rotate-45", isScrolled ? "text-primary" : "text-white")} />
+            <div className={cn("absolute inset-0 blur-lg rounded-full animate-pulse", isScrolled ? "bg-primary/20" : "bg-white/20")} />
           </div>
-          <span className={cn("font-headline text-2xl font-bold tracking-tight", isScrolled ? "text-foreground" : "text-white lg:text-foreground")}>
-            Serengeti<span className="text-secondary">Dreams</span>
+          <span className={cn("font-headline text-2xl font-bold tracking-tight", isScrolled ? "text-foreground" : "text-white")}>
+            Serengeti<span className="text-primary">Dreams</span>
           </span>
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-8">
           <DropdownMenu>
-            <DropdownMenuTrigger className={cn("flex items-center gap-1 font-medium transition-colors hover:text-secondary", isScrolled ? "text-foreground" : "text-white")}>
-              Destinations <ChevronDown className="w-4 h-4" />
+            <DropdownMenuTrigger className={cn("flex items-center gap-1 font-bold text-xs uppercase tracking-widest transition-colors hover:text-primary", isScrolled ? "text-foreground" : "text-white")}>
+              Destinations <ChevronDown className="w-3 h-3" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56 p-2">
+            <DropdownMenuContent className="w-56 p-2 rounded-2xl border-none shadow-2xl bg-white/95 backdrop-blur-xl">
               {destinations.map((item) => (
-                <DropdownMenuItem key={item.name} asChild>
-                  <Link href={item.href} className="cursor-pointer">{item.name}</Link>
+                <DropdownMenuItem key={item.name} asChild className="rounded-xl focus:bg-primary/10 focus:text-primary">
+                  <Link href={item.href} className="cursor-pointer font-bold text-[10px] uppercase tracking-wider">{item.name}</Link>
                 </DropdownMenuItem>
               ))}
             </DropdownMenuContent>
           </DropdownMenu>
 
           <DropdownMenu>
-            <DropdownMenuTrigger className={cn("flex items-center gap-1 font-medium transition-colors hover:text-secondary", isScrolled ? "text-foreground" : "text-white")}>
-              Safaris <ChevronDown className="w-4 h-4" />
+            <DropdownMenuTrigger className={cn("flex items-center gap-1 font-bold text-xs uppercase tracking-widest transition-colors hover:text-primary", isScrolled ? "text-foreground" : "text-white")}>
+              Safaris <ChevronDown className="w-3 h-3" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56 p-2">
+            <DropdownMenuContent className="w-56 p-2 rounded-2xl border-none shadow-2xl bg-white/95 backdrop-blur-xl">
               {safaris.map((item) => (
-                <DropdownMenuItem key={item.name} asChild>
-                  <Link href={item.href} className="cursor-pointer">{item.name}</Link>
+                <DropdownMenuItem key={item.name} asChild className="rounded-xl focus:bg-primary/10 focus:text-primary">
+                  <Link href={item.href} className="cursor-pointer font-bold text-[10px] uppercase tracking-wider">{item.name}</Link>
                 </DropdownMenuItem>
               ))}
             </DropdownMenuContent>
@@ -99,8 +98,8 @@ export function Navbar() {
               key={link.name}
               href={link.href}
               className={cn(
-                'font-medium transition-colors hover:text-secondary',
-                pathname === link.href ? 'text-secondary' : (isScrolled ? 'text-foreground' : 'text-white')
+                'font-bold text-xs uppercase tracking-widest transition-colors hover:text-primary',
+                pathname === link.href ? 'text-primary' : (isScrolled ? 'text-foreground' : 'text-white')
               )}
             >
               {link.name}
@@ -110,12 +109,12 @@ export function Navbar() {
 
         <div className="hidden lg:flex items-center gap-4">
           <Link href="/trip-planner">
-            <Button variant={isScrolled ? "outline" : "secondary"} className="rounded-full px-6">
+            <Button variant={isScrolled ? "default" : "secondary"} className="rounded-full px-8 font-bold text-[10px] uppercase tracking-widest shadow-xl">
               Plan My Trip
             </Button>
           </Link>
           <Link href="/auth/login">
-            <Button variant="ghost" size="icon" className={cn("rounded-full", isScrolled ? "text-foreground" : "text-white")}>
+            <Button variant="ghost" size="icon" className={cn("rounded-full", isScrolled ? "text-foreground" : "text-white hover:bg-white/10")}>
               <User className="w-5 h-5" />
             </Button>
           </Link>
@@ -123,7 +122,7 @@ export function Navbar() {
 
         {/* Mobile Menu Toggle */}
         <button
-          className={cn("lg:hidden p-2", isScrolled ? "text-foreground" : "text-white")}
+          className={cn("lg:hidden p-2 rounded-xl transition-colors", isScrolled ? "text-foreground hover:bg-muted" : "text-white hover:bg-white/10")}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -132,27 +131,29 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-background border-t absolute top-full left-0 w-full p-4 flex flex-col gap-4 animate-in slide-in-from-top duration-300">
-          <div className="font-bold text-sm text-muted-foreground uppercase tracking-wider">Destinations</div>
-          {destinations.map((item) => (
-            <Link key={item.name} href={item.href} onClick={() => setMobileMenuOpen(false)} className="text-lg font-medium py-1">
-              {item.name}
-            </Link>
-          ))}
-          <div className="font-bold text-sm text-muted-foreground uppercase tracking-wider mt-4">Safaris</div>
-          {safaris.map((item) => (
-            <Link key={item.name} href={item.href} onClick={() => setMobileMenuOpen(false)} className="text-lg font-medium py-1">
-              {item.name}
-            </Link>
-          ))}
-          <div className="h-px bg-border my-2" />
-          {navLinks.map((link) => (
-            <Link key={link.name} href={link.href} onClick={() => setMobileMenuOpen(false)} className="text-lg font-medium py-1">
-              {link.name}
-            </Link>
-          ))}
+        <div className="lg:hidden bg-background border-t absolute top-full left-0 w-full p-6 flex flex-col gap-6 animate-in slide-in-from-top duration-300 shadow-2xl">
+          <div className="space-y-4">
+            <div className="font-bold text-[10px] text-primary uppercase tracking-[0.3em]">Destinations</div>
+            <div className="grid grid-cols-2 gap-2">
+              {destinations.map((item) => (
+                <Link key={item.name} href={item.href} onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold p-3 bg-muted/50 rounded-xl">
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+          <div className="space-y-4">
+            <div className="font-bold text-[10px] text-primary uppercase tracking-[0.3em]">Quick Links</div>
+            <div className="flex flex-col gap-2">
+              {navLinks.map((link) => (
+                <Link key={link.name} href={link.href} onClick={() => setMobileMenuOpen(false)} className="text-lg font-headline font-bold py-1">
+                  {link.name}
+                </Link>
+              ))}
+            </div>
+          </div>
           <Link href="/trip-planner" onClick={() => setMobileMenuOpen(false)}>
-            <Button className="w-full bg-secondary text-white rounded-full mt-4">Plan My Trip</Button>
+            <Button className="w-full bg-primary text-white rounded-2xl h-14 font-bold text-base shadow-xl">Plan My Trip</Button>
           </Link>
         </div>
       )}

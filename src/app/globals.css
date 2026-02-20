@@ -4,59 +4,63 @@
 
 @layer base {
   :root {
-    /* Refined Luxury Safari Palette */
-    --background: 30 20% 98%;
-    --foreground: 24 10% 12%;
+    /* Updated Branding Palette */
+    --background: 0 0% 96%; /* #F5F5F5 - Secondary Light Gray */
+    --foreground: 0 0% 12%; /* #1F1F1F - Dark Text */
     --card: 0 0% 100%;
-    --card-foreground: 24 10% 12%;
+    --card-foreground: 0 0% 12%;
     --popover: 0 0% 100%;
-    --popover-foreground: 24 10% 12%;
-    --primary: 38 60% 50%; /* Golden Savannah */
-    --primary-foreground: 24 10% 12%; /* Dark text for better contrast */
-    --secondary: 150 25% 18%; /* Deep Acacia Green */
-    --secondary-foreground: 30 20% 98%;
-    --muted: 30 10% 94%;
-    --muted-foreground: 24 10% 45%;
-    --accent: 38 60% 50%;
-    --accent-foreground: 24 10% 12%;
+    --popover-foreground: 0 0% 12%;
+    
+    --primary: 19 89% 47%; /* #E3510D - Primary Orange */
+    --primary-foreground: 0 0% 98%;
+    
+    --secondary: 150 25% 18%; /* Deep Acacia Green (Existing) */
+    --secondary-foreground: 0 0% 96%;
+    
+    --muted: 30 20% 90%;
+    --muted-foreground: 0 0% 40%;
+    
+    --accent: 30 53% 64%; /* #D4A373 - Safari Brown */
+    --accent-foreground: 0 0% 12%;
+    
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 30 15% 88%;
-    --input: 30 15% 88%;
-    --ring: 38 60% 50%;
-    --radius: 1.25rem;
+    
+    --border: 30 10% 85%;
+    --input: 30 10% 85%;
+    --ring: 19 89% 47%;
+    --radius: 1.5rem;
 
     /* Sidebar Variables */
     --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 24 10% 12%;
-    --sidebar-primary: 38 60% 50%;
-    --sidebar-primary-foreground: 24 10% 12%;
-    --sidebar-accent: 30 10% 94%;
-    --sidebar-accent-foreground: 24 10% 12%;
-    --sidebar-border: 30 15% 88%;
-    --sidebar-ring: 38 60% 50%;
+    --sidebar-foreground: 0 0% 12%;
+    --sidebar-primary: 19 89% 47%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 0 0% 12%;
+    --sidebar-border: 30 10% 85%;
+    --sidebar-ring: 19 89% 47%;
   }
 
   .dark {
-    --background: 24 10% 8%;
-    --foreground: 40 15% 95%;
-    --card: 24 10% 10%;
-    --card-foreground: 40 15% 95%;
-    --popover: 24 10% 10%;
-    --popover-foreground: 40 15% 95%;
-    --primary: 38 60% 55%;
-    --primary-foreground: 24 10% 8%;
+    --background: 0 0% 8%;
+    --foreground: 0 0% 96%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 96%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 96%;
+    --primary: 19 89% 55%;
+    --primary-foreground: 0 0% 8%;
     --secondary: 150 20% 25%;
-    --secondary-foreground: 40 15% 95%;
-    --muted: 24 10% 15%;
-    --muted-foreground: 40 10% 65%;
-    --accent: 38 60% 55%;
-    --accent-foreground: 24 10% 8%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 24 10% 18%;
-    --input: 24 10% 18%;
-    --ring: 38 60% 55%;
+    --secondary-foreground: 0 0% 96%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 30 50% 60%;
+    --accent-foreground: 0 0% 96%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 19 89% 55%;
   }
 }
 
@@ -66,22 +70,22 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-image: radial-gradient(circle at 2px 2px, rgba(150, 140, 120, 0.05) 1px, transparent 0);
-    background-size: 64px 64px;
+    background-image: radial-gradient(circle at 2px 2px, rgba(227, 81, 13, 0.03) 1px, transparent 0);
+    background-size: 48px 48px;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-headline tracking-tight;
+    @apply font-headline tracking-tight text-foreground;
   }
 }
 
 .luxury-gradient {
-  background: linear-gradient(180deg, hsl(var(--background)), hsl(var(--primary) / 0.03) 50%, hsl(var(--background)));
+  background: linear-gradient(180deg, hsl(var(--background)), hsl(var(--accent) / 0.05) 50%, hsl(var(--background)));
 }
 
 .hero-overlay {
-  background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0.5) 100%);
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 60%, rgba(0,0,0,0.6) 100%);
 }
 
 .safari-card {
-  @apply transition-all duration-500 hover:shadow-[0_15px_40px_rgba(45,71,57,0.08)] hover:-translate-y-1;
+  @apply transition-all duration-500 hover:shadow-[0_20px_50px_rgba(227,81,13,0.08)] hover:-translate-y-1;
 }
