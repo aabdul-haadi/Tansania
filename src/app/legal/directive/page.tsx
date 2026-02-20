@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -15,6 +14,7 @@ import {
   LifeBuoy
 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 
 export default function DirectivePage() {
   return (
@@ -35,7 +35,7 @@ export default function DirectivePage() {
               Pauschalreise-<br /><span className="text-primary italic">Richtlinie</span>
             </h1>
             <p className="text-white/60 text-lg font-light max-w-2xl mt-6">
-              Informationen nach der Richtlinie (EU) 2015/2302.
+              Informationen nach der Richtlinie (EU) 2015/2302 zur Unterrichtung des Reisenden bei einer Pauschalreise nach § 651a BGB.
             </p>
           </motion.div>
         </div>
@@ -50,7 +50,7 @@ export default function DirectivePage() {
               <div className="flex items-start gap-6 p-8 bg-primary/5 rounded-[2.5rem] border border-primary/10">
                 <ClipboardList className="w-10 h-10 text-primary shrink-0" />
                 <p className="text-muted-foreground font-light leading-relaxed text-lg italic">
-                  "Die Kombination von Reiseleistungen, die Ihnen angeboten wird, ist eine Pauschalreise im Sinne der Richtlinie (EU) 2015/2302."
+                  "Die Kombination von Reiseleistungen, die Ihnen angeboten wird, ist eine Pauschalreise im Sinne der Richtlinie (EU) 2015/2302. Daher können Sie alle EU-Rechte in Anspruch nehmen, die für Pauschalreisen gelten."
                 </p>
               </div>
 
@@ -66,7 +66,9 @@ export default function DirectivePage() {
                     "Reisende erhalten eine Notrufnummer oder Kontaktstelle zum Reiseveranstalter.",
                     "Die Pauschalreise kann auf eine andere Person übertragen werden.",
                     "Preisänderungen sind nur bei Kostensteigerungen (z.B. Treibstoff) bis 20 Tage vor Beginn zulässig.",
-                    "Rücktritt ohne Gebühr bei erheblichen Änderungen der Reiseleistungen möglich."
+                    "Rücktritt ohne Gebühr bei erheblichen Änderungen der Reiseleistungen möglich.",
+                    "Bei außergewöhnlichen Umständen am Bestimmungsort ist ein Rücktritt ohne Gebühr vor Reisebeginn möglich.",
+                    "Reisende können jederzeit gegen eine angemessene Gebühr zurücktreten."
                   ].map((item, idx) => (
                     <div key={idx} className="flex gap-5 items-start group">
                       <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-1 transition-colors group-hover:bg-primary">
