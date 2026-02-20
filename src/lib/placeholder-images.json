@@ -2,20 +2,26 @@
   "placeholderImages": [
     {
       "id": "serengeti-hero",
-      "description": "Graceful Hartebeests in the golden light of the Serengeti savannah",
-      "imageUrl": "https://picsum.photos/seed/hartebeest-safari/1920/1080",
-      "imageHint": "serengeti harbebeest"
+      "description": "High quality Serengeti safari landscape",
+      "imageUrl": "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920",
+      "imageHint": "serengeti safari"
     },
     {
       "id": "zanzibar-beach",
-      "description": "Turquoise waters of Zanzibar with white sandy shores",
-      "imageUrl": "https://images.unsplash.com/photo-1646668072507-b2215b873c70?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHhzfHx6YW56aWJhciUyMGJlYWNofGVufDB8fHx8MTc3MTM2MDI4OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "High quality Zanzibar turquoise beach",
+      "imageUrl": "https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=1920",
       "imageHint": "zanzibar beach"
+    },
+    {
+      "id": "kilimanjaro-summit",
+      "description": "High quality Kilimanjaro summit at sunrise",
+      "imageUrl": "https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1920",
+      "imageHint": "mount kilimanjaro"
     },
     {
       "id": "safari-jeep",
       "description": "Elegant safari vehicle in the tall grass of the savannah",
-      "imageUrl": "https://images.unsplash.com/photo-1731355775887-e6b2484f494c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzYWZhcmklMjBzYXZhbm5haHxlbnwwfHx8fDE3NzE0Mzk5NDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1731355775887-e6b2484f494c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHhzfHx6YW56aWJhciUyMGJlYWNofGVufDB8fHx8MTc3MTM2MDI4OXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "safari savannah"
     },
     {

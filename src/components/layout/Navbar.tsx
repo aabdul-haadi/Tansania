@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -87,7 +86,7 @@ export function Navbar() {
           />
         </Link>
 
-        {/* Action Bar - Clean, focused on Hamburger */}
+        {/* Action Bar */}
         <div className="flex items-center gap-4">
           <Sheet>
             <SheetTrigger asChild>
@@ -118,9 +117,9 @@ export function Navbar() {
                   </SheetClose>
                 </div>
 
-                {/* Navigation Content - All Front Level */}
+                {/* Navigation Content - Flat Hierarchy */}
                 <div className="p-8 space-y-12">
-                  {/* Section: Hauptziele */}
+                  {/* Hauptziele */}
                   <div className="space-y-6">
                     <h4 className="text-[10px] font-bold text-white/30 uppercase tracking-[0.4em]">Hauptziele</h4>
                     <div className="grid grid-cols-1 gap-4">
@@ -137,7 +136,7 @@ export function Navbar() {
                     </div>
                   </div>
 
-                  {/* Section: Top Reiseziele (Grid) */}
+                  {/* Top Reiseziele (Grid) */}
                   <div className="space-y-6">
                     <h4 className="text-[10px] font-bold text-white/30 uppercase tracking-[0.4em]">REISEZIELE</h4>
                     <div className="grid grid-cols-2 gap-x-8 gap-y-4">
@@ -154,7 +153,7 @@ export function Navbar() {
                     </div>
                   </div>
 
-                  {/* Section: Reisen 2026 */}
+                  {/* Reisen 2026 */}
                   <div className="space-y-6">
                     <h4 className="text-[10px] font-bold text-white/30 uppercase tracking-[0.4em]">REISEN 2026</h4>
                     <div className="grid grid-cols-1 gap-4">
@@ -170,7 +169,7 @@ export function Navbar() {
                     </div>
                   </div>
 
-                  {/* Section: Dienstleistungen */}
+                  {/* Dienstleistungen */}
                   <div className="space-y-6">
                     <h4 className="text-[10px] font-bold text-white/30 uppercase tracking-[0.4em]">DIENSTLEISTUNGEN</h4>
                     <div className="grid grid-cols-1 gap-4">
@@ -186,7 +185,7 @@ export function Navbar() {
                     </div>
                   </div>
 
-                  {/* Section: Informationen (Secondary) */}
+                  {/* Secondary Links */}
                   <div className="pt-10 border-t border-white/5 space-y-4">
                     <div className="grid grid-cols-2 gap-4">
                       {secondaryLinks.map((item) => (

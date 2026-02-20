@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -43,6 +42,7 @@ export default function Home() {
 
   const heroImg = PlaceHolderImages.find(img => img.id === 'serengeti-hero');
   const zanzibarImg = PlaceHolderImages.find(img => img.id === 'zanzibar-beach');
+  const kiliImg = PlaceHolderImages.find(img => img.id === 'kilimanjaro-summit');
   const safariImg = PlaceHolderImages.find(img => img.id === 'safari-jeep');
 
   const highlights = [
@@ -67,9 +67,9 @@ export default function Home() {
         <section className="relative h-screen flex items-center justify-center overflow-hidden">
           <HeroBackgroundSlider 
             images={[
-              { src: heroImg?.imageUrl || 'https://picsum.photos/seed/safari-hero/1920/1080', hint: "serengeti safari" },
-              { src: zanzibarImg?.imageUrl || 'https://picsum.photos/seed/zanzibar-h/1920/1080', hint: "zanzibar beach" },
-              { src: 'https://picsum.photos/seed/lodge-h/1920/1080', hint: "safari lodge" }
+              { src: heroImg?.imageUrl || 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920', hint: "serengeti safari" },
+              { src: zanzibarImg?.imageUrl || 'https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=1920', hint: "zanzibar beach" },
+              { src: kiliImg?.imageUrl || 'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1920', hint: "mount kilimanjaro" }
             ]} 
           />
           <div className="container relative z-20 mx-auto px-4">
