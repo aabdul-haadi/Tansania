@@ -104,12 +104,12 @@ export function ContactSection() {
   }, []);
 
   return (
-    <section id="contact-form" className="py-24 bg-[#fdfcfb] overflow-hidden tra-form-section">
+    <section id="contact-form" className="py-12 bg-[#fdfcfb] overflow-hidden tra-form-section">
       <div className="container mx-auto px-4 max-w-6xl">
-        <div className="flex flex-col lg:flex-row bg-white rounded-[3rem] shadow-2xl overflow-hidden tra-form-wrapper min-h-[650px] border border-border/50">
+        <div className="flex flex-col lg:flex-row bg-white rounded-[2rem] shadow-xl overflow-hidden tra-form-wrapper min-h-[650px] border border-border/50">
           
           {/* Form Side */}
-          <div className="w-full lg:w-[60%] p-2 md:p-8 tra-form-left relative bg-white">
+          <div className="w-full lg:w-[60%] p-1 md:p-4 tra-form-left relative bg-white">
             <div id="tansania-form-d54e9b2e" className="w-full min-h-[650px]" />
           </div>
 
@@ -118,25 +118,25 @@ export function ContactSection() {
             <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
             
             {/* Default State */}
-            <div id="team-content-default" className="relative z-10 p-12 flex flex-col items-center text-center space-y-8">
-              <div className="w-20 h-20 rounded-3xl bg-primary/20 flex items-center justify-center rotate-3 shadow-xl border border-primary/20">
-                <Sparkles className="w-10 h-10 text-primary" />
+            <div id="team-content-default" className="relative z-10 p-8 flex flex-col items-center text-center space-y-6">
+              <div className="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center rotate-3 shadow-xl border border-primary/20">
+                <Sparkles className="w-8 h-8 text-primary" />
               </div>
               <div>
-                <h3 className="font-headline text-3xl font-bold mb-4">Ihre Experten <br /><span className="text-primary italic">für Tansania</span></h3>
-                <p className="text-white/60 font-light leading-relaxed text-sm">
+                <h3 className="font-headline text-2xl font-bold mb-3 text-white">Ihre Experten <br /><span className="text-primary italic">für Tansania</span></h3>
+                <p className="text-white/60 font-light leading-relaxed text-xs">
                   Persönlich. Kompetent. Leidenschaftlich. Wir gestalten Ihr Abenteuer so individuell wie Ihre Träume.
                 </p>
               </div>
-              <div className="space-y-4 w-full">
+              <div className="space-y-3 w-full">
                 {[
                   "Maßgeschneiderte Reiseplanung",
                   "Lokales Büro & Support in Kairo",
                   "Expertenteam direkt in Tansania",
                   "Sicher & stressfrei buchen"
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-white/80">
-                    <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+                  <div key={i} className="flex items-center gap-2.5 text-[9px] font-bold uppercase tracking-widest text-white/80">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0" />
                     <span>{item}</span>
                   </div>
                 ))}
@@ -144,17 +144,17 @@ export function ContactSection() {
             </div>
 
             {/* Success State */}
-            <div id="team-content-success" className="relative z-10 p-12 flex-col items-center text-center space-y-8 h-full justify-center" style={{ display: 'none' }}>
-              <div className="w-24 h-24 rounded-full bg-green-500/20 flex items-center justify-center shadow-2xl border border-green-500/30">
-                <CheckCircle2 className="w-12 h-12 text-green-500" />
+            <div id="team-content-success" className="relative z-10 p-8 flex-col items-center text-center space-y-6 h-full justify-center" style={{ display: 'none' }}>
+              <div className="w-20 h-20 rounded-full bg-green-500/20 flex items-center justify-center shadow-2xl border border-green-500/30">
+                <CheckCircle2 className="w-10 h-10 text-green-500" />
               </div>
               <div>
-                <h3 className="font-headline text-4xl font-bold mb-4">Anfrage <br /><span className="text-green-500 italic">gesendet!</span></h3>
-                <p className="text-white/60 font-light text-lg">
+                <h3 className="font-headline text-3xl font-bold mb-3 text-white">Anfrage <br /><span className="text-green-500 italic">gesendet!</span></h3>
+                <p className="text-white/60 font-light text-base">
                   Vielen Dank für Ihr Vertrauen. Einer unserer Spezialisten wird sich innerhalb der nächsten 24 Stunden persönlich bei Ihnen melden.
                 </p>
               </div>
-              <div className="w-12 h-1 bg-green-500/30 rounded-full" />
+              <div className="w-10 h-1 bg-green-500/30 rounded-full" />
             </div>
           </div>
         </div>
