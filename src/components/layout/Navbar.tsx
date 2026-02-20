@@ -1,10 +1,11 @@
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Menu, X, ChevronRight } from 'lucide-react';
+import { Menu, X, ChevronRight, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import {
@@ -13,11 +14,35 @@ import {
   SheetTrigger,
   SheetClose,
 } from "@/components/ui/sheet";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
-const destinations = [
-  { name: 'SAFARI', href: '/safaris' },
-  { name: 'KILIMANDSCHARO', href: '/destinations/kilimanjaro' },
-  { name: 'SANSIBAR', href: '/destinations/zanzibar' },
+const reiseziele = [
+  { name: 'Kenia', href: '/destinations/kenia' },
+  { name: 'Botswana', href: '/destinations/botswana' },
+  { name: 'Ägypten', href: '/destinations/egypt' },
+  { name: 'Südafrika', href: '/destinations/south-africa' },
+  { name: 'Uganda', href: '/destinations/uganda' },
+  { name: 'Ruanda', href: '/destinations/rwanda' },
+  { name: 'Namibia', href: '/destinations/namibia' },
+  { name: 'Äthiopien', href: '/destinations/ethiopia' },
+];
+
+const reisen2026 = [
+  { name: 'Neujahrsreisen 2026', href: '/safaris?season=new-year' },
+  { name: 'Sommerreisen 2026', href: '/safaris?season=summer' },
+  { name: 'Weihnachten 2026', href: '/safaris?season=christmas' },
+  { name: 'Ostern 2026', href: '/safaris?season=easter' },
+];
+
+const services = [
+  { name: 'Unsere Services', href: '/services/agency-services' },
+  { name: 'Unterkünfte', href: '/services/accommodation' },
+  { name: 'Aktivitäten', href: '/services/activities' },
 ];
 
 const secondaryLinks = [
@@ -51,7 +76,7 @@ export function Navbar() {
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        {/* Logo - Automatically inverts on transparent background */}
+        {/* Logo */}
         <Link href="/" className="relative z-50 transition-transform duration-500 hover:scale-105 active:scale-95">
           <Image 
             src="https://storage.googleapis.com/firejet-30da1.appspot.com/users/clvlyszhf0000la086mjha62f/projects/clvlyszhf0000la086mjha62f/1740484124411-logo.png"
@@ -94,73 +119,88 @@ export function Navbar() {
               </button>
             </SheetTrigger>
             
-            <SheetContent side="right" className="w-full sm:max-w-xl p-0 border-none bg-[#0a0a0a] text-white overflow-hidden shadow-2xl">
-              <div className="h-full flex flex-col">
+            <SheetContent side="right" className="w-full sm:max-w-md p-0 border-none bg-[#0a0a0a] text-white overflow-y-auto">
+              <div className="flex flex-col min-h-full">
                 {/* Header */}
-                <div className="p-8 flex justify-between items-center border-b border-white/5">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary">Tansania Entdecken</span>
+                <div className="p-8 flex justify-between items-center border-b border-white/5 sticky top-0 bg-[#0a0a0a] z-10">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary">Menü</span>
                   <SheetClose className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors">
                     <X className="w-5 h-5" />
                   </SheetClose>
                 </div>
 
-                {/* Static Content Area */}
-                <div className="flex-grow p-8 md:p-12 overflow-y-auto">
-                  <div className="space-y-12">
-                    {/* Destinations Section */}
-                    <section>
-                      <p className="text-[9px] font-bold uppercase tracking-[0.3em] text-white/40 mb-6">REISEZIELE</p>
-                      <div className="grid grid-cols-1 gap-4">
-                        {destinations.map((item) => (
-                          <Link key={item.name} href={item.href} className="group flex items-center justify-between">
-                            <span className="text-3xl md:text-4xl font-headline font-bold hover:text-primary transition-colors">
+                {/* Navigation Content */}
+                <div className="p-8 space-y-10">
+                  {/* Primary Accordion Navigation */}
+                  <Accordion type="multiple" className="w-full space-y-4">
+                    <AccordionItem value="reiseziele" className="border-white/5">
+                      <AccordionTrigger className="text-2xl font-headline font-bold hover:no-underline hover:text-primary py-4">
+                        REISEZIELE
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <div className="grid grid-cols-1 gap-3 pl-4 pt-2">
+                          <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2">Top Reiseziele</p>
+                          {reiseziele.map((item) => (
+                            <Link key={item.name} href={item.href} className="text-lg text-white/60 hover:text-white transition-colors py-1 block">
                               {item.name}
-                            </span>
-                            <ChevronRight className="w-6 h-6 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-                          </Link>
-                        ))}
-                      </div>
-                    </section>
+                            </Link>
+                          ))}
+                        </div>
+                      </AccordionContent>
+                    </AccordionItem>
 
-                    {/* Links Grid */}
-                    <section className="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-white/5 pt-12">
-                      <div className="space-y-4">
-                        {secondaryLinks.slice(0, 3).map((item) => (
-                          <Link key={item.name} href={item.href} className="block text-lg font-bold text-white/60 hover:text-white transition-colors">
-                            {item.name}
-                          </Link>
-                        ))}
-                      </div>
-                      <div className="space-y-4">
-                        {secondaryLinks.slice(3).map((item) => (
-                          <Link key={item.name} href={item.href} className="block text-lg font-bold text-white/60 hover:text-white transition-colors">
-                            {item.name}
-                          </Link>
-                        ))}
-                      </div>
-                    </section>
+                    <AccordionItem value="reisen2026" className="border-white/5">
+                      <AccordionTrigger className="text-2xl font-headline font-bold hover:no-underline hover:text-primary py-4">
+                        REISEN 2026
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <div className="grid grid-cols-1 gap-3 pl-4 pt-2">
+                          <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2">Saisonale Reisen</p>
+                          {reisen2026.map((item) => (
+                            <Link key={item.name} href={item.href} className="text-lg text-white/60 hover:text-white transition-colors py-1 block">
+                              {item.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </AccordionContent>
+                    </AccordionItem>
 
-                    {/* Services */}
-                    <section className="border-t border-white/5 pt-12">
-                      <div className="flex flex-wrap gap-4">
-                        <Link href="/services/agency-services" className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-[10px] font-bold uppercase tracking-widest hover:bg-primary hover:text-white transition-all">
-                          DIENSTLEISTUNGEN
-                        </Link>
-                        <Link href="/safaris" className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-[10px] font-bold uppercase tracking-widest hover:bg-primary hover:text-white transition-all">
-                          REISEN 2026
-                        </Link>
-                      </div>
-                    </section>
+                    <AccordionItem value="services" className="border-white/5">
+                      <AccordionTrigger className="text-2xl font-headline font-bold hover:no-underline hover:text-primary py-4">
+                        DIENSTLEISTUNGEN
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <div className="grid grid-cols-1 gap-3 pl-4 pt-2">
+                          {services.map((item) => (
+                            <Link key={item.name} href={item.href} className="text-lg text-white/60 hover:text-white transition-colors py-1 block">
+                              {item.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+
+                  {/* Secondary Static Links */}
+                  <div className="grid grid-cols-1 gap-6 pt-10 border-t border-white/5">
+                    {secondaryLinks.map((item) => (
+                      <Link key={item.name} href={item.href} className="text-xl font-bold text-white/60 hover:text-white transition-colors">
+                        {item.name}
+                      </Link>
+                    ))}
                   </div>
                 </div>
 
                 {/* Footer Drawer */}
-                <div className="p-8 md:p-12 border-t border-white/5 bg-black/40">
+                <div className="mt-auto p-8 border-t border-white/5 bg-black/20">
                   <Link href="/trip-planner">
                     <Button className="w-full h-16 rounded-2xl text-lg font-bold">
                       JETZT REISE PLANEN
                     </Button>
                   </Link>
+                  <p className="text-[10px] text-white/20 font-bold uppercase tracking-[0.2em] text-center mt-6">
+                    © {new Date().getFullYear()} Serengeti Dreams
+                  </p>
                 </div>
               </div>
             </SheetContent>
