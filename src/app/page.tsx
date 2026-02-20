@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -193,7 +192,7 @@ export default function Home() {
                       <h3 className="text-white text-3xl font-headline font-bold mb-2">{item.title}</h3>
                       <p className="text-white/70 mb-6 max-w-sm text-sm font-light leading-relaxed">{item.desc}</p>
                       <Link href={item.link}>
-                        <Button variant="secondary" className="rounded-full px-6 h-10 font-bold shadow-xl text-xs">Region erleben</Button>
+                        <Button className="rounded-full px-6 h-10 font-bold shadow-xl text-xs">Region erleben</Button>
                       </Link>
                     </div>
                   </motion.div>
