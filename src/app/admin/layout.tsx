@@ -12,7 +12,9 @@ import {
   ChevronRight,
   Lock,
   Loader2,
-  Database
+  Database,
+  CalendarCheck,
+  MessageSquare
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useUser, useDoc, useFirestore, useAuth, useMemoFirebase } from '@/firebase';
@@ -22,8 +24,10 @@ import { signOut } from 'firebase/auth';
 
 const adminLinks = [
   { name: 'Dashboard', href: '/admin', icon: LayoutDashboard },
-  { name: 'Content Registry', href: '/admin/pages', icon: Globe },
+  { name: 'Site Registry', href: '/admin/pages', icon: Globe },
   { name: 'Expedition Journal', href: '/admin/blog', icon: FileText },
+  { name: 'Inquiries', href: '/admin/inquiries', icon: MessageSquare },
+  { name: 'Bookings', href: '/admin/bookings', icon: CalendarCheck },
 ];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -43,7 +47,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       if (user && adminRole) {
         setIsAuthorized(true);
       } else if (user && user.email === 'admin@serengetidreams.com') {
-        // Special case: Primary admin is always authorized even if doc is being created
         setIsAuthorized(true);
       } else {
         setIsAuthorized(false);
@@ -51,10 +54,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     }
   }, [user, isUserLoading, adminRole, isAdminRoleLoading, pathname]);
 
-  // Self-repair logic for the first admin
   useEffect(() => {
     if (user && user.email === 'admin@serengetidreams.com' && !adminRole && !isAdminRoleLoading && firestore) {
-      console.log('Detected uninitialized admin account. Self-registering...');
       setDoc(doc(firestore, 'roles_admin', user.uid), {
         uid: user.uid,
         email: user.email,
@@ -72,7 +73,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     }
   };
 
-  // STRICT GUARD: Don't render layout or children until auth is confirmed
   if (isUserLoading || isAdminRoleLoading || isAuthorized === null) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-muted/10 gap-4">

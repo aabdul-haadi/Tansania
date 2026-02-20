@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -23,10 +24,8 @@ import { KilimanjaroSummit } from '@/components/sections/KilimanjaroSummit';
 import { ZanzibarEscape } from '@/components/sections/ZanzibarEscape';
 import { SafariVideo } from '@/components/sections/SafariVideo';
 import { FAQ } from '@/components/sections/FAQ';
-// import { OfferPopup } from '@/components/sections/OfferPopup';
 import { ExpertiseNarrative } from '@/components/sections/ExpertiseNarrative';
 import { MeetTheSpecialists } from '@/components/sections/MeetTheSpecialists';
-import { EditableContent } from '@/components/cms/EditableContent';
 import { AfricaVariety } from '@/components/sections/AfricaVariety';
 
 export default function Home() {
@@ -55,75 +54,63 @@ export default function Home() {
 
   return (
     <div className="relative">
-      <EditableContent 
-        pageKey="home" 
-        sectionId="hero" 
-        type="hero" 
-        defaultContent={{
-          heading: 'Die Seele der Serengeti',
-          subheading: "Ägyptens führendes Portal zur Großen Tierwanderung. Maßgeschneiderte Safari-Abenteuer mit lokaler Expertise."
-        }}
-      >
-        <section className="relative h-screen flex items-center justify-center overflow-hidden">
-          <HeroBackgroundSlider 
-            images={[
-              { src: heroImg?.imageUrl || 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920', hint: "serengeti safari" },
-              { src: zanzibarImg?.imageUrl || 'https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=1920', hint: "zanzibar beach" },
-              { src: kiliImg?.imageUrl || 'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1920', hint: "mount kilimanjaro" }
-            ]} 
-          />
-          <div className="container relative z-20 mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              className="max-w-4xl mx-auto text-center"
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        <HeroBackgroundSlider 
+          images={[
+            { src: heroImg?.imageUrl || 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920', hint: "serengeti safari" },
+            { src: zanzibarImg?.imageUrl || 'https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=1920', hint: "zanzibar beach" },
+            { src: kiliImg?.imageUrl || 'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1920', hint: "mount kilimanjaro" }
+          ]} 
+        />
+        <div className="container relative z-20 mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <motion.span 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="inline-flex items-center gap-2 px-5 py-2 mb-6 text-xs font-bold uppercase tracking-[0.2em] text-primary bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-xl"
             >
-              <motion.span 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-                className="inline-flex items-center gap-2 px-5 py-2 mb-6 text-xs font-bold uppercase tracking-[0.2em] text-primary bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-xl"
-              >
-                <Star className="w-3 h-3 fill-primary" /> Premium Tansania Erlebnisse
-              </motion.span>
-              <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-[1.1]">
-                Die Seele der <br />
-                <span className="text-primary italic">Serengeti</span>
-              </h1>
-              <p className="max-w-2xl mx-auto text-lg md:text-xl text-white/90 mb-10 leading-relaxed font-body font-light">
-                Ihr exklusives Tor zur Wildnis Afrikas. Wir gestalten Reisen, die Wünsche in unvergessliche Erinnerungen verwandeln.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
-                <Link href="/safaris">
-                  <Button size="lg" className="w-full sm:w-auto rounded-full px-12 h-16 text-lg font-bold shadow-2xl transition-all hover:scale-105">
-                    Reise beginnen
-                  </Button>
-                </Link>
-                <Link href="/trip-planner">
-                  <Button 
-                    size="lg" 
-                    variant="outline" 
-                    className="w-full sm:w-auto rounded-full px-12 h-16 text-lg border-white/40 text-white hover:bg-white/10 backdrop-blur-md transition-all bg-black/20"
-                  >
-                    Reiseplaner
-                  </Button>
-                </Link>
-              </div>
-            </motion.div>
-          </div>
-          <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-white/40 z-20">
-            <span className="text-[10px] uppercase tracking-[0.3em] font-bold">Mehr entdecken</span>
-            <motion.div 
-              animate={{ y: [0, 8, 0] }}
-              transition={{ repeat: Infinity, duration: 2 }}
-              className="w-px h-12 bg-gradient-to-b from-white/40 to-transparent" 
-            />
-          </div>
-        </section>
-      </EditableContent>
-
-      {/* <OfferPopup /> */}
+              <Star className="w-3 h-3 fill-primary" /> Premium Tansania Erlebnisse
+            </motion.span>
+            <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-[1.1]">
+              Die Seele der <br />
+              <span className="text-primary italic">Serengeti</span>
+            </h1>
+            <p className="max-w-2xl mx-auto text-lg md:text-xl text-white/90 mb-10 leading-relaxed font-body font-light">
+              Ihr exklusives Tor zur Wildnis Afrikas. Wir gestalten Reisen, die Wünsche in unvergessliche Erinnerungen verwandeln.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
+              <Link href="/safaris">
+                <Button size="lg" className="w-full sm:w-auto rounded-full px-12 h-16 text-lg font-bold shadow-2xl transition-all hover:scale-105">
+                  Reise beginnen
+                </Button>
+              </Link>
+              <Link href="/trip-planner">
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="w-full sm:w-auto rounded-full px-12 h-16 text-lg border-white/40 text-white hover:bg-white/10 backdrop-blur-md transition-all bg-black/20"
+                >
+                  Reiseplaner
+                </Button>
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-white/40 z-20">
+          <span className="text-[10px] uppercase tracking-[0.3em] font-bold">Mehr entdecken</span>
+          <motion.div 
+            animate={{ y: [0, 8, 0] }}
+            transition={{ repeat: Infinity, duration: 2 }}
+            className="w-px h-12 bg-gradient-to-b from-white/40 to-transparent" 
+          />
+        </div>
+      </section>
 
       <section className="py-12 bg-white border-y border-border/50">
         <div className="container mx-auto px-4">
@@ -242,7 +229,7 @@ function HeroBackgroundSlider({ images }: { images: { src: string, hint: string 
           <Image src={images[index].src} alt="Hero Background" fill className="object-cover" priority data-ai-hint={images[index].hint} />
         </motion.div>
       </AnimatePresence>
-      <div className="absolute inset-0 hero-overlay z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/60 z-10" />
     </div>
   );
 }
