@@ -4,7 +4,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
 import { Menu, X, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -32,18 +31,28 @@ const reiseziele = [
   { name: 'Äthiopien', href: '/destinations/ethiopia' },
 ];
 
+const reisen2026 = [
+  { name: 'Neujahrsreisen 2026', href: '/safaris?tag=new-year' },
+  { name: 'Sommerreisen 2026', href: '/safaris?tag=summer' },
+  { name: 'Weihnachten 2026', href: '/safaris?tag=christmas' },
+  { name: 'Ostern 2026', href: '/safaris?tag=easter' },
+];
+
+const dienstleistungen = [
+  { name: 'Unsere Services', href: '/services/agency-services' },
+  { name: 'Unterkünfte', href: '/safaris' },
+  { name: 'Aktivitäten', href: '/services/adventure-app' },
+];
+
 const secondaryLinks = [
   { name: 'Über uns', href: '/about' },
   { name: 'Reisetipps', href: '/blog' },
-  { name: 'Unser Magazin', href: '/blog' },
   { name: 'FAQ', href: '/faq' },
-  { name: 'Reiseblog', href: '/blog' },
   { name: 'Kontakt', href: '/contact' },
 ];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -78,31 +87,8 @@ export function Navbar() {
           />
         </Link>
 
-        {/* Desktop Primary Links */}
-        <nav className="hidden lg:flex items-center gap-10">
-          {mainNavLinks.map((link) => (
-            <Link 
-              key={link.name} 
-              href={link.href}
-              className={cn(
-                "text-[11px] font-bold tracking-[0.25em] transition-colors hover:text-primary",
-                isScrolled ? "text-foreground" : "text-white"
-              )}
-            >
-              {link.name}
-            </Link>
-          ))}
-        </nav>
-
-        {/* Action Bar */}
+        {/* Action Bar - Clean, focused on Hamburger */}
         <div className="flex items-center gap-4">
-          <Link href="/trip-planner" className="hidden sm:block">
-            <Button className="rounded-full px-8 h-11 text-[10px] tracking-[0.2em] font-bold">
-              JETZT ANFRAGEN
-            </Button>
-          </Link>
-
-          {/* Universal Hamburger Trigger */}
           <Sheet>
             <SheetTrigger asChild>
               <button
@@ -126,15 +112,15 @@ export function Navbar() {
               <div className="flex flex-col min-h-full">
                 {/* Header */}
                 <div className="p-8 flex justify-between items-center border-b border-white/5 sticky top-0 bg-[#0a0a0a] z-10">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary">Menü</span>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary">Navigationszentrum</span>
                   <SheetClose className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors">
                     <X className="w-5 h-5" />
                   </SheetClose>
                 </div>
 
-                {/* Navigation Content */}
+                {/* Navigation Content - All Front Level */}
                 <div className="p-8 space-y-12">
-                  {/* Flagship Sections - Static & Visible */}
+                  {/* Section: Hauptziele */}
                   <div className="space-y-6">
                     <h4 className="text-[10px] font-bold text-white/30 uppercase tracking-[0.4em]">Hauptziele</h4>
                     <div className="grid grid-cols-1 gap-4">
@@ -151,15 +137,32 @@ export function Navbar() {
                     </div>
                   </div>
 
-                  {/* Destinations Grid */}
+                  {/* Section: Top Reiseziele (Grid) */}
                   <div className="space-y-6">
-                    <h4 className="text-[10px] font-bold text-white/30 uppercase tracking-[0.4em]">Alle Reiseziele</h4>
+                    <h4 className="text-[10px] font-bold text-white/30 uppercase tracking-[0.4em]">REISEZIELE</h4>
                     <div className="grid grid-cols-2 gap-x-8 gap-y-4">
                       {reiseziele.map((item) => (
                         <Link 
                           key={item.name} 
                           href={item.href} 
-                          className="text-sm font-medium text-white/60 hover:text-white transition-colors py-1"
+                          className="text-sm font-medium text-white/60 hover:text-white transition-colors flex items-center gap-2"
+                        >
+                          <div className="w-1 h-1 rounded-full bg-primary/40" />
+                          {item.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Section: Reisen 2026 */}
+                  <div className="space-y-6">
+                    <h4 className="text-[10px] font-bold text-white/30 uppercase tracking-[0.4em]">REISEN 2026</h4>
+                    <div className="grid grid-cols-1 gap-4">
+                      {reisen2026.map((item) => (
+                        <Link 
+                          key={item.name} 
+                          href={item.href} 
+                          className="text-base font-bold text-white/60 hover:text-white transition-colors"
                         >
                           {item.name}
                         </Link>
@@ -167,17 +170,35 @@ export function Navbar() {
                     </div>
                   </div>
 
-                  {/* Secondary Links */}
+                  {/* Section: Dienstleistungen */}
+                  <div className="space-y-6">
+                    <h4 className="text-[10px] font-bold text-white/30 uppercase tracking-[0.4em]">DIENSTLEISTUNGEN</h4>
+                    <div className="grid grid-cols-1 gap-4">
+                      {dienstleistungen.map((item) => (
+                        <Link 
+                          key={item.name} 
+                          href={item.href} 
+                          className="text-base font-bold text-white/60 hover:text-white transition-colors"
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Section: Informationen (Secondary) */}
                   <div className="pt-10 border-t border-white/5 space-y-4">
-                    {secondaryLinks.map((item) => (
-                      <Link 
-                        key={item.name} 
-                        href={item.href} 
-                        className="block text-lg font-bold text-white/60 hover:text-white transition-colors"
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
+                    <div className="grid grid-cols-2 gap-4">
+                      {secondaryLinks.map((item) => (
+                        <Link 
+                          key={item.name} 
+                          href={item.href} 
+                          className="text-xs font-bold text-white/40 hover:text-white transition-colors uppercase tracking-widest"
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
 

@@ -24,7 +24,7 @@ import { KilimanjaroSummit } from '@/components/sections/KilimanjaroSummit';
 import { ZanzibarEscape } from '@/components/sections/ZanzibarEscape';
 import { SafariVideo } from '@/components/sections/SafariVideo';
 import { FAQ } from '@/components/sections/FAQ';
-import { OfferPopup } from '@/components/sections/OfferPopup';
+// import { OfferPopup } from '@/components/sections/OfferPopup';
 import { ExpertiseNarrative } from '@/components/sections/ExpertiseNarrative';
 import { MeetTheSpecialists } from '@/components/sections/MeetTheSpecialists';
 import { EditableContent } from '@/components/cms/EditableContent';
@@ -123,7 +123,7 @@ export default function Home() {
         </section>
       </EditableContent>
 
-      <OfferPopup />
+      {/* <OfferPopup /> */}
 
       <section className="py-12 bg-white border-y border-border/50">
         <div className="container mx-auto px-4">
