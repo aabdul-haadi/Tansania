@@ -6,21 +6,17 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { 
   Mountain, 
-  Clock, 
   Map, 
-  ShieldCheck, 
-  CheckCircle2, 
   Star, 
   ChevronRight,
   TrendingUp,
-  Backpack,
   Video,
   LayoutGrid,
-  Info,
   Wind,
   Sun,
   Timer,
-  Award
+  Award,
+  CheckCircle2
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -29,6 +25,7 @@ import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
 import { PackageCard } from '@/components/packages/PackageCard';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { ContactSection } from '@/components/sections/ContactSection';
 
 const youtubeVideos = [
   { id: "DuwK6uDjHAA", title: "Kilimanjaro Summit Expedition" },
@@ -72,11 +69,11 @@ export default function KilimanjaroPage() {
               Das Dach Afrikas
             </Badge>
             <h1 className="font-headline text-4xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight drop-shadow-2xl">
-              Besteigen Sie den <br />
-              <span className="text-primary italic">Kilimandscharo</span>
+              Besteigen Sie das <br />
+              <span className="text-primary italic">Dach Afrikas</span>
             </h1>
             <p className="max-w-2xl mx-auto text-sm md:text-xl text-white/90 font-light leading-relaxed px-4">
-              Erleben Sie das ultimative Abenteuer: Finde deine perfekte Route & Traumreise zum Uhuru Peak.
+              Finde deine perfekte Kilimandscharo-Route & Traumreise. Wähle aus einzigartigen Wegen zum Uhuru Peak.
             </p>
           </motion.div>
         </div>
@@ -95,13 +92,13 @@ export default function KilimanjaroPage() {
               <Mountain className="w-4 h-4" /> Kilimandscharo Abenteuer
             </div>
             <h2 className="font-headline text-3xl md:text-5xl font-bold leading-tight">
-              Was macht den Kilimandscharo <br /><span className="text-primary italic">so besonders?</span>
+              Was macht den Kilimandscharo <br /><span className="text-primary italic">zum ultimativen Ziel?</span>
             </h2>
             <p className="text-muted-foreground font-light leading-relaxed text-lg">
-              Der Kilimandscharo vereint atemberaubende Landschaften, eine echte körperliche und mentale Herausforderung und den Nervenkitzel, den höchsten Gipfel Afrikas zu erklimmen — und das ganz ohne technische Kletterkenntnisse. 
+              Der Kilimandscharo vereint atemberaubende Landschaften, eine echte körperliche und mentale Herausforderung und den Nervenkitzel, den höchsten Gipfel Afrikas zu erklimmen — und das ganz ohne technische Kletterkenntnisse.
             </p>
             <p className="text-muted-foreground font-light leading-relaxed">
-              Seine einzigartigen Routen führen dich durch üppige Regenwälder, alpine Wüsten und eisige Gletscher und bieten dir auf einer einzigen Reise fünf verschiedene Klimazonen. Für entschlossene Anfänger genauso zugänglich wie für erfahrene Bergsteiger.
+              Seine einzigartigen Routen führen dich durch üppige Regenwälder, alpine Wüsten und eisige Gletscher und bieten dir auf einer einzigen Reise fünf verschiedene Klimazonen.
             </p>
           </motion.div>
           <motion.div 
@@ -116,7 +113,7 @@ export default function KilimanjaroPage() {
         </div>
       </section>
 
-      {/* Quick Facts - High Contrast */}
+      {/* Quick Facts */}
       <section className="py-20 bg-secondary text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         <div className="container mx-auto px-4 max-w-6xl relative z-10 text-center">
@@ -150,23 +147,15 @@ export default function KilimanjaroPage() {
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div className="max-w-2xl">
             <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] mb-2 block">Expeditions-Registry</span>
-            <h2 className="font-headline text-3xl md:text-6xl font-bold leading-tight">Wählen Sie Ihre <br /><span className="text-primary italic">Traumreise</span></h2>
+            <h2 className="font-headline text-3xl md:text-6xl font-bold leading-tight text-secondary">Wählen Sie Ihre <br /><span className="text-primary italic">Gipfeltour</span></h2>
           </div>
-          <p className="text-[10px] text-muted-foreground font-light max-w-[200px] border-l-2 border-primary/20 pl-4">
-            Ob Solo-Abenteuer oder exklusive Gruppenreise – hier beginnt dein Weg zum Uhuru Peak.
+          <p className="text-[10px] text-muted-foreground font-light max-w-[200px] border-l-2 border-primary/20 pl-4 lg:mb-2">
+            Ob gemütlich, spektakulär oder herausfordernd – hier beginnt deine Reise zum Dach Afrikas.
           </p>
         </div>
 
         {isLoading ? (
-          <div className="py-20 text-center text-muted-foreground font-bold text-xs uppercase tracking-widest animate-pulse">Syncing Global Catalog...</div>
-        ) : kiliPackages.length === 0 ? (
-          <div className="py-20 text-center text-muted-foreground border border-dashed rounded-[3rem]">
-            <LayoutGrid className="w-12 h-12 mx-auto mb-4 opacity-10" />
-            <p className="font-bold text-sm">Keine Kilimandscharo-Routen im System.</p>
-            <Button variant="link" asChild className="text-primary">
-              <Link href="/admin">Initialisieren Sie die Daten im Admin-Panel</Link>
-            </Button>
-          </div>
+          <div className="py-20 text-center text-muted-foreground font-bold text-xs uppercase tracking-widest animate-pulse">Syncing Gipfelstürmer...</div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
             {kiliPackages.map((pkg) => (
@@ -180,20 +169,13 @@ export default function KilimanjaroPage() {
       <section className="py-20 bg-[#0a0a0a] text-white relative overflow-hidden">
         <div className="container mx-auto px-4 max-w-6xl relative z-10 text-center">
           <div className="mb-16">
-            <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] mb-2 block">Visual Experience</span>
-            <h2 className="font-headline text-3xl md:text-6xl font-bold leading-tight">Erleben Sie die <span className="text-primary italic">Magie</span></h2>
+            <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] mb-2 block">Erlebe die Magie</span>
+            <h2 className="font-headline text-3xl md:text-6xl font-bold leading-tight">Gipfel-Momente <span className="text-primary italic">Ungefiltert</span></h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {youtubeVideos.map((video, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="group relative aspect-video rounded-[2rem] overflow-hidden shadow-2xl border border-white/5 bg-muted"
-              >
+              <div key={idx} className="group relative aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/5 bg-muted">
                 <iframe
                   src={`https://www.youtube.com/embed/${video.id}`}
                   title={video.title}
@@ -201,32 +183,27 @@ export default function KilimanjaroPage() {
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 />
-                <div className="absolute inset-0 bg-black/40 pointer-events-none group-hover:opacity-0 transition-opacity flex items-center justify-center">
-                  <div className="w-14 h-14 bg-primary rounded-full flex items-center justify-center shadow-xl">
-                    <Video className="w-6 h-6 text-white" />
-                  </div>
-                </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Route Selection Comparison */}
+      {/* Route Finder Guide */}
       <section className="py-24 container mx-auto px-4 max-w-6xl">
         <div className="text-center mb-20">
-          <h2 className="font-headline text-3xl md:text-6xl font-bold mb-4">Welche Route passt <span className="text-primary italic">zu dir?</span></h2>
-          <p className="text-muted-foreground uppercase tracking-widest font-bold text-[10px]">Jeder Bergsteiger-Typ findet hier seinen Weg.</p>
+          <h2 className="font-headline text-3xl md:text-6xl font-bold mb-4 text-secondary">Welche Route passt <span className="text-primary italic">zu dir?</span></h2>
+          <p className="text-muted-foreground uppercase tracking-widest font-bold text-[10px]">Jede der Hauptrouten bietet eine einzigartige Kombination.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
-            { q: "Welche Route ist am besten für Anfänger?", r: "Marangu- oder Machame-Route", d: "Leicht zu folgen, gute Infrastruktur und angenehmes Tempo." },
-            { q: "Welche bietet die spektakulärste Landschaft?", r: "Lemosho- oder Machame-Route", d: "Dramatische Panoramen und vielfältige Ökosysteme." },
-            { q: "Beste Route mit kleinem Budget?", r: "Marangu-Route", d: "Kürzeste Dauer, Hüttenübernachtungen und geringere Gesamtkosten." },
-            { q: "Passend für moderate Wanderer?", r: "Machame- oder Lemosho-Route", d: "Gute Balance aus Herausforderung und Akklimatisierung." },
-            { q: "Beste für erfahrene Bergsteiger?", r: "Umbwe-Route", d: "Steil, direkt und körperlich anspruchsvoll." },
-            { q: "Welche hat die höchste Erfolgsquote?", r: "8 Tage Lemosho", d: "Optimale Akklimatisierung durch längere Aufstiegszeit." }
+            { q: "Beste für Anfänger?", r: "Marangu- oder Machame-Route", d: "Leicht zu folgen, gute Infrastruktur und angenehmes Tempo." },
+            { q: "Schönste Landschaft?", r: "Lemosho- oder Machame-Route", d: "Dramatische Panoramen und vielfältige Ökosysteme." },
+            { q: "Kleines Budget?", r: "Marangu-Route", d: "Kürzeste Dauer, Hüttenübernachtungen und geringere Gesamtkosten." },
+            { q: "Moderate Wanderer?", r: "Machame- oder Lemosho-Route", d: "Gute Balance aus Herausforderung und Akklimatisierung." },
+            { q: "Erfahrene Bergsteiger?", r: "Umbwe-Route", d: "Steil, direkt und körperlich anspruchsvoll." },
+            { q: "Höchste Erfolgsquote?", r: "8 Tage Lemosho-Route", d: "Optimale Akklimatisierung durch längere Aufstiegszeit." }
           ].map((item, idx) => (
             <div key={idx} className="p-10 bg-white rounded-[3rem] shadow-sm border border-border/50 hover:border-primary/20 hover:shadow-xl transition-all group">
               <h4 className="text-primary font-bold text-[10px] uppercase tracking-widest mb-2">{item.q}</h4>
@@ -237,77 +214,24 @@ export default function KilimanjaroPage() {
         </div>
       </section>
 
-      {/* Route Deep Dives */}
-      <section className="py-20 bg-muted/20">
-        <div className="container mx-auto px-4 max-w-5xl space-y-32">
-          {/* Machame */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-6">
-              <Badge className="bg-secondary text-white uppercase tracking-widest">Whiskey Route</Badge>
-              <h3 className="font-headline text-3xl md:text-5xl font-bold">Machame-Route</h3>
-              <p className="text-muted-foreground leading-relaxed font-light">
-                Die Machame-Route gehört zu den beliebtesten Wegen. Dank ihres sanften Anstiegs und der guten Akklimatisierungschancen hat sie eine hohe Erfolgsquote. Sie schlängelt sich allmählich um den Berg herum und bietet atemberaubende Ausblicke.
-              </p>
-              <div className="flex gap-10">
-                <div>
-                  <p className="text-[10px] font-bold text-primary uppercase">Vorteil</p>
-                  <p className="text-sm font-bold">Günstiger & landschaftlich reizvoll</p>
-                </div>
-                <div>
-                  <p className="text-[10px] font-bold text-primary uppercase">Nachteil</p>
-                  <p className="text-sm font-bold">Stark frequentiert</p>
-                </div>
-              </div>
-            </div>
-            <div className="relative aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl">
-              <Image src="https://images.unsplash.com/photo-1511860810434-a92f84c6f01e?q=80&w=800" alt="Machame Route" fill className="object-cover" />
-            </div>
-          </div>
-
-          {/* Marangu */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center lg:flex-row-reverse">
-            <div className="space-y-6 lg:order-2">
-              <Badge className="bg-primary text-white uppercase tracking-widest">Coca-Cola Route</Badge>
-              <h3 className="font-headline text-3xl md:text-5xl font-bold">Marangu-Route</h3>
-              <p className="text-muted-foreground leading-relaxed font-light">
-                Die einzige Route mit Hüttenunterkünften anstelle von Zelten. Sie ist kürzer als andere Routen, was sie auf den ersten Blick leichter erscheinen lässt, tatsächlich aber dem Körper weniger Zeit zur Akklimatisierung gibt.
-              </p>
-              <div className="flex gap-10">
-                <div>
-                  <p className="text-[10px] font-bold text-primary uppercase">Vorteil</p>
-                  <p className="text-sm font-bold">Hüttenunterkunft & Budgetfreundlich</p>
-                </div>
-                <div>
-                  <p className="text-[10px] font-bold text-primary uppercase">Nachteil</p>
-                  <p className="text-sm font-bold">Geringere Erfolgsquote</p>
-                </div>
-              </div>
-            </div>
-            <div className="relative aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl lg:order-1">
-              <Image src="https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=800" alt="Marangu Route" fill className="object-cover" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Best Time & Preparation */}
+      {/* Preparation Section */}
       <section className="py-24 container mx-auto px-4 max-w-6xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div className="space-y-10">
             <div>
-              <h3 className="font-headline text-3xl md:text-5xl font-bold mb-6">Beste Reisezeit</h3>
-              <p className="text-muted-foreground font-light leading-relaxed">
-                Die beste Zeit, um den Kilimandscharo zu besteigen, ist während der beiden Trockenzeiten: Januar bis Mitte März sowie Juni bis Oktober.
+              <h3 className="font-headline text-3xl md:text-5xl font-bold mb-6 text-secondary">Vorbereitung</h3>
+              <p className="text-muted-foreground font-light leading-relaxed text-lg">
+                Das Besteigen des Kilimandscharo ist ein unvergessliches Abenteuer, erfordert jedoch eine gute körperliche und mentale Vorbereitung.
               </p>
             </div>
             <div className="space-y-6">
               {[
-                { t: "Juni bis Oktober", d: "Besonders beliebt, stabiles Wetter, klare Sicht." },
-                { t: "Januar bis März", d: "Ruhiger, optimales Wetter und kristallklare Panoramen." },
-                { t: "Regenzeiten meiden", d: "April-Mai und November sind rutschig und matschig." }
+                { t: "Kondition steigern", d: "Planen Sie regelmäßige, lange Wanderungen Monate vorab." },
+                { t: "Gehzeit trainieren", d: "Sie sollten täglich 6–7 Stunden wandern können – oft in großer Höhe." },
+                { t: "Ausrüstung testen", d: "Tragen Sie Ihre Wanderschuhe ein und testen Sie Ihren Rucksack." }
               ].map((item, i) => (
                 <div key={i} className="flex gap-4">
-                  <Sun className="w-6 h-6 text-primary shrink-0" />
+                  <CheckCircle2 className="w-6 h-6 text-primary shrink-0" />
                   <div>
                     <p className="font-bold text-secondary">{item.t}</p>
                     <p className="text-sm text-muted-foreground font-light">{item.d}</p>
@@ -320,27 +244,20 @@ export default function KilimanjaroPage() {
           <div className="bg-secondary text-white p-12 rounded-[4rem] shadow-2xl relative overflow-hidden">
             <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
             <div className="relative z-10 space-y-8">
-              <h3 className="font-headline text-3xl md:text-5xl font-bold">Vorbereitung</h3>
+              <h3 className="font-headline text-3xl md:text-5xl font-bold">Besten Monate</h3>
               <p className="text-white/60 font-light leading-relaxed italic">
-                "Das Besteigen des Kilimandscharo ist ein unvergessliches Abenteuer, erfordert jedoch eine gute körperliche und mentale Vorbereitung."
+                Januar bis Mitte März sowie Juni bis Oktober bieten stabiles Wetter und klare Sicht.
               </p>
-              <ul className="space-y-6">
-                <li className="flex gap-4 items-start">
-                  <CheckCircle2 className="w-6 h-6 text-primary shrink-0" />
-                  <p className="text-sm leading-relaxed">Täglich 6–7 Stunden wandern können — oft in großer Höhe.</p>
-                </li>
-                <li className="flex gap-4 items-start">
-                  <CheckCircle2 className="w-6 h-6 text-primary shrink-0" />
-                  <p className="text-sm leading-relaxed">Regelmäßige lange Wanderungen (1-2x pro Woche) Monate vorab.</p>
-                </li>
-                <li className="flex gap-4 items-start">
-                  <CheckCircle2 className="w-6 h-6 text-primary shrink-0" />
-                  <p className="text-sm leading-relaxed">Schrittweise Steigerung von Dauer und Schwierigkeit.</p>
-                </li>
-              </ul>
-              <Button className="w-full h-16 rounded-2xl bg-primary text-white font-bold text-base shadow-xl">
-                Beratung anfordern <ChevronRight className="w-4 h-4 ml-2" />
-              </Button>
+              <div className="grid grid-cols-1 gap-4">
+                <div className="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/10">
+                  <Sun className="w-6 h-6 text-primary" />
+                  <span className="text-sm font-bold">Trockenzeit bevorzugen</span>
+                </div>
+                <div className="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/10">
+                  <Wind className="w-6 h-6 text-primary" />
+                  <span className="text-sm font-bold">Regenzeiten meiden</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -350,17 +267,17 @@ export default function KilimanjaroPage() {
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center mb-16">
-            <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] mb-2 block">Gäste Stimmen</span>
-            <h2 className="font-headline text-3xl md:text-6xl font-bold">Hören Sie von denen, <br /><span className="text-primary italic">die dort waren</span></h2>
+            <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] mb-2 block">Stimmen vom Berg</span>
+            <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary">Hören Sie von unseren <br /><span className="text-primary italic">Gipfelstürmern</span></h2>
           </div>
           
           <Carousel opts={{ align: "start", loop: true }} className="w-full">
             <CarouselContent>
               {[
-                { name: "Sophia M.", q: "Perfect for beginners! Everything went smoothly and I loved the cozy huts. Great guides and service throughout." },
-                { name: "Jonas L.", q: "The Lemosho Route completely exceeded my expectations. It was quiet, scenic, and beautifully organized. The guides were incredibly knowledgeable." },
-                { name: "Katrin S.", q: "Fantastic team! The Machame route was a real challenge but worth every step. Loved the changing landscapes." },
-                { name: "Felix W.", q: "Worth every euro. Superb value, reliable service, and unforgettable adventure. Would book again immediately." }
+                { name: "Sophia M.", q: "Perfect for beginners! Everything went smoothly and I loved the cozy huts." },
+                { name: "Jonas L.", q: "The Lemosho Route completely exceeded my expectations. Knowledgeable and supportive guides." },
+                { name: "Katrin S.", q: "Fantastic team! The Machame route was a real challenge but worth every step." },
+                { name: "Felix W.", q: "Worth every euro. Superb value and unforgettable adventure. Would book again!" }
               ].map((t, idx) => (
                 <CarouselItem key={idx} className="md:basis-1/2">
                   <div className="p-10 bg-muted/20 rounded-[3rem] h-full flex flex-col justify-between border border-border/50">
@@ -388,21 +305,21 @@ export default function KilimanjaroPage() {
       {/* FAQ */}
       <section className="py-24 container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-16">
-          <h2 className="font-headline text-3xl md:text-5xl font-bold mb-4">Kilimandscharo <span className="text-primary italic">FAQ</span></h2>
+          <h2 className="font-headline text-3xl md:text-5xl font-bold mb-4 text-secondary">Kilimandscharo <span className="text-primary italic">FAQ</span></h2>
           <p className="text-muted-foreground uppercase tracking-widest font-bold text-[10px]">Wissenswertes zur Besteigung</p>
         </div>
 
         <Accordion type="single" collapsible className="space-y-4">
           {[
-            { q: "Wie hoch ist der Kilimandscharo?", a: "Der Kilimandscharo ist mit 5.895 Metern der höchste Berg Afrikas und der höchste freistehende Berg der Welt." },
-            { q: "Brauche ich spezielle Ausrüstung?", a: "Ja, für das Trekking benötigen Sie professionelle Wanderschuhe, Schlafsack, Thermokleidung und Regenbekleidung. Wir stellen eine detaillierte Packliste bereit." },
-            { q: "Wie viel kostet eine Kilimandscharo Besteigung?", a: "Die Kosten variieren je nach Route und Gruppengröße, liegen aber in der Regel zwischen 2.500 € und 4.500 € inkl. Transfers und Guides." },
-            { q: "Gibt es Altersbeschränkungen?", a: "Offiziell ab 10 Jahren. Wir empfehlen eine Besteigung ab 12-14 Jahren je nach Fitness und Erfahrung." },
-            { q: "Wie ist die Verpflegung organisiert?", a: "Wir bieten Vollpension inkl. heißer Mahlzeiten, die von unseren Begleitköchen täglich frisch zubereitet werden." },
-            { q: "Wie sicher ist eine Kilimandscharo Besteigung?", a: "Sicherheit steht an erster Stelle. Unsere Guides führen tägliche Gesundheitschecks durch und sind in Höhenrettung geschult." }
+            { q: "Wie hoch ist der Kilimandscharo?", a: "Der Kilimandscharo ist mit 5.895 Metern der höchste Berg Afrikas." },
+            { q: "Brauche ich spezielle Ausrüstung?", a: "Ja, Sie benötigen professionelle Wanderschuhe, Schlafsack, Thermokleidung und Regenbekleidung." },
+            { q: "Wie viel kostet eine Besteigung?", a: "Kosten variieren je nach Route und Dauer, meist zwischen 2.500 € und 4.500 €." },
+            { q: "Gibt es Altersbeschränkungen?", a: "Offiziell ab 10 Jahren. Wir empfehlen eine Besteigung ab 12-14 Jahren." },
+            { q: "Wie ist die Verpflegung?", a: "Wir bieten Vollpension mit täglich frisch zubereiteten heißen Mahlzeiten." },
+            { q: "Wie sicher ist die Besteigung?", a: "Sicherheit steht an erster Stelle. Unsere Guides führen tägliche Gesundheitschecks durch." }
           ].map((faq, i) => (
             <AccordionItem key={i} value={`item-${i}`} className="border-none bg-white rounded-2xl px-8 shadow-sm hover:shadow-md transition-all group">
-              <AccordionTrigger className="font-bold text-lg py-6 hover:no-underline hover:text-primary text-left">
+              <AccordionTrigger className="font-bold text-lg py-6 hover:no-underline hover:text-primary text-left text-secondary">
                 {faq.q}
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base font-light leading-relaxed pb-8">
@@ -412,6 +329,9 @@ export default function KilimanjaroPage() {
           ))}
         </Accordion>
       </section>
+
+      {/* Contact Section */}
+      <ContactSection />
     </div>
   );
 }
