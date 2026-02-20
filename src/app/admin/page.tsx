@@ -79,7 +79,7 @@ export default function AdminDashboard() {
             { day: 12, title: 'Empfehlung: Strand und Tauchen', location: 'Nungwi Coast', desc: 'Letzte Chance für einen geführten Tauchgang oder einfach pure Entspannung auf Ihrem Balkon.', img: 'https://images.unsplash.com/photo-1577971132997-c10be9372519?q=80&w=800' },
             { day: 13, title: 'Empfehlung: Freizeit', location: 'Stone Town', desc: 'Ein letzter Tag zur freien Verfügung. Erkunden Sie die Gassen der historischen Altstadt.', img: 'https://images.unsplash.com/photo-1590001158193-79013ac7fa77?q=80&w=800' },
             { day: 14, title: 'Abreise & Transfer', location: 'Flughafen ZNZ', desc: 'Transfer zum Flughafen für Ihren Rückflug. We turn wishes into memories.', img: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800' },
-            { day: 15, title: 'Landung in der Heimat', location: 'Home', desc: 'Ankunft zuhause mit Erinnerungen, die ein Leben lang bleiben.', img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800' }
+            { day: 15, title: 'Landung in der Heimat', location: 'Home', desc: 'Ankunft zuhause mit Erinnerungen, die ein Leben lang bleiben.', img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200' }
           ]
         },
         { id: '13-day-safari-zanzibar', title: '13 Tage Safari & Sansibar Erlebnis', slug: '13-day-safari-zanzibar', category: 'SAFARI & SANSIBAR', durationDays: 13, startingPrice: 3699, highlights: ['Big Five Pirschfahrten', 'Massai Dorfbesuch', 'Ngorongoro UNESCO Krater', 'Sansibar Strände & Tauchen', 'Stone Town Stadttour'], imageUrl: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800' },
