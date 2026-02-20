@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from 'react';
@@ -27,7 +26,6 @@ export default function AdminDashboard() {
 
   const canFetch = !!firestore && !!user;
 
-  // Real-time queries for dashboard stats
   const pagesQuery = useMemoFirebase(() => canFetch ? collection(firestore!, 'pages') : null, [canFetch, firestore]);
   const blogsQuery = useMemoFirebase(() => canFetch ? collection(firestore!, 'blogPosts') : null, [canFetch, firestore]);
   const bookingsQuery = useMemoFirebase(() => canFetch ? collection(firestore!, 'bookings') : null, [canFetch, firestore]);
@@ -61,25 +59,25 @@ export default function AdminDashboard() {
           tag: 'Meistverkauft', 
           durationDays: 15, 
           startingPrice: 5399, 
-          description: "Diese 15-tägige Pauschalreise vereint Abenteuer und Erholung in perfekter Weise: Nach der Landung am Kilimanjaro International Airport werden Sie herzlich empfangen und fahren nach Arusha, wo Sie das wahre Tansania in Ihrem eigenen Tempo erleben können.",
+          description: "Diese 15-tägige Pauschalreise vereint Abenteuer und Erholung in perfekter Weise: Nach der Landung am Kilimanjaro International Airport werden Sie herzlich empfangen und fahren nach Arusha, wo Sie das wahre Tansania in Ihrem eigenen Tempo erleben können. Die Safari im Norden beginnt im Arusha-Nationalpark, gefolgt von Tarangire, den Weiten der Serengeti und dem Ngorongoro-Krater. Den krönenden Abschluss bilden die weißen Sandstrände Sansibars.",
           highlights: ['Atemberaubende Tierbeobachtungen', 'Exklusive Lodge & Tented Camp', 'Abenteuer & Erholung', 'Alles gut organisiert', 'Inklusive Intl. Flug'], 
           imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200',
           itineraryDays: [
-            { day: 1, title: 'Ankommen & Eintauchen', location: 'Arusha', stats: 'Distanz: 50km | 60 Min', desc: 'Ihre Traumreise beginnt jetzt! Fliegen Sie mit uns in den schönen tieferen Süden unserer Erdkugel und zwar nach Tanzania. Machen Sie es sich bequem während des Flugs, schliessen Sie gelegentlich Ihre Augen und träumen etwas vor sich hin...', img: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800' },
-            { day: 2, title: 'Ankunft in Tanzania', location: 'Arusha', stats: 'Kultur & Markt', desc: 'In der Stadt können Sie das turbulente afrikanische Stadtleben hautnah miterleben. Besuchen Sie Märkte, auf denen Sie frisches Obst und Gemüse, traditionelles Street Food, Kleidung und vieles mehr kaufen können. Fahren Sie mit einem Daladala, um das tansanische Leben hautnah zu erfahren.', img: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=800' },
-            { day: 3, title: 'Arusha Nationalpark', location: 'Momella Lakes', stats: '400 Vogelarten', desc: 'Der Arusha Nationalpark belohnt mit einer malerischen Aussicht auf die sieben Momella-Seen und den Ngurdoto Krater. Die Umgebung wechselt stetig zwischen Steppen, Dschungel und Hochgebirge. Im Osten des Parks ist ein dichter hoher Wald zu finden, welcher einen optimalen Lebensraum für verschiedenste Affen darstellt.', img: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800' },
-            { day: 4, title: 'Tarangire Nationalpark', location: 'Tarangire River', stats: 'Hohe Elefantendichte', desc: 'Pirschfahrt im Park der Giganten. Bis zu 300 Elefanten suchen täglich im trockenen Flussbett nach unterirdischen Flüssen, während wandernde Gnus, Zebras, Büffel, Impalas und Gazellen die schrumpfenden Wasserlöcher bevölkern. Mittagessen bei einem Picknick mit Blick auf den Fluss.', img: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=800' },
-            { day: 5, title: 'Besuch einer tansanischen Schule', location: 'Karatu Region', stats: 'Maasai Kultur', desc: 'Besuch eines Massai-Dorfs (Manyatta). Lernen Sie Bräuche und Alltag der Bomas kennen. Die Massai erkennen Sie an ihrer traditionellen Kleidung (rote und blaue Laken) und dem wunderschönen afrikanischen Schmuck. Fahrt zum Übernachten in Ihre Unterkunft inmitten der Serengeti.', img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800' },
-            { day: 6, title: 'Serengeti Nationalpark', location: 'Serengeti Plains', stats: 'Migration Spot', desc: 'Ganztägige Safari in der weltberühmten Serengeti. Mitten in Tausenden muhenden Gnus und schnaubenden Zebras. Wenn Sie mitten in Tausenden von Gnus stehen und abends das Brüllen der Löwen hören, ist dies ein so intensives Erlebnis, wie es nur das ursprüngliche Afrika bieten kann.', img: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=800' },
-            { day: 7, title: 'Ngorongoro-Krater', location: 'UNESCO Welterbe', stats: 'Big Five Spot', desc: 'Abfahrt fast 600 Meter hinab in den Krater. 30.000 Tiere auf engstem Raum, darunter einige der letzten erhaltenen Spitzmaulnashörner Tansanias. Sie genießen ein Picknick im Krater und fahren am späten Nachmittag in Ihre Unterkunft.', img: 'https://images.unsplash.com/photo-1580502304784-8985b777da59?q=80&w=800' },
-            { day: 8, title: 'Inlandsflug nach Sansibar', location: 'Zanzibar Shores', stats: '1h Flugzeit', desc: 'Vom Festland auf die berühmte Insel Sansibar. Transfer zum Flughafen und Flug auf die Gewürzinsel. Beziehen Sie Ihr Strandhotel und lassen Sie die Seele baumeln. Sie haben genug Zeit, um am Strand die Seele baumeln zu lassen.', img: 'https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=800' },
-            { day: 9, title: 'Empfehlung: Freizeit', location: 'Paje / Jambiani', stats: 'Strand & Sonne', desc: 'Genießen Sie die wunderschönen, sauberen, weißen Strände von Sansibar und schwimmen, schnorcheln oder tauchen Sie im kristallklaren, indischen Ozean. Bestaunen Sie am Abend den goldenen Sonnenuntergang.', img: 'https://images.unsplash.com/photo-1590001158193-79013ac7fa77?q=80&w=800' },
-            { day: 10, title: 'Empfehlung: blaue Safari', location: 'Sandbank', stats: 'Schnorcheln', desc: 'Optionale Bootstour mit lokal gebauten Schiffen. Mittagessen mit gegrilltem Fisch, Reis und Linsen auf einer Sandbank oder einsamen Insel. Segeln auf einem traditionellen Kanu oder einfach nur entspannen.', img: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800' },
-            { day: 11, title: 'Empfehlung: Gewürztour', location: 'Inselinneres', stats: 'Düfte Afrikas', desc: 'Reisen Sie ins Inselinnere und lernen Sie, wie Vanille, Kakao und Pfeffer wachsen. Die berauschenden Aromen von frischem Kardamom, Zimt und Nelken werden ihre Sinne erfreuen.', img: 'https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?q=80&w=800' },
-            { day: 12, title: 'Empfehlung: Strand und Tauchen', location: 'Nungwi Coast', stats: 'Unterwasserwelt', desc: 'Geführter Tauchgang oder einfach pure Entspannung auf Ihrem Balkon oder dem Strand Ihres schönen Hotels. Letzte Chance für einen geführten Tauchgang.', img: 'https://images.unsplash.com/photo-1577971132997-c10be9372519?q=80&w=800' },
-            { day: 13, title: 'Empfehlung: Freizeit', location: 'Stone Town', stats: 'Historie', desc: 'Genießen Sie die wunderschönen Strände oder erkunden Sie die Gassen der historischen Altstadt Stone Town. Ein letzter Tag zur freien Verfügung.', img: 'https://images.unsplash.com/photo-1590001158193-79013ac7fa77?q=80&w=800' },
-            { day: 14, title: 'Abreise & Transfer', location: 'Flughafen ZNZ', stats: 'Rückreise', desc: 'Nach einem reichhaltigen Frühstück Transfer zum Flughafen. Genießen Sie noch einmal die Eindrücke Tansanias und hören Sie letzte Geschichten über das afrikanische Land. We turn wishes into memories.', img: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800' },
-            { day: 15, title: 'Landung in der Heimat', location: 'Home', stats: 'Willkommen zurück', desc: 'Die Traumreise ist jetzt eine schöne Erinnerung. Kommen Sie sicher nach Hause und bleiben Sie gesund. Wir freuen uns, Sie bald wieder bei uns begrüßen zu dürfen.', img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200' }
+            { day: 1, title: 'Ankommen & Eintauchen', location: 'Arusha', stats: 'Distanz: 50km | 60 Min', desc: 'Ihre Traumreise beginnt jetzt! Fliegen Sie mit uns in den schönen tieferen Süden unserer Erdkugel. Nach der Ankunft am Kilimandscharo Airport werden Sie von unserem Reiseleiter empfangen. In Arusha können Sie sich von der Anreise erholen oder erste Eindrücke der Stadt sammeln.', img: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800' },
+            { day: 2, title: 'Ankunft in Tanzania', location: 'Arusha', stats: 'Kultur & Markt', desc: 'Erkunden Sie Arusha mit einem lokalen Guide. Besuchen Sie pulsierende Märkte mit frischem Obst, Street Food und traditioneller Kleidung. Eine Fahrt mit dem Daladala (Bus) bringt Ihnen das authentische Leben näher.', img: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=800' },
+            { day: 3, title: 'Arusha Nationalpark', location: 'Momella Lakes', stats: '400 Vogelarten', desc: 'Malerische Aussicht auf die Momella-Seen und den Ngurdoto Krater. Dichter Wald bietet Lebensraum für Affen, während die Seen von Tausenden Flamingos bevölkert werden. Optional: Ranger-geführte Wanderung.', img: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800' },
+            { day: 4, title: 'Tarangire Nationalpark', location: 'Tarangire River', stats: 'Park der Giganten', desc: 'Pirschfahrt im Land der Elefanten und Baobabs. Hunderte Elefanten sammeln sich am Flussbett. Genießen Sie ein entspanntes Picknick mit Blick auf die Wildnis.', img: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=800' },
+            { day: 5, title: 'Besuch einer tansanischen Schule', location: 'Manyatta', stats: 'Massai Kultur', desc: 'Auf dem Weg zur Serengeti besuchen Sie ein Massai-Dorf. Lernen Sie Bräuche und Alltag in den Bomas kennen. Am Abend erreichen Sie Ihre Unterkunft inmitten der Serengeti.', img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800' },
+            { day: 6, title: 'Serengeti Nationalpark', location: 'Serengeti Plains', stats: 'Migration Spot', desc: 'Ganztägige Erkundung der weltberühmten Savanne. Je nach Saison folgen wir der Großen Migration – ein intensives Naturerlebnis, das nur Afrika bieten kann.', img: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=800' },
+            { day: 7, title: 'Ngorongoro-Krater', location: 'UNESCO Welterbe', stats: 'Big Five Spot', desc: 'Abfahrt fast 600 Meter hinab in den Krater. 30.000 Tiere auf engstem Raum, darunter die seltenen Spitzmaulnashörner. Picknick im Krater vor der Rückkehr zur Lodge.', img: 'https://images.unsplash.com/photo-1580502304784-8985b777da59?q=80&w=800' },
+            { day: 8, title: 'Inlandsflug nach Sansibar', location: 'Zanzibar Shores', stats: 'Flug: 1h', desc: 'Vom Festland ins Inselparadies. Transfer zum Flughafen und Flug auf die Gewürzinsel. Ihr Strandhotel in Jambiani oder Nungwi erwartet Sie.', img: 'https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=800' },
+            { day: 9, title: 'Empfehlung: Freizeit', location: 'Strand & Sonne', stats: 'Entspannung', desc: 'Weiße Sandstrände und türkisfarbenes Meer. Genießen Sie erfrischende Cocktails und den goldenen Sonnenuntergang am Ozean.', img: 'https://images.unsplash.com/photo-1590001158193-79013ac7fa77?q=80&w=800' },
+            { day: 10, title: 'Empfehlung: blaue Safari', location: 'Sandbank', stats: 'Schnorcheln', desc: 'Optionaler Bootsausflug mit traditionellen Schiffen. Schnorcheln in flachen Riffen und Mittagessen mit gegrilltem Fisch auf einer einsamen Sandbank.', img: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800' },
+            { day: 11, title: 'Empfehlung: Gewürztour', location: 'Spice Farm', stats: 'Düfte Afrikas', desc: 'Reise ins Inselinnere. Erfahren Sie, wie Vanille, Pfeffer und Muskat wachsen. Eine sensorische Reise durch Sansibars Geschichte.', img: 'https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?q=80&w=800' },
+            { day: 12, title: 'Empfehlung: Strand und Tauchen', location: 'Nungwi Coast', stats: 'Unterwasserwelt', desc: 'Letzte Chance für einen geführten Tauchgang oder einfach pure Entspannung auf Ihrem Balkon mit Blick auf das Meer.', img: 'https://images.unsplash.com/photo-1577971132997-c10be9372519?q=80&w=800' },
+            { day: 13, title: 'Empfehlung: Freizeit', location: 'Stone Town', stats: 'Historie', desc: 'Erkunden Sie die Gassen der historischen Altstadt oder verbringen Sie einen letzten ruhigen Tag am Strand.', img: 'https://images.unsplash.com/photo-1590001158193-79013ac7fa77?q=80&w=800' },
+            { day: 14, title: 'Abreise & Transfer', location: 'Flughafen ZNZ', stats: 'Abschied', desc: 'Nach dem Frühstück Transfer zum Flughafen. Wir hoffen, wir konnten Ihre Wünsche in bleibende Erinnerungen verwandeln.', img: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800' },
+            { day: 15, title: 'Landung in der Heimat', location: 'Home', stats: 'Ende der Reise', desc: 'Ankunft in der Heimat. Leider ist die Traumreise nun eine schöne Erinnerung. Bleiben Sie gesund und bis bald!', img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200' }
           ]
         }
       ];
@@ -93,7 +91,7 @@ export default function AdminDashboard() {
         }, { merge: true });
       }
 
-      toast({ title: "Global Registry Updated", description: "All flagship packages have been synchronized." });
+      toast({ title: "CMS Synchronized", description: "Flagship packages updated with full narrative data." });
     } catch (error: any) {
       toast({ variant: "destructive", title: "Setup Failed", description: error.message });
     } finally {
@@ -109,19 +107,12 @@ export default function AdminDashboard() {
           <p className="text-muted-foreground mt-2 text-lg">Digital operations for Serengeti Dreams.</p>
         </div>
         <div className="flex items-center gap-3">
-          <Button 
-            onClick={handleSeedData} 
-            disabled={loading} 
-            variant="secondary" 
-            className="gap-2 rounded-2xl h-12 px-6"
-          >
+          <Button onClick={handleSeedData} disabled={loading} variant="secondary" className="gap-2 rounded-2xl h-12 px-6">
             {loading ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Sparkles className="w-4 h-4" />}
             Initialize CMS Data
           </Button>
           <Button asChild variant="outline" className="gap-2 rounded-2xl h-12 px-6">
-            <Link href="/" target="_blank">
-              <Eye className="w-4 h-4" /> View Site
-            </Link>
+            <Link href="/" target="_blank"><Eye className="w-4 h-4" /> View Site</Link>
           </Button>
         </div>
       </div>
@@ -135,9 +126,7 @@ export default function AdminDashboard() {
             </CardHeader>
             <CardContent>
               <div className="text-3xl font-bold text-secondary">{stat.value}</div>
-              <p className="text-[10px] text-muted-foreground mt-2 font-bold uppercase tracking-wider">
-                {stat.trend}
-              </p>
+              <p className="text-[10px] text-muted-foreground mt-2 font-bold uppercase tracking-wider">{stat.trend}</p>
             </CardContent>
           </Card>
         ))}
