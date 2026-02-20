@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -19,10 +20,14 @@ import {
   Compass,
   Download,
   Share2,
-  Heart
+  Heart,
+  Plane,
+  Camera,
+  Coffee
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Card } from '@/components/ui/card';
 import { useDoc, useFirestore, useMemoFirebase } from '@/firebase';
 import { doc } from 'firebase/firestore';
 import { cn } from '@/lib/utils';
@@ -120,7 +125,7 @@ export default function PackageDetailPage() {
         </div>
       </section>
 
-      {/* Sticky Segmented Sub-Nav (Best Phone Practice) */}
+      {/* Sticky Segmented Sub-Nav */}
       <div className="sticky top-0 z-[40] bg-white/80 backdrop-blur-xl border-b overflow-x-auto no-scrollbar">
         <div className="container mx-auto px-4 flex items-center justify-between min-w-max h-16">
           <div className="flex gap-8 h-full">
@@ -152,27 +157,46 @@ export default function PackageDetailPage() {
             
             {/* overview section */}
             <section ref={overviewRef} className="space-y-12">
-              <div className="bg-white rounded-[3rem] p-8 md:p-16 shadow-xl border border-border/50 relative overflow-hidden">
-                <div className="absolute top-0 right-0 p-12 opacity-[0.03] pointer-events-none">
-                  <Compass className="w-48 h-48 text-secondary" />
-                </div>
-                <div className="relative z-10 space-y-8">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <div className="lg:col-span-7 space-y-8">
                   <div className="space-y-4">
                     <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] block">Expeditions-Kern</span>
                     <h2 className="font-headline text-3xl md:text-5xl font-bold text-secondary leading-tight">
                       Abenteuer & Erholung <br /><span className="text-primary italic">Perfekt Vereint</span>
                     </h2>
                   </div>
-                  <p className="text-muted-foreground text-lg font-light leading-relaxed">
+                  <p className="text-muted-foreground text-lg font-light leading-relaxed italic border-l-4 border-primary/20 pl-6 py-2">
                     {pkg.description}
                   </p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6">
+                  <div className="prose prose-neutral max-w-none text-muted-foreground font-light leading-relaxed">
+                    <p>
+                      Erleben Sie das wahre Tansania in Ihrem eigenen Tempo. Von den dichten Wäldern des Arusha Nationalparks über die gigantischen Elefantenherden von Tarangire bis hin zur legendären Serengeti – wir haben jedes Detail für Sie kuratiert.
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="lg:col-span-5 bg-white p-8 rounded-[3rem] shadow-xl border border-border/50 space-y-6">
+                  <h4 className="font-headline text-xl font-bold text-secondary">Signature Highlights</h4>
+                  <div className="space-y-4">
                     {pkg.highlights?.map((h: string, i: number) => (
-                      <div key={i} className="flex items-center gap-4 p-5 bg-muted/20 rounded-2xl border border-border/50 group hover:border-primary/20 transition-colors">
-                        <CheckCircle2 className="w-5 h-5 text-primary" />
+                      <div key={i} className="flex items-center gap-4 group">
+                        <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors">
+                          <CheckCircle2 className="w-4 h-4 text-primary group-hover:text-white" />
+                        </div>
                         <span className="font-bold text-[10px] uppercase tracking-widest text-secondary">{h}</span>
                       </div>
                     ))}
+                  </div>
+                  <div className="pt-6 border-t border-muted">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-secondary/5 flex items-center justify-center">
+                        <Users className="w-5 h-5 text-secondary" />
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-bold uppercase text-muted-foreground">Gruppengröße</p>
+                        <p className="text-xs font-bold text-secondary">Maximal 6-8 Personen</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -186,7 +210,7 @@ export default function PackageDetailPage() {
                   <h3 className="font-headline text-4xl md:text-6xl font-bold text-secondary">Ihr <span className="text-primary italic">Reiseverlauf</span></h3>
                 </div>
                 <div className="hidden sm:flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-                  <Download className="w-4 h-4" /> Download PDF
+                  <Download className="w-4 h-4" /> Reiseroute PDF
                 </div>
               </div>
 
@@ -194,7 +218,7 @@ export default function PackageDetailPage() {
                 {/* Visual Connector Line */}
                 <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-primary/40 via-muted to-primary/40 hidden md:block" />
 
-                {pkg.itinerary?.map((day: any, idx: number) => (
+                {(pkg.itineraryDays || pkg.itinerary)?.map((day: any, idx: number) => (
                   <motion.div 
                     key={idx}
                     initial={{ opacity: 0, y: 40 }}
@@ -204,17 +228,17 @@ export default function PackageDetailPage() {
                   >
                     {/* Visual Node */}
                     <div className="absolute left-0 top-0 w-16 h-16 rounded-[1.5rem] bg-secondary flex flex-col items-center justify-center text-white shadow-xl z-10 hidden md:flex group-hover:scale-110 transition-transform">
-                      <span className="text-[10px] font-bold uppercase tracking-widest opacity-40">Day</span>
-                      <span className="text-xl font-bold font-headline">{day.day}</span>
+                      <span className="text-[10px] font-bold uppercase tracking-widest opacity-40">Tag</span>
+                      <span className="text-xl font-bold font-headline">{day.day || idx + 1}</span>
                     </div>
 
                     <div className="bg-white rounded-[2.5rem] overflow-hidden shadow-sm border border-border/50 hover:shadow-xl transition-all duration-500">
                       <div className="flex flex-col md:flex-row">
-                        <div className="md:w-1/3 aspect-[16/10] md:aspect-auto relative overflow-hidden">
-                          <Image src={day.img || 'https://picsum.photos/seed/safari/800/600'} alt={day.title} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
-                          <div className="absolute top-4 left-4 md:hidden bg-secondary text-white px-4 py-1.5 rounded-full text-[10px] font-bold shadow-xl">Tag {day.day}</div>
+                        <div className="md:w-[40%] aspect-[16/10] md:aspect-auto relative overflow-hidden">
+                          <Image src={day.img || `https://picsum.photos/seed/safari-day-${idx}/800/600`} alt={day.title} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
+                          <div className="absolute top-4 left-4 md:hidden bg-secondary text-white px-4 py-1.5 rounded-full text-[10px] font-bold shadow-xl">Tag {day.day || idx + 1}</div>
                         </div>
-                        <div className="p-8 md:p-10 md:w-2/3 space-y-4">
+                        <div className="p-8 md:p-10 md:w-[60%] space-y-6">
                           <div className="flex flex-wrap items-center justify-between gap-4">
                             <div className="flex items-center gap-2 text-primary font-bold text-[10px] uppercase tracking-widest">
                               <MapPin className="w-3.5 h-3.5" /> {day.location}
@@ -225,8 +249,10 @@ export default function PackageDetailPage() {
                               </Badge>
                             )}
                           </div>
-                          <h4 className="font-headline text-2xl md:text-3xl font-bold text-secondary">{day.title}</h4>
-                          <p className="text-muted-foreground text-sm font-light leading-relaxed italic">"{day.desc}"</p>
+                          <h4 className="font-headline text-2xl md:text-3xl font-bold text-secondary leading-tight">{day.title}</h4>
+                          <div className="prose prose-sm max-w-none text-muted-foreground font-light leading-relaxed">
+                            <p className="whitespace-pre-wrap">{day.desc}</p>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -239,7 +265,7 @@ export default function PackageDetailPage() {
             <section ref={hotelsRef} className="space-y-12">
               <div className="text-center md:text-left space-y-2 px-4">
                 <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px]">Rest & Recharge</span>
-                <h3 className="font-headline text-4xl md:text-6xl font-bold text-secondary">Premium <span className="text-primary italic">Unterkünfte</span></h3>
+                <h3 className="font-headline text-4xl md:text-6xl font-bold text-secondary">Handverlesene <span className="text-primary italic">Lodges</span></h3>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {[
@@ -279,7 +305,7 @@ export default function PackageDetailPage() {
                   <div className="space-y-3">
                     {[
                       { l: "Min. Teilnehmer", v: "Auf Anfrage" },
-                      { l: "Max. Teilnehmer", v: "6 Explorer" },
+                      { l: "Max. Teilnehmer", v: "6-8 Explorer" },
                       { l: "Saison", v: "2026 - 2027" }
                     ].map((s, i) => (
                       <div key={i} className="flex justify-between items-center p-4 bg-white/5 rounded-2xl border border-white/10">
@@ -295,7 +321,7 @@ export default function PackageDetailPage() {
 
                   <div className="flex justify-between gap-4">
                     <button className="flex-1 flex items-center justify-center gap-2 text-[9px] font-bold uppercase tracking-widest text-white/20 hover:text-primary transition-colors border border-white/5 h-10 rounded-xl">
-                      <Download className="w-3 h-3" /> PDF Itinerary
+                      <Download className="w-3 h-3" /> Reiseroute PDF
                     </button>
                     <button className="w-10 h-10 flex items-center justify-center text-white/20 hover:text-primary transition-colors border border-white/5 rounded-xl">
                       <Share2 className="w-4 h-4" />
@@ -316,7 +342,7 @@ export default function PackageDetailPage() {
                 </div>
                 <div className="space-y-2">
                   <a href="tel:+493022608080" className="flex items-center justify-between p-3 bg-muted/30 rounded-xl text-xs font-bold hover:bg-primary hover:text-white transition-all group">
-                    <span className="opacity-60 group-hover:opacity-100">Phone</span>
+                    <span className="opacity-60 group-hover:opacity-100">Telefon</span>
                     <span>+49 30 22608080</span>
                   </a>
                   <a href="mailto:info@serengetidreams.com" className="flex items-center justify-between p-3 bg-muted/30 rounded-xl text-xs font-bold hover:bg-primary hover:text-white transition-all group">
@@ -335,7 +361,7 @@ export default function PackageDetailPage() {
         <ContactSection />
       </div>
 
-      {/* Mobile-Only Sticky Bottom Bar (Best Phone Practice) */}
+      {/* Mobile-Only Sticky Bottom Bar */}
       <div className="fixed bottom-0 left-0 right-0 z-[100] lg:hidden p-4 pointer-events-none">
         <motion.div 
           initial={{ y: 100 }}
@@ -350,7 +376,7 @@ export default function PackageDetailPage() {
             </div>
           </div>
           <Button onClick={() => scrollTo('inquiry')} className="rounded-2xl h-14 px-8 bg-primary text-white font-bold text-xs uppercase tracking-widest shadow-xl">
-            Reise Anfragen <ChevronRight className="w-4 h-4 ml-1" />
+            Jetzt Anfragen <ChevronRight className="w-4 h-4 ml-1" />
           </Button>
         </motion.div>
       </div>
