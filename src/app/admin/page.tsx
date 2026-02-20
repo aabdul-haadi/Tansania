@@ -27,6 +27,7 @@ export default function AdminDashboard() {
 
   const canFetch = !!firestore && !!user;
 
+  // Real-time queries for dashboard stats
   const pagesQuery = useMemoFirebase(() => canFetch ? collection(firestore!, 'pages') : null, [canFetch, firestore]);
   const blogsQuery = useMemoFirebase(() => canFetch ? collection(firestore!, 'blogPosts') : null, [canFetch, firestore]);
   const bookingsQuery = useMemoFirebase(() => canFetch ? collection(firestore!, 'bookings') : null, [canFetch, firestore]);
@@ -90,40 +91,7 @@ export default function AdminDashboard() {
         updatedAt: new Date().toISOString()
       }, { merge: true });
 
-      // 2. SEED FLAGSHIP BLOG POST
-      const blogId = 'packing-guide-savannah-to-shore';
-      await setDoc(doc(firestore, 'blogPosts', blogId), {
-        id: blogId,
-        slug: blogId,
-        title: 'The Ultimate Packing Guide: From Savannah to Shore',
-        excerpt: 'Packing for a 15-day journey through the rugged Serengeti and the humid beaches of Zanzibar requires precision. Here is our expert checklist.',
-        category: 'Planning',
-        status: 'PUBLISHED',
-        authorName: 'Sophie Williams',
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-        coverImage: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=1200',
-        contentMarkdown: `Packing for Tanzania is about balancing utility with comfort. You'll be traversing dust-blown plains in the morning and dining by the ocean at night. 
-
-### The Safari Essentials
-Lightweight, breathable fabrics in neutral tones (khaki, beige, olive) are your best friends. Avoid bright colors that attract tsetse flies.
-- **Binoculars**: Don't rely on your guide's pair. Having your own makes every lion sighting personal.
-- **Layers**: Savannah mornings are cold. Bring a high-quality fleece or windbreaker.
-- **Sun Protection**: The equatorial sun is relentless. A wide-brimmed hat and SPF 50+ are mandatory.
-
-### Transitioning to Zanzibar
-When you fly from Arusha to Stone Town, the climate shifts from dry heat to tropical humidity. 
-- **Linen Apparel**: Perfect for the island breeze.
-- **Modest Wear**: Stone Town is culturally conservative. Ensure shoulders and knees are covered for city tours.
-- **Water Shoes**: Essential for exploring the coral reefs of Paje.
-
-### Technology & Gear
-- **Power Banks**: Many camps run on solar.
-- **Extra Memory Cards**: You will take more photos than you think.
-- **Universal Adapter**: Type G (UK style) is standard in Tanzania.`
-      }, { merge: true });
-
-      toast({ title: "CMS Registry Updated", description: "Package and flagship blog post have been seeded." });
+      toast({ title: "CMS Registry Updated", description: "Package data has been synchronized." });
     } catch (error: any) {
       toast({ variant: "destructive", title: "Setup Failed", description: error.message });
     } finally {
