@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -27,6 +28,7 @@ import { OfferPopup } from '@/components/sections/OfferPopup';
 import { ExpertiseNarrative } from '@/components/sections/ExpertiseNarrative';
 import { MeetTheSpecialists } from '@/components/sections/MeetTheSpecialists';
 import { EditableContent } from '@/components/cms/EditableContent';
+import { AfricaVariety } from '@/components/sections/AfricaVariety';
 
 export default function Home() {
   const [tanzaniaApi, setTanzaniaApi] = useState<CarouselApi>();
@@ -204,6 +206,7 @@ export default function Home() {
       </section>
 
       <SafariMap />
+      <AfricaVariety />
       <SafariVideo />
       <KilimanjaroSummit />
       <ZanzibarEscape />
