@@ -4,8 +4,8 @@
 
 @layer base {
   :root {
-    /* Updated Branding Palette */
-    --background: 0 0% 96%; /* #F5F5F5 - Secondary Light Gray */
+    /* Refined Branding Palette */
+    --background: 0 0% 96%; /* #F5F5F5 - Light Gray Background */
     --foreground: 0 0% 12%; /* #1F1F1F - Dark Text */
     --card: 0 0% 100%;
     --card-foreground: 0 0% 12%;
@@ -15,11 +15,8 @@
     --primary: 19 89% 47%; /* #E3510D - Primary Orange */
     --primary-foreground: 0 0% 98%;
     
-    --secondary: 150 25% 18%; /* Deep Acacia Green (Existing) */
-    --secondary-foreground: 0 0% 96%;
-    
-    --muted: 30 20% 90%;
-    --muted-foreground: 0 0% 40%;
+    --secondary: 0 0% 90%; /* #E5E5E5 - Neutral Secondary */
+    --secondary-foreground: 0 0% 12%;
     
     --accent: 30 53% 64%; /* #D4A373 - Safari Brown */
     --accent-foreground: 0 0% 12%;
@@ -52,7 +49,7 @@
     --popover-foreground: 0 0% 96%;
     --primary: 19 89% 55%;
     --primary-foreground: 0 0% 8%;
-    --secondary: 150 20% 25%;
+    --secondary: 0 0% 15%;
     --secondary-foreground: 0 0% 96%;
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 65%;

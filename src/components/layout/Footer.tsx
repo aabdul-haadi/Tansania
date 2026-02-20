@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -6,7 +5,7 @@ import { Facebook, Instagram, Twitter, Phone, Mail, MapPin } from 'lucide-react'
 
 export function Footer() {
   return (
-    <footer className="relative bg-secondary text-white pt-20 pb-8 overflow-hidden">
+    <footer className="relative bg-[#0a0a0a] text-white pt-20 pb-8 overflow-hidden">
       {/* Procedural Safari Touch - CSS Pattern & Gradients */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-30">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,hsl(var(--primary)/0.2),transparent_70%)]" />
