@@ -1,9 +1,11 @@
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Compass, Menu, X, ChevronRight, Phone, Mail, Instagram, Facebook } from 'lucide-react';
+import { Menu, ChevronRight, Phone, Mail, Instagram, Facebook } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import {
@@ -49,23 +51,26 @@ export function Navbar() {
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group relative z-50">
-          <div className="relative">
-            <Compass className={cn("w-8 h-8 transition-transform group-hover:rotate-45", isScrolled ? "text-primary" : "text-white")} />
-            <div className={cn("absolute inset-0 blur-lg rounded-full animate-pulse", isScrolled ? "bg-primary/20" : "bg-white/20")} />
-          </div>
-          <span className={cn("font-headline text-2xl font-bold tracking-tight", isScrolled ? "text-foreground" : "text-white")}>
-            Serengeti<span className="text-primary">Dreams</span>
-          </span>
+        {/* Logo - Text removed as it's part of the image */}
+        <Link href="/" className="relative z-50 transition-transform hover:scale-105 active:scale-95">
+          <Image 
+            src="https://storage.googleapis.com/firejet-30da1.appspot.com/users/clvlyszhf0000la086mjha62f/projects/clvlyszhf0000la086mjha62f/1740484124411-logo.png"
+            alt="Tansania Reiseabenteuer"
+            width={220}
+            height={60}
+            className={cn(
+              "h-10 md:h-12 w-auto object-contain transition-all",
+              !isScrolled && "brightness-0 invert" // White version for transparent header
+            )}
+            priority
+          />
         </Link>
 
         {/* Desktop & Mobile Actions */}
         <div className="flex items-center gap-4">
           <Link href="/trip-planner" className="hidden sm:block">
             <Button 
-              variant={isScrolled ? "default" : "secondary"} 
-              className="rounded-full px-8 font-bold text-[10px] uppercase tracking-widest shadow-xl h-11"
+              className="rounded-full px-8 font-bold text-[10px] uppercase tracking-widest shadow-xl h-11 bg-primary text-white hover:bg-primary/90"
             >
               JETZT ANFRAGEN
             </Button>
@@ -90,13 +95,11 @@ export function Navbar() {
             </SheetTrigger>
             <SheetContent side="right" className="w-full sm:max-w-md p-0 border-none bg-secondary text-white overflow-y-auto">
               <div className="flex flex-col min-h-screen">
-                {/* Header within drawer */}
                 <div className="p-8 flex justify-between items-center border-b border-white/5">
                   <span className="font-headline text-xl font-bold">Menu</span>
                 </div>
 
                 <div className="p-8 space-y-12">
-                  {/* Main Links */}
                   <nav className="space-y-6">
                     <div>
                       <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary mb-6">Reiseziele</p>
@@ -130,7 +133,6 @@ export function Navbar() {
                     </div>
                   </nav>
 
-                  {/* Magazine & Blog */}
                   <div className="space-y-4 pt-6 border-t border-white/5">
                     <Link href="/about" className="block text-xl font-bold hover:text-primary transition-colors">Über uns</Link>
                     <Link href="/blog" className="block text-xl font-bold hover:text-primary transition-colors">Unser Magazin</Link>
@@ -139,14 +141,12 @@ export function Navbar() {
                     <Link href="/safaris?year=2026" className="block text-xl font-bold text-primary italic">REISEN 2026</Link>
                   </div>
 
-                  {/* Secondary Links */}
                   <div className="flex flex-wrap gap-x-8 gap-y-4 pt-10 border-t border-white/5 text-xs font-bold uppercase tracking-widest text-white/40">
                     <Link href="/faq" className="hover:text-white transition-colors">FAQ</Link>
                     <Link href="/contact" className="hover:text-white transition-colors">Kontakt</Link>
                     <Link href="/legal/imprint" className="hover:text-white transition-colors">Impressum</Link>
                   </div>
 
-                  {/* Contact Info */}
                   <div className="pt-10 space-y-4">
                     <a href="tel:+201234567890" className="flex items-center gap-3 text-sm text-white/60 hover:text-white transition-all">
                       <Phone className="w-4 h-4 text-primary" /> +20 123 456 7890
@@ -156,7 +156,6 @@ export function Navbar() {
                     </a>
                   </div>
 
-                  {/* Socials */}
                   <div className="flex gap-4 pt-6">
                     <Link href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors">
                       <Instagram className="w-4 h-4" />

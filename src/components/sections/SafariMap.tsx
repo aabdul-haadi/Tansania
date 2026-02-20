@@ -1,13 +1,14 @@
+
 "use client";
 
 import React, { useRef } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 
 const destinations = [
-  { id: 'cairo', name: 'Cairo', x: 100, y: 40, desc: 'The Nile Gateway' },
-  { id: 'serengeti', name: 'Serengeti', x: 80, y: 120, desc: 'Heart of the Wild' },
-  { id: 'ngorongoro', name: 'Crater', x: 100, y: 160, desc: 'Volcanic Garden' },
-  { id: 'zanzibar', name: 'Zanzibar', x: 140, y: 200, desc: 'Spice Shores' },
+  { id: 'cairo', name: 'Kairo', x: 100, y: 40, desc: 'Das Tor zum Nil' },
+  { id: 'serengeti', name: 'Serengeti', x: 80, y: 120, desc: 'Herz der Wildnis' },
+  { id: 'ngorongoro', name: 'Krater', x: 100, y: 160, desc: 'Vulkanischer Garten' },
+  { id: 'zanzibar', name: 'Sansibar', x: 140, y: 200, desc: 'Gewürzküste' },
 ];
 
 export function SafariMap() {
@@ -46,10 +47,10 @@ export function SafariMap() {
                 whileInView={{ opacity: 1 }}
                 className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-3 block"
               >
-                Expedition Logistics
+                Expeditionslogistik
               </motion.span>
               <h2 className="font-headline text-4xl md:text-6xl font-bold leading-tight text-white">
-                Cairo to <span className="text-primary italic">Savannah</span>
+                Von Kairo in die <span className="text-primary italic">Savanne</span>
               </h2>
             </div>
             
