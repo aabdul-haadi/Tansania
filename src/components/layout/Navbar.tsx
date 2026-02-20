@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -51,7 +50,7 @@ export function Navbar() {
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        {/* Logo - Text removed as it's part of the image */}
+        {/* Logo */}
         <Link href="/" className="relative z-50 transition-transform hover:scale-105 active:scale-95">
           <Image 
             src="https://storage.googleapis.com/firejet-30da1.appspot.com/users/clvlyszhf0000la086mjha62f/projects/clvlyszhf0000la086mjha62f/1740484124411-logo.png"
@@ -60,7 +59,7 @@ export function Navbar() {
             height={60}
             className={cn(
               "h-10 md:h-12 w-auto object-contain transition-all",
-              !isScrolled && "brightness-0 invert" // White version for transparent header
+              !isScrolled && "brightness-0 invert" 
             )}
             priority
           />
@@ -70,13 +69,13 @@ export function Navbar() {
         <div className="flex items-center gap-4">
           <Link href="/trip-planner" className="hidden sm:block">
             <Button 
-              className="rounded-full px-8 font-bold text-[10px] uppercase tracking-widest shadow-xl h-11 bg-primary text-white hover:bg-primary/90"
+              className="rounded-full px-8 font-bold text-[10px] uppercase tracking-widest shadow-xl h-11"
             >
               JETZT ANFRAGEN
             </Button>
           </Link>
 
-          {/* Unified Hamburger Trigger */}
+          {/* Hamburger Trigger */}
           <Sheet>
             <SheetTrigger asChild>
               <button
@@ -168,7 +167,7 @@ export function Navbar() {
 
                 <div className="mt-auto p-8">
                   <Link href="/trip-planner">
-                    <Button className="w-full h-16 rounded-2xl text-lg font-bold bg-primary text-white shadow-2xl">
+                    <Button className="w-full h-16 rounded-2xl text-lg font-bold">
                       JETZT ANFRAGEN
                     </Button>
                   </Link>
