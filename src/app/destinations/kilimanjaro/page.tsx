@@ -128,7 +128,7 @@ export default function KilimanjaroPage() {
                 ].map((fact, i) => (
                   <div key={i} className="space-y-1">
                     <p className="text-[10px] uppercase font-bold text-primary tracking-widest">{fact.label}</p>
-                    <p className="font-bold text-lg">{fact.val}</p>
+                    <p className="font-bold text-lg text-white">{fact.val}</p>
                   </div>
                 ))}
               </div>
@@ -184,7 +184,7 @@ export default function KilimanjaroPage() {
             <div className="space-y-8">
               <div>
                 <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] mb-2 block">Training & Gear</span>
-                <h2 className="font-headline text-3xl md:text-6xl font-bold leading-tight">Wie bereite ich <br /><span className="text-primary italic">mich vor?</span></h2>
+                <h2 className="font-headline text-3xl md:text-6xl font-bold leading-tight text-white">Wie bereite ich <br /><span className="text-primary italic">mich vor?</span></h2>
               </div>
               <p className="text-white/60 font-light leading-relaxed text-lg italic">
                 "Das Besteigen des Kilimandscharo ist ein unvergessliches Abenteuer, erfordert jedoch eine gute körperliche und mentale Vorbereitung."
@@ -231,7 +231,7 @@ export default function KilimanjaroPage() {
               <AccordionTrigger className="font-bold text-lg py-6 hover:no-underline hover:text-primary text-left text-secondary">
                 {faq.q}
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground text-base font-light leading-relaxed pb-8">
+              <AccordionContent className="text-muted-foreground text-sm md:text-base font-light leading-relaxed pb-8">
                 {faq.a}
               </AccordionContent>
             </AccordionItem>
