@@ -68,7 +68,7 @@ export function KilimanjaroSummit() {
                   visible: { opacity: 1, y: 0 }
                 }}
               >
-                <h2 className="font-headline text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.1] mb-2">
+                <h2 className="font-headline text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.1] mb-2 text-foreground">
                   Climb Africa’s <br /> Iconic Roof
                 </h2>
                 <div className="w-24 h-0.5 bg-primary/30" />
@@ -95,8 +95,8 @@ export function KilimanjaroSummit() {
                   <div key={route.name} className="group flex items-center gap-4 cursor-default">
                     <div className="w-4 h-px bg-muted-foreground/20 shrink-0" />
                     <div className="flex items-baseline gap-2">
-                      <span className="font-bold text-xs lg:text-sm tracking-tight">{route.name}</span>
-                      <span className="text-[9px] uppercase font-bold text-muted-foreground/60 tracking-wider">
+                      <span className="font-bold text-xs lg:text-sm tracking-tight text-foreground">{route.name}</span>
+                      <span className="text-[9px] uppercase font-bold text-muted-foreground tracking-wider">
                         — {route.desc}
                       </span>
                     </div>
@@ -118,7 +118,7 @@ export function KilimanjaroSummit() {
                 </Link>
                 <Link 
                   href="/contact" 
-                  className="text-xs font-bold flex items-center gap-2 group hover:text-primary transition-colors min-h-[44px]"
+                  className="text-xs font-bold flex items-center gap-2 group hover:text-primary transition-colors min-h-[44px] text-foreground"
                 >
                   Best route for me
                   <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

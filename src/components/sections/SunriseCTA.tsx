@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -9,7 +8,7 @@ import { Button } from '@/components/ui/button';
 
 export function SunriseCTA() {
   return (
-    <section className="relative h-[70vh] flex items-center justify-center overflow-hidden bg-[#020617]">
+    <section className="relative h-[70vh] flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
       {/* CSS-Only Animation Styles */}
       <style jsx>{`
         @keyframes sunrise {
@@ -18,13 +17,13 @@ export function SunriseCTA() {
           100% { transform: translate(-50%, 80%); opacity: 0.3; }
         }
         @keyframes skyWarm {
-          0% { background-color: #020617; }
-          50% { background-color: #1e1b4b; }
-          100% { background-color: #020617; }
+          0% { background-color: #0a0a0a; }
+          50% { background-color: #1a1a1a; }
+          100% { background-color: #0a0a0a; }
         }
         @keyframes breathingGlow {
-          0%, 100% { box-shadow: 0 0 0px rgba(181, 142, 69, 0); transform: scale(1); }
-          50% { box-shadow: 0 0 30px rgba(181, 142, 69, 0.4); transform: scale(1.02); }
+          0%, 100% { box-shadow: 0 0 0px rgba(227, 81, 13, 0); transform: scale(1); }
+          50% { box-shadow: 0 0 30px rgba(227, 81, 13, 0.4); transform: scale(1.02); }
         }
         .animate-sunrise {
           animation: sunrise 8s ease-in-out infinite;
@@ -44,7 +43,7 @@ export function SunriseCTA() {
       <div 
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full animate-sunrise z-10"
         style={{
-          background: 'radial-gradient(circle, rgba(181, 142, 69, 0.4) 0%, rgba(181, 142, 69, 0.1) 40%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(227, 81, 13, 0.4) 0%, rgba(227, 81, 13, 0.1) 40%, transparent 70%)',
           filter: 'blur(60px)'
         }}
       />
@@ -64,7 +63,7 @@ export function SunriseCTA() {
             <Link href="/trip-planner">
               <Button 
                 size="lg" 
-                className="animate-breathe rounded-full px-12 h-16 text-lg font-bold bg-primary text-primary-foreground hover:bg-primary/90 shadow-2xl group"
+                className="animate-breathe rounded-full px-12 h-16 text-lg font-bold bg-primary text-white hover:bg-white hover:text-black hover:border-primary shadow-2xl group transition-all"
               >
                 Start Planning Your Safari
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
