@@ -29,51 +29,51 @@ export function SafariMap() {
   return (
     <section 
       ref={containerRef} 
-      className="py-4 md:py-6 bg-secondary text-white overflow-hidden relative border-y border-white/5"
+      className="py-12 md:py-24 bg-secondary text-white overflow-hidden relative border-y border-white/5"
       style={{
         backgroundImage: `radial-gradient(rgba(255,255,255,0.05) 1px, transparent 0)`,
         backgroundSize: '24px 24px'
       }}
     >
       <div className="container mx-auto px-4 max-w-6xl">
-        <div className="flex flex-row items-center justify-between gap-4 md:gap-16">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-16">
           
           {/* Left: Journey Timeline */}
           <div className="flex-1 min-w-0 z-10">
-            <div className="mb-3 md:mb-6">
+            <div className="mb-8 md:mb-12">
               <motion.span 
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                className="text-primary font-bold uppercase tracking-[0.4em] text-[8px] md:text-[10px] mb-1 block"
+                className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-3 block"
               >
                 Expedition Logistics
               </motion.span>
-              <h2 className="font-headline text-lg md:text-5xl font-bold leading-none whitespace-nowrap">
+              <h2 className="font-headline text-4xl md:text-6xl font-bold leading-tight text-white">
                 Cairo to <span className="text-primary italic">Savannah</span>
               </h2>
             </div>
             
-            <div className="space-y-3 md:space-y-6 max-w-xs md:max-w-md">
+            <div className="space-y-6 md:space-y-10 max-w-md">
               {destinations.map((dest, i) => (
                 <motion.div 
                   key={dest.id}
                   initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.05, duration: 0.4 }}
-                  className="flex items-center gap-2 md:gap-5 group"
+                  transition={{ delay: i * 0.1, duration: 0.5 }}
+                  className="flex items-center gap-5 md:gap-8 group"
                 >
                   <div className="relative shrink-0">
-                    <div className="w-5 h-5 md:w-10 md:h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-primary/50 group-hover:bg-primary/10 transition-all duration-500">
-                      <span className="text-[9px] md:text-sm font-bold font-mono">{i + 1}</span>
+                    <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-primary/50 group-hover:bg-primary/10 transition-all duration-500">
+                      <span className="text-sm md:text-lg font-bold font-mono text-white">{i + 1}</span>
                     </div>
                     {i < destinations.length - 1 && (
-                      <div className="absolute top-full left-1/2 -translate-x-1/2 w-px h-3 md:h-6 bg-gradient-to-b from-white/10 to-transparent" />
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 w-px h-6 md:h-10 bg-gradient-to-b from-white/10 to-transparent" />
                     )}
                   </div>
                   <div className="min-w-0">
-                    <h4 className="font-bold text-[10px] md:text-xl group-hover:text-primary transition-colors leading-tight truncate">{dest.name}</h4>
-                    <p className="text-[7px] md:text-[11px] text-white/30 truncate font-light uppercase tracking-widest leading-none mt-0.5">{dest.desc}</p>
+                    <h4 className="font-bold text-xl md:text-2xl text-white group-hover:text-primary transition-colors leading-tight">{dest.name}</h4>
+                    <p className="text-[10px] md:text-sm text-white/40 font-light uppercase tracking-[0.2em] mt-1">{dest.desc}</p>
                   </div>
                 </motion.div>
               ))}
@@ -81,12 +81,12 @@ export function SafariMap() {
           </div>
 
           {/* Right: Modern SVG Navigator */}
-          <div className="relative w-24 md:w-[40%] shrink-0 flex items-center justify-end">
-            <div className="absolute inset-0 bg-primary/5 blur-[60px] rounded-full pointer-events-none" />
+          <div className="relative w-full md:w-[45%] shrink-0 flex items-center justify-center">
+            <div className="absolute inset-0 bg-primary/5 blur-[80px] rounded-full pointer-events-none" />
             
             <svg 
               viewBox="0 0 200 240" 
-              className="w-full h-auto drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+              className="w-full h-auto drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
               fill="none" 
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -135,18 +135,18 @@ export function SafariMap() {
                   <motion.circle 
                     cx={dest.x} 
                     cy={dest.y} 
-                    r="4" 
+                    r="5" 
                     className="fill-primary"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ delay: i * 0.05 }}
+                    transition={{ delay: i * 0.1 }}
                   />
                   {/* Labels for Tablet/Desktop */}
                   <motion.text
-                    x={dest.x + 10}
-                    y={dest.y + 3}
-                    className="fill-white/20 text-[6px] font-bold uppercase tracking-[0.2em] hidden md:block pointer-events-none"
+                    x={dest.x + 12}
+                    y={dest.y + 4}
+                    className="fill-white/30 text-[7px] font-bold uppercase tracking-[0.2em] hidden md:block pointer-events-none"
                   >
                     {dest.name}
                   </motion.text>

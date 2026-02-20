@@ -3,32 +3,32 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Compass, Menu, X, ChevronDown, User } from 'lucide-react';
+import { Compass, Menu, X, ChevronRight, Phone, Mail, Instagram, Facebook } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 const destinations = [
-  { name: 'Safaris', href: '/safaris' },
-  { name: 'Zanzibar', href: '/destinations/zanzibar' },
-  { name: 'Kilimanjaro', href: '/destinations/kilimanjaro' },
+  { name: 'SAFARI', href: '/safaris' },
+  { name: 'KILIMANDSCHARO', href: '/destinations/kilimanjaro' },
+  { name: 'SANSIBAR', href: '/destinations/zanzibar' },
 ];
 
-const safaris = [
-  { name: 'Luxury Safaris', href: '/safaris?tier=luxury' },
-  { name: 'Honeymoon Specials', href: '/safaris?category=honeymoon' },
-  { name: 'Family Adventures', href: '/safaris?category=family' },
-  { name: 'All Packages', href: '/safaris' },
+const services = [
+  { name: 'Agenturleistungen', href: '/services/agency-services' },
+  { name: 'Abenteuer-App', href: '/services/adventure-app' },
+  { name: 'Reiseschutz', href: '/services/guest-protection' },
+  { name: 'Visum & Reisepass', href: '/services/passport-visa' },
 ];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -39,23 +39,18 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: 'About', href: '/about' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Contact', href: '/contact' },
-  ];
-
   return (
     <header
       className={cn(
-        'fixed top-0 w-full z-50 transition-all duration-300',
+        'fixed top-0 w-full z-50 transition-all duration-500',
         isScrolled
-          ? 'bg-background/90 backdrop-blur-md shadow-md py-2'
-          : 'bg-transparent py-4'
+          ? 'bg-background/95 backdrop-blur-md shadow-md py-3'
+          : 'bg-transparent py-6'
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 group">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2 group relative z-50">
           <div className="relative">
             <Compass className={cn("w-8 h-8 transition-transform group-hover:rotate-45", isScrolled ? "text-primary" : "text-white")} />
             <div className={cn("absolute inset-0 blur-lg rounded-full animate-pulse", isScrolled ? "bg-primary/20" : "bg-white/20")} />
@@ -65,98 +60,125 @@ export function Navbar() {
           </span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-8">
-          <DropdownMenu>
-            <DropdownMenuTrigger className={cn("flex items-center gap-1 font-bold text-xs uppercase tracking-widest transition-colors hover:text-primary", isScrolled ? "text-foreground" : "text-white")}>
-              Destinations <ChevronDown className="w-3 h-3" />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56 p-2 rounded-2xl border-none shadow-2xl bg-white/95 backdrop-blur-xl">
-              {destinations.map((item) => (
-                <DropdownMenuItem key={item.name} asChild className="rounded-xl focus:bg-primary/10 focus:text-primary">
-                  <Link href={item.href} className="cursor-pointer font-bold text-[10px] uppercase tracking-wider">{item.name}</Link>
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-
-          <DropdownMenu>
-            <DropdownMenuTrigger className={cn("flex items-center gap-1 font-bold text-xs uppercase tracking-widest transition-colors hover:text-primary", isScrolled ? "text-foreground" : "text-white")}>
-              Safaris <ChevronDown className="w-3 h-3" />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56 p-2 rounded-2xl border-none shadow-2xl bg-white/95 backdrop-blur-xl">
-              {safaris.map((item) => (
-                <DropdownMenuItem key={item.name} asChild className="rounded-xl focus:bg-primary/10 focus:text-primary">
-                  <Link href={item.href} className="cursor-pointer font-bold text-[10px] uppercase tracking-wider">{item.name}</Link>
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className={cn(
-                'font-bold text-xs uppercase tracking-widest transition-colors hover:text-primary',
-                pathname === link.href ? 'text-primary' : (isScrolled ? 'text-foreground' : 'text-white')
-              )}
+        {/* Desktop & Mobile Actions */}
+        <div className="flex items-center gap-4">
+          <Link href="/trip-planner" className="hidden sm:block">
+            <Button 
+              variant={isScrolled ? "default" : "secondary"} 
+              className="rounded-full px-8 font-bold text-[10px] uppercase tracking-widest shadow-xl h-11"
             >
-              {link.name}
-            </Link>
-          ))}
-        </nav>
+              JETZT ANFRAGEN
+            </Button>
+          </Link>
 
-        <div className="hidden lg:flex items-center gap-4">
-          <Link href="/trip-planner">
-            <Button variant={isScrolled ? "default" : "secondary"} className="rounded-full px-8 font-bold text-[10px] uppercase tracking-widest shadow-xl">
-              Plan My Trip
-            </Button>
-          </Link>
-          <Link href="/auth/login">
-            <Button variant="ghost" size="icon" className={cn("rounded-full", isScrolled ? "text-foreground" : "text-white hover:bg-white/10")}>
-              <User className="w-5 h-5" />
-            </Button>
-          </Link>
+          {/* Unified Hamburger Trigger */}
+          <Sheet>
+            <SheetTrigger asChild>
+              <button
+                className={cn(
+                  "group flex items-center gap-3 p-2 pl-4 rounded-full transition-all border",
+                  isScrolled 
+                    ? "bg-background border-border text-foreground hover:border-primary/50" 
+                    : "bg-white/10 backdrop-blur-md border-white/20 text-white hover:bg-white/20"
+                )}
+              >
+                <span className="text-[10px] font-bold uppercase tracking-widest hidden md:block">Menu</span>
+                <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform">
+                  <Menu className="w-5 h-5" />
+                </div>
+              </button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-full sm:max-w-md p-0 border-none bg-secondary text-white overflow-y-auto">
+              <div className="flex flex-col min-h-screen">
+                {/* Header within drawer */}
+                <div className="p-8 flex justify-between items-center border-b border-white/5">
+                  <span className="font-headline text-xl font-bold">Menu</span>
+                </div>
+
+                <div className="p-8 space-y-12">
+                  {/* Main Links */}
+                  <nav className="space-y-6">
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary mb-6">Reiseziele</p>
+                      <div className="grid grid-cols-1 gap-4">
+                        {destinations.map((item) => (
+                          <Link 
+                            key={item.name} 
+                            href={item.href}
+                            className="group flex items-center justify-between text-2xl font-headline font-bold hover:text-primary transition-colors"
+                          >
+                            {item.name}
+                            <ChevronRight className="w-5 h-5 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="pt-6">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary mb-6">Dienstleistungen</p>
+                      <div className="grid grid-cols-1 gap-4">
+                        {services.map((item) => (
+                          <Link 
+                            key={item.name} 
+                            href={item.href}
+                            className="text-lg font-bold text-white/60 hover:text-white transition-colors"
+                          >
+                            {item.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </nav>
+
+                  {/* Magazine & Blog */}
+                  <div className="space-y-4 pt-6 border-t border-white/5">
+                    <Link href="/about" className="block text-xl font-bold hover:text-primary transition-colors">Über uns</Link>
+                    <Link href="/blog" className="block text-xl font-bold hover:text-primary transition-colors">Unser Magazin</Link>
+                    <Link href="/blog" className="block text-xl font-bold hover:text-primary transition-colors">Reiseblog</Link>
+                    <Link href="/services/travel-shop" className="block text-xl font-bold hover:text-primary transition-colors">Reisetipps</Link>
+                    <Link href="/safaris?year=2026" className="block text-xl font-bold text-primary italic">REISEN 2026</Link>
+                  </div>
+
+                  {/* Secondary Links */}
+                  <div className="flex flex-wrap gap-x-8 gap-y-4 pt-10 border-t border-white/5 text-xs font-bold uppercase tracking-widest text-white/40">
+                    <Link href="/faq" className="hover:text-white transition-colors">FAQ</Link>
+                    <Link href="/contact" className="hover:text-white transition-colors">Kontakt</Link>
+                    <Link href="/legal/imprint" className="hover:text-white transition-colors">Impressum</Link>
+                  </div>
+
+                  {/* Contact Info */}
+                  <div className="pt-10 space-y-4">
+                    <a href="tel:+201234567890" className="flex items-center gap-3 text-sm text-white/60 hover:text-white transition-all">
+                      <Phone className="w-4 h-4 text-primary" /> +20 123 456 7890
+                    </a>
+                    <a href="mailto:concierge@serengetidreams.com" className="flex items-center gap-3 text-sm text-white/60 hover:text-white transition-all">
+                      <Mail className="w-4 h-4 text-primary" /> concierge@serengetidreams.com
+                    </a>
+                  </div>
+
+                  {/* Socials */}
+                  <div className="flex gap-4 pt-6">
+                    <Link href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors">
+                      <Instagram className="w-4 h-4" />
+                    </Link>
+                    <Link href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors">
+                      <Facebook className="w-4 h-4" />
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="mt-auto p-8">
+                  <Link href="/trip-planner">
+                    <Button className="w-full h-16 rounded-2xl text-lg font-bold bg-primary text-white shadow-2xl">
+                      JETZT ANFRAGEN
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
-
-        {/* Mobile Menu Toggle */}
-        <button
-          className={cn("lg:hidden p-2 rounded-xl transition-colors", isScrolled ? "text-foreground hover:bg-muted" : "text-white hover:bg-white/10")}
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
       </div>
-
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-background border-t absolute top-full left-0 w-full p-6 flex flex-col gap-6 animate-in slide-in-from-top duration-300 shadow-2xl">
-          <div className="space-y-4">
-            <div className="font-bold text-[10px] text-primary uppercase tracking-[0.3em]">Destinations</div>
-            <div className="grid grid-cols-2 gap-2">
-              {destinations.map((item) => (
-                <Link key={item.name} href={item.href} onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold p-3 bg-muted/50 rounded-xl">
-                  {item.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-          <div className="space-y-4">
-            <div className="font-bold text-[10px] text-primary uppercase tracking-[0.3em]">Quick Links</div>
-            <div className="flex flex-col gap-2">
-              {navLinks.map((link) => (
-                <Link key={link.name} href={link.href} onClick={() => setMobileMenuOpen(false)} className="text-lg font-headline font-bold py-1">
-                  {link.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-          <Link href="/trip-planner" onClick={() => setMobileMenuOpen(false)}>
-            <Button className="w-full bg-primary text-white rounded-2xl h-14 font-bold text-base shadow-xl">Plan My Trip</Button>
-          </Link>
-        </div>
-      )}
     </header>
   );
 }
