@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from 'react';
@@ -52,7 +51,7 @@ export default function AdminDashboard() {
     setLoading(true);
     try {
       const allPackages = [
-        // SAFARI FLAGS (Including the revamped 15-day one)
+        // SAFARI FLAGS
         { 
           id: '15-day-safari-zanzibar', 
           title: '15 Tage Safari in Tansania und Sansibar', 
@@ -64,21 +63,21 @@ export default function AdminDashboard() {
           startingPrice: 5399, 
           description: "Diese 15-tägige Pauschalreise vereint Abenteuer und Erholung in perfekter Weise: Nach der Landung am Kilimanjaro International Airport werden Sie herzlich empfangen und fahren nach Arusha, wo Sie das wahre Tansania in Ihrem eigenen Tempo erleben können.",
           highlights: ['Atemberaubende Tierbeobachtungen', 'Exklusive Lodge & Tented Camp', 'Abenteuer & Erholung', 'Alles gut organisiert', 'Inklusive Intl. Flug'], 
-          imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800',
+          imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200',
           itinerary: [
-            { day: 1, title: 'Ankommen & Eintauchen', location: 'Arusha', stats: 'Distanz: 50km', desc: 'Ihre Traumreise beginnt jetzt! Nach der Ankunft am Kilimanjaro Airport werden Sie von unserem Reiseleiter empfangen und in Ihre Unterkunft gebracht.', img: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800' },
-            { day: 2, title: 'Ankunft in Tanzania', location: 'Arusha', desc: 'Erholen Sie sich von der Anreise. Je nach Ankunftszeit erkunden Sie die Stadt mit einem lokalen Guide und erleben das turbulente afrikanische Stadtleben.', img: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=800' },
+            { day: 1, title: 'Ankommen & Eintauchen', location: 'Arusha', stats: 'Distanz: 50km', desc: 'Fliegen Sie mit uns in den schönen tieferen Süden unserer Erdkugel und zwar nach Tanzania. Die Safari ruft! Nach der Ankunft werden Sie von unserem Reiseleiter empfangen.', img: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800' },
+            { day: 2, title: 'Ankunft in Tanzania', location: 'Arusha', desc: 'Erholen Sie sich von der Anreise. Erkunden Sie die Stadt mit einem lokalen Guide und erleben Sie das turbulente afrikanische Stadtleben auf Märkten und Daladalas.', img: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=800' },
             { day: 3, title: 'Arusha Nationalpark', location: 'Momella Lakes', stats: '400 Vogelarten', desc: 'Malerische Aussicht auf die Momella-Seen und den Ngurdoto Krater. Beobachten Sie Flamingos und Affen im dichten Wald.', img: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800' },
-            { day: 4, title: 'Tarangire Nationalpark', location: 'Tarangire', stats: 'Hohe Elefantendichte', desc: 'Pirschfahrt im Park der Giganten. Bis zu 300 Elefanten suchen im trockenen Flussbett nach Wasser.', img: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=800' },
-            { day: 5, title: 'Besuch einer Schule & Massai', location: 'Manyatta', desc: 'Kulturelle Begegnung in einem Massai-Dorf. Lernen Sie Bräuche und Alltag der Bomas kennen, bevor es in die Serengeti geht.', img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800' },
-            { day: 6, title: 'Serengeti Nationalpark', location: 'Serengeti', stats: 'Migration Spot', desc: 'Ganztägige Safari in der weltberühmten Serengeti. Mitten in Tausenden muhenden Gnus und schnaubenden Zebras.', img: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=800' },
+            { day: 4, title: 'Tarangire Nationalpark', location: 'Tarangire River', stats: 'Hohe Elefantendichte', desc: 'Pirschfahrt im Park der Giganten. Bis zu 300 Elefanten suchen im trockenen Flussbett nach Wasser.', img: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=800' },
+            { day: 5, title: 'Besuch einer tansanischen Schule', location: 'Karatu Region', desc: 'Kulturelle Begegnung in einem Massai-Dorf. Lernen Sie Bräuche und Alltag der Bomas kennen, bevor es in die Serengeti geht.', img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800' },
+            { day: 6, title: 'Serengeti Nationalpark', location: 'Serengeti Plains', stats: 'Migration Spot', desc: 'Ganztägige Safari in der weltberühmten Serengeti. Mitten in Tausenden muhenden Gnus und schnaubenden Zebras.', img: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=800' },
             { day: 7, title: 'Ngorongoro-Krater', location: 'UNESCO Welterbe', stats: 'Big Five Spot', desc: 'Abfahrt in den Krater. 30.000 Tiere auf engstem Raum, darunter die seltenen Spitzmaulnashörner.', img: 'https://images.unsplash.com/photo-1580502304784-8985b777da59?q=80&w=800' },
-            { day: 8, title: 'Inlandsflug nach Sansibar', location: 'Zanzibar', stats: '1h Flugzeit', desc: 'Transfer zum Flughafen und Flug auf die Gewürzinsel. Beziehen Sie Ihr Strandhotel und lassen Sie die Seele baumeln.', img: 'https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=800' },
-            { day: 9, title: 'Freizeit am Ozean', location: 'Jambiani/Paje', desc: 'Genießen Sie die weißen Strände und schwimmen Sie im kristallklaren Indischen Ozean.', img: 'https://images.unsplash.com/photo-1590001158193-79013ac7fa77?q=80&w=800' },
-            { day: 10, title: 'Empfehlung: Blaue Safari', location: 'Sandbank', desc: 'Optionale Bootstour mit Schnorcheln und traditionellem Mittagessen auf einer einsamen Insel.', img: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800' },
-            { day: 11, title: 'Empfehlung: Gewürztour', location: 'Zanzibar Inland', desc: 'Lernen Sie, wie Vanille, Kakao und Pfeffer wachsen. Ein Fest für die Sinne im Inselinneren.', img: 'https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?q=80&w=800' },
-            { day: 12, title: 'Strand und Tauchen', location: 'Nungwi', desc: 'Letzte Chance für einen geführten Tauchgang oder einfach pure Entspannung auf Ihrem Balkon.', img: 'https://images.unsplash.com/photo-1577971132997-c10be9372519?q=80&w=800' },
-            { day: 13, title: 'Abschied von der Insel', location: 'Stone Town', desc: 'Ein letzter Tag zur freien Verfügung. Erkunden Sie die Gassen der historischen Altstadt.', img: 'https://images.unsplash.com/photo-1590001158193-79013ac7fa77?q=80&w=800' },
+            { day: 8, title: 'Inlandsflug nach Sansibar', location: 'Zanzibar Shores', stats: '1h Flugzeit', desc: 'Transfer zum Flughafen und Flug auf die Gewürzinsel. Beziehen Sie Ihr Strandhotel und lassen Sie die Seele baumeln.', img: 'https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=800' },
+            { day: 9, title: 'Empfehlung: Freizeit', location: 'Paje / Jambiani', desc: 'Genießen Sie die weißen Strände und schwimmen Sie im kristallklaren Indischen Ozean bei goldenen Sonnenuntergängen.', img: 'https://images.unsplash.com/photo-1590001158193-79013ac7fa77?q=80&w=800' },
+            { day: 10, title: 'Empfehlung: blaue Safari', location: 'Sandbank', desc: 'Optionale Bootstour mit Schnorcheln und traditionellem Mittagessen auf einer einsamen Insel.', img: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800' },
+            { day: 11, title: 'Empfehlung: Gewürztour', location: 'Inselinneres', desc: 'Lernen Sie, wie Vanille, Kakao und Pfeffer wachsen. Ein Fest für die Sinne im Inselinneren.', img: 'https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?q=80&w=800' },
+            { day: 12, title: 'Empfehlung: Strand und Tauchen', location: 'Nungwi Coast', desc: 'Letzte Chance für einen geführten Tauchgang oder einfach pure Entspannung auf Ihrem Balkon.', img: 'https://images.unsplash.com/photo-1577971132997-c10be9372519?q=80&w=800' },
+            { day: 13, title: 'Empfehlung: Freizeit', location: 'Stone Town', desc: 'Ein letzter Tag zur freien Verfügung. Erkunden Sie die Gassen der historischen Altstadt.', img: 'https://images.unsplash.com/photo-1590001158193-79013ac7fa77?q=80&w=800' },
             { day: 14, title: 'Abreise & Transfer', location: 'Flughafen ZNZ', desc: 'Transfer zum Flughafen für Ihren Rückflug. We turn wishes into memories.', img: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800' },
             { day: 15, title: 'Landung in der Heimat', location: 'Home', desc: 'Ankunft zuhause mit Erinnerungen, die ein Leben lang bleiben.', img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800' }
           ]
