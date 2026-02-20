@@ -16,7 +16,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useFirestore, useUser, useCollection, useMemoFirebase } from '@/firebase';
-import { doc, setDoc, collection } from 'firebase/firestore';
+import { doc, setDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
 
 export default function AdminDashboard() {
@@ -32,15 +32,17 @@ export default function AdminDashboard() {
   const blogsQuery = useMemoFirebase(() => canFetch ? collection(firestore!, 'blogPosts') : null, [canFetch, firestore]);
   const bookingsQuery = useMemoFirebase(() => canFetch ? collection(firestore!, 'bookings') : null, [canFetch, firestore]);
   const inquiriesQuery = useMemoFirebase(() => canFetch ? collection(firestore!, 'inquiries') : null, [canFetch, firestore]);
+  const packagesQuery = useMemoFirebase(() => canFetch ? collection(firestore!, 'packages') : null, [canFetch, firestore]);
 
   const { data: pages } = useCollection(pagesQuery);
   const { data: blogs } = useCollection(blogsQuery);
   const { data: bookings } = useCollection(bookingsQuery);
   const { data: inquiries } = useCollection(inquiriesQuery);
+  const { data: packages } = useCollection(packagesQuery);
 
   const stats = [
-    { label: 'Total Pages', value: pages?.length || 0, icon: Globe, trend: 'Managed routes' },
-    { label: 'Blog Posts', value: blogs?.length || 0, icon: FileText, trend: 'Published stories' },
+    { label: 'Site Registry', value: pages?.length || 0, icon: Globe, trend: 'Managed routes' },
+    { label: 'Safari Catalog', value: packages?.length || 0, icon: Database, trend: 'Synced packages' },
     { label: 'Inquiries', value: inquiries?.length || 0, icon: MessageSquare, trend: 'New leads' },
     { label: 'Bookings', value: bookings?.length || 0, icon: CalendarCheck, trend: 'Confirmed trips' },
   ];
@@ -49,49 +51,28 @@ export default function AdminDashboard() {
     if (!firestore || !user) return;
     setLoading(true);
     try {
-      // 1. SEED 15-DAY PACKAGE (Traumabenteuer)
-      const pkgId = '15-day-safari-zanzibar';
-      await setDoc(doc(firestore, 'packages', pkgId), {
-        id: pkgId,
-        title: '15 Tage Safari in Tansania und Sansibar',
-        slug: pkgId,
-        subtitle: 'Erlebnisreise - Safari im Norden und Badeurlaub auf Sansibar',
-        durationDays: 15,
-        startingPrice: 5399,
-        isPublished: true,
-        highlights: [
-          'Atemberaubende Tierbeobachtungen',
-          'Exklusive Lodge & Tented Camp',
-          'Abenteuer & Erholung',
-          'Alles gut organisiert',
-          'Inklusive Intl. Flug'
-        ],
-        description: 'Diese 15-tägige Pauschalreise vereint Abenteuer und Erholung in perfekter Weise: Nach der Landung am Kilimanjaro International Airport werden Sie herzlich empfangen und fahren nach Arusha, wo Sie das wahre Tansania in Ihrem eigenen Tempo erleben können.',
-        itinerary: [
-          { day: 1, title: 'Ankommen & Eintauchen', location: 'Arusha', desc: 'Fliegen Sie mit uns in den schönen tieferen Süden unserer Erdkugel und zwar nach Tanzania. Ihre Traumreise beginnt jetzt!', img: 'https://picsum.photos/seed/arrival/800/600' },
-          { day: 2, title: 'Ankunft in Tanzania', location: 'Arusha', desc: 'Nach der Ankunft am Kilimandscharo International Airport werden Sie von unserem Reiseleiter empfangen und mit dem Auto in Ihre Unterkunft gebracht.', img: 'https://picsum.photos/seed/city/800/600' },
-          { day: 3, title: 'Arusha Nationalpark', location: 'Arusha NP', desc: 'Der Arusha Nationalpark belohnt mit einer malerischen Aussicht auf die sieben Momella-Seen und den Ngurdoto Krater.', img: 'https://picsum.photos/seed/lakes/800/600' },
-          { day: 4, title: 'Tarangire Nationalpark', location: 'Tarangire', desc: 'Eines der Highlights dieses Parks ist die hohe Populationsdichte an Elefanten. Herden von bis zu 300 Elefanten.', img: 'https://picsum.photos/seed/elephants/800/600' },
-          { day: 5, title: 'Kulturelle Begegnung', location: 'Maasai Village', desc: 'Besuch eines Massai-Dorfes, einem Manyatta. Erhalten Sie Einblick in Bräuche und Alltag.', img: 'https://picsum.photos/seed/culture/800/600' },
-          { day: 6, title: 'Serengeti Expedition', location: 'Serengeti', desc: 'Ganztägige Safari in der Serengeti. Chancen auf die große Migration, je nach Saison.', img: 'https://picsum.photos/seed/migration/800/600' },
-          { day: 7, title: 'Ngorongoro-Krater', location: 'Ngorongoro', desc: 'Ein Naturwunder mit einer hohen Wilddichte. Die Chance, die Big Five zu erleben.', img: 'https://picsum.photos/seed/rhino/800/600' },
-          { day: 8, title: 'Insel-Transfer', location: 'Zanzibar', desc: 'Inlandsflug nach Sansibar. Beziehen Ihr Strandhotel und genießen unvergessliche Erholung.', img: 'https://picsum.photos/seed/plane/800/600' },
-          { day: 9, title: 'Sansibar Auszeit', location: 'Beach', desc: 'Genießen Sie die wunderschönen, sauberen, weißen Strände von Sansibar.', img: 'https://picsum.photos/seed/whitebeach/800/600' },
-          { day: 10, title: 'Blaue Safari', location: 'Indian Ocean', desc: 'Optionale Bootstour. Schnorcheln in flachen, türkisfarbenen Gewässern.', img: 'https://picsum.photos/seed/boat/800/600' },
-          { day: 11, title: 'Gewürz-Tour', location: 'Stone Town', desc: 'Besuch der duftenden Gewürzplantagen. Vanille, Kakao, Pfeffer und mehr.', img: 'https://picsum.photos/seed/spices/800/600' },
-          { day: 12, title: 'Strand & Tauchen', location: 'Nungwi', desc: 'Erkunden Sie die farbenfrohe Unterwasserwelt oder entspannen Sie am Strand.', img: 'https://picsum.photos/seed/dive/800/600' },
-          { day: 13, title: 'Goldener Sonnenuntergang', location: 'Paje', desc: 'Savor a refreshing cocktail and admire the golden sunset in the evening.', img: 'https://picsum.photos/seed/sunset/800/600' },
-          { day: 14, title: 'Abschied von Afrika', location: 'Airport', desc: 'Sicherer Transfer zum Flughafen. Wir hoffen, wir konnten Ihre Wünsche in Erinnerungen verwandeln.', img: 'https://picsum.photos/seed/airport/800/600' },
-          { day: 15, title: 'Heimreise', location: 'Home', desc: 'Ankunft in der Heimat mit Koffern voller Erinnerungen an ein unvergleichliches Abenteuer.', img: 'https://picsum.photos/seed/memory/800/600' }
-        ],
-        faqs: [
-          { q: 'Was ist in dieser 15 tage safari enthalten?', a: 'Internationale Flüge, Unterkünfte, alle Pirschfahrten, Inlandsflug nach Sansibar und Verpflegung laut Plan.' },
-          { q: 'Ist die Reise für Familien geeignet?', a: 'Ja, diese Kombination aus Abenteuer und Strand ist ideal für Familien mit Kindern ab 6 Jahren.' }
-        ],
-        updatedAt: new Date().toISOString()
-      }, { merge: true });
+      const allPackages = [
+        { id: '15-day-safari-zanzibar', title: '15 Tage Safari & Sansibar Komplett', slug: '15-day-safari-zanzibar', category: 'SAFARI & SANSIBAR', tag: 'Meistverkauft', durationDays: 15, startingPrice: 5399, highlights: ['Top Nationalparks Safari', 'Massai Dorfbesuch', 'Sansibar Strände & Tauchen'], imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800' },
+        { id: '13-day-safari-zanzibar', title: '13 Tage Safari & Sansibar Erlebnis', slug: '13-day-safari-zanzibar', category: 'SAFARI & SANSIBAR', durationDays: 13, startingPrice: 3699, highlights: ['Big Five Pirschfahrten', 'UNESCO Krater', 'Stone Town Stadttour'], imageUrl: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800' },
+        { id: '11-day-safari-zanzibar', title: '11 Tage Safari & Sansibar Kurztrip', slug: '11-day-safari-zanzibar', category: 'SAFARI & SANSIBAR', tag: 'Kurztrip', durationDays: 11, startingPrice: 2999, highlights: ['Elefanten im Tarangire', 'Serengeti Migration', 'Sansibar Strände'], imageUrl: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800' },
+        { id: '13-day-honeymoon', title: '13 Tage Flitterwochen Premium', slug: '13-day-honeymoon', category: 'FLITTERWOCHEN', tag: 'Romantik', durationDays: 13, startingPrice: 3899, highlights: ['Champagner Sunset', 'Private Pirschfahrten', 'Sansibar Stranddinner'], imageUrl: 'https://images.unsplash.com/photo-1580502304784-8985b777da59?q=80&w=800' },
+        { id: '12-day-family', title: '12 Tage Familien-Safari Abenteuer', slug: '12-day-family', category: 'FAMILIENSAFARI', tag: 'Familien', durationDays: 12, startingPrice: 3499, highlights: ['Big Five Pirschfahrten', 'Massai Kultur', 'Kinderfreundliche Lodges'], imageUrl: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=800' },
+        { id: '13-day-kili-safari', title: '13 Tage Kombi Safari Komplett', slug: '13-day-kili-safari', category: 'KILIMANDSCHARO SAFARI', tag: 'Kombi', durationDays: 13, startingPrice: 4699, highlights: ['Kili hautnah', 'Big Five Safari', 'Sansibar Strand'], imageUrl: 'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=800' },
+        { id: '8-day-marangu', title: '8 Tage Marangu: Komfortabel zum Gipfel', slug: '8-day-marangu', category: 'KILIMANDSCHARO', tag: 'Hüttenroute', durationDays: 8, startingPrice: 2999, highlights: ['Dach Afrikas', 'Bequeme Hütten', 'Professionelle Guides'], imageUrl: 'https://images.unsplash.com/photo-1650361109293-909990990901?q=80&w=800' },
+        { id: '9-day-machame', title: '9 Tage Machame: Der Abenteuer-Weg', slug: '9-day-machame', category: 'KILIMANDSCHARO', tag: 'Whiskey-Route', durationDays: 9, startingPrice: 2499, highlights: ['Uhuru Peak Aufstieg', 'Zeltcamp Erlebnis', 'Spektakuläre Ausblicke'], imageUrl: 'https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=800' },
+        { id: '7-day-zanzibar-only', title: '7 Tage Sansibar – Tropisches Flair', slug: '7-day-zanzibar-only', category: 'SANSIBAR', tag: 'Nur Insel', durationDays: 7, startingPrice: 2699, highlights: ['Pristine Strände', 'Spice Tour', 'Türkisblauer Ozean'], imageUrl: 'https://images.unsplash.com/photo-1683323935247-ac5105bcea4e?q=80&w=800' }
+      ];
 
-      toast({ title: "CMS Registry Updated", description: "Package data has been synchronized." });
+      for (const pkg of allPackages) {
+        await setDoc(doc(firestore, 'packages', pkg.id), {
+          ...pkg,
+          isPublished: true,
+          rating: 4.9,
+          updatedAt: new Date().toISOString()
+        }, { merge: true });
+      }
+
+      toast({ title: "Global Registry Updated", description: "All safari packages have been synchronized." });
     } catch (error: any) {
       toast({ variant: "destructive", title: "Setup Failed", description: error.message });
     } finally {

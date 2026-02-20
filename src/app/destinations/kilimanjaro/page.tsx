@@ -1,60 +1,27 @@
+
 "use client";
 
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { 
-  Mountain, 
-  Clock, 
-  Users, 
-  ArrowRight, 
-  Sparkles, 
-  Compass,
-} from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Mountain } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-
-const packages = [
-  {
-    id: '13-day-combo',
-    tag: 'Bestseller',
-    cat: 'KILIMANDSCHARO KOMBI',
-    title: '13 Tage Tansania Tour – Kilimandscharo & Safari mit Serengeti',
-    duration: '13 Tage, Komplettpaket',
-    accommodation: 'Berghütten & Safari-Lodges',
-    groupSize: 'Max. 8 Teilnehmer',
-    price: '5.299',
-    img: 'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=800'
-  },
-  {
-    id: '8-day-marangu',
-    tag: 'Hüttenroute',
-    cat: 'KILIMANDSCHARO',
-    title: '8 Tage Marangu: Komfortabel zum Gipfel',
-    duration: '8 Tage All-Inclusive',
-    accommodation: 'Berghütten mit Vollpension',
-    groupSize: 'Max. 10 Teilnehmer',
-    price: '2.999',
-    img: 'https://images.unsplash.com/photo-1650361109293-909990990901?q=80&w=800'
-  },
-  {
-    id: '9-day-machame',
-    tag: 'Whiskey-Route',
-    cat: 'KILIMANDSCHARO',
-    title: '9 Tage Machame: Der Abenteuer-Weg zum Gipfel',
-    duration: '9 Tage Rundreise',
-    accommodation: 'Zeltcamps & Hütten',
-    groupSize: 'Max. 8 Teilnehmer',
-    price: '2.499',
-    img: 'https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=800'
-  }
-];
+import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
+import { collection, query, where } from 'firebase/firestore';
+import { PackageCard } from '@/components/packages/PackageCard';
 
 export default function KilimanjaroPage() {
+  const firestore = useFirestore();
+  const pkgQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
+    return query(collection(firestore, 'packages'), where('category', '==', 'KILIMANDSCHARO'));
+  }, [firestore]);
+
+  const { data: packages, isLoading } = useCollection(pkgQuery);
+
   return (
     <div className="bg-background min-h-screen">
-      {/* Immersive Header - NO top padding */}
+      {/* Immersive Header */}
       <section className="relative h-[50vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
         <Image 
           src="https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1920" 
@@ -97,67 +64,20 @@ export default function KilimanjaroPage() {
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
           <div className="max-w-xl">
             <span className="text-primary font-bold uppercase tracking-[0.3em] text-[9px] mb-1.5 block">Expeditions-Katalog</span>
-            <h2 className="font-headline text-3xl md:text-6xl font-bold leading-tight">Aufstieg zum <br /><span className="text-primary italic">Uhuru Peak</span></h2>
+            <h2 className="font-headline text-3xl md:text-6xl font-bold leading-tight text-secondary">Aufstieg zum <br /><span className="text-primary italic">Uhuru Peak</span></h2>
           </div>
           <p className="text-[10px] text-muted-foreground font-light max-w-[180px] lg:mb-3">Handverlesene Kletter-Routen für Einsteiger und erfahrene Entdecker.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
-          {packages.map((pkg, idx) => (
-            <motion.div 
-              key={pkg.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.05 }}
-              className="group"
-            >
-              <div className="relative">
-                <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-xl z-0">
-                  <Image src={pkg.img} alt={pkg.title} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-70" />
-                  
-                  <div className="absolute top-6 left-6 flex flex-col gap-1.5 items-start">
-                    <Badge className="bg-primary text-secondary border-none px-3 py-1 text-[9px] font-bold uppercase tracking-widest shadow-lg">
-                      {pkg.tag}
-                    </Badge>
-                    <Badge variant="outline" className="bg-white/10 backdrop-blur-md text-white border-white/20 px-3 py-1 text-[8px] font-bold uppercase tracking-widest">
-                      {pkg.cat}
-                    </Badge>
-                  </div>
-
-                  <div className="absolute bottom-8 left-8 right-8">
-                    <h3 className="font-headline text-xl md:text-2xl font-bold text-white leading-tight mb-4 line-clamp-2">{pkg.title}</h3>
-                    <div className="flex items-center justify-between gap-4">
-                      <div className="bg-white/95 backdrop-blur-sm px-5 py-3 rounded-2xl shadow-xl flex flex-col items-start min-w-[110px]">
-                        <p className="text-[8px] md:text-[10px] font-bold text-muted-foreground uppercase leading-none mb-1">Ab</p>
-                        <p className="text-xl md:text-2xl font-bold text-secondary">€{pkg.price}</p>
-                      </div>
-                      <Link href={`/trip-planner?route=${pkg.id}`}>
-                        <Button size="icon" className="w-14 h-14 rounded-2xl bg-primary text-secondary hover:bg-primary/90 shadow-xl transition-transform hover:scale-110">
-                          <ArrowRight className="w-6 h-6" />
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-6 px-2">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="flex items-center gap-2">
-                      <Clock className="w-4 h-4 text-primary" />
-                      <span className="text-[9px] font-bold uppercase tracking-wider text-muted-foreground">{pkg.duration}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Users className="w-4 h-4 text-primary" />
-                      <span className="text-[9px] font-bold uppercase tracking-wider text-muted-foreground">{pkg.groupSize}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        {isLoading ? (
+          <div className="py-20 text-center text-muted-foreground font-bold text-xs uppercase tracking-widest animate-pulse">Fetching Summit Routes...</div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+            {packages?.map((pkg) => (
+              <PackageCard key={pkg.id} pkg={pkg} />
+            ))}
+          </div>
+        )}
       </section>
     </div>
   );

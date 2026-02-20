@@ -6,28 +6,29 @@ import {
   Package, 
   Plus, 
   Search, 
-  Filter, 
   Edit, 
   Trash2, 
-  Eye, 
   Star,
-  MapPin,
   Clock,
-  DollarSign
+  DollarSign,
+  Save,
+  X,
+  RefreshCw
 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { useCollection, useFirestore, useMemoFirebase, useUser, useDoc } from '@/firebase';
+import { useCollection, useFirestore, useMemoFirebase, useUser, useDoc, updateDocumentNonBlocking } from '@/firebase';
 import { collection, query, orderBy, deleteDoc, doc } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
-import Link from 'next/link';
 
 export default function PackagesManagement() {
   const { user } = useUser();
   const firestore = useFirestore();
   const { toast } = useToast();
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [newPrice, setNewPrice] = useState<number>(0);
 
   // Guard: Only fetch if authenticated and admin role is confirmed
   const adminDocRef = useMemoFirebase(() => (firestore && user ? doc(firestore, 'roles_admin', user.uid) : null), [firestore, user]);
@@ -35,7 +36,7 @@ export default function PackagesManagement() {
   
   const packagesQuery = useMemoFirebase(() => {
     if (!firestore || !adminRole) return null;
-    return query(collection(firestore, 'packages'), orderBy('createdAt', 'desc'));
+    return query(collection(firestore, 'packages'), orderBy('updatedAt', 'desc'));
   }, [firestore, adminRole]);
 
   const { data: packages, isLoading } = useCollection(packagesQuery);
@@ -50,24 +51,34 @@ export default function PackagesManagement() {
     }
   };
 
+  const handleUpdatePrice = async (id: string) => {
+    if (!firestore || !newPrice) return;
+    const pkgRef = doc(firestore, 'packages', id);
+    updateDocumentNonBlocking(pkgRef, {
+      startingPrice: Number(newPrice),
+      updatedAt: new Date().toISOString()
+    });
+    setEditingId(null);
+    toast({ title: "Price Updated", description: "The new price is now live across the website." });
+  };
+
   return (
     <div className="p-10 max-w-7xl mx-auto space-y-10">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-4xl font-bold tracking-tight">Safari Catalog</h1>
-          <p className="text-muted-foreground mt-2 text-lg">Managing the "Nile to Savannah" expedition portfolio.</p>
+          <p className="text-muted-foreground mt-2 text-lg">Manage expeditions and global pricing.</p>
         </div>
         <Button className="gap-2 rounded-2xl h-12 px-6 shadow-lg shadow-primary/20">
-          <Plus className="w-5 h-5" /> Create New Package
+          <Plus className="w-5 h-5" /> New Expedition
         </Button>
       </div>
 
       <div className="flex items-center gap-4">
         <div className="relative flex-grow max-w-md">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-          <Input placeholder="Search packages by title or destination..." className="pl-12 h-14 rounded-2xl border-none shadow-sm bg-background" />
+          <Input placeholder="Search packages..." className="pl-12 h-14 rounded-2xl border-none shadow-sm bg-background" />
         </div>
-        <Button variant="outline" className="h-14 rounded-2xl px-6 border-none shadow-sm bg-background">Filters</Button>
       </div>
 
       <div className="grid grid-cols-1 gap-4">
@@ -79,7 +90,7 @@ export default function PackagesManagement() {
           <Card className="p-24 text-center border-dashed border-2 bg-muted/20 rounded-[3rem]">
             <Package className="w-16 h-16 mx-auto mb-6 opacity-10" />
             <h3 className="text-2xl font-bold mb-2">No packages registered</h3>
-            <p className="text-muted-foreground mb-8 max-w-xs mx-auto">Click "Initialize CMS" on the dashboard to seed sample packages.</p>
+            <p className="text-muted-foreground mb-8 max-w-xs mx-auto">Click "Initialize CMS" on the dashboard to seed global packages.</p>
           </Card>
         ) : (
           packages?.map((pkg: any) => (
@@ -87,7 +98,7 @@ export default function PackagesManagement() {
               <CardContent className="p-0 flex flex-col md:flex-row h-full">
                 <div className="w-full md:w-64 h-48 md:h-auto bg-muted relative overflow-hidden shrink-0">
                   <img 
-                    src={pkg.mediaRefs?.[0] || 'https://picsum.photos/seed/pkg/600/400'} 
+                    src={pkg.imageUrl || 'https://picsum.photos/seed/pkg/600/400'} 
                     alt={pkg.title} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
@@ -104,36 +115,51 @@ export default function PackagesManagement() {
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center gap-3">
                         <Badge variant="secondary" className="px-3 py-1 text-[10px] font-bold uppercase tracking-widest bg-secondary/10 text-secondary border-none">
-                          {pkg.tier}
+                          {pkg.category}
                         </Badge>
                         <div className="flex items-center gap-1 text-primary">
                           <Star className="w-3.5 h-3.5 fill-current" />
-                          <span className="text-xs font-bold">{pkg.rating}</span>
+                          <span className="text-xs font-bold">{pkg.rating || 4.9}</span>
                         </div>
                       </div>
                       <div className="flex items-center gap-1 md:opacity-0 group-hover:opacity-100 transition-all">
-                        <Button size="icon" variant="ghost" className="rounded-xl h-10 w-10"><Edit className="w-4 h-4" /></Button>
                         <Button size="icon" variant="ghost" className="rounded-xl h-10 w-10 text-destructive hover:bg-destructive/10" onClick={() => handleDelete(pkg.id)}><Trash2 className="w-4 h-4" /></Button>
                       </div>
                     </div>
                     <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors leading-tight">{pkg.title}</h3>
-                    <div className="flex items-center gap-6 text-sm text-muted-foreground mb-4">
-                       <span className="flex items-center gap-1.5"><Clock className="w-4 h-4" /> {pkg.durationDays} Days</span>
-                       <span className="flex items-center gap-1.5"><DollarSign className="w-4 h-4" /> From ${pkg.startingPrice}</span>
+                    
+                    <div className="flex flex-wrap items-center gap-6 mt-4">
+                       <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                         <Clock className="w-4 h-4" /> {pkg.durationDays} Days
+                       </div>
+                       
+                       {editingId === pkg.id ? (
+                         <div className="flex items-center gap-2 bg-muted/50 p-2 rounded-xl">
+                           <DollarSign className="w-4 h-4 text-primary" />
+                           <Input 
+                             type="number" 
+                             className="w-24 h-8 bg-transparent border-none font-bold" 
+                             value={newPrice} 
+                             onChange={(e) => setNewPrice(Number(e.target.value))}
+                           />
+                           <Button size="icon" className="h-8 w-8 rounded-lg" onClick={() => handleUpdatePrice(pkg.id)}><Save className="w-3 h-3" /></Button>
+                           <Button size="icon" variant="ghost" className="h-8 w-8 rounded-lg" onClick={() => setEditingId(null)}><X className="w-3 h-3" /></Button>
+                         </div>
+                       ) : (
+                         <button 
+                           onClick={() => { setEditingId(pkg.id); setNewPrice(pkg.startingPrice); }}
+                           className="flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-xl hover:bg-primary hover:text-white transition-all group/price"
+                         >
+                           <DollarSign className="w-4 h-4" />
+                           <span className="font-bold">€{pkg.startingPrice.toLocaleString()}</span>
+                           <Edit className="w-3 h-3 opacity-0 group-hover/price:opacity-100 transition-opacity" />
+                         </button>
+                       )}
                     </div>
                   </div>
                   
-                  <div className="flex items-center justify-between pt-6 border-t border-muted">
-                    <div className="flex gap-2">
-                      {pkg.categories?.slice(0, 3).map((cat: string) => (
-                        <Badge key={cat} variant="outline" className="text-[9px] uppercase tracking-widest font-bold text-muted-foreground border-muted">
-                          {cat}
-                        </Badge>
-                      ))}
-                    </div>
-                    <Button variant="ghost" className="text-xs font-bold text-secondary gap-2 hover:bg-secondary/5 rounded-xl h-10">
-                      Edit Details <Plus className="w-3 h-3" />
-                    </Button>
+                  <div className="pt-6 border-t border-muted mt-6">
+                    <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-widest">Global Sync ID: {pkg.slug}</p>
                   </div>
                 </div>
               </CardContent>
