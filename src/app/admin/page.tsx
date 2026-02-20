@@ -52,15 +52,21 @@ export default function AdminDashboard() {
     setLoading(true);
     try {
       const allPackages = [
+        // SAFARIS
         { id: '15-day-safari-zanzibar', title: '15 Tage Safari & Sansibar Komplett', slug: '15-day-safari-zanzibar', category: 'SAFARI & SANSIBAR', tag: 'Meistverkauft', durationDays: 15, startingPrice: 5399, highlights: ['Top Nationalparks Safari', 'Massai Dorfbesuch', 'Sansibar Strände & Tauchen'], imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800' },
         { id: '13-day-safari-zanzibar', title: '13 Tage Safari & Sansibar Erlebnis', slug: '13-day-safari-zanzibar', category: 'SAFARI & SANSIBAR', durationDays: 13, startingPrice: 3699, highlights: ['Big Five Pirschfahrten', 'UNESCO Krater', 'Stone Town Stadttour'], imageUrl: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800' },
         { id: '11-day-safari-zanzibar', title: '11 Tage Safari & Sansibar Kurztrip', slug: '11-day-safari-zanzibar', category: 'SAFARI & SANSIBAR', tag: 'Kurztrip', durationDays: 11, startingPrice: 2999, highlights: ['Elefanten im Tarangire', 'Serengeti Migration', 'Sansibar Strände'], imageUrl: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800' },
-        { id: '13-day-honeymoon', title: '13 Tage Flitterwochen Premium', slug: '13-day-honeymoon', category: 'FLITTERWOCHEN', tag: 'Romantik', durationDays: 13, startingPrice: 3899, highlights: ['Champagner Sunset', 'Private Pirschfahrten', 'Sansibar Stranddinner'], imageUrl: 'https://images.unsplash.com/photo-1580502304784-8985b777da59?q=80&w=800' },
+        { id: '13-day-honeymoon', title: '13 Tage Flitterwochen Premium', slug: '13-day-honeymoon', category: 'FLITTERWOCHEN', tag: 'Romantik', durationDays: 13, startingPrice: 3899, highlights: ['Champagner Sunset', 'Private Pirschfahrten', 'Heißluftballon Serengeti'], imageUrl: 'https://images.unsplash.com/photo-1580502304784-8985b777da59?q=80&w=800' },
         { id: '12-day-family', title: '12 Tage Familien-Safari Abenteuer', slug: '12-day-family', category: 'FAMILIENSAFARI', tag: 'Familien', durationDays: 12, startingPrice: 3499, highlights: ['Big Five Pirschfahrten', 'Massai Kultur', 'Kinderfreundliche Lodges'], imageUrl: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=800' },
         { id: '13-day-kili-safari', title: '13 Tage Kombi Safari Komplett', slug: '13-day-kili-safari', category: 'KILIMANDSCHARO SAFARI', tag: 'Kombi', durationDays: 13, startingPrice: 4699, highlights: ['Kili hautnah', 'Big Five Safari', 'Sansibar Strand'], imageUrl: 'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=800' },
-        { id: '8-day-marangu', title: '8 Tage Marangu: Komfortabel zum Gipfel', slug: '8-day-marangu', category: 'KILIMANDSCHARO', tag: 'Hüttenroute', durationDays: 8, startingPrice: 2999, highlights: ['Dach Afrikas', 'Bequeme Hütten', 'Professionelle Guides'], imageUrl: 'https://images.unsplash.com/photo-1650361109293-909990990901?q=80&w=800' },
+        
+        // KILIMANJARO
+        { id: '13-day-kili-kombi', title: '13 Tage Kilimandscharo & Safari Kombi', slug: '13-day-kili-kombi', category: 'KILIMANDSCHARO KOMBI', tag: 'Meistverkauft', durationDays: 13, startingPrice: 5299, highlights: ['Afrikas Dach erklimmen', 'Big Five hautnah', 'Sansibars Strände'], imageUrl: 'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=800' },
+        { id: '8-day-marangu', title: '8 Tage Marangu: Komfortabel zum Gipfel', slug: '8-day-marangu', category: 'KILIMANDSCHARO', tag: 'Hüttenroute', durationDays: 8, startingPrice: 2999, highlights: ['Hütten statt Zelte', 'Coca-Cola Route', 'Uhuru Peak Erfolg'], imageUrl: 'https://images.unsplash.com/photo-1650361109293-909990990901?q=80&w=800' },
         { id: '9-day-machame', title: '9 Tage Machame: Der Abenteuer-Weg', slug: '9-day-machame', category: 'KILIMANDSCHARO', tag: 'Whiskey-Route', durationDays: 9, startingPrice: 2499, highlights: ['Uhuru Peak Aufstieg', 'Zeltcamp Erlebnis', 'Spektakuläre Ausblicke'], imageUrl: 'https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=800' },
-        { id: '7-day-zanzibar-only', title: '7 Tage Sansibar – Tropisches Flair', slug: '7-day-zanzibar-only', category: 'SANSIBAR', tag: 'Nur Insel', durationDays: 7, startingPrice: 2699, highlights: ['Pristine Strände', 'Spice Tour', 'Türkisblauer Ozean'], imageUrl: 'https://images.unsplash.com/photo-1683323935247-ac5105bcea4e?q=80&w=800' }
+        { id: '10-day-lemosho', title: '10 Tage Lemosho: Unberührte Wege', slug: '10-day-lemosho', category: 'KILIMANDSCHARO', tag: 'Premium Route', durationDays: 10, startingPrice: 3099, highlights: ['Höchste Erfolgsquote', 'Wenig begangene Route', 'Premium Ausrüstung'], imageUrl: 'https://images.unsplash.com/photo-1511860810434-a92f84c6f01e?q=80&w=800' },
+        { id: '8-day-rongai', title: '8 Tage Rongai: Dein stiller Weg', slug: '8-day-rongai', category: 'KILIMANDSCHARO', tag: 'Ruhige Route', durationDays: 8, startingPrice: 2679, highlights: ['Nordseite Panorama', 'Abgeschieden & ruhig', 'Tierbeobachtungen'], imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800' },
+        { id: '5-day-mount-meru', title: '5 Tage Mount Meru Besteigung', slug: '5-day-mount-meru', category: 'MOUNT MERU', tag: 'Einstiegsroute', durationDays: 5, startingPrice: 2299, highlights: ['Afrikas 2. höchster Gipfel', 'Perfekte Vorbereitung', 'Wildtiere hautnah'], imageUrl: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=800' },
       ];
 
       for (const pkg of allPackages) {
@@ -72,7 +78,7 @@ export default function AdminDashboard() {
         }, { merge: true });
       }
 
-      toast({ title: "Global Registry Updated", description: "All safari packages have been synchronized." });
+      toast({ title: "Global Registry Updated", description: "All 12 packages have been synchronized." });
     } catch (error: any) {
       toast({ variant: "destructive", title: "Setup Failed", description: error.message });
     } finally {

@@ -17,7 +17,8 @@ import {
   Leaf,
   Coffee,
   Heart,
-  Sparkles
+  Sparkles,
+  LayoutGrid
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -40,10 +41,16 @@ export default function SafarisPage() {
   const firestore = useFirestore();
   const pkgQuery = useMemoFirebase(() => {
     if (!firestore) return null;
+    // Fetch all published safari-related packages
     return query(collection(firestore, 'packages'), where('isPublished', '==', true));
   }, [firestore]);
 
   const { data: packages, isLoading } = useCollection(pkgQuery);
+
+  // Filter packages for this specific view
+  const safariPackages = packages?.filter(p => 
+    ['SAFARI & SANSIBAR', 'FLITTERWOCHEN', 'FAMILIENSAFARI', 'KILIMANDSCHARO SAFARI'].includes(p.category)
+  ) || [];
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen">
@@ -72,7 +79,7 @@ export default function SafarisPage() {
               <span className="text-primary italic">Safari-Abenteuer</span>
             </h1>
             <p className="max-w-2xl mx-auto text-sm md:text-xl text-white/80 font-light leading-relaxed px-4">
-              Tansania Safari Buchen – wo wilde Natur, beeindruckende Tierbeobachtungen und atemberaubende Landschaften auf dich warten.
+              Tansania Safari Buchen – Dein unvergessliches Abenteuer, wo wilde Natur und beeindruckende Tierbeobachtungen auf dich warten.
             </p>
           </motion.div>
         </div>
@@ -86,15 +93,21 @@ export default function SafarisPage() {
             <h2 className="font-headline text-3xl md:text-6xl font-bold leading-tight">Wählen Sie Ihre <br /><span className="text-primary italic">Afrikanische Odyssee</span></h2>
           </div>
           <p className="text-[10px] text-muted-foreground font-light max-w-[200px] border-l-2 border-primary/20 pl-4">
-            Ob auf einer Solo-Safari, Familienreise oder romantischen Flitterwochen – Tansania bietet die perfekte Gelegenheit.
+            Ob Solo-Safari, Familienreise oder Flitterwochen – Tansania bietet die perfekte Gelegenheit, seine Schönheit zu entdecken.
           </p>
         </div>
 
         {isLoading ? (
           <div className="py-20 text-center text-muted-foreground font-bold text-xs uppercase tracking-widest animate-pulse">Synchronizing Expeditions...</div>
+        ) : safariPackages.length === 0 ? (
+          <div className="py-20 text-center text-muted-foreground border border-dashed rounded-[3rem]">
+            <LayoutGrid className="w-12 h-12 mx-auto mb-4 opacity-10" />
+            <p className="font-bold text-sm">Keine Pakete gefunden.</p>
+            <p className="text-xs">Bitte initialisieren Sie die CMS-Daten im Admin-Panel.</p>
+          </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
-            {packages?.map((pkg) => (
+            {safariPackages.map((pkg) => (
               <PackageCard key={pkg.id} pkg={pkg} />
             ))}
           </div>
