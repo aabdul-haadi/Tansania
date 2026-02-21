@@ -71,7 +71,6 @@ export default function PackageDetailPage() {
     }
   };
 
-  // 1. Check Loading first to prevent "Not Found" flicker
   if (isLoading) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center gap-6 bg-[#fdfcfb]">
@@ -80,7 +79,7 @@ export default function PackageDetailPage() {
           <Compass className="w-6 h-6 text-secondary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
         </div>
         <div className="text-center space-y-2">
-          <p className="text-[10px] uppercase font-bold tracking-[0.4em] text-secondary">Opening Expedition Log</p>
+          <p className="text-[10px] uppercase font-bold tracking-[0.4em] text-secondary">Expeditionsdaten werden geladen...</p>
           <div className="h-1 w-24 bg-muted mx-auto rounded-full overflow-hidden">
             <motion.div initial={{ x: -100 }} animate={{ x: 100 }} transition={{ repeat: Infinity, duration: 1.5 }} className="h-full w-full bg-primary" />
           </div>
@@ -89,16 +88,15 @@ export default function PackageDetailPage() {
     );
   }
 
-  // 2. Only show "Not Found" if we are DONE loading and still have no package
   if (!pkg) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center text-center p-4 bg-[#fdfcfb]">
         <div className="w-24 h-24 bg-destructive/10 rounded-[2rem] flex items-center justify-center mb-8">
           <Compass className="w-12 h-12 text-destructive" />
         </div>
-        <h2 className="font-headline text-4xl font-bold mb-4">Package Not Found</h2>
-        <p className="text-muted-foreground mb-8 max-w-xs mx-auto italic">This part of the savannah seems to be unexplored or the coordinates are incorrect.</p>
-        <Button asChild className="rounded-full px-10 h-14 font-bold shadow-xl"><Link href="/safaris">Return to Catalog</Link></Button>
+        <h2 className="font-headline text-4xl font-bold mb-4">Expedition nicht gefunden</h2>
+        <p className="text-muted-foreground mb-8 max-w-xs mx-auto italic">Dieser Teil der Savanne scheint noch unerforscht zu sein oder der Pfad ist fehlerhaft.</p>
+        <Button asChild className="rounded-full px-10 h-14 font-bold shadow-xl"><Link href="/safaris">Zurück zum Katalog</Link></Button>
       </div>
     );
   }
@@ -138,7 +136,7 @@ export default function PackageDetailPage() {
       </section>
 
       {/* Sticky Mobile-First Sub-Nav */}
-      <div className="sticky top-0 z-[40] bg-white/80 backdrop-blur-xl border-b overflow-x-auto no-scrollbar">
+      <div className="sticky top-0 z-[40] bg-white/80 backdrop-blur-xl border-b overflow-x-auto no-scrollbar shadow-sm">
         <div className="container mx-auto px-4 flex items-center justify-between min-w-max h-16">
           <div className="flex gap-8 h-full">
             {navItems.map((item) => (
@@ -165,22 +163,22 @@ export default function PackageDetailPage() {
           
           <main className="lg:col-span-8 space-y-24">
             
-            {/* overview section */}
+            {/* Overview Section */}
             <section ref={overviewRef} className="space-y-12">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 <div className="lg:col-span-7 space-y-8">
                   <div className="space-y-4">
-                    <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] block">Signature Narrative</span>
+                    <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] block">Expeditions-Bericht</span>
                     <h2 className="font-headline text-3xl md:text-5xl font-bold text-secondary leading-tight">
                       Wo Abenteuer auf <br /><span className="text-primary italic">zeitlose Erholung trifft</span>
                     </h2>
                   </div>
-                  <p className="text-muted-foreground text-lg font-light leading-relaxed italic border-l-4 border-primary/20 pl-6 py-2">
+                  <div className="text-muted-foreground text-lg font-light leading-relaxed italic border-l-4 border-primary/20 pl-6 py-2 bg-muted/5 rounded-r-2xl">
                     {pkg.description}
-                  </p>
-                  <div className="prose prose-neutral max-w-none text-muted-foreground font-light leading-relaxed">
+                  </div>
+                  <div className="prose prose-neutral max-w-none text-muted-foreground font-light leading-relaxed space-y-6">
                     <p>
-                      Jedes Detail Ihrer 15-tägigen Expedition ist darauf ausgelegt, die rohe Kraft der afrikanischen Wildnis mit dem Komfort erstklassiger Unterkünfte zu verbinden. Von den dichten Wäldern des Arusha Nationalparks bis zu den weißen Stränden Sansibars.
+                      Jedes Detail Ihrer {pkg.durationDays}-tägigen Expedition ist darauf ausgelegt, die rohe Kraft der afrikanischen Wildnis mit dem Komfort erstklassiger Unterkünfte zu verbinden. Von den dichten Wäldern des Arusha Nationalparks bis zu den weißen Stränden Sansibars.
                     </p>
                   </div>
                 </div>
@@ -212,7 +210,7 @@ export default function PackageDetailPage() {
               </div>
             </section>
 
-            {/* itinerary timeline section */}
+            {/* Itinerary Timeline Section */}
             <section ref={itineraryRef} className="space-y-16">
               <div className="flex items-end justify-between px-4">
                 <div className="space-y-2">
@@ -227,7 +225,7 @@ export default function PackageDetailPage() {
               <div className="space-y-12 relative">
                 <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-primary/40 via-muted to-primary/40 hidden md:block" />
 
-                {(pkg.itineraryDays || pkg.itinerary || []).map((day: any, idx: number) => (
+                {(pkg.itineraryDays || []).map((day: any, idx: number) => (
                   <motion.div 
                     key={idx}
                     initial={{ opacity: 0, y: 40 }}
@@ -269,7 +267,7 @@ export default function PackageDetailPage() {
               </div>
             </section>
 
-            {/* hotels section */}
+            {/* Hotels Section */}
             <section ref={hotelsRef} className="space-y-12">
               <div className="text-center md:text-left space-y-2 px-4">
                 <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px]">Reside & Recharge</span>

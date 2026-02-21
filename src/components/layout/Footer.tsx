@@ -5,7 +5,7 @@ import { Facebook, Instagram, Twitter, Phone, Mail, MapPin } from 'lucide-react'
 
 export function Footer() {
   return (
-    <footer className="relative bg-[#0a0a0a] text-white pt-20 pb-8 overflow-hidden">
+    <footer className="relative bg-[#0a0a0a] text-white pt-20 pb-8 overflow-hidden border-t border-white/5">
       {/* Procedural Safari Touch - CSS Pattern & Gradients */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-30">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,hsl(var(--primary)/0.2),transparent_70%)]" />
@@ -27,7 +27,7 @@ export function Footer() {
           <div className="flex flex-col gap-6 lg:col-span-1">
             <Link href="/" className="block group">
               <Image 
-                src="https://storage.googleapis.com/firejet-30da1.appspot.com/users/clvlyszhf0000la086mjha62f/projects/clvlyszhf0000la086mjha62f/1740484124411-logo.png"
+                src="/logo1.png"
                 alt="Tansania Reiseabenteuer"
                 width={200}
                 height={50}

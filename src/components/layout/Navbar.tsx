@@ -74,7 +74,7 @@ export function Navbar() {
         {/* Logo */}
         <Link href="/" className="relative z-50 transition-transform duration-500 hover:scale-105 active:scale-95">
           <Image 
-            src="https://storage.googleapis.com/firejet-30da1.appspot.com/users/clvlyszhf0000la086mjha62f/projects/clvlyszhf0000la086mjha62f/1740484124411-logo.png"
+            src="/logo1.png"
             alt="Tansania Reiseabenteuer"
             width={200}
             height={50}
