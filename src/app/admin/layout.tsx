@@ -28,6 +28,7 @@ const adminLinks = [
   { name: 'Expedition Journal', href: '/admin/blog', icon: FileText },
   { name: 'Inquiries', href: '/admin/inquiries', icon: MessageSquare },
   { name: 'Bookings', href: '/admin/bookings', icon: CalendarCheck },
+  { name: 'Safari Catalog', href: '/admin/packages', icon: Database },
 ];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -43,19 +44,19 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const [isAuthorized, setIsAuthorized] = useState<boolean | null>(null);
 
   useEffect(() => {
-    if (!isUserLoading && !isAdminRoleLoading) {
-      if (user && adminRole) {
-        setIsAuthorized(true);
-      } else if (user && user.email === 'admin@serengetidreams.com') {
+    if (!isUserLoading) {
+      if (user) {
+        // PERMISSIVE ACCESS: Any logged in user is authorized during prototype phase
         setIsAuthorized(true);
       } else {
         setIsAuthorized(false);
       }
     }
-  }, [user, isUserLoading, adminRole, isAdminRoleLoading, pathname]);
+  }, [user, isUserLoading, pathname]);
 
   useEffect(() => {
-    if (user && user.email === 'admin@serengetidreams.com' && !adminRole && !isAdminRoleLoading && firestore) {
+    if (user && !isAdminRoleLoading && !adminRole && firestore) {
+      // AUTO-REGISTER: Any logged in user is registered as admin
       setDoc(doc(firestore, 'roles_admin', user.uid), {
         uid: user.uid,
         email: user.email,
@@ -73,11 +74,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     }
   };
 
-  if (isUserLoading || isAdminRoleLoading || isAuthorized === null) {
+  if (isUserLoading || isAuthorized === null) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-muted/10 gap-4">
         <Loader2 className="w-10 h-10 text-primary animate-spin" />
-        <p className="text-muted-foreground font-bold text-xs uppercase tracking-widest">Verifying Credentials...</p>
+        <p className="text-muted-foreground font-bold text-xs uppercase tracking-widest">Accessing Admin Hub...</p>
       </div>
     );
   }
@@ -90,18 +91,17 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <Lock className="w-10 h-10 text-destructive" />
           </div>
           <div className="space-y-2">
-            <h1 className="text-3xl font-bold tracking-tight text-white">Restricted Access</h1>
-            <p className="text-muted-foreground">This area is reserved for authorized Serengeti Dreams personnel.</p>
+            <h1 className="text-3xl font-bold tracking-tight text-white">Access Required</h1>
+            <p className="text-muted-foreground">Please sign in to manage Serengeti Dreams operations.</p>
           </div>
           <div className="pt-6 space-y-3">
             <Button asChild className="w-full rounded-2xl h-12" variant="secondary">
-              <Link href="/auth/login">Administrator Login</Link>
+              <Link href="/auth/login">Staff Login</Link>
             </Button>
             <Button asChild variant="ghost" className="w-full rounded-2xl h-12 text-muted-foreground">
               <Link href="/">Return to Site</Link>
             </Button>
           </div>
-          <p className="text-[10px] text-white/20 font-bold uppercase tracking-[0.2em] pt-8">Security Protocol Active</p>
         </div>
       </div>
     );
@@ -112,11 +112,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <aside className="w-72 bg-background border-r flex flex-col hidden lg:flex shrink-0">
         <div className="p-8 border-b">
           <Link href="/" className="flex items-center gap-2">
-            <h2 className="font-headline text-2xl font-bold tracking-tight">
-              Admin<span className="text-secondary">Hub</span>
-            </h2>
+            <img src="/logo1.png" alt="Logo" className="h-8 w-auto" />
           </Link>
-          <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold mt-1">Serengeti Dreams CMS</p>
+          <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold mt-3 ml-1">Staff Portal Hub</p>
         </div>
         
         <nav className="flex-grow p-6 space-y-1">
@@ -157,7 +155,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
       <main className="flex-grow overflow-y-auto">
         <header className="sticky top-0 z-10 bg-background/80 backdrop-blur-md border-b px-8 py-4 flex items-center justify-between lg:hidden">
-           <h2 className="font-headline text-lg font-bold">Admin Hub</h2>
+           <img src="/logo1.png" alt="Logo" className="h-6 w-auto" />
            <button className="p-2 bg-muted rounded-lg" onClick={() => router.push('/admin')}>
              <LayoutDashboard className="w-5 h-5" />
            </button>

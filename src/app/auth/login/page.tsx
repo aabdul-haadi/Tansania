@@ -25,17 +25,18 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
+      // DEVELOPMENT LOGIC: Try to sign in, if fails, create the user automatically
       await signInWithEmailAndPassword(auth, email, password);
       toast({ title: "Welcome Back", description: "Identity verified. Accessing CMS..." });
       router.push('/admin');
     } catch (error: any) {
-      if (error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential') {
+      if (error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential' || error.code === 'auth/invalid-email') {
         try {
           await createUserWithEmailAndPassword(auth, email, password);
           toast({ title: "Account Created", description: "Development account activated. Welcome." });
           router.push('/admin');
         } catch (createError: any) {
-           toast({ variant: "destructive", title: "Access Denied", description: "Standard authentication failed." });
+           toast({ variant: "destructive", title: "Access Denied", description: "Authentication failed. Please check your inputs." });
         }
       } else {
         toast({ variant: "destructive", title: "Authentication Failed", description: error.message });
@@ -58,8 +59,8 @@ export default function LoginPage() {
 
         <Card className="border-none shadow-2xl rounded-[2rem] overflow-hidden bg-white">
           <CardHeader className="p-8 pb-0">
-            <CardTitle className="text-xl">Sign In</CardTitle>
-            <CardDescription>Enter any email and password to access the development admin panel.</CardDescription>
+            <CardTitle className="text-xl">Development Access</CardTitle>
+            <CardDescription>Enter any email and password to access the dashboard during this phase.</CardDescription>
           </CardHeader>
           <CardContent className="p-8">
             <form onSubmit={handleLogin} className="space-y-6">

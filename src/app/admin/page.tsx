@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from 'react';
@@ -68,7 +69,7 @@ export default function AdminDashboard() {
               title: 'Ankommen & Eintauchen', 
               location: 'Arusha', 
               stats: 'Distanz: 50km | 60 Min', 
-              desc: 'Ihre Traumreise beginnt jetzt! Fliegen Sie mit uns in den schönen tieferen Süden unserer Erdkugel und zwar nach Tanzania. Die Safari ruft... Machen Sie es sich bequem während des Flugs, träumen etwas vor sich hin, was Sie erwarten könnte: schöne Flora & Fauna, anspruchsvolle Jeepfahrten und gemütliche Lodges.', 
+              desc: 'Ihre Traumreise beginnt jetzt! Fliegen Sie mit uns in den schönen tieferen Süden unserer Erdkugel und zwar nach Tanzania. Die Safari ruft... Machen Sie es sich bequem während des Flugs, träumen etwas vor sich hin, was Sie erwarten könnte: schöne Flora & Fauna, anspruchsvolle Jeepfahrten und gemütliche Lodges. Nach der Ankunft am Kilimandscharo Airport werden Sie von unserem Reiseleiter empfangen und in Ihre Unterkunft gebracht.', 
               img: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800' 
             },
             { 
@@ -76,15 +77,15 @@ export default function AdminDashboard() {
               title: 'Ankunft in Tanzania', 
               location: 'Arusha', 
               stats: 'Kultur & Markt', 
-              desc: 'Nach der Landung am Kilimandscharo Airport werden Sie von unserem Reiseleiter empfangen. In Arusha können Sie das turbulente Stadtleben hautnah miterleben. Besuchen Sie Märkte mit frischem Obst, Street Food und traditioneller Kleidung. Eine Fahrt mit dem Daladala bringt Ihnen das tansanische Leben näher.', 
+              desc: 'In Arusha können Sie das turbulente Stadtleben hautnah miterleben. Besuchen Sie Märkte mit frischem Obst, Street Food und traditioneller Kleidung. Eine Fahrt mit dem Daladala bringt Ihnen das tansanische Leben näher. Der Reiseleiter empfängt Sie für eine unvergessliche Safari.', 
               img: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=800' 
             },
             { 
               day: 3, 
               title: 'Arusha Nationalpark', 
-              location: 'Momella Lakes', 
+              location: 'Ngurdoto Krater', 
               stats: '400 Vogelarten', 
-              desc: 'Malerische Aussicht auf die Momella-Seen und den Ngurdoto Krater. Die Umgebung wechselt zwischen Steppen, Dschungel und Hochgebirge. Ein dichter Wald bietet Lebensraum für Affen, während die Seen von Tausenden Flamingos bevölkert werden. Optional: 2-stündige Ranger-Wanderung.', 
+              desc: 'Der Arusha Nationalpark belohnt mit einer malerischen Aussicht auf die sieben Momella-Seen und den Ngurdoto Krater. Die Umgebung ist vielfältig und wechselt stetig zwischen Steppen, Dschungel und Hochgebirge. Im Osten des Parks ist ein dichter hoher Wald zu finden, welcher einen optimalen Lebensraum für verschiedenste Affen darstellt.', 
               img: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800' 
             },
             { 
@@ -98,17 +99,17 @@ export default function AdminDashboard() {
             { 
               day: 5, 
               title: 'Besuch einer tansanischen Schule', 
-              location: 'Manyatta', 
-              stats: 'Massai Kultur', 
-              desc: 'Auf dem Weg zur Serengeti besuchen Sie ein Massai-Dorf. Lernen Sie Bräuche und den Alltag in den Bomas kennen. Die Massai erkennen Sie an ihrer traditionellen Kleidung und ihrem bunten Schmuck. Den Abend lassen Sie inmitten der Serengeti ausklingen.', 
-              img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800' 
+              location: 'Maasai Manyatta', 
+              stats: 'Kulturelle Begegnung', 
+              desc: 'Auf dem Weg zum Serengeti Nationalpark durchqueren Sie das Naturschutzgebiet Ngorongoro und machen Ihren ersten Zwischenstopp in einem Massai-Dorf. Lernen Sie Bräuche und den Alltag in den Bomas kennen. Die Massai erkennen Sie an ihrer traditionellen Kleidung und ihrem bunten Schmuck.', 
+              img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200' 
             },
             { 
               day: 6, 
               title: 'Serengeti Nationalpark', 
-              location: 'Serengeti Plains', 
-              stats: 'Migration Spot', 
-              desc: 'Ganztägige Erkundung der weltberühmten Savanne. Wir folgen der Großen Migration – über eine Million Gnus und 200.000 Zebras auf ihrer ewigen Suche nach Nahrung. Das Brüllen der Löwen und das Heulen der Hyänen machen die Nacht unvergesslich.', 
+              location: 'Serengeti Weiten', 
+              stats: 'Große Migration', 
+              desc: 'Freuen Sie sich auf die Erkundung des berühmten Serengeti Nationalparks. Je nach Jahreszeit fahren wir zu den Orten, an denen sich große Gruppen von Gnus befinden. Es ist die Migration, für die die Serengeti am berühmtesten ist - über eine Million Gnus auf ihrer ewigen Suche nach Nahrung.', 
               img: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=800' 
             },
             { 
@@ -124,21 +125,21 @@ export default function AdminDashboard() {
               title: 'Inlandsflug nach Sansibar', 
               location: 'Zanzibar Shores', 
               stats: 'Flug: 1h', 
-              desc: 'Transfer zum Flughafen und Flug ins Inselparadies. Die weißen Strände und freundlichen Einheimischen erwarten Sie. Transfer zu Ihrem Hotel in Jambiani, Paje oder Nungwi. Zeit zum ersten Mal barfuß über den Sand zu laufen.', 
+              desc: 'Transfer zum Flughafen und Flug ins Inselparadiese. Die weißen Strände und freundlichen Einheimischen erwarten Sie. Nach der Ankunft bringen wir Sie zu Ihrem Hotel. Nun steht Entspannen auf dem Programm.', 
               img: 'https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=800' 
             },
             { 
               day: 9, 
               title: 'Empfehlung: Freizeit', 
               location: 'Strand & Sonne', 
-              stats: 'Erholung', 
+              stats: 'Erholung pur', 
               desc: 'Genießen Sie die sauberen, weißen Strände und schwimmen Sie im kristallklaren Ozean. Lassen Sie bei einem erfrischenden Cocktail und einem goldenen Sonnenuntergang einfach mal die Seele baumeln.', 
               img: 'https://images.unsplash.com/photo-1590001158193-79013ac7fa77?q=80&w=800' 
             },
             { 
               day: 10, 
               title: 'Empfehlung: blaue Safari', 
-              location: 'Sandbank', 
+              location: 'Sandbank Tour', 
               stats: 'Schnorcheln', 
               desc: 'Optionaler Bootsausflug zu unbewohnten Inseln. Schnorcheln in flachen Riffen und Mittagessen auf einer Sandbank mit gegrilltem Fisch, Reis und Linsen. Segeln auf einem traditionellen Kanu aus einem Mangobaum.', 
               img: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800' 
@@ -180,7 +181,7 @@ export default function AdminDashboard() {
               title: 'Landung in der Heimat', 
               location: 'Home', 
               stats: 'Ende der Reise', 
-              desc: 'Nach einem sicheren Flug wünschen wir Ihnen einen guten Heimweg. Passen Sie auf sich auf und bleiben Sie gesund. Wir freuen uns, Sie bald wieder begrüßen zu dürfen.', 
+              desc: 'Nach einem sicheren Flug wünschen wir Ihnen einen guten Heimweg. Passen Sie auf sich auf und bleiben Sie gesund. Wir freuen uns, Sie bald wieder begrüßen zu dürfen. Ihr Tansania Reiseabenteuer Team.', 
               img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200' 
             }
           ]
