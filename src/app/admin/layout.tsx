@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useEffect, useState } from 'react';
@@ -46,7 +45,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   useEffect(() => {
     if (!isUserLoading) {
       if (user) {
-        // PERMISSIVE ACCESS: Any logged in user is authorized during prototype phase
         setIsAuthorized(true);
       } else {
         setIsAuthorized(false);
@@ -56,7 +54,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   useEffect(() => {
     if (user && !isAdminRoleLoading && !adminRole && firestore) {
-      // AUTO-REGISTER: Any logged in user is registered as admin
       setDoc(doc(firestore, 'roles_admin', user.uid), {
         uid: user.uid,
         email: user.email,
@@ -112,7 +109,21 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <aside className="w-72 bg-background border-r flex flex-col hidden lg:flex shrink-0">
         <div className="p-8 border-b">
           <Link href="/" className="flex items-center gap-2">
-            <img src="/logo1.png" alt="Logo" className="h-8 w-auto" />
+            <img 
+              src="/logo1.png" 
+              alt="Logo" 
+              className="h-8 w-auto object-contain" 
+              onError={(e) => {
+                (e.target as HTMLImageElement).style.display = 'none';
+                const parent = (e.target as HTMLImageElement).parentElement;
+                if (parent) {
+                  const text = document.createElement('span');
+                  text.innerText = 'DREAMS';
+                  text.className = 'font-headline font-bold text-lg text-primary';
+                  parent.appendChild(text);
+                }
+              }}
+            />
           </Link>
           <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold mt-3 ml-1">Staff Portal Hub</p>
         </div>

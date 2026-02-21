@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Menu, X, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -73,16 +72,23 @@ export function Navbar() {
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="relative z-50 transition-transform duration-500 hover:scale-105 active:scale-95">
-          <Image 
+          <img 
             src="/logo1.png"
             alt="Tansania Reiseabenteuer"
-            width={200}
-            height={50}
             className={cn(
               "h-10 md:h-12 w-auto object-contain transition-all duration-500",
               !isScrolled && "brightness-0 invert" 
             )}
-            priority
+            onError={(e) => {
+              (e.target as HTMLImageElement).style.display = 'none';
+              const parent = (e.target as HTMLImageElement).parentElement;
+              if (parent) {
+                const text = document.createElement('span');
+                text.innerText = 'SERENGETI DREAMS';
+                text.className = 'font-headline font-bold text-xl text-primary tracking-widest';
+                parent.appendChild(text);
+              }
+            }}
           />
         </Link>
 
@@ -117,9 +123,8 @@ export function Navbar() {
                   </SheetClose>
                 </div>
 
-                {/* Navigation Content - Flat Hierarchy */}
+                {/* Navigation Content */}
                 <div className="p-8 space-y-12">
-                  {/* Hauptziele */}
                   <div className="space-y-6">
                     <h4 className="text-[10px] font-bold text-white/30 uppercase tracking-[0.4em]">Hauptziele</h4>
                     <div className="grid grid-cols-1 gap-4">
@@ -136,7 +141,6 @@ export function Navbar() {
                     </div>
                   </div>
 
-                  {/* Top Reiseziele (Grid) */}
                   <div className="space-y-6">
                     <h4 className="text-[10px] font-bold text-white/30 uppercase tracking-[0.4em]">REISEZIELE</h4>
                     <div className="grid grid-cols-2 gap-x-8 gap-y-4">
@@ -153,7 +157,6 @@ export function Navbar() {
                     </div>
                   </div>
 
-                  {/* Reisen 2026 */}
                   <div className="space-y-6">
                     <h4 className="text-[10px] font-bold text-white/30 uppercase tracking-[0.4em]">REISEN 2026</h4>
                     <div className="grid grid-cols-1 gap-4">
@@ -169,23 +172,6 @@ export function Navbar() {
                     </div>
                   </div>
 
-                  {/* Dienstleistungen */}
-                  <div className="space-y-6">
-                    <h4 className="text-[10px] font-bold text-white/30 uppercase tracking-[0.4em]">DIENSTLEISTUNGEN</h4>
-                    <div className="grid grid-cols-1 gap-4">
-                      {dienstleistungen.map((item) => (
-                        <Link 
-                          key={item.name} 
-                          href={item.href} 
-                          className="text-base font-bold text-white/60 hover:text-white transition-colors"
-                        >
-                          {item.name}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Secondary Links */}
                   <div className="pt-10 border-t border-white/5 space-y-4">
                     <div className="grid grid-cols-2 gap-4">
                       {secondaryLinks.map((item) => (
@@ -201,16 +187,12 @@ export function Navbar() {
                   </div>
                 </div>
 
-                {/* Footer Drawer */}
                 <div className="mt-auto p-8 border-t border-white/5 bg-black/20">
                   <Link href="/trip-planner">
                     <Button className="w-full h-16 rounded-2xl text-lg font-bold">
                       JETZT REISE PLANEN
                     </Button>
                   </Link>
-                  <p className="text-[10px] text-white/20 font-bold uppercase tracking-[0.2em] text-center mt-6">
-                    © {new Date().getFullYear()} Serengeti Dreams
-                  </p>
                 </div>
               </div>
             </SheetContent>

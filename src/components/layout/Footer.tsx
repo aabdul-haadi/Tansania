@@ -1,37 +1,33 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Facebook, Instagram, Twitter, Phone, Mail, MapPin } from 'lucide-react';
 
 export function Footer() {
   return (
     <footer className="relative bg-[#0a0a0a] text-white pt-20 pb-8 overflow-hidden border-t border-white/5">
-      {/* Procedural Safari Touch - CSS Pattern & Gradients */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-30">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,hsl(var(--primary)/0.2),transparent_70%)]" />
         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-        
-        {/* CSS Silhouette Motif */}
-        <div className="absolute bottom-[-10%] right-[-5%] w-[800px] h-[500px] opacity-10">
-          <svg viewBox="0 0 200 100" className="w-full h-full fill-white">
-            <path d="M20,90 Q40,70 60,85 T100,80 T140,85 T180,75 L180,100 L20,100 Z" />
-            <path d="M140,85 L145,60 Q150,55 160,58 Q170,62 165,75 L160,85 Z" opacity="0.5" />
-            <path d="M50,85 L52,70 Q55,65 65,68 Q75,72 70,85 Z" opacity="0.4" />
-          </svg>
-        </div>
       </div>
 
       <div className="container relative z-10 mx-auto px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
-          {/* Brand */}
           <div className="flex flex-col gap-6 lg:col-span-1">
             <Link href="/" className="block group">
-              <Image 
+              <img 
                 src="/logo1.png"
                 alt="Tansania Reiseabenteuer"
-                width={200}
-                height={50}
-                className="brightness-0 invert h-12 w-auto object-contain transition-transform group-hover:scale-105"
+                className="h-12 w-auto object-contain transition-transform group-hover:scale-105 brightness-0 invert"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).style.display = 'none';
+                  const parent = (e.target as HTMLImageElement).parentElement;
+                  if (parent) {
+                    const text = document.createElement('span');
+                    text.innerText = 'SERENGETI DREAMS';
+                    text.className = 'font-headline font-bold text-xl text-primary tracking-widest';
+                    parent.appendChild(text);
+                  }
+                }}
               />
             </Link>
             <p className="text-white/60 leading-relaxed font-light text-xs max-w-xs">
@@ -46,7 +42,6 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h4 className="text-primary font-bold text-[10px] uppercase tracking-[0.4em] mb-6 block">Entdecken</h4>
             <ul className="flex flex-col gap-3 text-xs font-bold">
@@ -57,7 +52,6 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Legal */}
           <div>
             <h4 className="text-primary font-bold text-[10px] uppercase tracking-[0.4em] mb-6 block">Rechtliches</h4>
             <ul className="flex flex-col gap-3 text-xs font-bold">
@@ -68,7 +62,6 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Services */}
           <div>
             <h4 className="text-primary font-bold text-[10px] uppercase tracking-[0.4em] mb-6 block">Dienstleistungen</h4>
             <ul className="flex flex-col gap-3 text-xs font-bold">
@@ -79,7 +72,6 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
             <h4 className="text-primary font-bold text-[10px] uppercase tracking-[0.4em] mb-6 block">Büro Kairo</h4>
             <ul className="flex flex-col gap-4 text-xs">
@@ -101,10 +93,6 @@ export function Footer() {
 
         <div className="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-white/30 uppercase tracking-[0.2em] font-bold">
           <p>© {new Date().getFullYear()} Tansania Reiseabenteuer. Afrika anders erleben.</p>
-          <div className="flex gap-6">
-            <Link href="/legal/privacy" className="hover:text-white transition-colors">Datenschutz</Link>
-            <Link href="/legal/terms" className="hover:text-white transition-colors">Allgemeine Bedingungen</Link>
-          </div>
         </div>
       </div>
     </footer>
