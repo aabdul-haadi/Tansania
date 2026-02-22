@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X, ChevronRight } from 'lucide-react';
+import { Menu, X, ChevronRight, Sparkles } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import {
@@ -36,13 +36,8 @@ const reisen2026 = [
   { name: 'Ostern 2026', href: '/safaris?tag=easter' },
 ];
 
-const dienstleistungen = [
-  { name: 'Unsere Services', href: '/services/agency-services' },
-  { name: 'Unterkünfte', href: '/safaris' },
-  { name: 'Aktivitäten', href: '/services/adventure-app' },
-];
-
 const secondaryLinks = [
+  { name: 'AI Advisor', href: '/trip-advisor', highlight: true },
   { name: 'Über uns', href: '/about' },
   { name: 'Reisetipps', href: '/blog' },
   { name: 'FAQ', href: '/faq' },
@@ -94,6 +89,15 @@ export function Navbar() {
 
         {/* Action Bar */}
         <div className="flex items-center gap-4">
+          <Link href="/trip-advisor" className="hidden lg:block">
+            <Button variant="ghost" className={cn(
+              "rounded-full gap-2 text-[10px] font-bold uppercase tracking-widest border",
+              isScrolled ? "border-primary/20 text-secondary" : "border-white/20 text-white"
+            )}>
+              <Sparkles className="w-3.5 h-3.5 text-primary" /> AI Advisor
+            </Button>
+          </Link>
+
           <Sheet>
             <SheetTrigger asChild>
               <button
@@ -178,8 +182,12 @@ export function Navbar() {
                         <Link 
                           key={item.name} 
                           href={item.href} 
-                          className="text-xs font-bold text-white/40 hover:text-white transition-colors uppercase tracking-widest"
+                          className={cn(
+                            "text-xs font-bold uppercase tracking-widest transition-colors",
+                            item.highlight ? "text-primary flex items-center gap-2" : "text-white/40 hover:text-white"
+                          )}
                         >
+                          {item.highlight && <Sparkles className="w-3 h-3" />}
                           {item.name}
                         </Link>
                       ))}
