@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -26,6 +27,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
+import { Skeleton } from '@/components/ui/skeleton';
 import { useDoc, useFirestore, useMemoFirebase } from '@/firebase';
 import { doc } from 'firebase/firestore';
 import { cn } from '@/lib/utils';
@@ -48,7 +50,6 @@ export default function PackageDetailPage() {
   const hotelsRef = useRef<HTMLDivElement>(null);
   const inquiryRef = useRef<HTMLDivElement>(null);
 
-  // Initialize with slug if it exists to prevent "Not Found" flicker
   const docRef = useMemoFirebase(() => (firestore && slug ? doc(firestore, 'packages', slug as string) : null), [firestore, slug]);
   const { data: pkg, isLoading } = useDoc(docRef);
 
@@ -72,19 +73,8 @@ export default function PackageDetailPage() {
     }
   };
 
-  // Strictly check isLoading before rendering "Not Found"
   if (isLoading) {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center gap-6 bg-[#fdfcfb]">
-        <div className="relative">
-          <Loader2 className="w-16 h-16 text-primary animate-spin" />
-          <Compass className="w-6 h-6 text-secondary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-        </div>
-        <div className="text-center space-y-2">
-          <p className="text-[10px] uppercase font-bold tracking-[0.4em] text-secondary">Expeditionsdaten werden geladen...</p>
-        </div>
-      </div>
-    );
+    return <PackageSkeleton />;
   }
 
   if (!pkg) {
@@ -94,7 +84,7 @@ export default function PackageDetailPage() {
           <Compass className="w-12 h-12 text-destructive" />
         </div>
         <h2 className="font-headline text-4xl font-bold mb-4">Expedition nicht gefunden</h2>
-        <p className="text-muted-foreground mb-8 max-w-xs mx-auto italic">Dieser Teil der Savanne scheint noch unerforscht zu sein.</p>
+        <p className="text-muted-foreground mb-8 max-w-xs mx-auto italic text-sm">Dieser Teil der Savanne scheint noch unerforscht zu sein.</p>
         <Button asChild className="rounded-full px-10 h-14 font-bold shadow-xl"><Link href="/safaris">Zurück zum Katalog</Link></Button>
       </div>
     );
@@ -190,10 +180,16 @@ export default function PackageDetailPage() {
                       Die Safari im Norden beginnt im Arusha-Nationalpark, wo Sie beeindruckende Ausblicke auf die Momella-Seen und den Ngurdoto-Krater genießen, gefolgt von einem Besuch in Tarangire, wo Sie Elefantenherden zwischen den mächtigen Baobabs beobachten können.
                     </p>
                     <p>
-                      Erleben Sie authentische Begegnungen mit der lokalen Kultur der Massai, bevor Sie die weite Savanne der Serengeti entdecken. Der Höhepunkt der Safari ist der Ngorongoro-Krater, ein Naturwunder mit einer hohen Wilddichte, das Ihnen außergewöhnliche Möglichkeiten bietet, die „Big Five“ zu erleben.
+                      Erleben Sie authentische Begegnungen mit der lokalen Kultur der Massai, bevor Sie die weite Savanne der Serengeti entdecken. Zwei intensive Tage voller unvergesslicher Tiermomente, mit Chancen auf die große Migration, je nach Saison.
                     </p>
                     <p>
-                      Nach der Safari fliegen Sie nach Sansibar, beziehen Ihr Strandhotel und genießen unvergessliche Erholung: barfuß am weißen Sandstrand, Baden im türkisblauen Meer und Zeit zum Genießen.
+                      Der Höhepunkt der Safari ist der Ngorongoro-Krater, ein Naturwunder mit einer hohen Wilddichte, das Ihnen außergewöhnliche Möglichkeiten bietet, die „Big Five“ zu erleben.
+                    </p>
+                    <p>
+                      Nach der Safari fliegen Sie nach Sansibar, beziehen Ihr Strandhotel und genießen unvergessliche Erholung: barfuß am weißen Sandstrand, Baden im türkisblauen Meer und Zeit zum Genießen. Optional können Sie an Bootstouren, Schnorcheln, einer Gewürztour, Tauchen oder einem Besuch in Stone Town teilnehmen.
+                    </p>
+                    <p>
+                      Am Ende Ihrer Reise werden Sie zurück zum Flughafen gebracht und treten Ihre Heimreise an, mit Erinnerungen, die bleiben.
                     </p>
                   </div>
                 </div>
@@ -217,8 +213,8 @@ export default function PackageDetailPage() {
                     <div className="w-12 h-12 rounded-2xl bg-muted flex items-center justify-center mx-auto">
                       <Users className="w-6 h-6 text-muted-foreground" />
                     </div>
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Gruppengröße</p>
-                    <p className="text-sm font-bold text-secondary">Exklusive Kleingruppe: Max. 8 Personen</p>
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Teilnehmerzahl</p>
+                    <p className="text-sm font-bold text-secondary">Min. auf Anfrage – Max. 6 Personen</p>
                   </div>
                 </div>
               </div>
@@ -331,7 +327,7 @@ export default function PackageDetailPage() {
                     ))}
                   </div>
 
-                  <Button onClick={() => scrollTo('inquiry')} size="lg" className="w-full h-16 rounded-2xl bg-primary hover:bg-white hover:text-secondary font-bold text-sm shadow-xl transition-all uppercase tracking-widest">
+                  <Button onClick={() => scrollTo('inquiry')} size="lg" className="w-full h-16 rounded-2xl bg-primary hover:bg-white hover:text-secondary font-bold text-sm shadow-xl transition-all uppercase tracking-widest text-white">
                     Expedition Planen <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
 
@@ -394,6 +390,38 @@ export default function PackageDetailPage() {
             Jetzt Anfragen <ChevronRight className="w-4 h-4 ml-1" />
           </Button>
         </motion.div>
+      </div>
+    </div>
+  );
+}
+
+function PackageSkeleton() {
+  return (
+    <div className="min-h-screen bg-[#fdfcfb]">
+      {/* Hero Skeleton */}
+      <div className="h-[70vh] md:h-[90vh] flex flex-col md:flex-row gap-4 bg-muted animate-pulse">
+        <div className="w-full md:w-1/2 h-1/2 md:h-full bg-muted-foreground/10" />
+        <div className="w-full md:w-1/2 h-1/2 md:h-full p-20 flex flex-col justify-center space-y-8">
+          <Skeleton className="h-8 w-32 rounded-full" />
+          <Skeleton className="h-20 w-full rounded-2xl" />
+          <Skeleton className="h-16 w-64 rounded-2xl" />
+        </div>
+      </div>
+      
+      {/* Narrative Skeleton */}
+      <div className="container mx-auto px-4 max-w-7xl pt-20 grid grid-cols-1 lg:grid-cols-12 gap-20">
+        <div className="lg:col-span-8 space-y-12">
+          <Skeleton className="h-12 w-64" />
+          <Skeleton className="h-40 w-full rounded-3xl" />
+          <div className="space-y-4">
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-3/4" />
+          </div>
+        </div>
+        <div className="lg:col-span-4">
+          <Skeleton className="h-[500px] w-full rounded-[3rem]" />
+        </div>
       </div>
     </div>
   );
