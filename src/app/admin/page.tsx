@@ -59,7 +59,7 @@ export default function AdminDashboard() {
           tag: 'Meistverkauft', 
           durationDays: 15, 
           startingPrice: 5399, 
-          description: "Diese 15-tägige Pauschalreise vereint Abenteuer und Erholung in perfekter Weise: Nach der Landung am Kilimanjaro International Airport werden Sie herzlich empfangen und fahren nach Arusha, wo Sie das wahre Tansania in Ihrem eigenen Tempo erleben können. Die Safari im Norden beginnt im Arusha-Nationalpark, gefolgt von Tarangire, den Weiten der Serengeti und dem Ngorongoro-Krater. Den krönenden Abschluss bilden die weißen Sandstrände Sansibars.",
+          description: "Diese 15-tägige Pauschalreise vereint Abenteuer und Erholung in perfekter Weise: Nach der Landung am Kilimanjaro International Airport werden Sie herzlich empfangen und fahren nach Arusha, wo Sie das wahre Tansania in Ihrem eigenen Tempo erleben können. Die Safari im Norden beginnt im Arusha-Nationalpark, wo Sie beeindruckende Ausblicke auf die Momella-Seen und den Ngurdoto-Krater genießen, gefolgt von einem Besuch in Tarangire, wo Sie Elefantenherden zwischen den mächtigen Baobabs beobachten können. Erleben Sie authentische Begegnungen mit der lokalen Kultur der Massai, bevor Sie die weite Savanne der Serengeti entdecken. Der Höhepunkt der Safari ist der Ngorongoro-Krater, ein Naturwunder mit einer hohen Wilddichte. Nach der Safari fliegen Sie nach Sansibar für unvergessliche Erholung am weißen Sandstrand.",
           highlights: ['Atemberaubende Tierbeobachtungen', 'Exklusive Lodge & Tented Camp', 'Abenteuer & Erholung', 'Alles gut organisiert', 'Inklusive Intl. Flug'], 
           imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200',
           itineraryDays: [
@@ -68,7 +68,7 @@ export default function AdminDashboard() {
               title: 'Ankommen & Eintauchen', 
               location: 'Arusha', 
               stats: 'Distanz: 50km | 60 Min', 
-              desc: 'Ihre Traumreise beginnt jetzt! Fliegen Sie mit uns in den schönen tieferen Süden unserer Erdkugel und zwar nach Tanzania. Die Safari ruft... Machen Sie es sich bequem während des Flugs, träumen etwas vor sich hin, was Sie erwarten könnte: schöne Flora & Fauna, anspruchsvolle Jeepfahrten und gemütliche Lodges. Nach der Ankunft am Kilimandscharo Airport werden Sie von unserem Reiseleiter empfangen und in Ihre Unterkunft gebracht.', 
+              desc: 'Ihre Traumreise beginnt jetzt! Fliegen Sie mit uns in den schönen tieferen Süden unserer Erdkugel und zwar nach Tanzania. Die Safari ruft... Machen Sie es sich bequem während des Flugs, schliessen Sie gelegentlich Ihre Augen und träumen etwas vor sich hin, was Ihnen so erwarten könnte... schöne Flora & Fauna, schöne und anspruchsvolle Jeepfahrten in den verschiedenen Nationalparks, angenehme und gemütliche Lodges nach einer Safari und Zeit für Entspannung... Nach der Ankunft am Kilimandscharo International Airport werden Sie von unserem Reiseleiter empfangen und mit dem Auto in Ihre Unterkunft gebracht.', 
               img: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800' 
             },
             { 
@@ -82,15 +82,15 @@ export default function AdminDashboard() {
             { 
               day: 3, 
               title: 'Arusha Nationalpark', 
-              location: 'Ngurdoto Krater', 
+              location: 'Arusha Region', 
               stats: '400 Vogelarten', 
-              desc: 'Der Arusha Nationalpark belohnt mit einer malerischen Aussicht auf die sieben Momella-Seen und den Ngurdoto Krater. Die Umgebung ist vielfältig und wechselt stetig zwischen Steppen, Dschungel und Hochgebirge. Im Osten des Parks ist ein dichter hoher Wald zu finden, welcher einen optimalen Lebensraum für verschiedenste Affen darstellt.', 
+              desc: 'Der Arusha Nationalpark belohnt mit einer malerischen Aussicht auf die sieben Momella-Seen und den Ngurdoto Krater. Die Umgebung ist vielfältig und wechselt stetig zwischen Steppen, Dschungel und Hochgebirge. Im Osten des Parks ist ein dichter hoher Wald zu finden, welcher einen optimalen Lebensraum für verschiedenste Affen darstellt. An den Momella Seen besteht die perfekte Möglichkeit, die reiche Vogelwelt, mehr als 400 Arten, zu beobachten. Darunter befinden sich Flamingos, die man in großen Schwärmen antrifft.', 
               img: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800' 
             },
             { 
               day: 4, 
               title: 'Tarangire Nationalpark', 
-              location: 'Tarangire River', 
+              location: 'Babati Rural', 
               stats: 'Land der Giganten', 
               desc: 'Morgendliche Pirschfahrt im Park der Elefanten und Baobabs. Der Fluss zieht in der Trockenzeit Wildtiere wie ein Magnet an. Highlights sind Herden von bis zu 300 Elefanten, Gnus, Zebras und Gazellen. Genießen Sie ein entspanntes Picknick mit Blick auf das Flussbett.', 
               img: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=800' 
@@ -124,7 +124,7 @@ export default function AdminDashboard() {
               title: 'Inlandsflug nach Sansibar', 
               location: 'Zanzibar Shores', 
               stats: 'Flug: 1h', 
-              desc: 'Transfer zum Flughafen und Flug ins Inselparadiese. Die weißen Strände und freundlichen Einheimischen erwarten Sie. Nach der Ankunft bringen wir Sie zu Ihrem Hotel. Nun steht Entspannen auf dem Programm.', 
+              desc: 'So, die schönen und abenteuerlichen Safari Tage haben ein Ende und es geht ab in den zweiten Teil Ihrer Traumreise. Sansibar und ihre schönen Strände, klares Wasser, schöne Ecken und freundliche Einheimische sind bereit Sie zu begrüßen! Heute geht es für Sie vom tansanischen Festland auf die berühmte und wunderschöne Insel Sansibar. Ihr Fahrer bringt Sie rechtzeitig zum Flughafen, damit Sie Ihren Flug pünktlich antreten können.', 
               img: 'https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=800' 
             },
             { 
@@ -132,7 +132,7 @@ export default function AdminDashboard() {
               title: 'Empfehlung: Freizeit', 
               location: 'Strand & Sonne', 
               stats: 'Erholung pur', 
-              desc: 'Genießen Sie die sauberen, weißen Strände und schwimmen Sie im kristallklaren Ozean. Lassen Sie bei einem erfrischenden Cocktail und einem goldenen Sonnenuntergang einfach mal die Seele baumeln.', 
+              desc: 'Genießen Sie die wunderschönen, sauberen, weißen Strände von Sansibar und schwimmen, schnorcheln oder tauchen Sie im kristallklaren, indischen Ozean. Genießen Sie hier und da einen erfrischenden Cocktail und bestaunen Sie am Abend den goldenen Sonnenuntergang.', 
               img: 'https://images.unsplash.com/photo-1590001158193-79013ac7fa77?q=80&w=800' 
             },
             { 
@@ -148,7 +148,7 @@ export default function AdminDashboard() {
               title: 'Empfehlung: Gewürztour', 
               location: 'Spice Farm', 
               stats: 'Düfte Afrikas', 
-              desc: 'Reise ins Inselinnere zu den duftenden Plantagen. Erfahren Sie, wie Vanille, Kakao und Pfeffer wachsen. Die Aromen von Kardamom, Zimt und Nelken werden Ihre Sinne verzaubern.', 
+              desc: 'Optional können Sie heute ins Inselinnere von Sansibar reisen, um sich die duftenden Gewürzplantagen der Insel anzusehen. Sie lernen wie Vanille, Kakao, Pfeffer und viele andere Gewürze und Früchte wachsen und geerntet werden. Die berauschenden Aromen von frischem Kardamom, Zimt, Nelken und Muskat werden ihre Sinne erfreuen.', 
               img: 'https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?q=80&w=800' 
             },
             { 
@@ -156,7 +156,7 @@ export default function AdminDashboard() {
               title: 'Empfehlung: Strand und Tauchen', 
               location: 'Unterwasserwelt', 
               stats: 'Nungwi Coast', 
-              desc: 'Geführter Tauchgang oder einfach pure Entspannung. Die farbenfrohe Unterwasserwelt Sansibars gehört zu den schönsten Revieren weltweit. Genießen Sie die Ruhe auf Ihrem privaten Balkon.', 
+              desc: 'Fragen Sie gerne in Ihrem Hotel nach einem geführten Tauchgang. Die Ausrüstung und ein Lehrer werden Ihnen gestellt. Sie können die Tage aber auch nutzen, um erneut Sansibar zu erkunden oder den Rest des Tages auf Ihrem Balkon oder dem Strand Ihres schönen Hotels zu genießen.', 
               img: 'https://images.unsplash.com/photo-1577971132997-c10be9372519?q=80&w=800' 
             },
             { 
@@ -164,7 +164,7 @@ export default function AdminDashboard() {
               title: 'Empfehlung: Freizeit', 
               location: 'Stone Town', 
               stats: 'Kultur & Geschichte', 
-              desc: 'Letzte Chance für Souvenirs oder einen Spaziergang durch die historischen Gassen von Stone Town. Ein letzter erfrischender Cocktail am Strand bei Sonnenuntergang.', 
+              desc: 'Genießen Sie die wunderschönen, sauberen, weißen Strände von Sansibar und schwimmen, schnorcheln oder tauchen Sie im kristallklaren, indischen Ozean. Letzte Chance für Souvenirs oder einen Spaziergang durch die historischen Gassen.', 
               img: 'https://images.unsplash.com/photo-1590001158193-79013ac7fa77?q=80&w=800' 
             },
             { 
@@ -172,7 +172,7 @@ export default function AdminDashboard() {
               title: 'Abreise & Transfer', 
               location: 'Flughafen ZNZ', 
               stats: 'Abschied', 
-              desc: 'Nach dem Frühstück Transfer zum Flughafen für Ihren Rückflug. Wir hoffen, wir konnten Ihre Wünsche in bleibende Erinnerungen verwandeln. We turn wishes into memories!', 
+              desc: 'Am letzten Tag Ihrer Reise bringen wir Sie nach einem reichhaltigen Frühstück sicher zurück zum Flughafen, von wo aus Sie Ihren Rückflug nach Hause antreten. Genießen Sie noch einmal die Eindrücke Tansanias und lassen Sie sich von unserem Reiseleiter noch einige besondere Geschichten erzählen. We turn wishes into memories!', 
               img: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800' 
             },
             { 
@@ -180,18 +180,24 @@ export default function AdminDashboard() {
               title: 'Landung in der Heimat', 
               location: 'Home', 
               stats: 'Ende der Reise', 
-              desc: 'Nach einem sicheren Flug wünschen wir Ihnen einen guten Heimweg. Passen Sie auf sich auf und bleiben Sie gesund. Wir freuen uns, Sie bald wieder begrüßen zu dürfen. Ihr Tansania Reiseabenteuer Team.', 
+              desc: 'Leider ist die Traumreise jetzt eine schöne Erinnerung! Nach dem sicheren Flug, wünschen wir Ihnen einen guten und sicheren Heimweg. Passen Sie auf sich auf und bleiben Sie gesund. Wir würden uns freuen mehr von Ihren Erfahrungen zu hören. Ihr Tansania Reiseabenteuer Team.', 
               img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200' 
             }
           ]
-        }
+        },
+        { id: '13-day-safari-zanzibar', title: '13 Tage Safari & Sansibar', slug: '13-day-safari-zanzibar', category: 'SAFARI & SANSIBAR', durationDays: 13, startingPrice: 3699, highlights: ['Big Five Pirschfahrten', 'Massai Dorfbesuch', 'Ngorongoro UNESCO Krater', 'Sansibar Strände & Tauchen', 'Stone Town Stadttour'], isPublished: true, rating: 4.8 },
+        { id: '11-day-safari-zanzibar', title: '11 Tage Safari & Sansibar', slug: '11-day-safari-zanzibar', category: 'SAFARI & SANSIBAR', durationDays: 11, startingPrice: 2999, highlights: ['Elefanten im Tarangire', 'Massai Kultur erleben', 'Serengeti Tiermigration', 'Ngorongoro Kraterfahrt', 'Sansibar Strände & Touren'], isPublished: true, rating: 4.7 },
+        { id: '12-day-family-safari', title: '12 Tage Familien-Safari', slug: '12-day-family-safari', category: 'FAMILIENSAFARI', durationDays: 12, startingPrice: 3499, highlights: ['Big Five Pirschfahrten', 'Massai Dorfbesuch', 'Schulbesuch in Karatu', 'Lake Manyara Safari', 'Kinderfreundliche Lodges'], isPublished: true, rating: 4.9 },
+        { id: '13-day-honeymoon', title: '13 Tage Flitterwochen', slug: '13-day-honeymoon', tag: 'Romantik', category: 'FLITTERWOHEN', durationDays: 13, startingPrice: 3899, highlights: ['Champagner bei Sonnenuntergang', 'Private Pirschfahrten', 'Luxuslodges & Villen', 'Sansibar Stranddinner', 'Heißluftballon Serengeti'], isPublished: true, rating: 5.0 },
+        { id: '7-day-zanzibar', title: '7 Tage Sansibar', slug: '7-day-zanzibar', category: 'SANSIBAR', durationDays: 7, startingPrice: 2699, highlights: ['Stone Town Stadttour', 'Gewürzplantagen erkunden', 'Bootstour & Schnorcheln', 'Strand & Sonnenuntergang', 'Geführtes Taucherlebnis'], isPublished: true, rating: 4.6 },
+        { id: '12-day-camping', title: '12 Tage Camping Safari', slug: '12-day-camping', tag: 'Budget', category: 'CAMPING SAFARI', durationDays: 12, startingPrice: 2799, highlights: ['Zelten in der Serengeti', 'Lagerfeuer unterm Sternenhimmel', 'Massai Dorfbesuch', 'Sansibar Traumstrände', 'Gewürz & Bootstour'], isPublished: true, rating: 4.5 },
+        { id: '13-day-kili-kombi', title: '13 Tage Kilimandscharo Kombi', slug: '13-day-kili-kombi', tag: 'Kombi', category: 'KILIMANDSCHARO SAFARI', durationDays: 13, startingPrice: 4699, highlights: ['Safari in Top-Nationalparks', 'Kilimandscharo hautnah', 'Big Five & Natur', 'Sansibar: Strand & Kultur', 'Perfekt für Abenteuer'], isPublished: true, rating: 4.8 }
       ];
 
       for (const pkg of allPackages) {
-        await setDoc(doc(firestore, 'packages', pkg.id), {
+        await setDoc(doc(firestore, 'packages', pkg.slug), {
           ...pkg,
           isPublished: true,
-          rating: 4.9,
           updatedAt: new Date().toISOString()
         }, { merge: true });
       }
