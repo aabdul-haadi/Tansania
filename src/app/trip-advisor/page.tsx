@@ -182,7 +182,7 @@ export default function TripAdvisorPage() {
           <Link href="/trip-planner">
             <div className="p-6 rounded-[2rem] bg-secondary text-white flex items-center justify-between hover:bg-secondary/90 transition-all shadow-xl group">
               <div>
-                <h4 className="font-bold text-lg leading-tight">Konfigurator</h4>
+                <h4 className="font-bold text-lg leading-tight text-white">Konfigurator</h4>
                 <p className="text-[10px] text-white/40 uppercase tracking-widest font-bold">Maßgeschneiderte Reise planen</p>
               </div>
               <ArrowRight className="w-6 h-6 text-primary group-hover:translate-x-2 transition-transform" />

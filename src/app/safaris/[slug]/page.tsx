@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { 
   Clock, 
   MapPin, 
@@ -13,14 +13,10 @@ import {
   ChevronRight, 
   Zap, 
   Sparkles, 
-  Calendar,
   Users,
   Compass,
   Download,
   Share2,
-  Plane,
-  Camera,
-  Coffee,
   Loader2
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -284,7 +280,7 @@ export default function PackageDetailPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
                     <div className="absolute bottom-10 left-10 right-10 text-white">
                       <Badge className="bg-primary text-white border-none mb-3 px-3 py-1 text-[8px] uppercase tracking-widest font-bold">{hotel.l}</Badge>
-                      <h4 className="text-2xl font-headline font-bold">{hotel.n}</h4>
+                      <h4 className="text-2xl font-headline font-bold text-white">{hotel.n}</h4>
                     </div>
                   </div>
                 ))}
@@ -302,7 +298,7 @@ export default function PackageDetailPage() {
                   <div className="text-center">
                     <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block">Expedition Pricing</span>
                     <div className="flex items-baseline justify-center gap-2">
-                      <span className="text-6xl font-bold font-headline">€{pkg.startingPrice?.toLocaleString()}</span>
+                      <span className="text-6xl font-bold font-headline text-white">€{pkg.startingPrice?.toLocaleString()}</span>
                       <span className="text-white/40 text-sm">/ pp</span>
                     </div>
                     <p className="text-white/40 text-[9px] uppercase font-bold tracking-[0.2em] mt-4">Inklusive Intl. Flug & Vollpension</p>
@@ -316,7 +312,7 @@ export default function PackageDetailPage() {
                     ].map((s, i) => (
                       <div key={i} className="flex justify-between items-center p-4 bg-white/5 rounded-2xl border border-white/10">
                         <span className="text-[9px] font-bold uppercase text-white/40">{s.l}</span>
-                        <span className="text-xs font-bold">{s.v}</span>
+                        <span className="text-xs font-bold text-white">{s.v}</span>
                       </div>
                     ))}
                   </div>
@@ -343,17 +339,17 @@ export default function PackageDetailPage() {
                 </div>
                 <div>
                   <h4 className="font-bold text-secondary uppercase tracking-widest text-[9px] mb-2">Persönliche Beratung</h4>
-                  <p className="font-headline font-bold text-2xl">Samson Kyashama</p>
+                  <p className="font-headline font-bold text-2xl text-secondary">Samson Kyashama</p>
                   <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-widest">Gründer & Experte</p>
                 </div>
                 <div className="space-y-3">
-                  <a href="tel:+493022608080" className="flex items-center justify-between p-4 bg-muted/30 rounded-2xl text-xs font-bold hover:bg-primary hover:text-white transition-all group">
+                  <a href="tel:+493022608080" className="flex items-center justify-between p-4 bg-muted/30 rounded-2xl text-xs font-bold hover:bg-primary hover:text-white transition-all group text-secondary">
                     <span className="opacity-60 group-hover:opacity-100">Telefon</span>
-                    <span>+49 30 22608080</span>
+                    <span className="group-hover:text-white transition-colors">+49 30 22608080</span>
                   </a>
-                  <a href="mailto:info@tansania-reiseabenteuer.de" className="flex items-center justify-between p-4 bg-muted/30 rounded-2xl text-xs font-bold hover:bg-primary hover:text-white transition-all group">
+                  <a href="mailto:info@tansania-reiseabenteuer.de" className="flex items-center justify-between p-4 bg-muted/30 rounded-2xl text-xs font-bold hover:bg-primary hover:text-white transition-all group text-secondary">
                     <span className="opacity-60 group-hover:opacity-100">E-Mail</span>
-                    <span className="truncate max-w-[140px]">info@tansania...</span>
+                    <span className="truncate max-w-[140px] group-hover:text-white transition-colors">info@tansania...</span>
                   </a>
                 </div>
               </div>

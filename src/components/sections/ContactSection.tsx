@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, CheckCircle2, User, MessageSquare } from 'lucide-react';
+import { Sparkles, CheckCircle2 } from 'lucide-react';
 
 export function ContactSection() {
   useEffect(() => {
@@ -137,7 +137,7 @@ export function ContactSection() {
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-2.5 text-[9px] font-bold uppercase tracking-widest text-white/80">
                     <CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0" />
-                    <span>{item}</span>
+                    <span className="text-white">{item}</span>
                   </div>
                 ))}
               </div>
