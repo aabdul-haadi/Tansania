@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -79,7 +80,7 @@ export function Navbar() {
               const parent = (e.target as HTMLImageElement).parentElement;
               if (parent) {
                 const text = document.createElement('span');
-                text.innerText = 'SERENGETI DREAMS';
+                text.innerText = 'DREAMS';
                 text.className = 'font-headline font-bold text-xl text-primary tracking-widest';
                 parent.appendChild(text);
               }
@@ -122,7 +123,7 @@ export function Navbar() {
                 {/* Header */}
                 <div className="p-8 flex justify-between items-center border-b border-white/5 sticky top-0 bg-[#0a0a0a] z-10">
                   <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary">Navigationszentrum</span>
-                  <SheetClose className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors">
+                  <SheetClose className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors text-white">
                     <X className="w-5 h-5" />
                   </SheetClose>
                 </div>
@@ -136,7 +137,7 @@ export function Navbar() {
                         <Link 
                           key={link.name} 
                           href={link.href}
-                          className="text-2xl font-headline font-bold hover:text-primary transition-colors flex items-center justify-between group"
+                          className="text-2xl font-headline font-bold text-white hover:text-primary transition-colors flex items-center justify-between group"
                         >
                           {link.name}
                           <ChevronRight className="w-5 h-5 text-white/10 group-hover:text-primary group-hover:translate-x-1 transition-all" />
@@ -197,7 +198,7 @@ export function Navbar() {
 
                 <div className="mt-auto p-8 border-t border-white/5 bg-black/20">
                   <Link href="/trip-planner">
-                    <Button className="w-full h-16 rounded-2xl text-lg font-bold">
+                    <Button className="w-full h-16 rounded-2xl text-lg font-bold text-white">
                       JETZT REISE PLANEN
                     </Button>
                   </Link>

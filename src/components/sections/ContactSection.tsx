@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useEffect } from 'react';
@@ -145,12 +146,12 @@ export function ContactSection() {
 
             {/* Success State */}
             <div id="team-content-success" className="relative z-10 p-8 flex-col items-center text-center space-y-6 h-full justify-center" style={{ display: 'none' }}>
-              <div className="w-20 h-20 rounded-full bg-green-500/20 flex items-center justify-center shadow-2xl border border-green-500/30">
-                <CheckCircle2 className="w-10 h-10 text-green-500" />
+              <div className="w-20 h-20 rounded-full bg-green-500/20 flex items-center justify-center shadow-2xl border border-green-500/30 text-green-500">
+                <CheckCircle2 className="w-10 h-10" />
               </div>
               <div>
                 <h3 className="font-headline text-3xl font-bold mb-3 text-white">Anfrage <br /><span className="text-green-500 italic">gesendet!</span></h3>
-                <p className="text-white/60 font-light text-base">
+                <p className="text-white/60 font-light text-base leading-relaxed">
                   Vielen Dank für Ihr Vertrauen. Einer unserer Spezialisten wird sich innerhalb der nächsten 24 Stunden persönlich bei Ihnen melden.
                 </p>
               </div>

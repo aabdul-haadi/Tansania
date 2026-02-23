@@ -66,9 +66,11 @@ export function PackageCard({ pkg, className }: PackageCardProps) {
           </div>
 
           <div className="absolute bottom-8 left-8 right-8">
-            <h3 className="font-headline text-xl md:text-2xl font-bold text-white leading-tight mb-6 line-clamp-2">
-              {pkg.title}
-            </h3>
+            <Link href={`/safaris/${pkg.slug}`}>
+              <h3 className="font-headline text-xl md:text-2xl font-bold text-white hover:text-primary transition-colors leading-tight mb-6 line-clamp-2 cursor-pointer">
+                {pkg.title}
+              </h3>
+            </Link>
             
             <div className="space-y-3 mb-8">
               {pkg.highlights.slice(0, 3).map((h, i) => (
@@ -86,7 +88,7 @@ export function PackageCard({ pkg, className }: PackageCardProps) {
                   {pkg.startingPrice.toLocaleString()} €
                 </p>
               </div>
-              <Link href={`/trip-planner?package=${pkg.id}`}>
+              <Link href={`/safaris/${pkg.slug}`}>
                 <Button size="icon" className="w-14 h-14 rounded-2xl bg-primary text-white hover:bg-white hover:text-black hover:border-primary shadow-xl transition-all hover:scale-110">
                   <ArrowRight className="w-6 h-6" />
                 </Button>
