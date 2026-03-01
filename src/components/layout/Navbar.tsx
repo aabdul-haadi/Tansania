@@ -15,6 +15,7 @@ import {
 
 const mainNavLinks = [
   { name: 'SAFARI', href: '/safaris' },
+  { name: 'NATIONALPARKS', href: '/national-parks' },
   { name: 'KILIMANDSCHARO', href: '/destinations/kilimanjaro' },
   { name: 'SANSIBAR', href: '/destinations/zanzibar' },
 ];
@@ -43,7 +44,7 @@ export function Navbar() {
   const pathname = usePathname();
 
   // Pages that HAVE a dark/image hero background at the top - Navbar can be transparent here
-  const isHeroPage = pathname === '/' || pathname === '/about' || pathname?.startsWith('/destinations/') || pathname?.startsWith('/safaris/');
+  const isHeroPage = pathname === '/' || pathname === '/about' || pathname === '/national-parks' || pathname?.startsWith('/destinations/') || pathname?.startsWith('/safaris/');
 
   useEffect(() => {
     const handleScroll = () => {

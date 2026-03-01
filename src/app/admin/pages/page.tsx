@@ -43,6 +43,7 @@ const siteRegistry = [
       { title: "About Serengeti Dreams", path: "/about", status: "Live" },
       { title: "FAQ & Support", path: "/faq", status: "Live" },
       { title: "Contact Hub", path: "/contact", status: "Live" },
+      { title: "Nationalparks Highlights", path: "/national-parks", status: "Live" },
     ]
   },
   {
