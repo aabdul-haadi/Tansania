@@ -277,23 +277,29 @@ export default function NationalParksPage() {
         </div>
       </section>
 
-      {/* 3) BENTO ACTIVITY FLOW (LIGHT THEME WITH BG IMAGES) */}
+      {/* 3) BENTO ACTIVITY FLOW (LIGHT THEME WITH PREMIUM BACKGROUNDS) */}
       <section className="py-16 md:py-32 bg-white relative overflow-hidden border-y border-border/50">
         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         <div className="container relative z-10 mx-auto px-4 max-w-7xl">
           <div className="text-center mb-16 md:mb-24">
-            <span className="text-primary font-black uppercase tracking-[0.4em] text-[9px] md:text-[10px] mb-4 block">Erlebnisse</span>
+            <span className="text-primary font-black uppercase tracking-[0.4em] text-[9px] md:text-[10px] mb-4 block">Unvergessliche Momente</span>
             <h2 className="font-headline text-3xl md:text-8xl font-bold uppercase text-secondary tracking-tighter">Aktivitäten in der <span className="text-primary">Wildnis</span></h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 auto-rows-[220px] md:auto-rows-[250px]">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 auto-rows-[250px] md:auto-rows-[280px]">
             {/* Bento Card 1: Game Drive */}
-            <motion.div whileHover={{ y: -5 }} className="md:col-span-2 md:row-span-2 rounded-[2.5rem] border border-border/50 relative overflow-hidden group shadow-xl bg-white">
-              <Image src="https://images.unsplash.com/photo-1731355775887-e6b2484f494c?q=80&w=1200" alt="Safari Game Drive" fill className="object-cover opacity-20 group-hover:opacity-40 transition-opacity duration-1000" data-ai-hint="safari jeep" />
-              <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent" />
+            <motion.div whileHover={{ y: -5 }} className="md:col-span-2 md:row-span-2 rounded-[3rem] border border-border/50 relative overflow-hidden group shadow-xl bg-white">
+              <Image 
+                src="https://images.unsplash.com/photo-1731355775887-e6b2484f494c?q=80&w=1200" 
+                alt="Safari Game Drive" 
+                fill 
+                className="object-cover transition-transform duration-1000 group-hover:scale-110" 
+                data-ai-hint="safari jeep" 
+              />
+              <div className="absolute inset-0 bg-white/80 group-hover:bg-white/70 transition-colors duration-500 backdrop-blur-[2px]" />
               <div className="relative z-10 h-full p-8 md:p-12 flex flex-col justify-between">
-                <div className="w-14 h-14 rounded-[1.5rem] bg-primary/10 flex items-center justify-center shadow-sm">
-                  <Map className="w-7 h-7 text-primary" />
+                <div className="w-14 h-14 rounded-[1.5rem] bg-primary flex items-center justify-center shadow-lg">
+                  <Map className="w-7 h-7 text-white" />
                 </div>
                 <div>
                   <h4 className="font-headline text-2xl md:text-4xl font-bold uppercase mb-3 md:mb-5 text-secondary">Klassische <br />Pirschfahrten</h4>
@@ -305,35 +311,61 @@ export default function NationalParksPage() {
             </motion.div>
 
             {/* Bento Card 2: Walking Safari */}
-            <motion.div whileHover={{ y: -5 }} className="md:col-span-1 md:row-span-1 rounded-[2.5rem] border border-border/50 relative overflow-hidden group shadow-lg bg-white">
-              <Image src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800" alt="Walking Safari" fill className="object-cover opacity-10 group-hover:opacity-30 transition-opacity duration-1000" data-ai-hint="safari walking" />
+            <motion.div whileHover={{ y: -5 }} className="md:col-span-1 md:row-span-1 rounded-[3rem] border border-border/50 relative overflow-hidden group shadow-lg bg-white">
+              <Image 
+                src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800" 
+                alt="Walking Safari" 
+                fill 
+                className="object-cover transition-transform duration-1000 group-hover:scale-110 opacity-40 group-hover:opacity-60" 
+                data-ai-hint="safari walking" 
+              />
+              <div className="absolute inset-0 bg-white/60 group-hover:bg-white/40 transition-colors" />
               <div className="relative z-10 h-full p-8 flex flex-col justify-between">
-                <TreePine className="w-8 h-8 text-primary" />
+                <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center">
+                  <TreePine className="w-6 h-6 text-white" />
+                </div>
                 <h4 className="font-headline text-lg md:text-2xl font-bold uppercase text-secondary">Walking <br />Safaris</h4>
               </div>
             </motion.div>
 
             {/* Bento Card 3: Balloon */}
-            <motion.div whileHover={{ y: -5 }} className="md:col-span-1 md:row-span-2 rounded-[2.5rem] relative overflow-hidden shadow-2xl group cursor-pointer bg-primary">
-              <Image src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800" alt="Balloon Safari" fill className="object-cover opacity-20 group-hover:opacity-40 transition-opacity duration-1000" data-ai-hint="balloon safari" />
-              <div className="absolute inset-0 bg-gradient-to-b from-primary/80 to-primary" />
+            <motion.div whileHover={{ y: -5 }} className="md:col-span-1 md:row-span-2 rounded-[3rem] relative overflow-hidden shadow-2xl group cursor-pointer bg-primary">
+              <Image 
+                src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800" 
+                alt="Balloon Safari" 
+                fill 
+                className="object-cover transition-transform duration-1000 group-hover:scale-110 opacity-30 group-hover:opacity-50" 
+                data-ai-hint="balloon safari" 
+              />
+              <div className="absolute inset-0 bg-primary/80 group-hover:bg-primary/70 transition-colors" />
               <div className="relative z-10 h-full p-8 md:p-10 flex flex-col justify-between">
                 <div className="flex justify-between items-start">
-                  <Wind className="w-8 h-8 text-secondary" />
-                  <Badge className="bg-secondary text-primary border-none text-[9px] font-black uppercase">Bestseller</Badge>
+                  <div className="w-12 h-12 rounded-2xl bg-secondary flex items-center justify-center">
+                    <Wind className="w-7 h-7 text-primary" />
+                  </div>
+                  <Badge className="bg-secondary text-primary border-none text-[9px] font-black uppercase">Exklusiv</Badge>
                 </div>
                 <div>
                   <h4 className="font-headline text-xl md:text-3xl font-bold text-secondary uppercase leading-tight mb-3">Ballon <br />Safari</h4>
-                  <p className="text-secondary/60 text-[9px] font-black uppercase tracking-widest">Abhebe-Garantie</p>
+                  <p className="text-secondary/60 text-[9px] font-black uppercase tracking-widest">Die Serengeti von oben</p>
                 </div>
               </div>
             </motion.div>
 
             {/* Bento Card 4: Night Drive */}
-            <motion.div whileHover={{ y: -5 }} className="md:col-span-1 md:row-span-1 rounded-[2.5rem] border border-border/50 relative overflow-hidden group shadow-lg bg-white">
-              <Image src="https://images.unsplash.com/photo-1580502304784-8985b777da59?q=80&w=800" alt="Night Safari" fill className="object-cover opacity-10 group-hover:opacity-30 transition-opacity duration-1000" data-ai-hint="night predator" />
+            <motion.div whileHover={{ y: -5 }} className="md:col-span-1 md:row-span-1 rounded-[3rem] border border-border/50 relative overflow-hidden group shadow-lg bg-white">
+              <Image 
+                src="https://images.unsplash.com/photo-1580502304784-8985b777da59?q=80&w=800" 
+                alt="Night Safari" 
+                fill 
+                className="object-cover transition-transform duration-1000 group-hover:scale-110 opacity-40 group-hover:opacity-60" 
+                data-ai-hint="night predator" 
+              />
+              <div className="absolute inset-0 bg-white/60 group-hover:bg-white/40 transition-colors" />
               <div className="relative z-10 h-full p-8 flex flex-col justify-between">
-                <Zap className="w-8 h-8 text-primary" />
+                <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
+                  <Zap className="w-6 h-6 text-white" />
+                </div>
                 <h4 className="font-headline text-lg md:text-2xl font-bold uppercase text-secondary">Nacht <br />Expedition</h4>
               </div>
             </motion.div>
@@ -341,7 +373,107 @@ export default function NationalParksPage() {
         </div>
       </section>
 
-      {/* 4) DYNAMIC PLANNING ACCORDION - Space Optimized */}
+      {/* 4) THE SERENGETI LENS - Unique Masonry Gallery */}
+      <section className="py-16 md:py-32 bg-[#fdfcfb]">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
+            <div className="max-w-2xl text-left">
+              <span className="text-primary font-black uppercase tracking-[0.4em] text-[9px] md:text-[10px] mb-4 block">Visuelle Reportage</span>
+              <h2 className="font-headline text-3xl md:text-7xl font-bold uppercase text-secondary tracking-tighter leading-none">The Serengeti <br /><span className="text-primary">Lens</span></h2>
+            </div>
+            <p className="text-muted-foreground text-[10px] md:text-sm font-bold uppercase tracking-widest max-w-[200px] border-l-2 border-primary/20 pl-4">
+              Festgehaltene Momente unserer Guides direkt aus dem Feld.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 auto-rows-[300px] md:auto-rows-[400px]">
+            {/* Gallery Item 1 */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }} 
+              whileInView={{ opacity: 1, y: 0 }} 
+              viewport={{ once: true }} 
+              className="md:col-span-8 md:row-span-1 rounded-[3rem] overflow-hidden relative group shadow-lg cursor-pointer"
+            >
+              <Image 
+                src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200" 
+                alt="Serengeti Herd" 
+                fill 
+                className="object-cover transition-transform duration-1000 group-hover:scale-110" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute bottom-10 left-10 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                <p className="text-[10px] font-black uppercase tracking-widest text-primary mb-2">Große Migration</p>
+                <h4 className="text-2xl font-headline font-bold uppercase">Endlose Weiten</h4>
+              </div>
+            </motion.div>
+
+            {/* Gallery Item 2 */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }} 
+              whileInView={{ opacity: 1, y: 0 }} 
+              viewport={{ once: true }} 
+              transition={{ delay: 0.1 }} 
+              className="md:col-span-4 md:row-span-2 rounded-[3rem] overflow-hidden relative group shadow-lg cursor-pointer"
+            >
+              <Image 
+                src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=1000" 
+                alt="Safari Lodge View" 
+                fill 
+                className="object-cover transition-transform duration-1000 group-hover:scale-110" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute bottom-10 left-10 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                <p className="text-[10px] font-black uppercase tracking-widest text-primary mb-2">Unterkünfte</p>
+                <h4 className="text-2xl font-headline font-bold uppercase">Luxus im Busch</h4>
+              </div>
+            </motion.div>
+
+            {/* Gallery Item 3 */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }} 
+              whileInView={{ opacity: 1, y: 0 }} 
+              viewport={{ once: true }} 
+              transition={{ delay: 0.2 }} 
+              className="md:col-span-4 md:row-span-1 rounded-[3rem] overflow-hidden relative group shadow-lg cursor-pointer"
+            >
+              <Image 
+                src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=1000" 
+                alt="Zanzibar Sunset" 
+                fill 
+                className="object-cover transition-transform duration-1000 group-hover:scale-110" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute bottom-10 left-10 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                <p className="text-[10px] font-black uppercase tracking-widest text-primary mb-2">Sonnenuntergang</p>
+                <h4 className="text-2xl font-headline font-bold uppercase">Magische Momente</h4>
+              </div>
+            </motion.div>
+
+            {/* Gallery Item 4 */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }} 
+              whileInView={{ opacity: 1, y: 0 }} 
+              viewport={{ once: true }} 
+              transition={{ delay: 0.3 }} 
+              className="md:col-span-4 md:row-span-1 rounded-[3rem] overflow-hidden relative group shadow-lg cursor-pointer"
+            >
+              <Image 
+                src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=1000" 
+                alt="Zebra" 
+                fill 
+                className="object-cover transition-transform duration-1000 group-hover:scale-110" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute bottom-10 left-10 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                <p className="text-[10px] font-black uppercase tracking-widest text-primary mb-2">Wildlife</p>
+                <h4 className="text-2xl font-headline font-bold uppercase">Nahaufnahmen</h4>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5) DYNAMIC PLANNING ACCORDION - Space Optimized */}
       <section className="py-16 md:py-32 container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-16 md:mb-24 space-y-4">
           <span className="text-primary font-black uppercase tracking-[0.4em] text-[9px] md:text-[10px]">Wissenswertes</span>
@@ -416,7 +548,7 @@ export default function NationalParksPage() {
         </div>
       </section>
 
-      {/* 5) CONTACT INTEGRATION */}
+      {/* 6) CONTACT INTEGRATION */}
       <ContactSection />
     </div>
   );
