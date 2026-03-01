@@ -67,15 +67,15 @@ export function SafariMap() {
                   </div>
                   <div className="min-w-0">
                     <h4 className="font-bold text-xl md:text-2xl text-white group-hover:text-primary transition-colors leading-tight uppercase">{dest.name}</h4>
-                    <p className="text-[10px] md:text-sm text-white/40 font-light uppercase tracking-[0.2em] mt-1">{dest.desc}</p>
+                    <p className="text-[10px] md:text-sm text-white/40 font-bold uppercase tracking-[0.2em] mt-1">{dest.desc}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Right: Modern SVG Navigator */}
-          <div className="relative w-full md:w-[45%] shrink-0 flex items-center justify-center">
+          {/* Right: Modern SVG Navigator - HIDDEN ON MOBILE */}
+          <div className="relative w-full md:w-[45%] shrink-0 items-center justify-center hidden md:flex">
             <div className="absolute inset-0 bg-primary/5 blur-[80px] rounded-full pointer-events-none" />
             
             <svg 
@@ -111,14 +111,14 @@ export function SafariMap() {
                 strokeLinejoin="round" 
               />
 
-              {/* Active Animated Path - Static on Mobile */}
+              {/* Active Animated Path */}
               <motion.path 
                 d={journeyPath} 
                 stroke="url(#glowGradient)" 
                 strokeWidth="4" 
                 strokeLinecap="round" 
                 strokeLinejoin="round"
-                style={{ pathLength: isMobile ? 1 : pathLength }} 
+                style={{ pathLength }} 
                 filter="url(#glow)"
               />
 
@@ -132,7 +132,7 @@ export function SafariMap() {
                     r="5" 
                     className="fill-primary"
                   />
-                  {/* Labels for Tablet/Desktop */}
+                  {/* Labels */}
                   <text
                     x={dest.x + 12}
                     y={dest.y + 4}

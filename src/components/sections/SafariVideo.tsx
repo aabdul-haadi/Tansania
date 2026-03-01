@@ -31,7 +31,7 @@ export function SafariVideo() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-muted-foreground text-base lg:text-lg font-light max-w-2xl leading-relaxed"
+            className="text-muted-foreground text-base lg:text-lg font-bold max-w-2xl leading-relaxed"
           >
             Witness the raw beauty of Tanzania through our lens. From the heart of the migration to the silent whispers of the savannah.
           </motion.p>

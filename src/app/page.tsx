@@ -80,7 +80,7 @@ export default function Home() {
               Die Seele der <br />
               <span className="text-primary">Serengeti</span>
             </h1>
-            <p className="max-w-2xl mx-auto text-lg md:text-xl text-white/90 mb-10 leading-relaxed font-body font-light">
+            <p className="max-w-2xl mx-auto text-lg md:text-xl text-white/90 mb-10 leading-relaxed font-body font-bold">
               Ihr exklusives Tor zur Wildnis Afrikas. Wir gestalten Reisen, die Wünsche in unvergessliche Erinnerungen verwandeln.
             </p>
             <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
@@ -173,7 +173,7 @@ export default function Home() {
                     <Image src={item.img} alt={item.title} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" data-ai-hint={item.hint} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-8 flex flex-col justify-end">
                       <h3 className="text-white text-3xl font-headline font-bold mb-2 uppercase">{item.title}</h3>
-                      <p className="text-white/70 mb-6 max-w-sm text-sm font-light leading-relaxed">{item.desc}</p>
+                      <p className="text-white/70 mb-6 max-w-sm text-sm font-bold leading-relaxed">{item.desc}</p>
                       <Link href={item.link}>
                         <Button className="rounded-full px-6 h-10 font-bold shadow-xl text-xs">Region erleben</Button>
                       </Link>
@@ -183,7 +183,7 @@ export default function Home() {
               ))}
             </CarouselContent>
             
-            {/* Exploration Link moved to bottom */}
+            {/* Exploration Link at the bottom center */}
             <div className="mt-16 flex justify-center">
               <Link href="/safaris" className="group flex items-center gap-3 text-secondary font-bold text-lg md:text-xl hover:text-primary transition-all">
                 Alle Regionen erkunden <ArrowRight className="w-6 h-6 group-hover:translate-x-3 transition-transform" />

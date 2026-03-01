@@ -11,7 +11,7 @@ export function CinematicQuote() {
         <motion.div 
           animate={{ opacity: [0.1, 0.15, 0.1], scale: [1, 1.05, 1] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute inset-0 bg-[url('https://picsum.photos/seed/safari-night/1920/1080')] bg-cover bg-center opacity-10 grayscale brightness-50"
+          className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920')] bg-cover bg-center opacity-10 grayscale brightness-50"
           data-ai-hint="safari sunset"
         />
       </div>

@@ -25,12 +25,12 @@ export function ExpertiseNarrative() {
               <div className="w-12 h-1 bg-primary/20 rounded-full" />
             </div>
 
-            <div className="text-muted-foreground font-light leading-relaxed text-xs md:text-sm space-y-3">
+            <div className="text-muted-foreground font-bold leading-relaxed text-xs md:text-sm space-y-3">
               <p>
                 A Tanzanian holiday is a promise to all the senses: the fragrant scent of wild sage, the distant roar of a lion, and the gentle lapping of the Indian Ocean.
               </p>
               <p>
-                At <strong className="font-bold">Tanzania Travel Adventures</strong>, we combine 10 years of local expertise with genuine passion to transform your dreams into the perfect Tanzanian safari.
+                At <strong className="font-bold">Tansania Reiseabenteuer</strong>, we combine 10 years of local expertise with genuine passion to transform your dreams into the perfect Tanzanian safari.
               </p>
             </div>
 
@@ -69,7 +69,7 @@ export function ExpertiseNarrative() {
             <motion.div 
               animate={{ y: [0, -5, 0] }}
               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-              className="absolute -bottom-4 -left-4 bg-primary text-white p-4 md:p-6 rounded-[1.25rem] shadow-xl hidden md:block max-w-[200px]"
+              className="absolute -bottom-4 -left-4 bg-primary text-secondary p-4 md:p-6 rounded-[1.25rem] shadow-xl hidden md:block max-w-[200px]"
             >
               <p className="text-[10px] font-bold leading-relaxed mb-3">
                 "Close your eyes and imagine the sun bathing the crater rim in gold."
@@ -94,7 +94,7 @@ export function ExpertiseNarrative() {
               </div>
               <div className="space-y-0.5">
                 <h3 className="font-bold text-xs uppercase tracking-wider">{feature.title}</h3>
-                <p className="text-[10px] text-muted-foreground font-light leading-relaxed">{feature.text}</p>
+                <p className="text-[10px] text-muted-foreground font-bold leading-relaxed">{feature.text}</p>
               </div>
             </div>
           ))}

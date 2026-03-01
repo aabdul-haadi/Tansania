@@ -40,7 +40,7 @@ export function ZanzibarEscape() {
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-20">
           
-          {/* Content Column - Reversed for rhythm */}
+          {/* Content Column */}
           <div className="w-full lg:w-[45%] order-2 lg:order-1">
             <motion.div
               initial="hidden"
@@ -76,7 +76,7 @@ export function ZanzibarEscape() {
                   hidden: { opacity: 0, y: 15 },
                   visible: { opacity: 1, y: 0 }
                 }}
-                className="text-muted-foreground text-base lg:text-lg font-light leading-relaxed max-w-md"
+                className="text-muted-foreground text-base lg:text-lg font-bold leading-relaxed max-w-md"
               >
                 Contrast your rugged safari adventure with the tranquil rhythm of Zanzibar's shores and spice-scented winds.
               </motion.p>
@@ -115,7 +115,7 @@ export function ZanzibarEscape() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.4 }}
-                      className="text-sm md:text-base text-secondary/70 leading-relaxed font-light"
+                      className="text-sm md:text-base text-secondary font-bold leading-relaxed"
                     >
                       "{activeExp.text}"
                     </motion.p>
@@ -143,7 +143,7 @@ export function ZanzibarEscape() {
             </motion.div>
           </div>
 
-          {/* Visual Column - Syncs with Experience */}
+          {/* Visual Column */}
           <motion.div 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -171,11 +171,6 @@ export function ZanzibarEscape() {
               </motion.div>
             </AnimatePresence>
             <div className="absolute inset-0 bg-gradient-to-tr from-black/30 via-transparent to-primary/5 pointer-events-none" />
-            
-            {/* Shimmer Effect */}
-            <div className="absolute inset-0 opacity-20 pointer-events-none mix-blend-overlay">
-              <div className="w-full h-full animate-[pulse_8s_infinite] bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 translate-x-full" />
-            </div>
           </motion.div>
         </div>
       </div>
