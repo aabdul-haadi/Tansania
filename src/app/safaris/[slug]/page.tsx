@@ -81,7 +81,7 @@ export default function PackageDetailPage() {
           <Compass className="w-12 h-12 text-destructive" />
         </div>
         <h2 className="font-headline text-4xl font-bold mb-4">Expedition nicht gefunden</h2>
-        <p className="text-muted-foreground mb-8 max-w-xs mx-auto italic text-sm">Dieser Teil der Savanne scheint noch unerforscht zu sein.</p>
+        <p className="text-muted-foreground mb-8 max-w-xs mx-auto text-sm">Dieser Teil der Savanne scheint noch unerforscht zu sein.</p>
         <Button asChild className="rounded-full px-10 h-14 font-bold shadow-xl"><Link href="/safaris">Zurück zum Katalog</Link></Button>
       </div>
     );
@@ -166,10 +166,10 @@ export default function PackageDetailPage() {
                   <div className="space-y-4">
                     <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] block">Das Erlebnis</span>
                     <h2 className="font-headline text-3xl md:text-5xl font-bold text-secondary leading-tight">
-                      {pkg.durationDays} Tage Pauschalreise Tansania - <br /><span className="text-primary italic">Vom Nil zur Savanne</span>
+                      {pkg.durationDays} Tage Pauschalreise Tansania - <br /><span className="text-primary">Vom Nil zur Savanne</span>
                     </h2>
                   </div>
-                  <div className="text-muted-foreground text-lg md:text-xl font-light leading-relaxed italic border-l-4 border-primary/20 pl-8 py-2">
+                  <div className="text-muted-foreground text-lg md:text-xl font-light leading-relaxed border-l-4 border-primary/20 pl-8 py-2">
                     {pkg.description}
                   </div>
                   <div className="prose prose-xl max-w-none text-muted-foreground font-light leading-relaxed space-y-8">
@@ -212,7 +212,7 @@ export default function PackageDetailPage() {
             <section ref={itineraryRef} className="space-y-20">
               <div className="text-center md:text-left space-y-2">
                 <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px]">Expedition Log</span>
-                <h3 className="font-headline text-4xl md:text-7xl font-bold text-secondary">Das <span className="text-primary italic">Reisetagebuch</span></h3>
+                <h3 className="font-headline text-4xl md:text-7xl font-bold text-secondary">Das <span className="text-primary">Reisetagebuch</span></h3>
               </div>
 
               <div className="space-y-16 relative">
@@ -265,7 +265,7 @@ export default function PackageDetailPage() {
             <section ref={hotelsRef} className="space-y-16">
               <div className="text-center md:text-left space-y-2">
                 <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px]">Rest & Recharge</span>
-                <h3 className="font-headline text-4xl md:text-7xl font-bold text-secondary">Flagship <span className="text-primary italic">Residences</span></h3>
+                <h3 className="font-headline text-4xl md:text-7xl font-bold text-secondary">Flagship <span className="text-primary">Residences</span></h3>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[

@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -21,7 +20,7 @@ export function ExpertiseNarrative() {
               <span className="text-primary font-bold uppercase tracking-[0.3em] text-[9px] mb-1.5 block">Personal Adventure</span>
               <h2 className="font-headline text-3xl md:text-5xl font-bold leading-tight mb-3">
                 Start Your Personal <br />
-                <span className="text-primary italic">African Odyssey</span>
+                <span className="text-primary">African Odyssey</span>
               </h2>
               <div className="w-12 h-1 bg-primary/20 rounded-full" />
             </div>
@@ -72,7 +71,7 @@ export function ExpertiseNarrative() {
               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
               className="absolute -bottom-4 -left-4 bg-secondary text-white p-4 md:p-6 rounded-[1.25rem] shadow-xl hidden md:block max-w-[200px]"
             >
-              <p className="text-[10px] font-light leading-relaxed italic">
+              <p className="text-[10px] font-light leading-relaxed">
                 "Close your eyes and imagine the sun bathing the crater rim in gold."
               </p>
               <div className="mt-3 flex items-center gap-2">

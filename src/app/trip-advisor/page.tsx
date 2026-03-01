@@ -89,7 +89,7 @@ export default function TripAdvisorPage() {
               </span>
             </div>
           </motion.div>
-          <h1 className="font-headline text-4xl md:text-6xl font-bold mb-4 text-secondary">AI Trip <span className="text-primary italic">Advisor</span></h1>
+          <h1 className="font-headline text-4xl md:text-6xl font-bold mb-4 text-secondary">AI Trip <span className="text-primary">Advisor</span></h1>
           <p className="text-muted-foreground text-sm font-light uppercase tracking-[0.2em]">Ihr digitaler Experte für Tansania & Sansibar</p>
         </div>
 

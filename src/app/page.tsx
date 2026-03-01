@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -45,7 +44,7 @@ export default function Home() {
   const safariImg = PlaceHolderImages.find(img => img.id === 'safari-jeep');
 
   const highlights = [
-    { title: "Sansibar Küste", desc: "Makellose weiße Sandstrände und historische Gewürzmärkte.", img: zanzibarImg?.imageUrl || 'https://picsum.photos/seed/zanzibar/1200/800', link: "/destinations/zanzibar", hint: "zanzibar beach" },
+    { title: "Sansibar Küste", desc: "Makellose weiße Sandstrände und historische Gewürzküste.", img: zanzibarImg?.imageUrl || 'https://picsum.photos/seed/zanzibar/1200/800', link: "/destinations/zanzibar", hint: "zanzibar beach" },
     { title: "Serengeti Ebenen", desc: "Erleben Sie die legendäre Große Tierwanderung am Horizont.", img: safariImg?.imageUrl || 'https://picsum.photos/seed/serengeti/1200/800', link: "/destinations/serengeti", hint: "serengeti wildlife" },
     { title: "Ngorongoro Krater", desc: "Ein natürliches Amphitheater der Wildnis in einem Vulkan.", img: 'https://picsum.photos/seed/crater/1200/800', link: "/destinations/ngorongoro", hint: "ngorongoro crater" },
     { title: "Tarangire Giganten", desc: "Heimat riesiger Affenbrotbäume und großer Elefantenherden.", img: 'https://picsum.photos/seed/tarangire/1200/800', link: "/destinations/tarangire", hint: "tarangire elephants" },
@@ -79,7 +78,7 @@ export default function Home() {
             </motion.span>
             <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-[1.1]">
               Die Seele der <br />
-              <span className="text-primary italic">Serengeti</span>
+              <span className="text-primary">Serengeti</span>
             </h1>
             <p className="max-w-2xl mx-auto text-lg md:text-xl text-white/90 mb-10 leading-relaxed font-body font-light">
               Ihr exklusives Tor zur Wildnis Afrikas. Wir gestalten Reisen, die Wünsche in unvergessliche Erinnerungen verwandeln.

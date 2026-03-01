@@ -72,7 +72,7 @@ export default function AboutPage() {
             </Badge>
             <h1 className="font-headline text-4xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight drop-shadow-2xl">
               Ihr Schlüssel zum <br />
-              <span className="text-primary italic">Herzen Afrikas</span>
+              <span className="text-primary">Herzen Afrikas</span>
             </h1>
             <p className="max-w-2xl mx-auto text-sm md:text-xl text-white/80 font-light leading-relaxed px-4">
               Wir verbinden den Nil mit der Savanne – durch authentische, maßgeschneiderte Abenteuer, die weit über gewöhnliche Reisen hinausgehen.
@@ -94,13 +94,13 @@ export default function AboutPage() {
               <Compass className="w-4 h-4" /> Unsere Vision
             </div>
             <h2 className="font-headline text-3xl md:text-5xl font-bold leading-tight text-foreground">
-              Mehr als nur ein <br /><span className="text-primary italic">Urlaub</span>
+              Mehr als nur ein <br /><span className="text-primary">Urlaub</span>
             </h2>
-            <div className="space-y-6 text-muted-foreground font-light leading-relaxed text-base md:text-lg italic">
+            <div className="space-y-6 text-muted-foreground font-light leading-relaxed text-base md:text-lg">
               <p>
                 "Träumen Sie von einer Reise, die tiefer geht? Eine Reise, die Sie in die Seele eines Kontinents eintauchen lässt, reich an unberührter Natur und pulsierenden Kulturen?"
               </p>
-              <p className="not-italic text-foreground font-medium">
+              <p className="text-foreground font-medium">
                 Wir sind Ihre Brücke zu unvergesslichen Erlebnissen in Tansania, Kenia, Ruanda und Südafrika. Unser Herz schlägt für Afrika.
               </p>
             </div>
@@ -159,7 +159,7 @@ export default function AboutPage() {
               <div>
                 <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] mb-2 block">Der Visionär</span>
                 <h2 className="font-headline text-3xl md:text-6xl font-bold leading-tight text-foreground">
-                  Maßgeschneidert von <br /><span className="text-primary italic">Samson Kyashama</span>
+                  Maßgeschneidert von <br /><span className="text-primary">Samson Kyashama</span>
                 </h2>
               </div>
               <p className="text-muted-foreground font-light leading-relaxed text-lg">
@@ -191,7 +191,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         <div className="max-w-3xl mx-auto relative z-10 px-4">
           <h2 className="font-headline text-4xl md:text-8xl font-bold mb-8 leading-tight">
-            Bereit für das <br /><span className="text-primary italic">Abenteuer?</span>
+            Bereit für das <br /><span className="text-primary">Abenteuer?</span>
           </h2>
           <p className="text-white/60 text-lg md:text-2xl font-light mb-12 max-w-xl mx-auto leading-relaxed">
             Willkommen im Herzen Afrikas – wo die Savanne niemals schläft und jeder Horizont ein Versprechen ist.

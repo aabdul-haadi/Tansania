@@ -71,7 +71,7 @@ export function Navbar() {
             "font-headline font-bold text-lg md:text-xl tracking-wider transition-colors",
             isScrolled ? "text-secondary" : "text-white"
           )}>
-            Tansania <span className="text-primary italic">Reiseabenteuer</span>
+            Tansania <span className="text-primary">Reiseabenteuer</span>
           </span>
         </Link>
 
