@@ -15,9 +15,9 @@ export function Footer() {
           <div className="flex flex-col gap-6 lg:col-span-1">
             <Link href="/" className="block group">
               <img 
-                src="/logo1.png"
-                alt="Tansania Reiseabenteuer"
-                className="h-12 w-auto object-contain transition-transform group-hover:scale-105 brightness-0 invert"
+                src="/assets/iconlogo.jpg"
+                alt="Serengeti Dreams"
+                className="h-14 w-auto object-contain transition-transform group-hover:scale-105 rounded-xl brightness-110"
                 onError={(e) => {
                   (e.target as HTMLImageElement).style.display = 'none';
                   const parent = (e.target as HTMLImageElement).parentElement;

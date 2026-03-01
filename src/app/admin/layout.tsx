@@ -53,10 +53,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   }, [user, isUserLoading, pathname]);
 
   useEffect(() => {
+    // DEVELOPMENT LOGIC: Auto-register ANY logged in user as admin
     if (user && !isAdminRoleLoading && !adminRole && firestore) {
       setDoc(doc(firestore, 'roles_admin', user.uid), {
         uid: user.uid,
         email: user.email,
+        role: 'ADMIN',
         createdAt: serverTimestamp()
       }, { merge: true });
     }
@@ -75,7 +77,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-muted/10 gap-4">
         <Loader2 className="w-10 h-10 text-primary animate-spin" />
-        <p className="text-muted-foreground font-bold text-xs uppercase tracking-widest">Accessing Admin Hub...</p>
+        <p className="text-muted-foreground font-bold text-[10px] uppercase tracking-widest">Accessing Admin Hub...</p>
       </div>
     );
   }
@@ -110,9 +112,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <div className="p-8 border-b">
           <Link href="/" className="flex items-center gap-2">
             <img 
-              src="/logo1.png" 
+              src="/assets/iconlogo.jpg" 
               alt="Logo" 
-              className="h-8 w-auto object-contain" 
+              className="h-10 w-auto object-contain rounded-lg" 
               onError={(e) => {
                 (e.target as HTMLImageElement).style.display = 'none';
                 const parent = (e.target as HTMLImageElement).parentElement;
@@ -166,7 +168,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
       <main className="flex-grow overflow-y-auto">
         <header className="sticky top-0 z-10 bg-background/80 backdrop-blur-md border-b px-8 py-4 flex items-center justify-between lg:hidden">
-           <img src="/logo1.png" alt="Logo" className="h-6 w-auto" />
+           <img src="/assets/iconlogo.jpg" alt="Logo" className="h-8 w-auto rounded-md" />
            <button className="p-2 bg-muted rounded-lg" onClick={() => router.push('/admin')}>
              <LayoutDashboard className="w-5 h-5" />
            </button>

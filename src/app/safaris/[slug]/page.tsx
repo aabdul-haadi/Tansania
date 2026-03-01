@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -18,11 +17,11 @@ import {
   Compass,
   Download,
   Share2,
-  Loader2,
   Calendar,
   Waves,
   Mountain,
-  Heart
+  Heart,
+  Plane
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -73,9 +72,7 @@ export default function PackageDetailPage() {
     }
   };
 
-  if (isLoading) {
-    return <PackageSkeleton />;
-  }
+  if (isLoading) return <PackageSkeleton />;
 
   if (!pkg) {
     return (
@@ -93,7 +90,7 @@ export default function PackageDetailPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen">
       {/* Cinematic Split Hero */}
-      <section className="relative h-[70vh] md:h-[90vh] w-full overflow-hidden flex flex-col md:flex-row bg-[#0a0a0a]">
+      <section className="relative h-[75vh] md:h-[90vh] w-full overflow-hidden flex flex-col md:flex-row bg-[#0a0a0a]">
         <div className="w-full md:w-1/2 h-1/2 md:h-full relative overflow-hidden">
           <Image 
             src={pkg.imageUrl || 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920'} 
@@ -302,7 +299,7 @@ export default function PackageDetailPage() {
           {/* Sticky Magazine Sidebar */}
           <aside className="lg:col-span-4 relative hidden lg:block">
             <div className="sticky top-32 space-y-8">
-              <Card className="rounded-[3rem] border-none bg-secondary text-white p-12 shadow-2xl overflow-hidden relative">
+              <Card className="rounded-[3rem] border-none bg-secondary text-white p-10 shadow-2xl overflow-hidden relative">
                 <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
                 <div className="relative z-10 space-y-10">
                   <div className="text-center">
@@ -399,7 +396,7 @@ function PackageSkeleton() {
   return (
     <div className="min-h-screen bg-[#fdfcfb]">
       {/* Hero Skeleton */}
-      <div className="h-[70vh] md:h-[90vh] flex flex-col md:flex-row gap-4 bg-muted animate-pulse">
+      <div className="h-[75vh] md:h-[90vh] flex flex-col md:flex-row gap-4 bg-muted animate-pulse">
         <div className="w-full md:w-1/2 h-1/2 md:h-full bg-muted-foreground/10" />
         <div className="w-full md:w-1/2 h-1/2 md:h-full p-20 flex flex-col justify-center space-y-8">
           <Skeleton className="h-8 w-32 rounded-full" />

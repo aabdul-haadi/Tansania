@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -66,14 +65,14 @@ export function Navbar() {
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        {/* Logo */}
+        {/* Logo - Using iconlogo.jpg from assets */}
         <Link href="/" className="relative z-50 transition-transform duration-500 hover:scale-105 active:scale-95">
           <img 
-            src="/logo1.png"
-            alt="Tansania Reiseabenteuer"
+            src="/assets/iconlogo.jpg"
+            alt="Serengeti Dreams"
             className={cn(
-              "h-10 md:h-12 w-auto object-contain transition-all duration-500",
-              !isScrolled && "brightness-0 invert" 
+              "h-10 md:h-14 w-auto object-contain transition-all duration-500 rounded-lg",
+              !isScrolled && "brightness-110" 
             )}
             onError={(e) => {
               (e.target as HTMLImageElement).style.display = 'none';

@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from 'react';
@@ -61,7 +60,13 @@ export default function AdminDashboard() {
           durationDays: 15, 
           startingPrice: 5399, 
           description: "Diese 15-tägige Pauschalreise vereint Abenteuer und Erholung in perfekter Weise: Nach der Landung am Kilimanjaro International Airport werden Sie herzlich empfangen und fahren nach Arusha, wo Sie das wahre Tansania in Ihrem eigenen Tempo erleben können. Die Safari im Norden beginnt im Arusha-Nationalpark, wo Sie beeindruckende Ausblicke auf die Momella-Seen und den Ngurdoto-Krater genießen, gefolgt von einem Besuch in Tarangire, wo Sie Elefantenherden zwischen den mächtigen Baobabs beobachten können.",
-          highlights: ['Atemberaubende Tierbeobachtungen', 'Exklusive Lodge & Tented Camp', 'Abenteuer & Erholung', 'Alles gut organisiert', 'Inklusive Intl. Flug'], 
+          highlights: [
+            'Atemberaubende Tierbeobachtungen', 
+            'Exklusive Lodge & Tented Camp', 
+            'Abenteuer & Erholung', 
+            'Alles gut organisiert', 
+            'Inklusive Intl. Flug'
+          ], 
           imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200',
           itineraryDays: [
             { 
@@ -93,7 +98,7 @@ export default function AdminDashboard() {
               title: 'Tarangire Nationalpark', 
               location: 'Babati Rural', 
               stats: 'Land der Giganten', 
-              desc: 'Nach dem Frühstück fahren Sie für eine morgendliche Pirschfahrt in den Tarangire Nationalpark. Der Park erstreckt sich entlang des Tarangire River und wird geprägt durch offene Baumsavannen, Hügel und Felskuppen, Graslandschaften und Affenbrotbäume. Sowohl der Fluss als auch die Sümpfe wirken während der Trockenzeit Tansanias wie ein Magnet für Wildtiere. Eines der Highlights dieses Parks ist die hohe Populationsdichte an Elefanten. Herden von bis zu 300 Elefanten suchen täglich im trockenen Flussbett nach unterirdischen Flüssen, während wandernde Gnus, Zebras, Büffel, Impalas, Gazellen, Kuhantilopen und Elen die schrumpfenden Wasserlöcher bevölkern.', 
+              desc: 'Nach dem Frühstück fahren Sie für eine morgendliche Pirschfahrt in den Tarangire Nationalpark. Der Park erstreckt sich entlang des Tarangire River und wird geprägt durch offene Baumsavannen, Hügel und Felskuppen, Graslandschaften und Affenbrotbäume. Sowohl der Fluss als auch die Sümpfe wirken während der Trockenzeit Tansanias wie ein Magnet für Wildtiere. Eines der Highlights dieses Parks ist die hohe Populationsdichte an Elefanten. Herden von bis zu 300 Elefanten suchen täglich im trockenen Flussbett nach unterirdischen Flüssen, während wandernde Gnus, Zebras, Büffel, Impalas, Gazellen, Kuhantilopen und Elen die schrumpfenden Wasserlöcher bevölkern.\n\nAm frühen Nachmittag werden Sie Ihr Mittagessen bei einem entspannten Picknick mit Blick auf den Tarangire River einnehmen.', 
               img: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=800' 
             },
             { 
