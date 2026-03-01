@@ -42,7 +42,7 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
 
-  // Pages that HAVE a dark/image hero background at the top
+  // Pages that HAVE a dark/image hero background at the top - Navbar can be transparent here
   const isHeroPage = pathname === '/' || pathname === '/about' || pathname?.startsWith('/destinations/') || pathname?.startsWith('/safaris/');
 
   useEffect(() => {
