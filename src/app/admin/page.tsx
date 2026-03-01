@@ -103,7 +103,7 @@ export default function AdminDashboard() {
             },
             { 
               day: 5, 
-              title: 'Besuch einer tansanischen Schule', 
+              title: 'Maasai Manyatta & Kultur', 
               location: 'Maasai Manyatta', 
               stats: 'Kulturelle Begegnung', 
               desc: 'Auf dem Weg zum Serengeti Nationalpark durchqueren Sie das Naturschutzgebiet Ngorongoro und machen Ihren ersten Zwischenstopp in einem Massai-Dorf, einem Manyatta. Dort haben Sie die Möglichkeit die Massai, eine ostafrikanische Volksgruppe, näher kennenzulernen und einen Einblick in ihre einzigartigen Bräuche und ihren Alltag zu erhalten. Die Massai erkennen Sie an ihrer traditionellen Kleidung. Sie tragen rote und blaue Laken, die geschickt um den Körper gewickelt werden. Abgerundet wird der traditionelle Look durch bunten, wunderschönen afrikanischen Schmuck.', 
@@ -221,7 +221,7 @@ export default function AdminDashboard() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
           <h1 className="text-4xl font-bold tracking-tight text-secondary">Admin Dashboard</h1>
-          <p className="text-muted-foreground mt-2 text-lg">Digital operations for Serengeti Dreams.</p>
+          <p className="text-muted-foreground mt-2 text-lg">Digital operations for Tansania Reiseabenteuer.</p>
         </div>
         <div className="flex items-center gap-3">
           <Button onClick={handleSeedData} disabled={loading} variant="secondary" className="gap-2 rounded-2xl h-12 px-6">

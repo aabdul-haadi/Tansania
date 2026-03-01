@@ -105,7 +105,7 @@ export default function PackageDetailPage() {
         </div>
         
         <div className="w-full md:w-1/2 h-1/2 md:h-full flex items-center justify-center p-8 md:p-20 relative z-10">
-          <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="space-y-8 max-w-xl">
+          <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="space-y-8 max-w-xl text-center md:text-left">
             <div className="space-y-4">
               <Badge className="bg-primary text-white border-none px-5 py-2 text-[10px] font-bold uppercase tracking-[0.3em] shadow-2xl">
                 {pkg.subtitle || 'Traumabenteuer in Afrika!'}
@@ -115,7 +115,7 @@ export default function PackageDetailPage() {
               </h1>
             </div>
             
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
                <div className="flex items-center gap-3 bg-white/5 backdrop-blur-xl px-6 py-4 rounded-2xl border border-white/10 text-white font-bold text-xs uppercase tracking-widest">
                  <Clock className="w-5 h-5 text-primary" /> {pkg.durationDays} Tage Erlebnisreise
                </div>
@@ -236,8 +236,8 @@ export default function PackageDetailPage() {
                     className="group relative md:pl-24"
                   >
                     <div className="absolute left-0 top-0 w-16 h-16 rounded-[1.5rem] bg-secondary flex flex-col items-center justify-center text-white shadow-xl z-10 hidden md:flex group-hover:scale-110 transition-all duration-500 border border-white/10">
-                      <span className="text-[10px] font-bold uppercase tracking-widest opacity-40 leading-none mb-1">Log</span>
-                      <span className="text-2xl font-bold font-headline leading-none">{day.day || idx + 1}</span>
+                      <span className="text-[10px] font-bold uppercase tracking-widest opacity-40 leading-none mb-1 text-white">Log</span>
+                      <span className="text-2xl font-bold font-headline leading-none text-white">{day.day || idx + 1}</span>
                     </div>
 
                     <div className="bg-white rounded-[3rem] overflow-hidden shadow-sm border border-border/50 hover:shadow-2xl transition-all duration-700 hover:-translate-y-1">

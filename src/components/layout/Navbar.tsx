@@ -65,13 +65,12 @@ export function Navbar() {
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        {/* Logo - Using iconlogo.jpg from assets */}
         <Link href="/" className="relative z-50 transition-transform duration-500 hover:scale-105 active:scale-95">
           <img 
             src="/assets/iconlogo.jpg"
-            alt="Serengeti Dreams"
+            alt="Tansania Reiseabenteuer"
             className={cn(
-              "h-10 md:h-14 w-auto object-contain transition-all duration-500 rounded-lg",
+              "h-10 md:h-14 w-auto object-contain transition-all duration-500 rounded-lg shadow-sm",
               !isScrolled && "brightness-110" 
             )}
             onError={(e) => {
@@ -79,15 +78,14 @@ export function Navbar() {
               const parent = (e.target as HTMLImageElement).parentElement;
               if (parent) {
                 const text = document.createElement('span');
-                text.innerText = 'DREAMS';
-                text.className = 'font-headline font-bold text-xl text-primary tracking-widest';
+                text.innerText = 'TANSANIA REISEABENTEUER';
+                text.className = 'font-headline font-bold text-lg text-primary tracking-widest';
                 parent.appendChild(text);
               }
             }}
           />
         </Link>
 
-        {/* Action Bar */}
         <div className="flex items-center gap-4">
           <Link href="/trip-advisor" className="hidden lg:block">
             <Button variant="ghost" className={cn(
@@ -119,7 +117,6 @@ export function Navbar() {
             
             <SheetContent side="right" className="w-full sm:max-w-md p-0 border-none bg-[#0a0a0a] text-white overflow-y-auto">
               <div className="flex flex-col min-h-full">
-                {/* Header */}
                 <div className="p-8 flex justify-between items-center border-b border-white/5 sticky top-0 bg-[#0a0a0a] z-10">
                   <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary">Navigationszentrum</span>
                   <SheetClose className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors text-white">
@@ -127,7 +124,6 @@ export function Navbar() {
                   </SheetClose>
                 </div>
 
-                {/* Navigation Content */}
                 <div className="p-8 space-y-12">
                   <div className="space-y-6">
                     <h4 className="text-[10px] font-bold text-white/30 uppercase tracking-[0.4em]">Hauptziele</h4>
@@ -155,21 +151,6 @@ export function Navbar() {
                           className="text-sm font-medium text-white/60 hover:text-white transition-colors flex items-center gap-2"
                         >
                           <div className="w-1 h-1 rounded-full bg-primary/40" />
-                          {item.name}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="space-y-6">
-                    <h4 className="text-[10px] font-bold text-white/30 uppercase tracking-[0.4em]">REISEN 2026</h4>
-                    <div className="grid grid-cols-1 gap-4">
-                      {reisen2026.map((item) => (
-                        <Link 
-                          key={item.name} 
-                          href={item.href} 
-                          className="text-base font-bold text-white/60 hover:text-white transition-colors"
-                        >
                           {item.name}
                         </Link>
                       ))}

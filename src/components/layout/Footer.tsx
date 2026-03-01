@@ -16,14 +16,14 @@ export function Footer() {
             <Link href="/" className="block group">
               <img 
                 src="/assets/iconlogo.jpg"
-                alt="Serengeti Dreams"
-                className="h-14 w-auto object-contain transition-transform group-hover:scale-105 rounded-xl brightness-110"
+                alt="Tansania Reiseabenteuer"
+                className="h-14 w-auto object-contain transition-transform group-hover:scale-105 rounded-xl brightness-110 shadow-lg"
                 onError={(e) => {
                   (e.target as HTMLImageElement).style.display = 'none';
                   const parent = (e.target as HTMLImageElement).parentElement;
                   if (parent) {
                     const text = document.createElement('span');
-                    text.innerText = 'SERENGETI DREAMS';
+                    text.innerText = 'TANSANIA REISEABENTEUER';
                     text.className = 'font-headline font-bold text-xl text-primary tracking-widest';
                     parent.appendChild(text);
                   }
@@ -73,19 +73,19 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-primary font-bold text-[10px] uppercase tracking-[0.4em] mb-6 block">Büro Kairo</h4>
+            <h4 className="text-primary font-bold text-[10px] uppercase tracking-[0.4em] mb-6 block font-headline">Büro Kairo</h4>
             <ul className="flex flex-col gap-4 text-xs">
               <li className="flex items-start gap-3 text-white/60">
                 <MapPin className="w-4 h-4 text-primary shrink-0" />
-                <span className="leading-relaxed">123 Zamalek St,<br />Kairo, Ägypten</span>
+                <span className="leading-relaxed text-white">123 Zamalek St,<br />Kairo, Ägypten</span>
               </li>
               <li className="flex items-center gap-3 text-white/60">
                 <Phone className="w-4 h-4 text-primary shrink-0" />
-                <span>+20 123 456 7890</span>
+                <span className="text-white">+20 123 456 7890</span>
               </li>
               <li className="flex items-center gap-3 text-white/60">
                 <Mail className="w-4 h-4 text-primary shrink-0" />
-                <span className="truncate">concierge@serengetidreams.com</span>
+                <span className="truncate text-white">concierge@serengetidreams.com</span>
               </li>
             </ul>
           </div>
