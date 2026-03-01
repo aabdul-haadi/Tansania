@@ -50,6 +50,7 @@ const siteRegistry = [
     category: "Flagship Destinations",
     icon: MapPin,
     pages: [
+      { title: "Arusha Nationalpark", path: "/national-parks/arusha", status: "Live" },
       { title: "Kilimandscharo", path: "/destinations/kilimanjaro", status: "Live" },
       { title: "Sansibar Paradise", path: "/destinations/zanzibar", status: "Live" },
       { title: "Kenia", path: "/destinations/kenia", status: "Stub" },
