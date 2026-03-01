@@ -55,8 +55,8 @@ export default function Home() {
 
   return (
     <div className="relative">
-      {/* Optimized Compact Hero */}
-      <section className="relative h-[75vh] md:h-[80vh] flex items-center justify-center overflow-hidden">
+      {/* Redesigned Creative Compact Hero */}
+      <section className="relative h-[65vh] md:h-[75vh] flex items-center justify-center overflow-hidden">
         <HeroBackgroundSlider 
           images={[
             { src: heroImg?.imageUrl || 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920', hint: "serengeti safari" },
@@ -69,7 +69,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="max-w-2xl mx-auto text-center"
+            className="max-w-3xl mx-auto text-center"
           >
             <motion.div 
               initial={{ opacity: 0 }}
@@ -80,13 +80,13 @@ export default function Home() {
               <Sparkles className="w-3 h-3 text-primary" /> Premium Tansania Erlebnisse
             </motion.div>
             
-            <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight uppercase tracking-tighter">
+            <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-[1.1] uppercase tracking-tighter">
               Die Seele der <br />
               <span className="text-primary">Serengeti</span>
             </h1>
 
-            <div className="max-w-lg mx-auto mb-8 relative group">
-              <div className="absolute inset-0 bg-white/5 backdrop-blur-2xl rounded-2xl -m-1 opacity-0 group-focus-within:opacity-100 transition-opacity" />
+            <div className="max-w-xl mx-auto relative group">
+              <div className="absolute inset-0 bg-white/5 backdrop-blur-2xl rounded-3xl -m-1 opacity-0 group-focus-within:opacity-100 transition-opacity" />
               <div className="relative flex items-center bg-white rounded-2xl shadow-2xl overflow-hidden h-14 md:h-16">
                 <div className="pl-5 md:pl-6 text-primary shrink-0">
                   <Search className="w-5 h-5" />
@@ -103,16 +103,16 @@ export default function Home() {
                   </Button>
                 </Link>
               </div>
-              <div className="flex justify-center gap-3 mt-3">
+              <div className="flex justify-center gap-4 mt-4">
                 {['Migration', 'Big Five', 'Sansibar'].map(tag => (
-                  <button key={tag} onClick={() => setSearchQuery(tag)} className="text-[9px] font-bold uppercase tracking-widest text-white/70 hover:text-primary transition-colors">
+                  <button key={tag} onClick={() => setSearchQuery(tag)} className="text-[9px] font-black uppercase tracking-widest text-white/70 hover:text-primary transition-colors">
                     # {tag}
                   </button>
                 ))}
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-10">
               <Link href="/safaris">
                 <Button size="lg" className="w-full sm:w-auto rounded-full px-10 h-14 text-[10px] font-bold shadow-xl transition-all hover:scale-105 uppercase tracking-[0.2em]">
                   Katalog ansehen
