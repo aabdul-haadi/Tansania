@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -19,7 +18,7 @@ export function Footer() {
           <div className="flex flex-col gap-6">
             <Link href="/" className="flex items-center gap-3 group">
               <img 
-                src="/assets/iconlogo.jpg"
+                src="/iconlogo.jpg"
                 alt="Logo"
                 className="h-12 w-auto object-contain transition-transform group-hover:scale-105 rounded-lg brightness-110 shadow-lg"
               />

@@ -75,75 +75,77 @@ export function SafariMap() {
           </div>
 
           {/* Right: Modern SVG Navigator - HIDDEN ON MOBILE */}
-          <div className="relative w-full md:w-[45%] shrink-0 items-center justify-center hidden md:flex">
-            <div className="absolute inset-0 bg-primary/5 blur-[80px] rounded-full pointer-events-none" />
-            
-            <svg 
-              viewBox="0 0 200 240" 
-              className="w-full h-auto drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
-              fill="none" 
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <defs>
-                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur stdDeviation="3" result="blur" />
-                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                </filter>
-                <linearGradient id="glowGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="hsl(var(--primary))" />
-                  <stop offset="100%" stopColor="hsl(var(--primary))" />
-                </linearGradient>
-              </defs>
+          {!isMobile && (
+            <div className="relative w-full md:w-[45%] shrink-0 items-center justify-center hidden md:flex">
+              <div className="absolute inset-0 bg-primary/5 blur-[80px] rounded-full pointer-events-none" />
               
-              {/* Topographic Accents */}
-              <g className="opacity-[0.05] stroke-white">
-                <circle cx="100" cy="120" r="100" strokeWidth="0.5" strokeDasharray="2 4" />
-                <path d="M0 80 C 50 60, 150 100, 200 70" strokeWidth="0.5" />
-                <path d="M0 180 C 50 200, 150 160, 200 190" strokeWidth="0.5" />
-              </g>
-
-              {/* Journey Trace Background */}
-              <path 
-                d={journeyPath} 
-                stroke="rgba(255,255,255,0.08)" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-              />
-
-              {/* Active Animated Path */}
-              <motion.path 
-                d={journeyPath} 
-                stroke="url(#glowGradient)" 
-                strokeWidth="4" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-                style={{ pathLength }} 
-                filter="url(#glow)"
-              />
-
-              {/* Dynamic Destination Nodes */}
-              {destinations.map((dest, i) => (
-                <g key={dest.id}>
-                  {/* Main Node */}
-                  <circle 
-                    cx={dest.x} 
-                    cy={dest.y} 
-                    r="5" 
-                    className="fill-primary"
-                  />
-                  {/* Labels */}
-                  <text
-                    x={dest.x + 12}
-                    y={dest.y + 4}
-                    className="fill-white/30 text-[7px] font-bold uppercase tracking-[0.2em] hidden md:block pointer-events-none"
-                  >
-                    {dest.name}
-                  </text>
+              <svg 
+                viewBox="0 0 200 240" 
+                className="w-full h-auto drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+                fill="none" 
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs>
+                  <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="3" result="blur" />
+                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                  </filter>
+                  <linearGradient id="glowGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="hsl(var(--primary))" />
+                    <stop offset="100%" stopColor="hsl(var(--primary))" />
+                  </linearGradient>
+                </defs>
+                
+                {/* Topographic Accents */}
+                <g className="opacity-[0.05] stroke-white">
+                  <circle cx="100" cy="120" r="100" strokeWidth="0.5" strokeDasharray="2 4" />
+                  <path d="M0 80 C 50 60, 150 100, 200 70" strokeWidth="0.5" />
+                  <path d="M0 180 C 50 200, 150 160, 200 190" strokeWidth="0.5" />
                 </g>
-              ))}
-            </svg>
-          </div>
+
+                {/* Journey Trace Background */}
+                <path 
+                  d={journeyPath} 
+                  stroke="rgba(255,255,255,0.08)" 
+                  strokeWidth="2" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                />
+
+                {/* Active Animated Path */}
+                <motion.path 
+                  d={journeyPath} 
+                  stroke="url(#glowGradient)" 
+                  strokeWidth="4" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                  style={{ pathLength }} 
+                  filter="url(#glow)"
+                />
+
+                {/* Dynamic Destination Nodes */}
+                {destinations.map((dest, i) => (
+                  <g key={dest.id}>
+                    {/* Main Node */}
+                    <circle 
+                      cx={dest.x} 
+                      cy={dest.y} 
+                      r="5" 
+                      className="fill-primary"
+                    />
+                    {/* Labels */}
+                    <text
+                      x={dest.x + 12}
+                      y={dest.y + 4}
+                      className="fill-white/30 text-[7px] font-bold uppercase tracking-[0.2em] hidden md:block pointer-events-none"
+                    >
+                      {dest.name}
+                    </text>
+                  </g>
+                ))}
+              </svg>
+            </div>
+          )}
         </div>
       </div>
     </section>

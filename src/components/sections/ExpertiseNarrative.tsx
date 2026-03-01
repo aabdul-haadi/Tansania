@@ -92,7 +92,7 @@ export function ExpertiseNarrative() {
               <div className="w-9 h-9 rounded-full bg-muted flex items-center justify-center shrink-0 group-hover:bg-primary/10 transition-colors">
                 <feature.icon className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
               </div>
-              <div className="space-y-0.5">
+              <div className="space-0.5">
                 <h3 className="font-bold text-xs uppercase tracking-wider">{feature.title}</h3>
                 <p className="text-[10px] text-muted-foreground font-bold leading-relaxed">{feature.text}</p>
               </div>

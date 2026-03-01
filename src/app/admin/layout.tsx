@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useEffect, useState } from 'react';
@@ -113,7 +112,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <div className="p-8 border-b">
           <Link href="/" className="flex items-center gap-3">
             <img 
-              src="/assets/iconlogo.jpg" 
+              src="/iconlogo.jpg" 
               alt="Logo" 
               className="h-10 w-auto object-contain rounded-lg" 
             />
@@ -163,7 +162,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <main className="flex-grow overflow-y-auto">
         <header className="sticky top-0 z-10 bg-background/80 backdrop-blur-md border-b px-8 py-4 flex items-center justify-between lg:hidden">
            <div className="flex items-center gap-2">
-             <img src="/assets/iconlogo.jpg" alt="Logo" className="h-8 w-auto rounded-md" />
+             <img src="/iconlogo.jpg" alt="Logo" className="h-8 w-auto rounded-md" />
              <span className="font-headline font-bold text-sm text-primary uppercase">REISEABENTEUER</span>
            </div>
            <button className="p-2 bg-muted rounded-lg" onClick={() => router.push('/admin')}>

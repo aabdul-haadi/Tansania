@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -61,7 +60,7 @@ export function Navbar() {
       <div className="container mx-auto px-4 flex items-center justify-between">
         <Link href="/" className="relative z-50 flex items-center gap-3 transition-transform duration-500 hover:scale-105 active:scale-95 group">
           <img 
-            src="/assets/iconlogo.jpg"
+            src="/iconlogo.jpg"
             alt="Logo"
             className={cn(
               "h-10 md:h-12 w-auto object-contain transition-all duration-500 rounded-lg shadow-sm",

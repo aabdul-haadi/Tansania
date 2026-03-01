@@ -183,7 +183,6 @@ export default function Home() {
               ))}
             </CarouselContent>
             
-            {/* Exploration Link at the bottom center */}
             <div className="mt-16 flex justify-center">
               <Link href="/safaris" className="group flex items-center gap-3 text-secondary font-bold text-lg md:text-xl hover:text-primary transition-all">
                 Alle Regionen erkunden <ArrowRight className="w-6 h-6 group-hover:translate-x-3 transition-transform" />
