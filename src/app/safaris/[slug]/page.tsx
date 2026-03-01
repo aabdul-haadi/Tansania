@@ -166,7 +166,7 @@ export default function PackageDetailPage() {
                   <div className="space-y-4">
                     <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] block">Das Erlebnis</span>
                     <h2 className="font-headline text-3xl md:text-5xl font-bold text-secondary leading-tight">
-                      15 Tage Pauschalreise Tansania - <br /><span className="text-primary italic">Safari im Norden und Badeurlaub auf Sansibar</span>
+                      {pkg.durationDays} Tage Pauschalreise Tansania - <br /><span className="text-primary italic">Vom Nil zur Savanne</span>
                     </h2>
                   </div>
                   <div className="text-muted-foreground text-lg md:text-xl font-light leading-relaxed italic border-l-4 border-primary/20 pl-8 py-2">
@@ -174,25 +174,16 @@ export default function PackageDetailPage() {
                   </div>
                   <div className="prose prose-xl max-w-none text-muted-foreground font-light leading-relaxed space-y-8">
                     <p>
-                      Die Safari im Norden beginnt im Arusha-Nationalpark, wo Sie beeindruckende Ausblicke auf die Momella-Seen und den Ngurdoto-Krater genießen, gefolgt von einem Besuch in Tarangire, wo Sie Elefantenherden zwischen den mächtigen Baobabs beobachten können.
+                      Beginnen Sie Ihr Abenteuer im Herzen Tansanias. Unsere sorgfältig kuratierte Route verbindet die majestätische Wildnis der Serengeti mit den unberührten Korallenriffen Sansibars.
                     </p>
                     <p>
-                      Erleben Sie authentische Begegnungen mit der lokalen Kultur der Massai, bevor Sie die weite Savanne der Serengeti entdecken. Zwei intensive Tage voller unvergesslicher Tiermomente, mit Chancen auf die große Migration, je nach Saison.
-                    </p>
-                    <p>
-                      Der Höhepunkt der Safari ist der Ngorongoro-Krater, ein Naturwunder mit einer hohen Wilddichte, das Ihnen außergewöhnliche Möglichkeiten bietet, die „Big Five“ zu erleben.
-                    </p>
-                    <p>
-                      Nach der Safari fliegen Sie nach Sansibar, beziehen Ihr Strandhotel und genießen unvergessliche Erholung: barfuß am weißen Sandstrand, Baden im türkisblauen Meer und Zeit zum Genießen. Optional können Sie an Bootstouren, Schnorcheln, einer Gewürztour, Tauchen oder einem Besuch in Stone Town teilnehmen.
-                    </p>
-                    <p>
-                      Am Ende Ihrer Reise werden Sie zurück zum Flughafen gebracht und treten Ihre Heimreise an, mit Erinnerungen, die bleiben.
+                      Mit unserem lokalen Büro in Berlin und Experten vor Ort garantieren wir eine nahtlose Logistik und authentische Begegnungen, die weit über gewöhnliche Reisen hinausgehen.
                     </p>
                   </div>
                 </div>
                 
                 <div className="md:col-span-5 space-y-6">
-                  <div className="bg-secondary text-white p-10 rounded-[3rem] shadow-2xl relative overflow-hidden">
+                  <Card className="bg-secondary text-white p-10 rounded-[3rem] shadow-2xl overflow-hidden relative border-none">
                     <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
                     <h4 className="font-headline text-2xl font-bold mb-8 relative z-10 text-white">Signature Highlights</h4>
                     <div className="space-y-6 relative z-10">
@@ -205,8 +196,8 @@ export default function PackageDetailPage() {
                         </div>
                       ))}
                     </div>
-                  </div>
-                  <div className="p-8 border-2 border-dashed rounded-[3rem] text-center space-y-4">
+                  </Card>
+                  <div className="p-8 border-2 border-dashed rounded-[3rem] text-center space-y-4 bg-white/50 backdrop-blur">
                     <div className="w-12 h-12 rounded-2xl bg-muted flex items-center justify-center mx-auto">
                       <Users className="w-6 h-6 text-muted-foreground" />
                     </div>
@@ -240,7 +231,7 @@ export default function PackageDetailPage() {
                       <span className="text-2xl font-bold font-headline leading-none text-white">{day.day || idx + 1}</span>
                     </div>
 
-                    <div className="bg-white rounded-[3rem] overflow-hidden shadow-sm border border-border/50 hover:shadow-2xl transition-all duration-700 hover:-translate-y-1">
+                    <Card className="bg-white rounded-[3rem] overflow-hidden shadow-sm border border-border/50 hover:shadow-2xl transition-all duration-700 hover:-translate-y-1">
                       <div className="flex flex-col md:flex-row">
                         <div className="md:w-[45%] aspect-[16/10] md:aspect-auto relative overflow-hidden">
                           <Image src={day.img || `https://picsum.photos/seed/safari-day-${idx}/800/600`} alt={day.title} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
@@ -264,7 +255,7 @@ export default function PackageDetailPage() {
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </Card>
                   </motion.div>
                 ))}
               </div>
@@ -340,27 +331,27 @@ export default function PackageDetailPage() {
               </Card>
 
               {/* Personal Consultation */}
-              <div className="p-10 bg-white rounded-[3rem] shadow-sm border border-border/50 text-center space-y-8">
-                <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-primary/10 mx-auto shadow-lg relative">
+              <Card className="p-10 bg-white rounded-[3rem] shadow-sm border border-border/50 text-center space-y-8">
+                <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-primary/10 mx-auto shadow-lg relative bg-muted">
                   <img src="https://picsum.photos/seed/expert/200/200" alt="Samson Kyashama" className="w-full h-full object-cover" />
                   <div className="absolute bottom-0 right-0 w-6 h-6 bg-green-500 rounded-full border-4 border-white shadow-sm" />
                 </div>
                 <div>
                   <h4 className="font-bold text-secondary uppercase tracking-widest text-[9px] mb-2">Persönliche Beratung</h4>
                   <h3 className="font-headline text-2xl font-bold text-secondary">Samson Kyashama</h3>
-                  <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-widest">Direktkontakt Büro Berlin</p>
+                  <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-widest">Büro Berlin</p>
                 </div>
                 <div className="space-y-3">
                   <a href="tel:+493022608080" className="flex items-center justify-between p-4 bg-muted/30 rounded-2xl text-xs font-bold hover:bg-primary hover:text-white transition-all group text-secondary">
                     <span className="opacity-60 group-hover:opacity-100">Telefon</span>
-                    <span className="group-hover:text-white transition-colors text-secondary group-hover:text-white">+49 30 22608080</span>
+                    <span className="group-hover:text-white transition-colors text-secondary">+49 30 22608080</span>
                   </a>
                   <a href="mailto:info@tansania-reiseabenteuer.de" className="flex items-center justify-between p-4 bg-muted/30 rounded-2xl text-xs font-bold hover:bg-primary hover:text-white transition-all group text-secondary">
                     <span className="opacity-60 group-hover:opacity-100">E-Mail</span>
-                    <span className="truncate max-w-[140px] group-hover:text-white transition-colors text-secondary group-hover:text-white">info@tansania...</span>
+                    <span className="truncate max-w-[140px] group-hover:text-white transition-colors text-secondary">info@tansania-reiseabenteuer.de</span>
                   </a>
                 </div>
-              </div>
+              </Card>
             </div>
           </aside>
         </div>

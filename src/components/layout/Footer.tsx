@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Facebook, Instagram, Twitter, Phone, Mail, MapPin } from 'lucide-react';
+import { Facebook, Instagram, Twitter, Phone, Mail, MapPin, Clock } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -16,14 +16,14 @@ export function Footer() {
             <Link href="/" className="block group">
               <img 
                 src="/assets/iconlogo.jpg"
-                alt="Tansania Reiseabenteuer"
+                alt="Tansania Reiseabenteuer SDL"
                 className="h-14 w-auto object-contain transition-transform group-hover:scale-105 rounded-xl brightness-110 shadow-lg"
                 onError={(e) => {
                   (e.target as HTMLImageElement).style.display = 'none';
                   const parent = (e.target as HTMLImageElement).parentElement;
                   if (parent) {
                     const text = document.createElement('span');
-                    text.innerText = 'TANSANIA REISEABENTEUER';
+                    text.innerText = 'TANSANIA REISEABENTEUER SDL';
                     text.className = 'font-headline font-bold text-xl text-primary tracking-widest';
                     parent.appendChild(text);
                   }
@@ -63,21 +63,11 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-primary font-bold text-[10px] uppercase tracking-[0.4em] mb-6 block">Dienstleistungen</h4>
-            <ul className="flex flex-col gap-3 text-xs font-bold">
-              <li><Link href="/services/agency-services" className="text-white/40 hover:text-white transition-colors">Agenturleistungen</Link></li>
-              <li><Link href="/services/adventure-app" className="text-white/40 hover:text-white transition-colors">Abenteuer-App</Link></li>
-              <li><Link href="/services/guest-protection" className="text-white/40 hover:text-white transition-colors">Reiseschutz</Link></li>
-              <li><Link href="/services/passport-visa" className="text-white/40 hover:text-white transition-colors">Visum & Reisepass</Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-primary font-bold text-[10px] uppercase tracking-[0.4em] mb-6 block font-headline">Büro Berlin</h4>
+            <h4 className="text-primary font-bold text-[10px] uppercase tracking-[0.4em] mb-6 block font-headline">Service & Support</h4>
             <ul className="flex flex-col gap-4 text-xs">
-              <li className="flex items-start gap-3 text-white/60">
-                <MapPin className="w-4 h-4 text-primary shrink-0" />
-                <span className="leading-relaxed text-white">Bayerischer Pl. 7,<br />10779 Berlin, Germany</span>
+              <li className="flex items-center gap-3 text-white/60">
+                <Clock className="w-4 h-4 text-primary shrink-0" />
+                <span className="text-white font-bold">MO – FR: 09:00 - 18:00</span>
               </li>
               <li className="flex items-center gap-3 text-white/60">
                 <Phone className="w-4 h-4 text-primary shrink-0" />
@@ -86,6 +76,16 @@ export function Footer() {
               <li className="flex items-center gap-3 text-white/60">
                 <Mail className="w-4 h-4 text-primary shrink-0" />
                 <span className="truncate text-white">info@tansania-reiseabenteuer.de</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-primary font-bold text-[10px] uppercase tracking-[0.4em] mb-6 block font-headline">Hauptbüro Berlin</h4>
+            <ul className="flex flex-col gap-4 text-xs">
+              <li className="flex items-start gap-3 text-white/60">
+                <MapPin className="w-4 h-4 text-primary shrink-0" />
+                <span className="leading-relaxed text-white">Bayerischer Pl. 7,<br />10779 Berlin, Germany</span>
               </li>
             </ul>
           </div>

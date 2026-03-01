@@ -27,7 +27,7 @@ export function MeetTheSpecialists() {
                 <span className="text-primary italic">We’re Here to Help</span>
               </h2>
               <p className="text-muted-foreground text-xs md:text-sm font-light leading-relaxed max-w-xl">
-                Tansania Reiseabenteuer SDL. Ob Sie von einer exklusiven Safari oder einem entspannten Strandurlaub träumen, unsere Spezialisten planen jedes Erlebnis mit viel Liebe zum Detail.
+                Tansania Reiseabenteuer SDL. Ob Sie von einer exklusiven Safari oder einem entspannten Strandurlaub träumen, unsere Spezialisten in Berlin planen jedes Erlebnis mit viel Liebe zum Detail.
               </p>
             </div>
 
@@ -37,7 +37,7 @@ export function MeetTheSpecialists() {
                   <Mail className="w-3.5 h-3.5" />
                   <span className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground">E-mail</span>
                 </div>
-                <a href="mailto:info@tansania-reiseabenteuer.de" className="font-bold text-xs hover:text-primary transition-colors truncate">info@tansania-reiseabenteuer.de</a>
+                <a href="mailto:info@tansania-reiseabenteuer.de" className="font-bold text-xs hover:text-primary transition-colors truncate text-secondary">info@tansania-reiseabenteuer.de</a>
               </div>
 
               <div className="flex flex-col gap-1.5">
@@ -45,7 +45,7 @@ export function MeetTheSpecialists() {
                   <Phone className="w-3.5 h-3.5" />
                   <span className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Phone</span>
                 </div>
-                <a href="tel:+493022608080" className="font-bold text-xs hover:text-primary transition-colors">+49 30 22608080</a>
+                <a href="tel:+493022608080" className="font-bold text-xs hover:text-primary transition-colors text-secondary">+49 30 22608080</a>
               </div>
 
               <div className="flex flex-col gap-1.5">
@@ -53,7 +53,7 @@ export function MeetTheSpecialists() {
                   <Clock className="w-3.5 h-3.5" />
                   <span className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Öffnungszeiten</span>
                 </div>
-                <p className="font-bold text-xs">Montag – Freitag</p>
+                <p className="font-bold text-xs text-secondary">Montag – Freitag</p>
               </div>
             </div>
 
@@ -65,10 +65,10 @@ export function MeetTheSpecialists() {
               </Link>
               <div className="flex items-center gap-3 p-3 bg-white/50 backdrop-blur rounded-xl border border-white/20">
                 <div className="w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center shrink-0">
-                  <MessageSquare className="w-4 h-4" />
+                  <MessageSquare className="w-4 h-4 text-white" />
                 </div>
                 <p className="text-[10px] text-muted-foreground leading-snug">
-                  Persönlich. Kompetent. <br /><strong>Expertenberatung.</strong>
+                  Persönlich. Kompetent. <br /><strong className="text-secondary">Expertenberatung.</strong>
                 </p>
               </div>
             </div>
@@ -98,7 +98,7 @@ export function MeetTheSpecialists() {
                   </div>
                   <div className="flex-grow">
                     <p className="text-[8px] font-bold uppercase tracking-[0.2em] text-primary mb-0.5 leading-none">Travel Specialist</p>
-                    <h4 className="text-base font-headline font-bold leading-none">{specialist.name}</h4>
+                    <h4 className="text-base font-headline font-bold leading-none text-secondary">{specialist.name}</h4>
                     <p className="text-[9px] text-muted-foreground uppercase font-medium mt-1 leading-none">{specialist.role}</p>
                   </div>
                   <div className="w-7 h-7 rounded-full bg-muted flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">

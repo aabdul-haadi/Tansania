@@ -49,7 +49,7 @@ export default function AdminDashboard() {
     if (!firestore || !user) return;
     setLoading(true);
     try {
-      // Seed Site Settings
+      // Seed Site Settings with Berlin Office Details
       await setDoc(doc(firestore, 'siteSettings', 'global'), {
         id: 'global',
         companyName: 'Tansania Reiseabenteuer SDL',
@@ -102,7 +102,7 @@ export default function AdminDashboard() {
               title: 'Arusha Nationalpark', 
               location: 'Arusha Region', 
               stats: '400 Vogelarten', 
-              desc: 'Der Arusha Nationalpark belohnt mit einer malerischen Aussicht auf die sieben Momella-Seen und den Ngurdoto Krater. Die Umgebung ist vielfältig und wechselt stetig zwischen Steppen, Dschungel und Hochgebirge. Im Osten des Parks ist ein dichter hoher Wald zu finden, welcher einen optimalen Lebensraum für verschiedenste Affen darstellt. An den Momella Seen besteht die perfekte Möglichkeit, die reiche Vogelwelt, mehr als 400 Arten, zu beobachten. Darunter befinden sich Flamingos, die man in großen Schwärmen antrifft.', 
+              desc: 'Der Arusha Nationalpark belohnt mit einer malerischen Aussicht auf die sieben Momella-Seen und den Ngurdoto Krater. Die Umgebung ist vielfältig und wechselt stetig zwischen Steppen, Dschungel und Hochgebirge. Im Osten des Parks ist ein dichter hoher Wald zu finden, welcher einen optimalen Lebensraum für verschiedenste Affen darstellt. An den Momella Seen besteht die perfekte Möglichkeit, die reiche Vogelwelt, mehr als 400 Arten, zu beobachten. Darunter befinden sich Flamingos, die man in großen Schwärmen antrifft. Sie können gegen Aufpreis neben der Safari im Park auch eine etwa 2-stündige Wanderung zusammen mit einem Ranger unternehmen.', 
               img: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800' 
             },
             { 
@@ -118,7 +118,7 @@ export default function AdminDashboard() {
               title: 'Maasai Manyatta & Kultur', 
               location: 'Maasai Manyatta', 
               stats: 'Kulturelle Begegnung', 
-              desc: 'Auf dem Weg zum Serengeti Nationalpark durchqueren Sie das Naturschutzgebiet Ngorongoro und machen Ihren ersten Zwischenstopp in einem Massai-Dorf, einem Manyatta. Dort haben Sie die Möglichkeit die Massai, eine ostafrikanische Volksgruppe, näher kennenzulernen und einen Einblick in ihre einzigartigen Bräuche und ihren Alltag zu erhalten. Die Massai erkennen Sie an ihrer traditionellen Kleidung. Sie tragen rote und blaue Laken, die geschickt um den Körper gewickelt werden.', 
+              desc: 'Auf dem Weg zum Serengeti Nationalpark durchqueren Sie das Naturschutzgebiet Ngorongoro und machen Ihren ersten Zwischenstopp in einem Massai-Dorf, einem Manyatta. Dort haben Sie die Möglichkeit die Massai, eine ostafrikanische Volksgruppe, näher kennenzulernen und einen Einblick in ihre einzigartigen Bräuche und ihren Alltag zu erhalten. Die Massai erkennen Sie an ihrer traditionellen Kleidung. Sie tragen rote und blaue Laken, die geschickt um den Körper gewickelt werden. Abgerundet wird der traditionelle Look durch bunten, wunderschönen afrikanischen Schmuck.', 
               img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200' 
             },
             { 
@@ -190,7 +190,7 @@ export default function AdminDashboard() {
               title: 'Abreise & Transfer', 
               location: 'Zanzibar Airport', 
               stats: 'Abschied', 
-              desc: 'Am letzten Tag Ihrer Reise bringen wir Sie nach einem reichhaltigen Frühstück sicher zurück zum Flughafen, von wo aus Sie Ihren Rückflug nach Hause antreten. Genießen Sie noch einmal die Eindrücke Tansanias und lassen Sie sich von unserem Reiseleiter noch einige besondere Geschichten erzählen.', 
+              desc: 'Am letzten Tag Ihrer Reise bringen wir Sie nach einem reichhaltigen Frühstück sicher zurück zum Flughafen, von wo aus Sie Ihren Rückflug nach Hause antreten. Genießen Sie noch einmal die Eindrücke Tansanias und lassen Sie sich von unserem Reiseleiter noch einige besondere Geschichten erzählen. Wir hoffen, dass unser Slogan: "We turn wishes into memories", Tatsache ist.', 
               img: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800' 
             },
             { 
@@ -198,7 +198,7 @@ export default function AdminDashboard() {
               title: 'Landung in der Heimat', 
               location: 'Home', 
               stats: 'Ende der Reise', 
-              desc: 'Leider ist die Traumreise jetzt eine schöne Erinnerung! Nach dem sicheren Flug, wünschen wir Ihnen einen guten und sicheren Heimweg. Passen Sie auf sich auf und bleiben Sie gesund. Wir würden uns freuen mehr von Ihren Erfahrungen zu hören.', 
+              desc: 'Leider ist die Traumreise jetzt eine schöne Erinnerung! Nach dem sicheren Flug, wünschen wir Ihnen einen guten und sicheren Heimweg. Passen Sie auf sich auf und bleiben Sie gesund. Wir würden uns freuen mehr von Ihren Erfahrungen zu hören. Ihr Tansania Reiseabenteuer Team.', 
               img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200' 
             }
           ]
@@ -220,7 +220,7 @@ export default function AdminDashboard() {
         }, { merge: true });
       }
 
-      toast({ title: "CMS Synchronized", description: "Global agency data and flagship packages updated." });
+      toast({ title: "CMS Synchronized", description: "Tansania Reiseabenteuer SDL data and flagship packages updated." });
     } catch (error: any) {
       toast({ variant: "destructive", title: "Setup Failed", description: error.message });
     } finally {

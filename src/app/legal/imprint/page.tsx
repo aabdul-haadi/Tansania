@@ -72,7 +72,7 @@ export default function ImpressumPage() {
                       <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-2">
                         <MapPin className="w-3 h-3 text-primary" /> Sitz der Gesellschaft
                       </p>
-                      <p className="text-muted-foreground font-light leading-relaxed">
+                      <p className="text-secondary font-light leading-relaxed">
                         Bayerischer Platz 7, 10779 Berlin, Germany
                       </p>
                     </div>
@@ -118,14 +118,14 @@ export default function ImpressumPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="space-y-1">
                       <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Registereintrag</p>
-                      <p className="text-muted-foreground font-light leading-relaxed">
+                      <p className="text-secondary font-light leading-relaxed">
                         Handelsregister Neuruppin<br />
                         Registernummer: HRB 12250 NP
                       </p>
                     </div>
                     <div className="space-y-1">
                       <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Umsatzsteuer-ID</p>
-                      <p className="text-muted-foreground font-light leading-relaxed">
+                      <p className="text-secondary font-light leading-relaxed">
                         DE319944951<br />
                         Gemäß §27a UStG
                       </p>
@@ -167,7 +167,7 @@ export default function ImpressumPage() {
               <div className="bg-secondary text-white p-10 rounded-[3rem] shadow-2xl relative overflow-hidden">
                 <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
                 <div className="relative z-10 space-y-6">
-                  <h3 className="font-headline text-3xl font-bold leading-tight">Planen Sie Ihre <span className="text-primary italic">Traumreise</span></h3>
+                  <h3 className="font-headline text-3xl font-bold leading-tight text-white">Planen Sie Ihre <span className="text-primary italic">Traumreise</span></h3>
                   <p className="text-white/60 text-sm font-light leading-relaxed">
                     Lassen Sie sich von unseren Experten zu unvergesslichen Safaris und Kilimandscharo-Besteigungen beraten.
                   </p>
@@ -180,7 +180,7 @@ export default function ImpressumPage() {
               </div>
 
               {/* Quick Links */}
-              <Card className="border-none shadow-sm rounded-[2.5rem] p-8">
+              <Card className="border-none shadow-sm rounded-[2.5rem] p-8 bg-white">
                 <h4 className="text-primary font-bold text-[10px] uppercase tracking-[0.4em] mb-6 block">Schnellzugriff</h4>
                 <ul className="space-y-4">
                   {[
@@ -191,7 +191,7 @@ export default function ImpressumPage() {
                     <li key={link.label}>
                       <Link href={link.href} className="group flex items-center justify-between text-sm font-bold text-secondary hover:text-primary transition-colors">
                         {link.label}
-                        <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
+                        <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all text-primary" />
                       </Link>
                     </li>
                   ))}
