@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Link from 'next/link';
 import { Facebook, Instagram, Twitter, Phone, Mail, MapPin, Clock } from 'lucide-react';
@@ -21,7 +22,7 @@ export function Footer() {
                 className="h-12 w-auto object-contain transition-transform group-hover:scale-105 rounded-lg brightness-110 shadow-lg"
               />
               <span className="font-headline font-bold text-xl text-primary tracking-wider uppercase leading-tight">
-                Tansania <br /> Reiseabenteuer
+                Tansania Reiseabenteuer
               </span>
             </Link>
             <p className="text-white/60 leading-relaxed font-light text-sm max-w-xs">

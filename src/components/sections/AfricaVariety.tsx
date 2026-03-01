@@ -88,7 +88,7 @@ export function AfricaVariety() {
               className="font-headline text-4xl md:text-6xl font-bold leading-tight text-foreground"
             >
               Entdecke Afrika in seiner <br />
-              <span className="text-primary italic">ganzen Vielfalt</span>
+              <span className="text-primary">ganzen Vielfalt</span>
             </motion.h2>
           </div>
           <motion.p 

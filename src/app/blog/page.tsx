@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from 'react';
@@ -46,7 +47,7 @@ export default function BlogListing() {
                 transition={{ delay: 0.1 }}
                 className="font-headline text-4xl md:text-7xl font-bold leading-tight text-white"
               >
-                Geschichten vom <br /><span className="text-primary italic">Nil zur Savanne</span>
+                Geschichten vom <br /><span className="text-primary">Nil zur Savanne</span>
               </motion.h1>
             </div>
             

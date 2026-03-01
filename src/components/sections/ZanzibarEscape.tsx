@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from 'react';
@@ -115,9 +116,9 @@ export function ZanzibarEscape() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.4 }}
-                      className="text-sm md:text-base italic text-secondary/70 leading-relaxed font-light"
+                      className="text-sm md:text-base text-secondary/70 leading-relaxed font-light"
                     >
-                      “{activeExp.text}”
+                      "{activeExp.text}"
                     </motion.p>
                   </AnimatePresence>
                 </div>
