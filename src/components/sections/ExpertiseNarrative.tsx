@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -70,14 +69,14 @@ export function ExpertiseNarrative() {
             <motion.div 
               animate={{ y: [0, -5, 0] }}
               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-              className="absolute -bottom-4 -left-4 bg-secondary text-white p-4 md:p-6 rounded-[1.25rem] shadow-xl hidden md:block max-w-[200px]"
+              className="absolute -bottom-4 -left-4 bg-primary text-white p-4 md:p-6 rounded-[1.25rem] shadow-xl hidden md:block max-w-[200px]"
             >
               <p className="text-[10px] font-light leading-relaxed">
                 "Close your eyes and imagine the sun bathing the crater rim in gold."
               </p>
               <div className="mt-3 flex items-center gap-2">
-                <div className="w-3 h-px bg-primary" />
-                <span className="text-[8px] font-bold uppercase tracking-widest text-primary">Tanzania Experts</span>
+                <div className="w-3 h-px bg-secondary" />
+                <span className="text-[8px] font-bold uppercase tracking-widest text-secondary">Tanzania Experts</span>
               </div>
             </motion.div>
           </motion.div>
