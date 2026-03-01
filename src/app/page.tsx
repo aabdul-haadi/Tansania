@@ -55,7 +55,7 @@ export default function Home() {
 
   return (
     <div className="relative">
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative h-[85vh] flex items-center justify-center overflow-hidden">
         <HeroBackgroundSlider 
           images={[
             { src: heroImg?.imageUrl || 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920', hint: "serengeti safari" },
@@ -65,95 +65,94 @@ export default function Home() {
         />
         <div className="container relative z-20 mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="max-w-4xl mx-auto text-center"
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="max-w-3xl mx-auto text-center"
           >
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="inline-flex items-center gap-3 px-5 py-2 mb-8 text-[10px] font-bold uppercase tracking-[0.3em] text-white bg-white/10 backdrop-blur-xl rounded-full border border-white/20 shadow-2xl"
+              transition={{ delay: 0.4 }}
+              className="inline-flex items-center gap-3 px-4 py-1.5 mb-6 text-[9px] font-bold uppercase tracking-[0.3em] text-white bg-white/10 backdrop-blur-xl rounded-full border border-white/20 shadow-xl"
             >
-              <Sparkles className="w-3.5 h-3.5 text-primary" /> Welcome to Your Dream Safari
+              <Sparkles className="w-3 h-3 text-primary" /> Premium Tansania Erlebnisse
             </motion.div>
             
-            <h1 className="font-headline text-5xl md:text-7xl lg:text-9xl font-bold text-white mb-8 leading-[1] uppercase tracking-tighter">
-              The Soul of the <br />
+            <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-[1.1] uppercase tracking-tighter">
+              Die Seele der <br />
               <span className="text-primary">Serengeti</span>
             </h1>
 
-            {/* AI Search Bar */}
-            <div className="max-w-2xl mx-auto mb-12 relative group">
+            <div className="max-w-xl mx-auto mb-10 relative group">
               <div className="absolute inset-0 bg-white/5 backdrop-blur-2xl rounded-2xl -m-1 opacity-0 group-focus-within:opacity-100 transition-opacity" />
-              <div className="relative flex items-center bg-white rounded-2xl shadow-2xl overflow-hidden h-16 md:h-20">
-                <div className="pl-6 md:pl-8 text-primary shrink-0">
-                  <Search className="w-6 h-6" />
+              <div className="relative flex items-center bg-white rounded-2xl shadow-2xl overflow-hidden h-14 md:h-16">
+                <div className="pl-5 md:pl-6 text-primary shrink-0">
+                  <Search className="w-5 h-5" />
                 </div>
                 <Input 
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Where would you like to go today?"
-                  className="h-full border-none bg-transparent text-secondary font-bold placeholder:text-muted-foreground/50 text-base md:text-lg focus-visible:ring-0"
+                  placeholder="Wohin soll die Reise gehen?"
+                  className="h-full border-none bg-transparent text-secondary font-bold placeholder:text-muted-foreground/50 text-sm md:text-base focus-visible:ring-0"
                 />
-                <Link href="/itinerary-builder" className="pr-2 md:pr-4">
-                  <Button className="h-12 md:h-14 rounded-xl px-6 gap-2 hidden sm:flex">
-                    <Sparkles className="w-4 h-4" /> AI Builder
+                <Link href="/itinerary-builder" className="pr-2">
+                  <Button className="h-10 md:h-12 rounded-xl px-4 gap-2 hidden sm:flex text-[10px]">
+                    AI Planer
                   </Button>
                 </Link>
               </div>
-              <div className="flex justify-center gap-4 mt-4">
-                {['Migration', 'Big Five', 'Zanzibar Shores'].map(tag => (
-                  <button key={tag} onClick={() => setSearchQuery(tag)} className="text-[9px] font-bold uppercase tracking-widest text-white/60 hover:text-primary transition-colors">
+              <div className="flex justify-center gap-3 mt-3">
+                {['Migration', 'Big Five', 'Sansibar'].map(tag => (
+                  <button key={tag} onClick={() => setSearchQuery(tag)} className="text-[8px] font-bold uppercase tracking-widest text-white/60 hover:text-primary transition-colors">
                     # {tag}
                   </button>
                 ))}
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link href="/safaris">
-                <Button size="lg" className="w-full sm:w-auto rounded-full px-12 h-16 text-xs font-bold shadow-2xl transition-all hover:scale-105 active:scale-95">
-                  Explore Catalog
+                <Button size="lg" className="w-full sm:w-auto rounded-full px-10 h-14 text-[10px] font-bold shadow-xl transition-all hover:scale-105">
+                  Katalog ansehen
                 </Button>
               </Link>
-              <Link href="/itinerary-builder">
+              <Link href="/trip-advisor">
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="w-full sm:w-auto rounded-full px-12 h-16 text-xs font-bold border-white/20 text-white hover:bg-white/10 backdrop-blur-md transition-all bg-black/20 uppercase tracking-widest"
+                  className="w-full sm:w-auto rounded-full px-10 h-14 text-[10px] font-bold border-white/20 text-white hover:bg-white/10 backdrop-blur-md transition-all bg-black/20 uppercase tracking-widest"
                 >
-                  <MessageSquare className="w-4 h-4 mr-2" /> Start AI Consult
+                  <MessageSquare className="w-4 h-4 mr-2" /> AI Beratung
                 </Button>
               </Link>
             </div>
           </motion.div>
         </div>
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-white/40 z-20">
-          <span className="text-[10px] uppercase tracking-[0.3em] font-bold">Scroll to Discover</span>
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-white/40 z-20">
+          <span className="text-[8px] uppercase tracking-[0.3em] font-bold">Entdecken</span>
           <motion.div 
-            animate={{ y: [0, 8, 0] }}
+            animate={{ y: [0, 6, 0] }}
             transition={{ repeat: Infinity, duration: 2 }}
-            className="w-px h-12 bg-gradient-to-b from-white/40 to-transparent" 
+            className="w-px h-8 bg-gradient-to-b from-white/40 to-transparent" 
           />
         </div>
       </section>
 
-      <section className="py-12 bg-white border-y border-border/50">
+      <section className="py-10 bg-white border-y border-border/50">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 items-center">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 items-center">
             {[
-              { icon: ShieldCheck, label: "AI-Powered Safety" },
-              { icon: Heart, label: "Sustainable Trails" },
-              { icon: Map, label: "Private Specialists" },
-              { icon: Clock, label: "24/7 Digital Concierge" }
+              { icon: ShieldCheck, label: "Sicher Reisen" },
+              { icon: Heart, label: "Nachhaltige Touren" },
+              { icon: Map, label: "Private Guides" },
+              { icon: Clock, label: "24/7 Service" }
             ].map((item, idx) => (
-              <div key={idx} className="flex flex-col items-center gap-3 group">
-                <div className="w-10 h-10 rounded-2xl bg-muted flex items-center justify-center group-hover:bg-primary/10 transition-colors">
-                  <item.icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+              <div key={idx} className="flex flex-col items-center gap-2.5 group">
+                <div className="w-9 h-9 rounded-xl bg-muted flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                  <item.icon className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
                 </div>
-                <span className="text-[10px] font-bold tracking-wider text-muted-foreground uppercase text-center">{item.label}</span>
+                <span className="text-[9px] font-bold tracking-wider text-muted-foreground uppercase text-center">{item.label}</span>
               </div>
             ))}
           </div>
@@ -177,9 +176,9 @@ export default function Home() {
                 src={highlights[tanzaniaIndex].img} 
                 alt="Background" 
                 fill 
-                className="object-cover opacity-10 blur-sm scale-110"
+                className="object-cover opacity-5 blur-sm scale-110"
               />
-              <div className="absolute inset-0 bg-background/80" />
+              <div className="absolute inset-0 bg-background/90" />
             </motion.div>
           </AnimatePresence>
         </div>
@@ -187,10 +186,10 @@ export default function Home() {
           <Carousel setApi={setTanzaniaApi} opts={{ align: "start", loop: true }} className="w-full">
             <div className="flex flex-col lg:flex-row justify-between items-end mb-12 gap-6">
               <div className="max-w-2xl">
-                <span className="text-primary font-bold uppercase tracking-widest text-sm mb-2 block">Premium Destinations</span>
-                <h2 className="font-headline text-4xl md:text-6xl font-bold mb-4 leading-tight text-foreground uppercase">Where Wilderness Meets <br/>Timeless Luxury</h2>
+                <span className="text-primary font-bold uppercase tracking-widest text-xs mb-2 block">Exklusive Reiseziele</span>
+                <h2 className="font-headline text-3xl md:text-5xl font-bold mb-4 leading-tight text-foreground uppercase">Das Beste von Tansania</h2>
               </div>
-              <div className="flex gap-4">
+              <div className="flex gap-3">
                 <CarouselPrevious className="static translate-y-0 h-10 w-10 border-secondary/20 hover:bg-secondary hover:text-white transition-all rounded-full" />
                 <CarouselNext className="static translate-y-0 h-10 w-10 border-secondary/20 hover:bg-secondary hover:text-white transition-all rounded-full" />
               </div>
@@ -198,13 +197,13 @@ export default function Home() {
             <CarouselContent className="-ml-6">
               {highlights.map((item, idx) => (
                 <CarouselItem key={idx} className="pl-6 md:basis-1/2 lg:basis-1/2">
-                  <motion.div whileHover={{ y: -5 }} className="relative aspect-[16/11] rounded-[2rem] overflow-hidden group shadow-xl h-full">
+                  <motion.div whileHover={{ y: -5 }} className="relative aspect-[16/10] rounded-[2rem] overflow-hidden group shadow-xl h-full">
                     <Image src={item.img} alt={item.title} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" data-ai-hint={item.hint} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-8 flex flex-col justify-end">
-                      <h3 className="text-white text-3xl font-headline font-bold mb-2 uppercase">{item.title}</h3>
-                      <p className="text-white/70 mb-6 max-w-sm text-sm font-bold leading-relaxed">{item.desc}</p>
+                      <h3 className="text-white text-2xl font-headline font-bold mb-2 uppercase">{item.title}</h3>
+                      <p className="text-white/70 mb-6 max-w-sm text-xs font-bold leading-relaxed">{item.desc}</p>
                       <Link href={item.link}>
-                        <Button className="rounded-full px-6 h-10 font-bold shadow-xl text-xs">Experience Region</Button>
+                        <Button className="rounded-full px-6 h-10 font-bold shadow-xl text-[10px]">Region erleben</Button>
                       </Link>
                     </div>
                   </motion.div>
@@ -213,8 +212,8 @@ export default function Home() {
             </CarouselContent>
             
             <div className="mt-16 flex justify-center">
-              <Link href="/safaris" className="group flex items-center gap-3 text-secondary font-bold text-lg md:text-xl hover:text-primary transition-all">
-                Explore All Regions <ArrowRight className="w-6 h-6 group-hover:translate-x-3 transition-transform" />
+              <Link href="/safaris" className="group flex items-center gap-3 text-secondary font-bold text-sm md:text-base hover:text-primary transition-all">
+                Alle Regionen erkunden <ArrowRight className="w-5 h-5 group-hover:translate-x-3 transition-transform" />
               </Link>
             </div>
           </Carousel>
@@ -249,10 +248,10 @@ function HeroBackgroundSlider({ images }: { images: { src: string, hint: string 
       <AnimatePresence mode="popLayout">
         <motion.div
           key={index}
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 2, ease: "easeInOut" }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.5, ease: "easeInOut" }}
           className="absolute inset-0"
         >
           <Image src={images[index].src} alt="Hero Background" fill className="object-cover" priority data-ai-hint={images[index].hint} />
