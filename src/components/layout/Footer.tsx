@@ -31,7 +31,7 @@ export function Footer() {
               />
             </Link>
             <p className="text-white/60 leading-relaxed font-light text-xs max-w-xs">
-              Ägyptische Experten für maßgeschneiderte Tansania-Safaris. Wir verbinden den Nil mit der Savanne – mit lokalem Support in Kairo und über 10 Jahren Erfahrung.
+              Tansania Reiseabenteuer SDL. Wir verbinden den Nil mit der Savanne – mit lokalem Support in Berlin und Tansania und über 10 Jahren Erfahrung.
             </p>
             <div className="flex gap-4">
               {[Facebook, Instagram, Twitter].map((Icon, i) => (
@@ -73,26 +73,26 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-primary font-bold text-[10px] uppercase tracking-[0.4em] mb-6 block font-headline">Büro Kairo</h4>
+            <h4 className="text-primary font-bold text-[10px] uppercase tracking-[0.4em] mb-6 block font-headline">Büro Berlin</h4>
             <ul className="flex flex-col gap-4 text-xs">
               <li className="flex items-start gap-3 text-white/60">
                 <MapPin className="w-4 h-4 text-primary shrink-0" />
-                <span className="leading-relaxed text-white">123 Zamalek St,<br />Kairo, Ägypten</span>
+                <span className="leading-relaxed text-white">Bayerischer Pl. 7,<br />10779 Berlin, Germany</span>
               </li>
               <li className="flex items-center gap-3 text-white/60">
                 <Phone className="w-4 h-4 text-primary shrink-0" />
-                <span className="text-white">+20 123 456 7890</span>
+                <span className="text-white">+49 30 22608080</span>
               </li>
               <li className="flex items-center gap-3 text-white/60">
                 <Mail className="w-4 h-4 text-primary shrink-0" />
-                <span className="truncate text-white">concierge@serengetidreams.com</span>
+                <span className="truncate text-white">info@tansania-reiseabenteuer.de</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-white/30 uppercase tracking-[0.2em] font-bold">
-          <p>© {new Date().getFullYear()} Tansania Reiseabenteuer. Afrika anders erleben.</p>
+          <p>© {new Date().getFullYear()} Tansania Reiseabenteuer SDL. Afrika anders erleben.</p>
         </div>
       </div>
     </footer>

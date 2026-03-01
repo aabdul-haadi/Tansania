@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -38,7 +37,7 @@ export default function ImpressumPage() {
               Impressum
             </h1>
             <p className="text-white/60 text-lg font-light max-w-2xl">
-              Rechtliche Informationen und Kontaktdaten von Tansania Reiseabenteuer.
+              Rechtliche Informationen und Kontaktdaten von Tansania Reiseabenteuer SDL.
             </p>
           </motion.div>
         </div>
@@ -74,7 +73,7 @@ export default function ImpressumPage() {
                         <MapPin className="w-3 h-3 text-primary" /> Sitz der Gesellschaft
                       </p>
                       <p className="text-muted-foreground font-light leading-relaxed">
-                        Bayerischer Platz 7, 10779 Berlin
+                        Bayerischer Platz 7, 10779 Berlin, Germany
                       </p>
                     </div>
                   </div>
@@ -93,8 +92,8 @@ export default function ImpressumPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="space-y-1">
                       <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Telefon</p>
-                      <a href="tel:+03022608080" className="font-bold text-secondary hover:text-primary transition-colors text-lg">
-                        +030 22608080
+                      <a href="tel:+493022608080" className="font-bold text-secondary hover:text-primary transition-colors text-lg">
+                        +49 30 22608080
                       </a>
                     </div>
                     <div className="space-y-1">

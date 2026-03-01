@@ -166,7 +166,7 @@ export default function PackageDetailPage() {
                   <div className="space-y-4">
                     <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] block">Das Erlebnis</span>
                     <h2 className="font-headline text-3xl md:text-5xl font-bold text-secondary leading-tight">
-                      15 Tage Pauschalreise Tansania - <br /><span className="text-primary italic">Safari & Sansibar</span>
+                      15 Tage Pauschalreise Tansania - <br /><span className="text-primary italic">Safari im Norden und Badeurlaub auf Sansibar</span>
                     </h2>
                   </div>
                   <div className="text-muted-foreground text-lg md:text-xl font-light leading-relaxed italic border-l-4 border-primary/20 pl-8 py-2">
@@ -259,9 +259,9 @@ export default function PackageDetailPage() {
                             )}
                           </div>
                           <h4 className="font-headline text-2xl md:text-3xl font-bold text-secondary leading-tight group-hover:text-primary transition-colors">{day.title}</h4>
-                          <p className="text-muted-foreground font-light leading-relaxed text-sm md:text-base whitespace-pre-wrap">
+                          <div className="text-muted-foreground font-light leading-relaxed text-sm md:text-base whitespace-pre-wrap">
                             {day.desc}
-                          </p>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -305,7 +305,7 @@ export default function PackageDetailPage() {
                   <div className="text-center">
                     <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block">Expedition Value</span>
                     <div className="flex items-baseline justify-center gap-2">
-                      <span className="text-6xl font-bold font-headline text-white">€{pkg.startingPrice?.toLocaleString()}</span>
+                      <h2 className="text-6xl font-bold font-headline text-white">€{pkg.startingPrice?.toLocaleString()}</h2>
                       <span className="text-white/40 text-sm">/ pp</span>
                     </div>
                     <p className="text-white/40 text-[9px] uppercase font-bold tracking-[0.2em] mt-4">Inklusive Intl. Flug & Vollpension</p>
@@ -347,17 +347,17 @@ export default function PackageDetailPage() {
                 </div>
                 <div>
                   <h4 className="font-bold text-secondary uppercase tracking-widest text-[9px] mb-2">Persönliche Beratung</h4>
-                  <p className="font-headline text-2xl font-bold text-secondary">Samson Kyashama</p>
-                  <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-widest">Direktkontakt Kairo Hub</p>
+                  <h3 className="font-headline text-2xl font-bold text-secondary">Samson Kyashama</h3>
+                  <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-widest">Direktkontakt Büro Berlin</p>
                 </div>
                 <div className="space-y-3">
                   <a href="tel:+493022608080" className="flex items-center justify-between p-4 bg-muted/30 rounded-2xl text-xs font-bold hover:bg-primary hover:text-white transition-all group text-secondary">
                     <span className="opacity-60 group-hover:opacity-100">Telefon</span>
-                    <span className="group-hover:text-white transition-colors">+49 30 22608080</span>
+                    <span className="group-hover:text-white transition-colors text-secondary group-hover:text-white">+49 30 22608080</span>
                   </a>
                   <a href="mailto:info@tansania-reiseabenteuer.de" className="flex items-center justify-between p-4 bg-muted/30 rounded-2xl text-xs font-bold hover:bg-primary hover:text-white transition-all group text-secondary">
                     <span className="opacity-60 group-hover:opacity-100">E-Mail</span>
-                    <span className="truncate max-w-[140px] group-hover:text-white transition-colors">info@tansania...</span>
+                    <span className="truncate max-w-[140px] group-hover:text-white transition-colors text-secondary group-hover:text-white">info@tansania...</span>
                   </a>
                 </div>
               </div>

@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -28,7 +27,7 @@ export function MeetTheSpecialists() {
                 <span className="text-primary italic">We’re Here to Help</span>
               </h2>
               <p className="text-muted-foreground text-xs md:text-sm font-light leading-relaxed max-w-xl">
-                Whether you're dreaming of an exclusive safari or a relaxing beach holiday, our specialists craft every experience with meticulous attention to detail.
+                Tansania Reiseabenteuer SDL. Ob Sie von einer exklusiven Safari oder einem entspannten Strandurlaub träumen, unsere Spezialisten planen jedes Erlebnis mit viel Liebe zum Detail.
               </p>
             </div>
 
@@ -38,7 +37,7 @@ export function MeetTheSpecialists() {
                   <Mail className="w-3.5 h-3.5" />
                   <span className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground">E-mail</span>
                 </div>
-                <a href="mailto:info@tansania-reiseabenteuer.de" className="font-bold text-xs hover:text-primary transition-colors truncate">info@tansania...</a>
+                <a href="mailto:info@tansania-reiseabenteuer.de" className="font-bold text-xs hover:text-primary transition-colors truncate">info@tansania-reiseabenteuer.de</a>
               </div>
 
               <div className="flex flex-col gap-1.5">
@@ -52,16 +51,16 @@ export function MeetTheSpecialists() {
               <div className="flex flex-col gap-1.5">
                 <div className="flex items-center gap-2 text-primary">
                   <Clock className="w-3.5 h-3.5" />
-                  <span className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Hours</span>
+                  <span className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Öffnungszeiten</span>
                 </div>
-                <p className="font-bold text-xs">Mon – Fri: 10:00 – 16:00</p>
+                <p className="font-bold text-xs">Montag – Freitag</p>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
               <Link href="/trip-planner">
                 <Button size="lg" className="rounded-xl md:rounded-2xl px-8 h-12 md:h-14 font-bold shadow-xl group text-xs">
-                  Request a Quote <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  Angebot anfordern <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
               <div className="flex items-center gap-3 p-3 bg-white/50 backdrop-blur rounded-xl border border-white/20">
@@ -69,7 +68,7 @@ export function MeetTheSpecialists() {
                   <MessageSquare className="w-4 h-4" />
                 </div>
                 <p className="text-[10px] text-muted-foreground leading-snug">
-                  Personal. Competent. <br /><strong>Expert advice.</strong>
+                  Persönlich. Kompetent. <br /><strong>Expertenberatung.</strong>
                 </p>
               </div>
             </div>

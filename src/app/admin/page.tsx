@@ -49,6 +49,18 @@ export default function AdminDashboard() {
     if (!firestore || !user) return;
     setLoading(true);
     try {
+      // Seed Site Settings
+      await setDoc(doc(firestore, 'siteSettings', 'global'), {
+        id: 'global',
+        companyName: 'Tansania Reiseabenteuer SDL',
+        officeLocation: 'Bayerischer Pl. 7, 10779 Berlin, Germany',
+        contactEmail: 'info@tansania-reiseabenteuer.de',
+        whatsappNumber: '+49 30 22608080',
+        officeHours: 'Montag – Freitag',
+        updatedAt: new Date().toISOString(),
+        updatedBy: user.uid
+      }, { merge: true });
+
       const allPackages = [
         { 
           id: '15-day-safari-zanzibar', 
@@ -59,7 +71,7 @@ export default function AdminDashboard() {
           tag: 'Meistverkauft', 
           durationDays: 15, 
           startingPrice: 5399, 
-          description: "Diese 15-tägige Pauschalreise vereint Abenteuer und Erholung in perfekter Weise: Nach der Landung am Kilimanjaro International Airport werden Sie herzlich empfangen und fahren nach Arusha, wo Sie das wahre Tansania in Ihrem eigenen Tempo erleben können. Die Safari im Norden beginnt im Arusha-Nationalpark, wo Sie beeindruckende Ausblicke auf die Momella-Seen und den Ngurdoto-Krater genießen, gefolgt von einem Besuch in Tarangire, wo Sie Elefantenherden zwischen den mächtigen Baobabs beobachten können.",
+          description: "Diese 15-tägige Pauschalreise vereint Abenteuer und Erholung in perfekter Weise: Nach der Landung am Kilimanjaro International Airport werden Sie herzlich empfangen und fahren nach Arusha, wo Sie das wahre Tansania in Ihrem eigenen Tempo erleben können.",
           highlights: [
             'Atemberaubende Tierbeobachtungen', 
             'Exklusive Lodge & Tented Camp', 
@@ -74,7 +86,7 @@ export default function AdminDashboard() {
               title: 'Ankommen & Eintauchen', 
               location: 'Arusha Region', 
               stats: 'Distanz: 50km | 60 Min', 
-              desc: 'Ihre Traumreise beginnt jetzt! Fliegen Sie mit uns in den schönen tieferen Süden unserer Erdkugel und zwar nach Tanzania. Die Safari ruft... Machen Sie es sich bequem während des Flugs, schliessen Sie gelegentlich Ihre Augen und träumen etwas vor sich hin, was Ihnen so erwarten könnte... schöne Flora & Fauna, schöne und anspruchsvolle Jeepfahrten in den verschiedenen Nationalparks, angenehme und gemütliche Lodges nach einer Safari und Zeit für Entspannung...\n\nNach der Ankunft am Kilimandscharo International Airport werden Sie von unserem Reiseleiter empfangen und mit dem Auto in Ihre Unterkunft gebracht. Dort angekommen, können Sie sich von der Anreise erholen. Je nach Ankunftszeit haben Sie die Möglichkeit, die Stadt mithilfe eines lokalen Reiseleiters zu erkunden.', 
+              desc: 'Ihre Traumreise beginnt jetzt! Fliegen Sie mit uns in den schönen tieferen Süden unserer Erdkugel und zwar nach Tanzania. Die Safari ruft... Machen Sie es sich bequem während des Flugs, schliessen Sie gelegentlich Ihre Augen und träumen etwas vor sich hin, was Ihnen so erwarten könnte... schöne Flora & Fauna, schöne und anspruchsvolle Jeepfahrten in den verschiedenen Nationalparks, angenehme und gemütliche Lodges nach einer Safari und Zeit für Entspannung...', 
               img: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800' 
             },
             { 
@@ -82,7 +94,7 @@ export default function AdminDashboard() {
               title: 'Ankunft in Tanzania', 
               location: 'Arusha City', 
               stats: 'Kultur & Markt', 
-              desc: 'Nach der Ankunft am Kilimandscharo International Airport werden Sie von unserem Reiseleiter empfangen und mit dem Auto in Ihre Unterkunft gebracht. Dort angekommen, können Sie sich von der Anreise erholen. Je nach Ankunftszeit haben Sie die Möglichkeit, die Stadt mithilfe eines lokalen Reiseleiters zu erkunden.\n\nIn der Stadt können Sie das turbulente afrikanische Stadtleben hautnah miterleben. Besuchen Sie Märkte, auf denen Sie frisches Obst und Gemüse, traditionelles Street Food, Kleidung und vieles mehr kaufen oder bestaunen können. Fahren Sie z.B. mit einem Daladala, einem traditionellen Bus, um das tansanische Leben hautnah zu erfahren.', 
+              desc: 'Nach der Ankunft am Kilimandscharo International Airport werden Sie von unserem Reiseleiter empfangen und mit dem Auto in Ihre Unterkunft gebracht. Dort angekommen, können Sie sich von der Anreise erholen. In der Stadt können Sie das turbulente afrikanische Stadtleben hautnah miterleben. Besuchen Sie Märkte, auf denen Sie frisches Obst und Gemüse, traditionelles Street Food, Kleidung und vieles mehr kaufen oder bestaunen können. Fahren Sie z.B. mit einem Daladala, einem traditionellen Bus, um das tansanische Leben hautnah zu erfahren.', 
               img: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=800' 
             },
             { 
@@ -90,7 +102,7 @@ export default function AdminDashboard() {
               title: 'Arusha Nationalpark', 
               location: 'Arusha Region', 
               stats: '400 Vogelarten', 
-              desc: 'Der Arusha Nationalpark belohnt mit einer malerischen Aussicht auf die sieben Momella-Seen und den Ngurdoto Krater. Die Umgebung ist vielfältig und wechselt stetig zwischen Steppen, Dschungel und Hochgebirge. Im Osten des Parks ist ein dichter hoher Wald zu finden, welcher einen optimalen Lebensraum für verschiedenste Affen darstellt. An den Momella Seen besteht die perfekte Möglichkeit, die reiche Vogelwelt, mehr als 400 Arten, zu beobachten. Darunter befinden sich Flamingos, die man in großen Schwärmen antrifft.\n\nSie können gegen Aufpreis neben der Safari im Park auch eine etwa 2-stündige Wanderung zusammen mit einem Ranger unternehmen.', 
+              desc: 'Der Arusha Nationalpark belohnt mit einer malerischen Aussicht auf die sieben Momella-Seen und den Ngurdoto Krater. Die Umgebung ist vielfältig und wechselt stetig zwischen Steppen, Dschungel und Hochgebirge. Im Osten des Parks ist ein dichter hoher Wald zu finden, welcher einen optimalen Lebensraum für verschiedenste Affen darstellt. An den Momella Seen besteht die perfekte Möglichkeit, die reiche Vogelwelt, mehr als 400 Arten, zu beobachten. Darunter befinden sich Flamingos, die man in großen Schwärmen antrifft.', 
               img: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800' 
             },
             { 
@@ -98,7 +110,7 @@ export default function AdminDashboard() {
               title: 'Tarangire Nationalpark', 
               location: 'Babati Rural', 
               stats: 'Land der Giganten', 
-              desc: 'Nach dem Frühstück fahren Sie für eine morgendliche Pirschfahrt in den Tarangire Nationalpark. Der Park erstreckt sich entlang des Tarangire River und wird geprägt durch offene Baumsavannen, Hügel und Felskuppen, Graslandschaften und Affenbrotbäume. Sowohl der Fluss als auch die Sümpfe wirken während der Trockenzeit Tansanias wie ein Magnet für Wildtiere. Eines der Highlights dieses Parks ist die hohe Populationsdichte an Elefanten. Herden von bis zu 300 Elefanten suchen täglich im trockenen Flussbett nach unterirdischen Flüssen, während wandernde Gnus, Zebras, Büffel, Impalas, Gazellen, Kuhantilopen und Elen die schrumpfenden Wasserlöcher bevölkern.\n\nAm frühen Nachmittag werden Sie Ihr Mittagessen bei einem entspannten Picknick mit Blick auf den Tarangire River einnehmen.', 
+              desc: 'Nach dem Frühstück fahren Sie für eine morgendliche Pirschfahrt in den Tarangire Nationalpark. Der Park erstreckt sich entlang des Tarangire River und wird geprägt durch offene Baumsavannen, Hügel und Felskuppen, Graslandschaften und Affenbrotbäume. Eines der Highlights dieses Parks ist die hohe Populationsdichte an Elefanten. Herden von bis zu 300 Elefanten suchen täglich im trockenen Flussbett nach unterirdischen Flüssen, während wandernde Gnus, Zebras, Büffel, Impalas, Gazellen, Kuhantilopen und Elen die schrumpfenden Wasserlöcher bevölkern.', 
               img: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=800' 
             },
             { 
@@ -106,7 +118,7 @@ export default function AdminDashboard() {
               title: 'Maasai Manyatta & Kultur', 
               location: 'Maasai Manyatta', 
               stats: 'Kulturelle Begegnung', 
-              desc: 'Auf dem Weg zum Serengeti Nationalpark durchqueren Sie das Naturschutzgebiet Ngorongoro und machen Ihren ersten Zwischenstopp in einem Massai-Dorf, einem Manyatta. Dort haben Sie die Möglichkeit die Massai, eine ostafrikanische Volksgruppe, näher kennenzulernen und einen Einblick in ihre einzigartigen Bräuche und ihren Alltag zu erhalten. Die Massai erkennen Sie an ihrer traditionellen Kleidung. Sie tragen rote und blaue Laken, die geschickt um den Körper gewickelt werden. Abgerundet wird der traditionelle Look durch bunten, wunderschönen afrikanischen Schmuck.', 
+              desc: 'Auf dem Weg zum Serengeti Nationalpark durchqueren Sie das Naturschutzgebiet Ngorongoro und machen Ihren ersten Zwischenstopp in einem Massai-Dorf, einem Manyatta. Dort haben Sie die Möglichkeit die Massai, eine ostafrikanische Volksgruppe, näher kennenzulernen und einen Einblick in ihre einzigartigen Bräuche und ihren Alltag zu erhalten. Die Massai erkennen Sie an ihrer traditionellen Kleidung. Sie tragen rote und blaue Laken, die geschickt um den Körper gewickelt werden.', 
               img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200' 
             },
             { 
@@ -130,7 +142,7 @@ export default function AdminDashboard() {
               title: 'Inlandsflug nach Sansibar', 
               location: 'Zanzibar Shores', 
               stats: 'Flug: 1h', 
-              desc: 'So, die schönen und abenteuerlichen Safari Tage haben ein Ende und es geht ab in den zweiten Teil Ihrer Traumreise. Sansibar und ihre schönen Strände, klares Wasser, schöne Ecken und freundliche Einheimische sind bereit Sie zu begrüßen! Heute geht es für Sie vom tansanischen Festland auf die berühmte und wunderschöne Insel Sansibar. Ihr Fahrer bringt Sie rechtzeitig zum Flughafen, damit Sie Ihren Flug pünktlich antreten können.', 
+              desc: 'So, die schönen und abenteuerlichen Safari Tage haben ein Ende und es geht ab in den zweiten Teil Ihrer Traumreise. Sansibar und ihre schönen Strände, klares Wasser, schöne Ecken und freundliche Einheimische sind bereit Sie zu begrüßen! Ihr Fahrer bringt Sie rechtzeitig zum Flughafen, damit Sie Ihren Flug pünktlich antreten können.', 
               img: 'https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=800' 
             },
             { 
@@ -146,7 +158,7 @@ export default function AdminDashboard() {
               title: 'Empfehlung: blaue Safari', 
               location: 'Sandbank Tour', 
               stats: 'Schnorcheln', 
-              desc: 'Nach Ihrem ausgiebigen Frühstück am Strand, können Sie heute optional eine Bootstour unternehmen. Sie fahren mit lokal gebauten Schiffen raus und ankern in sicheren, flachen Bereichen, um Schnorcheln zu gehen. Das Mittagessen in Form eines traditionellen Gerichts mit z.B. gegrilltem Fisch, Reis, Linsen und Fischcurry, wird auf einer Sandbank oder auf einer der vielen unbewohnten Inseln der Region serviert.', 
+              desc: 'Nach Ihrem ausgiebigen Frühstück am Strand, können Sie heute optional eine Bootstour unternehmen. Sie fahren mit lokal gebauten Schiffen raus und ankern in sicheren, flachen Bereichen, um Schnorcheln zu gehen. Das Mittagessen in Form eines traditionellen Gerichts mit z.B. gegrilltem Fisch, Reis, Linsen und Fischcurry, wird auf einer Sandbank serviert.', 
               img: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800' 
             },
             { 
@@ -154,7 +166,7 @@ export default function AdminDashboard() {
               title: 'Empfehlung: Gewürztour', 
               location: 'Spice Farm', 
               stats: 'Düfte Afrikas', 
-              desc: 'Optional können Sie heute ins Inselinnere von Sansibar reisen, um sich die duftenden Gewürzplantagen der Insel anzusehen. Sie lernen wie Vanille, Kakao, Pfeffer und viele andere Gewürze und Früchte wachsen und geerntet werden. Die berauschenden Aromen von frischem Kardamom, Zimt, Nelken und Muskat werden ihre Sinne erfreuen und ihren Appetit anregen.', 
+              desc: 'Optional können Sie heute ins Inselinnere von Sansibar reisen, um sich die duftenden Gewürzplantagen der Insel anzusehen. Sie lernen wie Vanille, Kakao, Pfeffer und viele andere Gewürze und Früchte wachsen und geerntet werden. Die berauschenden Aromen von frischem Kardamom, Zimt, Nelken und Muskat werden ihre Sinne erfreuen.', 
               img: 'https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?q=80&w=800' 
             },
             { 
@@ -178,7 +190,7 @@ export default function AdminDashboard() {
               title: 'Abreise & Transfer', 
               location: 'Zanzibar Airport', 
               stats: 'Abschied', 
-              desc: 'Am letzten Tag Ihrer Reise bringen wir Sie nach einem reichhaltigen Frühstück sicher zurück zum Flughafen, von wo aus Sie Ihren Rückflug nach Hause antreten. Genießen Sie noch einmal die Eindrücke Tansanias und lassen Sie sich von unserem Reiseleiter noch einige besondere Geschichten erzählen. We turn wishes into memories!', 
+              desc: 'Am letzten Tag Ihrer Reise bringen wir Sie nach einem reichhaltigen Frühstück sicher zurück zum Flughafen, von wo aus Sie Ihren Rückflug nach Hause antreten. Genießen Sie noch einmal die Eindrücke Tansanias und lassen Sie sich von unserem Reiseleiter noch einige besondere Geschichten erzählen.', 
               img: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800' 
             },
             { 
@@ -186,7 +198,7 @@ export default function AdminDashboard() {
               title: 'Landung in der Heimat', 
               location: 'Home', 
               stats: 'Ende der Reise', 
-              desc: 'Leider ist die Traumreise jetzt eine schöne Erinnerung! Nach dem sicheren Flug, wünschen wir Ihnen einen guten und sicheren Heimweg. Passen Sie auf sich auf und bleiben Sie gesund. Wir würden uns freuen mehr von Ihren Erfahrungen zu hören. Ihr Tansania Reiseabenteuer Team.', 
+              desc: 'Leider ist die Traumreise jetzt eine schöne Erinnerung! Nach dem sicheren Flug, wünschen wir Ihnen einen guten und sicheren Heimweg. Passen Sie auf sich auf und bleiben Sie gesund. Wir würden uns freuen mehr von Ihren Erfahrungen zu hören.', 
               img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200' 
             }
           ]
@@ -208,7 +220,7 @@ export default function AdminDashboard() {
         }, { merge: true });
       }
 
-      toast({ title: "CMS Synchronized", description: "Flagship packages updated with full narrative data." });
+      toast({ title: "CMS Synchronized", description: "Global agency data and flagship packages updated." });
     } catch (error: any) {
       toast({ variant: "destructive", title: "Setup Failed", description: error.message });
     } finally {
@@ -221,7 +233,7 @@ export default function AdminDashboard() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
           <h1 className="text-4xl font-bold tracking-tight text-secondary">Admin Dashboard</h1>
-          <p className="text-muted-foreground mt-2 text-lg">Digital operations for Tansania Reiseabenteuer.</p>
+          <p className="text-muted-foreground mt-2 text-lg">Digital operations for Tansania Reiseabenteuer SDL.</p>
         </div>
         <div className="flex items-center gap-3">
           <Button onClick={handleSeedData} disabled={loading} variant="secondary" className="gap-2 rounded-2xl h-12 px-6">
