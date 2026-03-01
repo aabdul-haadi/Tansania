@@ -110,22 +110,15 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     <div className="flex min-h-screen bg-muted/20">
       <aside className="w-72 bg-background border-r flex flex-col hidden lg:flex shrink-0">
         <div className="p-8 border-b">
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-3">
             <img 
               src="/assets/iconlogo.jpg" 
               alt="Logo" 
               className="h-10 w-auto object-contain rounded-lg" 
-              onError={(e) => {
-                (e.target as HTMLImageElement).style.display = 'none';
-                const parent = (e.target as HTMLImageElement).parentElement;
-                if (parent) {
-                  const text = document.createElement('span');
-                  text.innerText = 'REISEABENTEUER';
-                  text.className = 'font-headline font-bold text-lg text-primary';
-                  parent.appendChild(text);
-                }
-              }}
             />
+            <span className="font-headline font-bold text-lg text-primary tracking-tighter leading-tight">
+              TANSANIA <br /> REISEABENTEUER
+            </span>
           </Link>
           <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold mt-3 ml-1">Staff Portal Hub</p>
         </div>
@@ -168,7 +161,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
       <main className="flex-grow overflow-y-auto">
         <header className="sticky top-0 z-10 bg-background/80 backdrop-blur-md border-b px-8 py-4 flex items-center justify-between lg:hidden">
-           <img src="/assets/iconlogo.jpg" alt="Logo" className="h-8 w-auto rounded-md" />
+           <div className="flex items-center gap-2">
+             <img src="/assets/iconlogo.jpg" alt="Logo" className="h-8 w-auto rounded-md" />
+             <span className="font-headline font-bold text-sm text-primary">REISEABENTEUER</span>
+           </div>
            <button className="p-2 bg-muted rounded-lg" onClick={() => router.push('/admin')}>
              <LayoutDashboard className="w-5 h-5" />
            </button>

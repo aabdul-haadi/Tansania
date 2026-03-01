@@ -49,7 +49,7 @@ export default function AdminDashboard() {
     if (!firestore || !user) return;
     setLoading(true);
     try {
-      // Seed Site Settings with Berlin Office Details
+      // Seed Site Settings with SDL Berlin Office Details
       await setDoc(doc(firestore, 'siteSettings', 'global'), {
         id: 'global',
         companyName: 'Tansania Reiseabenteuer SDL',
@@ -85,7 +85,7 @@ export default function AdminDashboard() {
               day: 1, 
               title: 'Ankommen & Eintauchen', 
               location: 'Arusha Region', 
-              stats: 'Distanz: 50km | 60 Min', 
+              stats: 'Distanz: ca. 50 km | 45-60 Min', 
               desc: 'Ihre Traumreise beginnt jetzt! Fliegen Sie mit uns in den schönen tieferen Süden unserer Erdkugel und zwar nach Tanzania. Die Safari ruft... Machen Sie es sich bequem während des Flugs, schliessen Sie gelegentlich Ihre Augen und träumen etwas vor sich hin, was Ihnen so erwarten könnte... schöne Flora & Fauna, schöne und anspruchsvolle Jeepfahrten in den verschiedenen Nationalparks, angenehme und gemütliche Lodges nach einer Safari und Zeit für Entspannung...', 
               img: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800' 
             },
@@ -102,7 +102,7 @@ export default function AdminDashboard() {
               title: 'Arusha Nationalpark', 
               location: 'Arusha Region', 
               stats: '400 Vogelarten', 
-              desc: 'Der Arusha Nationalpark belohnt mit einer malerischen Aussicht auf die sieben Momella-Seen und den Ngurdoto Krater. Die Umgebung ist vielfältig und wechselt stetig zwischen Steppen, Dschungel und Hochgebirge. Im Osten des Parks ist ein dichter hoher Wald zu finden, welcher einen optimalen Lebensraum für verschiedenste Affen darstellt. An den Momella Seen besteht die perfekte Möglichkeit, die reiche Vogelwelt, mehr als 400 Arten, zu beobachten. Darunter befinden sich Flamingos, die man in großen Schwärmen antrifft. Sie können gegen Aufpreis neben der Safari im Park auch eine etwa 2-stündige Wanderung zusammen mit einem Ranger unternehmen.', 
+              desc: 'Der Arusha Nationalpark belohnt mit einer malerischen Aussicht auf die sieben Momella-Seen und den Ngurdoto Krater. Die Umgebung ist vielfältig und wechselt stetig zwischen Steppen, Dschungel und Hochgebirge. Im Osten des Parks ist ein dichter hoher Wald zu finden, welcher einen optimalen Lebensraum für verschiedenste Affen darstellt. An den Momella Seen besteht die perfekte Möglichkeit, die reiche Vogelwelt, mehr als 400 Arten, zu beobachten. Darunter befinden sich Flamingos, die man in großen Schwärmen antrifft.', 
               img: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800' 
             },
             { 
@@ -115,10 +115,10 @@ export default function AdminDashboard() {
             },
             { 
               day: 5, 
-              title: 'Maasai Manyatta & Kultur', 
-              location: 'Maasai Manyatta', 
+              title: 'Besuch einer tansanischen Schule & Maasai Kultur', 
+              location: 'Ngorongoro Region', 
               stats: 'Kulturelle Begegnung', 
-              desc: 'Auf dem Weg zum Serengeti Nationalpark durchqueren Sie das Naturschutzgebiet Ngorongoro und machen Ihren ersten Zwischenstopp in einem Massai-Dorf, einem Manyatta. Dort haben Sie die Möglichkeit die Massai, eine ostafrikanische Volksgruppe, näher kennenzulernen und einen Einblick in ihre einzigartigen Bräuche und ihren Alltag zu erhalten. Die Massai erkennen Sie an ihrer traditionellen Kleidung. Sie tragen rote und blaue Laken, die geschickt um den Körper gewickelt werden. Abgerundet wird der traditionelle Look durch bunten, wunderschönen afrikanischen Schmuck.', 
+              desc: 'Auf dem Weg zum Serengeti Nationalpark durchqueren Sie das Naturschutzgebiet Ngorongoro und machen Ihren ersten Zwischenstopp in einem Massai-Dorf, einem Manyatta. Dort haben Sie die Möglichkeit die Massai, eine ostafrikanische Volksgruppe, näher kennenzulernen und einen Einblick in ihre einzigartigen Bräuche und ihren Alltag zu erhalten. Die Massai erkennen Sie an ihrer traditionellen Kleidung. Sie tragen rote und blaue Laken, die geschickt um den Körper gewickelt werden.', 
               img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200' 
             },
             { 
@@ -126,7 +126,7 @@ export default function AdminDashboard() {
               title: 'Serengeti Nationalpark', 
               location: 'Serengeti Weiten', 
               stats: 'Große Migration', 
-              desc: 'Freuen Sie sich auf die Erkundung des berühmten Serengeti Nationalparks. Sie haben die Möglichkeit, dieses faszinierende Gebiet und seine wilden Bewohner auf einer Fahrt durch die Weiten der Savanne zu entdecken. Nach dem Frühstück fahren Sie je nach Jahreszeit zu den Orten, an denen sich große Gruppen von Gnus befinden können. Es ist die Migration, für die die Serengeti am berühmtesten ist - über eine Million Gnus und etwa 200.000 Zebras strömen für die kurzen Regenfälle im Oktober und November.', 
+              desc: 'Freuen Sie sich auf die Erkundung des berühmten Serengeti Nationalparks. Sie haben die Möglichkeit, dieses faszinierende Gebiet und seine wilden Bewohner auf einer Fahrt durch die Weiten der Savanne zu entdecken. Über eine Million Gnus und etwa 200.000 Zebras strömen für die kurzen Regenfälle im Oktober und November von den nördlichen Hügeln in die südlichen Ebenen.', 
               img: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=800' 
             },
             { 
@@ -134,7 +134,7 @@ export default function AdminDashboard() {
               title: 'Ngorongoro-Krater', 
               location: 'UNESCO Welterbe', 
               stats: 'Big Five Spot', 
-              desc: 'Nach dem Frühstück werden Sie abgeholt und fahren in das Ngorongoro Naturschutzgebiet, wo Sie eine morgendliche, halbtägige Pirschfahrt unternehmen werden. Sie halten am Ngorongoro-Krater und fahren fast 600 Meter in diesen herrlichen Krater hinab. Der Krater ist eines der am dichtesten besiedelten afrikanischen Wildtiergebiete und beherbergt schätzungsweise 30.000 Tiere, darunter einige der letzten erhaltenen Spitzmaulnashörner Tansanias.', 
+              desc: 'Nach dem Frühstück werden Sie abgeholt und fahren in das Ngorongoro Naturschutzgebiet, wo Sie eine morgendliche, halbtägige Pirschfahrt unternehmen werden. Sie halten am Ngorongoro-Krater und fahren fast 600 Meter in diesen herrlichen Krater hinab. Der Krater ist eines der am dichtesten besiedelten afrikanischen Wildtiergebiete und beherbergt schätzungsweise 30.000 Tiere.', 
               img: 'https://images.unsplash.com/photo-1580502304784-8985b777da59?q=80&w=800' 
             },
             { 
@@ -142,7 +142,7 @@ export default function AdminDashboard() {
               title: 'Inlandsflug nach Sansibar', 
               location: 'Zanzibar Shores', 
               stats: 'Flug: 1h', 
-              desc: 'So, die schönen und abenteuerlichen Safari Tage haben ein Ende und es geht ab in den zweiten Teil Ihrer Traumreise. Sansibar und ihre schönen Strände, klares Wasser, schöne Ecken und freundliche Einheimische sind bereit Sie zu begrüßen! Ihr Fahrer bringt Sie rechtzeitig zum Flughafen, damit Sie Ihren Flug pünktlich antreten können.', 
+              desc: 'So, die schönen und abenteuerlichen Safari Tage haben ein Ende und es geht ab in den zweiten Teil Ihrer Traumreise. Sansibar und ihre schönen Strände, klares Wasser, schöne Ecken und freundliche Einheimische sind bereit Sie zu begrüßen! Ihr Fahrer bringt Sie rechtzeitig zum Flughafen, damit Sie Ihren Flug pünktlich antreten können. Distanz Flughafen ZNZ – Jambiani/Paje: ca. 50 km.', 
               img: 'https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=800' 
             },
             { 
@@ -157,8 +157,8 @@ export default function AdminDashboard() {
               day: 10, 
               title: 'Empfehlung: blaue Safari', 
               location: 'Sandbank Tour', 
-              stats: 'Schnorcheln', 
-              desc: 'Nach Ihrem ausgiebigen Frühstück am Strand, können Sie heute optional eine Bootstour unternehmen. Sie fahren mit lokal gebauten Schiffen raus und ankern in sicheren, flachen Bereichen, um Schnorcheln zu gehen. Das Mittagessen in Form eines traditionellen Gerichts mit z.B. gegrilltem Fisch, Reis, Linsen und Fischcurry, wird auf einer Sandbank serviert.', 
+              stats: 'Boot & Schnorcheln', 
+              desc: 'Nach Ihrem ausgiebigen Frühstück am Strand, können Sie heute optional eine Bootstour unternehmen. Sie fahren mit lokal gebauten Schiffen raus und ankern in sicheren, flachen Bereichen, um Schnorcheln zu gehen. Das Mittagessen wird auf einer Sandbank oder auf einer der vielen unbewohnten Inseln der Region serviert.', 
               img: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800' 
             },
             { 
@@ -166,8 +166,8 @@ export default function AdminDashboard() {
               title: 'Empfehlung: Gewürztour', 
               location: 'Spice Farm', 
               stats: 'Düfte Afrikas', 
-              desc: 'Optional können Sie heute ins Inselinnere von Sansibar reisen, um sich die duftenden Gewürzplantagen der Insel anzusehen. Sie lernen wie Vanille, Kakao, Pfeffer und viele andere Gewürze und Früchte wachsen und geerntet werden. Die berauschenden Aromen von frischem Kardamom, Zimt, Nelken und Muskat werden ihre Sinne erfreuen.', 
-              img: 'https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?q=80&w=800' 
+              desc: 'Optional können Sie heute ins Inselinnere von Sansibar reisen, um sich die duftenden Gewürzplantagen der Insel anzusehen. Sie lernen wie Vanille, Kakao, Pfeffer und viele andere Gewürze und Früchte wachsen und geerntet werden. Die berauschenden Aromen von frischem Kardamom und Zimt werden ihre Sinne erfreuen.', 
+              img: 'https://images.unsplash.com/photo-1590523277543-a92f84c6f01e?q=80&w=800' 
             },
             { 
               day: 12, 
@@ -190,7 +190,7 @@ export default function AdminDashboard() {
               title: 'Abreise & Transfer', 
               location: 'Zanzibar Airport', 
               stats: 'Abschied', 
-              desc: 'Am letzten Tag Ihrer Reise bringen wir Sie nach einem reichhaltigen Frühstück sicher zurück zum Flughafen, von wo aus Sie Ihren Rückflug nach Hause antreten. Genießen Sie noch einmal die Eindrücke Tansanias und lassen Sie sich von unserem Reiseleiter noch einige besondere Geschichten erzählen. Wir hoffen, dass unser Slogan: "We turn wishes into memories", Tatsache ist.', 
+              desc: 'Am letzten Tag Ihrer Reise bringen wir Sie nach einem reichhaltigen Frühstück sicher zurück zum Flughafen, von wo aus Sie Ihren Rückflug nach Hause antreten. Genießen Sie noch einmal die Eindrücke Tansanias und lassen Sie sich von unserem Reiseleiter noch einige besondere Geschichten erzählen.', 
               img: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800' 
             },
             { 
@@ -198,7 +198,7 @@ export default function AdminDashboard() {
               title: 'Landung in der Heimat', 
               location: 'Home', 
               stats: 'Ende der Reise', 
-              desc: 'Leider ist die Traumreise jetzt eine schöne Erinnerung! Nach dem sicheren Flug, wünschen wir Ihnen einen guten und sicheren Heimweg. Passen Sie auf sich auf und bleiben Sie gesund. Wir würden uns freuen mehr von Ihren Erfahrungen zu hören. Ihr Tansania Reiseabenteuer Team.', 
+              desc: 'Leider ist die Traumreise jetzt eine schöne Erinnerung! Nach dem sicheren Flug, wünschen wir Ihnen einen guten und sicheren Heimweg. Passen Sie auf sich auf und bleiben Sie gesund. Ihr Tansania Reiseabenteuer Team.', 
               img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200' 
             }
           ]

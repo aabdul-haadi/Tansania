@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, Clock, MessageSquare, ArrowRight, User } from 'lucide-react';
+import { Mail, Phone, Clock, MessageSquare, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
@@ -18,13 +18,12 @@ export function MeetTheSpecialists() {
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
           
-          {/* Left: Contact Info & Value Prop */}
           <div className="lg:col-span-7 space-y-6">
             <div>
               <span className="text-primary font-bold uppercase tracking-[0.3em] text-[9px] mb-2 block">Human Connection</span>
               <h2 className="font-headline text-3xl md:text-5xl font-bold leading-tight mb-4">
-                We Know Africa — <br />
-                <span className="text-primary italic">We’re Here to Help</span>
+                Wir kennen Afrika — <br />
+                <span className="text-primary italic">Wir sind für Sie da</span>
               </h2>
               <p className="text-muted-foreground text-xs md:text-sm font-light leading-relaxed max-w-xl">
                 Tansania Reiseabenteuer SDL. Ob Sie von einer exklusiven Safari oder einem entspannten Strandurlaub träumen, unsere Spezialisten in Berlin planen jedes Erlebnis mit viel Liebe zum Detail.
@@ -43,7 +42,7 @@ export function MeetTheSpecialists() {
               <div className="flex flex-col gap-1.5">
                 <div className="flex items-center gap-2 text-primary">
                   <Phone className="w-3.5 h-3.5" />
-                  <span className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Phone</span>
+                  <span className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Telefon</span>
                 </div>
                 <a href="tel:+493022608080" className="font-bold text-xs hover:text-primary transition-colors text-secondary">+49 30 22608080</a>
               </div>
@@ -74,11 +73,10 @@ export function MeetTheSpecialists() {
             </div>
           </div>
 
-          {/* Right: Compact Specialist Icons */}
           <div className="lg:col-span-5">
             <div className="grid grid-cols-1 gap-2.5">
               <div className="px-2 mb-1">
-                <h4 className="text-[9px] font-bold uppercase tracking-[0.3em] text-muted-foreground">Your Travel Specialists</h4>
+                <h4 className="text-[9px] font-bold uppercase tracking-[0.3em] text-muted-foreground">Ihre Reisespezialisten</h4>
               </div>
               {specialists.map((specialist, i) => (
                 <motion.div 
@@ -100,9 +98,6 @@ export function MeetTheSpecialists() {
                     <p className="text-[8px] font-bold uppercase tracking-[0.2em] text-primary mb-0.5 leading-none">Travel Specialist</p>
                     <h4 className="text-base font-headline font-bold leading-none text-secondary">{specialist.name}</h4>
                     <p className="text-[9px] text-muted-foreground uppercase font-medium mt-1 leading-none">{specialist.role}</p>
-                  </div>
-                  <div className="w-7 h-7 rounded-full bg-muted flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <ArrowRight className="w-3.5 h-3.5 text-muted-foreground" />
                   </div>
                 </motion.div>
               ))}

@@ -13,22 +13,15 @@ export function Footer() {
       <div className="container relative z-10 mx-auto px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
           <div className="flex flex-col gap-6 lg:col-span-1">
-            <Link href="/" className="block group">
+            <Link href="/" className="flex items-center gap-3 group">
               <img 
                 src="/assets/iconlogo.jpg"
-                alt="Tansania Reiseabenteuer SDL"
+                alt="Tansania Reiseabenteuer Icon"
                 className="h-14 w-auto object-contain transition-transform group-hover:scale-105 rounded-xl brightness-110 shadow-lg"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).style.display = 'none';
-                  const parent = (e.target as HTMLImageElement).parentElement;
-                  if (parent) {
-                    const text = document.createElement('span');
-                    text.innerText = 'TANSANIA REISEABENTEUER SDL';
-                    text.className = 'font-headline font-bold text-xl text-primary tracking-widest';
-                    parent.appendChild(text);
-                  }
-                }}
               />
+              <span className="font-headline font-bold text-lg text-primary tracking-widest uppercase">
+                Tansania <br /> Reiseabenteuer
+              </span>
             </Link>
             <p className="text-white/60 leading-relaxed font-light text-xs max-w-xs">
               Tansania Reiseabenteuer SDL. Wir verbinden den Nil mit der Savanne – mit lokalem Support in Berlin und Tansania und über 10 Jahren Erfahrung.
@@ -81,7 +74,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-primary font-bold text-[10px] uppercase tracking-[0.4em] mb-6 block font-headline">Hauptbüro Berlin</h4>
+            <h4 className="text-primary font-bold text-[10px] uppercase tracking-[0.4em] mb-6 block font-headline text-white">Hauptbüro Berlin</h4>
             <ul className="flex flex-col gap-4 text-xs">
               <li className="flex items-start gap-3 text-white/60">
                 <MapPin className="w-4 h-4 text-primary shrink-0" />
