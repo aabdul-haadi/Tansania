@@ -1,8 +1,9 @@
+
 "use client";
 
 import React from 'react';
 import Link from 'next/link';
-import { Facebook, Instagram, Twitter, Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { Facebook, Instagram, Youtube, Phone, Mail, MapPin, Clock } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -30,11 +31,15 @@ export function Footer() {
               Ihr Experte für exklusive Safari-Erlebnisse und Traumurlaube in Tansania und Sansibar. Wir verbinden den Nil mit der Savanne.
             </p>
             <div className="flex gap-4">
-              {[Facebook, Instagram, Twitter].map((Icon, i) => (
-                <Link key={i} href="#" className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-primary transition-all border border-white/10 group">
-                  <Icon className="w-4 h-4 text-white group-hover:scale-110" />
-                </Link>
-              ))}
+              <Link href="#" className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-[#1877F2] hover:text-white transition-all border border-white/10 group">
+                <Facebook className="w-4 h-4" />
+              </Link>
+              <Link href="#" className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-[#E4405F] hover:text-white transition-all border border-white/10 group">
+                <Instagram className="w-4 h-4" />
+              </Link>
+              <Link href="#" className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-[#FF0000] hover:text-white transition-all border border-white/10 group">
+                <Youtube className="w-4 h-4" />
+              </Link>
             </div>
           </div>
 
@@ -46,7 +51,7 @@ export function Footer() {
               <li><Link href="/destinations" className="text-white/50 hover:text-white transition-colors">Reiseziele</Link></li>
               <li><Link href="/blog" className="text-white/50 hover:text-white transition-colors">Expeditions-Journal</Link></li>
               <li><Link href="/trip-planner" className="text-white/50 hover:text-white transition-colors">Reiseplaner</Link></li>
-              <li><Link href="/trip-advisor" className="text-primary hover:text-primary/80 transition-colors">AI Trip Advisor</Link></li>
+              <li><Link href="/trip-advisor" className="text-primary hover:text-primary/80 transition-colors">AI Advisor</Link></li>
             </ul>
           </div>
 
