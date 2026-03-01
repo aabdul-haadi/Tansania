@@ -69,10 +69,10 @@ export function ExpertiseNarrative() {
             <motion.div 
               animate={{ y: [0, -5, 0] }}
               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-              className="absolute -bottom-4 -left-4 bg-primary text-secondary p-4 md:p-6 rounded-[1.25rem] shadow-xl hidden md:block max-w-[200px]"
+              className="absolute -bottom-4 -left-4 bg-primary p-4 md:p-6 rounded-[1.25rem] shadow-xl hidden md:block max-w-[200px]"
             >
-              <p className="text-[10px] font-bold leading-relaxed mb-3">
-                "Close your eyes and imagine the sun bathing the crater rim in gold."
+              <p className="text-[10px] font-bold leading-relaxed mb-3 text-white">
+                "Schließe deine Augen und stelle dir vor, wie die Sonne den Kraterrand in Gold taucht."
               </p>
               <div className="mt-1 flex items-center gap-2">
                 <div className="w-3 h-px bg-secondary" />

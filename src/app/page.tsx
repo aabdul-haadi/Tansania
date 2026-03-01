@@ -71,15 +71,6 @@ export default function Home() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="max-w-3xl mx-auto text-center"
           >
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="inline-flex items-center gap-3 px-4 py-1.5 mb-6 text-[10px] font-bold uppercase tracking-[0.3em] text-white bg-white/10 backdrop-blur-xl rounded-full border border-white/20 shadow-xl"
-            >
-              <Sparkles className="w-3 h-3 text-primary" /> Premium Tansania Erlebnisse
-            </motion.div>
-            
             <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-[1.1] uppercase tracking-tighter">
               Die Seele der <br />
               <span className="text-primary">Serengeti</span>
