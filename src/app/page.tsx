@@ -4,8 +4,9 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, ShieldCheck, Heart, Map, Clock, Star } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Heart, Map, Clock, Star, Sparkles, Search, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import {
   Carousel,
@@ -30,6 +31,7 @@ import { AfricaVariety } from '@/components/sections/AfricaVariety';
 export default function Home() {
   const [tanzaniaApi, setTanzaniaApi] = useState<CarouselApi>();
   const [tanzaniaIndex, setTanzaniaIndex] = useState(0);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     if (!tanzaniaApi) return;
@@ -68,41 +70,68 @@ export default function Home() {
             transition={{ duration: 1, ease: "easeOut" }}
             className="max-w-4xl mx-auto text-center"
           >
-            <motion.span 
+            <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="inline-flex items-center gap-2 px-5 py-2 mb-6 text-xs font-bold uppercase tracking-[0.2em] text-white bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-xl"
+              className="inline-flex items-center gap-3 px-5 py-2 mb-8 text-[10px] font-bold uppercase tracking-[0.3em] text-white bg-white/10 backdrop-blur-xl rounded-full border border-white/20 shadow-2xl"
             >
-              <Star className="w-3 h-3 fill-primary" /> Premium Tansania Erlebnisse
-            </motion.span>
-            <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-[1.1] uppercase">
-              Die Seele der <br />
+              <Sparkles className="w-3.5 h-3.5 text-primary" /> Welcome to Your Dream Safari
+            </motion.div>
+            
+            <h1 className="font-headline text-5xl md:text-7xl lg:text-9xl font-bold text-white mb-8 leading-[1] uppercase tracking-tighter">
+              The Soul of the <br />
               <span className="text-primary">Serengeti</span>
             </h1>
-            <p className="max-w-2xl mx-auto text-lg md:text-xl text-white/90 mb-10 leading-relaxed font-body font-bold">
-              Ihr exklusives Tor zur Wildnis Afrikas. Wir gestalten Reisen, die Wünsche in unvergessliche Erinnerungen verwandeln.
-            </p>
+
+            {/* AI Search Bar */}
+            <div className="max-w-2xl mx-auto mb-12 relative group">
+              <div className="absolute inset-0 bg-white/5 backdrop-blur-2xl rounded-2xl -m-1 opacity-0 group-focus-within:opacity-100 transition-opacity" />
+              <div className="relative flex items-center bg-white rounded-2xl shadow-2xl overflow-hidden h-16 md:h-20">
+                <div className="pl-6 md:pl-8 text-primary shrink-0">
+                  <Search className="w-6 h-6" />
+                </div>
+                <Input 
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Where would you like to go today?"
+                  className="h-full border-none bg-transparent text-secondary font-bold placeholder:text-muted-foreground/50 text-base md:text-lg focus-visible:ring-0"
+                />
+                <Link href="/itinerary-builder" className="pr-2 md:pr-4">
+                  <Button className="h-12 md:h-14 rounded-xl px-6 gap-2 hidden sm:flex">
+                    <Sparkles className="w-4 h-4" /> AI Builder
+                  </Button>
+                </Link>
+              </div>
+              <div className="flex justify-center gap-4 mt-4">
+                {['Migration', 'Big Five', 'Zanzibar Shores'].map(tag => (
+                  <button key={tag} onClick={() => setSearchQuery(tag)} className="text-[9px] font-bold uppercase tracking-widest text-white/60 hover:text-primary transition-colors">
+                    # {tag}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
               <Link href="/safaris">
-                <Button size="lg" className="w-full sm:w-auto rounded-full px-12 h-16 text-lg font-bold shadow-2xl transition-all hover:scale-105">
-                  Reise beginnen
+                <Button size="lg" className="w-full sm:w-auto rounded-full px-12 h-16 text-xs font-bold shadow-2xl transition-all hover:scale-105 active:scale-95">
+                  Explore Catalog
                 </Button>
               </Link>
-              <Link href="/trip-planner">
+              <Link href="/itinerary-builder">
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="w-full sm:w-auto rounded-full px-12 h-16 text-lg border-white/40 text-white hover:bg-white/10 backdrop-blur-md transition-all bg-black/20"
+                  className="w-full sm:w-auto rounded-full px-12 h-16 text-xs font-bold border-white/20 text-white hover:bg-white/10 backdrop-blur-md transition-all bg-black/20 uppercase tracking-widest"
                 >
-                  Reiseplaner
+                  <MessageSquare className="w-4 h-4 mr-2" /> Start AI Consult
                 </Button>
               </Link>
             </div>
           </motion.div>
         </div>
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-white/40 z-20">
-          <span className="text-[10px] uppercase tracking-[0.3em] font-bold">Mehr entdecken</span>
+          <span className="text-[10px] uppercase tracking-[0.3em] font-bold">Scroll to Discover</span>
           <motion.div 
             animate={{ y: [0, 8, 0] }}
             transition={{ repeat: Infinity, duration: 2 }}
@@ -115,10 +144,10 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 items-center">
             {[
-              { icon: ShieldCheck, label: "Sichere Buchung" },
-              { icon: Heart, label: "Umweltbewusstes Reisen" },
-              { icon: Map, label: "Private Expeditionen" },
-              { icon: Clock, label: "24/7 Vor-Ort Support" }
+              { icon: ShieldCheck, label: "AI-Powered Safety" },
+              { icon: Heart, label: "Sustainable Trails" },
+              { icon: Map, label: "Private Specialists" },
+              { icon: Clock, label: "24/7 Digital Concierge" }
             ].map((item, idx) => (
               <div key={idx} className="flex flex-col items-center gap-3 group">
                 <div className="w-10 h-10 rounded-2xl bg-muted flex items-center justify-center group-hover:bg-primary/10 transition-colors">
@@ -158,8 +187,8 @@ export default function Home() {
           <Carousel setApi={setTanzaniaApi} opts={{ align: "start", loop: true }} className="w-full">
             <div className="flex flex-col lg:flex-row justify-between items-end mb-12 gap-6">
               <div className="max-w-2xl">
-                <span className="text-primary font-bold uppercase tracking-widest text-sm mb-2 block">Das Beste von Tansania</span>
-                <h2 className="font-headline text-4xl md:text-6xl font-bold mb-4 leading-tight text-foreground uppercase">Wo Wildnis auf <br/>zeitlosen Luxus trifft</h2>
+                <span className="text-primary font-bold uppercase tracking-widest text-sm mb-2 block">Premium Destinations</span>
+                <h2 className="font-headline text-4xl md:text-6xl font-bold mb-4 leading-tight text-foreground uppercase">Where Wilderness Meets <br/>Timeless Luxury</h2>
               </div>
               <div className="flex gap-4">
                 <CarouselPrevious className="static translate-y-0 h-10 w-10 border-secondary/20 hover:bg-secondary hover:text-white transition-all rounded-full" />
@@ -175,7 +204,7 @@ export default function Home() {
                       <h3 className="text-white text-3xl font-headline font-bold mb-2 uppercase">{item.title}</h3>
                       <p className="text-white/70 mb-6 max-w-sm text-sm font-bold leading-relaxed">{item.desc}</p>
                       <Link href={item.link}>
-                        <Button className="rounded-full px-6 h-10 font-bold shadow-xl text-xs">Region erleben</Button>
+                        <Button className="rounded-full px-6 h-10 font-bold shadow-xl text-xs">Experience Region</Button>
                       </Link>
                     </div>
                   </motion.div>
@@ -185,7 +214,7 @@ export default function Home() {
             
             <div className="mt-16 flex justify-center">
               <Link href="/safaris" className="group flex items-center gap-3 text-secondary font-bold text-lg md:text-xl hover:text-primary transition-all">
-                Alle Regionen erkunden <ArrowRight className="w-6 h-6 group-hover:translate-x-3 transition-transform" />
+                Explore All Regions <ArrowRight className="w-6 h-6 group-hover:translate-x-3 transition-transform" />
               </Link>
             </div>
           </Carousel>

@@ -4,6 +4,7 @@ import React from 'react';
 import { usePathname } from 'next/navigation';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
+import { AIFloatingAdvisor } from '@/components/ai/AIFloatingAdvisor';
 
 /**
  * A wrapper component that conditionally renders the public Navbar and Footer
@@ -26,6 +27,7 @@ export function ConditionalLayout({ children }: { children: React.ReactNode }) {
       <main className="flex-grow">
         {children}
       </main>
+      <AIFloatingAdvisor />
       <Footer />
     </>
   );
