@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, ShieldCheck, Heart, Map, Clock, Star, Sparkles, Search, MessageSquare } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Heart, Map, Clock, Sparkles, Search, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -55,7 +55,8 @@ export default function Home() {
 
   return (
     <div className="relative">
-      <section className="relative h-[85vh] flex items-center justify-center overflow-hidden">
+      {/* Optimized Compact Hero */}
+      <section className="relative h-[75vh] md:h-[80vh] flex items-center justify-center overflow-hidden">
         <HeroBackgroundSlider 
           images={[
             { src: heroImg?.imageUrl || 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920', hint: "serengeti safari" },
@@ -65,26 +66,26 @@ export default function Home() {
         />
         <div className="container relative z-20 mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="max-w-3xl mx-auto text-center"
+            className="max-w-2xl mx-auto text-center"
           >
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="inline-flex items-center gap-3 px-4 py-1.5 mb-6 text-[9px] font-bold uppercase tracking-[0.3em] text-white bg-white/10 backdrop-blur-xl rounded-full border border-white/20 shadow-xl"
+              className="inline-flex items-center gap-3 px-4 py-1.5 mb-6 text-[10px] font-bold uppercase tracking-[0.3em] text-white bg-white/10 backdrop-blur-xl rounded-full border border-white/20 shadow-xl"
             >
               <Sparkles className="w-3 h-3 text-primary" /> Premium Tansania Erlebnisse
             </motion.div>
             
-            <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-[1.1] uppercase tracking-tighter">
+            <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight uppercase tracking-tighter">
               Die Seele der <br />
               <span className="text-primary">Serengeti</span>
             </h1>
 
-            <div className="max-w-xl mx-auto mb-10 relative group">
+            <div className="max-w-lg mx-auto mb-8 relative group">
               <div className="absolute inset-0 bg-white/5 backdrop-blur-2xl rounded-2xl -m-1 opacity-0 group-focus-within:opacity-100 transition-opacity" />
               <div className="relative flex items-center bg-white rounded-2xl shadow-2xl overflow-hidden h-14 md:h-16">
                 <div className="pl-5 md:pl-6 text-primary shrink-0">
@@ -94,17 +95,17 @@ export default function Home() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Wohin soll die Reise gehen?"
-                  className="h-full border-none bg-transparent text-secondary font-bold placeholder:text-muted-foreground/50 text-sm md:text-base focus-visible:ring-0"
+                  className="h-full border-none bg-transparent text-secondary font-bold placeholder:text-muted-foreground/50 text-sm focus-visible:ring-0"
                 />
                 <Link href="/itinerary-builder" className="pr-2">
-                  <Button className="h-10 md:h-12 rounded-xl px-4 gap-2 hidden sm:flex text-[10px]">
+                  <Button className="h-10 md:h-12 rounded-xl px-4 gap-2 hidden sm:flex text-[9px] font-black uppercase">
                     AI Planer
                   </Button>
                 </Link>
               </div>
               <div className="flex justify-center gap-3 mt-3">
                 {['Migration', 'Big Five', 'Sansibar'].map(tag => (
-                  <button key={tag} onClick={() => setSearchQuery(tag)} className="text-[8px] font-bold uppercase tracking-widest text-white/60 hover:text-primary transition-colors">
+                  <button key={tag} onClick={() => setSearchQuery(tag)} className="text-[9px] font-bold uppercase tracking-widest text-white/70 hover:text-primary transition-colors">
                     # {tag}
                   </button>
                 ))}
@@ -113,7 +114,7 @@ export default function Home() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link href="/safaris">
-                <Button size="lg" className="w-full sm:w-auto rounded-full px-10 h-14 text-[10px] font-bold shadow-xl transition-all hover:scale-105">
+                <Button size="lg" className="w-full sm:w-auto rounded-full px-10 h-14 text-[10px] font-bold shadow-xl transition-all hover:scale-105 uppercase tracking-[0.2em]">
                   Katalog ansehen
                 </Button>
               </Link>
@@ -121,7 +122,7 @@ export default function Home() {
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="w-full sm:w-auto rounded-full px-10 h-14 text-[10px] font-bold border-white/20 text-white hover:bg-white/10 backdrop-blur-md transition-all bg-black/20 uppercase tracking-widest"
+                  className="w-full sm:w-auto rounded-full px-10 h-14 text-[10px] font-bold border-white/20 text-white hover:bg-white/10 backdrop-blur-md transition-all bg-black/20 uppercase tracking-[0.2em]"
                 >
                   <MessageSquare className="w-4 h-4 mr-2" /> AI Beratung
                 </Button>
@@ -129,8 +130,8 @@ export default function Home() {
             </div>
           </motion.div>
         </div>
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-white/40 z-20">
-          <span className="text-[8px] uppercase tracking-[0.3em] font-bold">Entdecken</span>
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-white/40 z-20">
+          <span className="text-[9px] uppercase tracking-[0.3em] font-black">Entdecken</span>
           <motion.div 
             animate={{ y: [0, 6, 0] }}
             transition={{ repeat: Infinity, duration: 2 }}
@@ -139,6 +140,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Trust Badges */}
       <section className="py-10 bg-white border-y border-border/50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 items-center">
@@ -161,6 +163,7 @@ export default function Home() {
 
       <ExpertiseNarrative />
 
+      {/* Best of Tanzania Carousel */}
       <section className="py-20 relative overflow-hidden transition-colors duration-1000">
         <div className="absolute inset-0 z-0">
           <AnimatePresence mode="popLayout">
@@ -197,13 +200,13 @@ export default function Home() {
             <CarouselContent className="-ml-6">
               {highlights.map((item, idx) => (
                 <CarouselItem key={idx} className="pl-6 md:basis-1/2 lg:basis-1/2">
-                  <motion.div whileHover={{ y: -5 }} className="relative aspect-[16/10] rounded-[2rem] overflow-hidden group shadow-xl h-full">
+                  <motion.div whileHover={{ y: -5 }} className="relative aspect-[16/10] rounded-[2rem] overflow-hidden group shadow-xl h-full bg-muted">
                     <Image src={item.img} alt={item.title} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" data-ai-hint={item.hint} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-8 flex flex-col justify-end">
                       <h3 className="text-white text-2xl font-headline font-bold mb-2 uppercase">{item.title}</h3>
-                      <p className="text-white/70 mb-6 max-w-sm text-xs font-bold leading-relaxed">{item.desc}</p>
+                      <p className="text-white/70 mb-6 max-w-sm text-[10px] font-bold leading-relaxed uppercase tracking-wider">{item.desc}</p>
                       <Link href={item.link}>
-                        <Button className="rounded-full px-6 h-10 font-bold shadow-xl text-[10px]">Region erleben</Button>
+                        <Button className="rounded-full px-6 h-10 font-bold shadow-xl text-[9px] uppercase tracking-widest">Region erleben</Button>
                       </Link>
                     </div>
                   </motion.div>
@@ -212,7 +215,7 @@ export default function Home() {
             </CarouselContent>
             
             <div className="mt-16 flex justify-center">
-              <Link href="/safaris" className="group flex items-center gap-3 text-secondary font-bold text-sm md:text-base hover:text-primary transition-all">
+              <Link href="/safaris" className="group flex items-center gap-3 text-secondary font-bold text-sm hover:text-primary transition-all uppercase tracking-widest">
                 Alle Regionen erkunden <ArrowRight className="w-5 h-5 group-hover:translate-x-3 transition-transform" />
               </Link>
             </div>
@@ -257,7 +260,7 @@ function HeroBackgroundSlider({ images }: { images: { src: string, hint: string 
           <Image src={images[index].src} alt="Hero Background" fill className="object-cover" priority data-ai-hint={images[index].hint} />
         </motion.div>
       </AnimatePresence>
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/60 z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/70 z-10" />
     </div>
   );
 }

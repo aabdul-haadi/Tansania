@@ -19,9 +19,7 @@ import {
   Globe,
   Mic,
   ChevronRight,
-  Search,
-  Timer,
-  Info
+  Timer
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -95,7 +93,7 @@ export default function TripAdvisorPage() {
 
   return (
     <div className="min-h-screen bg-[#fdfcfb] pt-20 flex flex-col">
-      {/* Compacted Header - White Background for visibility with Navbar */}
+      {/* Compact Header */}
       <section className="bg-white border-b py-8 md:py-12">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
@@ -110,7 +108,7 @@ export default function TripAdvisorPage() {
               <h1 className="font-headline text-3xl md:text-5xl font-bold text-secondary uppercase leading-none">
                 AI Trip <span className="text-primary">Advisor</span>
               </h1>
-              <p className="text-muted-foreground text-xs font-bold uppercase tracking-widest mt-2">
+              <p className="text-muted-foreground text-[10px] font-black uppercase tracking-widest mt-2">
                 Echtzeit-Planung für Ihr Tansania-Abenteuer
               </p>
             </div>
@@ -232,7 +230,6 @@ export default function TripAdvisorPage() {
 
           {/* Compact Discovery Sidebar */}
           <aside className="lg:col-span-4 space-y-6">
-            {/* Live Stats */}
             <Card className="rounded-[2rem] border-none shadow-lg overflow-hidden">
               <CardContent className="p-6 md:p-8 space-y-6">
                 <div className="flex items-center gap-3">
@@ -240,12 +237,12 @@ export default function TripAdvisorPage() {
                   <h3 className="font-headline text-lg font-bold text-secondary uppercase">Live Bedingungen</h3>
                 </div>
                 <div className="grid grid-cols-2 gap-3">
-                  <div className="p-4 bg-muted/20 rounded-2xl border border-muted/50">
+                  <div className="p-4 bg-muted/20 rounded-2xl border border-muted/50 text-center">
                     <p className="text-[8px] font-black uppercase text-muted-foreground mb-1">Serengeti</p>
                     <p className="font-bold text-base text-secondary">28°C</p>
                     <p className="text-[8px] text-green-600 font-black uppercase mt-1 tracking-widest">Ideal</p>
                   </div>
-                  <div className="p-4 bg-muted/20 rounded-2xl border border-muted/50">
+                  <div className="p-4 bg-muted/20 rounded-2xl border border-muted/50 text-center">
                     <p className="text-[8px] font-black uppercase text-muted-foreground mb-1">Sansibar</p>
                     <p className="font-bold text-base text-secondary">31°C</p>
                     <p className="text-[8px] text-blue-600 font-black uppercase mt-1 tracking-widest">Sonnig</p>
@@ -254,7 +251,6 @@ export default function TripAdvisorPage() {
               </CardContent>
             </Card>
 
-            {/* Expedition Mini-Catalog */}
             <Card className="rounded-[2rem] border-none shadow-lg overflow-hidden">
               <CardContent className="p-6 md:p-8 space-y-6">
                 <div className="flex items-center justify-between">
@@ -289,7 +285,6 @@ export default function TripAdvisorPage() {
               </CardContent>
             </Card>
 
-            {/* Quick Support CTA */}
             <div className="bg-secondary text-white p-8 rounded-[2rem] shadow-xl relative overflow-hidden group">
               <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
               <div className="relative z-10 space-y-4">
@@ -297,7 +292,7 @@ export default function TripAdvisorPage() {
                   <ShieldCheck className="w-5 h-5" />
                   <span className="text-[8px] font-black uppercase tracking-widest text-white/60">Expert Support</span>
                 </div>
-                <h3 className="font-headline text-xl font-bold leading-tight uppercase">Persönliche <br />Beratung</h3>
+                <h3 className="font-headline text-xl font-bold leading-tight uppercase">Persönliche Beratung</h3>
                 <p className="text-white/40 text-[10px] font-bold leading-relaxed uppercase">
                   Unser Team in Berlin hilft Ihnen gerne telefonisch weiter.
                 </p>
@@ -310,7 +305,7 @@ export default function TripAdvisorPage() {
                 </div>
               </div>
             </div>
-          </div>
+          </aside>
         </div>
       </div>
     </div>
