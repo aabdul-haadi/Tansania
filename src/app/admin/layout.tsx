@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useEffect, useState } from 'react';
@@ -91,7 +92,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           </div>
           <div className="space-y-2">
             <h1 className="text-3xl font-bold tracking-tight text-white">Access Required</h1>
-            <p className="text-muted-foreground">Please sign in to manage Tansania Reiseabenteuer SDL operations.</p>
+            <p className="text-muted-foreground">Please sign in to manage Tansania Reiseabenteuer operations.</p>
           </div>
           <div className="pt-6 space-y-3">
             <Button asChild className="w-full rounded-2xl h-12" variant="secondary">
@@ -116,7 +117,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               alt="Logo" 
               className="h-10 w-auto object-contain rounded-lg" 
             />
-            <span className="font-headline font-bold text-lg text-primary tracking-tighter leading-tight">
+            <span className="font-headline font-bold text-lg text-primary tracking-tighter leading-tight uppercase">
               TANSANIA <br /> REISEABENTEUER
             </span>
           </Link>

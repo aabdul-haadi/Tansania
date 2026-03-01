@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -24,7 +25,7 @@ export function CinematicQuote() {
           className="space-y-6"
         >
           <div className="w-8 h-px bg-primary/40 mx-auto" />
-          <h2 className="font-headline text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+          <h2 className="font-headline text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight uppercase">
             “You don’t visit Africa. <br className="hidden md:block" />
             <span className="text-primary">Africa changes you.</span>”
           </h2>

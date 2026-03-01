@@ -1,4 +1,6 @@
 
+"use client";
+
 import React from 'react';
 import Link from 'next/link';
 import { Facebook, Instagram, Twitter, Phone, Mail, MapPin, Clock } from 'lucide-react';
@@ -18,7 +20,7 @@ export function Footer() {
             <Link href="/" className="flex items-center gap-3 group">
               <img 
                 src="/assets/iconlogo.jpg"
-                alt="Tansania Reiseabenteuer Icon"
+                alt="Logo"
                 className="h-12 w-auto object-contain transition-transform group-hover:scale-105 rounded-lg brightness-110 shadow-lg"
               />
               <span className="font-headline font-bold text-xl text-primary tracking-wider uppercase leading-tight">

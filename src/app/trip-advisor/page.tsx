@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useRef, useEffect } from 'react';
@@ -18,7 +19,6 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Badge } from '@/components/ui/badge';
 import { askTripAdvisor } from '@/ai/flows/trip-advisor-flow';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -89,7 +89,7 @@ export default function TripAdvisorPage() {
               </span>
             </div>
           </motion.div>
-          <h1 className="font-headline text-4xl md:text-6xl font-bold mb-4 text-secondary">AI Trip <span className="text-primary">Advisor</span></h1>
+          <h1 className="font-headline text-4xl md:text-6xl font-bold mb-4 text-secondary uppercase">AI Trip <span className="text-primary">Advisor</span></h1>
           <p className="text-muted-foreground text-sm font-light uppercase tracking-[0.2em]">Ihr digitaler Experte für Tansania & Sansibar</p>
         </div>
 
@@ -182,7 +182,7 @@ export default function TripAdvisorPage() {
           <Link href="/trip-planner">
             <div className="p-6 rounded-[2rem] bg-secondary text-white flex items-center justify-between hover:bg-secondary/90 transition-all shadow-xl group">
               <div>
-                <h4 className="font-bold text-lg leading-tight text-white">Konfigurator</h4>
+                <h4 className="font-bold text-lg leading-tight text-white uppercase">Konfigurator</h4>
                 <p className="text-[10px] text-white/40 uppercase tracking-widest font-bold">Maßgeschneiderte Reise planen</p>
               </div>
               <ArrowRight className="w-6 h-6 text-primary group-hover:translate-x-2 transition-transform" />
@@ -191,7 +191,7 @@ export default function TripAdvisorPage() {
           <Link href="/contact">
             <div className="p-6 rounded-[2rem] bg-white border border-border flex items-center justify-between hover:border-primary/30 transition-all shadow-sm group">
               <div>
-                <h4 className="font-bold text-lg leading-tight text-secondary">Experten sprechen</h4>
+                <h4 className="font-bold text-lg leading-tight text-secondary uppercase">Experten sprechen</h4>
                 <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">Direkter Kontakt nach Kairo</p>
               </div>
               <MessageSquare className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />

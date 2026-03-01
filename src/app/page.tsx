@@ -178,7 +178,7 @@ export default function Home() {
                   <motion.div whileHover={{ y: -5 }} className="relative aspect-[16/11] rounded-[2rem] overflow-hidden group shadow-xl h-full">
                     <Image src={item.img} alt={item.title} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" data-ai-hint={item.hint} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-8 flex flex-col justify-end">
-                      <h3 className="text-white text-3xl font-headline font-bold mb-2">{item.title}</h3>
+                      <h3 className="text-white text-3xl font-headline font-bold mb-2 uppercase">{item.title}</h3>
                       <p className="text-white/70 mb-6 max-w-sm text-sm font-light leading-relaxed">{item.desc}</p>
                       <Link href={item.link}>
                         <Button className="rounded-full px-6 h-10 font-bold shadow-xl text-xs">Region erleben</Button>

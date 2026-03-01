@@ -62,14 +62,14 @@ export function Navbar() {
         <Link href="/" className="relative z-50 flex items-center gap-3 transition-transform duration-500 hover:scale-105 active:scale-95 group">
           <img 
             src="/assets/iconlogo.jpg"
-            alt="Tansania Reiseabenteuer Icon"
+            alt="Logo"
             className={cn(
               "h-10 md:h-12 w-auto object-contain transition-all duration-500 rounded-lg shadow-sm",
               !isScrolled && "brightness-110" 
             )}
           />
           <span className={cn(
-            "font-headline font-bold text-lg md:text-xl tracking-wider transition-colors",
+            "font-headline font-bold text-lg md:text-xl tracking-wider transition-colors uppercase",
             isScrolled ? "text-secondary" : "text-white"
           )}>
             Tansania <span className="text-primary">Reiseabenteuer</span>
