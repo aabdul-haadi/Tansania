@@ -36,7 +36,7 @@ export default function FAQPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen">
       {/* Top Header Section - Dark Background to work with transparent navbar */}
-      <section className="bg-[#0a0a0a] pt-32 pb-24 text-center">
+      <section className="bg-[#0a0a0a] pt-32 pb-24 text-center border-none">
         <div className="container mx-auto px-4 max-w-5xl">
           <motion.span 
             initial={{ opacity: 0, y: 10 }}
@@ -51,7 +51,7 @@ export default function FAQPage() {
             transition={{ delay: 0.1 }}
             className="font-headline text-4xl md:text-7xl font-bold mb-6 leading-tight text-white"
           >
-            Fragen & <span className="text-primary italic">Antworten</span>
+            Fragen & <span className="text-primary">Antworten</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}

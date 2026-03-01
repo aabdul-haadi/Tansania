@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useRef, useEffect } from 'react';
@@ -180,7 +179,7 @@ export default function TripAdvisorPage() {
         {/* Footer Links */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <Link href="/trip-planner">
-            <div className="p-6 rounded-[2rem] bg-secondary text-white flex items-center justify-between hover:bg-secondary/90 transition-all shadow-xl group">
+            <div className="p-6 rounded-[2rem] bg-secondary text-white flex items-center justify-between hover:bg-secondary/90 transition-all shadow-xl group border-none">
               <div>
                 <h4 className="font-bold text-lg leading-tight text-white uppercase">Konfigurator</h4>
                 <p className="text-[10px] text-white/40 uppercase tracking-widest font-bold">Maßgeschneiderte Reise planen</p>

@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -160,10 +159,10 @@ export default function Home() {
             <div className="flex flex-col lg:flex-row justify-between items-end mb-12 gap-6">
               <div className="max-w-2xl">
                 <span className="text-primary font-bold uppercase tracking-widest text-sm mb-2 block">Das Beste von Tansania</span>
-                <h2 className="font-headline text-4xl md:text-6xl font-bold mb-4 leading-tight">Wo Wildnis auf <br/>zeitlosen Luxus trifft</h2>
+                <h2 className="font-headline text-4xl md:text-6xl font-bold mb-4 leading-tight text-foreground">Wo Wildnis auf <br/>zeitlosen Luxus trifft</h2>
               </div>
               <div className="flex flex-col items-end gap-4">
-                <Link href="/destinations" className="group flex items-center gap-3 text-secondary font-bold text-lg hover:text-primary transition-colors">
+                <Link href="/safaris" className="group flex items-center gap-3 text-secondary font-bold text-lg hover:text-primary transition-colors">
                   Alle Regionen erkunden <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
                 </Link>
                 <div className="flex gap-4">

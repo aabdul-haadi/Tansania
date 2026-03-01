@@ -32,15 +32,6 @@ import { collection, query, where } from 'firebase/firestore';
 import { PackageCard } from '@/components/packages/PackageCard';
 import { ContactSection } from '@/components/sections/ContactSection';
 
-const zanzibarGallery = [
-  { src: "https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=800", alt: "Sansibar Strand 1", hint: "zanzibar beach" },
-  { src: "https://images.unsplash.com/photo-1683323935247-ac5105bcea4e?q=80&w=800", alt: "Sansibar Strand 2", hint: "zanzibar coast" },
-  { src: "https://images.unsplash.com/photo-1590001158193-79013ac7fa77?q=80&w=800", alt: "Sansibar Strand 3", hint: "stone town" },
-  { src: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800", alt: "Sansibar Strand 4", hint: "dhow cruise" },
-  { src: "https://images.unsplash.com/photo-1577971132997-c10be9372519?q=80&w=800", alt: "Sansibar Strand 5", hint: "safari lodge" },
-  { src: "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800", alt: "Sansibar Strand 6", hint: "serengeti safari" },
-];
-
 export default function SafarisPage() {
   const firestore = useFirestore();
   const pkgQuery = useMemoFirebase(() => {
@@ -78,7 +69,7 @@ export default function SafarisPage() {
             </Badge>
             <h1 className="font-headline text-4xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight drop-shadow-2xl">
               Tansania Safari <br />
-              <span className="text-primary italic">Buchen</span>
+              <span className="text-primary">Buchen</span>
             </h1>
             <p className="max-w-3xl mx-auto text-sm md:text-xl text-white/90 font-light leading-relaxed px-4">
               Erlebe das unvergessliche Abenteuer einer Safari in Tansania, wo wilde Natur, beeindruckende Tierbeobachtungen und atemberaubende Landschaften auf dich warten. Tansania Safari buchen ist der erste Schritt, um das Abenteuer deines Lebens zu erleben!
@@ -92,7 +83,7 @@ export default function SafarisPage() {
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div className="max-w-2xl">
             <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] mb-2 block">Expeditions-Katalog</span>
-            <h2 className="font-headline text-3xl md:text-6xl font-bold leading-tight text-secondary">Wählen Sie Ihre <br /><span className="text-primary italic">Afrikanische Odyssee</span></h2>
+            <h2 className="font-headline text-3xl md:text-6xl font-bold leading-tight text-secondary">Wählen Sie Ihre <br /><span className="text-primary">Afrikanische Odyssee</span></h2>
           </div>
           <p className="text-[10px] text-muted-foreground font-light max-w-[200px] border-l-2 border-primary/20 pl-4 lg:mb-2">
             Sorgfältig kuratierte Reisen für jeden Reisetyp – von Familienabenteuern bis zu romantischen Eskapaden.
@@ -111,7 +102,7 @@ export default function SafarisPage() {
       </section>
 
       {/* Deutschsprachig Expertise */}
-      <section className="py-24 bg-secondary text-white relative overflow-hidden">
+      <section className="py-24 bg-secondary text-white relative overflow-hidden border-none">
         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -120,7 +111,7 @@ export default function SafarisPage() {
                 <ShieldCheck className="w-4 h-4" /> Lokale Expertise
               </div>
               <h2 className="font-headline text-3xl md:text-6xl font-bold leading-tight text-white">
-                Tansania Safari <br /><span className="text-primary italic">Deutschsprachig</span>
+                Tansania Safari <br /><span className="text-primary">Deutschsprachig</span>
               </h2>
               <div className="space-y-6 text-white/70 font-light leading-relaxed text-lg">
                 <p>
@@ -148,11 +139,11 @@ export default function SafarisPage() {
       </section>
 
       {/* Video Visual Journal */}
-      <section className="py-24 bg-[#0a0a0a] text-white relative overflow-hidden">
+      <section className="py-24 bg-[#0a0a0a] text-white relative overflow-hidden border-none">
         <div className="container mx-auto px-4 max-w-6xl relative z-10 text-center">
           <div className="mb-16">
             <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] mb-2 block">Visual Journal</span>
-            <h2 className="font-headline text-3xl md:text-6xl font-bold leading-tight">Erlebe die <span className="text-primary italic">Magie Tansanias</span></h2>
+            <h2 className="font-headline text-3xl md:text-6xl font-bold leading-tight text-white">Erlebe die <span className="text-primary">Magie Tansanias</span></h2>
           </div>
           <div className="relative aspect-video w-full max-w-5xl mx-auto rounded-[3.5rem] overflow-hidden shadow-2xl border-8 border-white/5 bg-muted">
             <iframe
@@ -170,7 +161,7 @@ export default function SafarisPage() {
       <section className="py-24 container mx-auto px-4 max-w-6xl">
         <div className="text-center mb-20 space-y-4">
           <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px]">Planungshilfe</span>
-          <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary">Beste <span className="text-primary italic">Reisezeit</span></h2>
+          <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary">Beste <span className="text-primary">Reisezeit</span></h2>
           <p className="text-muted-foreground text-sm uppercase tracking-widest font-bold">Der Schlüssel zum perfekten Safari-Erlebnis.</p>
         </div>
 
@@ -181,7 +172,7 @@ export default function SafarisPage() {
             { t: "Fotografie", d: "Dezember bis März", icon: Camera, desc: "Grüne Landschaften nach Regen und viele Jungtiere bieten perfekte Fotomotive." },
             { t: "Vogelbeobachtungen", d: "November bis April", icon: Bird, desc: "Zugvögel aus aller Welt und Tausende Flamingos bevölkern die Seen." },
             { t: "Ruhige Safari", d: "März bis Mai", icon: Coffee, desc: "Regenzeit bietet üppige Natur und exklusive, ruhige Erlebnisse abseits der Massen." },
-            { t: "Familien-Safari", d: "Juni bis September", icon: Heart, desc: "Mildes Wetter und gute Sichtbarkeit sorgen für unvergessliche Erlebnisse." }
+            { t: "Familien-Safari", d: "Juni bis September", icon: Heart, desc: "Mildes Wetter and gute Sichtbarkeit sorgen für unvergessliche Erlebnisse." }
           ].map((item, idx) => (
             <div key={idx} className="p-10 bg-white rounded-[3rem] shadow-sm border border-border/50 hover:border-primary/20 hover:shadow-xl transition-all group">
               <div className="w-12 h-12 rounded-2xl bg-muted flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
@@ -198,7 +189,7 @@ export default function SafarisPage() {
       {/* FAQ */}
       <section className="py-24 container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-16">
-          <h2 className="font-headline text-3xl md:text-5xl font-bold mb-4 text-secondary">Häufig gestellte <span className="text-primary italic">Fragen</span></h2>
+          <h2 className="font-headline text-3xl md:text-5xl font-bold mb-4 text-secondary">Häufig gestellte <span className="text-primary">Fragen</span></h2>
           <p className="text-muted-foreground uppercase tracking-widest font-bold text-[10px]">Tansania Safari Urlaub – Gut zu wissen</p>
         </div>
 
@@ -210,7 +201,7 @@ export default function SafarisPage() {
             { q: "Wie kann ich günstig buchen?", a: "Frühbucherrabatte und Reisen in der Nebensaison (März-Mai) bieten oft erhebliche Preisvorteile." }
           ].map((faq, i) => (
             <AccordionItem key={i} value={`item-${i}`} className="border-none bg-white rounded-[2rem] px-8 shadow-sm hover:shadow-md transition-all group">
-              <AccordionTrigger className="font-bold text-lg py-6 hover:no-underline hover:text-primary text-left text-secondary">
+              <AccordionTrigger className="font-bold text-lg py-6 hover:no-underline hover:text-primary text-left text-secondary transition-colors">
                 {faq.q}
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base font-light leading-relaxed pb-8">

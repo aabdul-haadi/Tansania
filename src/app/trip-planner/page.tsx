@@ -143,7 +143,7 @@ export default function TripPlanner() {
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-12">
           <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] mb-3 block">Configurator</span>
-          <h1 className="font-headline text-4xl md:text-6xl font-bold mb-4">Design Your <span className="text-primary italic">Expedition</span></h1>
+          <h1 className="font-headline text-4xl md:text-6xl font-bold mb-4">Design Your <span className="text-primary">Expedition</span></h1>
           <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto font-light">Tell us your dreams, and we'll handle the logistics from Cairo to the Savannah.</p>
         </div>
 
@@ -205,7 +205,7 @@ export default function TripPlanner() {
                               "w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all",
                               selectedDestinations.includes(dest.id) ? "bg-primary border-primary text-white" : "border-border"
                             )}>
-                              {selectedDestinations.includes(dest.id) && <CheckCircle2 className="w-3 h-3" />}
+                              {selectedDestinations.includes(dest.id) && <CheckCircle2 className="w-3" />}
                             </div>
                           </div>
                         </div>

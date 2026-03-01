@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from 'react';
@@ -131,12 +130,12 @@ export function ZanzibarEscape() {
                 }}
                 className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-4"
               >
-                <Link href="/safaris?category=zanzibar">
+                <Link href="/safaris">
                   <Button size="lg" className="rounded-full px-10 h-14 font-bold shadow-xl text-xs">
                     Explore Add-Ons
                   </Button>
                 </Link>
-                <Link href="/trip-planner" className="text-xs font-bold flex items-center gap-2 group hover:text-primary transition-colors min-h-[44px]">
+                <Link href="/trip-planner" className="text-xs font-bold flex items-center gap-2 group hover:text-primary transition-colors min-h-[44px] text-foreground">
                   Pair with Safari
                   <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>

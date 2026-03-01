@@ -20,7 +20,7 @@ import { Card, CardContent } from '@/components/ui/card';
 export default function ImpressumPage() {
   return (
     <div className="bg-background min-h-screen">
-      <section className="bg-secondary pt-32 pb-20 relative overflow-hidden">
+      <section className="bg-secondary pt-32 pb-20 relative overflow-hidden border-none">
         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         <div className="container mx-auto px-4 max-w-5xl relative z-10">
           <motion.div
@@ -152,10 +152,10 @@ export default function ImpressumPage() {
 
           <aside className="lg:col-span-4 space-y-8">
             <div className="sticky top-24 space-y-8">
-              <div className="bg-secondary text-white p-10 rounded-[3rem] shadow-2xl relative overflow-hidden">
+              <div className="bg-secondary text-white p-10 rounded-[3rem] shadow-2xl relative overflow-hidden border-none">
                 <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
                 <div className="relative z-10 space-y-6">
-                  <h3 className="font-headline text-3xl font-bold leading-tight text-white">Planen Sie Ihre <span className="text-primary italic">Traumreise</span></h3>
+                  <h3 className="font-headline text-3xl font-bold leading-tight text-white">Planen Sie Ihre <span className="text-primary">Traumreise</span></h3>
                   <p className="text-white/60 text-sm font-light leading-relaxed">
                     Lassen Sie sich von unseren Experten in Berlin zu unvergesslichen Safaris beraten.
                   </p>

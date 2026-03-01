@@ -18,7 +18,7 @@ export function ExpertiseNarrative() {
           >
             <div>
               <span className="text-primary font-bold uppercase tracking-[0.3em] text-[9px] mb-1.5 block">Personal Adventure</span>
-              <h2 className="font-headline text-3xl md:text-5xl font-bold leading-tight mb-3">
+              <h2 className="font-headline text-3xl md:text-5xl font-bold leading-tight mb-3 text-foreground">
                 Start Your Personal <br />
                 <span className="text-primary">African Odyssey</span>
               </h2>
@@ -30,7 +30,7 @@ export function ExpertiseNarrative() {
                 A Tanzanian holiday is a promise to all the senses: the fragrant scent of wild sage, the distant roar of a lion, and the gentle lapping of the Indian Ocean.
               </p>
               <p>
-                At <strong>Tanzania Travel Adventures</strong>, we combine 10 years of local expertise with genuine passion to transform your dreams into the perfect Tanzanian safari.
+                At <strong className="font-bold">Tanzania Travel Adventures</strong>, we combine 10 years of local expertise with genuine passion to transform your dreams into the perfect Tanzanian safari.
               </p>
             </div>
 
@@ -71,12 +71,12 @@ export function ExpertiseNarrative() {
               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
               className="absolute -bottom-4 -left-4 bg-primary text-white p-4 md:p-6 rounded-[1.25rem] shadow-xl hidden md:block max-w-[200px]"
             >
-              <p className="text-[10px] font-light leading-relaxed">
+              <p className="text-[10px] font-medium leading-relaxed">
                 "Close your eyes and imagine the sun bathing the crater rim in gold."
               </p>
               <div className="mt-3 flex items-center gap-2">
                 <div className="w-3 h-px bg-secondary" />
-                <span className="text-[8px] font-bold uppercase tracking-widest text-secondary">Tanzania Experts</span>
+                <span className="text-[8px] font-black uppercase tracking-widest text-secondary">Tanzania Experts</span>
               </div>
             </motion.div>
           </motion.div>

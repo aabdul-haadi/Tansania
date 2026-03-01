@@ -138,7 +138,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Founder Spotlight - Reduced Green */}
+      {/* Founder Spotlight */}
       <section className="py-20 bg-background text-foreground relative overflow-hidden border-y border-border/50">
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">

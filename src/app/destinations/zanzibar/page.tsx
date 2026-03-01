@@ -75,7 +75,7 @@ export default function ZanzibarPage() {
             </Badge>
             <h1 className="font-headline text-4xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight drop-shadow-2xl">
               Erleben Sie das Beste <br />
-              <span className="text-primary italic">aus zwei Welten</span>
+              <span className="text-primary">aus zwei Welten</span>
             </h1>
             <p className="max-w-2xl mx-auto text-sm md:text-xl text-white/90 font-light leading-relaxed px-4">
               Entspannen Sie an Sansibars Traumstränden und entdecken Sie Tansanias spektakuläre Safaris – perfekt kombiniert in unseren maßgeschneiderten Reisepaketen.
@@ -89,7 +89,7 @@ export default function ZanzibarPage() {
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div className="max-w-2xl">
             <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] mb-2 block">Tropische Expeditionen</span>
-            <h2 className="font-headline text-3xl md:text-6xl font-bold leading-tight text-secondary">Unsere Sansibar & <br /><span className="text-primary italic">Safari Abenteuer</span></h2>
+            <h2 className="font-headline text-3xl md:text-6xl font-bold leading-tight text-secondary">Unsere Sansibar & <br /><span className="text-primary">Safari Abenteuer</span></h2>
           </div>
           <p className="text-[10px] text-muted-foreground font-light max-w-[200px] border-l-2 border-primary/20 pl-4 lg:mb-2">
             Entdecken Sie unsere sorgfältig zusammengestellten Reisepakete für Ihren Sansibar Urlaub und Tansania Safari.
@@ -114,7 +114,7 @@ export default function ZanzibarPage() {
       </section>
 
       {/* Why Zanzibar Section */}
-      <section className="py-24 bg-secondary text-white relative overflow-hidden">
+      <section className="py-24 bg-secondary text-white relative overflow-hidden border-none">
         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -123,7 +123,7 @@ export default function ZanzibarPage() {
                 <Sparkles className="w-4 h-4" /> Ein Lebenstraum
               </div>
               <h2 className="font-headline text-3xl md:text-6xl font-bold leading-tight text-white">
-                Warum Sansibar perfekt für <br /><span className="text-primary italic">Ihren Traumurlaub ist?</span>
+                Warum Sansibar perfekt für <br /><span className="text-primary">Ihren Traumurlaub ist?</span>
               </h2>
               <div className="space-y-6 text-white/70 font-light leading-relaxed text-lg">
                 <p>
@@ -157,7 +157,7 @@ export default function ZanzibarPage() {
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-16 space-y-4">
             <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px]">Visual Experience</span>
-            <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary">Sansibar in Bildern: <br /><span className="text-primary italic">Einfach traumhaft!</span></h2>
+            <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary">Sansibar in Bildern: <br /><span className="text-primary">Einfach traumhaft!</span></h2>
             <p className="text-muted-foreground text-sm font-light max-w-2xl mx-auto">Entdecken Sie die vielfältigen Facetten Sansibars in unserer Bildergalerie – von Traumstränden bis zur historischen Stone Town.</p>
           </div>
 
@@ -192,7 +192,7 @@ export default function ZanzibarPage() {
           <div className="lg:col-span-5 lg:sticky lg:top-32 space-y-8">
             <div>
               <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] mb-2 block">Küstenguide</span>
-              <h2 className="font-headline text-3xl md:text-5xl font-bold text-secondary">Welche sind die <span className="text-primary italic">schönsten Strände?</span></h2>
+              <h2 className="font-headline text-3xl md:text-5xl font-bold text-secondary">Welche sind die <span className="text-primary">schönsten Strände?</span></h2>
             </div>
             <p className="text-muted-foreground text-lg font-light leading-relaxed">
               Sansibar bietet einige der schönsten Strände der Welt – feiner, weißer Sand, farbenfrohe Korallenriffe und das kristallklare Wasser des Indischen Ozeans. Lockt mit mehr als 25 einzigartigen Stränden, gesäumt von kleinen Fischerdörfern.
@@ -253,11 +253,11 @@ export default function ZanzibarPage() {
       </section>
 
       {/* Video Cinema Section */}
-      <section className="py-24 bg-[#0a0a0a] text-white relative overflow-hidden">
+      <section className="py-24 bg-[#0a0a0a] text-white relative overflow-hidden border-none">
         <div className="container mx-auto px-4 max-w-6xl relative z-10 text-center">
           <div className="mb-16">
             <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] mb-2 block">Romantik & Abenteuer</span>
-            <h2 className="font-headline text-3xl md:text-6xl font-bold leading-tight">Spüren Sie die <span className="text-primary italic">Magie Afrikas</span></h2>
+            <h2 className="font-headline text-3xl md:text-6xl font-bold leading-tight text-white">Spüren Sie die <span className="text-primary">Magie Afrikas</span></h2>
             <p className="text-white/40 text-lg font-light mt-6 max-w-2xl mx-auto">Ein Abenteuer, das Sie nie vergessen werden: Eine Safari in Tansania kombiniert mit Sansibars Ruhe. Lassen Sie sich inspirieren.</p>
           </div>
           
@@ -282,7 +282,7 @@ export default function ZanzibarPage() {
       <section className="py-24 container mx-auto px-4 max-w-6xl">
         <div className="text-center mb-20 space-y-4">
           <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px]">Wann ist die Reisezeit?</span>
-          <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary">Beste <span className="text-primary italic">Reisezeit Sansibar</span></h2>
+          <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary">Beste <span className="text-primary">Reisezeit Sansibar</span></h2>
           <p className="text-muted-foreground text-sm uppercase tracking-widest font-bold">Wann für Sonne, Strand und Meer?</p>
         </div>
 
@@ -308,12 +308,12 @@ export default function ZanzibarPage() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-24 bg-secondary text-white relative overflow-hidden">
+      <section className="py-24 bg-secondary text-white relative overflow-hidden border-none">
         <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         <div className="container mx-auto px-4 max-w-5xl relative z-10">
           <div className="text-center mb-16 space-y-4">
             <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px]">Gäste Feedback</span>
-            <h2 className="font-headline text-3xl md:text-6xl font-bold text-white">So haben andere <span className="text-primary italic">Sansibar erlebt</span></h2>
+            <h2 className="font-headline text-3xl md:text-6xl font-bold text-white">So haben andere <span className="text-primary">Sansibar erlebt</span></h2>
           </div>
 
           <Carousel opts={{ align: "start", loop: true }} className="w-full">
@@ -330,7 +330,7 @@ export default function ZanzibarPage() {
                       <div className="flex gap-1 text-primary">
                         {[1, 2, 3, 4, 5].map((s) => <Star key={s} className="w-4 h-4 fill-current" />)}
                       </div>
-                      <p className="text-lg md:text-xl font-light italic leading-relaxed text-white/80 italic">"{t.q}"</p>
+                      <p className="text-lg md:text-xl font-light leading-relaxed text-white/80">"{t.q}"</p>
                     </div>
                     <div className="pt-8 border-t border-white/10 mt-8 flex items-center gap-4">
                       <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary">{t.n[0]}</div>
@@ -351,7 +351,7 @@ export default function ZanzibarPage() {
       {/* FAQ */}
       <section className="py-24 container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-16">
-          <h2 className="font-headline text-3xl md:text-5xl font-bold mb-4 text-secondary">Häufig gestellte <span className="text-primary italic">Fragen zu Sansibar</span></h2>
+          <h2 className="font-headline text-3xl md:text-5xl font-bold mb-4 text-secondary">Häufig gestellte <span className="text-primary">Fragen zu Sansibar</span></h2>
           <p className="text-muted-foreground uppercase tracking-widest font-bold text-[10px]">Wissenswertes für Ihren Inselurlaub</p>
         </div>
 
@@ -365,7 +365,7 @@ export default function ZanzibarPage() {
             { q: "Warum mit Tansania Reiseabenteuer buchen?", a: "Wir bieten lokale Expertise, handverlesene Unterkünfte und eine nahtlose Organisation zwischen Safari-Festland und Inselparadies." }
           ].map((faq, i) => (
             <AccordionItem key={i} value={`item-${i}`} className="border-none bg-white rounded-[2rem] px-8 shadow-sm hover:shadow-md transition-all group">
-              <AccordionTrigger className="font-bold text-lg py-6 hover:no-underline hover:text-primary text-left text-secondary">
+              <AccordionTrigger className="font-bold text-lg py-6 hover:no-underline hover:text-primary text-left text-secondary transition-colors">
                 {faq.q}
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-base font-light leading-relaxed pb-8">

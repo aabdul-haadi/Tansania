@@ -124,7 +124,7 @@ export default function PackageDetailPage() {
                </div>
             </div>
 
-            <Button onClick={() => scrollTo('overview')} variant="ghost" className="text-white/60 hover:text-white group gap-2 text-xs font-bold uppercase tracking-widest px-0">
+            <Button onClick={() => scrollTo('overview')} variant="ghost" className="text-white/60 hover:text-white group gap-2 text-xs font-bold uppercase tracking-widest px-0 transition-colors">
               Mehr Erfahren <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
           </motion.div>
@@ -185,7 +185,7 @@ export default function PackageDetailPage() {
                 <div className="md:col-span-5 space-y-6">
                   <Card className="bg-secondary text-white p-10 rounded-[3rem] shadow-2xl overflow-hidden relative border-none">
                     <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-                    <h4 className="font-headline text-2xl font-bold mb-8 relative z-10 text-white">Signature Highlights</h4>
+                    <h4 className="font-headline text-2xl font-bold mb-8 relative z-10 text-white uppercase">Signature Highlights</h4>
                     <div className="space-y-6 relative z-10">
                       {pkg.highlights?.map((h: string, i: number) => (
                         <div key={i} className="flex items-center gap-4 group">
@@ -212,7 +212,7 @@ export default function PackageDetailPage() {
             <section ref={itineraryRef} className="space-y-20">
               <div className="text-center md:text-left space-y-2">
                 <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px]">Expedition Log</span>
-                <h3 className="font-headline text-4xl md:text-7xl font-bold text-secondary">Das <span className="text-primary">Reisetagebuch</span></h3>
+                <h3 className="font-headline text-4xl md:text-7xl font-bold text-secondary uppercase">Das <span className="text-primary">Reisetagebuch</span></h3>
               </div>
 
               <div className="space-y-16 relative">
@@ -265,7 +265,7 @@ export default function PackageDetailPage() {
             <section ref={hotelsRef} className="space-y-16">
               <div className="text-center md:text-left space-y-2">
                 <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px]">Rest & Recharge</span>
-                <h3 className="font-headline text-4xl md:text-7xl font-bold text-secondary">Flagship <span className="text-primary">Residences</span></h3>
+                <h3 className="font-headline text-4xl md:text-7xl font-bold text-secondary uppercase">Flagship <span className="text-primary">Residences</span></h3>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[
@@ -292,7 +292,7 @@ export default function PackageDetailPage() {
             <div className="sticky top-32 space-y-8">
               <Card className="rounded-[3rem] border-none bg-secondary text-white p-10 shadow-2xl overflow-hidden relative">
                 <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-                <div className="relative z-10 space-y-10">
+                <div className="relative z-10 space-y-10 text-white">
                   <div className="text-center">
                     <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block">Expedition Value</span>
                     <div className="flex items-baseline justify-center gap-2">
@@ -343,11 +343,11 @@ export default function PackageDetailPage() {
                 </div>
                 <div className="space-y-3">
                   <a href="tel:+493022608080" className="flex items-center justify-between p-4 bg-muted/30 rounded-2xl text-xs font-bold hover:bg-primary hover:text-white transition-all group text-secondary">
-                    <span className="opacity-60 group-hover:opacity-100">Telefon</span>
+                    <span className="opacity-60 group-hover:opacity-100 transition-colors">Telefon</span>
                     <span className="group-hover:text-white transition-colors text-secondary">+49 30 22608080</span>
                   </a>
                   <a href="mailto:info@tansania-reiseabenteuer.de" className="flex items-center justify-between p-4 bg-muted/30 rounded-2xl text-xs font-bold hover:bg-primary hover:text-white transition-all group text-secondary">
-                    <span className="opacity-60 group-hover:opacity-100">E-Mail</span>
+                    <span className="opacity-60 group-hover:opacity-100 transition-colors">E-Mail</span>
                     <span className="truncate max-w-[140px] group-hover:text-white transition-colors text-secondary">info@tansania-reiseabenteuer.de</span>
                   </a>
                 </div>
