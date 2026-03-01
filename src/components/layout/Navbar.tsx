@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu, X, ChevronRight, Sparkles } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -39,6 +40,10 @@ const secondaryLinks = [
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+
+  // Pages that HAVE a dark/image hero background at the top
+  const isHeroPage = pathname === '/' || pathname === '/about' || pathname?.startsWith('/destinations/') || pathname?.startsWith('/safaris/');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,11 +53,14 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Force dark text/white bg on non-hero pages OR when scrolled
+  const shouldShowFullNav = !isHeroPage || isScrolled;
+
   return (
     <header
       className={cn(
         'fixed top-0 w-full z-50 transition-all duration-500 ease-in-out',
-        isScrolled
+        shouldShowFullNav
           ? 'bg-background/90 backdrop-blur-xl shadow-lg py-3'
           : 'bg-transparent py-6'
       )}
@@ -64,12 +72,12 @@ export function Navbar() {
             alt="Logo"
             className={cn(
               "h-10 md:h-12 w-auto object-contain transition-all duration-500 rounded-lg shadow-sm",
-              !isScrolled && "brightness-110" 
+              !shouldShowFullNav && "brightness-110" 
             )}
           />
           <span className={cn(
             "font-headline font-bold text-lg md:text-xl tracking-wider transition-colors uppercase",
-            isScrolled ? "text-secondary" : "text-white"
+            shouldShowFullNav ? "text-secondary" : "text-white"
           )}>
             Tansania <span className="text-primary">Reiseabenteuer</span>
           </span>
@@ -79,7 +87,7 @@ export function Navbar() {
           <Link href="/trip-advisor" className="hidden lg:block">
             <Button variant="ghost" className={cn(
               "rounded-full gap-2 text-[10px] font-bold uppercase tracking-widest border",
-              isScrolled ? "border-primary/20 text-secondary" : "border-white/20 text-white"
+              shouldShowFullNav ? "border-primary/20 text-secondary" : "border-white/20 text-white"
             )}>
               <Sparkles className="w-3.5 h-3.5 text-primary" /> AI Advisor
             </Button>
@@ -90,7 +98,7 @@ export function Navbar() {
               <button
                 className={cn(
                   "group flex items-center gap-3 p-1.5 pl-5 rounded-full transition-all duration-500 border",
-                  isScrolled 
+                  shouldShowFullNav 
                     ? "bg-background border-border text-foreground hover:border-primary/50" 
                     : "bg-white/10 backdrop-blur-md border-white/20 text-white hover:bg-white/20"
                 )}

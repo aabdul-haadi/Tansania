@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useRef, useEffect } from 'react';
@@ -19,13 +18,18 @@ import {
   ShieldCheck,
   Globe,
   Mic,
-  ChevronRight
+  ChevronRight,
+  Search,
+  Timer
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Badge } from '@/components/ui/badge';
+import { Card, CardContent } from '@/components/ui/card';
 import { askTripAdvisor } from '@/ai/flows/trip-advisor-flow';
+import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
+import { collection, query, where, limit } from 'firebase/firestore';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
@@ -48,6 +52,14 @@ export default function TripAdvisorPage() {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const firestore = useFirestore();
+
+  // Fetch flagship packages for the discovery sidebar
+  const pkgQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
+    return query(collection(firestore, 'packages'), where('isPublished', '==', true), limit(5));
+  }, [firestore]);
+  const { data: packages, isLoading: pkgsLoading } = useCollection(pkgQuery);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -77,6 +89,10 @@ export default function TripAdvisorPage() {
     }
   };
 
+  const selectPackage = (title: string) => {
+    handleSend(`Erzählen Sie mir mehr über: ${title}`);
+  };
+
   return (
     <div className="min-h-screen bg-[#fdfcfb] pt-24 pb-12 flex flex-col">
       {/* Immersive Header */}
@@ -90,7 +106,7 @@ export default function TripAdvisorPage() {
                 animate={{ opacity: 1, x: 0 }}
                 className="inline-flex items-center gap-3 px-4 py-1.5 mb-6 text-[10px] font-bold uppercase tracking-[0.3em] text-primary bg-white/5 rounded-full border border-white/10"
               >
-                <Sparkles className="w-3.5 h-3.5" /> Intelligent Concierge
+                <Sparkles className="w-3.5 h-3.5 text-primary" /> Intelligent Concierge
               </motion.div>
               <motion.h1 
                 initial={{ opacity: 0, y: 20 }}
@@ -156,7 +172,7 @@ export default function TripAdvisorPage() {
                       {m.role === 'user' ? <User className="w-6 h-6" /> : <Compass className="w-6 h-6" />}
                     </div>
                     <div className={cn(
-                      "p-6 md:p-8 rounded-[2.5rem] text-sm md:text-base leading-relaxed font-light shadow-sm",
+                      "p-6 md:p-8 rounded-[2.5rem] text-sm md:text-base leading-relaxed font-bold shadow-sm",
                       m.role === 'user' 
                         ? "bg-primary text-white rounded-tr-none" 
                         : "bg-muted/30 text-secondary rounded-tl-none border border-muted"
@@ -182,12 +198,12 @@ export default function TripAdvisorPage() {
             </ScrollArea>
 
             <div className="p-8 border-t bg-white">
-              <div className="flex flex-wrap gap-2 mb-8">
+              <div className="flex flex-wrap gap-2 mb-8 overflow-x-auto no-scrollbar pb-2">
                 {suggestions.map((s, idx) => (
                   <button
                     key={idx}
                     onClick={() => handleSend(s.text)}
-                    className="px-5 py-2.5 rounded-full bg-muted/30 border border-border hover:border-primary hover:bg-primary/5 transition-all text-[10px] font-bold uppercase tracking-widest flex items-center gap-2 group"
+                    className="px-5 py-2.5 rounded-full bg-muted/30 border border-border hover:border-primary hover:bg-primary/5 transition-all text-[10px] font-bold uppercase tracking-widest flex items-center gap-2 group whitespace-nowrap"
                   >
                     <s.icon className="w-3.5 h-3.5 text-primary group-hover:scale-110 transition-transform" />
                     {s.text}
@@ -202,7 +218,7 @@ export default function TripAdvisorPage() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Fragen Sie nach Routen, Preisen oder Visum..."
-                  className="h-16 pl-8 pr-32 rounded-2xl border-muted bg-[#fdfcfb] shadow-inner focus:ring-primary/20 text-base font-medium"
+                  className="h-16 pl-8 pr-32 rounded-2xl border-muted bg-[#fdfcfb] shadow-inner focus:ring-primary/20 text-base font-bold"
                 />
                 <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-2">
                   <Button type="button" size="icon" variant="ghost" className="w-12 h-12 rounded-xl text-muted-foreground hover:text-primary">
@@ -220,8 +236,9 @@ export default function TripAdvisorPage() {
             </div>
           </div>
 
-          {/* Contextual Sidebar */}
+          {/* Discovery Sidebar */}
           <aside className="lg:col-span-4 space-y-8">
+            {/* Live Intelligence */}
             <div className="bg-white p-8 rounded-[3rem] shadow-xl border border-border/50 space-y-8">
               <div className="flex items-center gap-3">
                 <CloudSun className="w-6 h-6 text-primary" />
@@ -231,38 +248,56 @@ export default function TripAdvisorPage() {
                 <div className="p-4 bg-muted/20 rounded-2xl">
                   <p className="text-[10px] font-bold uppercase text-muted-foreground mb-1">Serengeti</p>
                   <p className="font-bold text-lg">28°C</p>
-                  <p className="text-[9px] text-green-600 font-bold uppercase mt-1">Hauptsaison</p>
+                  <p className="text-[9px] text-green-600 font-bold uppercase mt-1 tracking-widest">Hauptsaison</p>
                 </div>
                 <div className="p-4 bg-muted/20 rounded-2xl">
                   <p className="text-[10px] font-bold uppercase text-muted-foreground mb-1">Sansibar</p>
                   <p className="font-bold text-lg">31°C</p>
-                  <p className="text-[9px] text-blue-600 font-bold uppercase mt-1">Perfektes Wasser</p>
-                </div>
-              </div>
-              <div className="space-y-4 pt-4 border-t">
-                <div className="flex gap-4">
-                  <Zap className="w-5 h-5 text-primary shrink-0" />
-                  <div>
-                    <p className="font-bold text-sm">Migration News</p>
-                    <p className="text-xs text-muted-foreground leading-relaxed">Herden bewegen sich aktuell in Richtung der zentralen Ebenen.</p>
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <ShieldCheck className="w-5 h-5 text-primary shrink-0" />
-                  <div>
-                    <p className="font-bold text-sm">Visa-Check</p>
-                    <p className="text-xs text-muted-foreground leading-relaxed">E-Visa Bearbeitungszeit aktuell ca. 48-72 Stunden.</p>
-                  </div>
+                  <p className="text-[9px] text-blue-600 font-bold uppercase mt-1 tracking-widest">Perfektes Wasser</p>
                 </div>
               </div>
             </div>
 
+            {/* Quick Package Discovery */}
+            <div className="bg-white p-8 rounded-[3rem] shadow-xl border border-border/50 space-y-6">
+              <div className="flex items-center justify-between">
+                <h3 className="font-headline text-xl font-bold text-secondary uppercase">Expeditionen</h3>
+                <Link href="/safaris" className="text-[9px] font-bold uppercase text-primary hover:underline">Alle ansehen</Link>
+              </div>
+              <div className="space-y-4">
+                {pkgsLoading ? (
+                  <div className="py-8 text-center"><Loader2 className="w-6 h-6 animate-spin mx-auto text-primary" /></div>
+                ) : (
+                  packages?.map((pkg) => (
+                    <button 
+                      key={pkg.id} 
+                      onClick={() => selectPackage(pkg.title)}
+                      className="w-full flex items-center gap-4 p-3 rounded-2xl hover:bg-primary/5 border border-transparent hover:border-primary/10 transition-all text-left group"
+                    >
+                      <div className="w-14 h-14 rounded-xl overflow-hidden shrink-0 bg-muted relative">
+                        <img src={pkg.imageUrl || 'https://picsum.photos/seed/pkg/100/100'} alt="" className="w-full h-full object-cover" />
+                      </div>
+                      <div className="flex-grow min-w-0">
+                        <p className="font-bold text-xs text-secondary truncate group-hover:text-primary transition-colors">{pkg.title}</p>
+                        <div className="flex items-center gap-3 mt-1">
+                          <span className="text-[9px] font-bold text-muted-foreground uppercase flex items-center gap-1"><Timer className="w-3 h-3" /> {pkg.durationDays} Tage</span>
+                          <span className="text-[9px] font-bold text-primary uppercase">€{pkg.startingPrice.toLocaleString()}</span>
+                        </div>
+                      </div>
+                      <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-all group-hover:translate-x-1" />
+                    </button>
+                  ))
+                )}
+              </div>
+            </div>
+
+            {/* CTA */}
             <div className="bg-secondary text-white p-10 rounded-[3rem] shadow-2xl relative overflow-hidden">
               <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
               <div className="relative z-10 space-y-6">
                 <h3 className="font-headline text-2xl font-bold leading-tight text-white uppercase">Keine Zeit <br />zu <span className="text-primary">Chatten?</span></h3>
-                <p className="text-white/60 text-sm font-light leading-relaxed">
-                  Nutzen Sie unseren interaktiven Trip Planner für ein maßgeschneidertes Angebot in 2 Minuten.
+                <p className="text-white/60 text-sm font-bold leading-relaxed">
+                  Nutzen Sie unseren Trip Planner für ein maßgeschneidertes Angebot in 2 Minuten.
                 </p>
                 <Link href="/trip-planner" className="block">
                   <Button className="w-full h-14 rounded-xl font-bold bg-primary text-white border-none shadow-xl transition-all group">
@@ -270,17 +305,6 @@ export default function TripAdvisorPage() {
                   </Button>
                 </Link>
               </div>
-            </div>
-
-            <div className="p-8 border-2 border-dashed border-muted rounded-[3rem] text-center space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-muted flex items-center justify-center mx-auto">
-                <MessageSquare className="w-6 h-6 text-muted-foreground" />
-              </div>
-              <h4 className="font-bold text-sm uppercase tracking-widest text-secondary">Echter Experte?</h4>
-              <p className="text-xs text-muted-foreground leading-relaxed">Wünschen Sie ein persönliches Telefonat mit unserem Büro in Kairo oder Berlin?</p>
-              <Link href="/contact" className="inline-flex items-center gap-2 text-[10px] font-bold text-primary uppercase tracking-widest hover:underline">
-                Experten kontaktieren <ChevronRight className="w-3 h-3" />
-              </Link>
             </div>
           </aside>
         </div>

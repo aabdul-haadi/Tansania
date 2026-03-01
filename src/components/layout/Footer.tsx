@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -27,7 +26,7 @@ export function Footer() {
                 Tansania Reiseabenteuer
               </span>
             </Link>
-            <p className="text-white/60 leading-relaxed font-light text-sm max-w-xs">
+            <p className="text-white/60 leading-relaxed font-bold text-sm max-w-xs">
               Ihr Experte für exklusive Safari-Erlebnisse und Traumurlaube in Tansania und Sansibar. Wir verbinden den Nil mit der Savanne.
             </p>
             <div className="flex gap-4">
@@ -73,7 +72,7 @@ export function Footer() {
               <ul className="flex flex-col gap-5 text-sm">
                 <li className="flex items-start gap-4 text-white/70">
                   <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                  <span className="leading-relaxed">Bayerischer Pl. 7,<br />10779 Berlin, Germany</span>
+                  <span className="leading-relaxed font-bold">Bayerischer Pl. 7,<br />10779 Berlin, Germany</span>
                 </li>
                 <li className="flex items-center gap-4 text-white/70">
                   <Phone className="w-5 h-5 text-primary shrink-0" />
@@ -81,7 +80,7 @@ export function Footer() {
                 </li>
                 <li className="flex items-center gap-4 text-white/70">
                   <Mail className="w-5 h-5 text-primary shrink-0" />
-                  <span className="truncate">info@tansania-reiseabenteuer.de</span>
+                  <span className="truncate font-bold">info@tansania-reiseabenteuer.de</span>
                 </li>
               </ul>
             </div>
@@ -98,7 +97,7 @@ export function Footer() {
         </div>
 
         <div className="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-white/20 uppercase tracking-[0.2em] font-bold">
-          <p>© {new Date().getFullYear()} Tansania Reiseabenteuer SDL. Alle Rechte vorbehalten.</p>
+          <p>© {new Date().getFullYear()} Tansania Reiseabenteuer. Alle Rechte vorbehalten.</p>
           <div className="flex gap-6">
             <span>Berlin Headquarters</span>
             <span>Est. 2014</span>
