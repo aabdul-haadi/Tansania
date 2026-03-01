@@ -110,7 +110,7 @@ export default function AdminDashboard() {
               title: 'Tarangire Nationalpark', 
               location: 'Babati Rural', 
               stats: 'Land der Giganten', 
-              desc: 'Nach dem Frühstück fahren Sie für eine morgendliche Pirschfahrt in den Tarangire Nationalpark. Der Park erstreckt sich entlang des Tarangire River und wird geprägt durch offene Baumsavannen, Hügel und Felskuppen, Graslandschaften und Affenbrotbäume. Eines der Highlights dieses Parks ist die hohe Populationsdichte an Elefanten. Herden von bis zu 300 Elefanten suchen täglich im trockenen Flussbett nach unterirdischen Flüssen, während wandernde Gnus, Zebras, Büffel, Impalas, Gazellen, Kuhantilopen und Elen die schrumpfenden Wasserlöcher bevölkern.', 
+              desc: 'Nach dem Frühstück fahren Sie für eine morgendliche Pirschfahrt in den Tarangire Nationalpark. Der Park erstreckt sich entlang des Tarangire River und wird geprägt durch offene Baumsavannen, Hügel und Felskuppen, Graslandschaften und Affenbrotbäume. Eines der Highlights dieses Parks ist die hohe Populationsdichte an Elefanten. Herden von up zu 300 Elefanten suchen täglich im trockenen Flussbett nach unterirdischen Flüssen, während wandernde Gnus, Zebras, Büffel, Impalas, Gazellen, Kuhantilopen und Elen die schrumpfenden Wasserlöcher bevölkern.', 
               img: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=800' 
             },
             { 

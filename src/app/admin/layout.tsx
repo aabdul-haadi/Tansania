@@ -163,7 +163,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <header className="sticky top-0 z-10 bg-background/80 backdrop-blur-md border-b px-8 py-4 flex items-center justify-between lg:hidden">
            <div className="flex items-center gap-2">
              <img src="/assets/iconlogo.jpg" alt="Logo" className="h-8 w-auto rounded-md" />
-             <span className="font-headline font-bold text-sm text-primary">REISEABENTEUER</span>
+             <span className="font-headline font-bold text-sm text-primary uppercase">REISEABENTEUER</span>
            </div>
            <button className="p-2 bg-muted rounded-lg" onClick={() => router.push('/admin')}>
              <LayoutDashboard className="w-5 h-5" />
