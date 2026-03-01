@@ -29,13 +29,6 @@ const reiseziele = [
   { name: 'Äthiopien', href: '/destinations/ethiopia' },
 ];
 
-const reisen2026 = [
-  { name: 'Neujahrsreisen 2026', href: '/safaris?tag=new-year' },
-  { name: 'Sommerreisen 2026', href: '/safaris?tag=summer' },
-  { name: 'Weihnachten 2026', href: '/safaris?tag=christmas' },
-  { name: 'Ostern 2026', href: '/safaris?tag=easter' },
-];
-
 const secondaryLinks = [
   { name: 'AI Advisor', href: '/trip-advisor', highlight: true },
   { name: 'Über uns', href: '/about' },
@@ -68,7 +61,7 @@ export function Navbar() {
         <Link href="/" className="relative z-50 transition-transform duration-500 hover:scale-105 active:scale-95">
           <img 
             src="/assets/iconlogo.jpg"
-            alt="Tansania Reiseabenteuer"
+            alt="Tansania Reiseabenteuer SDL"
             className={cn(
               "h-10 md:h-14 w-auto object-contain transition-all duration-500 rounded-lg shadow-sm",
               !isScrolled && "brightness-110" 
@@ -78,7 +71,7 @@ export function Navbar() {
               const parent = (e.target as HTMLImageElement).parentElement;
               if (parent) {
                 const text = document.createElement('span');
-                text.innerText = 'TANSANIA REISEABENTEUER';
+                text.innerText = 'REISEABENTEUER';
                 text.className = 'font-headline font-bold text-lg text-primary tracking-widest';
                 parent.appendChild(text);
               }

@@ -91,7 +91,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           </div>
           <div className="space-y-2">
             <h1 className="text-3xl font-bold tracking-tight text-white">Access Required</h1>
-            <p className="text-muted-foreground">Please sign in to manage Serengeti Dreams operations.</p>
+            <p className="text-muted-foreground">Please sign in to manage Tansania Reiseabenteuer SDL operations.</p>
           </div>
           <div className="pt-6 space-y-3">
             <Button asChild className="w-full rounded-2xl h-12" variant="secondary">
@@ -120,7 +120,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 const parent = (e.target as HTMLImageElement).parentElement;
                 if (parent) {
                   const text = document.createElement('span');
-                  text.innerText = 'DREAMS';
+                  text.innerText = 'REISEABENTEUER';
                   text.className = 'font-headline font-bold text-lg text-primary';
                   parent.appendChild(text);
                 }
