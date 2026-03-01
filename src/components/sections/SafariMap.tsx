@@ -2,6 +2,7 @@
 
 import React, { useRef } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const destinations = [
   { id: 'cairo', name: 'Kairo', x: 100, y: 40, desc: 'Das Tor zum Nil' },
@@ -12,6 +13,7 @@ const destinations = [
 
 export function SafariMap() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -41,26 +43,18 @@ export function SafariMap() {
           {/* Left: Journey Timeline */}
           <div className="flex-1 min-w-0 z-10">
             <div className="mb-8 md:mb-12">
-              <motion.span 
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-3 block"
-              >
+              <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-3 block">
                 Expeditionslogistik
-              </motion.span>
-              <h2 className="font-headline text-4xl md:text-6xl font-bold leading-tight text-white">
-                Von Kairo in die <span className="text-primary italic">Savanne</span>
+              </span>
+              <h2 className="font-headline text-4xl md:text-6xl font-bold leading-tight text-white uppercase">
+                Von Kairo in die <span className="text-primary">Savanne</span>
               </h2>
             </div>
             
             <div className="space-y-6 md:space-y-10 max-w-md">
               {destinations.map((dest, i) => (
-                <motion.div 
+                <div 
                   key={dest.id}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1, duration: 0.5 }}
                   className="flex items-center gap-5 md:gap-8 group"
                 >
                   <div className="relative shrink-0">
@@ -72,10 +66,10 @@ export function SafariMap() {
                     )}
                   </div>
                   <div className="min-w-0">
-                    <h4 className="font-bold text-xl md:text-2xl text-white group-hover:text-primary transition-colors leading-tight">{dest.name}</h4>
+                    <h4 className="font-bold text-xl md:text-2xl text-white group-hover:text-primary transition-colors leading-tight uppercase">{dest.name}</h4>
                     <p className="text-[10px] md:text-sm text-white/40 font-light uppercase tracking-[0.2em] mt-1">{dest.desc}</p>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -117,14 +111,14 @@ export function SafariMap() {
                 strokeLinejoin="round" 
               />
 
-              {/* Active Animated Path */}
+              {/* Active Animated Path - Static on Mobile */}
               <motion.path 
                 d={journeyPath} 
                 stroke="url(#glowGradient)" 
                 strokeWidth="4" 
                 strokeLinecap="round" 
                 strokeLinejoin="round"
-                style={{ pathLength }} 
+                style={{ pathLength: isMobile ? 1 : pathLength }} 
                 filter="url(#glow)"
               />
 
@@ -132,24 +126,20 @@ export function SafariMap() {
               {destinations.map((dest, i) => (
                 <g key={dest.id}>
                   {/* Main Node */}
-                  <motion.circle 
+                  <circle 
                     cx={dest.x} 
                     cy={dest.y} 
                     r="5" 
                     className="fill-primary"
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
                   />
                   {/* Labels for Tablet/Desktop */}
-                  <motion.text
+                  <text
                     x={dest.x + 12}
                     y={dest.y + 4}
                     className="fill-white/30 text-[7px] font-bold uppercase tracking-[0.2em] hidden md:block pointer-events-none"
                   >
                     {dest.name}
-                  </motion.text>
+                  </text>
                 </g>
               ))}
             </svg>

@@ -22,9 +22,9 @@ export function SafariVideo() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="font-headline text-4xl md:text-5xl font-bold mb-4"
+            className="font-headline text-4xl md:text-5xl font-bold mb-4 uppercase"
           >
-            Experience the <span className="text-primary italic">Wild Unfiltered</span>
+            Experience the <span className="text-primary">Wild Unfiltered</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 10 }}

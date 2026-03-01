@@ -76,7 +76,7 @@ export default function Home() {
             >
               <Star className="w-3 h-3 fill-primary" /> Premium Tansania Erlebnisse
             </motion.span>
-            <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-[1.1]">
+            <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-[1.1] uppercase">
               Die Seele der <br />
               <span className="text-primary">Serengeti</span>
             </h1>
@@ -159,16 +159,11 @@ export default function Home() {
             <div className="flex flex-col lg:flex-row justify-between items-end mb-12 gap-6">
               <div className="max-w-2xl">
                 <span className="text-primary font-bold uppercase tracking-widest text-sm mb-2 block">Das Beste von Tansania</span>
-                <h2 className="font-headline text-4xl md:text-6xl font-bold mb-4 leading-tight text-foreground">Wo Wildnis auf <br/>zeitlosen Luxus trifft</h2>
+                <h2 className="font-headline text-4xl md:text-6xl font-bold mb-4 leading-tight text-foreground uppercase">Wo Wildnis auf <br/>zeitlosen Luxus trifft</h2>
               </div>
-              <div className="flex flex-col items-end gap-4">
-                <Link href="/safaris" className="group flex items-center gap-3 text-secondary font-bold text-lg hover:text-primary transition-colors">
-                  Alle Regionen erkunden <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-                </Link>
-                <div className="flex gap-4">
-                  <CarouselPrevious className="static translate-y-0 h-10 w-10 border-secondary/20 hover:bg-secondary hover:text-white transition-all rounded-full" />
-                  <CarouselNext className="static translate-y-0 h-10 w-10 border-secondary/20 hover:bg-secondary hover:text-white transition-all rounded-full" />
-                </div>
+              <div className="flex gap-4">
+                <CarouselPrevious className="static translate-y-0 h-10 w-10 border-secondary/20 hover:bg-secondary hover:text-white transition-all rounded-full" />
+                <CarouselNext className="static translate-y-0 h-10 w-10 border-secondary/20 hover:bg-secondary hover:text-white transition-all rounded-full" />
               </div>
             </div>
             <CarouselContent className="-ml-6">
@@ -187,6 +182,13 @@ export default function Home() {
                 </CarouselItem>
               ))}
             </CarouselContent>
+            
+            {/* Exploration Link moved to bottom */}
+            <div className="mt-16 flex justify-center">
+              <Link href="/safaris" className="group flex items-center gap-3 text-secondary font-bold text-lg md:text-xl hover:text-primary transition-all">
+                Alle Regionen erkunden <ArrowRight className="w-6 h-6 group-hover:translate-x-3 transition-transform" />
+              </Link>
+            </div>
           </Carousel>
         </div>
       </section>
