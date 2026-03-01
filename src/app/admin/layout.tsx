@@ -91,13 +91,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           </div>
           <div className="space-y-2">
             <h1 className="text-3xl font-bold tracking-tight text-white">Access Required</h1>
-            <p className="text-muted-foreground">Please sign in to manage Tansania Reiseabenteuer operations.</p>
+            <p className="text-muted-foreground font-bold text-sm">Please sign in to manage Tansania Reiseabenteuer operations.</p>
           </div>
           <div className="pt-6 space-y-3">
             <Button asChild className="w-full rounded-2xl h-12" variant="secondary">
               <Link href="/auth/login">Staff Login</Link>
             </Button>
-            <Button asChild variant="ghost" className="w-full rounded-2xl h-12 text-muted-foreground">
+            <Button asChild variant="ghost" className="w-full rounded-2xl h-12 text-muted-foreground font-bold">
               <Link href="/">Return to Site</Link>
             </Button>
           </div>

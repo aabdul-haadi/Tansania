@@ -232,15 +232,15 @@ export default function AdminDashboard() {
     <div className="p-10 max-w-7xl mx-auto space-y-10">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
-          <h1 className="text-4xl font-bold tracking-tight text-secondary">Admin Dashboard</h1>
-          <p className="text-muted-foreground mt-2 text-lg">Digital operations for Tansania Reiseabenteuer SDL.</p>
+          <h1 className="text-4xl font-bold tracking-tight text-secondary uppercase">Admin Dashboard</h1>
+          <p className="text-muted-foreground mt-2 text-lg font-bold">Digital operations for Tansania Reiseabenteuer SDL.</p>
         </div>
         <div className="flex items-center gap-3">
-          <Button onClick={handleSeedData} disabled={loading} variant="secondary" className="gap-2 rounded-2xl h-12 px-6">
+          <Button onClick={handleSeedData} disabled={loading} variant="secondary" className="gap-2 rounded-2xl h-12 px-6 font-bold uppercase tracking-widest">
             {loading ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Sparkles className="w-4 h-4" />}
             Initialize CMS Data
           </Button>
-          <Button asChild variant="outline" className="gap-2 rounded-2xl h-12 px-6">
+          <Button asChild variant="outline" className="gap-2 rounded-2xl h-12 px-6 font-bold uppercase tracking-widest">
             <Link href="/" target="_blank"><Eye className="w-4 h-4" /> View Site</Link>
           </Button>
         </div>

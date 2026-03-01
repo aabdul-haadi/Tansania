@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -54,29 +53,29 @@ export default function InquiriesManagement() {
     <div className="p-10 max-w-7xl mx-auto space-y-10">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-4xl font-bold tracking-tight">Lead Inquiries</h1>
-          <p className="text-muted-foreground mt-2 text-lg">Managing the Nile to Savannah sales pipeline.</p>
+          <h1 className="text-4xl font-bold tracking-tight uppercase">Lead Inquiries</h1>
+          <p className="text-muted-foreground mt-2 text-lg font-bold">Managing the Nile to Savannah sales pipeline.</p>
         </div>
       </div>
 
       <div className="flex items-center gap-4">
         <div className="relative flex-grow max-w-md">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-          <Input placeholder="Search by name or email..." className="pl-12 h-14 rounded-2xl border-none shadow-sm bg-background" />
+          <Input placeholder="Search by name or email..." className="pl-12 h-14 rounded-2xl border-none shadow-sm bg-background font-bold" />
         </div>
-        <Button variant="outline" className="h-14 rounded-2xl px-6 border-none shadow-sm bg-background">Unread Only</Button>
+        <Button variant="outline" className="h-14 rounded-2xl px-6 border-none shadow-sm bg-background font-bold uppercase tracking-widest">Unread Only</Button>
       </div>
 
       <div className="grid grid-cols-1 gap-4">
         {isLoading ? (
           <div className="py-20 text-center text-muted-foreground animate-pulse font-bold text-xs tracking-widest uppercase">Listening for leads...</div>
         ) : !adminRole ? (
-          <div className="py-20 text-center text-muted-foreground">Verifying admin access...</div>
+          <div className="py-20 text-center text-muted-foreground font-bold">Verifying admin access...</div>
         ) : inquiries?.length === 0 ? (
           <Card className="p-24 text-center border-dashed border-2 bg-muted/20 rounded-[3rem]">
             <MessageSquare className="w-16 h-16 mx-auto mb-6 opacity-10" />
-            <h3 className="text-2xl font-bold mb-2">No inquiries yet</h3>
-            <p className="text-muted-foreground mb-8 max-w-xs mx-auto">New leads from the contact form and trip planner will appear here.</p>
+            <h3 className="text-2xl font-bold mb-2 uppercase">No inquiries yet</h3>
+            <p className="text-muted-foreground mb-8 max-w-xs mx-auto font-bold">New leads from the contact form and trip planner will appear here.</p>
           </Card>
         ) : (
           inquiries?.map((inquiry: any) => (
@@ -89,14 +88,14 @@ export default function InquiriesManagement() {
                     </div>
                     <div>
                       <div className="flex items-center gap-3 mb-1">
-                        <h3 className="font-bold text-lg">{inquiry.name}</h3>
+                        <h3 className="font-bold text-lg uppercase">{inquiry.name}</h3>
                         <Badge className={`px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider border-none ${
                           inquiry.type === 'TRIP_PLANNER' ? 'bg-primary/10 text-primary' : 'bg-blue-100 text-blue-700'
                         }`}>
                           {inquiry.type === 'TRIP_PLANNER' ? 'Trip Planner' : 'Contact'}
                         </Badge>
                       </div>
-                      <div className="flex flex-wrap items-center gap-4 text-xs text-muted-foreground font-medium">
+                      <div className="flex flex-wrap items-center gap-4 text-xs text-muted-foreground font-bold uppercase tracking-widest">
                         <span className="flex items-center gap-1.5"><Mail className="w-3.5 h-3.5" /> {inquiry.email}</span>
                         {inquiry.phone && <span className="flex items-center gap-1.5"><Phone className="w-3.5 h-3.5" /> {inquiry.phone}</span>}
                         <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" /> {isMounted ? new Date(inquiry.createdAt).toLocaleDateString() : '...'}</span>
@@ -108,15 +107,15 @@ export default function InquiriesManagement() {
                     <Button variant="ghost" size="icon" className="rounded-xl h-11 w-11 text-destructive hover:bg-destructive/5 opacity-0 group-hover:opacity-100 transition-all" onClick={() => handleDelete(inquiry.id)}>
                       <Trash2 className="w-4 h-4" />
                     </Button>
-                    <Button className="rounded-xl h-11 px-6 gap-2">
+                    <Button className="rounded-xl h-11 px-6 gap-2 font-bold uppercase tracking-widest">
                       Review Lead <ArrowUpRight className="w-4 h-4" />
                     </Button>
                   </div>
                 </div>
 
                 <div className="mt-6 pt-6 border-t border-muted">
-                  <p className="text-sm text-muted-foreground line-clamp-2 italic font-light leading-relaxed">
-                    "{inquiry.message || inquiry.preferences?.message || 'No specific message provided.'}"
+                  <p className="text-sm text-muted-foreground line-clamp-2 font-bold leading-relaxed">
+                    {inquiry.message || inquiry.preferences?.message || 'No specific message provided.'}
                   </p>
                 </div>
               </CardContent>

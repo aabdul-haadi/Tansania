@@ -59,14 +59,14 @@ export default function BlogList() {
     <div className="p-10 max-w-7xl mx-auto space-y-10">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-4xl font-bold tracking-tight">Blog Management</h1>
-          <p className="text-muted-foreground mt-2 text-lg">Curating safari stories and expert travel advice.</p>
+          <h1 className="text-4xl font-bold tracking-tight uppercase">Blog Management</h1>
+          <p className="text-muted-foreground mt-2 text-lg font-bold">Curating safari stories and expert travel advice.</p>
         </div>
         <div className="flex gap-3">
-          <Button variant="outline" asChild className="gap-2 rounded-2xl h-12 px-6">
+          <Button variant="outline" asChild className="gap-2 rounded-2xl h-12 px-6 font-bold uppercase tracking-widest">
             <Link href="/admin/ai-planner"><Sparkles className="w-4 h-4 text-primary" /> SEO Insights</Link>
           </Button>
-          <Button asChild className="gap-2 rounded-2xl h-12 px-6 shadow-lg shadow-primary/20">
+          <Button asChild className="gap-2 rounded-2xl h-12 px-6 shadow-lg shadow-primary/20 font-bold uppercase tracking-widest">
             <Link href="/admin/blog/new"><Plus className="w-5 h-5" /> New Article</Link>
           </Button>
         </div>
@@ -75,9 +75,9 @@ export default function BlogList() {
       <div className="flex items-center gap-4">
         <div className="relative flex-grow max-w-md">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-          <Input placeholder="Search articles by title or category..." className="pl-12 h-14 rounded-2xl border-none shadow-sm bg-background" />
+          <Input placeholder="Search articles by title or category..." className="pl-12 h-14 rounded-2xl border-none shadow-sm bg-background font-bold" />
         </div>
-        <Button variant="outline" className="h-14 rounded-2xl px-6 flex gap-2 border-none shadow-sm bg-background">
+        <Button variant="outline" className="h-14 rounded-2xl px-6 flex gap-2 border-none shadow-sm bg-background font-bold uppercase tracking-widest">
           <Filter className="w-4 h-4" /> All Categories
         </Button>
       </div>
@@ -88,13 +88,13 @@ export default function BlogList() {
             Syncing content library...
           </div>
         ) : !adminRole ? (
-          <div className="py-20 text-center text-muted-foreground">Verifying admin access...</div>
+          <div className="py-20 text-center text-muted-foreground font-bold">Verifying admin access...</div>
         ) : posts?.length === 0 ? (
           <Card className="p-24 text-center border-dashed border-2 bg-muted/20 rounded-[3rem]">
             <FileText className="w-16 h-16 mx-auto mb-6 opacity-10" />
-            <h3 className="text-2xl font-bold mb-2">The library is empty</h3>
-            <p className="text-muted-foreground mb-8 max-w-xs mx-auto">Start sharing your safari expertise and travel tips with the world.</p>
-            <Button asChild className="rounded-2xl h-12 px-8">
+            <h3 className="text-2xl font-bold mb-2 uppercase">The library is empty</h3>
+            <p className="text-muted-foreground mb-8 max-w-xs mx-auto font-bold">Start sharing your safari expertise and travel tips with the world.</p>
+            <Button asChild className="rounded-2xl h-12 px-8 font-bold uppercase tracking-widest">
               <Link href="/admin/blog/new">Create First Post</Link>
             </Button>
           </Card>
@@ -136,8 +136,8 @@ export default function BlogList() {
                         </Button>
                       </div>
                     </div>
-                    <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors leading-tight">{post.title}</h3>
-                    <p className="text-muted-foreground line-clamp-2 mb-6 font-light leading-relaxed">
+                    <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors leading-tight uppercase">{post.title}</h3>
+                    <p className="text-muted-foreground line-clamp-2 mb-6 font-bold text-sm leading-relaxed">
                       {post.excerpt}
                     </p>
                   </div>
@@ -150,7 +150,7 @@ export default function BlogList() {
                       </span>
                       <span className="flex items-center gap-2"><User className="w-3.5 h-3.5" /> {post.authorName}</span>
                     </div>
-                    <Link href={`/admin/blog/${post.id}/edit`} className="flex items-center gap-2 text-xs font-bold text-secondary hover:text-primary transition-colors">
+                    <Link href={`/admin/blog/${post.id}/edit`} className="flex items-center gap-2 text-xs font-bold text-secondary hover:text-primary transition-colors uppercase tracking-widest">
                       Edit Draft <ChevronRight className="w-4 h-4" />
                     </Link>
                   </div>
