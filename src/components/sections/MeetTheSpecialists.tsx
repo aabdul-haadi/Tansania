@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -23,7 +24,7 @@ export function MeetTheSpecialists() {
               <span className="text-primary font-bold uppercase tracking-[0.3em] text-[9px] mb-2 block">Human Connection</span>
               <h2 className="font-headline text-3xl md:text-5xl font-bold leading-tight mb-4">
                 Wir kennen Afrika — <br />
-                <span className="text-primary italic">Wir sind für Sie da</span>
+                <span className="text-primary">Wir sind für Sie da</span>
               </h2>
               <p className="text-muted-foreground text-xs md:text-sm font-light leading-relaxed max-w-xl">
                 Tansania Reiseabenteuer SDL. Ob Sie von einer exklusiven Safari oder einem entspannten Strandurlaub träumen, unsere Spezialisten in Berlin planen jedes Erlebnis mit viel Liebe zum Detail.

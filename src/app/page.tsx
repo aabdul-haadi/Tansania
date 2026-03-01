@@ -73,7 +73,7 @@ export default function Home() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="inline-flex items-center gap-2 px-5 py-2 mb-6 text-xs font-bold uppercase tracking-[0.2em] text-primary bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-xl"
+              className="inline-flex items-center gap-2 px-5 py-2 mb-6 text-xs font-bold uppercase tracking-[0.2em] text-white bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-xl"
             >
               <Star className="w-3 h-3 fill-primary" /> Premium Tansania Erlebnisse
             </motion.span>

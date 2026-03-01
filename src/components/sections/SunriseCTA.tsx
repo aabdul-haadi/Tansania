@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -56,7 +57,7 @@ export function SunriseCTA() {
           transition={{ duration: 1.5 }}
         >
           <h2 className="font-headline text-4xl md:text-7xl font-bold text-white mb-8 tracking-tight">
-            Your Story <span className="text-primary italic">Begins Here.</span>
+            Your Story <span className="text-primary">Begins Here.</span>
           </h2>
           
           <div className="flex flex-col items-center gap-6">
