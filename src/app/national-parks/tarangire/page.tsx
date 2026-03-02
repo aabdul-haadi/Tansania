@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from 'react';
@@ -23,12 +22,6 @@ import { Badge } from '@/components/ui/badge';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { cn } from '@/lib/utils';
 import { ContactSection } from '@/components/sections/ContactSection';
-
-/**
- * FIXED: Internal Server Error resolved by clearing vercel.json routing.
- * REDESIGN: 100% Mobile responsive with horizontal sliders and POI navigator.
- * TYPOGRAPHY: Strictly Bold and Non-Italic.
- */
 
 const pointsOfInterest = [
   { 
@@ -87,7 +80,7 @@ export default function TarangireParkPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[50vh] md:h-[65vh] w-full flex items-center justify-center overflow-hidden bg-secondary">
+      <section className="relative h-[55vh] md:h-[70vh] w-full flex items-center justify-center overflow-hidden bg-secondary">
         <Image
           src="https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=1920"
           alt="Tarangire National Park"
@@ -97,22 +90,23 @@ export default function TarangireParkPage() {
         />
         <div className="container relative z-10 mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
+            <Badge className="bg-primary text-white border-none font-bold text-[10px] uppercase tracking-[0.4em] px-6 py-2 shadow-2xl mb-4">Das Reich der Riesen</Badge>
             <h1 className="font-headline text-4xl md:text-8xl font-bold text-white leading-none tracking-tighter uppercase">
               Tarangire <br /><span className="text-primary">Nationalpark</span>
             </h1>
             <p className="max-w-xl mx-auto text-xs md:text-lg text-white/80 font-bold uppercase tracking-[0.4em]">
-              Land der Riesen und Giganten.
+              Giganten unter Affenbrotbäumen.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Interactive Map Navigator */}
-      <section className="py-8 md:py-12 container mx-auto px-4 max-w-7xl">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          <div className="lg:col-span-4 space-y-6">
+      {/* geographical Navigator */}
+      <section className="py-12 md:py-20 container mx-auto px-4 max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-start">
+          <div className="lg:col-span-4 space-y-8">
             <div className="space-y-2">
-              <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] block">Park Navigator</span>
+              <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] block">Explorer Map</span>
               <h2 className="font-headline text-3xl md:text-5xl font-bold text-secondary uppercase tracking-tighter">Wildnis <br /><span className="text-primary">Pur</span></h2>
             </div>
             <div className="grid grid-cols-1 gap-3">
@@ -121,8 +115,8 @@ export default function TarangireParkPage() {
                   key={p.id}
                   onClick={() => setActivePoi(p)}
                   className={cn(
-                    "text-left p-5 rounded-2xl border transition-all flex justify-between items-center group",
-                    activePoi.id === p.id ? "bg-secondary text-white shadow-xl" : "bg-white hover:border-primary/20"
+                    "text-left p-6 rounded-2xl border transition-all flex justify-between items-center group",
+                    activePoi.id === p.id ? "bg-secondary text-white shadow-xl translate-x-2" : "bg-white hover:border-primary/20"
                   )}
                 >
                   <div>
@@ -135,7 +129,7 @@ export default function TarangireParkPage() {
             </div>
           </div>
           <div className="lg:col-span-8">
-            <div className="relative aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white bg-muted">
+            <div className="relative aspect-video rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white bg-muted">
               <iframe
                 src={`https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15935.0!2d${activePoi.coords.split(',')[1]}!3d${activePoi.coords.split(',')[0]}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2stz!4v1620000000000!5m2!1sen!2stz`}
                 className="absolute inset-0 w-full h-full border-none grayscale-[0.2]"
@@ -147,8 +141,8 @@ export default function TarangireParkPage() {
         </div>
       </section>
 
-      {/* Modern Activity Carousel */}
-      <section className="py-12 bg-white border-y border-border/50">
+      {/* Activity Slider */}
+      <section className="py-16 bg-white border-y border-border/50">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
             <div>
@@ -156,7 +150,7 @@ export default function TarangireParkPage() {
               <h2 className="font-headline text-4xl md:text-7xl font-bold text-secondary uppercase tracking-tighter text-foreground">Safari <br /><span className="text-primary">Highlights</span></h2>
             </div>
             <p className="text-muted-foreground text-xs font-bold uppercase tracking-widest max-w-xs border-l-2 border-primary/20 pl-6 hidden md:block">
-              Tarangire ist berühmt für seine Elefantenherden und mystischen Affenbrotbäume.
+              Erleben Sie hunderte Elefanten am Flussufer in einer der tierreichsten Regionen.
             </p>
           </div>
 
@@ -165,73 +159,73 @@ export default function TarangireParkPage() {
               {activities.map((act, i) => (
                 <CarouselItem key={i} className="pl-4 md:basis-1/2 lg:basis-1/3">
                   <div className="bg-[#fdfcfb] rounded-[3rem] overflow-hidden shadow-lg border border-border/50 group h-full flex flex-col">
-                    <div className="relative h-56 overflow-hidden">
+                    <div className="relative h-64 overflow-hidden">
                       <Image src={act.img} alt={act.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
-                      <div className="absolute top-4 left-4">
-                        <Badge className="bg-secondary text-white border-none font-bold text-[8px] uppercase tracking-widest">{act.level}</Badge>
+                      <div className="absolute top-6 left-6">
+                        <Badge className="bg-secondary text-white border-none font-bold text-[9px] uppercase tracking-widest px-4 py-1.5">{act.level}</Badge>
                       </div>
                     </div>
-                    <div className="p-8 space-y-6 flex-grow flex flex-col justify-between">
-                      <div>
-                        <div className="flex items-center gap-3 mb-4">
-                          <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                            <act.icon className="w-5 h-5 text-primary" />
+                    <div className="p-10 space-y-6 flex-grow flex flex-col justify-between">
+                      <div className="space-y-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+                            <act.icon className="w-6 h-6 text-primary" />
                           </div>
-                          <span className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest">{act.time}</span>
+                          <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.2em]">{act.time}</span>
                         </div>
-                        <h4 className="font-headline text-2xl font-bold text-secondary uppercase mb-3 leading-tight">{act.title}</h4>
-                        <p className="text-xs text-muted-foreground font-bold leading-relaxed">{act.desc}</p>
+                        <h4 className="font-headline text-2xl font-bold text-secondary uppercase leading-tight">{act.title}</h4>
+                        <p className="text-sm text-muted-foreground font-bold leading-relaxed">{act.desc}</p>
                       </div>
-                      <Link href="/contact" className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-primary hover:translate-x-2 transition-transform">
-                        Angebot anfordern <ArrowRight className="w-4 h-4" />
+                      <Link href="/contact" className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.3em] text-primary hover:translate-x-2 transition-transform pt-4 border-t border-border/50">
+                        Angebot Anfordern <ArrowRight className="w-4 h-4" />
                       </Link>
                     </div>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="flex justify-center gap-4 mt-10">
-              <CarouselPrevious className="static translate-y-0 h-12 w-12 rounded-full border-muted hover:bg-primary hover:text-white transition-all" />
-              <CarouselNext className="static translate-y-0 h-12 w-12 rounded-full border-muted hover:bg-primary hover:text-white transition-all" />
+            <div className="flex justify-center gap-4 mt-12">
+              <CarouselPrevious className="static translate-y-0 h-14 w-14 rounded-full border-muted hover:bg-primary hover:text-white transition-all shadow-xl" />
+              <CarouselNext className="static translate-y-0 h-14 w-14 rounded-full border-muted hover:bg-primary hover:text-white transition-all shadow-xl" />
             </div>
           </Carousel>
         </div>
       </section>
 
-      {/* Timing & Peak Seasons */}
-      <section className="py-16 bg-[#fdfcfb] relative overflow-hidden">
+      {/* Best Months */}
+      <section className="py-20 bg-[#fdfcfb] relative overflow-hidden">
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
               <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px]">Timing & Klima</span>
-              <h2 className="font-headline text-4xl md:text-6xl font-bold uppercase leading-none tracking-tighter text-secondary">Wann ist <br /><span className="text-primary">Peak Season?</span></h2>
-              <div className="grid grid-cols-1 gap-3 pt-4">
-                <div className="flex items-center gap-5 p-6 bg-white rounded-3xl border border-border shadow-sm group hover:border-primary transition-all">
-                  <Sun className="w-10 h-10 text-primary" />
+              <h2 className="font-headline text-4xl md:text-6xl font-bold uppercase leading-none tracking-tighter text-secondary">Peak <br /><span className="text-primary">Safari Zeit</span></h2>
+              <div className="grid grid-cols-1 gap-4 pt-4">
+                <div className="flex items-center gap-6 p-8 bg-white rounded-3xl border border-border shadow-sm group hover:border-primary transition-all">
+                  <Sun className="w-12 h-12 text-primary" />
                   <div>
-                    <p className="font-bold text-sm uppercase text-secondary">Juli – Oktober</p>
-                    <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest">Trockenzeit & Beste Sichtungen</p>
+                    <p className="font-bold text-base uppercase text-secondary">Juli – Oktober</p>
+                    <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest mt-1">Trockenzeit & Beste Sichtungen</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-5 p-6 bg-white rounded-3xl border border-border shadow-sm group hover:border-primary transition-all">
-                  <CloudSun className="w-10 h-10 text-primary" />
+                <div className="flex items-center gap-6 p-8 bg-white rounded-3xl border border-border shadow-sm group hover:border-primary transition-all">
+                  <CloudSun className="w-12 h-12 text-primary" />
                   <div>
-                    <p className="font-bold text-sm uppercase text-secondary">November – Mai</p>
-                    <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest">Grüne Saison & Vogelwelt</p>
+                    <p className="font-bold text-base uppercase text-secondary">November – Mai</p>
+                    <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest mt-1">Grüne Saison & Vogelwelt</p>
                   </div>
                 </div>
               </div>
             </div>
             
             <div className="relative">
-              <div className="aspect-square rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
+              <div className="aspect-square rounded-[4rem] overflow-hidden shadow-2xl border-[12px] border-white">
                 <Image src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1000" alt="Tarangire Season" fill className="object-cover" />
               </div>
-              <div className="absolute -bottom-6 -right-6 bg-secondary p-8 rounded-[2.5rem] shadow-2xl hidden lg:block border border-white/10 max-w-[280px]">
-                <Sparkles className="w-8 h-8 text-white mb-3" />
-                <h4 className="text-white font-bold text-lg uppercase leading-tight mb-1">Geheimtipp der Guides</h4>
-                <p className="text-white font-bold text-[10px] uppercase tracking-widest opacity-80 leading-relaxed">
-                  In der Trockenzeit versammeln sich hunderte Elefanten am Fluss – ein unvergessliches Spektakel.
+              <div className="absolute -bottom-10 -right-6 bg-secondary p-10 rounded-[3rem] shadow-2xl hidden lg:block border border-white/10 max-w-[320px]">
+                <Sparkles className="w-10 h-10 text-primary mb-4" />
+                <h4 className="text-white font-bold text-xl uppercase leading-tight mb-2">Geheimtipp der Guides</h4>
+                <p className="text-white font-bold text-[11px] uppercase tracking-widest opacity-80 leading-relaxed">
+                  In der Trockenzeit versammeln sich hunderte Elefanten am Tarangire River – ein unvergessliches Naturschauspiel.
                 </p>
               </div>
             </div>

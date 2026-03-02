@@ -1,2 +1,4 @@
-
-{}
+{
+  "cleanUrls": true,
+  "framework": "nextjs"
+}
