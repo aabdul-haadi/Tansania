@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from 'react';
@@ -53,7 +54,7 @@ const activities = [
     icon: Camera, 
     level: 'Classic', 
     time: 'Ganztags', 
-    desc: 'Erleben Sie die höchste Elefantendichte Tansanias in unseren 4x4 Jeeps.',
+    desc: 'Erleben Sie die höchste Elefantendichte Tansanias in unseren professionell ausgestatteten 4x4 Jeeps.',
     img: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=800'
   },
   { 
@@ -61,7 +62,7 @@ const activities = [
     icon: Wind, 
     level: 'Authentisch', 
     time: '2-4 Std.', 
-    desc: 'Spüren Sie den afrikanischen Boden unter den Füßen im Reich der Riesen.',
+    desc: 'Spüren Sie den afrikanischen Boden unter den Füßen im Reich der Riesen, begleitet von Rangern.',
     img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800'
   },
   { 
@@ -69,7 +70,7 @@ const activities = [
     icon: Zap, 
     level: 'Exklusiv', 
     time: '2 Std.', 
-    desc: 'Beobachten Sie die Jäger der Nacht bei einer exklusiven Fahrt nach Sonnenuntergang.',
+    desc: 'Beobachten Sie die Jäger der Nacht bei einer exklusiven Fahrt nach Sonnenuntergang im Park.',
     img: 'https://images.unsplash.com/photo-1580502304784-8985b777da59?q=80&w=800'
   }
 ];
@@ -104,7 +105,7 @@ export default function TarangireParkPage() {
       </section>
 
       {/* Geographical Navigator (Interactive Map Dashboard) */}
-      <section className="py-8 md:py-16 container mx-auto px-4 max-w-7xl">
+      <section className="py-8 md:py-12 container mx-auto px-4 max-w-7xl">
         <div className="bg-white rounded-[2rem] md:rounded-[3rem] shadow-2xl border border-border/50 overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[500px] md:min-h-[650px]">
             
@@ -137,7 +138,7 @@ export default function TarangireParkPage() {
               </div>
 
               <div className="mt-8 p-5 bg-white rounded-2xl border border-border shadow-sm hidden lg:block">
-                <p className="text-[11px] text-muted-foreground font-bold leading-relaxed italic">
+                <p className="text-[11px] text-muted-foreground font-bold leading-relaxed">
                   "{activePoi.desc}"
                 </p>
               </div>
@@ -163,9 +164,9 @@ export default function TarangireParkPage() {
       </section>
 
       {/* Modern Activity Carousel */}
-      <section className="py-12 md:py-24 bg-white border-y border-border/50">
+      <section className="py-12 md:py-16 bg-white border-y border-border/50">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="flex flex-col md:flex-row items-end justify-between mb-10 md:mb-16 gap-6">
+          <div className="flex flex-col md:flex-row items-end justify-between mb-10 md:mb-12 gap-6">
             <div>
               <span className="text-primary font-bold uppercase tracking-[0.4em] text-[9px] md:text-[10px] mb-2 block">Die Erlebnisse</span>
               <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary uppercase tracking-tighter">Safari <br /><span className="text-primary">Highlights</span></h2>
@@ -205,7 +206,7 @@ export default function TarangireParkPage() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="flex justify-center gap-3 mt-10 md:mt-12">
+            <div className="flex justify-center gap-3 mt-8">
               <CarouselPrevious className="static translate-y-0 h-12 w-12 rounded-full border-muted hover:bg-primary hover:text-white transition-all shadow-xl" />
               <CarouselNext className="static translate-y-0 h-12 w-12 rounded-full border-muted hover:bg-primary hover:text-white transition-all shadow-xl" />
             </div>
@@ -214,7 +215,7 @@ export default function TarangireParkPage() {
       </section>
 
       {/* Climate & Expert Insights */}
-      <section className="py-16 md:py-24 bg-[#fdfcfb] relative overflow-hidden">
+      <section className="py-12 md:py-16 bg-[#fdfcfb] relative overflow-hidden">
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
             <div className="space-y-8">

@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from 'react';
@@ -26,21 +27,21 @@ const pointsOfInterest = [
   { 
     id: 'momella', 
     name: 'Momella Seen', 
-    desc: 'Ein Paradies für Flamingos und spektakuläre Bergreflexionen.', 
+    desc: 'Ein Paradies für Flamingos und spektakuläre Bergreflexionen auf dem stillen Wasser.', 
     coords: '-3.225,36.915',
     img: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800'
   },
   { 
     id: 'meru', 
     name: 'Mount Meru', 
-    desc: 'Tansanias zweithöchster Vulkan und der kleine Bruder des Kili.', 
+    desc: 'Tansanias zweithöchster Vulkan und der beeindruckende kleine Bruder des Kilimandscharo.', 
     coords: '-3.244,36.754',
     img: 'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=800'
   },
   { 
     id: 'ngurdoto', 
     name: 'Ngurdoto Krater', 
-    desc: 'Ein unberührter, versunkener Krater voller Wildtiere.', 
+    desc: 'Ein unberührter, versunkener Krater voller Wildtiere, oft als kleiner Ngorongoro bezeichnet.', 
     coords: '-3.295,36.862',
     img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800'
   }
@@ -52,7 +53,7 @@ const activities = [
     icon: Mountain, 
     level: 'Anspruchsvoll', 
     time: '3-4 Tage', 
-    desc: 'Besteigen Sie den majestätischen Mount Meru mit unseren Profi-Guides.',
+    desc: 'Besteigen Sie den majestätischen Mount Meru mit unseren staatlich geprüften Profi-Guides.',
     img: 'https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=800'
   },
   { 
@@ -60,7 +61,7 @@ const activities = [
     icon: Waves, 
     level: 'Entspannt', 
     time: '3 Std.', 
-    desc: 'Beobachten Sie Büffel und Wasserböcke direkt vom stillen See aus.',
+    desc: 'Beobachten Sie Büffel und Wasserböcke direkt vom stillen See aus – eine lautlose Begegnung.',
     img: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800'
   },
   { 
@@ -68,7 +69,7 @@ const activities = [
     icon: Camera, 
     level: 'Familienfreundlich', 
     time: 'Halbtags', 
-    desc: 'Entdecken Sie Giraffen und die seltenen schwarz-weißen Stummelaffen.',
+    desc: 'Entdecken Sie Giraffen und die seltenen schwarz-weißen Stummelaffen im dichten Regenwald.',
     img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800'
   }
 ];
@@ -103,7 +104,7 @@ export default function ArushaParkPage() {
       </section>
 
       {/* Geographical Navigator (Interactive Map Dashboard) */}
-      <section className="py-8 md:py-16 container mx-auto px-4 max-w-7xl">
+      <section className="py-8 md:py-12 container mx-auto px-4 max-w-7xl">
         <div className="bg-white rounded-[2rem] md:rounded-[3rem] shadow-2xl border border-border/50 overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[500px] md:min-h-[650px]">
             
@@ -136,7 +137,7 @@ export default function ArushaParkPage() {
               </div>
 
               <div className="mt-8 p-5 bg-white rounded-2xl border border-border shadow-sm hidden lg:block">
-                <p className="text-[11px] text-muted-foreground font-bold leading-relaxed italic">
+                <p className="text-[11px] text-muted-foreground font-bold leading-relaxed">
                   "{activePoi.desc}"
                 </p>
               </div>
@@ -162,9 +163,9 @@ export default function ArushaParkPage() {
       </section>
 
       {/* Modern Activity Carousel */}
-      <section className="py-12 md:py-24 bg-white border-y border-border/50">
+      <section className="py-12 md:py-16 bg-white border-y border-border/50">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="flex flex-col md:flex-row items-end justify-between mb-10 md:mb-16 gap-6">
+          <div className="flex flex-col md:flex-row items-end justify-between mb-10 md:mb-12 gap-6">
             <div>
               <span className="text-primary font-bold uppercase tracking-[0.4em] text-[9px] md:text-[10px] mb-2 block">Die Erlebnisse</span>
               <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary uppercase tracking-tighter">Expedition & <br /><span className="text-primary">Action</span></h2>
@@ -204,7 +205,7 @@ export default function ArushaParkPage() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="flex justify-center gap-3 mt-10 md:mt-12">
+            <div className="flex justify-center gap-3 mt-8">
               <CarouselPrevious className="static translate-y-0 h-12 w-12 rounded-full border-muted hover:bg-primary hover:text-white transition-all shadow-xl" />
               <CarouselNext className="static translate-y-0 h-12 w-12 rounded-full border-muted hover:bg-primary hover:text-white transition-all shadow-xl" />
             </div>
@@ -213,7 +214,7 @@ export default function ArushaParkPage() {
       </section>
 
       {/* Climate & Expert Insights */}
-      <section className="py-16 md:py-24 bg-[#fdfcfb] relative overflow-hidden">
+      <section className="py-12 md:py-16 bg-[#fdfcfb] relative overflow-hidden">
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
             <div className="space-y-8">

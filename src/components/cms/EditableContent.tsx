@@ -39,10 +39,12 @@ export function EditableContent({
 
   useEffect(() => {
     setMounted(true);
-    
+  }, []);
+
+  useEffect(() => {
     // Auto-registration logic: 
     // ONLY attempt registration if we are an authenticated admin and the page doesn't exist yet
-    if (firestore && docRef && !isPageLoading && !pageData && adminRole) {
+    if (mounted && firestore && docRef && !isPageLoading && !pageData && adminRole) {
       setDocumentNonBlocking(docRef, {
         id: pageKey,
         key: pageKey,
@@ -59,21 +61,19 @@ export function EditableContent({
         isRegistered: true // Master toggle for admin visibility
       }, { merge: true });
     }
-  }, [firestore, docRef, isPageLoading, pageData, pageKey, sectionId, type, defaultContent, adminRole]);
-
-  // If page data exists, try to get the specific section content
-  const sectionData = pageData?.sections?.[sectionId]?.data;
+  }, [mounted, firestore, docRef, isPageLoading, pageData, pageKey, sectionId, type, defaultContent, adminRole]);
 
   // Hydration safety: Return children initially to avoid mismatch
   if (!mounted) return <>{children}</>;
 
   if (isPageLoading && !pageData) return <Skeleton className="w-full h-20 rounded-xl" />;
 
+  // If page data exists, try to get the specific section content
+  const sectionData = pageData?.sections?.[sectionId]?.data;
+
   // Render logic based on type and database presence
   if (sectionData) {
     if (type === 'hero') {
-      // For hero, we assume the children is a function or handles its own internal data
-      // This is a simplified example; real logic would depend on how the hero receives props
       return <>{children}</>;
     }
     
@@ -82,7 +82,6 @@ export function EditableContent({
     }
 
     if (type === 'markdown' && sectionData.bodyMarkdown) {
-      // In a real scenario, you'd pass this to a Markdown renderer
       return <div className="whitespace-pre-wrap">{sectionData.bodyMarkdown}</div>;
     }
   }

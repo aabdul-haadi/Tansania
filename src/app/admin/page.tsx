@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from 'react';
@@ -49,7 +50,7 @@ export default function AdminDashboard() {
     if (!firestore || !user) return;
     setLoading(true);
     
-    // Seed Site Settings
+    // Seed Site Settings (Non-blocking as per guidelines)
     setDocumentNonBlocking(doc(firestore, 'siteSettings', 'global'), {
       id: 'global',
       companyName: 'Tansania Reiseabenteuer SDL',

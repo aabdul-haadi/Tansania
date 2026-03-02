@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useEffect, useRef, useState } from 'react';
@@ -10,6 +11,7 @@ export function ContactSection() {
 
   useEffect(() => {
     function handleFormMessage(e: MessageEvent) {
+      // Check for form submission event from embedded iframe
       if (e.data && typeof e.data === 'object') {
         if (e.data.formSubmitted === true || e.data.event === 'formSubmitted' || e.data.type === 'formSubmissionSuccess') {
           setIsSubmitted(true);
