@@ -3,10 +3,9 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { 
-  Mountain, 
-  Waves, 
+  TreePine, 
   MapPin, 
   Compass, 
   Camera, 
@@ -14,12 +13,12 @@ import {
   ArrowRight, 
   Sparkles,
   Map as MapIcon,
-  CheckCircle2,
-  TreePine,
   Zap,
   CloudSun,
   Timer,
-  Plane
+  Plane,
+  Wind,
+  Sun
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -30,56 +29,56 @@ import { ContactSection } from '@/components/sections/ContactSection';
 
 const pointsOfInterest = [
   { 
-    id: 'momella', 
-    name: 'Momella Seen', 
-    desc: 'Ein Paradies für Flamingos.', 
-    coords: '-3.225,36.915',
-    img: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800'
+    id: 'river', 
+    name: 'Tarangire Fluss', 
+    desc: 'Die Lebensader des Parks.', 
+    coords: '-3.944,35.987',
+    img: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=800'
   },
   { 
-    id: 'meru', 
-    name: 'Mount Meru', 
-    desc: 'Tansanias zweithöchster Vulkan.', 
-    coords: '-3.244,36.754',
-    img: 'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=800'
-  },
-  { 
-    id: 'ngurdoto', 
-    name: 'Ngurdoto Krater', 
-    desc: 'Das Erbe der Wildnis.', 
-    coords: '-3.295,36.862',
+    id: 'baobab', 
+    name: 'Baobab Loop', 
+    desc: 'Tal der Affenbrotbäume.', 
+    coords: '-3.850,35.920',
     img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800'
+  },
+  { 
+    id: 'silale', 
+    name: 'Silale Sumpf', 
+    desc: 'Magnet für Elefanten.', 
+    coords: '-4.020,36.050',
+    img: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800'
   }
 ];
 
 const activities = [
   { 
-    title: 'Geführtes Hiking', 
-    icon: Mountain, 
-    level: 'Anspruchsvoll', 
-    time: '3-4 Tage', 
-    desc: 'Besteigen Sie den Mount Meru mit Experten.',
-    img: 'https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=800'
-  },
-  { 
-    title: 'Kanu-Safari', 
-    icon: Waves, 
-    level: 'Entspannt', 
-    time: '3 Std.', 
-    desc: 'Beobachten Sie Büffel direkt vom Wasser aus.',
-    img: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800'
-  },
-  { 
-    title: 'Wildlife Drive', 
+    title: 'Elefanten Pirsch', 
     icon: Camera, 
-    level: 'Familienfreundlich', 
-    time: 'Halbtags', 
-    desc: 'Entdecken Sie Giraffen und Stummelaffen.',
+    level: 'Classic', 
+    time: 'Ganztags', 
+    desc: 'Tansanias höchste Elefantendichte erleben.',
+    img: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=800'
+  },
+  { 
+    title: 'Walking Safari', 
+    icon: Wind, 
+    level: 'Authentisch', 
+    time: '2-4 Std.', 
+    desc: 'Zu Fuß durch das Reich der Riesen.',
     img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800'
+  },
+  { 
+    title: 'Nacht-Safari', 
+    icon: Zap, 
+    level: 'Exklusiv', 
+    time: '2 Std.', 
+    desc: 'Raubtiere in der Dunkelheit beobachten.',
+    img: 'https://images.unsplash.com/photo-1580502304784-8985b777da59?q=80&w=800'
   }
 ];
 
-export default function ArushaParkPage() {
+export default function TarangireParkPage() {
   const [activePoi, setActivePoi] = useState(pointsOfInterest[0]);
 
   return (
@@ -87,8 +86,8 @@ export default function ArushaParkPage() {
       {/* Hero Section */}
       <section className="relative h-[55vh] md:h-[65vh] w-full flex items-center justify-center overflow-hidden bg-secondary">
         <Image
-          src="https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=1920"
-          alt="Arusha National Park"
+          src="https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=1920"
+          alt="Tarangire National Park"
           fill
           priority
           className="object-cover brightness-[0.6]"
@@ -96,10 +95,10 @@ export default function ArushaParkPage() {
         <div className="container relative z-10 mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
             <h1 className="font-headline text-4xl md:text-8xl font-bold text-white leading-none tracking-tighter uppercase">
-              Arusha <br /><span className="text-primary">Nationalpark</span>
+              Tarangire <br /><span className="text-primary">Nationalpark</span>
             </h1>
             <p className="max-w-xl mx-auto text-xs md:text-lg text-white/80 font-bold uppercase tracking-[0.4em]">
-              Vielfalt am Fuße des Mount Meru.
+              Land der Riesen und Giganten.
             </p>
           </motion.div>
         </div>
@@ -110,8 +109,8 @@ export default function ArushaParkPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-4 space-y-8">
             <div className="space-y-2">
-              <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] block">Explorer Navigator</span>
-              <h2 className="font-headline text-3xl md:text-5xl font-bold text-secondary uppercase tracking-tighter">Das Tor zur <br /><span className="text-primary">Savanne</span></h2>
+              <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] block">Park Navigator</span>
+              <h2 className="font-headline text-3xl md:text-5xl font-bold text-secondary uppercase tracking-tighter">Wildnis <br /><span className="text-primary">Pur</span></h2>
             </div>
             <div className="grid grid-cols-1 gap-3">
               {pointsOfInterest.map((p) => (
@@ -124,7 +123,7 @@ export default function ArushaParkPage() {
                   )}
                 >
                   <div>
-                    <p className={cn("text-[8px] font-bold uppercase tracking-widest mb-1", activePoi.id === p.id ? "text-primary" : "text-muted-foreground")}>Region</p>
+                    <p className={cn("text-[8px] font-bold uppercase tracking-widest mb-1", activePoi.id === p.id ? "text-primary" : "text-muted-foreground")}>Hotspot</p>
                     <p className="font-bold text-lg uppercase tracking-tight">{p.name}</p>
                   </div>
                   <ChevronRight className={cn("w-5 h-5 transition-transform", activePoi.id === p.id ? "text-primary" : "text-muted-foreground opacity-0 group-hover:opacity-100")} />
@@ -151,10 +150,10 @@ export default function ArushaParkPage() {
           <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
             <div>
               <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-2 block">Die Erlebnisse</span>
-              <h2 className="font-headline text-4xl md:text-7xl font-bold text-secondary uppercase tracking-tighter">Aktivitäten & <br /><span className="text-primary">Abenteuer</span></h2>
+              <h2 className="font-headline text-4xl md:text-7xl font-bold text-secondary uppercase tracking-tighter">Safari <br /><span className="text-primary">Highlights</span></h2>
             </div>
             <p className="text-muted-foreground text-xs font-bold uppercase tracking-widest max-w-xs border-l-2 border-primary/20 pl-6 hidden md:block">
-              Vom Kanu bis zum Gipfel – Arusha bietet einzigartige Perspektiven.
+              Tarangire ist berühmt für seine Elefantenherden und mystischen Affenbrotbäume.
             </p>
           </div>
 
@@ -181,7 +180,7 @@ export default function ArushaParkPage() {
                         <p className="text-xs text-muted-foreground font-bold leading-relaxed">{act.desc}</p>
                       </div>
                       <Link href="/contact" className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-primary hover:translate-x-2 transition-transform">
-                        Anfrage senden <ArrowRight className="w-4 h-4" />
+                        Angebot anfordern <ArrowRight className="w-4 h-4" />
                       </Link>
                     </div>
                   </div>
@@ -196,27 +195,27 @@ export default function ArushaParkPage() {
         </div>
       </section>
 
-      {/* Climate & Timing */}
+      {/* Timing & Seasonality */}
       <section className="py-12 bg-secondary relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px]">Klima & Planung</span>
-              <h2 className="font-headline text-4xl md:text-6xl font-bold uppercase leading-none tracking-tighter text-white">Wann ist es <br /><span className="text-primary">am schönsten?</span></h2>
+              <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px]">Timing & Klima</span>
+              <h2 className="font-headline text-4xl md:text-6xl font-bold uppercase leading-none tracking-tighter text-white">Wann ist <br /><span className="text-primary">Peak Season?</span></h2>
               <div className="grid grid-cols-1 gap-3 pt-4">
                 <div className="flex items-center gap-5 p-5 bg-white/5 rounded-2xl border border-white/10 group hover:bg-white/10 transition-all">
-                  <CloudSun className="w-8 h-8 text-primary" />
+                  <Sun className="w-8 h-8 text-primary" />
                   <div>
-                    <p className="font-bold text-xs uppercase text-white">Juni – Oktober</p>
-                    <p className="text-[10px] text-white/40 font-bold uppercase tracking-widest">Trockenzeit & Fernsicht</p>
+                    <p className="font-bold text-xs uppercase text-white">Juli – Oktober</p>
+                    <p className="text-[10px] text-white/40 font-bold uppercase tracking-widest">Trockenzeit & Beste Sichtungen</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-5 p-5 bg-white/5 rounded-2xl border border-white/10 group hover:bg-white/10 transition-all">
-                  <Waves className="w-8 h-8 text-primary" />
+                  <CloudSun className="w-8 h-8 text-primary" />
                   <div>
                     <p className="font-bold text-xs uppercase text-white">November – Mai</p>
-                    <p className="text-[10px] text-white/40 font-bold uppercase tracking-widest">Grüne Saison & Vögel</p>
+                    <p className="text-[10px] text-white/40 font-bold uppercase tracking-widest">Grüne Saison & Vogelwelt</p>
                   </div>
                 </div>
               </div>
@@ -224,13 +223,13 @@ export default function ArushaParkPage() {
             
             <div className="relative">
               <div className="aspect-square rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white/5">
-                <Image src="https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1000" alt="Arusha Climate" fill className="object-cover" />
+                <Image src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1000" alt="Tarangire Season" fill className="object-cover" />
               </div>
               <div className="absolute -bottom-6 -right-6 bg-primary p-8 rounded-[2.5rem] shadow-2xl hidden lg:block border border-white/10 max-w-[280px]">
                 <Sparkles className="w-8 h-8 text-white mb-3" />
                 <h4 className="text-white font-bold text-lg uppercase leading-tight mb-1">Geheimtipp der Guides</h4>
                 <p className="text-white font-bold text-[10px] uppercase tracking-widest opacity-80 leading-relaxed">
-                  Starten Sie Ihre Tour bei Sonnenaufgang für die besten Meru-Reflektionen auf den Seen.
+                  In der Trockenzeit versammeln sich hunderte Elefanten am Fluss – ein unvergessliches Spektakel.
                 </p>
               </div>
             </div>

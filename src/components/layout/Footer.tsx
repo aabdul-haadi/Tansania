@@ -18,7 +18,7 @@ export function Footer() {
           <div className="flex flex-col gap-6">
             <Link href="/" className="flex items-center gap-3 group">
               <img 
-                src="/iconlogo.jpg"
+                src="https://picsum.photos/seed/logo/200/200"
                 alt="Logo"
                 className="h-12 w-auto object-contain transition-transform group-hover:scale-105 rounded-lg brightness-110 shadow-lg"
               />
@@ -47,7 +47,7 @@ export function Footer() {
             <h4 className="text-primary font-bold text-[10px] uppercase tracking-[0.4em] mb-8 block">Entdecken</h4>
             <ul className="flex flex-col gap-4 text-sm font-bold">
               <li><Link href="/safaris" className="text-white/50 hover:text-white transition-colors">Safari-Pakete</Link></li>
-              <li><Link href="/destinations" className="text-white/50 hover:text-white transition-colors">Reiseziele</Link></li>
+              <li><Link href="/national-parks" className="text-white/50 hover:text-white transition-colors">Nationalparks</Link></li>
               <li><Link href="/blog" className="text-white/50 hover:text-white transition-colors">Expeditions-Journal</Link></li>
               <li><Link href="/trip-planner" className="text-white/50 hover:text-white transition-colors">Reiseplaner</Link></li>
               <li><Link href="/trip-advisor" className="text-primary hover:text-primary/80 transition-colors">AI Advisor</Link></li>
