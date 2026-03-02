@@ -20,8 +20,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
-import { useCollection, useFirestore, useMemoFirebase, useUser, useDoc } from '@/firebase';
-import { collection, query, orderBy, deleteDoc, doc } from 'firebase/firestore';
+import { useCollection, useFirestore, useMemoFirebase, useUser, useDoc, deleteDocumentNonBlocking } from '@/firebase';
+import { collection, query, orderBy, doc } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
 
 export default function BlogList() {
@@ -47,12 +47,10 @@ export default function BlogList() {
 
   const handleDelete = async (id: string) => {
     if (!firestore || !confirm('Are you sure you want to delete this post?')) return;
-    try {
-      await deleteDoc(doc(firestore, 'blogPosts', id));
-      toast({ title: "Post Deleted", description: "The article has been removed from the savannah." });
-    } catch (error) {
-      toast({ variant: "destructive", title: "Delete Failed", description: "Check permissions or contact your system admin." });
-    }
+    
+    // CRITICAL: Initiating non-blocking deletion as per guidelines
+    deleteDocumentNonBlocking(doc(firestore, 'blogPosts', id));
+    toast({ title: "Post Deleted", description: "The article has been removed from the savannah." });
   };
 
   return (
@@ -88,7 +86,7 @@ export default function BlogList() {
             Syncing content library...
           </div>
         ) : !adminRole ? (
-          <div className="py-20 text-center text-muted-foreground font-bold">Verifying admin access...</div>
+          <div className="py-20 text-center text-muted-foreground font-bold uppercase tracking-widest text-xs animate-pulse">Verifying admin access...</div>
         ) : posts?.length === 0 ? (
           <Card className="p-24 text-center border-dashed border-2 bg-muted/20 rounded-[3rem]">
             <FileText className="w-16 h-16 mx-auto mb-6 opacity-10" />

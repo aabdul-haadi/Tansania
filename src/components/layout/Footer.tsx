@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -18,11 +17,9 @@ export function Footer() {
           {/* Brand Column */}
           <div className="flex flex-col gap-6">
             <Link href="/" className="flex items-center gap-3 group">
-              <img 
-                src="https://picsum.photos/seed/logo-sdl/200/200"
-                alt="Logo"
-                className="h-12 w-auto object-contain transition-transform group-hover:scale-105 rounded-lg brightness-110 shadow-lg"
-              />
+              <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center font-headline font-bold text-2xl shadow-xl group-hover:scale-105 transition-transform">
+                T
+              </div>
               <span className="font-headline font-bold text-xl text-primary tracking-wider uppercase leading-tight">
                 Tansania Reiseabenteuer
               </span>
@@ -31,13 +28,13 @@ export function Footer() {
               Ihr Experte für exklusive Safari-Erlebnisse und Traumurlaube in Tansania und Sansibar. Wir verbinden den Nil mit der Savanne.
             </p>
             <div className="flex gap-4">
-              <Link href="#" className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-[#1877F2] hover:text-white transition-all border border-white/10 group">
+              <Link href="#" className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-all border border-white/10 group">
                 <Facebook className="w-4 h-4" />
               </Link>
-              <Link href="#" className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-[#E4405F] hover:text-white transition-all border border-white/10 group">
+              <Link href="#" className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-all border border-white/10 group">
                 <Instagram className="w-4 h-4" />
               </Link>
-              <Link href="#" className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-[#FF0000] hover:text-white transition-all border border-white/10 group">
+              <Link href="#" className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-all border border-white/10 group">
                 <Youtube className="w-4 h-4" />
               </Link>
             </div>

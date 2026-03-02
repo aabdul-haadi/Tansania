@@ -14,8 +14,8 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { useCollection, useFirestore, useMemoFirebase, useUser, useDoc } from '@/firebase';
-import { collection, query, orderBy, deleteDoc, doc } from 'firebase/firestore';
+import { useCollection, useFirestore, useMemoFirebase, useUser, useDoc, deleteDocumentNonBlocking } from '@/firebase';
+import { collection, query, orderBy, doc } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
 
 export default function InquiriesManagement() {
@@ -41,12 +41,10 @@ export default function InquiriesManagement() {
 
   const handleDelete = async (id: string) => {
     if (!firestore || !confirm('Permanently remove this inquiry?')) return;
-    try {
-      await deleteDoc(doc(firestore, 'inquiries', id));
-      toast({ title: "Inquiry Deleted", description: "Record removed from CRM." });
-    } catch (error) {
-      toast({ variant: "destructive", title: "Action Failed", description: "Check permissions." });
-    }
+    
+    // CRITICAL: Non-blocking delete as per guidelines
+    deleteDocumentNonBlocking(doc(firestore, 'inquiries', id));
+    toast({ title: "Inquiry Deleted", description: "Record removed from CRM." });
   };
 
   return (
@@ -70,7 +68,7 @@ export default function InquiriesManagement() {
         {isLoading ? (
           <div className="py-20 text-center text-muted-foreground animate-pulse font-bold text-xs tracking-widest uppercase">Listening for leads...</div>
         ) : !adminRole ? (
-          <div className="py-20 text-center text-muted-foreground font-bold">Verifying admin access...</div>
+          <div className="py-20 text-center text-muted-foreground font-bold uppercase text-xs animate-pulse">Verifying admin access...</div>
         ) : inquiries?.length === 0 ? (
           <Card className="p-24 text-center border-dashed border-2 bg-muted/20 rounded-[3rem]">
             <MessageSquare className="w-16 h-16 mx-auto mb-6 opacity-10" />
