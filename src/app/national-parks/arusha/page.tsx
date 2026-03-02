@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { 
   Mountain, 
   Waves, 
@@ -13,17 +13,12 @@ import {
   ChevronRight, 
   ArrowRight, 
   Sparkles,
-  Map as MapIcon,
-  CheckCircle2,
-  TreePine,
   Zap,
   CloudSun,
-  Timer,
-  Plane
+  Timer
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Card, CardContent } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { cn } from '@/lib/utils';
 import { ContactSection } from '@/components/sections/ContactSection';
@@ -84,8 +79,8 @@ export default function ArushaParkPage() {
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen">
-      {/* Hero Section */}
-      <section className="relative h-[55vh] md:h-[65vh] w-full flex items-center justify-center overflow-hidden bg-secondary">
+      {/* Hero Section - Compacted */}
+      <section className="relative h-[50vh] md:h-[65vh] w-full flex items-center justify-center overflow-hidden bg-secondary">
         <Image
           src="https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=1920"
           alt="Arusha National Park"
@@ -106,9 +101,9 @@ export default function ArushaParkPage() {
       </section>
 
       {/* Interactive Navigator */}
-      <section className="py-12 container mx-auto px-4 max-w-7xl">
+      <section className="py-8 md:py-12 container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          <div className="lg:col-span-4 space-y-8">
+          <div className="lg:col-span-4 space-y-6">
             <div className="space-y-2">
               <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] block">Explorer Navigator</span>
               <h2 className="font-headline text-3xl md:text-5xl font-bold text-secondary uppercase tracking-tighter">Das Tor zur <br /><span className="text-primary">Savanne</span></h2>
@@ -197,36 +192,35 @@ export default function ArushaParkPage() {
       </section>
 
       {/* Climate & Timing */}
-      <section className="py-12 bg-secondary relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+      <section className="py-16 bg-[#fdfcfb] relative overflow-hidden">
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px]">Klima & Planung</span>
-              <h2 className="font-headline text-4xl md:text-6xl font-bold uppercase leading-none tracking-tighter text-white">Wann ist es <br /><span className="text-primary">am schönsten?</span></h2>
+              <h2 className="font-headline text-4xl md:text-6xl font-bold uppercase leading-none tracking-tighter text-secondary">Wann ist es <br /><span className="text-primary">am schönsten?</span></h2>
               <div className="grid grid-cols-1 gap-3 pt-4">
-                <div className="flex items-center gap-5 p-5 bg-white/5 rounded-2xl border border-white/10 group hover:bg-white/10 transition-all">
-                  <CloudSun className="w-8 h-8 text-primary" />
+                <div className="flex items-center gap-5 p-6 bg-white rounded-3xl border border-border shadow-sm group hover:border-primary transition-all">
+                  <CloudSun className="w-10 h-10 text-primary" />
                   <div>
-                    <p className="font-bold text-xs uppercase text-white">Juni – Oktober</p>
-                    <p className="text-[10px] text-white/40 font-bold uppercase tracking-widest">Trockenzeit & Fernsicht</p>
+                    <p className="font-bold text-sm uppercase text-secondary">Juni – Oktober</p>
+                    <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest">Trockenzeit & Fernsicht</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-5 p-5 bg-white/5 rounded-2xl border border-white/10 group hover:bg-white/10 transition-all">
-                  <Waves className="w-8 h-8 text-primary" />
+                <div className="flex items-center gap-5 p-6 bg-white rounded-3xl border border-border shadow-sm group hover:border-primary transition-all">
+                  <Waves className="w-10 h-10 text-primary" />
                   <div>
-                    <p className="font-bold text-xs uppercase text-white">November – Mai</p>
-                    <p className="text-[10px] text-white/40 font-bold uppercase tracking-widest">Grüne Saison & Vögel</p>
+                    <p className="font-bold text-sm uppercase text-secondary">November – Mai</p>
+                    <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest">Grüne Saison & Vögel</p>
                   </div>
                 </div>
               </div>
             </div>
             
             <div className="relative">
-              <div className="aspect-square rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white/5">
+              <div className="aspect-square rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
                 <Image src="https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1000" alt="Arusha Climate" fill className="object-cover" />
               </div>
-              <div className="absolute -bottom-6 -right-6 bg-primary p-8 rounded-[2.5rem] shadow-2xl hidden lg:block border border-white/10 max-w-[280px]">
+              <div className="absolute -bottom-6 -right-6 bg-secondary p-8 rounded-[2.5rem] shadow-2xl hidden lg:block border border-white/10 max-w-[280px]">
                 <Sparkles className="w-8 h-8 text-white mb-3" />
                 <h4 className="text-white font-bold text-lg uppercase leading-tight mb-1">Geheimtipp der Guides</h4>
                 <p className="text-white font-bold text-[10px] uppercase tracking-widest opacity-80 leading-relaxed">

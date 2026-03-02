@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, CheckCircle2 } from 'lucide-react';
 
 export function ContactSection() {
@@ -22,7 +22,7 @@ export function ContactSection() {
   }, []);
 
   return (
-    <section id="contact-form" className="py-12 bg-[#fdfcfb] overflow-hidden">
+    <section id="contact-form" className="py-8 md:py-12 bg-[#fdfcfb] overflow-hidden">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="flex flex-col lg:flex-row bg-white rounded-[2rem] shadow-xl overflow-hidden border border-border/50 min-h-[650px]">
           
@@ -99,9 +99,4 @@ export function ContactSection() {
       </div>
     </section>
   );
-}
-
-// Minimal AnimatePresence mock for standard React usage if not importing correctly
-function AnimatePresence({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
 }

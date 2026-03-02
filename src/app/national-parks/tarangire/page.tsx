@@ -12,17 +12,13 @@ import {
   ChevronRight, 
   ArrowRight, 
   Sparkles,
-  Map as MapIcon,
   Zap,
   CloudSun,
-  Timer,
-  Plane,
   Wind,
   Sun
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Card, CardContent } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { cn } from '@/lib/utils';
 import { ContactSection } from '@/components/sections/ContactSection';
@@ -83,8 +79,8 @@ export default function TarangireParkPage() {
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen">
-      {/* Hero Section */}
-      <section className="relative h-[55vh] md:h-[65vh] w-full flex items-center justify-center overflow-hidden bg-secondary">
+      {/* Hero Section - Compacted */}
+      <section className="relative h-[50vh] md:h-[65vh] w-full flex items-center justify-center overflow-hidden bg-secondary">
         <Image
           src="https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=1920"
           alt="Tarangire National Park"
@@ -105,9 +101,9 @@ export default function TarangireParkPage() {
       </section>
 
       {/* Interactive Navigator */}
-      <section className="py-12 container mx-auto px-4 max-w-7xl">
+      <section className="py-8 md:py-12 container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          <div className="lg:col-span-4 space-y-8">
+          <div className="lg:col-span-4 space-y-6">
             <div className="space-y-2">
               <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] block">Park Navigator</span>
               <h2 className="font-headline text-3xl md:text-5xl font-bold text-secondary uppercase tracking-tighter">Wildnis <br /><span className="text-primary">Pur</span></h2>
@@ -195,37 +191,36 @@ export default function TarangireParkPage() {
         </div>
       </section>
 
-      {/* Timing & Seasonality */}
-      <section className="py-12 bg-secondary relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+      {/* Timing & Climate */}
+      <section className="py-16 bg-[#fdfcfb] relative overflow-hidden">
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px]">Timing & Klima</span>
-              <h2 className="font-headline text-4xl md:text-6xl font-bold uppercase leading-none tracking-tighter text-white">Wann ist <br /><span className="text-primary">Peak Season?</span></h2>
+              <h2 className="font-headline text-4xl md:text-6xl font-bold uppercase leading-none tracking-tighter text-secondary">Wann ist <br /><span className="text-primary">Peak Season?</span></h2>
               <div className="grid grid-cols-1 gap-3 pt-4">
-                <div className="flex items-center gap-5 p-5 bg-white/5 rounded-2xl border border-white/10 group hover:bg-white/10 transition-all">
-                  <Sun className="w-8 h-8 text-primary" />
+                <div className="flex items-center gap-5 p-6 bg-white rounded-3xl border border-border shadow-sm group hover:border-primary transition-all">
+                  <Sun className="w-10 h-10 text-primary" />
                   <div>
-                    <p className="font-bold text-xs uppercase text-white">Juli – Oktober</p>
-                    <p className="text-[10px] text-white/40 font-bold uppercase tracking-widest">Trockenzeit & Beste Sichtungen</p>
+                    <p className="font-bold text-sm uppercase text-secondary">Juli – Oktober</p>
+                    <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest">Trockenzeit & Beste Sichtungen</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-5 p-5 bg-white/5 rounded-2xl border border-white/10 group hover:bg-white/10 transition-all">
-                  <CloudSun className="w-8 h-8 text-primary" />
+                <div className="flex items-center gap-5 p-6 bg-white rounded-3xl border border-border shadow-sm group hover:border-primary transition-all">
+                  <CloudSun className="w-10 h-10 text-primary" />
                   <div>
-                    <p className="font-bold text-xs uppercase text-white">November – Mai</p>
-                    <p className="text-[10px] text-white/40 font-bold uppercase tracking-widest">Grüne Saison & Vogelwelt</p>
+                    <p className="font-bold text-sm uppercase text-secondary">November – Mai</p>
+                    <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest">Grüne Saison & Vogelwelt</p>
                   </div>
                 </div>
               </div>
             </div>
             
             <div className="relative">
-              <div className="aspect-square rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white/5">
+              <div className="aspect-square rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
                 <Image src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1000" alt="Tarangire Season" fill className="object-cover" />
               </div>
-              <div className="absolute -bottom-6 -right-6 bg-primary p-8 rounded-[2.5rem] shadow-2xl hidden lg:block border border-white/10 max-w-[280px]">
+              <div className="absolute -bottom-6 -right-6 bg-secondary p-8 rounded-[2.5rem] shadow-2xl hidden lg:block border border-white/10 max-w-[280px]">
                 <Sparkles className="w-8 h-8 text-white mb-3" />
                 <h4 className="text-white font-bold text-lg uppercase leading-tight mb-1">Geheimtipp der Guides</h4>
                 <p className="text-white font-bold text-[10px] uppercase tracking-widest opacity-80 leading-relaxed">

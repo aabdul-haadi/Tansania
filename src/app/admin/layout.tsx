@@ -112,9 +112,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <div className="p-8 border-b">
           <Link href="/" className="flex items-center gap-3">
             <img 
-              src="/iconlogo.jpg" 
+              src="https://picsum.photos/seed/logo/200/200" 
               alt="Logo" 
-              className="h-10 w-auto object-contain rounded-lg" 
+              className="h-10 w-auto object-contain rounded-lg brightness-110" 
             />
             <span className="font-headline font-bold text-lg text-primary tracking-tighter leading-tight uppercase">
               TANSANIA <br /> REISEABENTEUER
@@ -162,7 +162,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <main className="flex-grow overflow-y-auto">
         <header className="sticky top-0 z-10 bg-background/80 backdrop-blur-md border-b px-8 py-4 flex items-center justify-between lg:hidden">
            <div className="flex items-center gap-2">
-             <img src="/iconlogo.jpg" alt="Logo" className="h-8 w-auto rounded-md" />
+             <img src="https://picsum.photos/seed/logo/200/200" alt="Logo" className="h-8 w-auto rounded-md brightness-110" />
              <span className="font-headline font-bold text-sm text-primary uppercase">REISEABENTEUER</span>
            </div>
            <button className="p-2 bg-muted rounded-lg" onClick={() => router.push('/admin')}>
