@@ -16,8 +16,8 @@ import {
   MessageSquare
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useUser, useDoc, useFirestore, useAuth, useMemoFirebase } from '@/firebase';
-import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { useUser, useDoc, useFirestore, useAuth, useMemoFirebase, setDocumentNonBlocking } from '@/firebase';
+import { doc, serverTimestamp } from 'firebase/firestore';
 import { Button } from '@/components/ui/button';
 import { signOut } from 'firebase/auth';
 
@@ -50,12 +50,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         setIsAuthorized(false);
       }
     }
-  }, [user, isUserLoading, pathname]);
+  }, [user, isUserLoading]);
 
   useEffect(() => {
     // DEVELOPMENT LOGIC: Auto-register ANY logged in user as admin
     if (user && !isAdminRoleLoading && !adminRole && firestore) {
-      setDoc(doc(firestore, 'roles_admin', user.uid), {
+      setDocumentNonBlocking(doc(firestore, 'roles_admin', user.uid), {
         uid: user.uid,
         email: user.email,
         role: 'ADMIN',
@@ -91,7 +91,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           </div>
           <div className="space-y-2">
             <h1 className="text-3xl font-bold tracking-tight text-white">Access Required</h1>
-            <p className="text-muted-foreground font-bold text-sm">Please sign in to manage Tansania Reiseabenteuer operations.</p>
+            <p className="text-muted-foreground font-bold text-sm">Please sign in to manage operations.</p>
           </div>
           <div className="pt-6 space-y-3">
             <Button asChild className="w-full rounded-2xl h-12" variant="secondary">
@@ -111,67 +111,40 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <aside className="w-72 bg-background border-r flex flex-col hidden lg:flex shrink-0">
         <div className="p-8 border-b">
           <Link href="/" className="flex items-center gap-3">
-            <img 
-              src="https://picsum.photos/seed/logo/200/200" 
-              alt="Logo" 
-              className="h-10 w-auto object-contain rounded-lg brightness-110" 
-            />
-            <span className="font-headline font-bold text-lg text-primary tracking-tighter leading-tight uppercase">
-              TANSANIA <br /> REISEABENTEUER
-            </span>
+            <img src="https://picsum.photos/seed/logo/200/200" alt="Logo" className="h-10 w-auto rounded-lg" />
+            <span className="font-headline font-bold text-lg text-primary uppercase">TANSANIA <br /> SDL</span>
           </Link>
-          <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold mt-3 ml-1">Staff Portal Hub</p>
         </div>
-        
         <nav className="flex-grow p-6 space-y-1">
           {adminLinks.map((link) => {
             const Icon = link.icon;
-            const isActive = pathname === link.href || (link.href !== '/admin' && pathname.startsWith(link.href));
+            const isActive = pathname === link.href;
             return (
               <Link
                 key={link.name}
                 href={link.href}
                 className={cn(
                   "flex items-center justify-between p-3.5 rounded-2xl transition-all duration-300 group",
-                  isActive 
-                    ? "bg-secondary text-white shadow-lg shadow-secondary/20" 
-                    : "hover:bg-muted text-muted-foreground hover:text-foreground"
+                  isActive ? "bg-secondary text-white shadow-lg" : "hover:bg-muted text-muted-foreground"
                 )}
               >
                 <div className="flex items-center gap-3">
                   <Icon className={cn("w-5 h-5", isActive ? "text-primary" : "text-muted-foreground/60")} />
                   <span className="font-bold text-sm">{link.name}</span>
                 </div>
-                {isActive && <ChevronRight className="w-4 h-4" />}
               </Link>
             );
           })}
         </nav>
-
         <div className="p-6 border-t">
-          <button 
-            onClick={handleSignOut}
-            className="flex items-center gap-3 w-full p-4 text-destructive hover:bg-destructive/5 rounded-2xl transition-colors font-bold text-sm"
-          >
+          <button onClick={handleSignOut} className="flex items-center gap-3 w-full p-4 text-destructive hover:bg-destructive/5 rounded-2xl font-bold text-sm">
             <LogOut className="w-5 h-5" />
             <span>Sign Out</span>
           </button>
         </div>
       </aside>
-
       <main className="flex-grow overflow-y-auto">
-        <header className="sticky top-0 z-10 bg-background/80 backdrop-blur-md border-b px-8 py-4 flex items-center justify-between lg:hidden">
-           <div className="flex items-center gap-2">
-             <img src="https://picsum.photos/seed/logo/200/200" alt="Logo" className="h-8 w-auto rounded-md brightness-110" />
-             <span className="font-headline font-bold text-sm text-primary uppercase">REISEABENTEUER</span>
-           </div>
-           <button className="p-2 bg-muted rounded-lg" onClick={() => router.push('/admin')}>
-             <LayoutDashboard className="w-5 h-5" />
-           </button>
-        </header>
-        <div className="min-h-full pb-20">
-          {children}
-        </div>
+        <div className="min-h-full pb-20">{children}</div>
       </main>
     </div>
   );
