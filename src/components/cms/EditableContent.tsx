@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useEffect, useState } from 'react';
@@ -16,7 +15,7 @@ interface EditableContentProps {
 
 /**
  * A component that makes its children editable from the Admin Panel.
- * Adding this component to any page automatically registers that page in the database.
+ * Handles hydration safety to prevent Internal Server Errors during SSR.
  */
 export function EditableContent({ 
   pageKey, 
@@ -58,34 +57,43 @@ export function EditableContent({
             data: defaultContent || {}
           }
         },
-        isRegistered: true // Master toggle for admin visibility
+        isRegistered: true
       }, { merge: true });
     }
   }, [mounted, firestore, docRef, isPageLoading, pageData, pageKey, sectionId, type, defaultContent, adminRole]);
 
-  // Hydration safety: Return children initially to avoid mismatch
-  if (!mounted) return <>{children}</>;
+  // CRITICAL: Hydration safety. 
+  // We MUST render the same initial structure on server and client to prevent 500 errors.
+  // Delaying dynamic content logic until after mount.
+  if (!mounted) {
+    return <>{children}</>;
+  }
 
-  if (isPageLoading && !pageData) return <Skeleton className="w-full h-20 rounded-xl" />;
+  // If we are on the client and data is still loading, show skeleton only if we intend to replace content
+  if (isPageLoading && !pageData) {
+    return <Skeleton className="w-full h-8 rounded-lg opacity-20" />;
+  }
 
-  // If page data exists, try to get the specific section content
   const sectionData = pageData?.sections?.[sectionId]?.data;
 
-  // Render logic based on type and database presence
   if (sectionData) {
-    if (type === 'hero') {
-      return <>{children}</>;
-    }
-    
-    if (type === 'text' && typeof sectionData === 'string') {
-      return <>{sectionData}</>;
-    }
+    try {
+      if (type === 'hero') {
+        return <>{children}</>;
+      }
+      
+      if (type === 'text' && typeof sectionData === 'string') {
+        return <>{sectionData}</>;
+      }
 
-    if (type === 'markdown' && sectionData.bodyMarkdown) {
-      return <div className="whitespace-pre-wrap">{sectionData.bodyMarkdown}</div>;
+      if (type === 'markdown' && sectionData.bodyMarkdown) {
+        return <div className="whitespace-pre-wrap">{sectionData.bodyMarkdown}</div>;
+      }
+    } catch (e) {
+      console.error("CMS Content Render Error:", e);
+      return <>{children}</>;
     }
   }
 
-  // Fallback to source code content
   return <>{children}</>;
 }

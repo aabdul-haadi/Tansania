@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useRef, useEffect } from 'react';
@@ -19,7 +20,8 @@ import {
   Globe,
   Mic,
   ChevronRight,
-  Timer
+  Timer,
+  AlertCircle
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -33,7 +35,7 @@ import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
 interface Message {
-  role: 'user' | 'model';
+  role: 'user' | 'model' | 'error';
   content: string;
 }
 
@@ -77,11 +79,11 @@ export default function TripAdvisorPage() {
     try {
       const result = await askTripAdvisor({
         message: userText,
-        history: messages
+        history: messages.filter(m => m.role !== 'error') as any
       });
       setMessages([...newMessages, { role: 'model', content: result.response }]);
     } catch (error) {
-      setMessages([...newMessages, { role: 'model', content: 'Entschuldigung, ich habe gerade eine technische Störung in der Savanne. Bitte versuchen Sie es gleich noch einmal.' }]);
+      setMessages([...newMessages, { role: 'error', content: 'In der Savanne gibt es gerade Funkstille. Wir konnten Ihre Nachricht nicht verarbeiten. Bitte prüfen Sie Ihre Verbindung.' }]);
     } finally {
       setLoading(false);
     }
@@ -158,14 +160,16 @@ export default function TripAdvisorPage() {
                   >
                     <div className={cn(
                       "w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-md",
-                      m.role === 'user' ? "bg-primary text-white" : "bg-secondary text-white"
+                      m.role === 'user' ? "bg-primary text-white" : m.role === 'error' ? "bg-destructive text-white" : "bg-secondary text-white"
                     )}>
-                      {m.role === 'user' ? <User className="w-5 h-5" /> : <Compass className="w-5 h-5" />}
+                      {m.role === 'user' ? <User className="w-5 h-5" /> : m.role === 'error' ? <AlertCircle className="w-5 h-5" /> : <Compass className="w-5 h-5" />}
                     </div>
                     <div className={cn(
                       "p-4 md:p-6 rounded-[1.5rem] text-sm md:text-base leading-relaxed font-bold",
                       m.role === 'user' 
                         ? "bg-primary text-white rounded-tr-none shadow-primary/10" 
+                        : m.role === 'error'
+                        ? "bg-destructive/10 text-destructive border border-destructive/20 rounded-tl-none"
                         : "bg-muted/20 text-secondary rounded-tl-none border border-muted/50"
                     )}>
                       {m.content}

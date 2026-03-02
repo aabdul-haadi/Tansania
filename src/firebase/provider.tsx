@@ -47,7 +47,6 @@ export interface UserHookResult {
 export const FirebaseContext = createContext<FirebaseContextState | undefined>(undefined);
 
 // Singleton WeakSet to track memoized Firebase objects (Query, DocumentReference, etc.)
-// This avoids TypeError on frozen objects in production builds.
 const memoizedObjects = new WeakSet<any>();
 
 /**
@@ -136,7 +135,11 @@ export function useMemoFirebase<T>(factory: () => T, deps: DependencyList): T {
   const memoized = useMemo(factory, deps);
   
   if(typeof memoized === 'object' && memoized !== null) {
-    memoizedObjects.add(memoized);
+    try {
+      memoizedObjects.add(memoized);
+    } catch (e) {
+      // Ignore frozen object issues in Edge environments
+    }
   }
   
   return memoized;

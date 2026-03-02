@@ -21,15 +21,6 @@ export interface UseCollectionResult<T> {
   error: FirestoreError | Error | null;
 }
 
-export interface InternalQuery extends Query<DocumentData> {
-  _query: {
-    path: {
-      canonicalString(): string;
-      toString(): string;
-    }
-  }
-}
-
 /**
  * Subscribe to a Firestore collection or query in real-time.
  * 
@@ -66,10 +57,8 @@ export function useCollection<T = any>(
         setIsLoading(false);
       },
       (error: FirestoreError) => {
-        const path: string =
-          targetRefOrQuery.type === 'collection'
-            ? (targetRefOrQuery as CollectionReference).path
-            : (targetRefOrQuery as unknown as InternalQuery)._query.path.canonicalString()
+        // Safer path resolution for error context
+        const path = (targetRefOrQuery as any).path || 'unknown/collection';
 
         const contextualError = new FirestorePermissionError({
           operation: 'list',

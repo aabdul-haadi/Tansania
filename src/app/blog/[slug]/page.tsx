@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -39,8 +38,13 @@ export default function BlogPostDetail() {
     setIsMounted(true);
   }, []);
 
-  const docRef = useMemoFirebase(() => (firestore && slug ? doc(firestore, 'blogPosts', slug as string) : null), [firestore, slug]);
-  const { data: post, isLoading } = useDoc(docRef);
+  // Use a query to find post by slug since document IDs are random
+  const postQuery = useMemoFirebase(() => (
+    firestore && slug ? query(collection(firestore, 'blogPosts'), where('slug', '==', slug as string), limit(1)) : null
+  ), [firestore, slug]);
+  
+  const { data: posts, isLoading } = useCollection(postQuery);
+  const post = posts?.[0];
 
   // Automated Discovery: Fetch recent posts for the sidebar
   const recentQuery = useMemoFirebase(() => (firestore ? query(collection(firestore, 'blogPosts'), where('status', '==', 'PUBLISHED'), limit(4)) : null), [firestore]);
@@ -69,10 +73,8 @@ export default function BlogPostDetail() {
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen">
-      {/* Reading Progress Bar */}
       <motion.div className="fixed top-0 left-0 right-0 h-1 bg-primary z-[100] origin-left" style={{ scaleX }} />
 
-      {/* Immersive Cinematic Header */}
       <header className="relative h-[70vh] md:h-[85vh] w-full overflow-hidden flex items-end pb-12 md:pb-24">
         <Image
           src={post.coverImage || 'https://picsum.photos/seed/safari/1920/1080'}
@@ -99,7 +101,7 @@ export default function BlogPostDetail() {
               </Badge>
             </div>
             
-            <h1 className="font-headline text-4xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-[1.1] drop-shadow-2xl">
+            <h1 className="font-headline text-4xl md:text-7xl font-bold text-white mb-8 leading-[1.1] drop-shadow-2xl">
               {post.title}
             </h1>
 
@@ -107,7 +109,7 @@ export default function BlogPostDetail() {
               <span className="flex items-center gap-2.5"><User className="w-4 h-4 text-primary" /> {post.authorName}</span>
               <span className="flex items-center gap-2.5">
                 <Clock className="w-4 h-4 text-primary" /> 
-                {isMounted ? new Date(post.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : '...'}
+                {isMounted && post.createdAt ? new Date(post.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : '...'}
               </span>
               <div className="hidden md:flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/10">
                 <Zap className="w-3.5 h-3.5 text-primary fill-primary" />
@@ -118,19 +120,15 @@ export default function BlogPostDetail() {
         </div>
       </header>
 
-      {/* Main Article Layout */}
       <div className="container mx-auto px-4 max-w-7xl pt-16 pb-32">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
           
-          {/* Content Column */}
           <main className="lg:col-span-8">
             <article className="bg-white rounded-[3rem] p-8 md:p-20 shadow-sm border border-border/50 relative overflow-hidden">
-              {/* Subtle visual motif */}
               <div className="absolute top-0 right-0 p-12 opacity-[0.03] pointer-events-none">
                 <Sparkles className="w-48 h-48 text-secondary" />
               </div>
 
-              {/* Excerpt Block */}
               <div className="relative mb-16">
                 <p className="text-2xl md:text-4xl font-light text-secondary italic leading-relaxed md:leading-[1.4]">
                   "{post.excerpt}"
@@ -142,20 +140,18 @@ export default function BlogPostDetail() {
                 </div>
               </div>
 
-              {/* Dynamic Body Content */}
               <div className="prose prose-xl max-w-none prose-headings:font-headline prose-headings:font-bold prose-headings:text-secondary prose-p:font-light prose-p:leading-[1.8] prose-p:text-muted-foreground prose-strong:text-secondary prose-a:text-primary hover:prose-a:underline">
-                <div className="whitespace-pre-wrap leading-relaxed space-y-10 text-lg md:text-xl">
+                <div className="whitespace-pre-wrap leading-relaxed space-y-10 text-lg md:text-xl font-bold">
                   {post.contentMarkdown || "No content available for this post."}
                 </div>
               </div>
 
-              {/* Signature Best Practices / Expert Tips Section */}
               <div className="mt-20 p-8 md:p-12 rounded-[2.5rem] bg-secondary text-white relative overflow-hidden">
                 <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
                 <div className="relative z-10 space-y-6">
                   <div className="flex items-center gap-3">
                     <Sparkles className="w-6 h-6 text-primary" />
-                    <h3 className="font-headline text-2xl font-bold">Signature Safari Tips</h3>
+                    <h3 className="font-headline text-2xl font-bold uppercase">Signature Safari Tips</h3>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {[
@@ -167,8 +163,8 @@ export default function BlogPostDetail() {
                       <div key={i} className="flex gap-4">
                         <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-1" />
                         <div>
-                          <p className="font-bold text-sm mb-1">{tip.t}</p>
-                          <p className="text-xs text-white/60 leading-relaxed font-light">{tip.d}</p>
+                          <p className="font-bold text-sm mb-1 uppercase">{tip.t}</p>
+                          <p className="text-xs text-white/60 leading-relaxed font-bold">{tip.d}</p>
                         </div>
                       </div>
                     ))}
@@ -176,7 +172,6 @@ export default function BlogPostDetail() {
                 </div>
               </div>
 
-              {/* Footer Meta */}
               <div className="mt-20 pt-10 border-t border-muted flex flex-col md:flex-row items-center justify-between gap-8">
                 <div className="flex items-center gap-5">
                   <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center font-headline font-bold text-2xl text-primary">
@@ -184,7 +179,7 @@ export default function BlogPostDetail() {
                   </div>
                   <div>
                     <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">Expert Contributor</p>
-                    <p className="font-headline font-bold text-xl text-secondary">{post.authorName}</p>
+                    <p className="font-headline font-bold text-xl text-secondary uppercase">{post.authorName}</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
@@ -197,12 +192,11 @@ export default function BlogPostDetail() {
               </div>
             </article>
 
-            {/* Related Journeys (Automatic) */}
             <div className="mt-24">
               <div className="flex items-end justify-between mb-12">
                 <div className="space-y-2">
                   <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary">Keep Exploring</span>
-                  <h3 className="font-headline text-4xl font-bold text-secondary">More from the savannah</h3>
+                  <h3 className="font-headline text-4xl font-bold text-secondary uppercase">More from the savannah</h3>
                 </div>
                 <Link href="/blog" className="hidden md:flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-primary hover:translate-x-2 transition-transform">
                   View All Journal <ChevronRight className="w-4 h-4" />
@@ -218,15 +212,14 @@ export default function BlogPostDetail() {
                         <Badge className="bg-white/90 backdrop-blur-md text-secondary border-none px-3 py-1 text-[8px] font-bold uppercase tracking-widest">{rp.category}</Badge>
                       </div>
                     </div>
-                    <h4 className="font-headline text-2xl font-bold leading-tight group-hover:text-primary transition-colors pr-8">{rp.title}</h4>
-                    <p className="mt-3 text-sm text-muted-foreground line-clamp-2 font-light leading-relaxed">{rp.excerpt}</p>
+                    <h4 className="font-headline text-2xl font-bold leading-tight group-hover:text-primary transition-colors pr-8 uppercase">{rp.title}</h4>
+                    <p className="mt-3 text-sm text-muted-foreground line-clamp-2 font-bold leading-relaxed">{rp.excerpt}</p>
                   </Link>
                 ))}
               </div>
             </div>
           </main>
 
-          {/* Sidebar Column */}
           <aside className="lg:col-span-4">
             <BlogSidebar recentPosts={recentPosts || []} />
           </aside>

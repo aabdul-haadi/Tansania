@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from 'react';
@@ -18,6 +17,7 @@ import Link from 'next/link';
 import { useFirestore, useUser, useCollection, useMemoFirebase, setDocumentNonBlocking } from '@/firebase';
 import { doc, collection } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
+import { serverTimestamp } from 'firebase/firestore';
 
 export default function AdminDashboard() {
   const { user } = useUser();
@@ -58,7 +58,7 @@ export default function AdminDashboard() {
       contactEmail: 'info@tansania-reiseabenteuer.de',
       whatsappNumber: '+49 30 22608080',
       officeHours: 'Montag – Freitag',
-      updatedAt: new Date().toISOString(),
+      updatedAt: serverTimestamp(),
       updatedBy: user.uid
     }, { merge: true });
 
@@ -84,7 +84,7 @@ export default function AdminDashboard() {
       setDocumentNonBlocking(doc(firestore, 'packages', pkg.slug), {
         ...pkg,
         isPublished: true,
-        updatedAt: new Date().toISOString()
+        updatedAt: serverTimestamp()
       }, { merge: true });
     }
 
