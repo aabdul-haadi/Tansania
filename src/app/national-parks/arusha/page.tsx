@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from 'react';
@@ -255,7 +254,7 @@ export default function ArushaParkPage() {
               >
                 <Sparkles className="w-8 h-8 text-primary mb-5" />
                 <h4 className="text-white font-bold text-lg uppercase leading-tight mb-3">Geheimtipp der Guides</h4>
-                <p className="text-white/90 font-bold text-[10px] uppercase tracking-widest leading-relaxed">
+                <p className="text-white font-bold text-[10px] uppercase tracking-widest leading-relaxed">
                   Starten Sie Ihre Kanu-Tour pünktlich zum Sonnenaufgang für die magischsten Mount Meru-Reflektionen auf den Momella Seen.
                 </p>
               </motion.div>

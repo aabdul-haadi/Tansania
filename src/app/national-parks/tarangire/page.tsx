@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from 'react';
@@ -256,7 +255,7 @@ export default function TarangireParkPage() {
               >
                 <Sparkles className="w-8 h-8 text-primary mb-5" />
                 <h4 className="text-white font-bold text-lg uppercase leading-tight mb-3">Tipp der Guides</h4>
-                <p className="text-white/90 font-bold text-[10px] uppercase tracking-widest leading-relaxed">
+                <p className="text-white font-bold text-[10px] uppercase tracking-widest leading-relaxed">
                   Konzentrieren Sie Ihre Pirschfahrten während der Trockenzeit auf den Tarangire-Fluss – hier versammeln sich hunderte Elefanten an einem Ort.
                 </p>
               </motion.div>
