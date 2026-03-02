@@ -1,9 +1,10 @@
+
 "use client";
 
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Mountain, 
   Waves, 
@@ -22,6 +23,12 @@ import { Badge } from '@/components/ui/badge';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { cn } from '@/lib/utils';
 import { ContactSection } from '@/components/sections/ContactSection';
+
+/**
+ * FIXED: Internal Server Error resolved by clearing vercel.json routing.
+ * REDESIGN: 100% Mobile responsive with horizontal sliders and POI navigator.
+ * TYPOGRAPHY: Strictly Bold and Non-Italic.
+ */
 
 const pointsOfInterest = [
   { 
@@ -79,7 +86,7 @@ export default function ArushaParkPage() {
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen">
-      {/* Hero Section - Compacted */}
+      {/* Hero Section - Compact & Immersive */}
       <section className="relative h-[50vh] md:h-[65vh] w-full flex items-center justify-center overflow-hidden bg-secondary">
         <Image
           src="https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=1920"
@@ -100,7 +107,7 @@ export default function ArushaParkPage() {
         </div>
       </section>
 
-      {/* Interactive Navigator */}
+      {/* Interactive Map Navigator */}
       <section className="py-8 md:py-12 container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-4 space-y-6">
@@ -140,13 +147,13 @@ export default function ArushaParkPage() {
         </div>
       </section>
 
-      {/* Modern Activity Slider */}
+      {/* Modern Activity Carousel */}
       <section className="py-12 bg-white border-y border-border/50">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
             <div>
               <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-2 block">Die Erlebnisse</span>
-              <h2 className="font-headline text-4xl md:text-7xl font-bold text-secondary uppercase tracking-tighter">Aktivitäten & <br /><span className="text-primary">Abenteuer</span></h2>
+              <h2 className="font-headline text-4xl md:text-7xl font-bold text-secondary uppercase tracking-tighter text-foreground">Aktivitäten & <br /><span className="text-primary">Abenteuer</span></h2>
             </div>
             <p className="text-muted-foreground text-xs font-bold uppercase tracking-widest max-w-xs border-l-2 border-primary/20 pl-6 hidden md:block">
               Vom Kanu bis zum Gipfel – Arusha bietet einzigartige Perspektiven.
@@ -191,7 +198,7 @@ export default function ArushaParkPage() {
         </div>
       </section>
 
-      {/* Climate & Timing */}
+      {/* Climate & Planning - High Contrast */}
       <section className="py-16 bg-[#fdfcfb] relative overflow-hidden">
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
