@@ -20,17 +20,6 @@ const mainNavLinks = [
   { name: 'SANSIBAR', href: '/destinations/zanzibar' },
 ];
 
-const reiseziele = [
-  { name: 'Kenia', href: '/destinations/kenia' },
-  { name: 'Botswana', href: '/destinations/botswana' },
-  { name: 'Ägypten', href: '/destinations/egypt' },
-  { name: 'Südafrika', href: '/destinations/south-africa' },
-  { name: 'Uganda', href: '/destinations/uganda' },
-  { name: 'Ruanda', href: '/destinations/rwanda' },
-  { name: 'Namibia', href: '/destinations/namibia' },
-  { name: 'Äthiopien', href: '/destinations/ethiopia' },
-];
-
 const secondaryLinks = [
   { name: 'AI Advisor', href: '/trip-advisor', highlight: true },
   { name: 'Über uns', href: '/about' },
@@ -41,12 +30,13 @@ const secondaryLinks = [
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
 
-  // Pages that HAVE a dark/image hero background at the top - Navbar can be transparent here
   const isHeroPage = pathname === '/' || pathname === '/about' || pathname === '/national-parks' || pathname?.startsWith('/destinations/') || pathname?.startsWith('/safaris/');
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
@@ -54,8 +44,7 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Force dark text/white bg on non-hero pages OR when scrolled
-  const shouldShowFullNav = !isHeroPage || isScrolled;
+  const shouldShowFullNav = !mounted || !isHeroPage || isScrolled;
 
   return (
     <header
@@ -67,17 +56,14 @@ export function Navbar() {
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        <Link href="/" className="relative z-50 flex items-center gap-3 transition-transform duration-500 hover:scale-105 active:scale-95 group">
+        <Link href="/" className="relative z-50 flex items-center gap-3 transition-transform duration-500 hover:scale-105 group">
           <img 
-            src="https://picsum.photos/seed/logo/200/200"
+            src="/logo/logo1.png"
             alt="Logo"
-            className={cn(
-              "h-10 md:h-12 w-auto object-contain transition-all duration-500 rounded-lg shadow-sm",
-              !shouldShowFullNav && "brightness-110" 
-            )}
+            className="h-10 md:h-12 w-auto object-contain rounded-lg"
           />
           <span className={cn(
-            "font-headline font-bold text-lg md:text-xl tracking-wider transition-colors uppercase",
+            "font-headline font-bold text-lg md:text-xl tracking-wider uppercase transition-colors",
             shouldShowFullNav ? "text-secondary" : "text-white"
           )}>
             Tansania <span className="text-primary">Reiseabenteuer</span>
@@ -85,15 +71,6 @@ export function Navbar() {
         </Link>
 
         <div className="flex items-center gap-4">
-          <Link href="/trip-advisor" className="hidden lg:block">
-            <Button variant="ghost" className={cn(
-              "rounded-full gap-2 text-[10px] font-bold uppercase tracking-widest border",
-              shouldShowFullNav ? "border-primary/20 text-secondary" : "border-white/20 text-white"
-            )}>
-              <Sparkles className="w-3.5 h-3.5 text-primary" /> AI Advisor
-            </Button>
-          </Link>
-
           <Sheet>
             <SheetTrigger asChild>
               <button
@@ -104,81 +81,30 @@ export function Navbar() {
                     : "bg-white/10 backdrop-blur-md border-white/20 text-white hover:bg-white/20"
                 )}
               >
-                <span className="text-[10px] font-bold uppercase tracking-[0.3em] hidden md:block">
-                  Menü
-                </span>
+                <span className="text-[10px] font-bold uppercase tracking-[0.3em] hidden md:block">Menü</span>
                 <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white shadow-xl">
                   <Menu className="w-5 h-5" />
                 </div>
               </button>
             </SheetTrigger>
-            
-            <SheetContent side="right" className="w-full sm:max-w-md p-0 border-none bg-[#0a0a0a] text-white overflow-y-auto">
-              <div className="flex flex-col min-h-full">
-                <div className="p-8 flex justify-between items-center border-b border-white/5 sticky top-0 bg-[#0a0a0a] z-10">
+            <SheetContent side="right" className="w-full sm:max-w-md p-0 border-none bg-[#0a0a0a] text-white">
+              <div className="flex flex-col h-full p-8 space-y-12">
+                <div className="flex justify-between items-center border-b border-white/5 pb-6">
                   <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary">Navigationszentrum</span>
-                  <SheetClose className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors text-white">
+                  <SheetClose className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white">
                     <X className="w-5 h-5" />
                   </SheetClose>
                 </div>
-
-                <div className="p-8 space-y-12">
-                  <div className="space-y-6">
-                    <h4 className="text-[10px] font-bold text-white/30 uppercase tracking-[0.4em]">Hauptziele</h4>
-                    <div className="grid grid-cols-1 gap-4">
-                      {mainNavLinks.map((link) => (
-                        <Link 
-                          key={link.name} 
-                          href={link.href}
-                          className="text-2xl font-headline font-bold text-white hover:text-primary transition-colors flex items-center justify-between group"
-                        >
-                          {link.name}
-                          <ChevronRight className="w-5 h-5 text-white/10 group-hover:text-primary group-hover:translate-x-1 transition-all" />
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="space-y-6">
-                    <h4 className="text-[10px] font-bold text-white/30 uppercase tracking-[0.4em]">REISEZIELE</h4>
-                    <div className="grid grid-cols-2 gap-x-8 gap-y-4">
-                      {reiseziele.map((item) => (
-                        <Link 
-                          key={item.name} 
-                          href={item.href} 
-                          className="text-sm font-medium text-white/60 hover:text-white transition-colors flex items-center gap-2"
-                        >
-                          <div className="w-1 h-1 rounded-full bg-primary/40" />
-                          {item.name}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="pt-10 border-t border-white/5 space-y-4">
-                    <div className="grid grid-cols-2 gap-4">
-                      {secondaryLinks.map((item) => (
-                        <Link 
-                          key={item.name} 
-                          href={item.href} 
-                          className={cn(
-                            "text-xs font-bold uppercase tracking-widest transition-colors",
-                            item.highlight ? "text-primary flex items-center gap-2" : "text-white/40 hover:text-white"
-                          )}
-                        >
-                          {item.highlight && <Sparkles className="w-3 h-3" />}
-                          {item.name}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
+                <div className="space-y-6">
+                  {mainNavLinks.map((link) => (
+                    <Link key={link.name} href={link.href} className="text-2xl font-headline font-bold text-white hover:text-primary transition-colors flex items-center justify-between">
+                      {link.name} <ChevronRight className="w-5 h-5" />
+                    </Link>
+                  ))}
                 </div>
-
-                <div className="mt-auto p-8 border-t border-white/5 bg-black/20">
+                <div className="mt-auto">
                   <Link href="/trip-planner">
-                    <Button className="w-full h-16 rounded-2xl text-lg font-bold text-white">
-                      JETZT REISE PLANEN
-                    </Button>
+                    <Button className="w-full h-16 rounded-2xl text-lg font-bold">JETZT REISE PLANEN</Button>
                   </Link>
                 </div>
               </div>

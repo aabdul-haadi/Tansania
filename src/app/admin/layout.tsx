@@ -8,7 +8,6 @@ import {
   FileText, 
   Globe,
   LogOut,
-  ChevronRight,
   Lock,
   Loader2,
   Database,
@@ -53,7 +52,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   }, [user, isUserLoading]);
 
   useEffect(() => {
-    // DEVELOPMENT LOGIC: Auto-register ANY logged in user as admin
     if (user && !isAdminRoleLoading && !adminRole && firestore) {
       setDocumentNonBlocking(doc(firestore, 'roles_admin', user.uid), {
         uid: user.uid,
@@ -89,18 +87,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <div className="w-20 h-20 bg-destructive/10 rounded-[2rem] flex items-center justify-center mx-auto mb-6">
             <Lock className="w-10 h-10 text-destructive" />
           </div>
-          <div className="space-y-2">
-            <h1 className="text-3xl font-bold tracking-tight text-white">Access Required</h1>
-            <p className="text-muted-foreground font-bold text-sm">Please sign in to manage operations.</p>
-          </div>
-          <div className="pt-6 space-y-3">
-            <Button asChild className="w-full rounded-2xl h-12" variant="secondary">
-              <Link href="/auth/login">Staff Login</Link>
-            </Button>
-            <Button asChild variant="ghost" className="w-full rounded-2xl h-12 text-muted-foreground font-bold">
-              <Link href="/">Return to Site</Link>
-            </Button>
-          </div>
+          <h1 className="text-3xl font-bold tracking-tight text-white uppercase">Access Required</h1>
+          <Button asChild className="w-full h-12 rounded-2xl" variant="secondary"><Link href="/auth/login">Staff Login</Link></Button>
         </div>
       </div>
     );
@@ -111,7 +99,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <aside className="w-72 bg-background border-r flex flex-col hidden lg:flex shrink-0">
         <div className="p-8 border-b">
           <Link href="/" className="flex items-center gap-3">
-            <img src="https://picsum.photos/seed/logo/200/200" alt="Logo" className="h-10 w-auto rounded-lg" />
+            <img src="/logo/logo1.png" alt="Logo" className="h-10 w-auto rounded-lg" />
             <span className="font-headline font-bold text-lg text-primary uppercase">TANSANIA <br /> SDL</span>
           </Link>
         </div>
@@ -124,28 +112,24 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 key={link.name}
                 href={link.href}
                 className={cn(
-                  "flex items-center justify-between p-3.5 rounded-2xl transition-all duration-300 group",
+                  "flex items-center gap-3 p-3.5 rounded-2xl transition-all duration-300 font-bold text-sm uppercase tracking-widest",
                   isActive ? "bg-secondary text-white shadow-lg" : "hover:bg-muted text-muted-foreground"
                 )}
               >
-                <div className="flex items-center gap-3">
-                  <Icon className={cn("w-5 h-5", isActive ? "text-primary" : "text-muted-foreground/60")} />
-                  <span className="font-bold text-sm">{link.name}</span>
-                </div>
+                <Icon className={cn("w-5 h-5", isActive ? "text-primary" : "text-muted-foreground/60")} />
+                <span>{link.name}</span>
               </Link>
             );
           })}
         </nav>
         <div className="p-6 border-t">
-          <button onClick={handleSignOut} className="flex items-center gap-3 w-full p-4 text-destructive hover:bg-destructive/5 rounded-2xl font-bold text-sm">
+          <button onClick={handleSignOut} className="flex items-center gap-3 w-full p-4 text-destructive hover:bg-destructive/5 rounded-2xl font-bold text-sm uppercase tracking-widest">
             <LogOut className="w-5 h-5" />
             <span>Sign Out</span>
           </button>
         </div>
       </aside>
-      <main className="flex-grow overflow-y-auto">
-        <div className="min-h-full pb-20">{children}</div>
-      </main>
+      <main className="flex-grow overflow-y-auto">{children}</main>
     </div>
   );
 }
