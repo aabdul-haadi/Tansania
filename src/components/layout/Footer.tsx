@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -27,7 +26,7 @@ export function Footer() {
             <ul className="flex flex-col gap-4 text-sm font-bold text-white/50">
               <li><Link href="/about" className="hover:text-white transition-colors">Über uns</Link></li>
               <li><Link href="/services/guest-protection" className="hover:text-white transition-colors">Reiseversicherung</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Partner</Link></li>
+              <li><Link href="/partner" className="hover:text-white transition-colors">Partner</Link></li>
               <li><Link href="/fam-trip" className="hover:text-white transition-colors">Fam-Trip</Link></li>
               <li><Link href="/karriere" className="hover:text-white transition-colors">Karriere</Link></li>
               <li><Link href="/auth/login" className="hover:text-white transition-colors text-primary">Reisebüros - Anmelden</Link></li>
