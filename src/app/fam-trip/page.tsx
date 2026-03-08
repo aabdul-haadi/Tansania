@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -42,7 +41,7 @@ const itinerary = [
     location: "Arusha",
     dist: "50 km",
     time: "45-60 Min.",
-    desc: "Ankunft und Transfer zur Arusha Planet Lodge. Erkunden Sie die Stadt mit Märkten und dem pulsierenden Leben.",
+    desc: "Nach der Ankunft am Kilimanjaro International Airport werden Sie von unserem Reiseleiter empfangen und mit dem Auto in die faszinierende Stadt Arusha gebracht. Dort angekommen, können Sie sich in der Arusha Planet Lodge von der Anreise erholen.",
     accommodation: "Arusha Planet Lodge",
     meals: "A"
   },
@@ -52,7 +51,7 @@ const itinerary = [
     location: "Arusha NP",
     dist: "20 km",
     time: "30 Min.",
-    desc: "Erste Safari-Eindrücke im Arusha Nationalpark am Fuße des Mount Meru.",
+    desc: "Erste Safari-Eindrücke im Arusha Nationalpark am Fuße des Mount Meru. Entdecken Sie Giraffen und seltene Stummelaffen im dichten Regenwald.",
     accommodation: "Arusha Planet Lodge",
     meals: "F, M, A"
   },
@@ -60,9 +59,9 @@ const itinerary = [
     day: 3,
     title: "Tarangire Nationalpark",
     location: "Tarangire",
-    dist: "120 km / 90 km",
-    time: "3,5 Std. / 1,5 Std.",
-    desc: "Fahrt zum Tarangire NP, bekannt für seine riesigen Elefantenherden und Baobabs. Weiterfahrt nach Karatu.",
+    dist: "120 km",
+    time: "3,5 Std.",
+    desc: "Fahrt zum Tarangire NP, bekannt für seine riesigen Elefantenherden und Baobabs. Weiterfahrt nach Karatu am Abend.",
     accommodation: "Farm of Dreams Lodge",
     meals: "F, M, A"
   },
@@ -72,7 +71,7 @@ const itinerary = [
     location: "Lake Eyasi",
     dist: "Variable",
     time: "Ganztags",
-    desc: "Besuch der Buschmänner (Hadzabe) und der Schmieden (Datoga). Ein tiefer Einblick in ursprüngliche Kulturen.",
+    desc: "Besuch der Buschmänner (Hadzabe) und der Schmieden (Datoga). Ein tiefer Einblick in ursprüngliche Kulturen Tansanias.",
     accommodation: "Farm of Dreams Lodge",
     meals: "F, M, A"
   },
@@ -100,9 +99,9 @@ const itinerary = [
     day: 7,
     title: "Ngorongoro-Krater",
     location: "Ngorongoro",
-    dist: "150 km / 60 km",
-    time: "3 Std. / 1,5 Std.",
-    desc: "Abstieg in den weltberühmten Ngorongoro Krater. Einzigartige Tierdichte auf engstem Raum. Rückkehr nach Karatu.",
+    dist: "150 km",
+    time: "3 Std.",
+    desc: "Abstieg in den weltberühmten Ngorongoro Krater. Einzigartige Tierdichte auf engstem Raum.",
     accommodation: "Farm of Dreams Lodge",
     meals: "F, M, A"
   },
@@ -140,8 +139,11 @@ export default function FamTripPage() {
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-body">
-      {/* Script for Trustindex */}
-      <Script defer src="https://cdn.trustindex.io/loader.js?4283f9b27e9f849d1a66a25dde5" />
+      {/* Script for Trustindex loaded via Next.js Script for performance */}
+      <Script 
+        src="https://cdn.trustindex.io/loader.js?4283f9b27e9f849d1a66a25dde5" 
+        strategy="afterInteractive"
+      />
 
       {/* Hero Section */}
       <section className="relative h-[60vh] md:h-[80vh] flex items-center justify-center overflow-hidden bg-secondary">
@@ -213,10 +215,10 @@ export default function FamTripPage() {
                 </h2>
                 <div className="space-y-6 text-muted-foreground font-bold leading-relaxed text-sm md:text-lg">
                   <p>
-                    Erleben Sie Tansania auf eine einzigartige Weise mit unserem exklusiven 8-tägigen Fam Trip für Reiseprofis. Diese speziell gestaltete Reise bietet Ihnen die Möglichkeit, die spektakulärsten Orte des Landes zu entdecken und Ihre Kenntnisse über dieses faszinierende Reiseziel zu vertiefen.
+                    Erleben Sie Tansania auf eine einzigartige Weise mit unserem exklusiven 8-tägigen Fam Trip für Reiseprofis. Diese speziell gestaltete Reise bietet Ihnen die Möglichkeit, die spektakulärsten Orte des Landes zu entdecken.
                   </p>
                   <p>
-                    Erkunden Sie die wilde Schönheit der Serengeti, bestaunen Sie die majestätischen Gipfel des Kilimandscharo und erleben Sie die herzliche Gastfreundschaft der einheimischen Gemeinschaften. Unser Fam Trip kombiniert Abenteuer, Kultur und Entspannung.
+                    Unser Fam Trip kombiniert Abenteuer, Kultur und Entspannung und bietet Ihnen wertvolle Einblicke, die Sie an Ihre Kunden weitergeben können.
                   </p>
                 </div>
               </div>
@@ -304,20 +306,14 @@ export default function FamTripPage() {
               </div>
             </section>
 
-            {/* Trustindex Section */}
+            {/* Trustindex Section - Properly contained widget */}
             <section className="py-12 border-t border-border/50">
               <h2 className="text-center font-headline text-3xl md:text-5xl font-bold text-secondary uppercase mb-12">
                 Das sagen <span className="text-primary">unsere Gäste</span>
               </h2>
-              <div className="min-h-[200px] flex items-center justify-center">
-                {/* The Trustindex widget will load here */}
-                <div className="w-full" dangerouslySetInnerHTML={{ __html: `
-                  <div class="trustindex-widget-container">
-                    <div class="col-md-12">
-                      <script defer src="https://cdn.trustindex.io/loader.js?4283f9b27e9f849d1a66a25dde5" data-ti-loaded="true"></script>
-                    </div>
-                  </div>
-                ` }} />
+              <div className="min-h-[250px] w-full relative">
+                {/* Trustindex widget container - script is loaded globally at page top */}
+                <div className="trustindex-widget-container" data-ti-widget-id="4283f9b27e9f849d1a66a25dde5" />
               </div>
             </section>
 
