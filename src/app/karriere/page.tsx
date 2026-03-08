@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -103,7 +102,7 @@ export default function CareersPage() {
               Karriere bei <br />
               <span className="text-primary">Tansania Reiseabenteuer</span>
             </h1>
-            <p className="max-w-2xl mx-auto text-[10px] md:text-xl text-white/80 font-black uppercase tracking-widest leading-relaxed">
+            <p className="max-w-2xl mx-auto text-[10px] md:text-xl text-white/90 font-black uppercase tracking-widest leading-relaxed">
               Arbeiten mit Sinn. Reisen gestalten. Afrika erleben.
             </p>
           </motion.div>
@@ -154,11 +153,11 @@ export default function CareersPage() {
             <div className="space-y-8">
               <div>
                 <span className="text-primary font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px] mb-3 block">Match Check</span>
-                <h2 className="font-headline text-3xl md:text-6xl font-bold uppercase tracking-tighter leading-none">
+                <h2 className="font-headline text-3xl md:text-6xl font-bold text-white uppercase tracking-tighter leading-none">
                   Für wen ist das <br /><span className="text-primary">der richtige Ort?</span>
                 </h2>
               </div>
-              <p className="text-white/60 font-bold text-sm md:text-lg leading-relaxed uppercase tracking-widest">
+              <p className="text-white/80 font-bold text-sm md:text-lg leading-relaxed uppercase tracking-widest">
                 Wir suchen Menschen, die nicht nur einen Job, sondern eine Berufung finden wollen.
               </p>
             </div>
@@ -169,7 +168,7 @@ export default function CareersPage() {
                   <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary font-black text-xs md:text-xl shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
                     {i + 1}
                   </div>
-                  <p className="text-[10px] md:text-base font-bold uppercase tracking-widest leading-relaxed">
+                  <p className="text-[10px] md:text-base font-bold text-white uppercase tracking-widest leading-relaxed">
                     {text}
                   </p>
                 </div>

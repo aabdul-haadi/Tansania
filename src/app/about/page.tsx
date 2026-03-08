@@ -160,7 +160,7 @@ export default function AboutPage() {
                   Maßgeschneidert von <br /><span className="text-primary">Samson Kyashama</span>
                 </h2>
               </div>
-              <p className="text-white/60 font-bold leading-relaxed text-sm md:text-xl">
+              <p className="text-white font-bold leading-relaxed text-sm md:text-xl opacity-90">
                 Unter der Führung von Samson Kyashama, einem gebürtigen Tansanier und erfahrenen Safari-Experten, entwerfen wir Reisen, die Ihre kühnsten Träume übertreffen. Jede Safari, jede Besteigung und jedes kulturelle Erlebnis wird persönlich abgestimmt.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 pt-4">
@@ -170,7 +170,7 @@ export default function AboutPage() {
                   </div>
                   <div>
                     <p className="font-black text-[10px] md:text-xs text-white uppercase tracking-widest">Lokale Expertise</p>
-                    <p className="text-[10px] md:text-sm text-white/40 font-bold uppercase mt-1">Tief verwurzelt in Tansania.</p>
+                    <p className="text-[10px] md:text-sm text-white/60 font-bold uppercase mt-1">Tief verwurzelt in Tansania.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
@@ -179,7 +179,7 @@ export default function AboutPage() {
                   </div>
                   <div>
                     <p className="font-black text-[10px] md:text-xs text-white uppercase tracking-widest">Einzigartige Erlebnisse</p>
-                    <p className="text-[10px] md:text-sm text-white/40 font-bold uppercase mt-1">Abenteuer so individuell wie Sie.</p>
+                    <p className="text-[10px] md:text-sm text-white/60 font-bold uppercase mt-1">Abenteuer so individuell wie Sie.</p>
                   </div>
                 </div>
               </div>
@@ -317,7 +317,7 @@ export default function AboutPage() {
               <h2 className="font-headline text-3xl md:text-7xl font-bold text-white uppercase leading-none tracking-tighter">
                 Willkommen im <br /><span className="text-primary">Herzen Afrikas</span>
               </h2>
-              <p className="text-white/40 text-[10px] md:text-xl font-black uppercase tracking-widest max-w-2xl mx-auto">
+              <p className="text-white/80 text-[10px] md:text-xl font-black uppercase tracking-widest max-w-2xl mx-auto">
                 Dort, wo die Savanne niemals schläft und Ihre Träume Wirklichkeit werden.
               </p>
             </div>
@@ -345,7 +345,7 @@ export default function AboutPage() {
                   Reise Planen <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
-              <Link href="/contact" className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.4em] text-white/60 hover:text-primary transition-colors py-4">
+              <Link href="/contact" className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.4em] text-white/80 hover:text-primary transition-colors py-4">
                 Experten sprechen
               </Link>
             </div>

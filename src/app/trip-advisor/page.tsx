@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useRef, useEffect } from 'react';
@@ -294,10 +293,10 @@ export default function TripAdvisorPage() {
               <div className="relative z-10 space-y-4">
                 <div className="flex items-center gap-2 text-primary">
                   <ShieldCheck className="w-5 h-5" />
-                  <span className="text-[8px] font-black uppercase tracking-widest text-white/60">Expert Support</span>
+                  <span className="text-[8px] font-black uppercase tracking-widest text-white/80">Expert Support</span>
                 </div>
-                <h3 className="font-headline text-xl font-bold leading-tight uppercase">Persönliche Beratung</h3>
-                <p className="text-white/40 text-[10px] font-bold leading-relaxed uppercase">
+                <h3 className="font-headline text-xl font-bold leading-tight text-white uppercase">Persönliche Beratung</h3>
+                <p className="text-white/60 text-[10px] font-bold leading-relaxed uppercase">
                   Unser Team in Berlin hilft Ihnen gerne telefonisch weiter.
                 </p>
                 <div className="pt-2">
