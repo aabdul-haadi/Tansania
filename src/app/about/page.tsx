@@ -259,7 +259,7 @@ export default function AboutPage() {
                   <div className="absolute inset-0 bg-black/20 group-hover:opacity-0 transition-opacity" />
                 </div>
                 <h4 className="font-headline text-sm md:text-xl font-bold text-secondary uppercase leading-none mb-1 md:mb-2">{member.name}</h4>
-                <p className="text-[7px] md:text-[9px] font-black text-primary uppercase tracking-widest mb-3 md:mb-4">{member.role}</p>
+                <p className="text-[7px] md:text-9px font-black text-primary uppercase tracking-widest mb-3 md:mb-4">{member.role}</p>
                 <Button variant="link" className="h-auto p-0 text-[8px] md:text-[10px] font-black uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors">Mehr erfahren</Button>
               </motion.div>
             ))}

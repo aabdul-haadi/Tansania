@@ -3,8 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Script from 'next/script';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { 
   Users, 
   Calendar, 
@@ -149,7 +148,7 @@ export default function FamTripPage() {
           className="object-cover brightness-50"
           data-ai-hint="serengeti jeep"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-[#fdfcfb]" />
+        <div className="absolute inset-0 bg-black/40" />
         
         <div className="container relative z-10 mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
@@ -157,7 +156,7 @@ export default function FamTripPage() {
               Exklusiv für Reiseprofis
             </Badge>
             <h1 className="font-headline text-4xl md:text-8xl font-bold text-white leading-none tracking-tighter uppercase mb-6">
-              FAM <span className="text-primary italic">TRIP</span> <br /> Tansania
+              FAM TRIP <br /> Tansania
             </h1>
             <p className="max-w-2xl mx-auto text-[10px] md:text-xl text-white/90 font-black uppercase tracking-widest leading-relaxed">
               8 Tage Abenteuer & Kultur. Ihre Brücke zum Expertenwissen.
@@ -205,7 +204,7 @@ export default function FamTripPage() {
                   <Compass className="w-4 h-4" /> Expeditions-Audit
                 </div>
                 <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary leading-tight uppercase">
-                  Abenteuer und <br /><span className="text-primary italic">Kultur erleben</span>
+                  Abenteuer und <br /><span className="text-primary">Kultur erleben</span>
                 </h2>
                 <div className="space-y-6 text-muted-foreground font-bold leading-relaxed text-sm md:text-lg">
                   <p>
@@ -235,7 +234,7 @@ export default function FamTripPage() {
 
             {/* Itinerary Section */}
             <section id="itinerary" className="space-y-12 scroll-mt-32">
-              <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary uppercase">Der <span className="text-primary italic">Reiseverlauf</span></h2>
+              <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary uppercase">Der <span className="text-primary">Reiseverlauf</span></h2>
               
               <div className="space-y-6">
                 {itinerary.map((day, idx) => (
@@ -275,7 +274,7 @@ export default function FamTripPage() {
             <section id="hotels" className="space-y-12 scroll-mt-32">
               <div className="flex flex-col md:flex-row justify-between items-end gap-6">
                 <div>
-                  <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary uppercase leading-none">Die <br /><span className="text-primary italic">Unterkünfte</span></h2>
+                  <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary uppercase leading-none">Die <br /><span className="text-primary">Unterkünfte</span></h2>
                 </div>
                 <p className="text-[10px] text-muted-foreground font-black uppercase tracking-widest max-w-[200px] border-l-2 border-primary/20 pl-4">
                   Handverlesene Lodges, die Komfort und Authentizität vereinen.
@@ -300,21 +299,6 @@ export default function FamTripPage() {
               </div>
             </section>
 
-            {/* Trustindex Section - Positioned exactly as requested */}
-            <section className="py-12 border-t border-border/50">
-              <h2 className="text-center font-headline text-3xl md:text-5xl font-bold text-secondary uppercase mb-12">
-                Das sagen <span className="text-primary">unsere Gäste</span>
-              </h2>
-              <div className="w-full mt-5 relative min-h-[400px]">
-                <Script 
-                  src="https://cdn.trustindex.io/loader.js?4283f9b27e9f849d1a66a25dde5" 
-                  strategy="lazyOnload"
-                />
-                {/* The container the script targets - MUST be inside this section to avoid appearing after footer */}
-                <div className="trustindex-widget-container" data-ti-widget-id="4283f9b27e9f849d1a66a25dde5" />
-              </div>
-            </section>
-
           </main>
 
           {/* Sidebar Conversion */}
@@ -326,7 +310,7 @@ export default function FamTripPage() {
                 <div className="relative z-10 space-y-8">
                   <div className="text-center">
                     <span className="text-primary font-black uppercase tracking-[0.3em] text-[10px] mb-4 block">Fam Trip Investment</span>
-                    <h2 className="text-4xl md:text-5xl font-black font-headline text-white uppercase leading-none">Preis auf <br /><span className="text-primary italic">Anfrage</span></h2>
+                    <h2 className="text-4xl md:text-5xl font-black font-headline text-white uppercase leading-none">Preis auf <br /><span className="text-primary">Anfrage</span></h2>
                   </div>
 
                   <div className="space-y-4">
