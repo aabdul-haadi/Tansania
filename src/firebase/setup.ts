@@ -18,21 +18,20 @@ let cachedServices: FirebaseServices | null = null;
 
 /**
  * Initializes Firebase using environment variables and ensures a single instance exists.
+ * This pattern prevents "Firebase: Need to provide options (app/no-options)" errors.
  */
 export function initializeFirebase(): FirebaseServices {
   if (cachedServices) {
     return cachedServices;
   }
 
-  // Safety check for critical config during build/prerender
+  // Validation check for environment variables
   if (!firebaseConfig.apiKey || !firebaseConfig.projectId) {
-    if (process.env.NODE_ENV === 'production') {
-      console.error('Firebase configuration is missing critical environment variables.');
-    }
+    console.warn('Firebase: Missing configuration options. Check your environment variables.');
   }
 
-  const existingApps = getApps();
-  const app = existingApps.length === 0 ? initializeApp(firebaseConfig) : existingApps[0];
+  // Strict singleton check as requested
+  const app = !getApps().length ? initializeApp(firebaseConfig) : getApps()[0];
 
   cachedServices = {
     firebaseApp: app,
