@@ -17,11 +17,13 @@ import {
   Plane,
   Heart,
   Calendar,
-  MessageSquare
+  MessageSquare,
+  ChevronRight
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -50,11 +52,14 @@ export function Navbar() {
     setIsOpen(false);
   }, [pathname]);
 
-  const mainLinks = [
-    { name: 'Safari', href: '/safaris', icon: Compass },
-    { name: 'Kilimandscharo', href: '/destinations/kilimanjaro', icon: Mountain },
-    { name: 'Sansibar', href: '/destinations/zanzibar', icon: Waves },
-  ];
+  // Prevent scroll when drawer is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isOpen]);
 
   return (
     <>
@@ -82,34 +87,19 @@ export function Navbar() {
               </div>
             </Link>
 
-            {/* Desktop Center Ribbon - "Something Diff" */}
-            <div className="hidden lg:flex items-center gap-1 bg-white/5 rounded-full p-1 border border-white/5">
-              {mainLinks.map((link) => (
-                <Link key={link.name} href={link.href}>
-                  <Button variant="ghost" className="h-8 rounded-full px-4 text-[9px] font-black uppercase tracking-widest text-white/60 hover:text-white hover:bg-white/10 transition-all">
-                    {link.name}
-                  </Button>
-                </Link>
-              ))}
-            </div>
-
+            {/* Minimalist Front - Only Menu Trigger */}
             <div className="flex items-center gap-3 relative z-[110]">
-              <Link href="/trip-planner" className="hidden sm:block">
-                <Button className="rounded-full px-5 h-8 font-black text-[9px] uppercase tracking-widest bg-primary text-white border-none shadow-lg">
-                  Anfrage
-                </Button>
-              </Link>
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className={cn(
-                  "flex items-center gap-2 pl-3 pr-1 h-8 md:h-10 rounded-full transition-all duration-500 border border-transparent group",
+                  "flex items-center gap-2 pl-3 pr-1.5 h-8 md:h-10 rounded-full transition-all duration-500 border border-transparent group",
                   isOpen 
                     ? "bg-primary text-white" 
                     : "bg-white/10 text-white border-white/10"
                 )}
               >
                 <span className="text-[8px] font-black uppercase tracking-[0.2em] ml-1 hidden md:block">
-                  {isOpen ? "Close" : "Menu"}
+                  {isOpen ? "Close" : "Explore"}
                 </span>
                 <div className="w-6 h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center bg-white/10 group-hover:bg-primary transition-colors">
                   {isOpen ? <X className="w-3 h-3" /> : <Menu className="w-3 h-3" />}
@@ -120,42 +110,79 @@ export function Navbar() {
         </nav>
       </header>
 
+      {/* Backdrop for Side Drawer */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[90] bg-secondary flex flex-col overflow-hidden"
-          >
-            <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none" />
-            <div className="absolute top-0 right-0 w-[50%] h-full bg-primary/5 blur-[120px] pointer-events-none" />
+            onClick={() => setIsOpen(false)}
+            className="fixed inset-0 z-[90] bg-black/40 backdrop-blur-sm"
+          />
+        )}
+      </AnimatePresence>
 
-            <div className="container mx-auto px-4 h-full flex flex-col pt-24 pb-8 overflow-y-auto no-scrollbar">
-              {/* Desktop Grid Layout - "Diff View" */}
-              <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 mb-12">
+      {/* Side Drawer (Compacted Sidebar) */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: "spring", damping: 30, stiffness: 300 }}
+            className="fixed top-0 right-0 z-[100] h-full w-full sm:w-[400px] md:w-[450px] bg-secondary shadow-2xl flex flex-col border-l border-white/5"
+          >
+            <div className="absolute inset-0 opacity-[0.02] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none" />
+            
+            {/* Drawer Header */}
+            <div className="p-6 md:p-8 border-b border-white/5 flex items-center justify-between shrink-0 relative z-10">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center border border-primary/20">
+                  <Compass className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <h4 className="font-headline font-bold text-lg text-white uppercase leading-none">Menü</h4>
+                  <p className="text-[8px] font-black uppercase tracking-widest text-white/30 mt-1">Site Registry</p>
+                </div>
+              </div>
+              <button onClick={() => setIsOpen(false)} className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors">
+                <X className="w-4 h-4 text-white" />
+              </button>
+            </div>
+
+            <ScrollArea className="flex-grow">
+              <div className="p-6 md:p-8 space-y-10">
                 
-                {/* Column 1: Core Expeditions */}
-                <div className="space-y-8">
-                  <p className="text-primary font-black uppercase tracking-[0.4em] text-[10px] mb-6">01. Expeditions</p>
-                  <nav className="flex flex-col gap-4">
+                {/* 01. Core Pillars */}
+                <div className="space-y-4">
+                  <p className="text-primary font-black uppercase tracking-[0.4em] text-[9px]">01. Expeditionen</p>
+                  <nav className="flex flex-col gap-2">
                     {[
-                      { name: 'Safari', href: '/safaris', sub: 'Infinite Plains' },
-                      { name: 'Mountain', href: '/destinations/kilimanjaro', sub: 'Uhuru Peak' },
-                      { name: 'Island', href: '/destinations/zanzibar', sub: 'Swahili Coast' },
-                      { name: 'Wilderness', href: '/national-parks', sub: 'Untouched Parks' },
+                      { name: 'Safari', href: '/safaris', icon: Compass, sub: 'Infinite Plains' },
+                      { name: 'Kilimandscharo', href: '/destinations/kilimanjaro', icon: Mountain, sub: 'Uhuru Peak' },
+                      { name: 'Sansibar', href: '/destinations/zanzibar', icon: Waves, sub: 'Swahili Coast' },
+                      { name: 'Nationalparks', href: '/national-parks', icon: Globe, sub: 'Untouched Parks' },
                     ].map((link) => (
-                      <Link key={link.name} href={link.href} className="group">
-                        <h2 className="font-headline text-3xl md:text-4xl font-bold text-white group-hover:text-primary transition-colors uppercase leading-none">{link.name}</h2>
-                        <p className="text-[8px] font-black uppercase tracking-widest text-white/20 mt-1">{link.sub}</p>
+                      <Link key={link.name} href={link.href} className="group flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-transparent hover:border-primary/20 hover:bg-primary/5 transition-all">
+                        <div className="flex items-center gap-4">
+                          <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-primary transition-colors">
+                            <link.icon className="w-5 h-5 text-white" />
+                          </div>
+                          <div>
+                            <h3 className="font-headline text-xl font-bold text-white uppercase leading-none">{link.name}</h3>
+                            <p className="text-[8px] font-black uppercase tracking-widest text-white/20 mt-1">{link.sub}</p>
+                          </div>
+                        </div>
+                        <ChevronRight className="w-4 h-4 text-white/20 group-hover:text-primary transition-colors" />
                       </Link>
                     ))}
                   </nav>
                 </div>
 
-                {/* Column 2: Destinations Grid */}
-                <div className="space-y-8">
-                  <p className="text-primary font-black uppercase tracking-[0.4em] text-[10px] mb-6">02. Regions</p>
+                {/* 02. Regions Grid */}
+                <div className="space-y-4">
+                  <p className="text-primary font-black uppercase tracking-[0.4em] text-[9px]">02. Top Reiseziele</p>
                   <div className="grid grid-cols-2 gap-2">
                     {['Kenia', 'Botswana', 'Ägypten', 'Südafrika', 'Uganda', 'Ruanda', 'Namibia', 'Äthiopien'].map((dest) => (
                       <Link 
@@ -169,71 +196,51 @@ export function Navbar() {
                   </div>
                 </div>
 
-                {/* Column 3: Themed & Services */}
-                <div className="space-y-8">
-                  <p className="text-primary font-black uppercase tracking-[0.4em] text-[10px] mb-6">03. Curated</p>
-                  <div className="flex flex-col gap-4">
-                    <div className="space-y-2">
-                      <p className="text-[8px] font-black uppercase text-white/20 tracking-widest">Collections</p>
-                      {['Flitterwochen', 'Familienreisen', 'Luxusreisen'].map(t => (
-                        <Link key={t} href="/safaris" className="block text-xs font-bold text-white/60 hover:text-primary transition-colors uppercase tracking-widest">{t}</Link>
-                      ))}
-                    </div>
-                    <div className="space-y-2 pt-4">
-                      <p className="text-[8px] font-black uppercase text-white/20 tracking-widest">Agency</p>
-                      {['Über uns', 'Karriere', 'Partner', 'Versicherung'].map(s => (
-                        <Link key={s} href="/about" className="block text-xs font-bold text-white/60 hover:text-primary transition-colors uppercase tracking-widest">{s}</Link>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Column 4: Status & Pulse */}
-                <div className="space-y-8">
-                  <p className="text-primary font-black uppercase tracking-[0.4em] text-[10px] mb-6">04. Pulse</p>
+                {/* 03. Collections & Utility */}
+                <div className="grid grid-cols-2 gap-8">
                   <div className="space-y-4">
-                    <div className="bg-primary/5 rounded-2xl p-6 border border-primary/10 relative overflow-hidden group">
-                      <Zap className="absolute -top-2 -right-2 w-12 h-12 text-primary opacity-10 group-hover:scale-110 transition-transform" />
-                      <span className="text-[8px] font-black uppercase tracking-[0.3em] text-primary mb-2 block">Booking Status</span>
-                      <h4 className="font-headline text-xl font-bold text-white uppercase mb-1">Expeditions 2026</h4>
-                      <p className="text-[9px] text-white/30 font-bold uppercase tracking-widest leading-relaxed mb-4">Early bird advantages for the Great Migration season are now live.</p>
-                      <Link href="/safaris" className="inline-flex items-center gap-2 text-[9px] font-black uppercase tracking-widest text-primary hover:text-white transition-all">Check Availability <ArrowRight className="w-3 h-3" /></Link>
-                    </div>
-                    <div className="p-6 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-between">
-                      <div>
-                        <p className="text-[8px] font-black text-white/20 uppercase tracking-widest">Serengeti</p>
-                        <p className="text-xl font-bold text-white leading-none mt-1">28°C</p>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-[8px] font-black text-white/20 uppercase tracking-widest">Sansibar</p>
-                        <p className="text-xl font-bold text-white leading-none mt-1">31°C</p>
-                      </div>
-                    </div>
+                    <p className="text-primary font-black uppercase tracking-[0.4em] text-[9px]">03. Themen</p>
+                    <nav className="flex flex-col gap-3">
+                      {['Flitterwochen', 'Familienreisen', 'Luxusreisen', 'Safari & Sansibar'].map(t => (
+                        <Link key={t} href="/safaris" className="text-[10px] font-bold text-white/60 hover:text-primary transition-colors uppercase tracking-widest">{t}</Link>
+                      ))}
+                    </nav>
+                  </div>
+                  <div className="space-y-4">
+                    <p className="text-primary font-black uppercase tracking-[0.4em] text-[9px]">04. Agentur</p>
+                    <nav className="flex flex-col gap-3">
+                      {['Über uns', 'Magazin', 'FAQ', 'Blog', 'Kontakt'].map(s => (
+                        <Link key={s} href={s === 'Über uns' ? '/about' : `/${s.toLowerCase().replace('ü', 'ue')}`} className="text-[10px] font-bold text-white/60 hover:text-primary transition-colors uppercase tracking-widest">{s}</Link>
+                      ))}
+                    </nav>
                   </div>
                 </div>
 
+                {/* Status Card */}
+                <div className="bg-primary/5 rounded-2xl p-6 border border-primary/10 relative overflow-hidden group">
+                  <Zap className="absolute -top-2 -right-2 w-12 h-12 text-primary opacity-10" />
+                  <span className="text-[8px] font-black uppercase tracking-[0.3em] text-primary mb-2 block">Booking Pulse</span>
+                  <h4 className="font-headline text-lg font-bold text-white uppercase mb-1">Reisen 2026</h4>
+                  <p className="text-[9px] text-white/30 font-bold uppercase tracking-widest leading-relaxed">
+                    Frühbucher-Vorteile für die Great Migration Saison sind jetzt aktiv.
+                  </p>
+                </div>
               </div>
+            </ScrollArea>
 
-              {/* Bottom Footer Section */}
-              <div className="mt-auto pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-8">
-                <div className="flex items-center gap-8">
-                  <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-primary" />
-                    <span className="text-[9px] font-black uppercase tracking-widest text-white/20">Berlin HQ Hub</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4 text-primary" />
-                    <span className="text-[9px] font-black uppercase tracking-widest text-white/20">DRSF Certified</span>
-                  </div>
+            {/* Fixed Action Footer */}
+            <div className="p-6 md:p-8 border-t border-white/5 bg-secondary/80 backdrop-blur-md relative z-10">
+              <Link href="/trip-planner" className="block">
+                <Button className="w-full h-14 md:h-16 rounded-2xl bg-primary text-white font-black text-[10px] md:text-xs uppercase tracking-[0.2em] shadow-2xl hover:scale-[1.02] transition-transform">
+                  JETZT REISE PLANEN <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
+              <div className="mt-6 flex items-center justify-between gap-4">
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-primary" />
+                  <span className="text-[8px] font-black uppercase tracking-widest text-white/20">DRSF Certified</span>
                 </div>
-                <div className="flex items-center gap-4 w-full md:w-auto">
-                  <Link href="/faq" className="text-[9px] font-black uppercase tracking-widest text-white/40 hover:text-white transition-colors px-4">Support Hub</Link>
-                  <Link href="/trip-planner" className="flex-grow md:flex-grow-0">
-                    <Button className="w-full md:w-auto h-12 md:h-14 px-10 rounded-2xl bg-primary text-white font-black text-[10px] uppercase tracking-[0.2em] shadow-2xl transition-all hover:scale-[1.02]">
-                      JETZT REISE PLANEN <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
-                  </Link>
-                </div>
+                <Link href="/auth/login" className="text-[8px] font-black uppercase tracking-widest text-white/40 hover:text-primary transition-colors">Staff Login</Link>
               </div>
             </div>
           </motion.div>
