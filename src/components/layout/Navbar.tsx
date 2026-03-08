@@ -52,7 +52,6 @@ export function Navbar() {
     setIsOpen(false);
   }, [pathname]);
 
-  // Prevent scroll when drawer is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -72,8 +71,7 @@ export function Navbar() {
       >
         <nav className="container mx-auto px-4">
           <div className={cn(
-            "flex items-center justify-between transition-all duration-500 rounded-full px-4 md:px-6 h-12 md:h-14",
-            isScrolled || isOpen ? "bg-secondary text-white shadow-2xl border border-white/5" : "bg-white/10 backdrop-blur-md text-white border-white/10"
+            "flex items-center justify-between transition-all duration-500 rounded-full px-4 md:px-6 h-12 md:h-14 bg-secondary text-white shadow-2xl border border-white/10"
           )}>
             <Link href="/" className="flex items-center gap-2 group relative z-[110]">
               <img src="/logo/logo1.png" alt="Logo" className="h-7 md:h-9 w-auto rounded shadow-sm" />
@@ -87,21 +85,18 @@ export function Navbar() {
               </div>
             </Link>
 
-            {/* Minimalist Front - Only Menu Trigger */}
             <div className="flex items-center gap-3 relative z-[110]">
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className={cn(
-                  "flex items-center gap-2 pl-3 pr-1.5 h-8 md:h-10 rounded-full transition-all duration-500 border border-transparent group",
-                  isOpen 
-                    ? "bg-primary text-white" 
-                    : "bg-white/10 text-white border-white/10"
+                  "flex items-center gap-2 pl-3 pr-1.5 h-8 md:h-10 rounded-full transition-all duration-500 border border-white/10 group bg-white/5",
+                  isOpen && "bg-primary border-primary"
                 )}
               >
                 <span className="text-[8px] font-black uppercase tracking-[0.2em] ml-1 hidden md:block">
-                  {isOpen ? "Close" : "Explore"}
+                  {isOpen ? "Close" : "Menu"}
                 </span>
-                <div className="w-6 h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center bg-white/10 group-hover:bg-primary transition-colors">
+                <div className="w-6 h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center bg-white/5 group-hover:bg-primary transition-colors">
                   {isOpen ? <X className="w-3 h-3" /> : <Menu className="w-3 h-3" />}
                 </div>
               </button>
@@ -110,7 +105,6 @@ export function Navbar() {
         </nav>
       </header>
 
-      {/* Backdrop for Side Drawer */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -118,12 +112,11 @@ export function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsOpen(false)}
-            className="fixed inset-0 z-[90] bg-black/40 backdrop-blur-sm"
+            className="fixed inset-0 z-[90] bg-black/60"
           />
         )}
       </AnimatePresence>
 
-      {/* Side Drawer (Compacted Sidebar) */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -131,19 +124,16 @@ export function Navbar() {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            className="fixed top-0 right-0 z-[100] h-full w-full sm:w-[400px] md:w-[450px] bg-secondary shadow-2xl flex flex-col border-l border-white/5"
+            className="fixed top-0 right-0 z-[100] h-full w-full sm:w-[400px] md:w-[450px] bg-secondary shadow-2xl flex flex-col border-l border-white/10"
           >
-            <div className="absolute inset-0 opacity-[0.02] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none" />
-            
-            {/* Drawer Header */}
-            <div className="p-6 md:p-8 border-b border-white/5 flex items-center justify-between shrink-0 relative z-10">
+            <div className="p-6 md:p-8 border-b border-white/5 flex items-center justify-between shrink-0 relative z-10 bg-secondary">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center border border-primary/20">
                   <Compass className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-headline font-bold text-lg text-white uppercase leading-none">Menü</h4>
-                  <p className="text-[8px] font-black uppercase tracking-widest text-white/30 mt-1">Site Registry</p>
+                  <h4 className="font-headline font-bold text-lg text-white uppercase leading-none">Registry</h4>
+                  <p className="text-[8px] font-black uppercase tracking-widest text-white/30 mt-1">Expedition Command</p>
                 </div>
               </div>
               <button onClick={() => setIsOpen(false)} className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors">
@@ -151,10 +141,8 @@ export function Navbar() {
               </button>
             </div>
 
-            <ScrollArea className="flex-grow">
+            <ScrollArea className="flex-grow bg-secondary">
               <div className="p-6 md:p-8 space-y-10">
-                
-                {/* 01. Core Pillars */}
                 <div className="space-y-4">
                   <p className="text-primary font-black uppercase tracking-[0.4em] text-[9px]">01. Expeditionen</p>
                   <nav className="flex flex-col gap-2">
@@ -164,7 +152,7 @@ export function Navbar() {
                       { name: 'Sansibar', href: '/destinations/zanzibar', icon: Waves, sub: 'Swahili Coast' },
                       { name: 'Nationalparks', href: '/national-parks', icon: Globe, sub: 'Untouched Parks' },
                     ].map((link) => (
-                      <Link key={link.name} href={link.href} className="group flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-transparent hover:border-primary/20 hover:bg-primary/5 transition-all">
+                      <Link key={link.name} href={link.href} className="group flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-primary/40 hover:bg-primary/5 transition-all">
                         <div className="flex items-center gap-4">
                           <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-primary transition-colors">
                             <link.icon className="w-5 h-5 text-white" />
@@ -180,7 +168,6 @@ export function Navbar() {
                   </nav>
                 </div>
 
-                {/* 02. Regions Grid */}
                 <div className="space-y-4">
                   <p className="text-primary font-black uppercase tracking-[0.4em] text-[9px]">02. Top Reiseziele</p>
                   <div className="grid grid-cols-2 gap-2">
@@ -196,7 +183,6 @@ export function Navbar() {
                   </div>
                 </div>
 
-                {/* 03. Collections & Utility */}
                 <div className="grid grid-cols-2 gap-8">
                   <div className="space-y-4">
                     <p className="text-primary font-black uppercase tracking-[0.4em] text-[9px]">03. Themen</p>
@@ -209,15 +195,14 @@ export function Navbar() {
                   <div className="space-y-4">
                     <p className="text-primary font-black uppercase tracking-[0.4em] text-[9px]">04. Agentur</p>
                     <nav className="flex flex-col gap-3">
-                      {['Über uns', 'Magazin', 'FAQ', 'Blog', 'Kontakt'].map(s => (
+                      {['Über uns', 'FAQ', 'Blog', 'Kontakt'].map(s => (
                         <Link key={s} href={s === 'Über uns' ? '/about' : `/${s.toLowerCase().replace('ü', 'ue')}`} className="text-[10px] font-bold text-white/60 hover:text-primary transition-colors uppercase tracking-widest">{s}</Link>
                       ))}
                     </nav>
                   </div>
                 </div>
 
-                {/* Status Card */}
-                <div className="bg-primary/5 rounded-2xl p-6 border border-primary/10 relative overflow-hidden group">
+                <div className="bg-white/5 rounded-2xl p-6 border border-white/5 relative overflow-hidden group">
                   <Zap className="absolute -top-2 -right-2 w-12 h-12 text-primary opacity-10" />
                   <span className="text-[8px] font-black uppercase tracking-[0.3em] text-primary mb-2 block">Booking Pulse</span>
                   <h4 className="font-headline text-lg font-bold text-white uppercase mb-1">Reisen 2026</h4>
@@ -228,8 +213,7 @@ export function Navbar() {
               </div>
             </ScrollArea>
 
-            {/* Fixed Action Footer */}
-            <div className="p-6 md:p-8 border-t border-white/5 bg-secondary/80 backdrop-blur-md relative z-10">
+            <div className="p-6 md:p-8 border-t border-white/5 bg-secondary relative z-10">
               <Link href="/trip-planner" className="block">
                 <Button className="w-full h-14 md:h-16 rounded-2xl bg-primary text-white font-black text-[10px] md:text-xs uppercase tracking-[0.2em] shadow-2xl hover:scale-[1.02] transition-transform">
                   JETZT REISE PLANEN <ArrowRight className="w-4 h-4 ml-2" />

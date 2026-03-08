@@ -16,7 +16,8 @@ import {
   Phone,
   Calendar,
   AlertTriangle,
-  Lock
+  Lock,
+  Compass
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -25,10 +26,10 @@ import { cn } from '@/lib/utils';
 
 const insurancePackages = [
   {
-    title: "5 Sterne-Premium",
-    subtitle: "Rundum-Sorglos-Paket",
+    title: "5 Sterne-Premium-Schutz",
+    subtitle: "Das „Rundum Sorglos“-Paket",
     scope: "Weltweit bis 45 Tage",
-    tag: "Empfehlung",
+    tag: "Unsere Empfehlung",
     features: [
       "Reise-Rücktrittsversicherung",
       "Urlaubsgarantie",
@@ -37,8 +38,8 @@ const insurancePackages = [
       "Reise-Unfallversicherung",
       "Gepäckversicherung"
     ],
-    desc: "Das Komplettzertifikat für maximale Sicherheit auf allen Wegen.",
-    cta: "Premium Schutz"
+    desc: "Der Komplettschutz für alle Eventualitäten. Für alle, die im Urlaub lieber auf Nummer sicher gehen.",
+    cta: "Premium Schutz buchen"
   },
   {
     title: "Storno-Schutz",
@@ -48,134 +49,137 @@ const insurancePackages = [
       "Reise-Rücktrittsversicherung",
       "Urlaubsgarantie"
     ],
-    desc: "Fokussierte Absicherung gegen hohe Stornierungskosten.",
+    desc: "Sie haben eine Reise-Krankenversicherung und wollen nur den Stornofall versichern? Dann ist dies die richtige Wahl.",
     cta: "Basisschutz buchen"
   },
   {
-    title: "Jahresschutz",
+    title: "Jahresschutz-Kombi",
     subtitle: "Dauerhafte Sicherheit",
-    scope: "Weltweit / Alle Reisen",
+    scope: "Weltweit bis 56 Tage - alle Reisen!",
     tag: "Best Value",
     features: [
       "Reise-Rücktrittsversicherung",
       "Urlaubsgarantie",
-      "24/7 Priority Notfall-Service"
+      "Versichert für alle Reisen im Jahr"
     ],
-    desc: "Einmal abschließen, das ganze Jahr weltweit abgesichert sein.",
-    cta: "Jahresabo buchen"
+    desc: "Sie verreisen mehrmals im Jahr – auch mit anderen Anbietern? Dann ist die Jahresversicherung das passende Produkt!",
+    cta: "Jahresschutz buchen"
   }
 ];
 
 export default function GuestProtectionPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-bold">
-      {/* High-Contrast Professional Hero */}
-      <header className="relative h-[45vh] md:h-[60vh] w-full overflow-hidden flex items-center bg-secondary">
+      {/* High-Impact Solid Hero */}
+      <header className="relative h-[50vh] md:h-[65vh] w-full overflow-hidden flex items-center bg-secondary">
         <Image
           src="https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=1920"
           alt="Reiseversicherung Tansania"
           fill
           priority
-          className="object-cover opacity-20 grayscale"
+          className="object-cover opacity-25 grayscale"
           data-ai-hint="safari security"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-secondary via-secondary/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-secondary via-secondary to-transparent" />
         
         <div className="container relative z-10 mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-3xl space-y-4"
+            className="max-w-3xl space-y-6"
           >
-            <Badge className="bg-primary text-white border-none px-4 py-1 text-[9px] font-black uppercase tracking-[0.4em] shadow-xl">Security Protocol</Badge>
-            <h1 className="font-headline text-3xl md:text-7xl font-bold text-white leading-[0.9] tracking-tighter uppercase">
-              Schützen Sie <br />
-              <span className="text-primary">Ihr Abenteuer</span>
+            <Badge className="bg-primary text-white border-none px-4 py-1.5 text-[9px] font-black uppercase tracking-[0.4em] shadow-xl">Sicherheitsprotokoll</Badge>
+            <h1 className="font-headline text-3xl md:text-7xl font-bold text-white leading-none tracking-tighter uppercase">
+              Haben Sie an Ihre <br />
+              <span className="text-primary">Versicherung gedacht?</span>
             </h1>
-            <p className="max-w-lg text-[10px] md:text-base text-white/50 font-bold uppercase tracking-widest leading-relaxed">
-              Professionelles Risiko-Management für Ihre Tansania-Expedition. Sicher. Kompetent. Unbürokratisch.
+            <p className="max-w-xl text-[10px] md:text-lg text-white/60 font-bold uppercase tracking-widest leading-relaxed">
+              Planen Sie Ihr Tansania-Abenteuer mit professionellem Risiko-Management. Wir sichern Ihre Träume ab.
             </p>
           </motion.div>
         </div>
       </header>
 
-      {/* Strategy Grid - High Density */}
-      <section className="py-12 md:py-16 container mx-auto px-4 max-w-7xl">
+      {/* Main Strategy Grid */}
+      <section className="py-12 md:py-20 container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           
-          <div className="lg:col-span-4 space-y-6">
-            <div className="space-y-4">
-              <span className="text-primary font-black uppercase tracking-[0.4em] text-[9px] block">Risiko-Audit</span>
-              <h2 className="font-headline text-2xl md:text-4xl font-bold text-secondary uppercase leading-tight">
+          <div className="lg:col-span-4 space-y-10">
+            <div className="space-y-6">
+              <span className="text-primary font-black uppercase tracking-[0.4em] text-[9px] block">Risiko-Management</span>
+              <h2 className="font-headline text-3xl md:text-5xl font-bold text-secondary uppercase leading-none">
                 Vorsorge für <br />den <span className="text-primary">Ernstfall</span>
               </h2>
-              <div className="space-y-4 text-muted-foreground font-bold leading-relaxed text-[11px] md:text-sm uppercase tracking-widest">
+              <div className="space-y-6 text-muted-foreground font-bold leading-relaxed text-sm md:text-base uppercase tracking-widest">
                 <p>
-                  Urlaub bedeutet Freiheit. Doch zwischen Buchung und Abreise liegen Wochen, in denen sich viel ändern kann. Hohe Stornierungskosten sind ein vermeidbares Risiko.
+                  Urlaub bedeutet Freiheit. Doch zwischen Buchung und Abreise liegen meist mehrere Wochen in denen sich viel in Ihrem Leben ändern kann. Hohe Stornierungsgebühren sind ein vermeidbares Risiko.
                 </p>
-                <div className="p-6 bg-secondary text-white rounded-2xl shadow-xl relative overflow-hidden border border-white/5">
-                  <div className="relative z-10 space-y-4">
-                    <div className="flex items-center gap-3">
-                      <Fingerprint className="w-6 h-6 text-primary" />
-                      <h4 className="text-sm font-headline font-bold uppercase tracking-tight">HanseMerkur Partner</h4>
+                <div className="p-8 bg-secondary text-white rounded-[2rem] shadow-2xl relative overflow-hidden border border-white/10">
+                  <div className="relative z-10 space-y-6">
+                    <div className="flex items-center gap-4">
+                      <ShieldCheck className="w-8 h-8 text-primary" />
+                      <h4 className="text-lg font-headline font-bold uppercase tracking-tight">HanseMerkur Partner</h4>
                     </div>
-                    <p className="text-white/40 font-bold text-[9px] leading-relaxed uppercase tracking-widest">
-                      Unser Partner bietet 24/7 Support und direkte Schadensabwicklung für unsere Gäste.
+                    <p className="text-white/40 font-bold text-[10px] leading-relaxed uppercase tracking-widest">
+                      Unser zuverlässiger Partner HanseMerkur hilft Ihnen in jeder schwierigen Situation – unkompliziert und kompetent.
                     </p>
+                    <div className="flex flex-col gap-2 border-t border-white/5 pt-6">
+                      <p className="text-[8px] font-black text-white/30 uppercase">Kontakt Berlin</p>
+                      <p className="text-xs font-bold">info@tansania-reiseabenteuer.de</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* High-Density Strategy Cards */}
           <div className="lg:col-span-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {insurancePackages.map((pkg, i) => (
                 <motion.div 
                   key={i}
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   className={cn(
-                    "relative p-6 rounded-[2rem] border transition-all duration-500 hover:shadow-2xl group",
-                    pkg.tag === 'Empfehlung' ? "bg-white border-primary/20 ring-1 ring-primary/10 md:col-span-2" : "bg-white border-border/50"
+                    "relative p-8 rounded-[2.5rem] bg-white border border-border shadow-sm transition-all duration-500 hover:shadow-2xl group flex flex-col justify-between",
+                    pkg.tag === 'Unsere Empfehlung' ? "border-primary/30 ring-1 ring-primary/10 md:col-span-2" : ""
                   )}
                 >
                   {pkg.tag && (
-                    <div className="absolute top-6 right-6">
-                      <Badge className="bg-primary text-white border-none px-3 py-1 text-[8px] font-black uppercase tracking-widest shadow-lg">
+                    <div className="absolute top-8 right-8">
+                      <Badge className="bg-primary text-white border-none px-4 py-1.5 text-[9px] font-black uppercase tracking-widest shadow-xl">
                         {pkg.tag}
                       </Badge>
                     </div>
                   )}
                   
-                  <div className="space-y-6">
+                  <div className="space-y-8">
                     <div>
-                      <p className="text-primary font-black text-[8px] uppercase tracking-widest mb-1">{pkg.scope}</p>
-                      <h3 className="font-headline text-2xl md:text-3xl font-bold text-secondary uppercase leading-none">{pkg.title}</h3>
-                      <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest mt-2">{pkg.subtitle}</p>
+                      <p className="text-primary font-black text-[9px] uppercase tracking-widest mb-2">{pkg.scope}</p>
+                      <h3 className="font-headline text-3xl md:text-4xl font-bold text-secondary uppercase leading-none">{pkg.title}</h3>
+                      <p className="text-[11px] text-muted-foreground font-bold uppercase tracking-widest mt-3">{pkg.subtitle}</p>
                     </div>
 
                     <div className={cn(
-                      "grid gap-2",
-                      pkg.tag === 'Empfehlung' ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1"
+                      "grid gap-3",
+                      pkg.tag === 'Unsere Empfehlung' ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1"
                     )}>
                       {pkg.features.map((feat, idx) => (
-                        <div key={idx} className="flex items-center gap-2">
-                          <CheckCircle2 className="w-3 h-3 text-primary shrink-0" />
-                          <span className="text-[9px] font-bold text-secondary uppercase tracking-widest">{feat}</span>
+                        <div key={idx} className="flex items-center gap-3">
+                          <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+                          <span className="text-[10px] font-bold text-secondary uppercase tracking-widest">{feat}</span>
                         </div>
                       ))}
                     </div>
 
-                    <div className="pt-6 border-t border-border/50 flex flex-col sm:flex-row items-center justify-between gap-4">
-                      <p className="text-[9px] font-bold text-muted-foreground leading-tight uppercase tracking-widest max-w-[240px]">
+                    <div className="pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-6">
+                      <p className="text-[10px] font-bold text-muted-foreground leading-relaxed uppercase tracking-widest max-w-[280px]">
                         {pkg.desc}
                       </p>
-                      <Button className="w-full sm:w-auto h-11 px-8 rounded-xl bg-secondary text-white font-black text-[9px] uppercase tracking-widest shadow-lg hover:bg-primary transition-all">
-                        {pkg.cta} <ChevronRight className="w-3 h-3 ml-1" />
+                      <Button className="w-full sm:w-auto h-14 px-10 rounded-2xl bg-secondary text-white font-black text-[10px] uppercase tracking-widest shadow-xl hover:bg-primary transition-all">
+                        {pkg.cta} <ChevronRight className="w-4 h-4 ml-1" />
                       </Button>
                     </div>
                   </div>
@@ -187,24 +191,24 @@ export default function GuestProtectionPage() {
         </div>
       </section>
 
-      {/* Experts Spotlight */}
-      <section className="py-12 md:py-20 bg-white border-y border-border/50 overflow-hidden">
-        <div className="container mx-auto px-4 max-w-4xl text-center space-y-8">
-          <div className="w-14 h-14 rounded-2xl bg-muted mx-auto flex items-center justify-center shadow-inner">
-            <ShieldAlert className="w-7 h-7 text-primary" />
+      {/* Advisory Spotlight */}
+      <section className="py-16 md:py-32 bg-white border-y border-border overflow-hidden">
+        <div className="container mx-auto px-4 max-w-4xl text-center space-y-10">
+          <div className="w-16 h-16 rounded-[1.5rem] bg-muted mx-auto flex items-center justify-center shadow-inner">
+            <ShieldAlert className="w-8 h-8 text-primary" />
           </div>
-          <div className="space-y-3">
-            <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary uppercase tracking-tighter leading-none">
-              Persönliche <br /><span className="text-primary">Sicherheitsberatung</span>
+          <div className="space-y-4">
+            <h2 className="font-headline text-3xl md:text-7xl font-bold text-secondary uppercase tracking-tighter leading-none">
+              Individuelle <br /><span className="text-primary">Beratung</span>
             </h2>
-            <p className="text-muted-foreground font-black text-[10px] md:text-sm uppercase tracking-[0.3em] leading-relaxed max-w-xl mx-auto">
-              Unser Berliner Expertenteam analysiert Ihren Bedarf individuell für Ihre Afrika-Reise.
+            <p className="text-muted-foreground font-black text-[10px] md:text-base uppercase tracking-[0.3em] leading-relaxed max-w-2xl mx-auto">
+              Unser Berliner Expertenteam analysiert Ihren persönlichen Bedarf für die Tansania-Expedition.
             </p>
           </div>
-          <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center">
+          <div className="pt-6 flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact" className="w-full sm:w-auto">
-              <Button size="lg" className="w-full rounded-2xl px-12 h-14 md:h-16 font-black text-[10px] md:text-xs uppercase tracking-[0.3em] shadow-xl hover:scale-[1.02] transition-transform">
-                Experten Sprechen <ArrowRight className="w-4 h-4 ml-2" />
+              <Button size="lg" className="w-full rounded-[2rem] px-14 h-16 md:h-20 font-black text-[10px] md:text-sm uppercase tracking-[0.3em] shadow-2xl hover:scale-[1.02] transition-transform">
+                Experten Sprechen <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </Link>
           </div>
