@@ -4,63 +4,41 @@
 
 @layer base {
   :root {
-    /* Refined Branding Palette - Neutral & High Contrast */
-    --background: 0 0% 96%; /* #F5F5F5 - Light Gray Background */
-    --foreground: 0 0% 12%; /* #1F1F1F - Dark Text */
+    --background: 0 0% 96%;
+    --foreground: 0 0% 10%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 12%;
+    --card-foreground: 0 0% 10%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 12%;
+    --popover-foreground: 0 0% 10%;
     
-    --primary: 19 89% 47%; /* #E3510D - Primary Orange */
+    --primary: 19 89% 47%;
     --primary-foreground: 0 0% 98%;
     
-    --secondary: 0 0% 10%; /* #1A1A1A - Prestige Charcoal (Replacing Dark Green) */
+    --secondary: 0 0% 8%;
     --secondary-foreground: 0 0% 98%;
     
-    --muted: 0 0% 90%;
-    --muted-foreground: 0 0% 30%; /* Darkened for better contrast */
+    --muted: 0 0% 92%;
+    --muted-foreground: 0 0% 35%;
     
-    --accent: 30 53% 64%; /* #D4A373 - Safari Brown */
-    --accent-foreground: 0 0% 12%;
+    --accent: 30 53% 64%;
+    --accent-foreground: 0 0% 10%;
     
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     
-    --border: 30 10% 85%;
-    --input: 30 10% 85%;
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
     --ring: 19 89% 47%;
-    --radius: 1.5rem;
-
-    /* Sidebar Variables */
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 0 0% 12%;
-    --sidebar-primary: 19 89% 47%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 0 0% 96%;
-    --sidebar-accent-foreground: 0 0% 12%;
-    --sidebar-border: 30 10% 85%;
-    --sidebar-ring: 19 89% 47%;
+    --radius: 1.25rem;
   }
 
   .dark {
-    --background: 0 0% 8%;
+    --background: 0 0% 6%;
     --foreground: 0 0% 96%;
-    --card: 0 0% 10%;
-    --card-foreground: 0 0% 96%;
-    --popover: 0 0% 10%;
-    --popover-foreground: 0 0% 96%;
     --primary: 19 89% 55%;
-    --primary-foreground: 0 0% 8%;
-    --secondary: 0 0% 15%;
-    --secondary-foreground: 0 0% 96%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 65%;
-    --accent: 30 50% 60%;
-    --accent-foreground: 0 0% 96%;
-    --border: 0 0% 18%;
-    --input: 0 0% 18%;
-    --ring: 19 89% 55%;
+    --secondary: 0 0% 12%;
+    --muted: 0 0% 12%;
+    --border: 0 0% 15%;
   }
 }
 
@@ -69,23 +47,48 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
-    background-image: radial-gradient(circle at 2px 2px, rgba(227, 81, 13, 0.03) 1px, transparent 0);
-    background-size: 48px 48px;
+    @apply bg-background text-foreground antialiased;
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+    background-repeat: repeat;
+    background-size: 200px;
+    background-attachment: fixed;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-headline tracking-tight text-foreground;
+    @apply font-headline font-bold tracking-tighter uppercase;
   }
 }
 
-.luxury-gradient {
-  background: linear-gradient(180deg, hsl(var(--background)), hsl(var(--accent) / 0.05) 50%, hsl(var(--background)));
+.text-prestige {
+  @apply font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px];
 }
 
-.hero-overlay {
-  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 60%, rgba(0,0,0,0.6) 100%);
+.glass-portal {
+  @apply bg-background/80 backdrop-blur-3xl border border-white/10 shadow-2xl;
 }
 
-.safari-card {
-  @apply transition-all duration-500 hover:shadow-[0_20px_50px_rgba(227,81,13,0.08)] hover:-translate-y-1;
+.editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hover-reveal {
+  @apply transition-all duration-700 ease-prestige;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }

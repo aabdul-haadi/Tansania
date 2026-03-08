@@ -15,6 +15,9 @@ export default {
         headline: ['Playfair Display', 'serif'],
         code: ['monospace'],
       },
+      transitionTimingFunction: {
+        'prestige': 'cubic-bezier(0.23, 1, 0.32, 1)',
+      },
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',

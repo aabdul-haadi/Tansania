@@ -41,8 +41,8 @@ export function FAQ() {
           <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary mb-2 block">
             Common Inquiries
           </span>
-          <h2 className="font-headline text-3xl md:text-4xl font-bold mb-4">
-            Everything You Need <span className="text-primary italic">to Know</span>
+          <h2 className="font-headline text-3xl md:text-4xl font-bold mb-4 uppercase tracking-tighter">
+            Everything You Need <span className="text-primary">to Know</span>
           </h2>
         </motion.div>
 
@@ -59,10 +59,10 @@ export function FAQ() {
                 value={`item-${index}`}
                 className="bg-white border border-border/50 rounded-xl px-4 py-1 shadow-sm transition-all"
               >
-                <AccordionTrigger className="font-bold text-base hover:no-underline hover:text-primary transition-colors text-left">
+                <AccordionTrigger className="font-bold text-base hover:no-underline hover:text-primary transition-colors text-left uppercase tracking-tight">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground text-sm leading-relaxed pt-1 pb-3">
+                <AccordionContent className="text-muted-foreground text-sm leading-relaxed pt-1 pb-3 font-bold uppercase tracking-widest">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>

@@ -38,7 +38,6 @@ export default function BlogPostDetail() {
     setIsMounted(true);
   }, []);
 
-  // Use a query to find post by slug since document IDs are random
   const postQuery = useMemoFirebase(() => (
     firestore && slug ? query(collection(firestore, 'blogPosts'), where('slug', '==', slug as string), limit(1)) : null
   ), [firestore, slug]);
@@ -46,7 +45,6 @@ export default function BlogPostDetail() {
   const { data: posts, isLoading } = useCollection(postQuery);
   const post = posts?.[0];
 
-  // Automated Discovery: Fetch recent posts for the sidebar
   const recentQuery = useMemoFirebase(() => (firestore ? query(collection(firestore, 'blogPosts'), where('status', '==', 'PUBLISHED'), limit(4)) : null), [firestore]);
   const { data: recentPosts } = useCollection(recentQuery);
 
@@ -63,7 +61,7 @@ export default function BlogPostDetail() {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center text-center p-4">
         <h2 className="text-3xl font-headline font-bold mb-4">Story Not Found</h2>
-        <p className="text-muted-foreground mb-8 italic">This part of the savannah seems to be unexplored.</p>
+        <p className="text-muted-foreground mb-8">This part of the savannah seems to be unexplored.</p>
         <Button asChild className="rounded-full px-8 h-12">
           <Link href="/blog">Back to Journal</Link>
         </Button>
@@ -130,8 +128,8 @@ export default function BlogPostDetail() {
               </div>
 
               <div className="relative mb-16">
-                <p className="text-2xl md:text-4xl font-light text-secondary italic leading-relaxed md:leading-[1.4]">
-                  "{post.excerpt}"
+                <p className="text-2xl md:text-4xl font-bold text-secondary leading-relaxed md:leading-[1.4] uppercase tracking-tighter">
+                  {post.excerpt}
                 </p>
                 <div className="mt-8 flex items-center gap-4">
                   <div className="h-px flex-grow bg-muted" />
@@ -140,7 +138,7 @@ export default function BlogPostDetail() {
                 </div>
               </div>
 
-              <div className="prose prose-xl max-w-none prose-headings:font-headline prose-headings:font-bold prose-headings:text-secondary prose-p:font-light prose-p:leading-[1.8] prose-p:text-muted-foreground prose-strong:text-secondary prose-a:text-primary hover:prose-a:underline">
+              <div className="prose prose-xl max-w-none prose-headings:font-headline prose-headings:font-bold prose-headings:text-secondary prose-p:font-bold prose-p:leading-[1.8] prose-p:text-muted-foreground prose-p:uppercase prose-p:tracking-tight prose-strong:text-secondary prose-a:text-primary hover:prose-a:underline">
                 <div className="whitespace-pre-wrap leading-relaxed space-y-10 text-lg md:text-xl font-bold">
                   {post.contentMarkdown || "No content available for this post."}
                 </div>
@@ -164,7 +162,7 @@ export default function BlogPostDetail() {
                         <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-1" />
                         <div>
                           <p className="font-bold text-sm mb-1 uppercase">{tip.t}</p>
-                          <p className="text-xs text-white/60 leading-relaxed font-bold">{tip.d}</p>
+                          <p className="text-xs text-white/60 leading-relaxed font-bold uppercase">{tip.d}</p>
                         </div>
                       </div>
                     ))}
@@ -213,7 +211,7 @@ export default function BlogPostDetail() {
                       </div>
                     </div>
                     <h4 className="font-headline text-2xl font-bold leading-tight group-hover:text-primary transition-colors pr-8 uppercase">{rp.title}</h4>
-                    <p className="mt-3 text-sm text-muted-foreground line-clamp-2 font-bold leading-relaxed">{rp.excerpt}</p>
+                    <p className="mt-3 text-sm text-muted-foreground line-clamp-2 font-bold leading-relaxed uppercase">{rp.excerpt}</p>
                   </Link>
                 ))}
               </div>

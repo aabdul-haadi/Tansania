@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useEffect, useRef, useState } from 'react';
@@ -11,7 +10,6 @@ export function ContactSection() {
 
   useEffect(() => {
     function handleFormMessage(e: MessageEvent) {
-      // Check for form submission event from embedded iframe
       if (e.data && typeof e.data === 'object') {
         if (e.data.formSubmitted === true || e.data.event === 'formSubmitted' || e.data.type === 'formSubmissionSuccess') {
           setIsSubmitted(true);
@@ -28,7 +26,6 @@ export function ContactSection() {
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="flex flex-col lg:flex-row bg-white rounded-[2rem] shadow-xl overflow-hidden border border-border/50 min-h-[650px]">
           
-          {/* Form Side */}
           <div className="w-full lg:w-[60%] relative bg-white min-h-[650px]">
             <iframe
               ref={iframeRef}
@@ -41,7 +38,6 @@ export function ContactSection() {
             />
           </div>
 
-          {/* Expert Info Side */}
           <div className="w-full lg:w-[40%] bg-secondary text-white relative flex flex-col items-center justify-center p-8 hidden lg:flex">
             <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
             
@@ -58,7 +54,7 @@ export function ContactSection() {
                     <Sparkles className="w-8 h-8 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-headline text-2xl font-bold mb-3 text-white uppercase">Ihre Experten <br /><span className="text-primary">für Tansania</span></h3>
+                    <h3 className="font-headline text-2xl font-bold mb-3 text-white uppercase tracking-tighter leading-none">Ihre Experten <br /><span className="text-primary">für Tansania</span></h3>
                     <p className="text-white/60 font-bold leading-relaxed text-[10px] uppercase tracking-widest">
                       Persönlich. Kompetent. Leidenschaftlich.
                     </p>
@@ -88,7 +84,7 @@ export function ContactSection() {
                     <CheckCircle2 className="w-10 h-10" />
                   </div>
                   <div>
-                    <h3 className="font-headline text-3xl font-bold mb-3 text-white uppercase">Anfrage <br /><span className="text-green-500">gesendet!</span></h3>
+                    <h3 className="font-headline text-3xl font-bold mb-3 text-white uppercase tracking-tighter leading-none">Anfrage <br /><span className="text-green-500">gesendet!</span></h3>
                     <p className="text-white/60 font-bold text-sm leading-relaxed uppercase tracking-widest">
                       Vielen Dank für Ihr Vertrauen.
                     </p>

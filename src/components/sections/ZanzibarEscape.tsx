@@ -40,7 +40,6 @@ export function ZanzibarEscape() {
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-20">
           
-          {/* Content Column */}
           <div className="w-full lg:w-[45%] order-2 lg:order-1">
             <motion.div
               initial="hidden"
@@ -66,7 +65,7 @@ export function ZanzibarEscape() {
                   hidden: { opacity: 0, y: 15 },
                   visible: { opacity: 1, y: 0 }
                 }}
-                className="font-headline text-3xl md:text-5xl lg:text-6xl font-bold leading-tight"
+                className="font-headline text-3xl md:text-5xl lg:text-6xl font-bold leading-tight uppercase tracking-tighter"
               >
                 Slow Down on <br /> the Swahili Coast
               </motion.h2>
@@ -76,7 +75,7 @@ export function ZanzibarEscape() {
                   hidden: { opacity: 0, y: 15 },
                   visible: { opacity: 1, y: 0 }
                 }}
-                className="text-muted-foreground text-base lg:text-lg font-bold leading-relaxed max-w-md"
+                className="text-muted-foreground text-base lg:text-lg font-bold leading-relaxed max-w-md uppercase tracking-widest"
               >
                 Contrast your rugged safari adventure with the tranquil rhythm of Zanzibar's shores and spice-scented winds.
               </motion.p>
@@ -88,7 +87,6 @@ export function ZanzibarEscape() {
                 }}
                 className="space-y-6 pt-2"
               >
-                {/* Experience Switcher */}
                 <div className="flex flex-wrap gap-2">
                   {experiences.map((exp) => (
                     <button
@@ -106,7 +104,6 @@ export function ZanzibarEscape() {
                   ))}
                 </div>
 
-                {/* Narrative Text */}
                 <div className="min-h-[60px]">
                   <AnimatePresence mode="wait">
                     <motion.p
@@ -115,9 +112,9 @@ export function ZanzibarEscape() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.4 }}
-                      className="text-sm md:text-base text-secondary font-bold leading-relaxed"
+                      className="text-sm md:text-base text-secondary font-bold leading-relaxed uppercase tracking-widest"
                     >
-                      "{activeExp.text}"
+                      {activeExp.text}
                     </motion.p>
                   </AnimatePresence>
                 </div>
@@ -135,7 +132,7 @@ export function ZanzibarEscape() {
                     Explore Add-Ons
                   </Button>
                 </Link>
-                <Link href="/trip-planner" className="text-xs font-bold flex items-center gap-2 group hover:text-primary transition-colors min-h-[44px] text-foreground">
+                <Link href="/trip-planner" className="text-xs font-bold flex items-center gap-2 group hover:text-primary transition-colors min-h-[44px] text-foreground uppercase tracking-widest">
                   Pair with Safari
                   <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
@@ -143,7 +140,6 @@ export function ZanzibarEscape() {
             </motion.div>
           </div>
 
-          {/* Visual Column */}
           <motion.div 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
