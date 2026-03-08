@@ -1,50 +1,51 @@
 'use client';
 
 import { firebaseConfig } from '@/firebase/config';
-import { initializeApp, getApps, getApp, FirebaseApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import { initializeApp, getApps, FirebaseApp } from 'firebase/app';
+import { getAuth, Auth } from 'firebase/auth';
+import { getFirestore, Firestore } from 'firebase/firestore';
 
 /**
- * Initializes Firebase with App Hosting support and fallback configuration.
+ * Singleton structure for Firebase services.
  */
-export function initializeFirebase() {
-  if (!getApps().length) {
-    let firebaseApp;
-    try {
-      // Attempt to initialize via Firebase App Hosting environment variables
-      firebaseApp = initializeApp();
-    } catch (e) {
-      if (process.env.NODE_ENV === "production") {
-        console.warn('Automatic initialization failed. Falling back to firebase config object.', e);
-      }
-      if (!firebaseConfig.apiKey) {
-        console.warn('Firebase API Key is missing. Using dummy config for build/SSR.');
-        firebaseApp = initializeApp({
-          projectId: "demo-project",
-          appId: "1:1234567890:web:1234567890",
-          apiKey: "AIzaSyDummyKeyForStaticBuildAndTesting",
-          authDomain: "demo-project.firebaseapp.com",
-          messagingSenderId: "1234567890",
-          measurementId: "",
-        });
-      } else {
-        firebaseApp = initializeApp(firebaseConfig);
-      }
-    }
-    return getSdks(firebaseApp);
+interface FirebaseServices {
+  firebaseApp: FirebaseApp;
+  auth: Auth;
+  firestore: Firestore;
+}
+
+let cachedServices: FirebaseServices | null = null;
+
+/**
+ * Initializes Firebase using environment variables and ensures a single instance exists.
+ */
+export function initializeFirebase(): FirebaseServices {
+  if (cachedServices) {
+    return cachedServices;
   }
 
-  return getSdks(getApp());
+  // Safety check for critical config during build/prerender
+  if (!firebaseConfig.apiKey || !firebaseConfig.projectId) {
+    if (process.env.NODE_ENV === 'production') {
+      console.error('Firebase configuration is missing critical environment variables.');
+    }
+  }
+
+  const existingApps = getApps();
+  const app = existingApps.length === 0 ? initializeApp(firebaseConfig) : existingApps[0];
+
+  cachedServices = {
+    firebaseApp: app,
+    auth: getAuth(app),
+    firestore: getFirestore(app)
+  };
+
+  return cachedServices;
 }
 
 /**
- * Returns the core Firebase SDK instances for a given app.
+ * Utility to get SDKs if already initialized or initialize them.
  */
-export function getSdks(firebaseApp: FirebaseApp) {
-  return {
-    firebaseApp,
-    auth: getAuth(firebaseApp),
-    firestore: getFirestore(firebaseApp)
-  };
+export function getSdks() {
+  return initializeFirebase();
 }
