@@ -139,12 +139,6 @@ export default function FamTripPage() {
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-body">
-      {/* Script for Trustindex loaded via Next.js Script for performance */}
-      <Script 
-        src="https://cdn.trustindex.io/loader.js?4283f9b27e9f849d1a66a25dde5" 
-        strategy="afterInteractive"
-      />
-
       {/* Hero Section */}
       <section className="relative h-[60vh] md:h-[80vh] flex items-center justify-center overflow-hidden bg-secondary">
         <Image 
@@ -306,13 +300,17 @@ export default function FamTripPage() {
               </div>
             </section>
 
-            {/* Trustindex Section - Properly contained widget */}
+            {/* Trustindex Section - Positioned exactly as requested */}
             <section className="py-12 border-t border-border/50">
               <h2 className="text-center font-headline text-3xl md:text-5xl font-bold text-secondary uppercase mb-12">
                 Das sagen <span className="text-primary">unsere Gäste</span>
               </h2>
-              <div className="min-h-[250px] w-full relative">
-                {/* Trustindex widget container - script is loaded globally at page top */}
+              <div className="w-full mt-5">
+                <Script 
+                  src="https://cdn.trustindex.io/loader.js?4283f9b27e9f849d1a66a25dde5" 
+                  strategy="afterInteractive"
+                />
+                {/* The container the script targets */}
                 <div className="trustindex-widget-container" data-ti-widget-id="4283f9b27e9f849d1a66a25dde5" />
               </div>
             </section>
