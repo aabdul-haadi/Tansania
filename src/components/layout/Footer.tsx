@@ -28,7 +28,7 @@ export function Footer() {
               <li><Link href="/about" className="hover:text-white transition-colors">Über uns</Link></li>
               <li><Link href="/services/guest-protection" className="hover:text-white transition-colors">Reiseversicherung</Link></li>
               <li><Link href="#" className="hover:text-white transition-colors">Partner</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Fam-Trip</Link></li>
+              <li><Link href="/fam-trip" className="hover:text-white transition-colors">Fam-Trip</Link></li>
               <li><Link href="/karriere" className="hover:text-white transition-colors">Karriere</Link></li>
               <li><Link href="/auth/login" className="hover:text-white transition-colors text-primary">Reisebüros - Anmelden</Link></li>
             </ul>
