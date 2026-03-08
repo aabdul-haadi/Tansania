@@ -36,7 +36,6 @@ export function AIFloatingAdvisor() {
   const recognitionRef = useRef<any>(null);
 
   useEffect(() => {
-    // Show teaser after 3 seconds
     const timer = setTimeout(() => {
       if (!isOpen) setShowTeaser(true);
     }, 3000);
@@ -49,14 +48,16 @@ export function AIFloatingAdvisor() {
     }
   }, [messages, loading]);
 
-  // Voice Assistant Logic
   useEffect(() => {
     if (typeof window !== 'undefined' && ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)) {
       const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
       recognitionRef.current = new SpeechRecognition();
       recognitionRef.current.continuous = false;
       recognitionRef.current.interimResults = false;
-      recognitionRef.current.lang = 'de-DE';
+      
+      // Attempt to detect browser language or default to German
+      const browserLang = navigator.language.startsWith('en') ? 'en-US' : 'de-DE';
+      recognitionRef.current.lang = browserLang;
 
       recognitionRef.current.onresult = (event: any) => {
         const transcript = event.results[0][0].transcript;
@@ -83,7 +84,7 @@ export function AIFloatingAdvisor() {
         recognitionRef.current?.start();
         setIsListening(true);
       } catch (e) {
-        console.error("Speech recognition already started");
+        console.error("Speech recognition error");
       }
     }
   };
@@ -100,7 +101,7 @@ export function AIFloatingAdvisor() {
       const result = await askTripAdvisor({ message: userMsg, history: messages });
       setMessages([...newMessages, { role: 'model', content: result.response }]);
     } catch (e) {
-      setMessages([...newMessages, { role: 'model', content: 'In der Savanne gibt es gerade Funkstille. Bitte versuchen Sie es gleich noch einmal.' }]);
+      setMessages([...newMessages, { role: 'model', content: 'Funkstille in der Savanne. Bitte versuchen Sie es gleich noch einmal.' }]);
     } finally {
       setLoading(false);
     }
@@ -108,7 +109,7 @@ export function AIFloatingAdvisor() {
 
   return (
     <>
-      {/* Click-Outside Overlay */}
+      {/* Click-Outside Overlay: Closes the chat when clicking anywhere else */}
       <AnimatePresence>
         {isOpen && !isMinimized && (
           <motion.div 
@@ -116,7 +117,7 @@ export function AIFloatingAdvisor() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsOpen(false)}
-            className="fixed inset-0 bg-black/20 backdrop-blur-[2px] z-[90] cursor-pointer"
+            className="fixed inset-0 bg-black/10 backdrop-blur-[1px] z-[90] cursor-pointer pointer-events-auto"
           />
         )}
       </AnimatePresence>
@@ -153,7 +154,7 @@ export function AIFloatingAdvisor() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.9 }}
               className={cn(
-                "bg-white rounded-[2.5rem] shadow-2xl border border-border/50 flex flex-col overflow-hidden pointer-events-auto",
+                "bg-white rounded-[2.5rem] shadow-2xl border border-border/50 flex flex-col overflow-hidden pointer-events-auto transition-all duration-500",
                 isMinimized ? "h-20 w-72" : "h-[650px] w-[400px] max-w-[calc(100vw-48px)]"
               )}
             >
@@ -171,7 +172,7 @@ export function AIFloatingAdvisor() {
                     <h4 className="font-bold text-sm uppercase tracking-widest leading-none">AI Safari Advisor</h4>
                     <div className="flex items-center gap-2 mt-1.5">
                       <span className={cn("w-1.5 h-1.5 rounded-full bg-green-500", !loading && "animate-pulse")} />
-                      <p className="text-[9px] text-white/40 uppercase font-black tracking-widest">Experten-Modus Aktiv</p>
+                      <p className="text-[9px] text-white/40 uppercase font-black tracking-widest">Live Sync</p>
                     </div>
                   </div>
                 </div>
@@ -188,7 +189,6 @@ export function AIFloatingAdvisor() {
 
               {!isMinimized && (
                 <>
-                  {/* Chat Area */}
                   <ScrollArea className="flex-grow p-6 bg-[#fdfcfb]">
                     <div className="space-y-8 pb-4">
                       {messages.map((m, idx) => (
@@ -225,25 +225,13 @@ export function AIFloatingAdvisor() {
                     </div>
                   </ScrollArea>
 
-                  {/* Input Area */}
                   <div className="p-6 border-t bg-white relative">
-                    <div className="flex flex-wrap gap-2 mb-4 overflow-x-auto no-scrollbar pb-1">
-                      {["Beste Reisezeit?", "Visum Info", "15 Tage Paket"].map((s) => (
-                        <button
-                          key={s}
-                          onClick={() => { setInput(s); }}
-                          className="px-3 py-1.5 rounded-full bg-muted/30 border border-border hover:border-primary hover:bg-primary/5 transition-all text-[9px] font-black uppercase tracking-widest text-muted-foreground whitespace-nowrap"
-                        >
-                          {s}
-                        </button>
-                      ))}
-                    </div>
                     <form onSubmit={(e) => { e.preventDefault(); handleSend(); }} className="relative flex items-center gap-2">
                       <div className="relative flex-grow">
                         <Input
                           value={input}
                           onChange={(e) => setInput(e.target.value)}
-                          placeholder={isListening ? "Ich höre zu..." : "Wie kann ich helfen?"}
+                          placeholder={isListening ? "Ich höre zu..." : "Schreiben oder Sprechen..."}
                           className={cn(
                             "h-14 pl-5 pr-12 rounded-2xl border-muted bg-[#fdfcfb] shadow-inner focus:ring-primary/20 text-xs font-bold transition-all",
                             isListening && "ring-2 ring-primary bg-primary/5"
@@ -271,9 +259,6 @@ export function AIFloatingAdvisor() {
                         <Send className="w-5 h-5" />
                       </Button>
                     </form>
-                    <p className="mt-4 text-[8px] text-center text-muted-foreground font-black uppercase tracking-[0.2em] opacity-50">
-                      Bespoke Planning powered by Serengeti Dreams AI
-                    </p>
                   </div>
                 </>
               )}
@@ -281,7 +266,6 @@ export function AIFloatingAdvisor() {
           )}
         </AnimatePresence>
 
-        {/* Main Trigger Button */}
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -293,16 +277,12 @@ export function AIFloatingAdvisor() {
         >
           <div className="absolute inset-0 bg-gradient-to-tr from-primary/40 via-transparent to-transparent opacity-50" />
           <MessageSquare className="w-8 h-8 md:w-10 md:h-10 relative z-10" />
-          
-          {/* Active Notification Badge */}
           <div className="absolute top-4 right-4 md:top-5 md:right-5 z-20">
             <span className="relative flex h-4 w-4">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
               <span className="relative inline-flex rounded-full h-4 w-4 bg-primary border-2 border-secondary"></span>
             </span>
           </div>
-
-          {/* Pulse Ring */}
           <div className="absolute inset-0 border-4 border-primary/20 rounded-[2rem] animate-pulse" />
         </motion.button>
       </div>
