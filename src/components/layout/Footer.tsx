@@ -20,25 +20,33 @@ export function Footer() {
               Ihr Experte für exklusive Safari-Erlebnisse und Traumurlaube in Tansania und Sansibar.
             </p>
           </div>
+          
           <div>
-            <h4 className="text-primary font-bold text-[10px] uppercase tracking-[0.4em] mb-8 block">Entdecken</h4>
+            <h4 className="text-white font-bold text-[10px] uppercase tracking-[0.4em] mb-8 block">Über uns</h4>
+            <ul className="flex flex-col gap-4 text-sm font-bold text-white/50">
+              <li><Link href="/about" className="hover:text-white transition-colors">Über uns</Link></li>
+              <li><Link href="/services/guest-protection" className="hover:text-white transition-colors">Reiseversicherung</Link></li>
+              <li><Link href="#" className="hover:text-white transition-colors">Partner</Link></li>
+              <li><Link href="#" className="hover:text-white transition-colors">Fam-Trip</Link></li>
+              <li><Link href="#" className="hover:text-white transition-colors">Karriere</Link></li>
+              <li><Link href="/auth/login" className="hover:text-white transition-colors text-primary">Reisebüros - Anmelden</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white font-bold text-[10px] uppercase tracking-[0.4em] mb-8 block">Entdecken & Recht</h4>
             <ul className="flex flex-col gap-4 text-sm font-bold text-white/50">
               <li><Link href="/safaris" className="hover:text-white">Safari-Pakete</Link></li>
               <li><Link href="/national-parks" className="hover:text-white">Nationalparks</Link></li>
               <li><Link href="/blog" className="hover:text-white">Expeditions-Journal</Link></li>
-              <li><Link href="/trip-advisor" className="text-primary">AI Advisor</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-primary font-bold text-[10px] uppercase tracking-[0.4em] mb-8 block">Rechtliches</h4>
-            <ul className="flex flex-col gap-4 text-sm font-bold text-white/50">
               <li><Link href="/legal/imprint" className="hover:text-white">Impressum</Link></li>
               <li><Link href="/legal/terms" className="hover:text-white">AGB</Link></li>
               <li><Link href="/legal/privacy" className="hover:text-white">Datenschutz</Link></li>
             </ul>
           </div>
+
           <div className="space-y-8">
-            <h4 className="text-primary font-bold text-[10px] uppercase tracking-[0.4em] mb-6 block font-headline">Kontakt Berlin</h4>
+            <h4 className="text-white font-bold text-[10px] uppercase tracking-[0.4em] mb-6 block font-headline">Kontakt Berlin</h4>
             <ul className="flex flex-col gap-5 text-sm font-bold text-white/70">
               <li className="flex items-start gap-4"><MapPin className="w-5 h-5 text-primary" /> <span>Bayerischer Pl. 7, 10779 Berlin</span></li>
               <li className="flex items-center gap-4"><Phone className="w-5 h-5 text-primary" /> <span>+49 30 22608080</span></li>
