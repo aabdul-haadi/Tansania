@@ -145,7 +145,7 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* Target Audience / Cultural Match */}
+      {/* Target Audience / Cultural Match - FIXING VISIBILITY */}
       <section className="py-16 md:py-32 bg-secondary text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         <div className="container mx-auto px-4 max-w-6xl relative z-10">

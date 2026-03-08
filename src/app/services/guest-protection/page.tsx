@@ -23,6 +23,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 
 const insurancePackages = [
   {
@@ -132,18 +133,18 @@ export default function GuestProtectionPage() {
                 </div>
                 <div>
                   <h4 className="text-xl font-headline font-bold uppercase">Unser Partner</h4>
-                  <p className="text-[10px] font-black uppercase text-primary tracking-widest">HanseMerkur Versicherung</p>
+                  <p className="text-[10px] font-bold uppercase text-primary tracking-widest">HanseMerkur Versicherung</p>
                 </div>
               </div>
-              <p className="text-white/60 font-bold text-sm md:text-base leading-relaxed">
+              <p className="text-white/70 font-bold text-sm md:text-base leading-relaxed">
                 Unser kompetenter Partner HanseMerkur hilft Ihnen gerne in jeder schwierigen Situation weiter. Unkompliziert und zuverlässig – direkt über uns buchbar.
               </p>
               <div className="pt-4 flex flex-col gap-3">
-                <div className="flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-white/80">
-                  <CheckCircle2 className="w-4 h-4 text-primary" /> 24/7 Notfall-Service
+                <div className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-white/90">
+                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" /> 24/7 Notfall-Service
                 </div>
-                <div className="flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-white/80">
-                  <CheckCircle2 className="w-4 h-4 text-primary" /> Schnelle Schadensregulierung
+                <div className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-white/90">
+                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" /> Schnelle Schadensregulierung
                 </div>
               </div>
             </div>

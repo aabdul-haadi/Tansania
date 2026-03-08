@@ -186,7 +186,7 @@ export default function PartnerPage() {
                 <Card className="h-full border-none shadow-sm bg-[#fdfcfb] rounded-2xl md:rounded-[2.5rem] hover:shadow-xl transition-all duration-500 group">
                   <CardContent className="p-6 md:p-8 flex flex-col items-center text-center space-y-4">
                     <div className="w-12 h-12 rounded-2xl bg-muted flex items-center justify-center group-hover:bg-primary transition-colors">
-                      <item.icon className="w-6 h-6 text-muted-foreground group-hover:text-white" />
+                      <item.icon className="w-6 h-6 text-muted-foreground group-hover:text-white transition-colors" />
                     </div>
                     <div className="space-y-2">
                       <h4 className="font-headline text-xs md:text-lg font-bold text-secondary uppercase leading-tight">{item.title}</h4>
@@ -203,7 +203,7 @@ export default function PartnerPage() {
         </div>
       </section>
 
-      {/* Commercial Model / Transparency */}
+      {/* Commercial Model / Transparency - FIXING VISIBILITY */}
       <section className="py-16 md:py-32 bg-secondary text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
@@ -232,13 +232,13 @@ export default function PartnerPage() {
               {importantInfo.map((text, i) => (
                 <div key={i} className="flex items-center gap-5 p-5 md:p-6 bg-white/5 rounded-2xl border border-white/10 group hover:bg-white/10 transition-all">
                   <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
-                  <p className="text-[9px] md:text-sm font-black text-white uppercase tracking-widest leading-tight">
+                  <p className="text-[9px] md:text-sm font-bold text-white uppercase tracking-widest leading-tight">
                     {text}
                   </p>
                 </div>
               ))}
               <div className="pt-6">
-                <Link href="/fam-trip" className="inline-flex items-center gap-3 text-[9px] font-black text-primary hover:text-white transition-colors uppercase tracking-widest border-b border-primary/20 pb-1">
+                <Link href="/fam-trip" className="inline-flex items-center gap-3 text-[9px] font-bold text-primary hover:text-white transition-colors uppercase tracking-widest border-b border-primary/20 pb-1">
                   Details zum FAM-Trip <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
