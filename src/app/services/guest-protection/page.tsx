@@ -17,7 +17,8 @@ import {
   Calendar,
   AlertTriangle,
   Lock,
-  Compass
+  Compass,
+  FileText
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -70,31 +71,25 @@ const insurancePackages = [
 export default function GuestProtectionPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-bold">
-      {/* High-Impact Solid Hero */}
-      <header className="relative h-[50vh] md:h-[65vh] w-full overflow-hidden flex items-center bg-secondary">
-        <Image
-          src="https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=1920"
-          alt="Reiseversicherung Tansania"
-          fill
-          priority
-          className="object-cover opacity-25 grayscale"
-          data-ai-hint="safari security"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-secondary via-secondary to-transparent" />
+      {/* High-Impact Solid Header */}
+      <header className="relative pt-32 pb-12 md:pb-20 bg-white border-b border-border overflow-hidden">
+        <div className="absolute top-0 right-0 p-12 opacity-[0.03] pointer-events-none">
+          <ShieldCheck className="w-64 h-64 text-secondary" />
+        </div>
         
         <div className="container relative z-10 mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-3xl space-y-6"
+            className="max-w-4xl space-y-6"
           >
-            <Badge className="bg-primary text-white border-none px-4 py-1.5 text-[9px] font-black uppercase tracking-[0.4em] shadow-xl">Sicherheitsprotokoll</Badge>
-            <h1 className="font-headline text-3xl md:text-7xl font-bold text-white leading-none tracking-tighter uppercase">
+            <Badge className="bg-primary text-white border-none px-4 py-1.5 text-[9px] font-black uppercase tracking-[0.4em] shadow-lg">Sicherheitsprotokoll</Badge>
+            <h1 className="font-headline text-3xl md:text-7xl font-bold text-secondary leading-none tracking-tighter uppercase">
               Haben Sie an Ihre <br />
               <span className="text-primary">Versicherung gedacht?</span>
             </h1>
-            <p className="max-w-xl text-[10px] md:text-lg text-white/60 font-bold uppercase tracking-widest leading-relaxed">
+            <p className="max-w-2xl text-xs md:text-lg text-muted-foreground font-bold uppercase tracking-widest leading-relaxed">
               Planen Sie Ihr Tansania-Abenteuer mit professionellem Risiko-Management. Wir sichern Ihre Träume ab.
             </p>
           </motion.div>
@@ -111,22 +106,22 @@ export default function GuestProtectionPage() {
               <h2 className="font-headline text-3xl md:text-5xl font-bold text-secondary uppercase leading-none">
                 Vorsorge für <br />den <span className="text-primary">Ernstfall</span>
               </h2>
-              <div className="space-y-6 text-muted-foreground font-bold leading-relaxed text-sm md:text-base uppercase tracking-widest">
+              <div className="space-y-6 text-muted-foreground font-bold leading-relaxed text-xs md:text-sm uppercase tracking-widest">
                 <p>
                   Urlaub bedeutet Freiheit. Doch zwischen Buchung und Abreise liegen meist mehrere Wochen in denen sich viel in Ihrem Leben ändern kann. Hohe Stornierungsgebühren sind ein vermeidbares Risiko.
                 </p>
-                <div className="p-8 bg-secondary text-white rounded-[2rem] shadow-2xl relative overflow-hidden border border-white/10">
+                <div className="p-8 bg-muted/30 rounded-[2.5rem] shadow-sm relative overflow-hidden border border-border">
                   <div className="relative z-10 space-y-6">
                     <div className="flex items-center gap-4">
                       <ShieldCheck className="w-8 h-8 text-primary" />
-                      <h4 className="text-lg font-headline font-bold uppercase tracking-tight">HanseMerkur Partner</h4>
+                      <h4 className="text-lg font-headline font-bold uppercase tracking-tight text-secondary">HanseMerkur Partner</h4>
                     </div>
-                    <p className="text-white/40 font-bold text-[10px] leading-relaxed uppercase tracking-widest">
+                    <p className="text-muted-foreground font-bold text-[10px] leading-relaxed uppercase tracking-widest">
                       Unser zuverlässiger Partner HanseMerkur hilft Ihnen in jeder schwierigen Situation – unkompliziert und kompetent.
                     </p>
-                    <div className="flex flex-col gap-2 border-t border-white/5 pt-6">
-                      <p className="text-[8px] font-black text-white/30 uppercase">Kontakt Berlin</p>
-                      <p className="text-xs font-bold">info@tansania-reiseabenteuer.de</p>
+                    <div className="flex flex-col gap-2 border-t border-border pt-6">
+                      <p className="text-[8px] font-black text-muted-foreground/60 uppercase">Kontakt Berlin</p>
+                      <p className="text-xs font-bold text-secondary">info@tansania-reiseabenteuer.de</p>
                     </div>
                   </div>
                 </div>
@@ -143,7 +138,7 @@ export default function GuestProtectionPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   className={cn(
-                    "relative p-8 rounded-[2.5rem] bg-white border border-border shadow-sm transition-all duration-500 hover:shadow-2xl group flex flex-col justify-between",
+                    "relative p-8 rounded-[2.5rem] bg-white border border-border shadow-sm transition-all duration-500 hover:shadow-xl group flex flex-col justify-between",
                     pkg.tag === 'Unsere Empfehlung' ? "border-primary/30 ring-1 ring-primary/10 md:col-span-2" : ""
                   )}
                 >
@@ -194,7 +189,7 @@ export default function GuestProtectionPage() {
       {/* Advisory Spotlight */}
       <section className="py-16 md:py-32 bg-white border-y border-border overflow-hidden">
         <div className="container mx-auto px-4 max-w-4xl text-center space-y-10">
-          <div className="w-16 h-16 rounded-[1.5rem] bg-muted mx-auto flex items-center justify-center shadow-inner">
+          <div className="w-16 h-16 rounded-[1.5rem] bg-muted/50 mx-auto flex items-center justify-center shadow-inner">
             <ShieldAlert className="w-8 h-8 text-primary" />
           </div>
           <div className="space-y-4">
@@ -207,7 +202,7 @@ export default function GuestProtectionPage() {
           </div>
           <div className="pt-6 flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact" className="w-full sm:w-auto">
-              <Button size="lg" className="w-full rounded-[2rem] px-14 h-16 md:h-20 font-black text-[10px] md:text-sm uppercase tracking-[0.3em] shadow-2xl hover:scale-[1.02] transition-transform">
+              <Button size="lg" className="w-full rounded-[2rem] px-14 h-16 md:h-20 font-black text-[10px] md:text-sm uppercase tracking-[0.3em] shadow-xl hover:scale-[1.02] transition-transform">
                 Experten Sprechen <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </Link>
