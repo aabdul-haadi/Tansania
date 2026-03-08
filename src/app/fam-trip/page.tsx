@@ -305,12 +305,12 @@ export default function FamTripPage() {
               <h2 className="text-center font-headline text-3xl md:text-5xl font-bold text-secondary uppercase mb-12">
                 Das sagen <span className="text-primary">unsere Gäste</span>
               </h2>
-              <div className="w-full mt-5">
+              <div className="w-full mt-5 relative min-h-[400px]">
                 <Script 
                   src="https://cdn.trustindex.io/loader.js?4283f9b27e9f849d1a66a25dde5" 
-                  strategy="afterInteractive"
+                  strategy="lazyOnload"
                 />
-                {/* The container the script targets */}
+                {/* The container the script targets - MUST be inside this section to avoid appearing after footer */}
                 <div className="trustindex-widget-container" data-ti-widget-id="4283f9b27e9f849d1a66a25dde5" />
               </div>
             </section>
