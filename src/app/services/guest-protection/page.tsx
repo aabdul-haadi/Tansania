@@ -10,10 +10,11 @@ import {
   CheckCircle2,
   ArrowRight,
   HeartPulse,
-  Zap,
-  Info,
+  ChevronRight,
   ShieldAlert,
-  Fingerprint
+  Fingerprint,
+  Phone,
+  Calendar
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -23,7 +24,7 @@ import { cn } from '@/lib/utils';
 const insurancePackages = [
   {
     title: "5 Sterne-Premium-Schutz",
-    subtitle: "Das Rundum-Sorglos-Paket",
+    subtitle: "Rundum-Sorglos-Paket",
     scope: "Weltweit bis 45 Tage",
     tag: "Empfehlung",
     features: [
@@ -34,173 +35,173 @@ const insurancePackages = [
       "Reise-Unfallversicherung",
       "Gepäckversicherung"
     ],
-    desc: "Für diese Reise sind Sie für alle Eventualitäten vorbereitet. Maximale Absicherung.",
+    desc: "Maximale Absicherung für alle Eventualitäten Ihrer Expedition.",
     cta: "Premium Schutz buchen"
   },
   {
     title: "Rücktritt & Urlaub",
-    subtitle: "Fokus auf Stornokosten",
+    subtitle: "Stornokosten-Schutz",
     scope: "Weltweit bis 45 Tage",
     features: [
       "Reise-Rücktrittsversicherung",
       "Urlaubsgarantie"
     ],
-    desc: "Ideal für Reisende mit bestehender Auslandskrankenversicherung.",
+    desc: "Ideal bei bestehender Auslandskrankenversicherung.",
     cta: "Rücktrittsschutz buchen"
   },
   {
     title: "Jahresversicherung",
     subtitle: "Für alle Ihre Reisen",
-    scope: "Alle Reisen bis 56 Tage",
+    scope: "Bis zu 56 Tage pro Reise",
     tag: "Best Value",
     features: [
       "Reise-Rücktrittsversicherung",
       "Urlaubsgarantie",
       "24/7 Notfall-Service"
     ],
-    desc: "Einmal abschließen, das ganze Jahr weltweit gegen Stornofall versichert sein.",
+    desc: "Einmal abschließen, das ganze Jahr weltweit abgesichert sein.",
     cta: "Jahres-Schutz buchen"
   }
 ];
 
 export default function GuestProtectionPage() {
   return (
-    <div className="bg-[#fdfcfb] min-h-screen">
-      {/* Editorial High-Scale Hero */}
-      <header className="relative h-[60vh] md:h-[80vh] w-full overflow-hidden flex items-center bg-secondary">
+    <div className="bg-[#fdfcfb] min-h-screen font-bold">
+      {/* Immersive Compact Hero */}
+      <header className="relative h-[50vh] md:h-[65vh] w-full overflow-hidden flex items-center bg-secondary">
         <Image
           src="https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=1920"
-          alt="Sicher Reisen"
+          alt="Reiseversicherung Tansania"
           fill
           priority
           className="object-cover opacity-30 grayscale"
           data-ai-hint="safari security"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-secondary via-secondary/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-secondary via-secondary/70 to-transparent" />
         
         <div className="container relative z-10 mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, ease: [0.23, 1, 0.32, 1] }}
-            className="max-w-4xl"
+            transition={{ duration: 0.8 }}
+            className="max-w-3xl"
           >
-            <span className="text-primary font-black uppercase tracking-[0.5em] text-[10px] md:text-xs mb-6 block">
+            <span className="text-primary font-black uppercase tracking-[0.4em] text-[9px] md:text-[11px] mb-4 block">
               Global Security Audit
             </span>
-            <h1 className="font-headline text-4xl md:text-8xl lg:text-9xl font-bold text-white mb-8 leading-[0.85] tracking-tighter uppercase">
-              Haben Sie an <br />
-              <span className="text-primary">Versicherung</span> <br />
+            <h1 className="font-headline text-3xl md:text-7xl font-bold text-white mb-6 leading-[0.9] tracking-tighter uppercase">
+              Haben Sie an Ihre <br />
+              <span className="text-primary">Reiseversicherung</span> <br />
               gedacht?
             </h1>
-            <p className="max-w-xl text-[10px] md:text-lg text-white/60 font-bold uppercase tracking-[0.2em] leading-relaxed">
-              Zwischen Buchung und Abreise liegen Wochen, in denen sich viel ändern kann. Schützen Sie Ihr Investment.
+            <p className="max-w-lg text-[9px] md:text-base text-white/60 font-bold uppercase tracking-[0.2em] leading-relaxed">
+              Zwischen Buchung und Abreise liegen Wochen, in denen sich viel ändern kann. Schützen Sie Ihr Investment professionell.
             </p>
           </motion.div>
         </div>
       </header>
 
-      {/* Security Context Grid */}
-      <section className="py-12 md:py-32 container mx-auto px-4 max-w-7xl">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
+      {/* Narrative Section */}
+      <section className="py-12 md:py-20 container mx-auto px-4 max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 items-start">
           
-          <div className="lg:col-span-5 space-y-10">
-            <div className="space-y-6">
+          <div className="lg:col-span-5 space-y-8">
+            <div className="space-y-4">
               <span className="text-primary font-black uppercase tracking-[0.4em] text-[9px] block">Risiko-Management</span>
-              <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary uppercase leading-none">
+              <h2 className="font-headline text-2xl md:text-5xl font-bold text-secondary uppercase leading-none">
                 Vorsorge für <br />den <span className="text-primary">Ernstfall</span>
               </h2>
-              <div className="space-y-6 text-muted-foreground font-bold leading-relaxed text-sm md:text-base uppercase tracking-widest">
+              <div className="space-y-4 text-muted-foreground font-bold leading-relaxed text-xs md:text-base uppercase tracking-widest">
                 <p>
-                  Sollten Sie aus gesundheitlichen oder anderen wichtigen Gründen Ihre Reise absagen müssen, fallen oft hohe Stornogebühren an.
+                  Urlaub und Reisen bedeutet die Welt kennenzulernen. Bei einer größeren Reise sollte man trotz aller Vorfreude auch auf schwierige Situationen vorbereitet sein.
                 </p>
-                <p className="text-secondary border-l-2 border-primary/20 pl-6">
-                  Nicht nur Sie sind versichert: Was ist, wenn Angehörige einen Unfall haben oder Ihr Zuhause gefährdet ist?
+                <p className="text-secondary border-l-2 border-primary/20 pl-5">
+                  Sollten Sie aus gesundheitlichen Gründen absagen müssen, fallen hohe Stornogebühren an. Sichern Sie sich und Ihre Angehörigen ab.
                 </p>
               </div>
             </div>
 
-            <div className="p-10 bg-secondary text-white rounded-[3rem] shadow-2xl relative overflow-hidden">
+            <div className="p-8 bg-secondary text-white rounded-[2.5rem] shadow-xl relative overflow-hidden border border-white/5">
               <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-              <div className="relative z-10 space-y-8">
-                <div className="flex items-center gap-5">
-                  <div className="w-14 h-14 rounded-2xl bg-primary/20 flex items-center justify-center border border-white/10">
-                    <Fingerprint className="w-8 h-8 text-primary" />
+              <div className="relative z-10 space-y-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center border border-white/10">
+                    <Fingerprint className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h4 className="text-xl font-headline font-bold uppercase tracking-tight">HanseMerkur</h4>
-                    <p className="text-[8px] font-black uppercase text-primary tracking-[0.3em]">Exklusiv-Strategie</p>
+                    <h4 className="text-lg font-headline font-bold uppercase tracking-tight">HanseMerkur</h4>
+                    <p className="text-[8px] font-black uppercase text-primary tracking-[0.3em]">Exklusiv-Partner</p>
                   </div>
                 </div>
                 <p className="text-white/60 font-bold text-[10px] md:text-xs leading-relaxed uppercase tracking-widest">
-                  Unser Partner HanseMerkur hilft Ihnen unkompliziert – direkt über unsere Experten in Berlin und Kairo buchbar.
+                  Unser kompetenter Partner hilft Ihnen in jeder schwierigen Situation weiter – unkompliziert und direkt über uns buchbar.
                 </p>
-                <div className="grid grid-cols-1 gap-3">
-                  <div className="flex items-center gap-4 text-[9px] font-black uppercase tracking-[0.2em] text-white/90 bg-white/5 p-4 rounded-xl border border-white/5">
-                    <CheckCircle2 className="w-4 h-4 text-primary shrink-0" /> Globaler 24/7 Notfall-Support
+                <div className="grid grid-cols-1 gap-2">
+                  <div className="flex items-center gap-3 text-[9px] font-black uppercase tracking-[0.2em] text-white/90 bg-white/5 p-3 rounded-xl">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0" /> 24/7 Notfall-Service
                   </div>
-                  <div className="flex items-center gap-4 text-[9px] font-black uppercase tracking-[0.2em] text-white/90 bg-white/5 p-4 rounded-xl border border-white/5">
-                    <CheckCircle2 className="w-4 h-4 text-primary shrink-0" /> Digitale Schadensmeldung
+                  <div className="flex items-center gap-3 text-[9px] font-black uppercase tracking-[0.2em] text-white/90 bg-white/5 p-3 rounded-xl">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0" /> Einfache Online-Buchung
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
+          {/* High-Density Tiers */}
           <div className="lg:col-span-7">
-            <div className="grid grid-cols-1 gap-6 md:gap-8">
+            <div className="grid grid-cols-1 gap-4 md:gap-6">
               {insurancePackages.map((pkg, i) => (
                 <motion.div 
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
+                  transition={{ delay: i * 0.05 }}
                 >
                   <Card className={cn(
-                    "border-none shadow-sm rounded-[2.5rem] overflow-hidden transition-all duration-700 hover:shadow-2xl group",
-                    pkg.tag === 'Empfehlung' ? "ring-2 ring-primary bg-primary/5 shadow-2xl" : "bg-white"
+                    "border-none shadow-sm rounded-[2rem] overflow-hidden transition-all duration-500 hover:shadow-xl group",
+                    pkg.tag === 'Empfehlung' ? "ring-2 ring-primary bg-primary/5" : "bg-white"
                   )}>
-                    <CardContent className="p-8 md:p-12 flex flex-col md:flex-row gap-8">
-                      <div className="flex-grow space-y-6">
-                        <div className="space-y-2">
+                    <CardContent className="p-6 md:p-8 flex flex-col md:flex-row gap-6 md:items-center">
+                      <div className="flex-grow space-y-4">
+                        <div className="space-y-1">
                           <div className="flex items-center justify-between">
-                            <h3 className="font-headline text-2xl md:text-4xl font-bold text-secondary uppercase leading-none">
+                            <h3 className="font-headline text-xl md:text-3xl font-bold text-secondary uppercase leading-none">
                               {pkg.title}
                             </h3>
                             {pkg.tag && (
-                              <Badge className="bg-primary text-white border-none px-3 py-1 text-[8px] font-black uppercase tracking-widest shadow-xl">
+                              <Badge className="bg-primary text-white border-none px-2 py-0.5 text-[8px] font-black uppercase tracking-widest">
                                 {pkg.tag}
                               </Badge>
                             )}
                           </div>
-                          <div className="flex items-center gap-3 text-[10px] font-black uppercase text-primary tracking-widest">
-                            <Globe className="w-4 h-4" /> {pkg.scope}
+                          <div className="flex items-center gap-2 text-[9px] font-black uppercase text-primary tracking-widest">
+                            <Globe className="w-3.5 h-3.5" /> {pkg.scope}
                           </div>
                         </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
                           {pkg.features.map((feature, idx) => (
-                            <div key={idx} className="flex items-start gap-3">
-                              <CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0 mt-0.5" />
-                              <span className="text-[10px] font-black text-secondary uppercase tracking-widest leading-tight">
+                            <div key={idx} className="flex items-center gap-2.5">
+                              <CheckCircle2 className="w-3 h-3 text-primary shrink-0" />
+                              <span className="text-[9px] font-black text-secondary uppercase tracking-widest leading-none">
                                 {feature}
                               </span>
                             </div>
                           ))}
                         </div>
 
-                        <div className="pt-6 border-t border-border/50">
+                        <div className="pt-4 border-t border-border/50">
                           <p className="text-[9px] font-bold text-muted-foreground leading-relaxed uppercase tracking-widest">
                             {pkg.desc}
                           </p>
                         </div>
                       </div>
 
-                      <div className="md:w-48 flex flex-col justify-end">
-                        <Button className="w-full h-16 rounded-2xl bg-secondary text-white font-black text-[9px] uppercase tracking-[0.2em] shadow-xl group-hover:bg-primary transition-all flex flex-col items-center justify-center gap-1">
-                          <span>Details</span>
-                          <ChevronRight className="w-4 h-4" />
+                      <div className="md:w-40 shrink-0">
+                        <Button className="w-full h-12 md:h-14 rounded-xl bg-secondary text-white font-black text-[9px] uppercase tracking-widest shadow-lg group-hover:bg-primary transition-all flex items-center justify-center gap-2">
+                          Buchen <ChevronRight className="w-3.5 h-3.5" />
                         </Button>
                       </div>
                     </CardContent>
@@ -214,33 +215,28 @@ export default function GuestProtectionPage() {
       </section>
 
       {/* Advisory Spotlight */}
-      <section className="py-16 md:py-32 bg-white relative overflow-hidden border-y border-border/50">
+      <section className="py-12 md:py-20 bg-white relative overflow-hidden border-y border-border/50">
         <div className="container mx-auto px-4 max-w-4xl text-center">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="space-y-10"
-          >
-            <div className="w-20 h-20 md:w-24 md:h-24 rounded-[2rem] bg-muted mx-auto flex items-center justify-center shadow-xl">
-              <HeartPulse className="w-10 h-10 md:w-12 md:h-12 text-primary" />
+          <div className="space-y-8">
+            <div className="w-16 h-16 rounded-[1.5rem] bg-muted mx-auto flex items-center justify-center shadow-lg">
+              <HeartPulse className="w-8 h-8 text-primary" />
             </div>
-            <div className="space-y-4">
-              <h2 className="font-headline text-3xl md:text-7xl font-bold text-secondary uppercase tracking-tighter leading-[0.9]">
-                Beratung <br /><span className="text-primary">anfordern</span>
+            <div className="space-y-3">
+              <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary uppercase tracking-tighter leading-[0.9]">
+                Persönliche <br /><span className="text-primary">Beratung</span>
               </h2>
-              <p className="text-muted-foreground font-black text-[10px] md:text-sm uppercase tracking-[0.3em] leading-relaxed max-w-2xl mx-auto">
+              <p className="text-muted-foreground font-black text-[9px] md:text-sm uppercase tracking-[0.3em] leading-relaxed max-w-xl mx-auto">
                 Unsere Experten in Berlin beraten Sie individuell zum passenden Versicherungsschutz für Ihre Afrika-Expedition.
               </p>
             </div>
-            <div className="pt-6 flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center">
               <Link href="/contact" className="w-full sm:w-auto">
-                <Button size="lg" className="w-full rounded-full px-12 h-16 font-black text-[10px] md:text-xs uppercase tracking-[0.4em] shadow-2xl group transition-all">
+                <Button size="lg" className="w-full rounded-full px-10 h-14 font-black text-[10px] md:text-xs uppercase tracking-[0.3em] shadow-xl group">
                   Experten Sprechen <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

@@ -29,7 +29,7 @@
     --border: 0 0% 88%;
     --input: 0 0% 88%;
     --ring: 19 89% 47%;
-    --radius: 1.25rem;
+    --radius: 1rem;
   }
 
   .dark {
@@ -47,7 +47,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground antialiased font-bold;
     background-image: url("https://grainy-gradients.vercel.app/noise.svg");
     background-repeat: repeat;
     background-size: 200px;
@@ -56,20 +56,18 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-headline font-bold tracking-tighter uppercase;
   }
+  /* Global Italic Removal */
+  i, em, .italic, .font-italic {
+    @apply not-italic !important;
+  }
 }
 
 .text-prestige {
-  @apply font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px];
+  @apply font-black uppercase tracking-[0.3em] text-[8px] md:text-[10px];
 }
 
 .glass-portal {
-  @apply bg-background/80 backdrop-blur-3xl border border-white/10 shadow-2xl;
-}
-
-.editorial-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 1.5rem;
+  @apply bg-background/80 backdrop-blur-2xl border border-white/10 shadow-2xl;
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -80,15 +78,15 @@
   scrollbar-width: none;
 }
 
-.hover-reveal {
-  @apply transition-all duration-700 ease-prestige;
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
+.ease-prestige {
+  transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-5px); }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
 }
