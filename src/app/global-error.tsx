@@ -10,6 +10,14 @@ export default function GlobalError({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  const handleReset = () => {
+    if (typeof reset === 'function') {
+      reset();
+    } else {
+      window.location.reload();
+    }
+  };
+
   return (
     <html lang="de">
       <body className="antialiased">
@@ -30,7 +38,7 @@ export default function GlobalError({
 
             <div className="pt-6">
               <button 
-                onClick={() => reset()}
+                onClick={handleReset}
                 className="w-full bg-primary text-white h-14 rounded-2xl font-black uppercase text-[10px] tracking-[0.3em] shadow-2xl hover:scale-[1.02] transition-transform flex items-center justify-center gap-3"
               >
                 <RefreshCcw className="w-4 h-4" /> System Reset

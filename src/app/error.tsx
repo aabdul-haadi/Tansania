@@ -16,6 +16,14 @@ export default function Error({
     console.error('Application Error:', error);
   }, [error]);
 
+  const handleReset = () => {
+    if (typeof reset === 'function') {
+      reset();
+    } else {
+      window.location.reload();
+    }
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#fdfcfb] px-4">
       <div className="max-w-md w-full text-center space-y-10 p-8 md:p-12 bg-white rounded-[2.5rem] shadow-2xl border border-border/50 relative overflow-hidden">
@@ -42,7 +50,7 @@ export default function Error({
 
           <div className="pt-10 space-y-3">
             <Button 
-              onClick={() => reset()} 
+              onClick={handleReset} 
               className="w-full rounded-xl h-14 gap-3 shadow-lg shadow-primary/20 font-black text-[10px] uppercase tracking-widest"
             >
               <RefreshCcw className="w-4 h-4" /> Seite neu laden

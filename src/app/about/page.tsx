@@ -6,24 +6,17 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { 
   Compass, 
-  Heart, 
-  ShieldCheck, 
-  Leaf, 
   Users, 
-  Star, 
+  Leaf, 
   ArrowRight, 
   Sparkles,
-  MapPin,
   Quote,
-  CheckCircle2,
   Award,
   Globe,
-  Camera,
-  Mountain
+  Camera
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Card, CardContent } from '@/components/ui/card';
 
 const team = [
   { name: "Manuela Jungas", role: "Team Mitglied", img: "https://picsum.photos/seed/manuela/400/400" },
@@ -97,7 +90,7 @@ export default function AboutPage() {
                 Träumen Sie von einer Reise, die tiefer geht? Eine Reise, die Sie in die Seele eines Kontinents eintauchen lässt, reich an unberührter Natur, pulsierenden Kulturen und atemberaubenden Abenteuern?
               </p>
               <p className="text-foreground">
-                Dann sind Sie bei <strong className="font-black">Tansania Reiseabenteuer</strong> genau richtig! Wir sind nicht einfach nur ein Reiseveranstalter; wir sind Ihre Brücke zu authentischen Erlebnissen in Tansania, Kenia, Ruanda, Botswana, Namibia, Südafrika und an den Victoriafällen.
+                Dann sind Sie bei Tansania Reiseabenteuer genau richtig! Wir sind nicht einfach nur ein Reiseveranstalter; wir sind Ihre Brücke zu authentischen Erlebnissen in Tansania, Kenia, Ruanda, Botswana, Namibia, Südafrika und an den Victoriafällen.
               </p>
             </div>
             <div className="flex flex-wrap gap-3 pt-2">
