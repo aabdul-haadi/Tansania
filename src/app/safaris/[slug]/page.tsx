@@ -265,7 +265,7 @@ export default function PackageDetailPage() {
             <section ref={hotelsRef} className="space-y-16">
               <div className="text-center md:text-left space-y-2">
                 <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px]">Rest & Recharge</span>
-                <h3 className="font-headline text-4xl md:text-7xl font-bold text-secondary uppercase">Flagship <span className="text-primary">Residences</span></h3>
+                <h3 className="font-headline text-4xl md:text-7xl font-bold text-secondary uppercase Flagship <span className="text-primary">Residences</span></h3>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[
