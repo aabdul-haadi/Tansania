@@ -27,7 +27,7 @@ export function initializeFirebase() {
           authDomain: "demo-project.firebaseapp.com",
           messagingSenderId: "1234567890",
           measurementId: "",
-        }, "fallback-app");
+        });
       } else {
         firebaseApp = initializeApp(firebaseConfig);
       }
