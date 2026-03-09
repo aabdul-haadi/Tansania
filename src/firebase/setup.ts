@@ -18,7 +18,19 @@ export function initializeFirebase() {
       if (process.env.NODE_ENV === "production") {
         console.warn('Automatic initialization failed. Falling back to firebase config object.', e);
       }
-      firebaseApp = initializeApp(firebaseConfig);
+      if (!firebaseConfig.apiKey) {
+        console.warn('Firebase API Key is missing. Using dummy config for build/SSR.');
+        firebaseApp = initializeApp({
+          projectId: "demo-project",
+          appId: "1:1234567890:web:1234567890",
+          apiKey: "AIzaSyDummyKeyForStaticBuildAndTesting",
+          authDomain: "demo-project.firebaseapp.com",
+          messagingSenderId: "1234567890",
+          measurementId: "",
+        }, "fallback-app");
+      } else {
+        firebaseApp = initializeApp(firebaseConfig);
+      }
     }
     return getSdks(firebaseApp);
   }
