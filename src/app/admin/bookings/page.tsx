@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -8,12 +7,12 @@ import {
   Filter, 
   MoreHorizontal,
   User,
-  CreditCard,
   CheckCircle2,
   Clock,
-  AlertCircle
+  ArrowRight,
+  Database
 } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
@@ -27,6 +26,7 @@ import {
 } from "@/components/ui/table";
 import { useCollection, useFirestore, useMemoFirebase, useUser, useDoc } from '@/firebase';
 import { collection, query, orderBy, doc } from 'firebase/firestore';
+import { cn } from '@/lib/utils';
 
 export default function BookingsManagement() {
   const { user } = useUser();
@@ -37,7 +37,6 @@ export default function BookingsManagement() {
     setIsMounted(true);
   }, []);
 
-  // Guard: Only fetch if authenticated and admin role is confirmed
   const adminDocRef = useMemoFirebase(() => (firestore && user ? doc(firestore, 'roles_admin', user.uid) : null), [firestore, user]);
   const { data: adminRole } = useDoc(adminDocRef);
 
@@ -49,82 +48,80 @@ export default function BookingsManagement() {
   const { data: bookings, isLoading } = useCollection(bookingsQuery);
 
   const getStatusBadge = (status: string) => {
-    switch (status) {
-      case 'CONFIRMED': return <Badge className="bg-green-100 text-green-700 border-none px-3">Confirmed</Badge>;
-      case 'PENDING': return <Badge className="bg-yellow-100 text-yellow-700 border-none px-3">Pending</Badge>;
-      case 'CANCELLED': return <Badge className="bg-red-100 text-red-700 border-none px-3">Cancelled</Badge>;
-      default: return <Badge variant="outline">{status}</Badge>;
+    const s = status.toUpperCase();
+    switch (s) {
+      case 'CONFIRMED': return <Badge className="bg-green-500 text-white border-none px-2.5 py-0.5 text-[8px] font-bold uppercase tracking-widest shadow-sm">Confirmed</Badge>;
+      case 'PENDING': return <Badge className="bg-yellow-500 text-white border-none px-2.5 py-0.5 text-[8px] font-bold uppercase tracking-widest shadow-sm">Pending</Badge>;
+      case 'CANCELLED': return <Badge className="bg-red-500 text-white border-none px-2.5 py-0.5 text-[8px] font-bold uppercase tracking-widest shadow-sm">Cancelled</Badge>;
+      default: return <Badge variant="outline" className="text-[8px] font-bold uppercase tracking-widest">{status}</Badge>;
     }
   };
 
   return (
-    <div className="p-10 max-w-7xl mx-auto space-y-10">
-      <div className="flex items-center justify-between">
+    <div className="p-6 md:p-10 max-w-7xl mx-auto space-y-8">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
-          <h1 className="text-4xl font-bold tracking-tight">Expedition Bookings</h1>
-          <p className="text-muted-foreground mt-2 text-lg">Tracking active journeys and confirmed travelers.</p>
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tighter text-secondary uppercase">Expedition Bookings</h1>
+          <p className="text-muted-foreground mt-1 text-sm font-bold uppercase tracking-widest">Active Journeys Registry</p>
         </div>
-        <div className="flex gap-3">
-           <Button variant="outline" className="rounded-2xl h-12 px-6">Export CSV</Button>
-        </div>
+        <Button variant="outline" className="rounded-xl h-12 px-6 font-bold uppercase tracking-widest text-[10px] border-muted">Export CSV</Button>
       </div>
 
-      <div className="flex items-center gap-4">
-        <div className="relative flex-grow max-w-md">
+      <div className="flex items-center gap-4 max-w-2xl">
+        <div className="relative flex-grow">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-          <Input placeholder="Find booking by ID or user name..." className="pl-12 h-14 rounded-2xl border-none shadow-sm bg-background" />
+          <Input placeholder="Find booking by ID or user..." className="h-12 pl-12 rounded-xl border-none bg-white shadow-sm font-bold text-xs uppercase tracking-widest" />
         </div>
-        <Button variant="outline" className="h-14 rounded-2xl px-6 border-none shadow-sm bg-background">All Statuses</Button>
+        <Button variant="outline" className="h-12 rounded-xl px-6 border-none bg-white shadow-sm font-bold uppercase tracking-widest text-[10px]">Filters</Button>
       </div>
 
-      <Card className="border-none shadow-sm rounded-[2.5rem] overflow-hidden">
+      <Card className="border-none shadow-sm rounded-[2rem] bg-white overflow-hidden">
         <CardContent className="p-0">
           <Table>
-            <TableHeader className="bg-muted/30">
-              <TableRow className="hover:bg-transparent border-muted">
-                <TableHead className="font-bold py-6 px-8">Booking Details</TableHead>
-                <TableHead className="font-bold">Travelers</TableHead>
-                <TableHead className="font-bold">Departure</TableHead>
-                <TableHead className="font-bold">Total Price</TableHead>
-                <TableHead className="font-bold">Status</TableHead>
+            <TableHeader className="bg-muted/10 border-b border-border">
+              <TableRow className="hover:bg-transparent border-none">
+                <TableHead className="font-bold py-5 px-8 text-[9px] uppercase tracking-widest">Booking ID</TableHead>
+                <TableHead className="font-bold text-[9px] uppercase tracking-widest">Travelers</TableHead>
+                <TableHead className="font-bold text-[9px] uppercase tracking-widest">Departure</TableHead>
+                <TableHead className="font-bold text-[9px] uppercase tracking-widest">Investment</TableHead>
+                <TableHead className="font-bold text-[9px] uppercase tracking-widest">Status</TableHead>
                 <TableHead className="text-right px-8"></TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {isLoading ? (
                 <TableRow>
-                  <TableCell colSpan={6} className="py-20 text-center text-muted-foreground animate-pulse font-bold text-xs uppercase tracking-widest">Synchronizing records...</TableCell>
-                </TableRow>
-              ) : !adminRole ? (
-                <TableRow>
-                  <TableCell colSpan={6} className="py-20 text-center text-muted-foreground">Verifying admin access...</TableCell>
+                  <TableCell colSpan={6} className="py-20 text-center text-muted-foreground animate-pulse font-bold text-[10px] uppercase tracking-widest">Synchronizing records...</TableCell>
                 </TableRow>
               ) : bookings?.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={6} className="py-20 text-center text-muted-foreground">No bookings found in the database.</TableCell>
+                  <TableCell colSpan={6} className="py-24 text-center">
+                    <Database className="w-12 h-12 mx-auto mb-4 opacity-5" />
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">No bookings found in registry.</p>
+                  </TableCell>
                 </TableRow>
               ) : (
                 bookings?.map((booking: any) => (
-                  <TableRow key={booking.id} className="border-muted hover:bg-muted/10 transition-colors">
-                    <TableCell className="py-6 px-8">
+                  <TableRow key={booking.id} className="border-border hover:bg-muted/10 transition-colors">
+                    <TableCell className="py-5 px-8">
                       <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center">
-                          <User className="w-5 h-5 text-primary" />
+                        <div className="w-9 h-9 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
+                          <User className="w-4 h-4" />
                         </div>
                         <div>
-                          <p className="font-bold text-sm">Booking #{booking.id.slice(-6).toUpperCase()}</p>
-                          <p className="text-xs text-muted-foreground font-medium">{booking.userId}</p>
+                          <p className="font-bold text-xs uppercase tracking-tight">#{booking.id.slice(-6).toUpperCase()}</p>
+                          <p className="text-[8px] text-muted-foreground font-bold uppercase tracking-widest truncate max-w-[100px]">{booking.userId}</p>
                         </div>
                       </div>
                     </TableCell>
-                    <TableCell className="font-bold text-sm">{booking.travelers} Persons</TableCell>
-                    <TableCell className="text-sm font-medium">
+                    <TableCell className="font-bold text-xs uppercase tracking-widest">{booking.travelers} Persons</TableCell>
+                    <TableCell className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
                       {isMounted ? new Date(booking.departureDate).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : '...'}
                     </TableCell>
-                    <TableCell className="font-bold text-sm text-secondary">${booking.totalPrice.toLocaleString()}</TableCell>
+                    <TableCell className="font-bold text-sm text-secondary tracking-tighter">€{booking.totalPrice.toLocaleString()}</TableCell>
                     <TableCell>{getStatusBadge(booking.status)}</TableCell>
                     <TableCell className="text-right px-8">
-                      <Button variant="ghost" size="icon" className="rounded-xl"><MoreHorizontal className="w-4 h-4" /></Button>
+                      <Button variant="ghost" size="icon" className="rounded-lg h-9 w-9"><ArrowRight className="w-4 h-4 text-muted-foreground" /></Button>
                     </TableCell>
                   </TableRow>
                 ))

@@ -12,7 +12,9 @@ import {
   Loader2,
   Database,
   CalendarCheck,
-  MessageSquare
+  MessageSquare,
+  Settings,
+  Brain
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useUser, useDoc, useFirestore, useAuth, useMemoFirebase, setDocumentNonBlocking } from '@/firebase';
@@ -27,6 +29,8 @@ const adminLinks = [
   { name: 'Inquiries', href: '/admin/inquiries', icon: MessageSquare },
   { name: 'Bookings', href: '/admin/bookings', icon: CalendarCheck },
   { name: 'Safari Catalog', href: '/admin/packages', icon: Database },
+  { name: 'AI Planner', href: '/admin/ai-planner', icon: Brain },
+  { name: 'Site Settings', href: '/admin/settings', icon: Settings },
 ];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -73,37 +77,42 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   if (isUserLoading || isAuthorized === null) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-muted/10 gap-4">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-white gap-4">
         <Loader2 className="w-10 h-10 text-primary animate-spin" />
-        <p className="text-muted-foreground font-bold text-[10px] uppercase tracking-widest">Accessing Admin Hub...</p>
+        <p className="text-secondary font-bold text-[10px] uppercase tracking-[0.3em]">Accessing Admin Hub...</p>
       </div>
     );
   }
 
   if (isAuthorized === false) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0a0a0a] p-6">
-        <div className="max-w-md w-full text-center space-y-8 bg-card p-12 rounded-[3rem] shadow-2xl border border-white/5">
+      <div className="min-h-screen flex items-center justify-center bg-white p-6">
+        <div className="max-w-md w-full text-center space-y-8 bg-white p-12 rounded-[2.5rem] shadow-2xl border border-border">
           <div className="w-20 h-20 bg-destructive/10 rounded-[2rem] flex items-center justify-center mx-auto mb-6">
             <Lock className="w-10 h-10 text-destructive" />
           </div>
-          <h1 className="text-3xl font-bold tracking-tight text-white uppercase">Access Required</h1>
-          <Button asChild className="w-full h-12 rounded-2xl" variant="secondary"><Link href="/auth/login">Staff Login</Link></Button>
+          <h1 className="text-3xl font-bold tracking-tighter text-secondary uppercase">Access Required</h1>
+          <Button asChild className="w-full h-14 rounded-xl font-bold uppercase tracking-widest"><Link href="/auth/login">Staff Login</Link></Button>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="flex min-h-screen bg-muted/20">
-      <aside className="w-72 bg-background border-r flex flex-col hidden lg:flex shrink-0">
-        <div className="p-8 border-b">
+    <div className="flex min-h-screen bg-[#fdfcfb]">
+      <aside className="w-64 bg-white border-r border-border flex flex-col hidden lg:flex shrink-0">
+        <div className="p-6 border-b border-border">
           <Link href="/" className="flex items-center gap-3">
-            <img src="/logo/logo1.png" alt="Logo" className="h-10 w-auto rounded-lg" />
-            <span className="font-headline font-bold text-lg text-primary uppercase">TANSANIA <br /> SDL</span>
+            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+              <Compass className="w-6 h-6 text-white" />
+            </div>
+            <div className="flex flex-col">
+              <span className="font-headline font-bold text-xs text-secondary leading-none uppercase tracking-tighter">Tansania</span>
+              <span className="font-headline font-bold text-xs text-primary leading-none uppercase tracking-tighter">SDL Admin</span>
+            </div>
           </Link>
         </div>
-        <nav className="flex-grow p-6 space-y-1">
+        <nav className="flex-grow p-4 space-y-1">
           {adminLinks.map((link) => {
             const Icon = link.icon;
             const isActive = pathname === link.href;
@@ -112,24 +121,26 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 key={link.name}
                 href={link.href}
                 className={cn(
-                  "flex items-center gap-3 p-3.5 rounded-2xl transition-all duration-300 font-bold text-sm uppercase tracking-widest",
-                  isActive ? "bg-secondary text-white shadow-lg" : "hover:bg-muted text-muted-foreground"
+                  "flex items-center gap-3 p-3 rounded-xl transition-all duration-300 font-bold text-[10px] uppercase tracking-widest",
+                  isActive 
+                    ? "bg-secondary text-white shadow-lg" 
+                    : "text-muted-foreground hover:bg-muted hover:text-secondary"
                 )}
               >
-                <Icon className={cn("w-5 h-5", isActive ? "text-primary" : "text-muted-foreground/60")} />
+                <Icon className={cn("w-4 h-4", isActive ? "text-primary" : "text-muted-foreground/60")} />
                 <span>{link.name}</span>
               </Link>
             );
           })}
         </nav>
-        <div className="p-6 border-t">
-          <button onClick={handleSignOut} className="flex items-center gap-3 w-full p-4 text-destructive hover:bg-destructive/5 rounded-2xl font-bold text-sm uppercase tracking-widest">
-            <LogOut className="w-5 h-5" />
+        <div className="p-4 border-t border-border">
+          <button onClick={handleSignOut} className="flex items-center gap-3 w-full p-3 text-destructive hover:bg-destructive/5 rounded-xl font-bold text-[10px] uppercase tracking-widest">
+            <LogOut className="w-4 h-4" />
             <span>Sign Out</span>
           </button>
         </div>
       </aside>
-      <main className="flex-grow overflow-y-auto">{children}</main>
+      <main className="flex-grow overflow-y-auto bg-white/50">{children}</main>
     </div>
   );
 }

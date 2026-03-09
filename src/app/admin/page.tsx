@@ -9,7 +9,8 @@ import {
   RefreshCw,
   Globe,
   Eye,
-  Sparkles
+  Sparkles,
+  ArrowRight
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -50,7 +51,6 @@ export default function AdminDashboard() {
     if (!firestore || !user) return;
     setLoading(true);
     
-    // Seed Site Settings (Non-blocking as per guidelines)
     setDocumentNonBlocking(doc(firestore, 'siteSettings', 'global'), {
       id: 'global',
       companyName: 'Tansania Reiseabenteuer SDL',
@@ -67,7 +67,7 @@ export default function AdminDashboard() {
         id: '15-day-safari-zanzibar', 
         title: '15 Tage Safari in Tansania und Sansibar', 
         slug: '15-day-safari-zanzibar', 
-        subtitle: 'Traumabenteuer in Afrika!',
+        subtitle: 'Traumabenteuer in Afrika',
         category: 'SAFARI & SANSIBAR', 
         tag: 'Meistverkauft', 
         durationDays: 15, 
@@ -88,41 +88,91 @@ export default function AdminDashboard() {
       }, { merge: true });
     }
 
-    toast({ title: "Sync Initiated", description: "Expedition data synchronization started in background." });
+    toast({ title: "Sync Initiated", description: "Expedition data synchronization started." });
     setLoading(false);
   };
 
   return (
-    <div className="p-10 max-w-7xl mx-auto space-y-10">
+    <div className="p-6 md:p-10 max-w-7xl mx-auto space-y-8">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
-          <h1 className="text-4xl font-bold tracking-tight text-secondary uppercase">Admin Dashboard</h1>
-          <p className="text-muted-foreground mt-2 text-lg font-bold">Digital operations for Tansania Reiseabenteuer SDL.</p>
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tighter text-secondary uppercase">Admin Dashboard</h1>
+          <p className="text-muted-foreground mt-1 text-sm font-bold uppercase tracking-widest">Digital Operations Control</p>
         </div>
         <div className="flex items-center gap-3">
-          <Button onClick={handleSeedData} disabled={loading} variant="secondary" className="gap-2 rounded-2xl h-12 px-6 font-bold uppercase tracking-widest">
+          <Button onClick={handleSeedData} disabled={loading} variant="outline" className="gap-2 rounded-xl h-12 px-6 font-bold uppercase tracking-widest border-primary/20 text-primary hover:bg-primary/5">
             {loading ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Sparkles className="w-4 h-4" />}
-            Initialize CMS Data
+            Initialize CMS
           </Button>
-          <Button asChild variant="outline" className="gap-2 rounded-2xl h-12 px-6 font-bold uppercase tracking-widest">
-            <Link href="/" target="_blank"><Eye className="w-4 h-4" /> View Site</Link>
+          <Button asChild className="gap-2 rounded-xl h-12 px-6 font-bold uppercase tracking-widest shadow-xl">
+            <Link href="/" target="_blank"><Eye className="w-4 h-4" /> View Live Site</Link>
           </Button>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
         {stats.map((stat, i) => (
-          <Card key={i} className="border-none shadow-sm rounded-[2rem] overflow-hidden bg-white">
+          <Card key={i} className="border-none shadow-sm rounded-3xl overflow-hidden bg-white hover:shadow-md transition-all">
             <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-bold uppercase tracking-widest text-muted-foreground">{stat.label}</CardTitle>
+              <CardTitle className="text-[9px] font-bold uppercase tracking-[0.3em] text-muted-foreground">{stat.label}</CardTitle>
               <stat.icon className="w-4 h-4 text-primary" />
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold text-secondary">{stat.value}</div>
-              <p className="text-[10px] text-muted-foreground mt-2 font-bold uppercase tracking-wider">{stat.trend}</p>
+              <div className="text-3xl font-bold text-secondary tracking-tighter">{stat.value}</div>
+              <p className="text-[8px] text-muted-foreground mt-2 font-bold uppercase tracking-widest">{stat.trend}</p>
             </CardContent>
           </Card>
         ))}
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 pt-4">
+        <Card className="rounded-[2.5rem] border-none shadow-sm bg-white p-8 space-y-6">
+          <div className="flex items-center justify-between">
+            <h3 className="font-headline text-2xl font-bold text-secondary uppercase">Recent Journal Posts</h3>
+            <Link href="/admin/blog" className="text-[10px] font-bold uppercase tracking-widest text-primary hover:underline">View All</Link>
+          </div>
+          <div className="space-y-4">
+            {blogs?.slice(0, 3).map((blog: any) => (
+              <div key={blog.id} className="flex items-center justify-between p-4 rounded-2xl bg-muted/20 border border-transparent hover:border-primary/10 transition-all group">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-white border border-border flex items-center justify-center shrink-0 overflow-hidden">
+                    <img src={blog.coverImage || 'https://picsum.photos/seed/admin-blog/100/100'} alt="" className="w-full h-full object-cover" />
+                  </div>
+                  <div>
+                    <p className="font-bold text-sm text-secondary uppercase truncate max-w-[200px]">{blog.title}</p>
+                    <p className="text-[8px] font-bold uppercase text-muted-foreground tracking-widest">{blog.category}</p>
+                  </div>
+                </div>
+                <Button variant="ghost" size="icon" className="rounded-lg h-8 w-8 text-muted-foreground group-hover:text-primary" asChild>
+                  <Link href={`/admin/blog/${blog.id}/edit`}><ArrowRight className="w-4 h-4" /></Link>
+                </Button>
+              </div>
+            ))}
+          </div>
+        </Card>
+
+        <Card className="rounded-[2.5rem] border-none shadow-sm bg-white p-8 space-y-6">
+          <div className="flex items-center justify-between">
+            <h3 className="font-headline text-2xl font-bold text-secondary uppercase">New Lead Inquiries</h3>
+            <Link href="/admin/inquiries" className="text-[10px] font-bold uppercase tracking-widest text-primary hover:underline">View CRM</Link>
+          </div>
+          <div className="space-y-4">
+            {inquiries?.slice(0, 3).map((lead: any) => (
+              <div key={lead.id} className="flex items-center justify-between p-4 rounded-2xl bg-muted/20 border border-transparent hover:border-primary/10 transition-all group">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold text-xs uppercase">
+                    {lead.name?.[0]}
+                  </div>
+                  <div>
+                    <p className="font-bold text-sm text-secondary uppercase">{lead.name}</p>
+                    <p className="text-[8px] font-bold uppercase text-muted-foreground tracking-widest">{lead.type}</p>
+                  </div>
+                </div>
+                <Badge variant="outline" className="text-[8px] font-bold uppercase tracking-widest border-muted text-muted-foreground">New</Badge>
+              </div>
+            ))}
+          </div>
+        </Card>
       </div>
     </div>
   );

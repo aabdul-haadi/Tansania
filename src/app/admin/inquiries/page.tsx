@@ -7,8 +7,10 @@ import {
   Mail, 
   Phone, 
   Calendar,
-  ArrowUpRight,
-  Trash2
+  ArrowRight,
+  Trash2,
+  Database,
+  ArrowUpRight
 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -17,6 +19,7 @@ import { Badge } from '@/components/ui/badge';
 import { useCollection, useFirestore, useMemoFirebase, useUser, useDoc, deleteDocumentNonBlocking } from '@/firebase';
 import { collection, query, orderBy, doc } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
+import { cn } from '@/lib/utils';
 
 export default function InquiriesManagement() {
   const { user } = useUser();
@@ -28,7 +31,6 @@ export default function InquiriesManagement() {
     setIsMounted(true);
   }, []);
 
-  // Guard: Only fetch if authenticated and admin role is confirmed
   const adminDocRef = useMemoFirebase(() => (firestore && user ? doc(firestore, 'roles_admin', user.uid) : null), [firestore, user]);
   const { data: adminRole } = useDoc(adminDocRef);
   
@@ -40,60 +42,54 @@ export default function InquiriesManagement() {
   const { data: inquiries, isLoading } = useCollection(inquiriesQuery);
 
   const handleDelete = async (id: string) => {
-    if (!firestore || !confirm('Permanently remove this inquiry?')) return;
-    
-    // CRITICAL: Non-blocking delete as per guidelines
+    if (!firestore || !confirm('Permanently remove this lead?')) return;
     deleteDocumentNonBlocking(doc(firestore, 'inquiries', id));
-    toast({ title: "Inquiry Deleted", description: "Record removed from CRM." });
+    toast({ title: "Lead Deleted", description: "Record removed from CRM." });
   };
 
   return (
-    <div className="p-10 max-w-7xl mx-auto space-y-10">
-      <div className="flex items-center justify-between">
+    <div className="p-6 md:p-10 max-w-7xl mx-auto space-y-8">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
-          <h1 className="text-4xl font-bold tracking-tight uppercase">Lead Inquiries</h1>
-          <p className="text-muted-foreground mt-2 text-lg font-bold">Managing the Nile to Savannah sales pipeline.</p>
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tighter text-secondary uppercase">Lead Inquiries</h1>
+          <p className="text-muted-foreground mt-1 text-sm font-bold uppercase tracking-widest">Nile to Savannah Pipeline</p>
         </div>
       </div>
 
-      <div className="flex items-center gap-4">
-        <div className="relative flex-grow max-w-md">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-          <Input placeholder="Search by name or email..." className="pl-12 h-14 rounded-2xl border-none shadow-sm bg-background font-bold" />
-        </div>
-        <Button variant="outline" className="h-14 rounded-2xl px-6 border-none shadow-sm bg-background font-bold uppercase tracking-widest">Unread Only</Button>
+      <div className="relative group max-w-md">
+        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+        <Input placeholder="Search by name or email..." className="h-12 pl-12 rounded-xl border-none bg-white shadow-sm font-bold text-xs uppercase tracking-widest" />
       </div>
 
-      <div className="grid grid-cols-1 gap-4">
+      <div className="grid grid-cols-1 gap-3">
         {isLoading ? (
-          <div className="py-20 text-center text-muted-foreground animate-pulse font-bold text-xs tracking-widest uppercase">Listening for leads...</div>
-        ) : !adminRole ? (
-          <div className="py-20 text-center text-muted-foreground font-bold uppercase text-xs animate-pulse">Verifying admin access...</div>
+          <div className="py-20 text-center text-muted-foreground animate-pulse font-bold text-[10px] uppercase tracking-widest">Syncing sales pipeline...</div>
         ) : inquiries?.length === 0 ? (
-          <Card className="p-24 text-center border-dashed border-2 bg-muted/20 rounded-[3rem]">
+          <div className="py-24 text-center bg-white rounded-[2.5rem] border-2 border-dashed border-muted">
             <MessageSquare className="w-16 h-16 mx-auto mb-6 opacity-10" />
-            <h3 className="text-2xl font-bold mb-2 uppercase">No inquiries yet</h3>
-            <p className="text-muted-foreground mb-8 max-w-xs mx-auto font-bold">New leads from the contact form and trip planner will appear here.</p>
-          </Card>
+            <h3 className="text-xl font-bold text-secondary uppercase">No leads in pipeline</h3>
+            <p className="text-muted-foreground text-xs font-bold uppercase tracking-widest mt-2">New requests from the website will appear here.</p>
+          </div>
         ) : (
           inquiries?.map((inquiry: any) => (
-            <Card key={inquiry.id} className="border-none shadow-sm hover:shadow-md transition-all group rounded-[2rem] overflow-hidden bg-background">
-              <CardContent className="p-8">
+            <Card key={inquiry.id} className="border-none shadow-sm hover:shadow-md transition-all group rounded-2xl overflow-hidden bg-white">
+              <CardContent className="p-6">
                 <div className="flex flex-col md:flex-row gap-6 items-start justify-between">
                   <div className="flex gap-5">
-                    <div className="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center text-secondary font-bold text-lg shrink-0">
-                      {inquiry.name?.[0]?.toUpperCase()}
+                    <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary font-bold text-lg shrink-0 uppercase">
+                      {inquiry.name?.[0]}
                     </div>
-                    <div>
-                      <div className="flex items-center gap-3 mb-1">
-                        <h3 className="font-bold text-lg uppercase">{inquiry.name}</h3>
-                        <Badge className={`px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider border-none ${
-                          inquiry.type === 'TRIP_PLANNER' ? 'bg-primary/10 text-primary' : 'bg-blue-100 text-blue-700'
-                        }`}>
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-3">
+                        <h3 className="font-bold text-base text-secondary uppercase tracking-tight">{inquiry.name}</h3>
+                        <Badge className={cn(
+                          "px-2 py-0.5 text-[8px] font-bold uppercase tracking-widest border-none",
+                          inquiry.type === 'TRIP_PLANNER' ? "bg-primary text-white" : "bg-blue-500 text-white"
+                        )}>
                           {inquiry.type === 'TRIP_PLANNER' ? 'Trip Planner' : 'Contact'}
                         </Badge>
                       </div>
-                      <div className="flex flex-wrap items-center gap-4 text-xs text-muted-foreground font-bold uppercase tracking-widest">
+                      <div className="flex flex-wrap items-center gap-4 text-[9px] text-muted-foreground font-bold uppercase tracking-widest">
                         <span className="flex items-center gap-1.5"><Mail className="w-3.5 h-3.5" /> {inquiry.email}</span>
                         {inquiry.phone && <span className="flex items-center gap-1.5"><Phone className="w-3.5 h-3.5" /> {inquiry.phone}</span>}
                         <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" /> {isMounted ? new Date(inquiry.createdAt).toLocaleDateString() : '...'}</span>
@@ -101,19 +97,19 @@ export default function InquiriesManagement() {
                     </div>
                   </div>
                   
-                  <div className="flex items-center gap-3">
-                    <Button variant="ghost" size="icon" className="rounded-xl h-11 w-11 text-destructive hover:bg-destructive/5 opacity-0 group-hover:opacity-100 transition-all" onClick={() => handleDelete(inquiry.id)}>
+                  <div className="flex items-center gap-2">
+                    <Button variant="ghost" size="icon" className="h-10 w-10 rounded-xl text-destructive hover:bg-destructive/5 opacity-0 group-hover:opacity-100 transition-all" onClick={() => handleDelete(inquiry.id)}>
                       <Trash2 className="w-4 h-4" />
                     </Button>
-                    <Button className="rounded-xl h-11 px-6 gap-2 font-bold uppercase tracking-widest">
-                      Review Lead <ArrowUpRight className="w-4 h-4" />
+                    <Button variant="outline" className="rounded-xl h-10 px-5 gap-2 font-bold uppercase tracking-widest text-[9px] border-muted">
+                      Review Lead <ArrowUpRight className="w-3.5 h-3.5" />
                     </Button>
                   </div>
                 </div>
 
-                <div className="mt-6 pt-6 border-t border-muted">
-                  <p className="text-sm text-muted-foreground line-clamp-2 font-bold leading-relaxed">
-                    {inquiry.message || inquiry.preferences?.message || 'No specific message provided.'}
+                <div className="mt-5 pt-5 border-t border-muted">
+                  <p className="text-xs text-muted-foreground font-bold uppercase tracking-widest leading-relaxed line-clamp-2">
+                    {inquiry.message || inquiry.preferences?.message || 'No additional notes provided.'}
                   </p>
                 </div>
               </CardContent>
