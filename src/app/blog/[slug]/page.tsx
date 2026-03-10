@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -25,6 +26,9 @@ import { doc, collection, query, where, limit } from 'firebase/firestore';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { BlogSidebar } from '@/components/blog/BlogSidebar';
+
+// Enable ISR for this route
+export const revalidate = 60;
 
 export default function BlogPostDetail() {
   const { slug } = useParams();
@@ -60,9 +64,9 @@ export default function BlogPostDetail() {
   if (!post) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center text-center p-4">
-        <h2 className="text-3xl font-headline font-bold mb-4">Story Not Found</h2>
-        <p className="text-muted-foreground mb-8">This part of the savannah seems to be unexplored.</p>
-        <Button asChild className="rounded-full px-8 h-12">
+        <h2 className="text-3xl font-headline font-bold mb-4 uppercase">Story Not Found</h2>
+        <p className="text-muted-foreground mb-8 font-bold">This part of the savannah seems to be unexplored.</p>
+        <Button asChild className="rounded-full px-8 h-12 font-bold uppercase">
           <Link href="/blog">Back to Journal</Link>
         </Button>
       </div>
@@ -70,7 +74,7 @@ export default function BlogPostDetail() {
   }
 
   return (
-    <div className="bg-[#fdfcfb] min-h-screen">
+    <div className="bg-[#fdfcfb] min-h-screen font-bold">
       <motion.div className="fixed top-0 left-0 right-0 h-1 bg-primary z-[100] origin-left" style={{ scaleX }} />
 
       <header className="relative h-[70vh] md:h-[85vh] w-full overflow-hidden flex items-end pb-12 md:pb-24">
@@ -99,7 +103,7 @@ export default function BlogPostDetail() {
               </Badge>
             </div>
             
-            <h1 className="font-headline text-4xl md:text-7xl font-bold text-white mb-8 leading-[1.1] drop-shadow-2xl">
+            <h1 className="font-headline text-4xl md:text-7xl font-bold text-white mb-8 leading-[1.1] drop-shadow-2xl uppercase">
               {post.title}
             </h1>
 
@@ -139,7 +143,7 @@ export default function BlogPostDetail() {
               </div>
 
               <div className="prose prose-xl max-w-none prose-headings:font-headline prose-headings:font-bold prose-headings:text-secondary prose-p:font-bold prose-p:leading-[1.8] prose-p:text-muted-foreground prose-p:uppercase prose-p:tracking-tight prose-strong:text-secondary prose-a:text-primary hover:prose-a:underline">
-                <div className="whitespace-pre-wrap leading-relaxed space-y-10 text-lg md:text-xl font-bold">
+                <div className="whitespace-pre-wrap leading-relaxed space-y-10 text-lg md:text-xl font-bold uppercase">
                   {post.contentMarkdown || "No content available for this post."}
                 </div>
               </div>

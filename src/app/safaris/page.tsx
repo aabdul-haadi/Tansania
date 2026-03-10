@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from 'react';
@@ -17,6 +18,9 @@ import { collection, query, where } from 'firebase/firestore';
 import { PackageCard } from '@/components/packages/PackageCard';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { cn } from '@/lib/utils';
+
+// Enable ISR for this route
+export const revalidate = 60;
 
 export default function SafarisPage() {
   const firestore = useFirestore();
