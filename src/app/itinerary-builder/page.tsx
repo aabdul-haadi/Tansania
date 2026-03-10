@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from 'react';
@@ -71,7 +72,7 @@ export default function ItineraryBuilderPage() {
           <h1 className="font-headline text-4xl md:text-7xl font-bold text-secondary uppercase">
             Design Your <span className="text-primary">Safari</span>
           </h1>
-          <p className="text-muted-foreground text-sm font-light uppercase tracking-[0.2em] max-w-xl mx-auto">
+          <p className="text-muted-foreground text-sm font-bold uppercase tracking-[0.2em] max-w-xl mx-auto">
             Our AI uses real-time logistics to build your perfect Tanzanian journey
           </p>
         </header>
@@ -136,14 +137,14 @@ export default function ItineraryBuilderPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                   <div className="space-y-8">
                     <div className="space-y-4">
-                      <Label className="text-[10px] font-bold uppercase tracking-widest text-primary">Travel Duration</Label>
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-primary">Travel Duration</p>
                       <div className="flex items-center gap-6">
                         <input type="range" min="5" max="21" value={selections.duration} onChange={(e) => setSelections({ ...selections, duration: parseInt(e.target.value) })} className="w-full h-2 bg-muted rounded-full accent-primary" />
                         <span className="font-headline text-3xl font-bold w-20 text-secondary">{selections.duration} Tage</span>
                       </div>
                     </div>
                     <div className="space-y-4">
-                      <Label className="text-[10px] font-bold uppercase tracking-widest text-primary">Comfort Tier</Label>
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-primary">Comfort Tier</p>
                       <div className="grid grid-cols-1 gap-3">
                         {['Value', 'Premium', 'Ultra-Luxury'].map(t => (
                           <button key={t} onClick={() => setSelections({ ...selections, tier: t })} className={cn("p-4 rounded-2xl border-2 text-left transition-all", selections.tier === t ? "border-primary bg-primary/5" : "border-border")}>
@@ -185,9 +186,9 @@ export default function ItineraryBuilderPage() {
           {step === 3 && result && (
             <motion.div key="result" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="space-y-12 pb-20">
               <div className="text-center space-y-4">
-                <Badge className="bg-green-500 text-white border-none px-4 py-1 text-[10px] font-bold uppercase tracking-[0.2em] shadow-xl">Architect Result Ready</Badge>
+                <Badge className="bg-green-500 text-white border-none px-4 py-1 text-[8px] font-bold uppercase tracking-[0.2em] shadow-xl">Architect Result Ready</Badge>
                 <h2 className="font-headline text-4xl md:text-6xl font-bold text-secondary uppercase">{result.title}</h2>
-                <p className="text-muted-foreground text-lg font-light leading-relaxed max-w-2xl mx-auto italic">"{result.summary}"</p>
+                <p className="text-muted-foreground text-lg font-bold leading-relaxed max-w-2xl mx-auto">"{result.summary}"</p>
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
@@ -206,8 +207,8 @@ export default function ItineraryBuilderPage() {
                             </span>
                             <span className="text-muted-foreground text-[10px] font-bold uppercase tracking-widest">{day.accommodation}</span>
                           </div>
-                          <h4 className="text-2xl font-bold font-headline text-secondary leading-tight">{day.title}</h4>
-                          <p className="text-sm text-muted-foreground font-light leading-relaxed">{day.activity}</p>
+                          <h4 className="text-2xl font-bold font-headline text-secondary uppercase leading-tight">{day.title}</h4>
+                          <p className="text-sm text-muted-foreground font-bold leading-relaxed">{day.activity}</p>
                           <div className="flex flex-wrap gap-2 pt-2">
                             {day.highlights.map((h: string, i: number) => (
                               <Badge key={i} variant="outline" className="text-[8px] font-bold uppercase tracking-widest border-muted text-muted-foreground px-2 py-0.5">{h}</Badge>
@@ -233,7 +234,7 @@ export default function ItineraryBuilderPage() {
                         </div>
                         <div className="p-6 bg-white/5 rounded-2xl border border-white/10 space-y-4">
                           <h5 className="text-[10px] font-bold uppercase tracking-widest text-primary flex items-center gap-2"><Sparkles className="w-3.5 h-3.5" /> Expert Tip</h5>
-                          <p className="text-xs text-white/60 font-light leading-relaxed italic">{result.expertTip}</p>
+                          <p className="text-xs text-white/60 font-bold leading-relaxed">{result.expertTip}</p>
                         </div>
                         <Button className="w-full h-16 rounded-2xl bg-primary text-white font-bold text-xs uppercase tracking-widest shadow-xl">Book This Itinerary</Button>
                       </div>

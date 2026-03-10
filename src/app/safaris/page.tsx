@@ -42,7 +42,6 @@ export default function SafarisPage() {
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-bold">
-      {/* Dynamic Header */}
       <section className="bg-white pt-32 pb-16 relative overflow-hidden border-b">
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="flex flex-col lg:flex-row justify-between items-end gap-12">
@@ -74,7 +73,6 @@ export default function SafarisPage() {
         </div>
       </section>
 
-      {/* Package Catalog */}
       <section className="py-12 md:py-24 container mx-auto px-4 max-w-7xl">
         <div className="flex flex-wrap gap-2 mb-16">
           {['All', 'SAFARI & SANSIBAR', 'FLITTERWOCHEN', 'FAMILIENSAFARI', 'KILIMANDSCHARO SAFARI'].map(cat => (

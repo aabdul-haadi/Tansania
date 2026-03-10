@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -62,7 +63,6 @@ const insurancePackages = [
 export default function GuestProtectionPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-bold">
-      {/* Tight Solid Header */}
       <header className="relative pt-32 pb-8 md:pb-12 bg-white border-b border-border overflow-hidden">
         <div className="absolute top-0 right-0 p-8 opacity-[0.03] pointer-events-none">
           <ShieldCheck className="w-48 h-48 text-secondary" />
@@ -87,7 +87,6 @@ export default function GuestProtectionPage() {
         </div>
       </header>
 
-      {/* Strategy Grid */}
       <section className="py-10 md:py-16 container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-10 items-start">
           
@@ -177,7 +176,6 @@ export default function GuestProtectionPage() {
         </div>
       </section>
 
-      {/* Advisory Call-to-Action */}
       <section className="py-12 md:py-20 bg-white border-y border-border overflow-hidden">
         <div className="container mx-auto px-4 max-w-4xl text-center space-y-8">
           <div className="w-14 h-14 rounded-2xl bg-muted/50 mx-auto flex items-center justify-center shadow-inner">

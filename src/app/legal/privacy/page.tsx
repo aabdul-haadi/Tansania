@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -28,8 +29,8 @@ export default function DatenschutzPage() {
             <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] block">
               Datenschutz
             </span>
-            <h1 className="font-headline text-4xl md:text-7xl font-bold text-white leading-tight">
-              Datenschutz-<br /><span className="text-primary italic">Erklärung</span>
+            <h1 className="font-headline text-4xl md:text-7xl font-bold text-white leading-tight uppercase">
+              Datenschutz-<br /><span className="text-primary">Erklärung</span>
             </h1>
             <div className="flex items-center gap-3 bg-white/5 border border-white/10 px-5 py-2.5 rounded-full backdrop-blur-md w-fit mt-6">
               <Shield className="w-4 h-4 text-primary" />
@@ -44,8 +45,8 @@ export default function DatenschutzPage() {
           <main className="lg:col-span-8 space-y-16">
             
             <section className="space-y-6">
-              <h2 className="font-headline text-3xl font-bold text-secondary">Einleitung</h2>
-              <p className="text-muted-foreground font-light leading-relaxed text-lg">
+              <h2 className="font-headline text-3xl font-bold text-secondary uppercase">Einleitung</h2>
+              <p className="text-muted-foreground font-bold leading-relaxed text-lg">
                 Datenschutz hat einen besonders hohen Stellenwert für die Tansania Reiseabenteuer SDL GmbH. Eine Nutzung unserer Internetseite ist grundsätzlich ohne Angabe personenbezogener Daten möglich.
               </p>
             </section>
@@ -53,9 +54,9 @@ export default function DatenschutzPage() {
             <section className="bg-white rounded-[3rem] p-8 md:p-12 shadow-sm border border-border/50 space-y-8">
               <div className="flex items-center gap-3">
                 <Eye className="w-6 h-6 text-primary" />
-                <h2 className="font-headline text-2xl font-bold text-secondary">Cookies & Analyse</h2>
+                <h2 className="font-headline text-2xl font-bold text-secondary uppercase">Cookies & Analyse</h2>
               </div>
-              <p className="text-muted-foreground font-light leading-relaxed text-sm md:text-base">
+              <p className="text-muted-foreground font-bold leading-relaxed text-sm md:text-base">
                 Unsere Internetseiten verwenden Cookies. Zweck ist es, den Nutzern die Verwendung unserer Internetseite zu erleichtern und Angebote zu optimieren.
               </p>
             </section>
@@ -63,7 +64,7 @@ export default function DatenschutzPage() {
             <section className="space-y-8">
               <div className="flex items-center gap-3">
                 <Scale className="w-6 h-6 text-primary" />
-                <h2 className="font-headline text-2xl font-bold text-secondary">Ihre Rechte</h2>
+                <h2 className="font-headline text-2xl font-bold text-secondary uppercase">Ihre Rechte</h2>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {[
@@ -85,12 +86,12 @@ export default function DatenschutzPage() {
                 <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
                 <div className="relative z-10 space-y-6">
                   <Shield className="w-8 h-8 text-primary" />
-                  <h3 className="font-headline text-2xl font-bold">Verantwortliche Stelle</h3>
-                  <div className="space-y-4 text-sm font-light text-white/60">
+                  <h3 className="font-headline text-2xl font-bold uppercase">Verantwortliche Stelle</h3>
+                  <div className="space-y-4 text-sm font-bold text-white/60">
                     <p className="font-bold text-white">Tansania Reiseabenteuer SDL GmbH</p>
                     <p>Bayerischer Platz 7<br />10779 Berlin, Germany</p>
                     <div className="pt-4 border-t border-white/10 space-y-2">
-                      <p className="flex items-center gap-2"><Mail className="w-3.5 h-3.5 text-primary" /> info@tansania-reiseabenteuer.de</p>
+                      <p className="flex items-center gap-2 text-white"><Mail className="w-3.5 h-3.5 text-primary" /> info@tansania-reiseabenteuer.de</p>
                     </div>
                   </div>
                 </div>

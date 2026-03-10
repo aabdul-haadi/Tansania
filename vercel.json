@@ -1,7 +1,5 @@
 
 {
-  "build": {
-    "env": {},
-    "cache": true
-  }
+  "version": 2,
+  "framework": "nextjs"
 }
