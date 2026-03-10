@@ -26,11 +26,13 @@ export function initializeFirebase(): FirebaseServices {
   }
 
   // CRITICAL: Validation check for environment variables to prevent crashes during SSG/Build
-  // Check for both undefined value and "undefined" string (common in some CI environments)
-  const isConfigValid = firebaseConfig.apiKey && 
-                        firebaseConfig.apiKey !== "undefined" && 
-                        firebaseConfig.projectId && 
-                        firebaseConfig.projectId !== "undefined";
+  // We check for both existence and the string "undefined" which some environments set
+  const isConfigValid = !!(
+    firebaseConfig.apiKey && 
+    firebaseConfig.apiKey !== "undefined" && 
+    firebaseConfig.projectId && 
+    firebaseConfig.projectId !== "undefined"
+  );
 
   if (!isConfigValid) {
     // Return null services during build to prevent auth/invalid-api-key errors

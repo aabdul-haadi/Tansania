@@ -18,7 +18,6 @@ import { PackageCard } from '@/components/packages/PackageCard';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { cn } from '@/lib/utils';
 
-// Enable ISR for this route
 export const revalidate = 60;
 
 export default function SafarisPage() {
@@ -42,7 +41,6 @@ export default function SafarisPage() {
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-bold">
-      {/* High-Density Header Section */}
       <section className="bg-white pt-32 pb-12 relative overflow-hidden border-b border-border">
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="flex flex-col lg:flex-row justify-between items-end gap-12">
@@ -78,9 +76,7 @@ export default function SafarisPage() {
         </div>
       </section>
 
-      {/* Catalog Grid */}
       <section className="py-12 md:py-20 container mx-auto px-4 max-w-7xl">
-        {/* Compact Filters */}
         <div className="flex flex-wrap gap-2 mb-16 overflow-x-auto no-scrollbar pb-2">
           {['All', 'SAFARI & SANSIBAR', 'FLITTERWOCHEN', 'FAMILIENSAFARI', 'KILIMANDSCHARO SAFARI'].map(cat => (
             <button
@@ -133,7 +129,6 @@ export default function SafarisPage() {
         )}
       </section>
 
-      {/* Strategic Contact Anchor */}
       <div className="border-t border-border mt-12">
         <ContactSection />
       </div>

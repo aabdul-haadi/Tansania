@@ -30,9 +30,9 @@ export interface FirebaseContextState {
 }
 
 export interface FirebaseServicesAndUser {
-  firebaseApp: FirebaseApp;
-  firestore: Firestore;
-  auth: Auth;
+  firebaseApp: FirebaseApp | null;
+  firestore: Firestore | null;
+  auth: Auth | null;
   user: User | null;
   isUserLoading: boolean;
   userError: Error | null;
@@ -50,7 +50,7 @@ const memoizedObjects = new WeakSet<any>();
 
 /**
  * Manages core Firebase service instances and auth state.
- * Handles SSR safety by deferring logic until hydration.
+ * Handles SSR safety by deferring logic until hydration and avoiding crashes if config is missing.
  */
 export const FirebaseProvider: React.FC<FirebaseProviderProps> = ({
   children,
@@ -61,7 +61,7 @@ export const FirebaseProvider: React.FC<FirebaseProviderProps> = ({
   const [mounted, setMounted] = useState(false);
   const [userAuthState, setUserAuthState] = useState<UserAuthState>({
     user: null,
-    isUserLoading: true,
+    isUserLoading: !!auth, // Only load if auth is actually provided
     userError: null,
   });
 
@@ -70,6 +70,7 @@ export const FirebaseProvider: React.FC<FirebaseProviderProps> = ({
   }, []);
 
   useEffect(() => {
+    // If services are null (during build) or not mounted, don't initiate listeners
     if (!mounted || !auth) {
       if (mounted && !auth) {
         setUserAuthState({ user: null, isUserLoading: false, userError: null });
@@ -113,21 +114,19 @@ export const FirebaseProvider: React.FC<FirebaseProviderProps> = ({
   );
 };
 
+/**
+ * Safely access Firebase services. Returns nulls during SSR/Build if services aren't ready.
+ */
 export const useFirebase = (): FirebaseServicesAndUser => {
   const context = useContext(FirebaseContext);
   if (context === undefined) {
     throw new Error('useFirebase must be used within a FirebaseProvider.');
   }
-  // Safe-check: Only throw error if we are on the client and services are expected to be here.
-  // This prevents crashes during SSR / Static Generation.
-  if (typeof window !== 'undefined' && (!context.areServicesAvailable || !context.firebaseApp || !context.firestore || !context.auth)) {
-    throw new Error('Firebase core services not available. Check FirebaseProvider props and env variables.');
-  }
   
   return {
-    firebaseApp: context.firebaseApp!,
-    firestore: context.firestore!,
-    auth: context.auth!,
+    firebaseApp: context.firebaseApp,
+    firestore: context.firestore,
+    auth: context.auth,
     user: context.user,
     isUserLoading: context.isUserLoading,
     userError: context.userError,

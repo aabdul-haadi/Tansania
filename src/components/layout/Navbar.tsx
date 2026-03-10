@@ -14,7 +14,6 @@ import {
   ShieldCheck,
   ChevronRight,
   Globe,
-  MapPin,
   MessageSquare
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -34,7 +33,6 @@ export function Navbar() {
       const currentScrollY = window.scrollY;
       setIsScrolled(currentScrollY > 50);
       
-      // Smart hide on scroll down, show on scroll up
       if (currentScrollY > lastScrollY && currentScrollY > 200) {
         setIsVisible(false);
       } else {
@@ -54,16 +52,16 @@ export function Navbar() {
   return (
     <header 
       className={cn(
-        "fixed top-0 w-full z-[100] transition-all duration-500 ease-prestige",
+        "fixed top-0 w-full z-[100] transition-all duration-500",
         !isVisible && !isOpen ? "-translate-y-full" : "translate-y-0",
         isScrolled ? "py-3" : "py-6 md:py-10"
       )}
     >
       <nav className="container mx-auto px-4 max-w-7xl">
         <div className={cn(
-          "flex items-center justify-between transition-all duration-500 px-6 md:px-10 h-14 md:h-18 rounded-full",
+          "flex items-center justify-between transition-all duration-500 px-6 md:px-10 h-14 md:h-18 rounded-full border border-transparent",
           isScrolled 
-            ? "bg-white text-secondary shadow-2xl border border-border" 
+            ? "bg-white text-secondary shadow-2xl border-border" 
             : "bg-transparent text-white"
         )}>
           {/* Logo Branding */}
@@ -87,13 +85,13 @@ export function Navbar() {
             </div>
           </Link>
 
-          {/* Minimalist Action Trigger */}
+          {/* Action Trigger */}
           <div className="flex items-center gap-4 relative z-[110]">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <button
                   className={cn(
-                    "flex items-center gap-3 pl-4 pr-2 h-10 md:h-12 rounded-full transition-all duration-500 border group font-black text-[10px] uppercase tracking-[0.2em]",
+                    "flex items-center gap-3 pl-4 pr-2 h-10 md:h-12 rounded-full transition-all duration-500 border group font-bold text-[10px] uppercase tracking-[0.2em]",
                     isScrolled 
                       ? "bg-secondary text-white border-secondary hover:bg-primary" 
                       : "bg-white/10 text-white border-white/20 hover:bg-white hover:text-secondary",
@@ -101,7 +99,7 @@ export function Navbar() {
                   )}
                 >
                   <span className="ml-1 hidden md:block">
-                    {isOpen ? "Close Registry" : "Site Registry"}
+                    {isOpen ? "Registry Schließen" : "Site Registry"}
                   </span>
                   <div className={cn(
                     "w-7 h-7 md:w-9 md:h-9 rounded-full flex items-center justify-center transition-colors",
@@ -112,7 +110,6 @@ export function Navbar() {
                 </button>
               </SheetTrigger>
               <SheetContent side="right" className="w-full sm:max-w-[450px] p-0 bg-white border-l border-border flex flex-col shadow-2xl">
-                {/* Drawer Header */}
                 <div className="p-6 md:p-8 border-b border-border flex items-center justify-between shrink-0 bg-white sticky top-0 z-20">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center border border-primary/20 shadow-sm">
@@ -120,16 +117,13 @@ export function Navbar() {
                     </div>
                     <div>
                       <h4 className="font-headline font-bold text-xl text-secondary uppercase leading-none tracking-tighter">Command Center</h4>
-                      <p className="text-[8px] font-black uppercase tracking-widest text-muted-foreground mt-1.5">Official Site Registry</p>
+                      <p className="text-[8px] font-bold uppercase tracking-widest text-muted-foreground mt-1.5">Official Site Registry</p>
                     </div>
                   </div>
                 </div>
 
-                {/* Deep Navigation Registry */}
                 <ScrollArea className="flex-grow">
                   <div className="p-6 md:p-10 space-y-12">
-                    
-                    {/* Primary Pillars */}
                     <div className="space-y-4">
                       <p className="text-primary font-bold uppercase tracking-[0.4em] text-[9px] mb-2 block">01. Primary Expeditions</p>
                       <nav className="grid grid-cols-1 gap-3">
@@ -154,14 +148,13 @@ export function Navbar() {
                       </nav>
                     </div>
 
-                    {/* Regional Grid */}
                     <div className="space-y-4">
                       <p className="text-primary font-bold uppercase tracking-[0.4em] text-[9px] mb-2 block">02. Regional Portfolio</p>
                       <div className="grid grid-cols-2 gap-3">
                         {['Kenia', 'Botswana', 'Südafrika', 'Namibia', 'Uganda', 'Ruanda', 'Äthiopien', 'Ägypten'].map((dest) => (
                           <Link 
                             key={dest} 
-                            href={`/destinations/${dest.toLowerCase().replace('ä', 'ae')}`}
+                            href={`/safaris`}
                             className="px-4 py-4 rounded-xl bg-white border border-border text-[9px] font-bold text-secondary uppercase tracking-widest hover:border-primary hover:text-primary transition-all text-center shadow-sm"
                           >
                             {dest}
@@ -170,7 +163,6 @@ export function Navbar() {
                       </div>
                     </div>
 
-                    {/* Themed & Info */}
                     <div className="grid grid-cols-2 gap-10">
                       <div className="space-y-4">
                         <p className="text-primary font-bold uppercase tracking-[0.4em] text-[9px] mb-2 block">03. Themed</p>
@@ -199,18 +191,17 @@ export function Navbar() {
                       </div>
                     </div>
 
-                    {/* AI Live Status */}
                     <div className="bg-secondary rounded-[2rem] p-8 border border-white/5 relative overflow-hidden group shadow-2xl">
                       <Zap className="absolute -top-4 -right-4 w-20 h-20 text-primary opacity-10" />
                       <div className="relative z-10">
                         <span className="text-[8px] font-bold uppercase tracking-[0.4em] text-primary mb-3 block">Live Pulse</span>
-                        <h4 className="font-headline text-2xl font-bold text-white uppercase mb-2 tracking-tighter">Season 2026 Ready</h4>
+                        <h4 className="font-headline text-2xl font-bold text-white uppercase mb-2 tracking-tighter">Saison 2026 Bereit</h4>
                         <p className="text-[10px] text-white/50 font-bold uppercase tracking-widest leading-relaxed mb-6">
-                          Our Cairo office is now accepting bespoke requests for the upcoming Great Migration.
+                          Unser Büro in Berlin nimmt jetzt exklusive Anfragen für die Große Tierwanderung entgegen.
                         </p>
                         <Link href="/trip-advisor">
                           <Button size="sm" className="w-full rounded-xl bg-white text-secondary hover:bg-primary hover:text-white font-bold text-[9px] uppercase tracking-widest h-11">
-                            Ask AI Advisor <MessageSquare className="w-3.5 h-3.5 ml-2" />
+                            AI Berater Fragen <MessageSquare className="w-3.5 h-3.5 ml-2" />
                           </Button>
                         </Link>
                       </div>
@@ -218,7 +209,6 @@ export function Navbar() {
                   </div>
                 </ScrollArea>
 
-                {/* Fixed Footer CTA */}
                 <div className="p-6 md:p-8 border-t border-border bg-white relative z-30 shadow-[0_-10px_40px_rgba(0,0,0,0.05)]">
                   <Link href="/trip-planner" className="block">
                     <Button className="w-full h-14 md:h-16 rounded-2xl bg-primary text-white font-bold text-[10px] md:text-xs uppercase tracking-[0.3em] shadow-2xl hover:scale-[1.02] transition-transform">

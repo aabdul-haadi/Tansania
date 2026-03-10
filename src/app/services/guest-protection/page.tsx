@@ -60,7 +60,6 @@ const insurancePackages = [
 export default function GuestProtectionPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-bold">
-      {/* High-Density Header */}
       <header className="relative pt-32 pb-10 bg-white border-b border-border overflow-hidden">
         <div className="absolute top-0 right-0 p-8 opacity-[0.03] pointer-events-none">
           <ShieldCheck className="w-48 h-48 text-secondary" />
@@ -85,7 +84,6 @@ export default function GuestProtectionPage() {
         </div>
       </header>
 
-      {/* Strategic Grid */}
       <section className="py-12 md:py-20 container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-start">
           
@@ -111,7 +109,7 @@ export default function GuestProtectionPage() {
                       Professioneller Schutz durch unseren langjährigen Partner HanseMerkur Reiseversicherung AG.
                     </p>
                     <div className="flex flex-col gap-2 border-t border-border pt-6">
-                      <p className="text-[8px] font-black text-muted-foreground/60 uppercase">Registry Berlin</p>
+                      <p className="text-[8px] font-bold text-muted-foreground/60 uppercase">Registry Berlin</p>
                       <p className="text-sm font-bold text-secondary">info@tansania-reiseabenteuer.de</p>
                     </div>
                   </div>
@@ -177,7 +175,6 @@ export default function GuestProtectionPage() {
         </div>
       </section>
 
-      {/* Support Section */}
       <section className="py-16 md:py-24 bg-white border-y border-border">
         <div className="container mx-auto px-4 max-w-4xl text-center space-y-10">
           <div className="w-16 h-16 rounded-[1.5rem] bg-muted/50 mx-auto flex items-center justify-center border border-border">
