@@ -8,9 +8,9 @@ import { FirebaseErrorListener } from '@/components/FirebaseErrorListener'
 
 interface FirebaseProviderProps {
   children: ReactNode;
-  firebaseApp: FirebaseApp;
-  firestore: Firestore;
-  auth: Auth;
+  firebaseApp: FirebaseApp | null;
+  firestore: Firestore | null;
+  auth: Auth | null;
 }
 
 interface UserAuthState {
@@ -46,11 +46,11 @@ export interface UserHookResult {
 
 export const FirebaseContext = createContext<FirebaseContextState | undefined>(undefined);
 
-// Singleton WeakSet to track memoized Firebase objects (Query, DocumentReference, etc.)
 const memoizedObjects = new WeakSet<any>();
 
 /**
  * Manages core Firebase service instances and auth state.
+ * Handles SSR safety by deferring logic until hydration.
  */
 export const FirebaseProvider: React.FC<FirebaseProviderProps> = ({
   children,
@@ -58,6 +58,7 @@ export const FirebaseProvider: React.FC<FirebaseProviderProps> = ({
   firestore,
   auth,
 }) => {
+  const [mounted, setMounted] = useState(false);
   const [userAuthState, setUserAuthState] = useState<UserAuthState>({
     user: null,
     isUserLoading: true,
@@ -65,8 +66,14 @@ export const FirebaseProvider: React.FC<FirebaseProviderProps> = ({
   });
 
   useEffect(() => {
-    if (!auth) {
-      setUserAuthState({ user: null, isUserLoading: false, userError: new Error("Auth service not provided.") });
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted || !auth) {
+      if (mounted && !auth) {
+        setUserAuthState({ user: null, isUserLoading: false, userError: null });
+      }
       return;
     }
 
@@ -83,7 +90,7 @@ export const FirebaseProvider: React.FC<FirebaseProviderProps> = ({
       }
     );
     return () => unsubscribe();
-  }, [auth]);
+  }, [auth, mounted]);
 
   const contextValue = useMemo((): FirebaseContextState => {
     const servicesAvailable = !!(firebaseApp && firestore && auth);
@@ -111,49 +118,60 @@ export const useFirebase = (): FirebaseServicesAndUser => {
   if (context === undefined) {
     throw new Error('useFirebase must be used within a FirebaseProvider.');
   }
-  if (!context.areServicesAvailable || !context.firebaseApp || !context.firestore || !context.auth) {
-    throw new Error('Firebase core services not available. Check FirebaseProvider props.');
+  // Safe-check: Only throw error if we are on the client and services are expected to be here.
+  // This prevents crashes during SSR / Static Generation.
+  if (typeof window !== 'undefined' && (!context.areServicesAvailable || !context.firebaseApp || !context.firestore || !context.auth)) {
+    throw new Error('Firebase core services not available. Check FirebaseProvider props and env variables.');
   }
+  
   return {
-    firebaseApp: context.firebaseApp,
-    firestore: context.firestore,
-    auth: context.auth,
+    firebaseApp: context.firebaseApp!,
+    firestore: context.firestore!,
+    auth: context.auth!,
     user: context.user,
     isUserLoading: context.isUserLoading,
     userError: context.userError,
   };
 };
 
-export const useAuth = (): Auth => useFirebase().auth;
-export const useFirestore = (): Firestore => useFirebase().firestore;
-export const useFirebaseApp = (): FirebaseApp => useFirebase().firebaseApp;
+export const useAuth = (): Auth | null => {
+  const context = useContext(FirebaseContext);
+  return context?.auth || null;
+};
 
-/**
- * Standard Next.js useMemo with a WeakSet registration to satisfy the useCollection/useDoc guard.
- */
+export const useFirestore = (): Firestore | null => {
+  const context = useContext(FirebaseContext);
+  return context?.firestore || null;
+};
+
+export const useFirebaseApp = (): FirebaseApp | null => {
+  const context = useContext(FirebaseContext);
+  return context?.firebaseApp || null;
+};
+
 export function useMemoFirebase<T>(factory: () => T, deps: DependencyList): T {
   const memoized = useMemo(factory, deps);
   
   if(typeof memoized === 'object' && memoized !== null) {
     try {
       memoizedObjects.add(memoized);
-    } catch (e) {
-      // Ignore frozen object issues in Edge environments
-    }
+    } catch (e) {}
   }
   
   return memoized;
 }
 
-/**
- * Internal guard used by Firestore hooks to prevent infinite loops.
- */
 export function isMemoized(obj: any): boolean {
   if (obj === null || typeof obj !== 'object') return true;
   return memoizedObjects.has(obj);
 }
 
 export const useUser = (): UserHookResult => {
-  const { user, isUserLoading, userError } = useFirebase();
-  return { user, isUserLoading, userError };
+  const context = useContext(FirebaseContext);
+  if (!context) return { user: null, isUserLoading: true, userError: null };
+  return { 
+    user: context.user, 
+    isUserLoading: context.isUserLoading, 
+    userError: context.userError 
+  };
 };

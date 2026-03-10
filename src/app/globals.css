@@ -56,18 +56,17 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-headline font-bold tracking-tighter uppercase;
   }
-  /* Global Italic Removal */
-  i, em, .italic, .font-italic {
+  /* Strict Branding: Absolute removal of italics and enforcement of bold */
+  i, em, .italic, .font-italic, .prose em, .prose i {
     @apply not-italic !important;
+  }
+  p, span, div, a, li {
+    @apply font-bold;
   }
 }
 
 .text-prestige {
   @apply font-black uppercase tracking-[0.3em] text-[8px] md:text-[10px];
-}
-
-.glass-portal {
-  @apply bg-background/80 backdrop-blur-2xl border border-white/10 shadow-2xl;
 }
 
 .no-scrollbar::-webkit-scrollbar {

@@ -1,4 +1,3 @@
-
 'use client';
 
 import { firebaseConfig } from '@/firebase/config';
@@ -10,42 +9,57 @@ import { getFirestore, Firestore } from 'firebase/firestore';
  * Singleton structure for Firebase services.
  */
 interface FirebaseServices {
-  firebaseApp: FirebaseApp;
-  auth: Auth;
-  firestore: Firestore;
+  firebaseApp: FirebaseApp | null;
+  auth: Auth | null;
+  firestore: Firestore | null;
 }
 
 let cachedServices: FirebaseServices | null = null;
 
 /**
  * Initializes Firebase using environment variables and ensures a single instance exists.
- * This pattern prevents "Firebase: Need to provide options (app/no-options)" errors.
- * Includes a guard for build-time environments where env vars might be missing.
+ * Added protection for build-time environments (like Vercel CI) where keys are missing.
  */
 export function initializeFirebase(): FirebaseServices {
   if (cachedServices) {
     return cachedServices;
   }
 
-  // Validation check for environment variables to prevent crashes during prerendering
-  if (!firebaseConfig.apiKey) {
-    if (typeof window !== 'undefined') {
-      console.error('Firebase: API Key is missing. Check your environment variables.');
-    }
-    // Return a dummy/empty initialization for build-time safety if necessary, 
-    // or throw a descriptive error that won't kill the build process if caught.
+  // CRITICAL: Validation check for environment variables to prevent crashes during SSG/Build
+  // Check for both undefined value and "undefined" string (common in some CI environments)
+  const isConfigValid = firebaseConfig.apiKey && 
+                        firebaseConfig.apiKey !== "undefined" && 
+                        firebaseConfig.projectId && 
+                        firebaseConfig.projectId !== "undefined";
+
+  if (!isConfigValid) {
+    // Return null services during build to prevent auth/invalid-api-key errors
+    return {
+      firebaseApp: null,
+      auth: null,
+      firestore: null
+    };
   }
 
-  // Strict singleton check as requested: initialize once or get existing
-  const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+  try {
+    // Strict singleton check: initialize once or get existing
+    const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 
-  cachedServices = {
-    firebaseApp: app,
-    auth: getAuth(app),
-    firestore: getFirestore(app)
-  };
+    cachedServices = {
+      firebaseApp: app,
+      auth: getAuth(app),
+      firestore: getFirestore(app)
+    };
 
-  return cachedServices;
+    return cachedServices;
+  } catch (error) {
+    console.error('Firebase Initialization Error:', error);
+    return {
+      firebaseApp: null,
+      auth: null,
+      firestore: null
+    };
+  }
 }
 
 /**
