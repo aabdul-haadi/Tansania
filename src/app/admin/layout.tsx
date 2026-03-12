@@ -14,7 +14,8 @@ import {
   CalendarCheck,
   MessageSquare,
   Settings,
-  Brain
+  Brain,
+  Compass
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useUser, useDoc, useFirestore, useAuth, useMemoFirebase, setDocumentNonBlocking } from '@/firebase';
@@ -56,6 +57,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   }, [user, isUserLoading]);
 
   useEffect(() => {
+    // Silent creation of admin role for first-time login in development
     if (user && !isAdminRoleLoading && !adminRole && firestore) {
       setDocumentNonBlocking(doc(firestore, 'roles_admin', user.uid), {
         uid: user.uid,
@@ -67,6 +69,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   }, [user, adminRole, isAdminRoleLoading, firestore]);
 
   const handleSignOut = async () => {
+    if (!auth) return;
     try {
       await signOut(auth);
       router.push('/auth/login');
@@ -87,23 +90,24 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   if (isAuthorized === false) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white p-6">
-        <div className="max-w-md w-full text-center space-y-8 bg-white p-12 rounded-[2.5rem] shadow-2xl border border-border">
-          <div className="w-20 h-20 bg-destructive/10 rounded-[2rem] flex items-center justify-center mx-auto mb-6">
-            <Lock className="w-10 h-10 text-destructive" />
+        <div className="max-w-md w-full text-center space-y-8 bg-white p-8 md:p-12 rounded-[2rem] md:rounded-[2.5rem] shadow-2xl border border-border">
+          <div className="w-16 h-16 md:w-20 md:h-20 bg-destructive/10 rounded-[1.5rem] md:rounded-[2rem] flex items-center justify-center mx-auto mb-6">
+            <Lock className="w-8 h-8 md:w-10 md:h-10 text-destructive" />
           </div>
-          <h1 className="text-3xl font-bold tracking-tighter text-secondary uppercase">Access Required</h1>
-          <Button asChild className="w-full h-14 rounded-xl font-bold uppercase tracking-widest"><Link href="/auth/login">Staff Login</Link></Button>
+          <h1 className="text-2xl md:text-3xl font-bold tracking-tighter text-secondary uppercase">Access Required</h1>
+          <Button asChild className="w-full h-12 md:h-14 rounded-xl font-bold uppercase tracking-widest text-[10px]"><Link href="/auth/login">Staff Login</Link></Button>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="flex min-h-screen bg-[#fdfcfb]">
+    <div className="flex min-h-screen bg-white">
+      {/* High-Density Desktop Sidebar */}
       <aside className="w-64 bg-white border-r border-border flex flex-col hidden lg:flex shrink-0">
         <div className="p-6 border-b border-border">
           <Link href="/" className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center shadow-sm">
               <Compass className="w-6 h-6 text-white" />
             </div>
             <div className="flex flex-col">
@@ -140,7 +144,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           </button>
         </div>
       </aside>
-      <main className="flex-grow overflow-y-auto bg-white/50">{children}</main>
+
+      {/* Main Registry View */}
+      <main className="flex-grow overflow-y-auto bg-white/50 relative">
+        <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-fixed" />
+        <div className="relative z-10 min-h-full">
+          {children}
+        </div>
+      </main>
     </div>
   );
 }

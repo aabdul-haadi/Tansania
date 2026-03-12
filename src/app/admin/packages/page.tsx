@@ -24,6 +24,7 @@ import { useCollection, useFirestore, useMemoFirebase, useUser, useDoc, updateDo
 import { collection, query, orderBy, doc, serverTimestamp } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 export default function PackagesManagement() {
   const { user } = useUser();
@@ -32,13 +33,15 @@ export default function PackagesManagement() {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [newPrice, setNewPrice] = useState<number>(0);
 
-  const adminDocRef = useMemoFirebase(() => (firestore && user ? doc(firestore, 'roles_admin', user.uid) : null), [firestore, user]);
+  const canFetch = !!firestore && !!user;
+
+  const adminDocRef = useMemoFirebase(() => (canFetch ? doc(firestore, 'roles_admin', user.uid) : null), [firestore, user, canFetch]);
   const { data: adminRole } = useDoc(adminDocRef);
   
   const packagesQuery = useMemoFirebase(() => {
-    if (!firestore || !adminRole) return null;
+    if (!canFetch || !adminRole) return null;
     return query(collection(firestore, 'packages'), orderBy('updatedAt', 'desc'));
-  }, [firestore, adminRole]);
+  }, [firestore, adminRole, canFetch]);
 
   const { data: packages, isLoading } = useCollection(packagesQuery);
 
