@@ -42,6 +42,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const auth = useAuth();
   const [mounted, setMounted] = useState(false);
   
+  // Safe Access: Ensure services exist before creating references
   const adminDocRef = useMemoFirebase(() => (firestore && user ? doc(firestore, 'roles_admin', user.uid) : null), [firestore, user]);
   const { data: adminRole, isLoading: isAdminRoleLoading } = useDoc(adminDocRef);
 
@@ -49,13 +50,15 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     setMounted(true);
   }, []);
 
+  // Registry Sync Logic: Silent registration of admin status
   useEffect(() => {
     if (mounted && user && firestore && !isAdminRoleLoading && !adminRole) {
       setDocumentNonBlocking(doc(firestore, 'roles_admin', user.uid), {
         uid: user.uid,
-        email: user.email,
+        email: user.email || 'unknown@tansania-reiseabenteuer.de',
         role: 'ADMIN',
-        createdAt: serverTimestamp()
+        createdAt: serverTimestamp(),
+        lastActive: serverTimestamp()
       }, { merge: true });
     }
   }, [user, adminRole, isAdminRoleLoading, firestore, mounted]);
@@ -70,6 +73,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     }
   };
 
+  // Prevent flash of content or uninitialized service crashes
   if (!mounted || isUserLoading) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-white gap-4">
@@ -87,6 +91,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <Lock className="w-8 h-8 md:w-10 md:h-10 text-destructive" />
           </div>
           <h1 className="text-2xl md:text-3xl font-bold tracking-tighter text-secondary uppercase">Access Required</h1>
+          <p className="text-muted-foreground text-[10px] font-bold uppercase tracking-widest">Official Entry Only</p>
           <Button asChild className="w-full h-12 md:h-14 rounded-xl font-bold uppercase tracking-widest text-[10px]"><Link href="/auth/login">Staff Login</Link></Button>
         </div>
       </div>
@@ -95,7 +100,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   return (
     <div className="flex min-h-screen bg-white">
-      <aside className="w-64 bg-white border-r border-border flex flex-col hidden lg:flex shrink-0">
+      {/* Solid Sidebar (Registry Standard) */}
+      <aside className="w-64 bg-white border-r border-border flex flex-col hidden lg:flex shrink-0 relative z-20">
         <div className="p-6 border-b border-border">
           <Link href="/" className="flex items-center gap-3">
             <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center shadow-sm">
