@@ -7,12 +7,13 @@ import {
   Link as LinkIcon, 
   CheckCircle, 
   RefreshCw, 
-  Sparkles,
-  Zap,
-  Globe,
-  FileText,
-  AlertCircle,
-  Plus
+  Sparkles, 
+  Zap, 
+  Globe, 
+  FileText, 
+  AlertCircle, 
+  Plus,
+  Search
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';

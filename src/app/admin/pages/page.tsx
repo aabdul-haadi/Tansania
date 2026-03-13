@@ -51,7 +51,6 @@ const siteRegistry = [
       { title: "Tarangire Nationalpark", path: "/national-parks/tarangire", status: "LIVE", type: "ISR" },
       { title: "Kilimandscharo", path: "/destinations/kilimanjaro", status: "LIVE", type: "ISR" },
       { title: "Sansibar Paradise", path: "/destinations/zanzibar", status: "LIVE", type: "ISR" },
-      // Scale Simulation: Destinations would typically have 100+ nested routes
       { title: "Ngorongoro Protected Area", path: "/destinations/ngorongoro", status: "LIVE", type: "ISR" },
       { title: "Lake Manyara", path: "/destinations/lake-manyara", status: "LIVE", type: "ISR" },
     ]
@@ -64,7 +63,6 @@ const siteRegistry = [
       { title: "Zanzibar Packing Guide", path: "/blog/zanzibar-packing", status: "LIVE", type: "ISR" },
       { title: "Climbing Kilimanjaro Tips", path: "/blog/kilimanjaro-tips", status: "LIVE", type: "ISR" },
       { title: "Maasai Cultural Etiquette", path: "/blog/maasai-etiquette", status: "LIVE", type: "ISR" },
-      // Scalability Note: This section handles 300+ dynamic blog routes
     ]
   },
   {
