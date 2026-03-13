@@ -19,6 +19,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ContactSection } from '@/components/sections/ContactSection';
+import { EgyptFeaturedContent } from '@/components/sections/EgyptFeaturedContent';
 
 export default function EgyptLandingPage() {
   return (
@@ -233,6 +234,9 @@ export default function EgyptLandingPage() {
           </div>
         </div>
       </section>
+
+      {/* NEW: Egypt Featured Content (Mosaic + Package Slider) */}
+      <EgyptFeaturedContent />
 
       {/* Inquiry Protocol */}
       <ContactSection />
