@@ -12,15 +12,14 @@ import {
   Mountain, 
   CheckCircle2, 
   ArrowRight,
-  Plane,
-  Star,
-  ShieldCheck
+  Plane
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { EgyptFeaturedContent } from '@/components/sections/EgyptFeaturedContent';
 import { EgyptVideoBlog } from '@/components/sections/EgyptVideoBlog';
+import { EgyptFAQ } from '@/components/sections/EgyptFAQ';
 
 export default function EgyptLandingPage() {
   return (
@@ -205,7 +204,7 @@ export default function EgyptLandingPage() {
       {/* Nil Exploration Grid */}
       <section className="py-24 bg-secondary text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-        <div className="container relative z-10 mx-auto px-4 max-w-7xl">
+        <div className="container relative z-10 mx-auto px-4 max-7xl">
           <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-8">
             <div className="max-w-2xl">
               <span className="text-primary font-black uppercase tracking-[0.4em] text-[10px] mb-3 block">Die Ader des Lebens</span>
@@ -239,8 +238,11 @@ export default function EgyptLandingPage() {
       {/* Egypt Featured Content (Mosaic + Package Slider) */}
       <EgyptFeaturedContent />
 
-      {/* NEW: Egypt Video & Blog Section */}
+      {/* Egypt Video & Blog Section */}
       <EgyptVideoBlog />
+
+      {/* Egypt FAQ Section */}
+      <EgyptFAQ />
 
       {/* Inquiry Protocol */}
       <ContactSection />
