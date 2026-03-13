@@ -2,249 +2,237 @@
 
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { 
-  Camera, 
-  MapPin, 
-  Compass, 
-  Tent, 
-  Mountain, 
   CheckCircle2, 
   ArrowRight,
-  Plane
+  Phone,
+  Sparkles,
+  MapPin,
+  Clock,
+  Users,
+  Calendar,
+  Compass
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ContactSection } from '@/components/sections/ContactSection';
-import { EgyptFeaturedContent } from '@/components/sections/EgyptFeaturedContent';
-import { EgyptVideoBlog } from '@/components/sections/EgyptVideoBlog';
 import { EgyptFAQ } from '@/components/sections/EgyptFAQ';
 
 export default function EgyptLandingPage() {
   return (
     <div className="bg-white min-h-screen font-body">
-      {/* Hero Section - Matched to Image */}
-      <section className="relative h-[70vh] md:h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-secondary">
-        <Image
-          src="https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?q=80&w=1920"
-          alt="Ägypten Pyramiden"
-          fill
-          priority
-          className="object-cover brightness-75"
-          data-ai-hint="egypt pyramids"
-        />
-        <div className="absolute inset-0 bg-black/20" />
-        
-        <div className="container relative z-10 mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-4"
-          >
-            <p className="text-white font-black text-xs md:text-xl uppercase tracking-[0.3em] drop-shadow-lg">
-              Jetzt Abenteuer entdecken
-            </p>
-            <h1 className="font-headline text-6xl md:text-[12rem] lg:text-[14rem] font-bold text-white leading-none tracking-tighter uppercase drop-shadow-2xl">
-              Ägypten
-            </h1>
-            <p className="max-w-2xl mx-auto text-sm md:text-2xl text-white font-bold uppercase tracking-widest leading-tight drop-shadow-lg px-4">
-              Erlebe Pyramiden, Nil & Wüste Dein Exklusives <br className="hidden md:block" /> Abenteuer Wartet.
-            </p>
-          </motion.div>
-        </div>
-
-        {/* Hero Bottom Activity Bar */}
-        <div className="absolute bottom-10 left-0 right-0 z-20 hidden md:block">
-          <div className="container mx-auto px-4 flex justify-center gap-12 text-white/80 font-black text-[10px] uppercase tracking-[0.4em]">
-            <div className="flex items-center gap-2"><Compass className="w-4 h-4 text-primary" /> Safari</div>
-            <div className="flex items-center gap-2"><Camera className="w-4 h-4 text-primary" /> Fotografie</div>
-            <div className="flex items-center gap-2"><Tent className="w-4 h-4 text-primary" /> Camping</div>
-            <div className="flex items-center gap-2"><Mountain className="w-4 h-4 text-primary" /> Wandern</div>
-          </div>
-        </div>
-      </section>
-
-      {/* Trust Logo Bar - Solid White */}
-      <section className="py-12 md:py-20 bg-white border-b border-border">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="flex flex-wrap items-center justify-center md:justify-between gap-12 opacity-80">
-            <img src="https://storage.googleapis.com/firebasestudio-af637.appspot.com/logo-rv.png" alt="R+V" className="h-14 md:h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all" />
-            <img src="https://storage.googleapis.com/firebasestudio-af637.appspot.com/logo-drv.png" alt="DRV" className="h-14 md:h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all" />
-            <img src="https://storage.googleapis.com/firebasestudio-af637.appspot.com/logo-tripadvisor.png" alt="TripAdvisor" className="h-14 md:h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all" />
-          </div>
-        </div>
-      </section>
-
-      {/* Main Content Mosaic - Matched to Image */}
-      <section className="py-16 md:py-32 container mx-auto px-4 max-w-7xl">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+      {/* 100% Exact Clone: Section 1 - Magic of Pharaohs Mosaic */}
+      <section className="py-16 md:py-32 container mx-auto px-4 max-w-7xl overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
           
-          {/* Column 1: Narrative & Checklist */}
-          <div className="lg:col-span-5 space-y-10">
+          {/* Left: Overlapping Image Mosaic with Dotted Pattern */}
+          <div className="relative group order-2 lg:order-1">
+            {/* Background Dotted Grid */}
+            <div className="absolute -bottom-10 -left-10 w-64 h-64 opacity-20 pointer-events-none hidden md:block">
+              <div className="grid grid-cols-10 gap-4">
+                {[...Array(100)].map((_, i) => (
+                  <div key={i} className="w-1 h-1 rounded-full bg-secondary" />
+                ))}
+              </div>
+            </div>
+
+            <div className="relative">
+              {/* Image 1: Background Ramses (Smaller) */}
+              <div className="relative w-[70%] aspect-square rounded-2xl overflow-hidden shadow-xl border-4 border-white z-0 transform -translate-y-12 translate-x-4">
+                <Image 
+                  src="https://images.unsplash.com/photo-1568322422676-955d548565b3?q=80&w=800" 
+                  alt="Ancient Statue" 
+                  fill 
+                  className="object-cover"
+                  data-ai-hint="egypt statue"
+                />
+              </div>
+              
+              {/* Image 2: Foreground Sphinx/Pyramid (Larger) */}
+              <div className="absolute top-12 left-12 w-[90%] aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border-8 border-white z-10">
+                <Image 
+                  src="https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?q=80&w=800" 
+                  alt="Pyramids Giza" 
+                  fill 
+                  className="object-cover"
+                  data-ai-hint="giza sphinx"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Right: Technical Content Registry */}
+          <div className="space-y-10 order-1 lg:order-2">
             <div className="space-y-6">
               <h2 className="font-headline text-3xl md:text-5xl font-bold text-secondary leading-tight uppercase tracking-tighter">
-                Ihre Ägyptenreise Individuell Geplant, Unvergesslich Erlebt
+                ÄGYPTEN: Die Magie der Pharaonen <br />& Pyramiden
               </h2>
-              <div className="w-16 h-1 bg-primary rounded-full" />
-              <p className="text-muted-foreground font-bold text-sm md:text-base leading-relaxed uppercase tracking-widest">
-                Maßgeschneiderte Ägypten-Routen, handverlesene Luxus-Lodges und spektakuläre Erlebnisse an den Pyramiden, am Nil und in der Wüste – Ihre exklusive Reise beginnt hier.
-              </p>
+              <div className="space-y-4 text-muted-foreground font-bold text-xs md:text-sm leading-relaxed uppercase tracking-widest">
+                <p>
+                  Erleben Sie Ägypten in seiner ganzen Pracht: die majestätischen Pyramiden von Gizeh, die Geheimnisse der Sphinx und die beeindruckenden Tempel von Luxor und Abu Simbel. Tauchen Sie ein in Geschichte, Kultur und unvergessliche Abenteuer.
+                </p>
+                <p className="text-secondary">
+                  Im Mittelpunkt stehen antike Monumente, Nilkreuzfahrten und die Weite der Wüste – ein unvergessliches Erlebnis für Ihre Sinne.
+                </p>
+              </div>
             </div>
 
-            <div className="space-y-8">
-              {[
-                { t: "15+ Jahre Erfahrung", d: "Wir kennen die historischen Stätten, Nationalparks und Luxushotels in Ägypten aus erster Hand." },
-                { t: "Starkes Netzwerk vor Ort", d: "Guides, Lodges und Partner sorgen für perfekte Abläufe und ein unvergessliches Erlebnis." },
-                { t: "Handverlesene Luxus-Lodges", d: "Exklusive Hotels und Resorts – sorgfältig ausgewählt für Qualität, Lage und Komfort." },
-                { t: "Individuelle Safari-Abenteuer", d: "Ihre Reise wird persönlich geplant – von Kairo über Luxor bis zu Nilkreuzfahrt & Abu Simbel." }
-              ].map((item, i) => (
-                <div key={i} className="flex gap-5 group">
-                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20 group-hover:bg-primary transition-colors">
-                    <CheckCircle2 className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                    <Sparkles className="w-5 h-5 text-primary" />
                   </div>
-                  <div>
-                    <h4 className="font-bold text-sm md:text-lg text-secondary uppercase leading-none mb-2">{item.t}</h4>
-                    <p className="text-[10px] md:text-sm text-muted-foreground font-bold uppercase tracking-widest leading-relaxed">
-                      {item.d}
-                    </p>
-                  </div>
+                  <h4 className="font-bold text-sm md:text-base text-secondary uppercase tracking-tight">Individuelle Reiseplanung</h4>
                 </div>
-              ))}
+                <p className="text-[10px] md:text-xs text-muted-foreground font-bold uppercase tracking-widest leading-relaxed">
+                  Maßgeschneiderte Ägypten-Routen und handverlesene Luxus-Lodges – perfekt abgestimmt auf Ihre Wünsche.
+                </p>
+              </div>
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                    <Compass className="w-5 h-5 text-primary" />
+                  </div>
+                  <h4 className="font-bold text-sm md:text-base text-secondary uppercase tracking-tight">Ägypten-Expertise</h4>
+                </div>
+                <p className="text-[10px] md:text-xs text-muted-foreground font-bold uppercase tracking-widest leading-relaxed">
+                  Unsere Experten beraten Sie zu Reisezeit, Highlights und den besten Routen durch Ägypten.
+                </p>
+              </div>
             </div>
 
-            <div className="pt-6 border-t border-border space-y-6">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-widest text-secondary">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-primary" /> Über 1.200 zufriedene Reisende
+            <div className="grid grid-cols-2 gap-x-8 gap-y-2 border-t border-border pt-8">
+              <div className="space-y-2">
+                {["Kairo", "Luxor & Abu Simbel", "Nilkreuzfahrt"].map((item, i) => (
+                  <div key={i} className="flex items-center gap-2 text-[9px] font-black uppercase tracking-widest text-secondary">
+                    <div className="w-1 h-1 rounded-full bg-primary" /> {item}
+                  </div>
+                ))}
+              </div>
+              <div className="space-y-2">
+                {["Private Führungen & Kultur", "Safari & Wüstenerlebnisse", "Luxusreisen & exklusive Lodges"].map((item, i) => (
+                  <div key={i} className="flex items-center gap-2 text-[9px] font-black uppercase tracking-widest text-secondary">
+                    <div className="w-1 h-1 rounded-full bg-primary" /> {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="h-px w-full bg-muted" />
+
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+              <div className="flex items-center gap-4 group">
+                <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white shadow-xl transition-transform group-hover:scale-110">
+                  <Phone className="w-5 h-5 fill-current" />
                 </div>
-                <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-widest text-secondary">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-primary" /> Individuelle Reiserouten
-                </div>
-                <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-widest text-secondary">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-primary" /> Persönliche Beratung
-                </div>
-                <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-widest text-secondary">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-primary" /> Exklusive Lodges
+                <div>
+                  <p className="text-[8px] font-black uppercase text-muted-foreground leading-none mb-1">Buchung Nummer</p>
+                  <p className="text-sm font-black text-secondary">+49 30 22608080</p>
                 </div>
               </div>
-              <Button size="lg" className="w-full md:w-auto rounded-xl px-10 h-16 font-black text-xs uppercase tracking-widest shadow-2xl bg-primary hover:scale-[1.02] transition-transform">
-                Kostenloses Angebot anfragen <ArrowRight className="w-4 h-4 ml-2" />
+              <Button size="lg" className="w-full sm:w-auto rounded-xl px-10 h-14 font-black text-[10px] uppercase tracking-widest shadow-2xl bg-primary hover:scale-[1.02] transition-transform">
+                Kostenloses Angebot anfragen
               </Button>
             </div>
           </div>
-
-          {/* Column 2: Stacked Mosaic */}
-          <div className="lg:col-span-3 space-y-6">
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              className="relative aspect-[3/4] rounded-[2rem] overflow-hidden shadow-xl"
-            >
-              <Image 
-                src="https://images.unsplash.com/photo-1539760397268-33f5146dd9e2?q=80&w=800" 
-                alt="Luxor Temple" 
-                fill 
-                className="object-cover"
-                data-ai-hint="luxor temple"
-              />
-            </motion.div>
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.1 }}
-              className="relative aspect-[3/4] rounded-[2rem] overflow-hidden shadow-xl"
-            >
-              <Image 
-                src="https://images.unsplash.com/photo-1568322422676-955d548565b3?q=80&w=800" 
-                alt="Abu Simbel" 
-                fill 
-                className="object-cover"
-                data-ai-hint="abu simbel"
-              />
-            </motion.div>
-          </div>
-
-          {/* Column 3: Large Feature + Flight Path */}
-          <div className="lg:col-span-4 relative">
-            {/* SVG Flight Path Illustration */}
-            <div className="absolute -top-20 -right-10 w-64 h-64 pointer-events-none opacity-20 hidden lg:block">
-              <svg viewBox="0 0 200 200" className="w-full h-full text-secondary fill-none">
-                <path d="M20,180 C50,150 150,150 180,20" stroke="currentColor" strokeWidth="2" strokeDasharray="6 6" />
-                <g transform="translate(170, 10) rotate(-45)">
-                  <Plane className="w-8 h-8 fill-current" />
-                </g>
-              </svg>
-            </div>
-
-            <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              className="relative aspect-[4/5] md:aspect-[3/5] rounded-[3rem] overflow-hidden shadow-2xl bg-muted"
-            >
-              <Image 
-                src="https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?q=80&w=800" 
-                alt="Camel Safari" 
-                fill 
-                className="object-cover"
-                data-ai-hint="camel pyramids"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-              <div className="absolute bottom-10 left-10 text-white">
-                <Badge className="bg-primary text-white border-none font-black text-[8px] uppercase tracking-widest mb-3">Signature Experience</Badge>
-                <h4 className="text-3xl font-headline font-bold leading-none uppercase">Wüsten <br /> Expedition</h4>
-              </div>
-            </motion.div>
-          </div>
-
         </div>
       </section>
 
-      {/* Nil Exploration Grid */}
-      <section className="py-24 bg-secondary text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-        <div className="container relative z-10 mx-auto px-4 max-7xl">
-          <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-8">
-            <div className="max-w-2xl">
-              <span className="text-primary font-black uppercase tracking-[0.4em] text-[10px] mb-3 block">Die Ader des Lebens</span>
-              <h2 className="font-headline text-4xl md:text-7xl font-bold uppercase leading-tight tracking-tighter">Nil-Kreuzfahrten <br /><span className="text-primary">auf höchstem Niveau</span></h2>
-            </div>
-            <p className="text-white/40 font-bold uppercase tracking-widest text-[10px] md:text-sm max-w-xs border-l border-white/10 pl-6">
-              Gleiten Sie auf einer traditionellen Dahabeya durch die Geschichte der Pharaonen.
-            </p>
-          </div>
+      {/* 100% Exact Clone: Section 2 - Luxury Egypt Tour Hero Card */}
+      <section className="relative w-full overflow-hidden">
+        {/* Cinematic Backdrop */}
+        <div className="relative h-[70vh] md:h-[90vh] w-full">
+          <Image 
+            src="https://images.unsplash.com/photo-1539760397268-33f5146dd9e2?q=80&w=1920" 
+            alt="Balloon Over Luxor" 
+            fill 
+            className="object-cover"
+            priority
+            data-ai-hint="luxor balloons"
+          />
+          <div className="absolute inset-0 bg-black/10" />
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { t: "Luxus Dahabeya", d: "Privatheit und Entschleunigung auf dem Fluss.", img: "https://images.unsplash.com/photo-1590001158193-79013ac7fa77?q=80&w=800" },
-              { t: "Königliche Suiten", d: "Balkone mit direktem Nilblick und 5-Sterne Service.", img: "https://images.unsplash.com/photo-1577971132997-c10be9372519?q=80&w=800" },
-              { t: "Kulinarik", d: "Fine Dining unter dem Sternenhimmel Oberägyptens.", img: "https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=800" }
-            ].map((item, i) => (
-              <div key={i} className="group bg-white/5 rounded-[2.5rem] border border-white/10 overflow-hidden hover:bg-white/10 transition-all">
-                <div className="aspect-video relative overflow-hidden">
-                  <Image src={item.img} alt={item.t} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
+        {/* Floating Registry Card */}
+        <div className="absolute top-0 right-0 h-full w-full md:w-[45%] lg:w-[35%] flex items-center p-4 md:p-12 z-20">
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="bg-white/95 backdrop-blur-xl md:bg-white p-8 md:p-12 shadow-2xl w-full space-y-8 flex flex-col justify-between"
+          >
+            <div>
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-2 block">TANSANIA</span>
+              <h3 className="font-headline text-3xl md:text-4xl font-bold text-secondary uppercase leading-none tracking-tighter mb-8">
+                12 Tage Luxus-Ägypten-Tour
+              </h3>
+
+              <div className="space-y-6">
+                <div className="flex gap-4">
+                  <div className="w-5 h-5 shrink-0 mt-1 flex items-center justify-center"><Clock className="w-4 h-4 text-muted-foreground" /></div>
+                  <div>
+                    <p className="text-xs font-black uppercase text-secondary">Reisedauer:</p>
+                    <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">15-tägig, Flüge inklusive</p>
+                  </div>
                 </div>
-                <div className="p-8 space-y-3">
-                  <h4 className="text-xl font-headline font-bold uppercase">{item.t}</h4>
-                  <p className="text-white/60 font-bold text-[10px] uppercase tracking-widest">{item.d}</p>
+                <div className="flex gap-4">
+                  <div className="w-5 h-5 shrink-0 mt-1 flex items-center justify-center"><MapPin className="w-4 h-4 text-muted-foreground" /></div>
+                  <div>
+                    <p className="text-xs font-black uppercase text-secondary">Unterkünfte:</p>
+                    <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Mittelklassehotels, Tented Lodges mit Vollpension</p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="w-5 h-5 shrink-0 mt-1 flex items-center justify-center"><Users className="w-4 h-4 text-muted-foreground" /></div>
+                  <div>
+                    <p className="text-xs font-black uppercase text-secondary">Exklusive Gruppen:</p>
+                    <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Maximal 6 Teilnehmer pro Termin</p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="w-5 h-5 shrink-0 mt-1 flex items-center justify-center"><Calendar className="w-4 h-4 text-muted-foreground" /></div>
+                  <div>
+                    <p className="text-xs font-black uppercase text-secondary">Reisezeit:</p>
+                    <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">2025-2026</p>
+                  </div>
                 </div>
               </div>
-            ))}
-          </div>
+
+              <div className="flex flex-wrap gap-2 pt-8">
+                {[
+                  "Geführte Erlebnisreisen", 
+                  "Kombinierbar", 
+                  "Ideal für Kleingruppen", 
+                  "Begrenzte Plätze verfügbar", 
+                  "Garantiert Durchführung"
+                ].map((tag, i) => (
+                  <Badge key={i} variant="outline" className="text-[7px] font-black uppercase tracking-widest border-muted text-muted-foreground px-2 py-0.5 rounded-sm">
+                    {tag}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+
+            <div className="pt-10 border-t border-muted flex items-center justify-between gap-4">
+              <div className="flex flex-col">
+                <p className="text-xs text-muted-foreground line-through font-bold">5.999 €</p>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-primary font-black text-[10px] uppercase mr-1">ab</span>
+                  <span className="text-3xl font-black text-secondary">4.999 €</span>
+                </div>
+                <p className="text-[8px] font-black text-muted-foreground uppercase tracking-widest">pro Person</p>
+              </div>
+              <Button size="lg" className="rounded-sm px-8 h-12 md:h-14 bg-primary text-white font-black text-[10px] uppercase tracking-widest shadow-xl hover:scale-[1.02] transition-transform">
+                JETZT ANFRAGEN
+              </Button>
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Egypt Featured Content (Mosaic + Package Slider) */}
-      <EgyptFeaturedContent />
-
-      {/* Egypt Video & Blog Section */}
-      <EgyptVideoBlog />
-
-      {/* Egypt FAQ Section */}
       <EgyptFAQ />
-
-      {/* Inquiry Protocol */}
       <ContactSection />
     </div>
   );
