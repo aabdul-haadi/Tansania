@@ -3,8 +3,6 @@
 import React, { useState } from 'react';
 import { 
   FileText, 
-  MessageSquare, 
-  CalendarCheck, 
   Database,
   RefreshCw,
   Globe,
@@ -29,21 +27,16 @@ export default function AdminDashboard() {
 
   const pagesQuery = useMemoFirebase(() => canFetch ? collection(firestore, 'pages') : null, [canFetch, firestore]);
   const blogsQuery = useMemoFirebase(() => canFetch ? collection(firestore, 'blogPosts') : null, [canFetch, firestore]);
-  const bookingsQuery = useMemoFirebase(() => canFetch ? collection(firestore, 'bookings') : null, [canFetch, firestore]);
-  const inquiriesQuery = useMemoFirebase(() => canFetch ? collection(firestore, 'inquiries') : null, [canFetch, firestore]);
   const packagesQuery = useMemoFirebase(() => canFetch ? collection(firestore, 'packages') : null, [canFetch, firestore]);
 
   const { data: pages } = useCollection(pagesQuery);
   const { data: blogs } = useCollection(blogsQuery);
-  const { data: bookings } = useCollection(bookingsQuery);
-  const { data: inquiries } = useCollection(inquiriesQuery);
   const { data: packages } = useCollection(packagesQuery);
 
   const stats = [
     { label: 'Site Registry', value: pages?.length || 0, icon: Globe, trend: 'Managed routes' },
     { label: 'Safari Catalog', value: packages?.length || 0, icon: Database, trend: 'Synced packages' },
-    { label: 'Inquiries', value: inquiries?.length || 0, icon: MessageSquare, trend: 'New leads' },
-    { label: 'Bookings', value: bookings?.length || 0, icon: CalendarCheck, trend: 'Confirmed trips' },
+    { label: 'Journal Logs', value: blogs?.length || 0, icon: FileText, trend: 'Articles' },
   ];
 
   const handleSeedData = () => {
@@ -83,7 +76,7 @@ export default function AdminDashboard() {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
         {stats.map((stat, i) => (
           <Card key={i} className="border-none shadow-sm rounded-2xl overflow-hidden bg-white hover:shadow-md transition-all">
             <CardHeader className="flex flex-row items-center justify-between pb-2 p-4">
@@ -117,7 +110,7 @@ export default function AdminDashboard() {
                   </div>
                 </div>
                 <Button variant="ghost" size="icon" className="rounded-lg h-7 w-7 text-muted-foreground group-hover:text-primary shrink-0" asChild>
-                  <Link href={`/admin/blog/${blog.id}/edit`}><ArrowRight className="w-3 h-3" /></Link>
+                  <Link href={`/admin/blog/${blog.id}/edit`}><ArrowRight className="w-3" /></Link>
                 </Button>
               </div>
             ))}
@@ -126,24 +119,24 @@ export default function AdminDashboard() {
 
         <Card className="rounded-[1.5rem] border-none shadow-sm bg-white p-6 space-y-6">
           <div className="flex items-center justify-between">
-            <h3 className="font-headline text-lg font-bold text-secondary uppercase">New Lead Inquiries</h3>
-            <Link href="/admin/inquiries" className="text-[8px] font-bold uppercase tracking-widest text-primary hover:underline">View CRM</Link>
+            <h3 className="font-headline text-lg font-bold text-secondary uppercase">Active Expeditions</h3>
+            <Link href="/admin/packages" className="text-[8px] font-bold uppercase tracking-widest text-primary hover:underline">View Catalog</Link>
           </div>
           <div className="space-y-2">
-            {inquiries?.slice(0, 4).map((lead: any) => (
-              <div key={lead.id} className="flex items-center justify-between p-3 rounded-xl bg-muted/20 border border-transparent hover:border-primary/10 transition-all group">
+            {packages?.slice(0, 4).map((pkg: any) => (
+              <div key={pkg.id} className="flex items-center justify-between p-3 rounded-xl bg-muted/20 border border-transparent hover:border-primary/10 transition-all group">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold text-[10px] uppercase shrink-0">
-                    {lead.name?.[0]}
+                    {pkg.durationDays}d
                   </div>
                   <div>
-                    <p className="font-bold text-[11px] text-secondary uppercase">{lead.name}</p>
-                    <p className="text-[7px] font-bold uppercase text-muted-foreground tracking-widest">{lead.type}</p>
+                    <p className="font-bold text-[11px] text-secondary uppercase">{pkg.title}</p>
+                    <p className="text-[7px] font-bold uppercase text-muted-foreground tracking-widest">€{pkg.startingPrice?.toLocaleString()}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                   <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                   <span className="text-[7px] font-bold uppercase text-muted-foreground tracking-widest">New</span>
+                   <div className={`w-1.5 h-1.5 rounded-full ${pkg.isPublished ? 'bg-green-500' : 'bg-yellow-500'}`} />
+                   <span className="text-[7px] font-bold uppercase text-muted-foreground tracking-widest">{pkg.isPublished ? 'Live' : 'Draft'}</span>
                 </div>
               </div>
             ))}

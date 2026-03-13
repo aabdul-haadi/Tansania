@@ -13,7 +13,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
-import { collection, query, where } from 'firebase/firestore';
+import { collection, query, where, orderBy } from 'firebase/firestore';
 import { PackageCard } from '@/components/packages/PackageCard';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { cn } from '@/lib/utils';
@@ -27,30 +27,35 @@ export default function SafarisPage() {
 
   const pkgQuery = useMemoFirebase(() => {
     if (!firestore) return null;
-    return query(collection(firestore, 'packages'), where('isPublished', '==', true));
+    return query(
+      collection(firestore, 'packages'), 
+      where('isPublished', '==', true),
+      orderBy('updatedAt', 'desc')
+    );
   }, [firestore]);
 
   const { data: packages, isLoading } = useCollection(pkgQuery);
 
-  const filteredPackages = packages?.filter(p => {
+  const filteredPackages = (packages || []).filter(p => {
     const matchesCat = activeCategory === 'All' || p.category === activeCategory;
     const matchesSearch = p.title.toLowerCase().includes(search.toLowerCase()) || 
                          p.highlights?.some((h: string) => h.toLowerCase().includes(search.toLowerCase()));
     return matchesCat && matchesSearch;
-  }) || [];
+  });
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-bold">
+      {/* Editorial Header */}
       <section className="bg-white pt-32 pb-12 relative overflow-hidden border-b border-border">
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="flex flex-col lg:flex-row justify-between items-end gap-12">
-            <div className="max-w-2xl">
+            <div className="max-w-2xl text-center lg:text-left">
               <motion.div 
                 initial={{ opacity: 0, x: -20 }} 
                 animate={{ opacity: 1, x: 0 }} 
                 className="inline-flex items-center gap-2 text-primary font-bold text-[10px] uppercase tracking-[0.4em] mb-4"
               >
-                <Sparkles className="w-3.5 h-3.5" /> Intelligente Empfehlungen
+                <Sparkles className="w-3.5 h-3.5" /> Synchronisierte Empfehlungen
               </motion.div>
               <h1 className="font-headline text-4xl md:text-7xl lg:text-8xl font-bold text-secondary leading-[0.9] uppercase tracking-tighter">
                 Savannen-<br /><span className="text-primary">Kollektion</span>
@@ -63,13 +68,13 @@ export default function SafarisPage() {
                 <Input 
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  placeholder="Nach Tieren oder Regionen..." 
-                  className="h-14 md:h-16 pl-14 rounded-2xl bg-muted/20 border-none text-secondary placeholder:text-muted-foreground focus:ring-primary/20 font-bold text-sm md:text-base uppercase tracking-tight" 
+                  placeholder="Region oder Tierart..." 
+                  className="h-14 md:h-16 pl-14 rounded-2xl border-none bg-muted/20 border-border text-secondary placeholder:text-muted-foreground focus:ring-primary/20 font-bold text-sm md:text-base uppercase tracking-tight" 
                 />
               </div>
               <div className="flex items-center justify-between text-[9px] font-bold uppercase tracking-widest text-muted-foreground px-2">
                 <span className="flex items-center gap-2"><CloudSun className="w-3.5 h-3.5 text-primary" /> Serengeti 28°C</span>
-                <span className="flex items-center gap-2"><Zap className="w-3.5 h-3.5 text-primary" /> Peak Season Active</span>
+                <span className="flex items-center gap-2"><Zap className="w-3.5 h-3.5 text-primary" /> Global Master Sync</span>
               </div>
             </div>
           </div>
@@ -77,7 +82,8 @@ export default function SafarisPage() {
       </section>
 
       <section className="py-12 md:py-20 container mx-auto px-4 max-w-7xl">
-        <div className="flex flex-wrap gap-2 mb-16 overflow-x-auto no-scrollbar pb-2">
+        {/* Category Registry */}
+        <div className="flex flex-wrap gap-2 mb-16 overflow-x-auto no-scrollbar pb-2 justify-center lg:justify-start">
           {['All', 'SAFARI & SANSIBAR', 'FLITTERWOCHEN', 'FAMILIENSAFARI', 'KILIMANDSCHARO SAFARI'].map(cat => (
             <button
               key={cat}
@@ -121,6 +127,7 @@ export default function SafarisPage() {
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ delay: idx * 0.05, duration: 0.6 }}
                 >
+                  {/* Master Card Consumption */}
                   <PackageCard pkg={pkg} />
                 </motion.div>
               ))}

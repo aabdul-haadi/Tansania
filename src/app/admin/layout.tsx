@@ -11,8 +11,6 @@ import {
   Lock,
   Loader2,
   Database,
-  CalendarCheck,
-  MessageSquare,
   Settings,
   Brain,
   Compass
@@ -27,8 +25,6 @@ const adminLinks = [
   { name: 'Dashboard', href: '/admin', icon: LayoutDashboard },
   { name: 'Site Registry', href: '/admin/pages', icon: Globe },
   { name: 'Expedition Journal', href: '/admin/blog', icon: FileText },
-  { name: 'Inquiries', href: '/admin/inquiries', icon: MessageSquare },
-  { name: 'Bookings', href: '/admin/bookings', icon: CalendarCheck },
   { name: 'Safari Catalog', href: '/admin/packages', icon: Database },
   { name: 'AI Planner', href: '/admin/ai-planner', icon: Brain },
   { name: 'Site Settings', href: '/admin/settings', icon: Settings },
@@ -42,7 +38,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const auth = useAuth();
   const [mounted, setMounted] = useState(false);
   
-  // Safe Access: Ensure services exist before creating references
   const adminDocRef = useMemoFirebase(() => (firestore && user ? doc(firestore, 'roles_admin', user.uid) : null), [firestore, user]);
   const { data: adminRole, isLoading: isAdminRoleLoading } = useDoc(adminDocRef);
 
@@ -50,7 +45,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     setMounted(true);
   }, []);
 
-  // Registry Sync Logic: Silent registration of admin status
   useEffect(() => {
     if (mounted && user && firestore && !isAdminRoleLoading && !adminRole) {
       setDocumentNonBlocking(doc(firestore, 'roles_admin', user.uid), {
@@ -73,7 +67,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     }
   };
 
-  // Prevent flash of content or uninitialized service crashes
   if (!mounted || isUserLoading) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-white gap-4">
@@ -100,7 +93,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   return (
     <div className="flex min-h-screen bg-white">
-      {/* Solid Sidebar (Registry Standard) */}
       <aside className="w-64 bg-white border-r border-border flex flex-col hidden lg:flex shrink-0 relative z-20">
         <div className="p-6 border-b border-border">
           <Link href="/" className="flex items-center gap-3">
