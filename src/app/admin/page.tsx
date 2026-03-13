@@ -60,112 +60,133 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div className="p-6 md:p-8 max-w-7xl mx-auto space-y-6 bg-white min-h-screen">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-border pb-8">
-        <div>
-          <h1 className="text-2xl md:text-3xl font-bold tracking-tighter text-secondary uppercase">Admin Dashboard</h1>
-          <p className="text-muted-foreground mt-1 text-[9px] font-bold uppercase tracking-widest">Digital Operations Control</p>
+    <div className="p-4 md:p-10 max-w-7xl mx-auto space-y-6 md:space-y-10 bg-white min-h-screen">
+      {/* Responsive Header */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-border pb-8 md:pb-10">
+        <div className="space-y-3">
+          <h1 className="text-3xl md:text-5xl font-bold tracking-tighter text-secondary uppercase leading-none">Command Center</h1>
+          <p className="text-muted-foreground text-[10px] font-bold uppercase tracking-[0.4em] pl-1">
+            Operational Overview • Registry Status
+          </p>
         </div>
-        <div className="flex items-center gap-3">
-          <Button onClick={handleSeedData} disabled={loading} variant="outline" className="gap-2 rounded-xl h-10 px-4 font-bold uppercase tracking-widest text-[9px] border-primary/20 text-primary hover:bg-primary/5">
+        <div className="flex flex-wrap items-center gap-2 md:gap-3">
+          <Button onClick={handleSeedData} disabled={loading} variant="outline" className="flex-1 md:flex-none gap-2 rounded-xl h-11 px-5 font-bold uppercase tracking-widest text-[9px] border-primary/20 text-primary hover:bg-primary/5">
             {loading ? <RefreshCw className="w-3.5 h-3.5 animate-spin" /> : <Sparkles className="w-3.5 h-3.5" />}
-            Initialize CMS
+            Registry Sync
           </Button>
-          <Button asChild className="gap-2 rounded-xl h-10 px-4 font-bold uppercase tracking-widest text-[9px] shadow-lg">
-            <Link href="/" target="_blank"><Eye className="w-3.5 h-3.5" /> View Live Site</Link>
+          <Button asChild className="flex-1 md:flex-none gap-2 rounded-xl h-11 px-5 shadow-xl font-bold uppercase tracking-widest text-[9px]">
+            <Link href="/" target="_blank"><Eye className="w-3.5 h-3.5" /> Live Preview</Link>
           </Button>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
+      {/* High-Density Stats Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {stats.map((stat, i) => (
-          <Card key={i} className="border-none shadow-sm rounded-2xl overflow-hidden bg-white border border-border/50 hover:shadow-md transition-all">
-            <CardHeader className="flex flex-row items-center justify-between pb-2 p-4">
-              <CardTitle className="text-[8px] font-bold uppercase tracking-[0.3em] text-muted-foreground">{stat.label}</CardTitle>
-              <stat.icon className="w-3.5 h-3.5 text-primary" />
+          <Card key={i} className="border-none shadow-sm rounded-2xl overflow-hidden bg-white border border-border/50 hover:shadow-md transition-all group">
+            <CardHeader className="flex flex-row items-center justify-between pb-2 p-5">
+              <CardTitle className="text-[9px] font-bold uppercase tracking-[0.3em] text-muted-foreground">{stat.label}</CardTitle>
+              <div className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                <stat.icon className="w-4 h-4 text-primary" />
+              </div>
             </CardHeader>
-            <CardContent className="p-4 pt-0">
-              <div className="text-xl md:text-2xl font-bold text-secondary tracking-tighter">{stat.value}</div>
-              <p className="text-[7px] text-muted-foreground mt-1 font-bold uppercase tracking-widest">{stat.trend}</p>
+            <CardContent className="p-5 pt-0">
+              <div className="text-2xl md:text-3xl font-bold text-secondary tracking-tighter">{stat.value}</div>
+              <p className="text-[8px] text-muted-foreground mt-1 font-bold uppercase tracking-widest">{stat.trend}</p>
             </CardContent>
           </Card>
         ))}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <div className="lg:col-span-8 space-y-6">
-          <Card className="rounded-[1.5rem] border-none shadow-sm bg-white border border-border/50 p-6 space-y-6">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-10">
+        {/* Main Operational Feed */}
+        <div className="lg:col-span-8 space-y-6 md:space-y-10">
+          <Card className="rounded-[2.5rem] border-none shadow-sm bg-white border border-border/50 p-6 md:p-10 space-y-8">
             <div className="flex items-center justify-between">
-              <h3 className="font-headline text-lg font-bold text-secondary uppercase tracking-tight">Recent Journal Posts</h3>
-              <Link href="/admin/blog" className="text-[8px] font-bold uppercase tracking-widest text-primary hover:underline">View Library</Link>
+              <h3 className="font-headline text-xl md:text-2xl font-bold text-secondary uppercase tracking-tight">Expedition Journal</h3>
+              <Link href="/admin/blog" className="text-[9px] font-bold uppercase tracking-widest text-primary hover:underline">View All Logs</Link>
             </div>
-            <div className="space-y-2">
+            <div className="space-y-3">
               {blogs?.slice(0, 4).map((blog: any) => (
-                <div key={blog.id} className="flex items-center justify-between p-3 rounded-xl bg-muted/20 border border-transparent hover:border-primary/10 transition-all group">
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div className="w-8 h-8 rounded-lg bg-white border border-border flex items-center justify-center shrink-0 overflow-hidden">
+                <div key={blog.id} className="flex items-center justify-between p-4 rounded-2xl bg-muted/20 border border-transparent hover:border-primary/10 transition-all group">
+                  <div className="flex items-center gap-4 min-w-0">
+                    <div className="w-10 h-10 rounded-xl bg-white border border-border flex items-center justify-center shrink-0 overflow-hidden shadow-sm">
                       <img src={blog.coverImage || 'https://picsum.photos/seed/admin-blog/100/100'} alt="" className="w-full h-full object-cover" />
                     </div>
                     <div className="min-w-0">
-                      <p className="font-bold text-[11px] text-secondary uppercase truncate">{blog.title}</p>
-                      <p className="text-[7px] font-bold uppercase text-muted-foreground tracking-widest">{blog.category}</p>
+                      <p className="font-bold text-xs md:text-sm text-secondary uppercase truncate">{blog.title}</p>
+                      <p className="text-[8px] font-bold uppercase text-muted-foreground tracking-widest">{blog.category}</p>
                     </div>
                   </div>
-                  <Button variant="ghost" size="icon" className="rounded-lg h-7 w-7 text-muted-foreground group-hover:text-primary shrink-0" asChild>
-                    <Link href={`/admin/blog/${blog.id}/edit`}><ArrowRight className="w-3" /></Link>
+                  <Button variant="ghost" size="icon" className="rounded-xl h-9 w-9 text-muted-foreground group-hover:text-primary shrink-0" asChild>
+                    <Link href={`/admin/blog/${blog.id}/edit`}><ArrowRight className="w-4 h-4" /></Link>
                   </Button>
                 </div>
               ))}
             </div>
           </Card>
 
-          <Card className="rounded-[1.5rem] border-none shadow-sm bg-white border border-border/50 p-6 space-y-6">
+          <Card className="rounded-[2.5rem] border-none shadow-sm bg-white border border-border/50 p-6 md:p-10 space-y-8">
             <div className="flex items-center justify-between">
-              <h3 className="font-headline text-lg font-bold text-secondary uppercase tracking-tight">Active Expeditions</h3>
-              <Link href="/admin/packages" className="text-[8px] font-bold uppercase tracking-widest text-primary hover:underline">View Catalog</Link>
+              <h3 className="font-headline text-xl md:text-2xl font-bold text-secondary uppercase tracking-tight">Safari Catalog</h3>
+              <Link href="/admin/packages" className="text-[9px] font-bold uppercase tracking-widest text-primary hover:underline">Manage Pricing</Link>
             </div>
-            <div className="space-y-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {packages?.slice(0, 4).map((pkg: any) => (
-                <div key={pkg.id} className="flex items-center justify-between p-3 rounded-xl bg-muted/20 border border-transparent hover:border-primary/10 transition-all group">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold text-[10px] uppercase shrink-0">
+                <div key={pkg.id} className="flex items-center justify-between p-4 rounded-2xl bg-muted/20 border border-transparent hover:border-primary/10 transition-all group">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary font-bold text-[11px] uppercase shrink-0">
                       {pkg.durationDays}d
                     </div>
-                    <div>
-                      <p className="font-bold text-[11px] text-secondary uppercase">{pkg.title}</p>
-                      <p className="text-[7px] font-bold uppercase text-muted-foreground tracking-widest">€{pkg.startingPrice?.toLocaleString()}</p>
+                    <div className="min-w-0">
+                      <p className="font-bold text-[11px] text-secondary uppercase truncate">{pkg.title}</p>
+                      <p className="text-[9px] font-bold uppercase text-primary tracking-widest">€{pkg.startingPrice?.toLocaleString()}</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                     <div className={`w-1.5 h-1.5 rounded-full ${pkg.isPublished ? 'bg-green-500' : 'bg-yellow-500'}`} />
-                     <span className="text-[7px] font-bold uppercase text-muted-foreground tracking-widest">{pkg.isPublished ? 'Live' : 'Draft'}</span>
-                  </div>
+                  <div className={`w-2 h-2 rounded-full shrink-0 ${pkg.isPublished ? 'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]' : 'bg-yellow-500'}`} />
                 </div>
               ))}
             </div>
           </Card>
         </div>
 
+        {/* Strategic Intelligence Panel */}
         <div className="lg:col-span-4">
-          <Card className="rounded-[1.5rem] border-none bg-secondary text-white p-8 space-y-6 shadow-xl relative overflow-hidden h-full">
-            <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-            <div className="relative z-10 space-y-6">
-              <div className="flex items-center gap-3">
-                <Brain className="w-6 h-6 text-primary" />
-                <h3 className="font-headline text-xl font-bold uppercase">AI Planner</h3>
+          <div className="sticky top-6 md:top-10 space-y-6">
+            <Card className="rounded-[2.5rem] border-none bg-secondary text-white p-8 md:p-10 space-y-8 shadow-2xl relative overflow-hidden">
+              <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+              <div className="relative z-10 space-y-8">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-primary flex items-center justify-center shadow-lg">
+                    <Brain className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-headline text-2xl font-bold uppercase leading-none tracking-tight">AI Planner</h3>
+                    <p className="text-[8px] font-bold text-primary uppercase tracking-[0.3em] mt-2">Intelligence Registry</p>
+                  </div>
+                </div>
+                <p className="text-[10px] text-white/40 font-bold uppercase leading-relaxed tracking-widest">
+                  Analyze site structure, audit SEO metadata, and generate high-impact content strategy guides powered by real data.
+                </p>
+                <div className="pt-2">
+                  <Link href="/admin/ai-planner" className="block">
+                    <Button className="w-full h-14 rounded-2xl bg-primary text-white font-bold text-[10px] uppercase tracking-widest shadow-xl hover:scale-[1.02] transition-transform">
+                      Run Site Analysis <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </Link>
+                </div>
               </div>
-              <p className="text-[10px] text-white/40 font-bold uppercase leading-relaxed tracking-widest">
-                Optimize your site structure, audit SEO metadata, and generate high-impact content strategy guides instantly.
-              </p>
-              <div className="pt-4">
-                <Link href="/admin/ai-planner" className="block">
-                  <Button className="w-full h-12 rounded-xl bg-primary text-white font-bold text-[9px] uppercase tracking-widest shadow-xl">
-                    Run Analysis <ArrowRight className="w-3.5 h-3.5 ml-2" />
-                  </Button>
-                </Link>
+            </Card>
+
+            <Card className="rounded-[2.5rem] border-none bg-muted/10 border border-border p-8 text-center space-y-4">
+              <Globe className="w-8 h-8 text-muted-foreground/20 mx-auto" />
+              <h4 className="font-bold text-[10px] uppercase tracking-[0.4em] text-secondary">Registry Status</h4>
+              <div className="flex items-center justify-center gap-3 bg-white py-2 px-4 rounded-xl border border-border inline-flex">
+                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                <span className="text-[9px] font-bold uppercase tracking-widest">Protocol Active</span>
               </div>
-            </div>
-          </Card>
+            </Card>
+          </div>
         </div>
       </div>
     </div>
