@@ -40,25 +40,17 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const { user, isUserLoading } = useUser();
   const firestore = useFirestore();
   const auth = useAuth();
+  const [mounted, setMounted] = useState(false);
   
   const adminDocRef = useMemoFirebase(() => (firestore && user ? doc(firestore, 'roles_admin', user.uid) : null), [firestore, user]);
   const { data: adminRole, isLoading: isAdminRoleLoading } = useDoc(adminDocRef);
 
-  const [isAuthorized, setIsAuthorized] = useState<boolean | null>(null);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
-    if (!isUserLoading) {
-      if (user) {
-        setIsAuthorized(true);
-      } else {
-        setIsAuthorized(false);
-      }
-    }
-  }, [user, isUserLoading]);
-
-  useEffect(() => {
-    // Silent creation of admin role for first-time login in development
-    if (user && !isAdminRoleLoading && !adminRole && firestore) {
+    if (mounted && user && firestore && !isAdminRoleLoading && !adminRole) {
       setDocumentNonBlocking(doc(firestore, 'roles_admin', user.uid), {
         uid: user.uid,
         email: user.email,
@@ -66,7 +58,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         createdAt: serverTimestamp()
       }, { merge: true });
     }
-  }, [user, adminRole, isAdminRoleLoading, firestore]);
+  }, [user, adminRole, isAdminRoleLoading, firestore, mounted]);
 
   const handleSignOut = async () => {
     if (!auth) return;
@@ -78,7 +70,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     }
   };
 
-  if (isUserLoading || isAuthorized === null) {
+  if (!mounted || isUserLoading) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-white gap-4">
         <Loader2 className="w-10 h-10 text-primary animate-spin" />
@@ -87,7 +79,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     );
   }
 
-  if (isAuthorized === false) {
+  if (!user) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white p-6">
         <div className="max-w-md w-full text-center space-y-8 bg-white p-8 md:p-12 rounded-[2rem] md:rounded-[2.5rem] shadow-2xl border border-border">
@@ -103,7 +95,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   return (
     <div className="flex min-h-screen bg-white">
-      {/* High-Density Desktop Sidebar */}
       <aside className="w-64 bg-white border-r border-border flex flex-col hidden lg:flex shrink-0">
         <div className="p-6 border-b border-border">
           <Link href="/" className="flex items-center gap-3">
@@ -145,9 +136,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </div>
       </aside>
 
-      {/* Main Registry View */}
-      <main className="flex-grow overflow-y-auto bg-white/50 relative">
-        <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-fixed" />
+      <main className="flex-grow overflow-y-auto bg-white relative">
+        <div className="absolute inset-0 pointer-events-none opacity-[0.02] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-fixed" />
         <div className="relative z-10 min-h-full">
           {children}
         </div>
