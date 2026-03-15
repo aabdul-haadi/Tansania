@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -23,6 +22,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { MigrationTimeline } from '@/components/sections/MigrationTimeline';
+import { MigrationVideoBlog } from '@/components/sections/MigrationVideoBlog';
 import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { collection, query, where, limit } from 'firebase/firestore';
 import { PackageCard } from '@/components/packages/PackageCard';
@@ -220,10 +220,13 @@ export default function MigrationPage() {
         </div>
       </section>
 
-      {/* NEW SECTION: Migration Timeline */}
+      {/* SECTION 4: Migration Timeline */}
       <MigrationTimeline />
 
-      {/* NEW SECTION: Package Registry */}
+      {/* SECTION 5: Video & Blog Clone */}
+      <MigrationVideoBlog />
+
+      {/* SECTION 6: Package Registry */}
       <section className="py-16 md:py-32 bg-[#fdfcfb]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-16 md:mb-24 space-y-4">
