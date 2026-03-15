@@ -4,6 +4,7 @@
 
 @layer base {
   :root {
+    /* COLORS: Update these HSL values to change the entire site's palette */
     --background: 0 0% 96%;
     --foreground: 0 0% 10%;
     --card: 0 0% 100%;
@@ -30,6 +31,20 @@
     --input: 0 0% 88%;
     --ring: 19 89% 47%;
     --radius: 1rem;
+
+    /* TYPOGRAPHY: Compact Scale - Update these to scale the entire site's text */
+    --text-xs: 0.65rem;   /* 10.4px */
+    --text-sm: 0.75rem;   /* 12px */
+    --text-base: 0.875rem; /* 14px - Main Body */
+    --text-lg: 1rem;      /* 16px */
+    --text-xl: 1.125rem;  /* 18px */
+    --text-2xl: 1.25rem;  /* 20px */
+    --text-3xl: 1.5rem;   /* 24px */
+    --text-4xl: 2rem;     /* 32px */
+    --text-5xl: 2.5rem;    /* 40px */
+    --text-6xl: 3.5rem;    /* 56px */
+    --text-7xl: 4.5rem;    /* 72px */
+    --text-8xl: 6rem;      /* 96px */
   }
 
   .dark {
@@ -46,29 +61,44 @@
   * {
     @apply border-border;
   }
+  
+  html {
+    font-size: 16px; /* Base for REM calculations */
+  }
+
   body {
     @apply bg-background text-foreground antialiased font-bold;
+    font-family: 'Montserrat', sans-serif !important;
     background-image: url("https://grainy-gradients.vercel.app/noise.svg");
     background-repeat: repeat;
     background-size: 200px;
     background-attachment: fixed;
+    font-size: var(--text-base);
   }
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-headline font-bold tracking-tighter uppercase;
-  }
-  /* STRICT BRANDING: Forcible removal of ALL italics and italics-related styles */
+
+  /* STRICT BRANDING: Forcible removal of ALL italics */
   i, em, .italic, .font-italic, .prose em, .prose i, [style*="italic"] {
     font-style: normal !important;
     @apply not-italic !important;
   }
-  /* Global Bold Enforcement */
+
+  /* Global Bold & Scale Enforcement */
   p, span, div, a, li, input, button, select, textarea {
     @apply font-bold;
   }
+
+  h1 { font-size: var(--text-6xl); @apply leading-none tracking-tighter uppercase; }
+  h2 { font-size: var(--text-5xl); @apply leading-tight tracking-tighter uppercase; }
+  h3 { font-size: var(--text-3xl); @apply leading-tight tracking-tighter uppercase; }
+  h4 { font-size: var(--text-xl); @apply leading-tight tracking-tighter uppercase; }
+  h5 { font-size: var(--text-lg); @apply uppercase; }
+  h6 { font-size: var(--text-base); @apply uppercase; }
 }
 
+/* Utility Classes for Prestige Density */
 .text-prestige {
-  @apply font-black uppercase tracking-[0.3em] text-[8px] md:text-[10px];
+  @apply font-black uppercase tracking-[0.3em];
+  font-size: var(--text-xs);
 }
 
 .no-scrollbar::-webkit-scrollbar {
