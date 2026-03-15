@@ -116,7 +116,7 @@ export function MigrationSafariFactor() {
                 return (
                   <div 
                     key={slide.id} 
-                    className="flex-[0_0_85%] md:flex-[0_0_40%] pl-4 md:pl-8 transition-all duration-700 ease-prestige"
+                    className="flex-[0_0_85%] md:flex-[0_0_40%] pl-4 md:pl-8 transition-all duration-700"
                     style={{
                       transform: isActive ? 'scale(1)' : 'scale(0.85) translateY(20px)',
                       opacity: isActive ? 1 : 0.4,

@@ -26,6 +26,7 @@ import { MigrationSafariFactor } from '@/components/sections/MigrationSafariFact
 import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { collection, query, where, limit } from 'firebase/firestore';
 import { PackageCard } from '@/components/shared/PackageCard';
+import Link from 'next/link';
 
 export default function MigrationPage() {
   const firestore = useFirestore();
@@ -182,10 +183,7 @@ export default function MigrationPage() {
       </section>
 
       <MigrationTimeline />
-      
-      {/* 100% SS CLONE: Migration Factor Slider */}
       <MigrationSafariFactor />
-
       <MigrationVideoBlog />
 
       {/* Package Collection */}
