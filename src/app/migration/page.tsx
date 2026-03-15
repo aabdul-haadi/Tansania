@@ -20,7 +20,6 @@ import {
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ContactSection } from '@/components/shared/ContactSection';
-import { MigrationTimeline } from '@/components/sections/MigrationTimeline';
 import { MigrationVideoBlog } from '@/components/sections/MigrationVideoBlog';
 import { MigrationSafariFactor } from '@/components/sections/MigrationSafariFactor';
 import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
@@ -182,14 +181,13 @@ export default function MigrationPage() {
         </div>
       </section>
 
-      <MigrationTimeline />
       <MigrationSafariFactor />
       <MigrationVideoBlog />
 
       {/* Package Collection */}
       <section className="py-16 md:py-32 bg-[#fdfcfb]">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="text-center mb-16 md:mb-24 space-y-3">
+          <div className="text-center mb-12 md:mb-24 space-y-3">
             <span className="text-primary font-black uppercase tracking-[0.4em] text-[9px]">Expedition Registry</span>
             <h2 className="font-headline text-3xl md:text-6xl font-black text-secondary uppercase tracking-tighter leading-none">
               IHR EXKLUSIVES <br /><span className="text-primary">AFRIKA-ABENTEUER</span>
