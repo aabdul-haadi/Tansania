@@ -59,15 +59,15 @@ export default function Home() {
             
             {/* Search Protocol */}
             <div className="max-w-md md:max-w-lg mx-auto relative px-2">
-              <div className="relative flex items-center bg-white rounded-xl shadow-2xl overflow-hidden h-12 md:h-14">
+              <div className="relative flex items-center bg-white rounded-xl shadow-2xl overflow-hidden h-12 md:h-14 border border-border/50">
                 <div className="pl-4 text-primary shrink-0"><Search className="w-4 h-4 md:w-5 md:h-5" /></div>
-                <Input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Wohin soll die Reise gehen?" className="h-full border-none bg-transparent text-secondary font-bold placeholder:text-muted-foreground/50 text-[11px] md:text-sm focus-visible:ring-0" />
+                <Input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Wohin soll die Reise gehen?" className="h-full border-none bg-transparent text-secondary font-bold placeholder:text-muted-foreground/50 text-[11px] md:text-sm focus-visible:ring-0 uppercase tracking-widest" />
                 <Link href="/itinerary-builder" className="pr-2"><Button className="h-8 md:h-10 rounded-lg px-3 gap-2 hidden sm:flex text-[8px] md:text-[9px] font-black uppercase">AI Planer</Button></Link>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mt-8">
-              <Link href="/safaris"><Button size="lg" className="w-full sm:w-auto rounded-full px-10 h-12 md:h-14 text-[9px] md:text-[10px] font-bold shadow-xl uppercase tracking-widest">Katalog ansehen</Button></Link>
+              <Link href="/safaris"><Button size="lg" className="w-full sm:w-auto rounded-full px-10 h-12 md:h-14 text-[9px] md:text-[10px] font-bold shadow-xl uppercase tracking-widest border-none">Katalog ansehen</Button></Link>
               <Link href="/trip-advisor"><Button size="lg" variant="outline" className="w-full sm:w-auto rounded-full px-10 h-12 md:h-14 text-[9px] md:text-[10px] font-bold border-white/20 text-white hover:bg-white/10 backdrop-blur-md bg-black/20 uppercase tracking-widest"><MessageSquare className="w-3.5 h-3.5 mr-2" /> AI Beratung</Button></Link>
             </div>
           </motion.div>
@@ -97,22 +97,22 @@ export default function Home() {
             <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">
               <div className="max-w-xl">
                 <span className="text-primary font-bold uppercase tracking-[0.3em] text-[9px] mb-1 block">Exklusive Reiseziele</span>
-                <h2 className="font-headline text-2xl md:text-5xl font-bold leading-tight uppercase">Das Beste von Tansania</h2>
+                <h2 className="font-headline text-2xl md:text-5xl font-bold leading-tight uppercase tracking-tighter">Das Beste von Tansania</h2>
               </div>
               <div className="flex gap-2">
-                <CarouselPrevious className="static translate-y-0 h-9 w-9 rounded-full" />
-                <CarouselNext className="static translate-y-0 h-9 w-9 rounded-full" />
+                <CarouselPrevious className="static translate-y-0 h-9 w-9 rounded-full border-muted" />
+                <CarouselNext className="static translate-y-0 h-9 w-9 rounded-full border-muted" />
               </div>
             </div>
             <CarouselContent className="-ml-4">
               {highlights.map((item, idx) => (
                 <CarouselItem key={idx} className="pl-4 md:basis-1/2 lg:basis-1/2">
-                  <motion.div whileHover={{ y: -4 }} className="relative aspect-[16/10] rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden group shadow-lg h-full bg-muted">
+                  <motion.div whileHover={{ y: -4 }} className="relative aspect-[16/10] rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden group shadow-lg h-full bg-muted border border-border/50">
                     <Image src={item.img} alt={item.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-105" data-ai-hint={item.hint} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent p-6 md:p-10 flex flex-col justify-end">
-                      <h3 className="text-white text-xl md:text-3xl font-headline font-bold mb-1 uppercase">{item.title}</h3>
+                      <h3 className="text-white text-xl md:text-3xl font-headline font-bold mb-1 uppercase tracking-tight">{item.title}</h3>
                       <p className="text-white/70 mb-4 max-w-xs text-[9px] md:text-xs font-bold leading-relaxed uppercase tracking-widest">{item.desc}</p>
-                      <Link href={item.link}><Button className="rounded-xl px-6 h-9 md:h-11 font-bold shadow-xl text-[9px] uppercase tracking-widest">Region erleben</Button></Link>
+                      <Link href={item.link}><Button className="rounded-xl px-6 h-9 md:h-11 font-bold shadow-xl text-[9px] uppercase tracking-widest border-none">Region erleben</Button></Link>
                     </div>
                   </motion.div>
                 </CarouselItem>
