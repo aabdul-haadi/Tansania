@@ -5,7 +5,7 @@ import { FirebaseClientProvider } from '@/firebase/client-provider';
 import { ConditionalLayout } from '@/components/layout/ConditionalLayout';
 
 export const metadata: Metadata = {
-  title: 'Serengeti Dreams | Luxury Tanzania Safaris from Egypt',
+  title: 'Serengeti Dreams | Luxury Tanzania Safaris',
   description: 'Expert Egypt-based travel agency specializing in premium Tanzania safari packages including Serengeti adventure and Zanzibar relaxation.',
 };
 

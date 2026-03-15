@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    /* COLORS: Update these HSL values to change the entire site's palette */
+    /* COLORS: Professional Registry Palette */
     --background: 0 0% 96%;
     --foreground: 0 0% 10%;
     --card: 0 0% 100%;
@@ -32,7 +32,7 @@
     --ring: 19 89% 47%;
     --radius: 1rem;
 
-    /* TYPOGRAPHY: Compact Scale - Update these to scale the entire site's text */
+    /* COMPACTED TYPOGRAPHY: High-Density Registry Scale */
     --text-xs: 0.65rem;   /* 10.4px */
     --text-sm: 0.75rem;   /* 12px */
     --text-base: 0.875rem; /* 14px - Main Body */
@@ -63,7 +63,7 @@
   }
   
   html {
-    font-size: 16px; /* Base for REM calculations */
+    font-size: 16px; 
   }
 
   body {

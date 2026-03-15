@@ -109,15 +109,15 @@ export function Navbar() {
                   </div>
                 </button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-full sm:max-w-[450px] p-0 bg-white border-l border-border flex flex-col shadow-2xl">
-                <div className="p-6 md:p-8 border-b border-border flex items-center justify-between shrink-0 bg-white sticky top-0 z-20">
-                  <div className="flex items-center gap-4">
+              <SheetContent side="right" className="w-full sm:max-w-[450px] p-0 bg-secondary border-l border-white/5 flex flex-col shadow-2xl">
+                <div className="p-6 md:p-8 border-b border-white/5 flex items-center justify-between shrink-0 bg-secondary sticky top-0 z-20">
+                  <div className="flex items-center gap-4 text-white">
                     <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center border border-primary/20 shadow-sm">
                       <Globe className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <h4 className="font-headline font-bold text-xl text-secondary uppercase leading-none tracking-tighter">Command Center</h4>
-                      <p className="text-[8px] font-bold uppercase tracking-widest text-muted-foreground mt-1.5">Official Site Registry</p>
+                      <h4 className="font-headline font-bold text-xl uppercase leading-none tracking-tighter">Command Center</h4>
+                      <p className="text-[8px] font-bold uppercase tracking-widest text-white/40 mt-1.5">Official Site Registry</p>
                     </div>
                   </div>
                 </div>
@@ -132,17 +132,17 @@ export function Navbar() {
                           { name: 'Kilimandscharo', href: '/destinations/kilimanjaro', icon: Mountain, desc: 'Roof of Africa Treks' },
                           { name: 'Sansibar Paradise', href: '/destinations/zanzibar', icon: Waves, desc: 'Swahili Coast Relaxation' },
                         ].map((link) => (
-                          <Link key={link.name} href={link.href} className="group flex items-center justify-between p-5 rounded-[1.5rem] bg-muted/20 border border-transparent hover:border-primary/20 hover:bg-white transition-all duration-500 shadow-sm hover:shadow-lg">
+                          <Link key={link.name} href={link.href} className="group flex items-center justify-between p-5 rounded-[1.5rem] bg-white/5 border border-transparent hover:border-primary/20 hover:bg-white/10 transition-all duration-500 shadow-sm hover:shadow-lg">
                             <div className="flex items-center gap-5">
-                              <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center group-hover:bg-primary transition-colors border border-border shadow-sm">
-                                <link.icon className="w-6 h-6 text-secondary group-hover:text-white" />
+                              <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center group-hover:bg-primary transition-colors border border-white/5 shadow-sm">
+                                <link.icon className="w-6 h-6 text-white group-hover:text-white" />
                               </div>
                               <div>
-                                <h3 className="font-headline text-xl font-bold text-secondary uppercase leading-none">{link.name}</h3>
-                                <p className="text-[8px] font-bold text-muted-foreground uppercase tracking-widest mt-1.5">{link.desc}</p>
+                                <h3 className="font-headline text-xl font-bold text-white uppercase leading-none">{link.name}</h3>
+                                <p className="text-[8px] font-bold text-white/40 uppercase tracking-widest mt-1.5">{link.desc}</p>
                               </div>
                             </div>
-                            <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-all group-hover:translate-x-1" />
+                            <ArrowRight className="w-5 h-5 text-white/20 group-hover:text-primary transition-all group-hover:translate-x-1" />
                           </Link>
                         ))}
                       </nav>
@@ -155,7 +155,7 @@ export function Navbar() {
                           <Link 
                             key={dest} 
                             href={`/safaris`}
-                            className="px-4 py-4 rounded-xl bg-white border border-border text-[9px] font-bold text-secondary uppercase tracking-widest hover:border-primary hover:text-primary transition-all text-center shadow-sm"
+                            className="px-4 py-4 rounded-xl bg-white/5 border border-white/10 text-[9px] font-bold text-white/60 uppercase tracking-widest hover:border-primary hover:text-white transition-all text-center shadow-sm"
                           >
                             {dest}
                           </Link>
@@ -168,7 +168,7 @@ export function Navbar() {
                         <p className="text-primary font-bold uppercase tracking-[0.4em] text-[9px] mb-2 block">03. Themed</p>
                         <nav className="flex flex-col gap-3">
                           {['Flitterwochen', 'Familien-Safari', 'Luxus-Expedition', 'Camping Abenteuer'].map(t => (
-                            <Link key={t} href="/safaris" className="text-[10px] font-bold text-secondary hover:text-primary transition-colors uppercase tracking-widest border-l-2 border-muted pl-3 hover:border-primary">
+                            <Link key={t} href="/safaris" className="text-[10px] font-bold text-white/60 hover:text-primary transition-colors uppercase tracking-widest border-l-2 border-white/5 pl-3 hover:border-primary">
                               {t}
                             </Link>
                           ))}
@@ -183,7 +183,7 @@ export function Navbar() {
                             { n: 'Versicherung', h: '/services/guest-protection' },
                             { n: 'Kontakt', h: '/contact' }
                           ].map(s => (
-                            <Link key={s.n} href={s.h} className="text-[10px] font-bold text-secondary hover:text-primary transition-colors uppercase tracking-widest border-l-2 border-muted pl-3 hover:border-primary">
+                            <Link key={s.n} href={s.h} className="text-[10px] font-bold text-white/60 hover:text-primary transition-colors uppercase tracking-widest border-l-2 border-white/5 pl-3 hover:border-primary">
                               {s.n}
                             </Link>
                           ))}
@@ -191,16 +191,16 @@ export function Navbar() {
                       </div>
                     </div>
 
-                    <div className="bg-secondary rounded-[2rem] p-8 border border-white/5 relative overflow-hidden group shadow-2xl">
+                    <div className="bg-white/5 rounded-[2rem] p-8 border border-white/10 relative overflow-hidden group shadow-2xl">
                       <Zap className="absolute -top-4 -right-4 w-20 h-20 text-primary opacity-10" />
-                      <div className="relative z-10">
+                      <div className="relative z-10 text-white">
                         <span className="text-[8px] font-bold uppercase tracking-[0.4em] text-primary mb-3 block">Live Pulse</span>
-                        <h4 className="font-headline text-2xl font-bold text-white uppercase mb-2 tracking-tighter">Saison 2026 Bereit</h4>
-                        <p className="text-[10px] text-white/50 font-bold uppercase tracking-widest leading-relaxed mb-6">
+                        <h4 className="font-headline text-2xl font-bold uppercase mb-2 tracking-tighter">Saison 2026 Bereit</h4>
+                        <p className="text-[10px] text-white/40 font-bold uppercase tracking-widest leading-relaxed mb-6">
                           Unser Büro in Berlin nimmt jetzt exklusive Anfragen für die Große Tierwanderung entgegen.
                         </p>
                         <Link href="/trip-advisor">
-                          <Button size="sm" className="w-full rounded-xl bg-white text-secondary hover:bg-primary hover:text-white font-bold text-[9px] uppercase tracking-widest h-11">
+                          <Button size="sm" className="w-full rounded-xl bg-primary text-white font-bold text-[9px] uppercase tracking-widest h-11 border-none shadow-xl">
                             AI Berater Fragen <MessageSquare className="w-3.5 h-3.5 ml-2" />
                           </Button>
                         </Link>
@@ -209,20 +209,20 @@ export function Navbar() {
                   </div>
                 </ScrollArea>
 
-                <div className="p-6 md:p-8 border-t border-border bg-white relative z-30 shadow-[0_-10px_40px_rgba(0,0,0,0.05)]">
+                <div className="p-6 md:p-8 border-t border-white/5 bg-secondary relative z-30 shadow-[0_-10px_40px_rgba(0,0,0,0.2)]">
                   <Link href="/trip-planner" className="block">
-                    <Button className="w-full h-14 md:h-16 rounded-2xl bg-primary text-white font-bold text-[10px] md:text-xs uppercase tracking-[0.3em] shadow-2xl hover:scale-[1.02] transition-transform">
+                    <Button className="w-full h-14 md:h-16 rounded-2xl bg-primary text-white font-bold text-[10px] md:text-xs uppercase tracking-[0.3em] shadow-2xl hover:scale-[1.02] transition-transform border-none">
                       JETZT REISE PLANEN <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                   </Link>
                   <div className="mt-6 flex items-center justify-between gap-4">
                     <div className="flex items-center gap-2">
                       <ShieldCheck className="w-4 h-4 text-primary" />
-                      <span className="text-[8px] font-bold uppercase tracking-widest text-muted-foreground">DRSF Zertifiziert</span>
+                      <span className="text-[8px] font-bold uppercase tracking-widest text-white/40">DRSF Zertifiziert</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                      <span className="text-[8px] font-bold uppercase tracking-widest text-muted-foreground">System Online</span>
+                      <span className="text-[8px] font-bold uppercase tracking-widest text-white/40">System Online</span>
                     </div>
                   </div>
                 </div>
