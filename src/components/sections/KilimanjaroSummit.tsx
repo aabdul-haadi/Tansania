@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -10,9 +9,9 @@ import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const routes = [
-  { name: 'Machame Route', desc: 'scenic & popular' },
-  { name: 'Lemosho Route', desc: 'quieter & premium' },
-  { name: 'Marangu Route', desc: 'classic hut trek' }
+  { name: 'Machame Route', desc: 'malerisch & beliebt' },
+  { name: 'Lemosho Route', desc: 'ruhig & exklusiv' },
+  { name: 'Marangu Route', desc: 'klassische Hütte' }
 ];
 
 export function KilimanjaroSummit() {
@@ -33,7 +32,7 @@ export function KilimanjaroSummit() {
           >
             <Image
               src={kiliImg?.imageUrl || 'https://picsum.photos/seed/kili/1200/1500'}
-              alt="Kilimanjaro at Sunrise"
+              alt="Kilimandscharo bei Sonnenaufgang"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
@@ -60,7 +59,7 @@ export function KilimanjaroSummit() {
                 }}
                 className="text-xs font-bold uppercase tracking-[0.3em] text-primary block"
               >
-                Kilimanjaro Treks
+                Gipfelexpeditionen
               </motion.span>
 
               <motion.div 
@@ -69,8 +68,8 @@ export function KilimanjaroSummit() {
                   visible: { opacity: 1, y: 0 }
                 }}
               >
-                <h2 className="font-headline text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.1] mb-2 text-foreground">
-                  Climb Africa’s <br /> Iconic Roof
+                <h2 className="font-headline text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.1] mb-2 text-foreground uppercase tracking-tighter">
+                  Besteigen Sie das <br /> Dach Afrikas
                 </h2>
                 <div className="w-24 h-0.5 bg-primary/30" />
               </motion.div>
@@ -80,9 +79,9 @@ export function KilimanjaroSummit() {
                   hidden: { opacity: 0, y: 15 },
                   visible: { opacity: 1, y: 0 }
                 }}
-                className="text-muted-foreground text-base lg:text-lg font-light leading-relaxed max-w-md"
+                className="text-muted-foreground text-base lg:text-lg font-bold leading-relaxed max-w-md uppercase tracking-widest"
               >
-                Experience a safety-first journey with specialized acclimatization protocols across multiple legendary routes.
+                Erleben Sie eine sicherheitsorientierte Reise mit spezialisierten Akklimatisierungsprotokollen auf legendären Routen.
               </motion.p>
 
               <motion.div 
@@ -96,7 +95,7 @@ export function KilimanjaroSummit() {
                   <div key={route.name} className="group flex items-center gap-4 cursor-default">
                     <div className="w-4 h-px bg-muted-foreground/20 shrink-0" />
                     <div className="flex items-baseline gap-2">
-                      <span className="font-bold text-xs lg:text-sm tracking-tight text-foreground">{route.name}</span>
+                      <span className="font-bold text-xs lg:text-sm tracking-tight text-foreground uppercase">{route.name}</span>
                       <span className="text-[9px] uppercase font-bold text-muted-foreground tracking-wider">
                         — {route.desc}
                       </span>
@@ -113,15 +112,15 @@ export function KilimanjaroSummit() {
                 className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2"
               >
                 <Link href="/safaris?category=kilimanjaro">
-                  <Button size="lg" className="rounded-full px-8 h-12 font-bold shadow-lg text-xs">
-                    View Treks
+                  <Button size="lg" className="rounded-full px-8 h-12 font-bold shadow-lg text-[10px] uppercase tracking-widest">
+                    Routen ansehen
                   </Button>
                 </Link>
                 <Link 
                   href="/contact" 
-                  className="text-xs font-bold flex items-center gap-2 group hover:text-primary transition-colors min-h-[44px] text-foreground"
+                  className="text-[10px] font-bold flex items-center gap-2 group hover:text-primary transition-colors min-h-[44px] text-foreground uppercase tracking-widest"
                 >
-                  Best route for me
+                  Beste Route für mich
                   <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </motion.div>

@@ -12,19 +12,19 @@ import { cn } from '@/lib/utils';
 
 const testimonials = [
   {
-    quote: "A life-changing experience. From Cairo to the Serengeti, everything was perfectly curated.",
+    quote: "Eine lebensverändernde Erfahrung. Von Kairo bis in die Serengeti war alles perfekt kuratiert.",
     author: "Elena Rodriguez",
-    location: "Spain"
+    location: "Spanien"
   },
   {
-    quote: "Incredible attention to detail. We didn't just see the Big Five; we understood the ecosystem.",
+    quote: "Unglaubliche Liebe zum Detail. Wir haben nicht nur die Big Five gesehen, sondern das gesamte Ökosystem verstanden.",
     author: "Jonathan Banks",
     location: "USA"
   },
   {
-    quote: "Zanzibar was the perfect end. Serengeti Dreams bridges raw nature and pure luxury effortlessly.",
+    quote: "Sansibar war der perfekte Abschluss. Serengeti Dreams verbindet wilde Natur und puren Luxus mühelos.",
     author: "Amira Hassan",
-    location: "Egypt"
+    location: "Ägypten"
   }
 ];
 
@@ -40,7 +40,7 @@ export function Testimonials() {
   }, [api]);
 
   return (
-    <section className="py-16 bg-white overflow-hidden">
+    <section className="py-16 bg-white overflow-hidden border-y border-border/50">
       <div className="container mx-auto px-4 max-w-4xl">
         <Carousel setApi={setApi} opts={{ loop: true, align: "center" }} className="w-full">
           <CarouselContent>
@@ -55,12 +55,12 @@ export function Testimonials() {
                     transition={{ duration: 0.5 }}
                     className="space-y-6"
                   >
-                    <blockquote className="font-headline text-2xl md:text-4xl font-bold leading-tight text-foreground">
-                      “{item.quote}”
+                    <blockquote className="font-headline text-2xl md:text-4xl font-bold leading-tight text-foreground uppercase tracking-tight">
+                      „{item.quote}“
                     </blockquote>
                     <div className="space-y-1">
-                      <p className="font-bold text-base text-secondary">{item.author}</p>
-                      <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">
+                      <p className="font-bold text-base text-secondary uppercase tracking-widest">{item.author}</p>
+                      <p className="text-[10px] text-muted-foreground uppercase tracking-[0.3em] font-bold">
                         {item.location}
                       </p>
                     </div>

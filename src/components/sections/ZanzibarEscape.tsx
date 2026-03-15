@@ -11,22 +11,22 @@ import { cn } from '@/lib/utils';
 const experiences = [
   { 
     id: 'beach', 
-    label: 'Beach Relaxation', 
-    text: 'Drift away on pristine white sands as the turquoise ocean laps at your feet in secluded coastal havens.',
+    label: 'Strand-Entspannung', 
+    text: 'Lassen Sie sich an unberührten weißen Stränden treiben, während der türkisblaue Ozean in abgelegenen Küstenparadiesen Ihre Füße umspült.',
     img: 'https://images.unsplash.com/photo-1683323935247-ac5105bcea4e?q=80&w=1200&auto=format&fit=crop',
     hint: 'zanzibar beach'
   },
   { 
     id: 'culture', 
-    label: 'Stone Town Culture', 
-    text: 'Lose yourself in the winding alleys of Stone Town, rich with the scent of cloves and centuries of Swahili history.',
+    label: 'Stone Town Kultur', 
+    text: 'Verlieren Sie sich in den verwinkelten Gassen von Stone Town, erfüllt vom Duft von Nelken und Jahrhunderten Swahili-Geschichte.',
     img: 'https://images.unsplash.com/photo-1590001158193-79013ac7fa77?q=80&w=1200&auto=format&fit=crop',
     hint: 'stone town'
   },
   { 
     id: 'cruise', 
-    label: 'Spice & Sunset Cruises', 
-    text: 'Sail the Swahili coast on a traditional wooden dhow as the sky ignites with the colors of a tropical sunset.',
+    label: 'Gewürz- & Segeltouren', 
+    text: 'Segeln Sie auf einer traditionellen Dhow entlang der Küste, während der Himmel in den Farben eines tropischen Sonnenuntergangs erglüht.',
     img: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1200&auto=format&fit=crop',
     hint: 'dhow cruise'
   }
@@ -57,7 +57,7 @@ export function ZanzibarEscape() {
                 }}
                 className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary block"
               >
-                Zanzibar Island
+                Inselparadies Sansibar
               </motion.span>
 
               <motion.h2 
@@ -67,7 +67,7 @@ export function ZanzibarEscape() {
                 }}
                 className="font-headline text-3xl md:text-5xl lg:text-6xl font-bold leading-tight uppercase tracking-tighter"
               >
-                Slow Down on <br /> the Swahili Coast
+                Entschleunigung an der <br /> Swahili-Küste
               </motion.h2>
 
               <motion.p 
@@ -77,7 +77,7 @@ export function ZanzibarEscape() {
                 }}
                 className="text-muted-foreground text-base lg:text-lg font-bold leading-relaxed max-w-md uppercase tracking-widest"
               >
-                Contrast your rugged safari adventure with the tranquil rhythm of Zanzibar's shores and spice-scented winds.
+                Kombinieren Sie Ihre Safari mit dem entspannten Rhythmus der Insel Sansibar und dem Duft der Gewürze.
               </motion.p>
 
               <motion.div 
@@ -128,12 +128,12 @@ export function ZanzibarEscape() {
                 className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-4"
               >
                 <Link href="/safaris">
-                  <Button size="lg" className="rounded-full px-10 h-14 font-bold shadow-xl text-xs">
-                    Explore Add-Ons
+                  <Button size="lg" className="rounded-full px-10 h-14 font-bold shadow-xl text-[10px] uppercase tracking-widest">
+                    Erweiterungen Entdecken
                   </Button>
                 </Link>
-                <Link href="/trip-planner" className="text-xs font-bold flex items-center gap-2 group hover:text-primary transition-colors min-h-[44px] text-foreground uppercase tracking-widest">
-                  Pair with Safari
+                <Link href="/trip-planner" className="text-[10px] font-bold flex items-center gap-2 group hover:text-primary transition-colors min-h-[44px] text-foreground uppercase tracking-widest">
+                  Mit Safari kombinieren
                   <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </motion.div>

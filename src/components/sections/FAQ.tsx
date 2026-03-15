@@ -11,20 +11,20 @@ import {
 
 const faqs = [
   {
-    question: "Why book with a Cairo-based agency?",
-    answer: "Local expertise, secure booking from Egypt, and deep understanding of North African travel requirements for Tanzania."
+    question: "Warum bei einer Berliner Agentur buchen?",
+    answer: "Lokale Expertise gepaart mit deutscher Sicherheit. Wir bieten persönliche Beratung in Berlin und sichere Buchungsabwicklung nach EU-Recht."
   },
   {
-    question: "When is the Great Migration?",
-    answer: "Year-round. July-October for river crossings, December-March for calving. We tailor dates based on wildlife movement."
+    question: "Wann findet die Große Tierwanderung statt?",
+    answer: "Das ganze Jahr über. Von Juli bis Oktober für die Flussüberquerungen, von Dezember bis März für die Geburtenzeit. Wir passen Ihre Reisedaten individuell an."
   },
   {
-    question: "Can I combine safari with beach?",
-    answer: "Absolutely. Our 'Bush & Beach' packages start with the Serengeti and end in Zanzibar."
+    question: "Kann ich Safari mit Strandurlaub kombinieren?",
+    answer: "Absolut. Unsere 'Bush & Beach' Pakete beginnen in der wilden Serengeti und enden zur Entspannung an den Stränden von Sansibar."
   },
   {
-    question: "Are tours private or group?",
-    answer: "We specialize in private, bespoke expeditions with dedicated vehicles and professional guides."
+    question: "Sind die Touren privat oder in Gruppen?",
+    answer: "Wir spezialisieren uns auf private, maßgeschneiderte Expeditionen mit eigenen Fahrzeugen und professionellen Guides."
   }
 ];
 
@@ -39,10 +39,10 @@ export function FAQ() {
           className="text-center mb-10"
         >
           <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary mb-2 block">
-            Common Inquiries
+            Häufige Fragen
           </span>
           <h2 className="font-headline text-3xl md:text-4xl font-bold mb-4 uppercase tracking-tighter">
-            Everything You Need <span className="text-primary">to Know</span>
+            Alles Wissenswerte <span className="text-primary">für Ihre Reise</span>
           </h2>
         </motion.div>
 

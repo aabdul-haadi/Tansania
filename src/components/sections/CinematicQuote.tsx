@@ -24,9 +24,9 @@ export function CinematicQuote() {
           className="space-y-6"
         >
           <div className="w-8 h-px bg-primary/40 mx-auto" />
-          <h2 className="font-headline text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight uppercase">
-            “You don’t visit Africa. <br className="hidden md:block" />
-            <span className="text-primary">Africa changes you.</span>”
+          <h2 className="font-headline text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight uppercase tracking-tighter">
+            „Man besucht Afrika nicht einfach. <br className="hidden md:block" />
+            <span className="text-primary">Afrika verändert einen.</span>“
           </h2>
           <motion.p 
             initial={{ opacity: 0 }}
@@ -35,7 +35,7 @@ export function CinematicQuote() {
             transition={{ delay: 0.8, duration: 1 }}
             className="text-white/40 font-bold uppercase tracking-[0.4em] text-[10px]"
           >
-            — Recent Traveler
+            — Reisender
           </motion.p>
           <div className="w-8 h-px bg-primary/40 mx-auto" />
         </motion.div>

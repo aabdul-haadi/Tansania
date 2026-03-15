@@ -22,18 +22,18 @@ export function SafariVideo() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="font-headline text-4xl md:text-5xl font-bold mb-4 uppercase"
+            className="font-headline text-4xl md:text-5xl font-bold mb-4 uppercase tracking-tighter"
           >
-            Experience the <span className="text-primary">Wild Unfiltered</span>
+            Die Wildnis <span className="text-primary">Ungefiltert Erleben</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-muted-foreground text-base lg:text-lg font-bold max-w-2xl leading-relaxed"
+            className="text-muted-foreground text-base lg:text-lg font-bold max-w-2xl leading-relaxed uppercase tracking-widest"
           >
-            Witness the raw beauty of Tanzania through our lens. From the heart of the migration to the silent whispers of the savannah.
+            Erleben Sie die rohe Schönheit Tansanias durch unsere Linse. Vom Herzen der Migration bis zum stillen Flüstern der Savanne.
           </motion.p>
         </div>
 

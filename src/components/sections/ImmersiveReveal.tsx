@@ -16,17 +16,17 @@ import {
 const scenes = [
   {
     id: 'desert-dunes',
-    title: 'Ride Across the Golden Sands',
+    title: 'Ritt über den goldenen Wüstensand',
     imgId: 'desert-dunes',
   },
   {
     id: 'serengeti-wildlife',
-    title: 'Witness the Untamed',
+    title: 'Begegnung mit der ungezähmten Wildnis',
     imgId: 'serengeti-wildlife',
   },
   {
     id: 'zanzibar-coast',
-    title: 'Rest Where the Ocean Breathes',
+    title: 'Ruhe dort, wo der Ozean atmet',
     imgId: 'zanzibar-coast',
   }
 ];
@@ -88,7 +88,7 @@ export function ImmersiveReveal() {
                   transition={{ duration: 0.8, delay: 0.5 }}
                   className="text-center"
                 >
-                  <h2 className="font-headline text-3xl md:text-7xl lg:text-8xl font-bold text-white max-w-5xl mx-auto leading-tight px-4">
+                  <h2 className="font-headline text-3xl md:text-7xl lg:text-8xl font-bold text-white max-w-5xl mx-auto leading-tight px-4 uppercase tracking-tighter">
                     {scene.title}
                   </h2>
                   <div className="mt-4 md:mt-8 flex justify-center">
