@@ -13,13 +13,29 @@ import {
   CheckCircle2, 
   Phone,
   ArrowRight,
-  Sparkles
+  Sparkles,
+  Calendar,
+  Clock,
+  Zap,
+  Info
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ContactSection } from '@/components/sections/ContactSection';
+import { MigrationTimeline } from '@/components/sections/MigrationTimeline';
+import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
+import { collection, query, where, limit } from 'firebase/firestore';
+import { PackageCard } from '@/components/packages/PackageCard';
 
 export default function MigrationPage() {
+  const firestore = useFirestore();
+  
+  const pkgQuery = useMemoFirebase(() => (
+    firestore ? query(collection(firestore, 'packages'), where('isPublished', '==', true), limit(3)) : null
+  ), [firestore]);
+  
+  const { data: packages, isLoading } = useCollection(pkgQuery);
+
   return (
     <div className="bg-white min-h-screen font-body">
       {/* SECTION 1: Massive Impact Hero */}
@@ -200,6 +216,35 @@ export default function MigrationPage() {
                 Kostenloses Angebot anfragen
               </Button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* NEW SECTION: Migration Timeline */}
+      <MigrationTimeline />
+
+      {/* NEW SECTION: Package Registry */}
+      <section className="py-16 md:py-32 bg-[#fdfcfb]">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center mb-16 md:mb-24 space-y-4">
+            <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary uppercase tracking-tighter leading-none">
+              Ihr exklusives <br /><span className="text-primary">Afrika-Abenteuer:</span>
+            </h2>
+            <p className="text-muted-foreground font-bold text-[10px] md:text-sm uppercase tracking-widest max-w-xl mx-auto">
+              Maßgeschneiderte Safaris und Luxuserlebnisse in Tansania.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+            {isLoading ? (
+              [...Array(3)].map((_, i) => (
+                <div key={i} className="aspect-[4/5] bg-muted animate-pulse rounded-[2.5rem]" />
+              ))
+            ) : (
+              packages?.map((pkg) => (
+                <PackageCard key={pkg.id} pkg={pkg} />
+              ))
+            )}
           </div>
         </div>
       </section>
