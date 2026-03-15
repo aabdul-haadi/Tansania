@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useMemo } from 'react';
@@ -54,6 +55,7 @@ const siteRegistry = [
       { title: "Sansibar Paradise", path: "/destinations/zanzibar", status: "LIVE", type: "ISR", sub: "Coast" },
       { title: "Tarangire Nationalpark", path: "/national-parks/tarangire", status: "LIVE", type: "ISR", sub: "Destinations" },
       { title: "Arusha Nationalpark", path: "/national-parks/arusha", status: "LIVE", type: "ISR", sub: "Destinations" },
+      { title: "Great Migration", path: "/migration", status: "LIVE", type: "STATIC", sub: "Special" },
     ]
   },
   {
