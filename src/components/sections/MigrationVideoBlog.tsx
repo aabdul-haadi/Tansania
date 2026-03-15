@@ -75,19 +75,17 @@ export function MigrationVideoBlog() {
           <h2 className="font-headline text-3xl md:text-5xl font-bold text-primary uppercase tracking-tighter">
             Reiseblog
           </h2>
-          <p className="text-muted-foreground font-bold text-[10px] md:text-sm uppercase tracking-widest max-w-xl mx-auto opacity-60">
+          <p className="text-muted-foreground font-bold text-[8px] md:text-[10px] uppercase tracking-widest max-w-xl mx-auto opacity-60">
             Erfahrungen und wertvolle Einblicke aus Jahren der Reiseexpertise
           </p>
         </div>
 
-        {/* Desktop Grid: 100% same clone as SS */}
         <div className="hidden md:grid grid-cols-3 gap-8">
           {migrationBlogPosts.map((post) => (
             <MigrationBlogStaticCard key={post.id} post={post} />
           ))}
         </div>
 
-        {/* Mobile Modern Slider */}
         <div className="md:hidden -mx-4">
           <Carousel opts={{ align: "start", loop: true }} className="w-full">
             <CarouselContent className="-ml-2">

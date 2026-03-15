@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -58,16 +57,13 @@ export function MigrationTimeline() {
         <div className="bg-[#f8f8f8] rounded-[2rem] md:rounded-[4rem] overflow-hidden shadow-sm border border-border/50">
           <div className="grid grid-cols-1 lg:grid-cols-12">
             
-            {/* Main Table Column */}
             <div className="lg:col-span-8 p-6 md:p-16 space-y-1">
-              {/* Header Row - Desktop Only */}
               <div className="hidden lg:grid grid-cols-12 gap-6 pb-6 border-b border-border/50 text-[9px] font-black uppercase tracking-[0.3em] text-muted-foreground">
                 <div className="col-span-2">Zeitraum</div>
                 <div className="col-span-4">Wo in Tanzania?</div>
                 <div className="col-span-6">Was du typischerweise siehst</div>
               </div>
 
-              {/* Data Rows */}
               {timelineData.map((item, idx) => (
                 <div key={idx} className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 py-6 md:py-8 border-b border-border/30 last:border-none group transition-all">
                   <div className="lg:col-span-2 flex items-center">
@@ -91,7 +87,6 @@ export function MigrationTimeline() {
                 </div>
               ))}
 
-              {/* Mini Decision Aid */}
               <div className="pt-10 mt-4 border-t border-border flex flex-col gap-4">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
@@ -116,7 +111,6 @@ export function MigrationTimeline() {
               </div>
             </div>
 
-            {/* Sidebar Visual Stack */}
             <div className="lg:col-span-4 bg-secondary relative overflow-hidden hidden lg:block">
               <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
               <div className="relative z-10 h-full flex flex-col">

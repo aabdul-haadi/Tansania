@@ -20,8 +20,8 @@ import {
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ContactSection } from '@/components/shared/ContactSection';
-import { MigrationTimeline } from '@/components/migration/MigrationTimeline';
-import { MigrationVideoBlog } from '@/components/migration/MigrationVideoBlog';
+import { MigrationTimeline } from '@/components/sections/MigrationTimeline';
+import { MigrationVideoBlog } from '@/components/sections/MigrationVideoBlog';
 import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { collection, query, where, limit } from 'firebase/firestore';
 import { PackageCard } from '@/components/shared/PackageCard';
@@ -99,7 +99,6 @@ export default function MigrationPage() {
 
       {/* Section 2: Compacted Mosaic Intro */}
       <section className="py-12 md:py-24 container mx-auto px-4 max-w-7xl relative">
-        {/* Registry Pattern Background */}
         <div className="absolute top-0 left-0 w-full h-full opacity-[0.02] pointer-events-none" 
              style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
 
@@ -115,7 +114,6 @@ export default function MigrationPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
             </div>
-            {/* Overlapping Detail */}
             <motion.div 
               initial={{ scale: 0.9, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
