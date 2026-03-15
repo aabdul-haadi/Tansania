@@ -27,6 +27,7 @@ import { MigrationVideoBlog } from '@/components/sections/MigrationVideoBlog';
 import { MigrationSafariFactor } from '@/components/sections/MigrationSafariFactor';
 import { MigrationTimeline } from '@/components/sections/MigrationTimeline';
 import { MigrationExpertise } from '@/components/sections/MigrationExpertise';
+import { MigrationGallery } from '@/components/sections/MigrationGallery';
 import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { collection, query, where, limit } from 'firebase/firestore';
 import { PackageCard } from '@/components/shared/PackageCard';
@@ -213,6 +214,7 @@ export default function MigrationPage() {
 
       <MigrationSafariFactor />
       <MigrationExpertise />
+      <MigrationGallery />
       <MigrationTimeline />
       <MigrationVideoBlog />
 
