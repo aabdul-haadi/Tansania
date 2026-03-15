@@ -32,20 +32,20 @@
     --ring: 19 89% 47%;
     --radius: 1rem;
 
-    /* COMPACTED TYPOGRAPHY: High-Density Scale Reduced */
-    --text-xs: 0.6rem;    /* 9.6px */
-    --text-sm: 0.7rem;    /* 11.2px */
-    --text-base: 0.8rem;  /* 12.8px - Main Body */
-    --text-lg: 0.9rem;    /* 14.4px */
-    --text-xl: 1rem;      /* 16px */
-    --text-2xl: 1.125rem; /* 18px */
-    --text-3xl: 1.25rem;  /* 20px */
-    --text-4xl: 1.75rem;  /* 28px */
-    --text-5xl: 2.25rem;  /* 36px */
-    --text-6xl: 3rem;     /* 48px */
-    --text-7xl: 4rem;     /* 64px */
-    --text-8xl: 5rem;     /* 80px */
-    --text-9xl: 6.5rem;   /* 104px */
+    /* REFINED TYPOGRAPHY: Slightly increased for readability while remaining compact */
+    --text-xs: 0.7rem;    /* 11.2px */
+    --text-sm: 0.8rem;    /* 12.8px */
+    --text-base: 0.9rem;  /* 14.4px - Main Body */
+    --text-lg: 1rem;      /* 16px */
+    --text-xl: 1.125rem;  /* 18px */
+    --text-2xl: 1.25rem;  /* 20px */
+    --text-3xl: 1.5rem;   /* 24px */
+    --text-4xl: 2rem;     /* 32px */
+    --text-5xl: 2.5rem;   /* 40px */
+    --text-6xl: 3.5rem;   /* 56px */
+    --text-7xl: 4.5rem;   /* 72px */
+    --text-8xl: 5.5rem;   /* 88px */
+    --text-9xl: 7rem;     /* 112px */
   }
 
   .dark {
