@@ -17,7 +17,7 @@ const timelineData = [
   {
     period: "Apr – Mai",
     location: "Zentral / West",
-    observation: "Herden auf dem Move, dramatische Savannen-Szenen, oft sattgrün.",
+    observation: "Herden auf dem Move, dramatische Savannen-Szenen.",
     img: "https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=400"
   },
   {
@@ -42,67 +42,65 @@ const timelineData = [
 
 export function MigrationTimeline() {
   return (
-    <section className="py-16 md:py-32 bg-white overflow-hidden">
+    <section className="py-10 md:py-20 bg-white overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center mb-12 md:mb-20 space-y-4">
-          <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary uppercase tracking-tighter leading-none">
-            Beste Reisezeit – <br /><span className="text-primary">Monat für Monat</span> <span className="text-secondary opacity-20">– klar & ehrlich</span>
+        <div className="text-center mb-10 md:mb-16 space-y-3">
+          <h2 className="font-headline text-2xl md:text-5xl font-bold text-secondary uppercase tracking-tighter leading-none">
+            Beste Reisezeit – <br /><span className="text-primary">Monat für Monat</span>
           </h2>
-          <div className="flex items-center justify-center gap-2 text-muted-foreground font-bold text-[8px] md:text-[10px] uppercase tracking-widest">
-            <Info className="w-3.5 h-3.5 text-primary" />
-            <p>Hinweis: Richtwerte – genaue Abläufe hängen vom Regen ab. Flussüberquerungen sind schwer vorherzusagen.</p>
+          <div className="flex items-center justify-center gap-2 text-muted-foreground font-bold text-[7px] md:text-[9px] uppercase tracking-widest">
+            <Info className="w-3 h-3 text-primary" />
+            <p>Hinweis: Richtwerte – genaue Abläufe hängen vom Regen ab.</p>
           </div>
         </div>
 
-        <div className="bg-[#f8f8f8] rounded-[2rem] md:rounded-[4rem] overflow-hidden shadow-sm border border-border/50">
+        <div className="bg-[#f8f8f8] rounded-[1.5rem] md:rounded-[3rem] overflow-hidden shadow-sm border border-border/50">
           <div className="grid grid-cols-1 lg:grid-cols-12">
             
-            <div className="lg:col-span-8 p-6 md:p-16 space-y-1">
-              <div className="hidden lg:grid grid-cols-12 gap-6 pb-6 border-b border-border/50 text-[9px] font-black uppercase tracking-[0.3em] text-muted-foreground">
+            <div className="lg:col-span-8 p-5 md:p-12 space-y-1">
+              <div className="hidden lg:grid grid-cols-12 gap-6 pb-4 border-b border-border/50 text-[8px] font-black uppercase tracking-[0.3em] text-muted-foreground">
                 <div className="col-span-2">Zeitraum</div>
                 <div className="col-span-4">Wo in Tanzania?</div>
-                <div className="col-span-6">Was du typischerweise siehst</div>
+                <div className="col-span-6">Beobachtung</div>
               </div>
 
               {timelineData.map((item, idx) => (
-                <div key={idx} className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 py-6 md:py-8 border-b border-border/30 last:border-none group transition-all">
+                <div key={idx} className="grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-6 py-4 md:py-6 border-b border-border/30 last:border-none group transition-all">
                   <div className="lg:col-span-2 flex items-center">
-                    <span className="text-sm md:text-xl font-headline font-black text-secondary uppercase leading-none group-hover:text-primary transition-colors">
+                    <span className="text-xs md:text-lg font-headline font-black text-secondary uppercase leading-none group-hover:text-primary transition-colors">
                       {item.period}
                     </span>
                   </div>
                   <div className="lg:col-span-4 flex flex-col justify-center">
-                    <p className="text-[10px] font-black text-primary uppercase tracking-widest mb-1 lg:hidden">Standort</p>
                     <div className="flex items-center gap-2">
-                      <MapPin className="w-3.5 h-3.5 text-primary shrink-0" />
-                      <p className="font-bold text-xs md:text-base text-secondary uppercase tracking-tight">{item.location}</p>
+                      <MapPin className="w-3 h-3 text-primary shrink-0" />
+                      <p className="font-bold text-[10px] md:text-sm text-secondary uppercase tracking-tight">{item.location}</p>
                     </div>
                   </div>
                   <div className="lg:col-span-6 flex flex-col justify-center">
-                    <p className="text-[10px] font-black text-primary uppercase tracking-widest mb-1 lg:hidden">Beobachtung</p>
-                    <p className="text-[11px] md:text-sm text-muted-foreground font-bold leading-relaxed uppercase tracking-widest">
+                    <p className="text-[9px] md:text-xs text-muted-foreground font-bold leading-relaxed uppercase tracking-widest">
                       {item.observation}
                     </p>
                   </div>
                 </div>
               ))}
 
-              <div className="pt-10 mt-4 border-t border-border flex flex-col gap-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                    <Sparkles className="w-4 h-4 text-primary" />
+              <div className="pt-8 mt-4 border-t border-border flex flex-col gap-3">
+                <div className="flex items-center gap-2">
+                  <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                    <Sparkles className="w-3.5 h-3.5 text-primary" />
                   </div>
-                  <h4 className="font-black text-[9px] md:text-[11px] uppercase tracking-[0.3em] text-secondary">Mini-Entscheidungshilfe:</h4>
+                  <h4 className="font-black text-[8px] md:text-[10px] uppercase tracking-[0.3em] text-secondary">Mini-Entscheidungshilfe:</h4>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                   {[
-                    { t: "Babytiere + viele Raubtiere?", v: "Feb-Mär (Ndutu)" },
-                    { t: "Fluss-Drama erleben?", v: "Jul-Sep (Nord / Mara River)" },
-                    { t: "Migration + weniger Andrang?", v: "Mai-Jun oder Okt-Nov" }
+                    { t: "Babytiere?", v: "Feb-Mär (Ndutu)" },
+                    { t: "Fluss-Drama?", v: "Jul-Sep (Mara River)" },
+                    { t: "Weniger Andrang?", v: "Mai-Jun oder Okt-Nov" }
                   ].map((tip, i) => (
-                    <div key={i} className="flex gap-3 items-start">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0 mt-0.5" />
-                      <p className="text-[9px] md:text-[10px] font-bold text-muted-foreground uppercase tracking-widest leading-snug">
+                    <div key={i} className="flex gap-2.5 items-start">
+                      <CheckCircle2 className="w-3 h-3 text-primary shrink-0 mt-0.5" />
+                      <p className="text-[8px] md:text-[9px] font-bold text-muted-foreground uppercase tracking-widest leading-snug">
                         {tip.t} <br /><span className="text-secondary">→ {tip.v}</span>
                       </p>
                     </div>
@@ -130,9 +128,9 @@ export function MigrationTimeline() {
           </div>
         </div>
 
-        <div className="mt-16 md:mt-24 flex justify-center">
+        <div className="mt-10 md:mt-16 flex justify-center">
           <Link href="#contact-form">
-            <Button size="lg" className="rounded-full px-16 h-16 md:h-20 bg-primary text-white font-black text-xs md:text-sm uppercase tracking-[0.3em] shadow-2xl hover:scale-[1.02] transition-transform border-none">
+            <Button size="lg" className="rounded-full px-12 h-12 md:h-16 bg-primary text-white font-black text-[8px] md:text-[10px] uppercase tracking-[0.3em] shadow-xl hover:scale-[1.02] transition-transform border-none">
               JETZT ANFRAGEN
             </Button>
           </Link>

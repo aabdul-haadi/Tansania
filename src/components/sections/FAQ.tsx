@@ -12,37 +12,37 @@ import {
 const faqs = [
   {
     question: "Warum bei einer Berliner Agentur buchen?",
-    answer: "Lokale Expertise gepaart mit deutscher Sicherheit. Wir bieten persönliche Beratung in Berlin und sichere Buchungsabwicklung nach EU-Recht."
+    answer: "Lokale Expertise gepaart mit deutscher Sicherheit. Wir bieten persönliche Beratung in Berlin."
   },
   {
     question: "Wann findet die Große Tierwanderung statt?",
-    answer: "Das ganze Jahr über. Von Juli bis Oktober für die Flussüberquerungen, von Dezember bis März für die Geburtenzeit. Wir passen Ihre Reisedaten individuell an."
+    answer: "Das ganze Jahr über. Von Juli bis Oktober für die Flussüberquerungen."
   },
   {
     question: "Kann ich Safari mit Strandurlaub kombinieren?",
-    answer: "Absolut. Unsere 'Bush & Beach' Pakete beginnen in der wilden Serengeti und enden zur Entspannung an den Stränden von Sansibar."
+    answer: "Absolut. Unsere 'Bush & Beach' Pakete verbinden Serengeti und Sansibar."
   },
   {
     question: "Sind die Touren privat oder in Gruppen?",
-    answer: "Wir spezialisieren uns auf private, maßgeschneiderte Expeditionen mit eigenen Fahrzeugen und professionellen Guides."
+    answer: "Wir spezialisieren uns auf private, maßgeschneiderte Expeditionen."
   }
 ];
 
 export function FAQ() {
   return (
-    <section className="py-16 bg-muted/30">
-      <div className="container mx-auto px-4 max-w-2xl">
+    <section className="py-10 md:py-16 bg-muted/30">
+      <div className="container mx-auto px-4 max-w-xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-10"
+          className="text-center mb-8"
         >
-          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary mb-2 block">
+          <span className="text-[8px] md:text-[9px] font-bold uppercase tracking-[0.3em] text-primary mb-1 block">
             Häufige Fragen
           </span>
-          <h2 className="font-headline text-3xl md:text-4xl font-bold mb-4 uppercase tracking-tighter">
-            Alles Wissenswerte <span className="text-primary">für Ihre Reise</span>
+          <h2 className="font-headline text-2xl md:text-3xl font-bold mb-2 uppercase tracking-tighter">
+            Alles Wissenswerte
           </h2>
         </motion.div>
 
@@ -52,17 +52,17 @@ export function FAQ() {
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          <Accordion type="single" collapsible className="w-full space-y-3">
+          <Accordion type="single" collapsible className="w-full space-y-2">
             {faqs.map((faq, index) => (
               <AccordionItem 
                 key={index} 
                 value={`item-${index}`}
-                className="bg-white border border-border/50 rounded-xl px-4 py-1 shadow-sm transition-all"
+                className="bg-white border border-border/50 rounded-lg px-4 py-0 shadow-sm transition-all"
               >
-                <AccordionTrigger className="font-bold text-base hover:no-underline hover:text-primary transition-colors text-left uppercase tracking-tight">
+                <AccordionTrigger className="font-bold text-xs md:text-sm py-3 hover:no-underline hover:text-primary transition-colors text-left uppercase tracking-tight">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground text-sm leading-relaxed pt-1 pb-3 font-bold uppercase tracking-widest">
+                <AccordionContent className="text-muted-foreground text-[9px] md:text-[10px] leading-relaxed pt-0 pb-3 font-bold uppercase tracking-widest">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
