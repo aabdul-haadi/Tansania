@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -27,6 +26,7 @@ import { ContactSection } from '@/components/shared/ContactSection';
 import { MigrationVideoBlog } from '@/components/sections/MigrationVideoBlog';
 import { MigrationSafariFactor } from '@/components/sections/MigrationSafariFactor';
 import { MigrationTimeline } from '@/components/sections/MigrationTimeline';
+import { MigrationExpertise } from '@/components/sections/MigrationExpertise';
 import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { collection, query, where, limit } from 'firebase/firestore';
 import { PackageCard } from '@/components/shared/PackageCard';
@@ -103,14 +103,12 @@ export default function MigrationPage() {
         </div>
       </section>
 
-      {/* Section 2: 100% SS Exact Clone Mosaic Section */}
+      {/* Section 2: Mosaic Section */}
       <section className="py-12 md:py-32 container mx-auto px-4 max-w-7xl relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-20 items-center">
           
-          {/* Mosaic Logic Column */}
           <div className="lg:col-span-6 relative">
             <div className="relative flex items-center gap-3 md:gap-6">
-              {/* Main Vertical Image */}
               <div className="w-[50%] shrink-0">
                 <div className="relative aspect-[2/3] rounded-[1.5rem] md:rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white">
                   <Image 
@@ -123,7 +121,6 @@ export default function MigrationPage() {
                 </div>
               </div>
               
-              {/* Stacked Images */}
               <div className="w-[50%] flex flex-col gap-3 md:gap-6">
                 <div className="relative aspect-[4/3] rounded-[1.25rem] md:rounded-[2rem] overflow-hidden shadow-xl border-4 border-white">
                   <Image 
@@ -145,7 +142,6 @@ export default function MigrationPage() {
                 </div>
               </div>
 
-              {/* The Signature Arrow Circle */}
               <motion.div 
                 whileHover={{ scale: 1.1 }}
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 md:w-24 md:h-24 bg-white rounded-full flex items-center justify-center shadow-[0_20px_50px_rgba(0,0,0,0.15)] z-20 border-[6px] border-[#fdfcfb]"
@@ -155,7 +151,6 @@ export default function MigrationPage() {
             </div>
           </div>
 
-          {/* Content Narrative Column */}
           <div className="lg:col-span-6 space-y-8 md:space-y-10">
             <div className="space-y-4">
               <h2 className="font-headline text-3xl md:text-5xl font-black text-primary uppercase leading-[1.1] tracking-tighter">
@@ -172,7 +167,6 @@ export default function MigrationPage() {
               </div>
             </div>
 
-            {/* Feature Registry Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
@@ -184,13 +178,6 @@ export default function MigrationPage() {
                 <p className="text-[10px] md:text-xs text-muted-foreground font-bold uppercase tracking-widest leading-relaxed">
                   Maßgeschneiderte Safari-Routen und handverlesene Lodges – perfekt auf Ihre Wünsche abgestimmt.
                 </p>
-                <ul className="space-y-1.5">
-                  {['Serengeti', 'Great Migration'].map(item => (
-                    <li key={item} className="flex items-center gap-2 text-[9px] font-black uppercase text-secondary">
-                      <div className="w-1 h-1 rounded-full bg-primary" /> {item}
-                    </li>
-                  ))}
-                </ul>
               </div>
 
               <div className="space-y-4">
@@ -203,17 +190,9 @@ export default function MigrationPage() {
                 <p className="text-[10px] md:text-xs text-muted-foreground font-bold uppercase tracking-widest leading-relaxed">
                   Unsere Experten beraten Sie zu Reisezeit, Migration-Routen und den besten Regionen der Serengeti.
                 </p>
-                <ul className="space-y-1.5">
-                  {['Safari', 'Tansania'].map(item => (
-                    <li key={item} className="flex items-center gap-2 text-[9px] font-black uppercase text-secondary">
-                      <div className="w-1 h-1 rounded-full bg-primary" /> {item}
-                    </li>
-                  ))}
-                </ul>
               </div>
             </div>
 
-            {/* Technical Command Row */}
             <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-8 border-t border-border/50">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-white shadow-lg">
@@ -232,8 +211,16 @@ export default function MigrationPage() {
         </div>
       </section>
 
+      {/* Functional Slider */}
       <MigrationSafariFactor />
+
+      {/* Expertise Subsection (New Section) */}
+      <MigrationExpertise />
+
+      {/* Timeline Section */}
       <MigrationTimeline />
+
+      {/* Video & Blog Section */}
       <MigrationVideoBlog />
 
       {/* Package Collection */}
