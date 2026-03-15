@@ -22,6 +22,7 @@ import { Badge } from '@/components/ui/badge';
 import { ContactSection } from '@/components/shared/ContactSection';
 import { MigrationTimeline } from '@/components/sections/MigrationTimeline';
 import { MigrationVideoBlog } from '@/components/sections/MigrationVideoBlog';
+import { MigrationSafariFactor } from '@/components/sections/MigrationSafariFactor';
 import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { collection, query, where, limit } from 'firebase/firestore';
 import { PackageCard } from '@/components/shared/PackageCard';
@@ -181,6 +182,10 @@ export default function MigrationPage() {
       </section>
 
       <MigrationTimeline />
+      
+      {/* 100% SS CLONE: Migration Factor Slider */}
+      <MigrationSafariFactor />
+
       <MigrationVideoBlog />
 
       {/* Package Collection */}
