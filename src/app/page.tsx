@@ -7,7 +7,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ShieldCheck, Heart, Map, Clock, Sparkles, Search, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import {
   Carousel,
   CarouselContent,
@@ -27,18 +26,11 @@ import { FAQ } from '@/components/sections/FAQ';
 import { ExpertiseNarrative } from '@/components/sections/ExpertiseNarrative';
 import { MeetTheSpecialists } from '@/components/sections/MeetTheSpecialists';
 import { AfricaVariety } from '@/components/sections/AfricaVariety';
+import { Reiseblog } from '@/components/home/Reiseblog';
 
 export default function Home() {
   const [tanzaniaApi, setTanzaniaApi] = useState<CarouselApi>();
-  const [tanzaniaIndex, setTanzaniaIndex] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
-
-  useEffect(() => {
-    if (!tanzaniaApi) return;
-    tanzaniaApi.on("select", () => {
-      setTanzaniaIndex(tanzaniaApi.selectedScrollSnap());
-    });
-  }, [tanzaniaApi]);
 
   const highlights = [
     { title: "Sansibar Küste", desc: "Makellose weiße Sandstrände und historische Gewürzküste.", img: 'https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=1200', link: "/destinations/zanzibar", hint: "zanzibar beach" },
@@ -50,6 +42,7 @@ export default function Home() {
 
   return (
     <div className="relative font-bold">
+      {/* Dynamic Cinematic Hero */}
       <section className="relative h-[60vh] md:h-[80vh] flex items-center justify-center overflow-hidden">
         <HeroBackgroundSlider 
           images={[
@@ -59,73 +52,33 @@ export default function Home() {
           ]} 
         />
         <div className="container relative z-20 mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <h1 className="font-headline text-3xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-[1] uppercase tracking-tighter shadow-sm">
-              Die Seele der <br />
-              <span className="text-primary">Serengeti</span>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-4xl mx-auto text-center">
+            <h1 className="font-headline text-3xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-[1] uppercase tracking-tighter">
+              Die Seele der <br /><span className="text-primary">Serengeti</span>
             </h1>
-
-            <div className="max-w-md md:max-w-lg mx-auto relative group px-2">
+            
+            {/* Search Protocol */}
+            <div className="max-w-md md:max-w-lg mx-auto relative px-2">
               <div className="relative flex items-center bg-white rounded-xl shadow-2xl overflow-hidden h-12 md:h-14">
-                <div className="pl-4 text-primary shrink-0">
-                  <Search className="w-4 h-4 md:w-5 md:h-5" />
-                </div>
-                <Input 
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Wohin soll die Reise gehen?"
-                  className="h-full border-none bg-transparent text-secondary font-bold placeholder:text-muted-foreground/50 text-[11px] md:text-sm focus-visible:ring-0"
-                />
-                <Link href="/itinerary-builder" className="pr-2">
-                  <Button className="h-8 md:h-10 rounded-lg px-3 gap-2 hidden sm:flex text-[8px] md:text-[9px] font-black uppercase">
-                    AI Planer
-                  </Button>
-                </Link>
-              </div>
-              <div className="flex justify-center gap-3 mt-3">
-                {['Migration', 'Big Five', 'Sansibar'].map(tag => (
-                  <button key={tag} onClick={() => setSearchQuery(tag)} className="text-[8px] md:text-[9px] font-black uppercase tracking-widest text-white/80 hover:text-primary transition-colors">
-                    # {tag}
-                  </button>
-                ))}
+                <div className="pl-4 text-primary shrink-0"><Search className="w-4 h-4 md:w-5 md:h-5" /></div>
+                <Input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Wohin soll die Reise gehen?" className="h-full border-none bg-transparent text-secondary font-bold placeholder:text-muted-foreground/50 text-[11px] md:text-sm focus-visible:ring-0" />
+                <Link href="/itinerary-builder" className="pr-2"><Button className="h-8 md:h-10 rounded-lg px-3 gap-2 hidden sm:flex text-[8px] md:text-[9px] font-black uppercase">AI Planer</Button></Link>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mt-8">
-              <Link href="/safaris" className="w-full sm:w-auto">
-                <Button size="lg" className="w-full rounded-full px-10 h-12 md:h-14 text-[9px] md:text-[10px] font-bold shadow-xl uppercase tracking-widest">
-                  Katalog ansehen
-                </Button>
-              </Link>
-              <Link href="/trip-advisor" className="w-full sm:w-auto">
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="w-full rounded-full px-10 h-12 md:h-14 text-[9px] md:text-[10px] font-bold border-white/20 text-white hover:bg-white/10 backdrop-blur-md bg-black/20 uppercase tracking-widest"
-                >
-                  <MessageSquare className="w-3.5 h-3.5 mr-2" /> AI Beratung
-                </Button>
-              </Link>
+              <Link href="/safaris"><Button size="lg" className="w-full sm:w-auto rounded-full px-10 h-12 md:h-14 text-[9px] md:text-[10px] font-bold shadow-xl uppercase tracking-widest">Katalog ansehen</Button></Link>
+              <Link href="/trip-advisor"><Button size="lg" variant="outline" className="w-full sm:w-auto rounded-full px-10 h-12 md:h-14 text-[9px] md:text-[10px] font-bold border-white/20 text-white hover:bg-white/10 backdrop-blur-md bg-black/20 uppercase tracking-widest"><MessageSquare className="w-3.5 h-3.5 mr-2" /> AI Beratung</Button></Link>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* High-Density Trust Bar */}
+      {/* Trust Registry Bar */}
       <section className="py-4 md:py-6 bg-white border-y border-border/50">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 items-center">
-            {[
-              { icon: ShieldCheck, label: "Sicher Reisen" },
-              { icon: Heart, label: "Nachhaltigkeit" },
-              { icon: Map, label: "Private Guides" },
-              { icon: Clock, label: "24/7 Support" }
-            ].map((item, idx) => (
+            {[{ icon: ShieldCheck, label: "Sicher Reisen" }, { icon: Heart, label: "Nachhaltigkeit" }, { icon: Map, label: "Private Guides" }, { icon: Clock, label: "24/7 Support" }].map((item, idx) => (
               <div key={idx} className="flex flex-col items-center gap-1 group">
                 <item.icon className="w-4 h-4 text-primary transition-transform group-hover:scale-110" />
                 <span className="text-[8px] md:text-[10px] font-bold tracking-widest text-muted-foreground uppercase text-center">{item.label}</span>
@@ -137,7 +90,7 @@ export default function Home() {
 
       <ExpertiseNarrative />
 
-      {/* Compact Destinations Carousel */}
+      {/* Highlights Registry */}
       <section className="py-12 md:py-16 relative overflow-hidden bg-muted/10">
         <div className="container mx-auto px-4 max-w-7xl">
           <Carousel setApi={setTanzaniaApi} opts={{ align: "start", loop: true }} className="w-full">
@@ -147,8 +100,8 @@ export default function Home() {
                 <h2 className="font-headline text-2xl md:text-5xl font-bold leading-tight uppercase">Das Beste von Tansania</h2>
               </div>
               <div className="flex gap-2">
-                <CarouselPrevious className="static translate-y-0 h-9 w-9 border-secondary/20 hover:bg-secondary hover:text-white transition-all rounded-full" />
-                <CarouselNext className="static translate-y-0 h-9 w-9 border-secondary/20 hover:bg-secondary hover:text-white transition-all rounded-full" />
+                <CarouselPrevious className="static translate-y-0 h-9 w-9 rounded-full" />
+                <CarouselNext className="static translate-y-0 h-9 w-9 rounded-full" />
               </div>
             </div>
             <CarouselContent className="-ml-4">
@@ -159,9 +112,7 @@ export default function Home() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent p-6 md:p-10 flex flex-col justify-end">
                       <h3 className="text-white text-xl md:text-3xl font-headline font-bold mb-1 uppercase">{item.title}</h3>
                       <p className="text-white/70 mb-4 max-w-xs text-[9px] md:text-xs font-bold leading-relaxed uppercase tracking-widest">{item.desc}</p>
-                      <Link href={item.link}>
-                        <Button className="rounded-xl px-6 h-9 md:h-11 font-bold shadow-xl text-[9px] uppercase tracking-widest">Region erleben</Button>
-                      </Link>
+                      <Link href={item.link}><Button className="rounded-xl px-6 h-9 md:h-11 font-bold shadow-xl text-[9px] uppercase tracking-widest">Region erleben</Button></Link>
                     </div>
                   </motion.div>
                 </CarouselItem>
@@ -173,6 +124,7 @@ export default function Home() {
 
       <SafariMap />
       <AfricaVariety />
+      <Reiseblog />
       <SafariVideo />
       <KilimanjaroSummit />
       <ZanzibarEscape />
@@ -187,25 +139,15 @@ export default function Home() {
 
 function HeroBackgroundSlider({ images }: { images: { src: string, hint: string }[] }) {
   const [index, setIndex] = useState(0);
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % images.length);
-    }, 6000);
-    return () => clearInterval(timer);
+  useEffect(() => { 
+    const timer = setInterval(() => setIndex((prev) => (prev + 1) % images.length), 6000); 
+    return () => clearInterval(timer); 
   }, [images.length]);
-
   return (
     <div className="absolute inset-0 z-0">
       <AnimatePresence mode="popLayout">
-        <motion.div
-          key={index}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.2, ease: "easeInOut" }}
-          className="absolute inset-0"
-        >
-          <Image src={images[index].src} alt="Hero Background" fill className="object-cover" priority data-ai-hint={images[index].hint} />
+        <motion.div key={index} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1.2 }} className="absolute inset-0">
+          <Image src={images[index].src} alt="Hero" fill className="object-cover" priority data-ai-hint={images[index].hint} />
         </motion.div>
       </AnimatePresence>
       <div className="absolute inset-0 bg-black/40 z-10" />
