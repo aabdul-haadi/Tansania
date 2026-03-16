@@ -3,7 +3,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Compass, Lock, User, Loader2, ArrowRight } from 'lucide-react';
+import { Compass, Lock, User, Loader2, ArrowRight, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -22,6 +22,16 @@ export default function LoginPage() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!auth) {
+      toast({ 
+        variant: "destructive", 
+        title: "Configuration Missing", 
+        description: "Firebase service is not initialized. Please ensure your environment variables are set." 
+      });
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -53,26 +63,33 @@ export default function LoginPage() {
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-secondary text-white shadow-xl mb-4">
             <Compass className="w-8 h-8" />
           </div>
-          <h1 className="font-headline text-3xl font-bold tracking-tight">Staff Portal</h1>
-          <p className="text-muted-foreground mt-2 text-sm uppercase tracking-widest font-bold">Secure CMS Login</p>
+          <h1 className="font-headline text-3xl font-bold tracking-tight uppercase">Staff Portal</h1>
+          <p className="text-muted-foreground mt-2 text-[10px] uppercase tracking-widest font-bold">Secure Registry Login</p>
         </div>
 
         <Card className="border-none shadow-2xl rounded-[2rem] overflow-hidden bg-white">
           <CardHeader className="p-8 pb-0">
-            <CardTitle className="text-xl">Development Access</CardTitle>
-            <CardDescription>Enter any email and password to access the dashboard during this phase.</CardDescription>
+            <CardTitle className="text-xl font-bold uppercase tracking-tight text-secondary">Official Access</CardTitle>
+            <CardDescription className="text-[10px] font-bold uppercase tracking-widest mt-1">Enter credentials to synchronize with the command center.</CardDescription>
           </CardHeader>
           <CardContent className="p-8">
+            {!auth && (
+              <div className="mb-6 p-4 bg-destructive/10 rounded-xl flex items-center gap-3 border border-destructive/20 text-destructive animate-pulse">
+                <AlertCircle className="w-5 h-5 shrink-0" />
+                <p className="text-[9px] font-black uppercase tracking-widest leading-tight">Registry Offline: Missing Firebase Config</p>
+              </div>
+            )}
+            
             <form onSubmit={handleLogin} className="space-y-6">
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email" className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground ml-1">Official ID (Email)</Label>
                 <div className="relative">
                   <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                   <Input 
                     id="email" 
                     type="email" 
-                    placeholder="admin@example.com" 
-                    className="pl-12 h-12 rounded-xl bg-muted/20 border-none"
+                    placeholder="admin@tansania-reiseabenteuer.de" 
+                    className="pl-12 h-14 rounded-xl bg-muted/20 border-none font-bold text-xs"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -80,14 +97,14 @@ export default function LoginPage() {
                 </div>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password" title="Access Key" className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground ml-1">Access Key</Label>
                 <div className="relative">
                   <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                   <Input 
                     id="password" 
                     type="password" 
                     placeholder="••••••••" 
-                    className="pl-12 h-12 rounded-xl bg-muted/20 border-none"
+                    className="pl-12 h-14 rounded-xl bg-muted/20 border-none font-bold text-xs"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
@@ -97,10 +114,10 @@ export default function LoginPage() {
 
               <Button 
                 type="submit" 
-                disabled={loading} 
-                className="w-full h-12 rounded-xl text-base font-bold gap-2 shadow-lg shadow-primary/20"
+                disabled={loading || !auth} 
+                className="w-full h-14 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] gap-2 shadow-xl shadow-primary/20"
               >
-                {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <>Login to Dashboard <ArrowRight className="w-4 h-4" /></>}
+                {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <>Access Dashboard <ArrowRight className="w-4 h-4" /></>}
               </Button>
             </form>
           </CardContent>
