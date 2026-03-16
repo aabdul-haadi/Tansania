@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -33,7 +34,6 @@ export function Navbar() {
       const currentScrollY = window.scrollY;
       setIsScrolled(currentScrollY > 50);
       
-      // Only hide navbar on scroll if the menu is NOT open
       if (currentScrollY > lastScrollY && currentScrollY > 200 && !isOpen) {
         setIsVisible(false);
       } else {
@@ -54,12 +54,12 @@ export function Navbar() {
     <header 
       className={cn(
         "fixed top-0 w-full z-[100] transition-all duration-500",
-        !isVisible ? "-translate-y-full" : "translate-y-0",
+        (!isVisible && !isOpen) ? "-translate-y-full" : "translate-y-0",
         isScrolled ? "py-3" : "py-6 md:py-10"
       )}
     >
       <nav className="container mx-auto px-4 max-w-7xl">
-        {/* Main Navbar Bar - Contents hide when menu is open as per request */}
+        {/* Main Navbar Bar - Hides completely when menu is open to prevent overlapping */}
         <div className={cn(
           "flex items-center justify-between transition-all duration-500 px-6 md:px-10 h-14 md:h-18 rounded-full border border-transparent",
           isScrolled 
@@ -111,22 +111,28 @@ export function Navbar() {
                   </div>
                 </button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-full sm:max-w-[450px] p-0 bg-secondary border-l border-white/5 flex flex-col shadow-2xl">
-                <div className="p-6 md:p-8 border-b border-white/5 flex items-center justify-between shrink-0 bg-secondary sticky top-0 z-20">
-                  <div className="flex items-center gap-4 text-white">
-                    <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center border border-primary/20 shadow-sm">
-                      <Globe className="w-6 h-6 text-primary" />
+              
+              <SheetContent side="right" className="w-full sm:max-w-[500px] p-0 bg-secondary border-none flex flex-col shadow-2xl overflow-hidden">
+                {/* 100% SS Clone: White Header Bar */}
+                <div className="bg-white px-6 md:px-10 py-4 flex items-center justify-between shrink-0 rounded-b-[2.5rem] md:rounded-b-[3.5rem] shadow-xl relative z-20">
+                  <Link href="/" className="flex items-center gap-3">
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-primary flex items-center justify-center shadow-sm">
+                      <Compass className="w-6 h-6 md:w-7 md:h-7 text-white" />
                     </div>
-                    <div>
-                      <h4 className="font-headline font-bold text-xl uppercase leading-none tracking-tighter">Site Registry</h4>
-                      <p className="text-[8px] font-bold uppercase tracking-widest text-white/40 mt-1.5">Official Command Center</p>
+                    <div className="flex flex-col">
+                      <span className="font-headline font-bold text-[10px] md:text-sm leading-none uppercase tracking-tighter text-secondary">
+                        Tansania
+                      </span>
+                      <span className="font-headline font-bold text-[10px] md:text-sm leading-none uppercase tracking-tighter text-primary">
+                        Reiseabenteuer
+                      </span>
                     </div>
-                  </div>
+                  </Link>
 
-                  {/* Dedicated Custom Cross Button to Close as per request */}
+                  {/* SS Clone: Orange Circular Close Button */}
                   <SheetClose asChild>
-                    <button className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-primary hover:border-primary transition-all shadow-xl group">
-                      <X className="w-5 h-5 md:w-6 md:h-6 group-hover:scale-110 transition-transform" />
+                    <button className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-primary text-white flex items-center justify-center hover:bg-secondary transition-all shadow-lg group">
+                      <X className="w-5 h-5 md:w-7 md:h-7 group-hover:scale-110 transition-transform" />
                     </button>
                   </SheetClose>
                 </div>
