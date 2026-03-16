@@ -19,7 +19,7 @@ import {
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,7 +33,8 @@ export function Navbar() {
       const currentScrollY = window.scrollY;
       setIsScrolled(currentScrollY > 50);
       
-      if (currentScrollY > lastScrollY && currentScrollY > 200) {
+      // Only hide navbar on scroll if the menu is NOT open
+      if (currentScrollY > lastScrollY && currentScrollY > 200 && !isOpen) {
         setIsVisible(false);
       } else {
         setIsVisible(true);
@@ -43,7 +44,7 @@ export function Navbar() {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+  }, [lastScrollY, isOpen]);
 
   useEffect(() => {
     setIsOpen(false);
@@ -53,16 +54,18 @@ export function Navbar() {
     <header 
       className={cn(
         "fixed top-0 w-full z-[100] transition-all duration-500",
-        !isVisible && !isOpen ? "-translate-y-full" : "translate-y-0",
+        !isVisible ? "-translate-y-full" : "translate-y-0",
         isScrolled ? "py-3" : "py-6 md:py-10"
       )}
     >
       <nav className="container mx-auto px-4 max-w-7xl">
+        {/* Main Navbar Bar - Contents hide when menu is open as per request */}
         <div className={cn(
           "flex items-center justify-between transition-all duration-500 px-6 md:px-10 h-14 md:h-18 rounded-full border border-transparent",
           isScrolled 
             ? "bg-white text-secondary shadow-2xl border-border" 
-            : "bg-transparent text-white"
+            : "bg-transparent text-white",
+          isOpen ? "opacity-0 pointer-events-none scale-95" : "opacity-100 scale-100"
         )}>
           {/* Logo Branding */}
           <Link href="/" className="flex items-center gap-3 group relative z-[110]">
@@ -94,18 +97,17 @@ export function Navbar() {
                     "flex items-center gap-3 pl-4 pr-2 h-10 md:h-12 rounded-full transition-all duration-500 border group font-bold text-[10px] uppercase tracking-[0.2em]",
                     isScrolled 
                       ? "bg-secondary text-white border-secondary hover:bg-primary" 
-                      : "bg-white/10 text-white border-white/20 hover:bg-white hover:text-secondary",
-                    isOpen && "bg-primary text-white border-primary"
+                      : "bg-white/10 text-white border-white/20 hover:bg-white hover:text-secondary"
                   )}
                 >
                   <span className="ml-1 hidden md:block">
-                    {isOpen ? "Registry Schließen" : "Site Registry"}
+                    Site Registry
                   </span>
                   <div className={cn(
                     "w-7 h-7 md:w-9 md:h-9 rounded-full flex items-center justify-center transition-colors",
                     isScrolled ? "bg-white/10" : "bg-white/20"
                   )}>
-                    {isOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+                    <Menu className="w-4 h-4" />
                   </div>
                 </button>
               </SheetTrigger>
@@ -116,10 +118,17 @@ export function Navbar() {
                       <Globe className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <h4 className="font-headline font-bold text-xl uppercase leading-none tracking-tighter">Command Center</h4>
-                      <p className="text-[8px] font-bold uppercase tracking-widest text-white/40 mt-1.5">Official Site Registry</p>
+                      <h4 className="font-headline font-bold text-xl uppercase leading-none tracking-tighter">Site Registry</h4>
+                      <p className="text-[8px] font-bold uppercase tracking-widest text-white/40 mt-1.5">Official Command Center</p>
                     </div>
                   </div>
+
+                  {/* Dedicated Custom Cross Button to Close as per request */}
+                  <SheetClose asChild>
+                    <button className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-primary hover:border-primary transition-all shadow-xl group">
+                      <X className="w-5 h-5 md:w-6 md:h-6 group-hover:scale-110 transition-transform" />
+                    </button>
+                  </SheetClose>
                 </div>
 
                 <ScrollArea className="flex-grow">
