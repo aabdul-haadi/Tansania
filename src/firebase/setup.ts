@@ -13,31 +13,47 @@ interface FirebaseServices {
 
 let cachedServices: FirebaseServices | null = null;
 
+/**
+ * Validates that the necessary Firebase configuration values are present.
+ * Handles both actual undefined and the string "undefined".
+ */
+function isConfigValid(): boolean {
+  const requiredKeys = ['apiKey', 'projectId', 'appId'] as const;
+  return requiredKeys.every(key => {
+    const value = firebaseConfig[key as keyof typeof firebaseConfig];
+    return value && value !== "undefined" && value.trim() !== "";
+  });
+}
+
 export function initializeFirebase(): FirebaseServices {
+  // If we already have cached services, return them immediately
   if (cachedServices) {
     return cachedServices;
   }
 
-  const isConfigValid = !!(
-    firebaseConfig.apiKey && 
-    firebaseConfig.apiKey !== "undefined" && 
-    firebaseConfig.projectId && 
-    firebaseConfig.projectId !== "undefined"
-  );
-
-  if (!isConfigValid) {
+  // Check if configuration is missing or invalid
+  if (!isConfigValid()) {
     return { firebaseApp: null, auth: null, firestore: null };
   }
 
   try {
+    // Initialize or retrieve the Firebase app
     const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+    
+    // Create service instances
+    const auth = getAuth(app);
+    const firestore = getFirestore(app);
+
+    // Cache the services for subsequent calls
     cachedServices = {
       firebaseApp: app,
-      auth: getAuth(app),
-      firestore: getFirestore(app)
+      auth,
+      firestore
     };
+
     return cachedServices;
   } catch (error) {
+    console.error("Firebase initialization failed:", error);
     return { firebaseApp: null, auth: null, firestore: null };
   }
 }
