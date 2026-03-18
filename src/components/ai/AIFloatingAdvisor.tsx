@@ -15,7 +15,8 @@ import {
   ChevronDown,
   Info,
   MicOff,
-  AlertCircle
+  AlertCircle,
+  ArrowRight
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -24,6 +25,7 @@ import { askTripAdvisor } from '@/ai/flows/trip-advisor-flow';
 import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { collection, query, where, limit } from 'firebase/firestore';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 export function AIFloatingAdvisor() {
   const [isOpen, setIsOpen] = useState(false);
@@ -119,7 +121,12 @@ export function AIFloatingAdvisor() {
           slug: p.slug
         }))
       });
-      setMessages([...newMessages, { role: 'model', content: result.response }]);
+      setMessages([...newMessages, { 
+        role: 'model', 
+        content: result.response,
+        action: result.suggestedAction,
+        route: result.suggestedRoute
+      }]);
     } catch (e) {
       setMessages([...newMessages, { role: 'error', content: 'Funkstille in der Savanne. Bitte versuchen Sie es gleich noch einmal.' }]);
     } finally {
@@ -209,23 +216,32 @@ export function AIFloatingAdvisor() {
                   <ScrollArea className="flex-grow p-4 md:p-5 bg-[#fdfcfb]">
                     <div className="space-y-6 pb-4">
                       {messages.map((m, idx) => (
-                        <div key={idx} className={cn("flex gap-3 max-w-[94%]", m.role === 'user' ? "ml-auto flex-row-reverse" : "")}>
-                          <div className={cn(
-                            "w-7 h-7 md:w-8 md:h-8 rounded-lg flex items-center justify-center shrink-0 shadow-lg border",
-                            m.role === 'user' ? "bg-primary text-white border-primary/20" : m.role === 'error' ? "bg-destructive text-white" : "bg-white text-secondary border-muted"
-                          )}>
-                            {m.role === 'user' ? <User className="w-4 h-4" /> : m.role === 'error' ? <AlertCircle className="w-4 h-4" /> : <Sparkles className="w-4 h-4 text-primary" />}
+                        <div key={idx} className={cn("flex flex-col gap-2 max-w-[94%]", m.role === 'user' ? "ml-auto items-end" : "items-start")}>
+                          <div className={cn("flex gap-3", m.role === 'user' ? "flex-row-reverse" : "")}>
+                            <div className={cn(
+                              "w-7 h-7 md:w-8 md:h-8 rounded-lg flex items-center justify-center shrink-0 shadow-lg border",
+                              m.role === 'user' ? "bg-primary text-white border-primary/20" : m.role === 'error' ? "bg-destructive text-white" : "bg-white text-secondary border-muted"
+                            )}>
+                              {m.role === 'user' ? <User className="w-4 h-4" /> : m.role === 'error' ? <AlertCircle className="w-4 h-4" /> : <Sparkles className="w-4 h-4 text-primary" />}
+                            </div>
+                            <div className={cn(
+                              "p-3.5 rounded-[1.25rem] text-[10px] md:text-xs leading-relaxed font-bold shadow-sm", 
+                              m.role === 'user' 
+                                ? "bg-primary text-white rounded-tr-none" 
+                                : m.role === 'error'
+                                ? "bg-destructive/10 text-destructive border border-destructive/20 rounded-tl-none"
+                                : "bg-white text-secondary border border-muted rounded-tl-none"
+                            )}>
+                              {m.content}
+                            </div>
                           </div>
-                          <div className={cn(
-                            "p-3.5 rounded-[1.25rem] text-[10px] md:text-xs leading-relaxed font-bold shadow-sm", 
-                            m.role === 'user' 
-                              ? "bg-primary text-white rounded-tr-none" 
-                              : m.role === 'error'
-                              ? "bg-destructive/10 text-destructive border border-destructive/20 rounded-tl-none"
-                              : "bg-white text-secondary border border-muted rounded-tl-none"
-                          )}>
-                            {m.content}
-                          </div>
+                          {m.action && m.route && (
+                            <Link href={m.route} className="ml-10">
+                              <Button size="sm" variant="outline" className="rounded-full h-8 px-3 text-[7px] font-bold uppercase tracking-widest border-primary/20 text-primary hover:bg-primary/5 group">
+                                {m.action} <ArrowRight className="w-2.5 h-2.5 ml-1.5 group-hover:translate-x-1 transition-transform" />
+                              </Button>
+                            </Link>
+                          )}
                         </div>
                       ))}
                       {loading && (

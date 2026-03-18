@@ -36,6 +36,8 @@ import Link from 'next/link';
 interface Message {
   role: 'user' | 'model' | 'error';
   content: string;
+  action?: string;
+  route?: string;
 }
 
 const suggestions = [
@@ -87,7 +89,12 @@ export default function TripAdvisorPage() {
           slug: p.slug
         }))
       });
-      setMessages([...newMessages, { role: 'model', content: result.response }]);
+      setMessages([...newMessages, { 
+        role: 'model', 
+        content: result.response,
+        action: result.suggestedAction,
+        route: result.suggestedRoute
+      }]);
     } catch (error) {
       setMessages([...newMessages, { role: 'error', content: 'In der Savanne gibt es gerade Funkstille. Wir konnten Ihre Nachricht nicht verarbeiten. Bitte prüfen Sie Ihre Verbindung.' }]);
     } finally {
@@ -168,15 +175,24 @@ export default function TripAdvisorPage() {
                     )}>
                       {m.role === 'user' ? <User className="w-4 h-4" /> : m.role === 'error' ? <AlertCircle className="w-4 h-4" /> : <Compass className="w-4 h-4" />}
                     </div>
-                    <div className={cn(
-                      "p-4 rounded-[1.5rem] text-[11px] md:text-sm leading-relaxed font-bold",
-                      m.role === 'user' 
-                        ? "bg-primary text-white rounded-tr-none shadow-primary/10" 
-                        : m.role === 'error'
-                        ? "bg-destructive/10 text-destructive border border-destructive/20 rounded-tl-none"
-                        : "bg-white text-secondary rounded-tl-none border border-muted/50 shadow-sm"
-                    )}>
-                      {m.content}
+                    <div className="flex flex-col gap-2">
+                      <div className={cn(
+                        "p-4 rounded-[1.5rem] text-[11px] md:text-sm leading-relaxed font-bold",
+                        m.role === 'user' 
+                          ? "bg-primary text-white rounded-tr-none shadow-primary/10" 
+                          : m.role === 'error'
+                          ? "bg-destructive/10 text-destructive border border-destructive/20 rounded-tl-none"
+                          : "bg-white text-secondary rounded-tl-none border border-muted/50 shadow-sm"
+                      )}>
+                        {m.content}
+                      </div>
+                      {m.action && m.route && (
+                        <Link href={m.route}>
+                          <Button size="sm" variant="outline" className="rounded-full h-9 px-4 text-[8px] font-bold uppercase tracking-widest border-primary/20 text-primary hover:bg-primary/5 group">
+                            {m.action} <ArrowRight className="w-3 h-3 ml-2 group-hover:translate-x-1 transition-transform" />
+                          </Button>
+                        </Link>
+                      )}
                     </div>
                   </motion.div>
                 ))}
