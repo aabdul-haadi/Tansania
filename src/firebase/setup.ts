@@ -19,10 +19,16 @@ let cachedServices: FirebaseServices | null = null;
  */
 function isConfigValid(): boolean {
   const requiredKeys = ['apiKey', 'projectId', 'appId'] as const;
-  return requiredKeys.every(key => {
+  const isValid = requiredKeys.every(key => {
     const value = firebaseConfig[key as keyof typeof firebaseConfig];
     return value && value !== "undefined" && value.trim() !== "";
   });
+  
+  if (!isValid) {
+    console.warn("Firebase configuration is incomplete or missing. Environment Variables check required.");
+  }
+  
+  return isValid;
 }
 
 export function initializeFirebase(): FirebaseServices {

@@ -22,11 +22,11 @@ export default function LoginPage() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!auth || !auth.app) {
+    if (!auth) {
       toast({ 
         variant: "destructive", 
         title: "Registry Offline", 
-        description: "Firebase configuration is missing. Please set your environment variables in Vercel." 
+        description: "Firebase initialization failed. Please check your Environment Variables." 
       });
       return;
     }
@@ -34,27 +34,42 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
-      // Attempt login
+      // Step 1: Attempt standard login
       await signInWithEmailAndPassword(auth, email, password);
       toast({ title: "Welcome Back", description: "Identity verified. Accessing Command Center..." });
       router.push('/admin');
     } catch (error: any) {
-      console.error("Login Error:", error.code, error.message);
+      console.error("Firebase Auth Error:", error.code, error.message);
       
-      // Development/Auto-setup mode: If user doesn't exist, try to create it
-      if (error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential' || error.code === 'auth/invalid-email') {
+      // Step 2: Handle specific error codes
+      if (error.code === 'auth/operation-not-allowed') {
+        toast({ 
+          variant: "destructive", 
+          title: "Provider Disabled", 
+          description: "Please enable 'Email/Password' in your Firebase Console -> Authentication -> Sign-in method." 
+        });
+      } else if (error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential') {
+        // Step 3: Development Mode - Try auto-registration if login fails due to user not existing
         try {
           await createUserWithEmailAndPassword(auth, email, password);
           toast({ title: "Access Granted", description: "New admin profile initialized. Welcome aboard." });
           router.push('/admin');
         } catch (createError: any) {
            console.error("Auto-Registration Error:", createError.code, createError.message);
-           toast({ 
-             variant: "destructive", 
-             title: "Access Denied", 
-             // Show the actual error message to help debug (e.g., "Email/Password provider disabled")
-             description: createError.message || "Authentication failed. Please check your inputs." 
-           });
+           
+           if (createError.code === 'auth/operation-not-allowed') {
+             toast({ 
+               variant: "destructive", 
+               title: "Sign-up Disabled", 
+               description: "Email/Password provider is not enabled in Firebase Console." 
+             });
+           } else {
+             toast({ 
+               variant: "destructive", 
+               title: "Access Denied", 
+               description: createError.message || "Authentication failed. Check your inputs." 
+             });
+           }
         }
       } else {
         toast({ 
@@ -68,10 +83,10 @@ export default function LoginPage() {
     }
   };
 
-  const isConfigMissing = !auth || !auth.app;
+  const isConfigMissing = !auth;
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#fdfcfb] px-4">
+    <div className="min-h-screen flex items-center justify-center bg-[#fdfcfb] px-4 font-bold">
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-secondary text-white shadow-xl mb-4">
@@ -91,10 +106,10 @@ export default function LoginPage() {
               <div className="mb-6 p-5 bg-destructive/10 rounded-2xl flex flex-col gap-3 border border-destructive/20 text-destructive animate-pulse">
                 <div className="flex items-center gap-3">
                   <ShieldAlert className="w-5 h-5 shrink-0" />
-                  <p className="text-[10px] font-black uppercase tracking-widest leading-tight">Configuration Missing</p>
+                  <p className="text-[10px] font-black uppercase tracking-widest leading-tight">Registry Offline</p>
                 </div>
                 <p className="text-[8px] font-bold uppercase leading-relaxed opacity-80">
-                  Please add your Firebase Environment Variables to Vercel Settings.
+                  Firebase Environment Variables are missing. Authentication is currently unavailable.
                 </p>
               </div>
             )}
