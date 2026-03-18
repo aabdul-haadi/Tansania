@@ -22,7 +22,6 @@ export default function LoginPage() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Safety Guard: Check if auth instance is valid and initialized
     if (!auth || !auth.app) {
       toast({ 
         variant: "destructive", 
@@ -40,24 +39,28 @@ export default function LoginPage() {
       toast({ title: "Welcome Back", description: "Identity verified. Accessing Command Center..." });
       router.push('/admin');
     } catch (error: any) {
-      // Development mode auto-account creation
+      console.error("Login Error:", error.code, error.message);
+      
+      // Development/Auto-setup mode: If user doesn't exist, try to create it
       if (error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential' || error.code === 'auth/invalid-email') {
         try {
           await createUserWithEmailAndPassword(auth, email, password);
           toast({ title: "Access Granted", description: "New admin profile initialized. Welcome aboard." });
           router.push('/admin');
         } catch (createError: any) {
+           console.error("Auto-Registration Error:", createError.code, createError.message);
            toast({ 
              variant: "destructive", 
              title: "Access Denied", 
-             description: "Verification failed. Check your keys and try again." 
+             // Show the actual error message to help debug (e.g., "Email/Password provider disabled")
+             description: createError.message || "Authentication failed. Please check your inputs." 
            });
         }
       } else {
         toast({ 
           variant: "destructive", 
           title: "Authentication Failed", 
-          description: error.message || "An unexpected error occurred in the savannah." 
+          description: error.message || "An unexpected error occurred." 
         });
       }
     } finally {
@@ -135,7 +138,7 @@ export default function LoginPage() {
                 disabled={loading || isConfigMissing} 
                 className="w-full h-14 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] gap-2 shadow-xl shadow-primary/20 border-none"
               >
-                {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <>Access Dashboard <ArrowRight className="w-4 h-4" /></>}
+                {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <>Access Dashboard <ArrowRight className="w-4 h-4 /></>}
               </Button>
             </form>
           </CardContent>
