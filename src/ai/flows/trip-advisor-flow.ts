@@ -15,6 +15,13 @@ const TripAdvisorInputSchema = z.object({
     role: z.enum(['user', 'model']),
     content: z.string()
   })).optional().describe('Chat history for context.'),
+  packagesContext: z.array(z.object({
+    title: z.string(),
+    description: z.string(),
+    price: z.number().optional(),
+    duration: z.number().optional(),
+    slug: z.string().optional()
+  })).optional().describe('Details of current available safari packages.'),
 });
 
 const TripAdvisorOutputSchema = z.object({
@@ -32,35 +39,46 @@ Your tone is sophisticated, expert, and deeply welcoming. You bridge the gap bet
 
 ### YOUR CORE KNOWLEDGE BASE:
 
-1. **OUR FLAGSHIP PACKAGES:**
-   - **15-Day Safari & Zanzibar (The Signature)**: Our most popular journey. Covers Arusha, Tarangire (Elephants), Maasai cultural visits, Serengeti (Migration), Ngorongoro (Big Five), and 5 days of relaxation in Zanzibar (Blue Safari, Spice Tours).
-   - **13-Day Luxury Honeymoon**: High-end lodges, private dinners, and romantic Zanzibar retreats.
-   - **12-Day Family Safari**: Kid-friendly activities, specialized family vehicles, and educational wildlife drives.
-   - **11-Day Kurztrip**: For travelers with limited time, focusing on Serengeti and Ngorongoro.
-   - **13-Day Kili & Safari Combo**: The ultimate challenge—climbing Kilimanjaro followed by a short luxury safari.
-
-2. **DESTINATION EXPERTISE:**
+1. **DESTINATION EXPERTISE:**
    - **Serengeti**: Best for Migration (June-Oct) and Big Cats.
    - **Ngorongoro Crater**: Highest density of wildlife; "The 8th Wonder".
    - **Tarangire**: Famous for massive Baobabs and huge elephant herds.
    - **Kilimanjaro**: Routes include Machame (scenic), Lemosho (quiet), and Marangu (huts).
    - **Zanzibar**: Highlights include Stone Town (UNESCO), Nungwi/Kendwa (swimmable beaches), and Paje (Kitesurfing).
 
-3. **LOGISTICS & SUPPORT:**
+2. **LOGISTICS & SUPPORT:**
    - **Local Office**: We have a physical presence in Cairo for localized payment and support.
    - **Flights**: We handle connections via EgyptAir or Ethiopian Airlines from Cairo.
    - **Visa**: We provide specific guidance for Egyptian passport holders and residents.
    - **Safety**: Every guest is covered by AMREF Flying Doctors (emergency air rescue).
 
 ### YOUR GOAL:
-Answer questions with rich, vivid detail. Use luxurious and evocative language. If a user asks about a trip, suggest the most relevant package from the list above. Always guide them towards the "Trip Planner" or "Contact Form" for a bespoke quote.
+Answer questions with rich, vivid detail. Use luxurious and evocative language. If a user asks about a trip, suggest the most relevant package from the provided LIVE CATALOG. Always guide them towards the "Trip Planner" or "Contact Form" for a bespoke quote.
 
 ### CONSTRAINTS:
 - LANGUAGE MIRRORING: Detect the language used by the user (typically German or English) and respond in that EXACT same language.
 - If the user writes in German, you MUST reply in German.
 - If the user writes in English, you MUST reply in English.
 - Keep responses relatively concise but "warm" and sophisticated.
-- Do NOT make up pricing; refer to the "starting price from €XXXX" logic found on the site.`;
+- Do NOT make up pricing; refer to the "starting price from €XXXX" logic found in the catalog context.`;
+
+const advisorPrompt = ai.definePrompt({
+  name: 'tripAdvisorPrompt',
+  input: { schema: TripAdvisorInputSchema },
+  output: { schema: TripAdvisorOutputSchema },
+  prompt: `
+{{#if packagesContext}}
+### CURRENT CATALOG (LIVE DATA):
+Here are the currently available packages in our registry. Reference these specifically when providing recommendations:
+{{#each packagesContext}}
+- **{{{title}}}**: {{{description}}} (Dauer: {{duration}} Tage, Ab €{{price}}) - [Pfad: /safaris/{{{slug}}}]
+{{/each}}
+{{/if}}
+
+User Message: {{{message}}}
+`,
+  system: systemPrompt,
+});
 
 const tripAdvisorFlow = ai.defineFlow(
   {
@@ -69,19 +87,18 @@ const tripAdvisorFlow = ai.defineFlow(
     outputSchema: TripAdvisorOutputSchema,
   },
   async (input) => {
-    const { output } = await ai.generate({
-      system: systemPrompt,
-      prompt: input.message,
-      messages: input.history?.map(h => ({ role: h.role, content: [{ text: h.content }] })),
-      config: {
-        temperature: 0.7,
-      }
+    const { output } = await advisorPrompt(input, {
+      messages: input.history?.map(h => ({ role: h.role, content: [{ text: h.content }] }))
     });
 
-    return {
-      response: output?.text || "Entschuldigung, in der Savanne herrscht gerade Funkstille. Wie kann ich Ihnen sonst bei der Planung Ihrer Safari behilflich sein?",
-      suggestedAction: "Experten sprechen",
-      suggestedRoute: "/trip-planner"
-    };
+    if (!output) {
+      return {
+        response: "Entschuldigung, in der Savanne herrscht gerade Funkstille. Wie kann ich Ihnen sonst bei der Planung Ihrer Safari behilflich sein?",
+        suggestedAction: "Experten sprechen",
+        suggestedRoute: "/trip-planner"
+      };
+    }
+
+    return output;
   }
 );

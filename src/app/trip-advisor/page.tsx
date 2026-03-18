@@ -40,7 +40,7 @@ interface Message {
 
 const suggestions = [
   { text: "Beste Reisezeit Migration?", icon: Zap },
-  { text: "15-Tage-Paket Details", icon: MapIcon },
+  { text: "Empfiehl mir ein Paket", icon: MapIcon },
   { text: "Kili & Safari Kombi?", icon: Mountain },
   { text: "Sansibar für Familien?", icon: Palmtree },
 ];
@@ -56,7 +56,7 @@ export default function TripAdvisorPage() {
 
   const pkgQuery = useMemoFirebase(() => {
     if (!firestore) return null;
-    return query(collection(firestore, 'packages'), where('isPublished', '==', true), limit(4));
+    return query(collection(firestore, 'packages'), where('isPublished', '==', true), limit(10));
   }, [firestore]);
   const { data: packages, isLoading: pkgsLoading } = useCollection(pkgQuery);
 
@@ -78,7 +78,14 @@ export default function TripAdvisorPage() {
     try {
       const result = await askTripAdvisor({
         message: userText,
-        history: messages.filter(m => m.role !== 'error') as any
+        history: messages.filter(m => m.role !== 'error').map(m => ({ role: m.role as any, content: m.content })),
+        packagesContext: packages?.map(p => ({
+          title: p.title,
+          description: p.description,
+          price: p.startingPrice,
+          duration: p.durationDays,
+          slug: p.slug
+        }))
       });
       setMessages([...newMessages, { role: 'model', content: result.response }]);
     } catch (error) {
@@ -93,97 +100,95 @@ export default function TripAdvisorPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#fdfcfb] pt-20 flex flex-col">
-      {/* Compact Header */}
-      <section className="bg-white border-b py-8 md:py-12">
+    <div className="min-h-screen bg-[#fdfcfb] pt-20 flex flex-col font-bold">
+      <section className="bg-white border-b py-6 md:py-8">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="text-center md:text-left">
               <motion.div 
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="inline-flex items-center gap-2 px-3 py-1 mb-3 text-[9px] font-black uppercase tracking-[0.3em] text-primary bg-primary/5 rounded-full border border-primary/10"
+                className="inline-flex items-center gap-2 px-3 py-1 mb-2 text-[8px] font-black uppercase tracking-[0.3em] text-primary bg-primary/5 rounded-full border border-primary/10"
               >
                 <Sparkles className="w-3 h-3" /> Intelligent Concierge
               </motion.div>
-              <h1 className="font-headline text-3xl md:text-5xl font-bold text-secondary uppercase leading-none">
+              <h1 className="font-headline text-2xl md:text-4xl font-bold text-secondary uppercase leading-none">
                 AI Trip <span className="text-primary">Advisor</span>
               </h1>
-              <p className="text-muted-foreground text-[10px] font-black uppercase tracking-widest mt-2">
+              <p className="text-muted-foreground text-[8px] font-black uppercase tracking-widest mt-1.5">
                 Echtzeit-Planung für Ihr Tansania-Abenteuer
               </p>
             </div>
             
             <div className="flex items-center gap-4">
               <div className="text-right hidden sm:block">
-                <div className="flex items-center gap-2 justify-end mb-1">
-                  <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                  <span className="text-[10px] font-black uppercase tracking-widest text-secondary">System Online</span>
+                <div className="flex items-center gap-2 justify-end mb-0.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                  <span className="text-[9px] font-black uppercase tracking-widest text-secondary">System Online</span>
                 </div>
-                <p className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Reaktion in &lt; 5s</p>
+                <p className="text-[8px] font-bold uppercase tracking-widest text-muted-foreground">Syncing Catalog...</p>
               </div>
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-secondary flex items-center justify-center shadow-lg">
-                <Compass className="w-6 h-6 md:w-7 md:h-7 text-white" />
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-secondary flex items-center justify-center shadow-lg">
+                <Compass className="w-5 h-5 md:w-6 md:h-6 text-white" />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <div className="container mx-auto px-4 max-w-7xl py-6 md:py-10 flex-grow flex flex-col">
+      <div className="container mx-auto px-4 max-w-7xl py-4 md:py-8 flex-grow flex flex-col">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 flex-grow">
           
-          {/* Main Chat Column */}
-          <div className="lg:col-span-8 flex flex-col h-[600px] md:h-[700px] bg-white rounded-[2rem] shadow-xl border border-border/50 overflow-hidden relative">
-            <div className="p-4 md:p-6 border-b flex items-center justify-between bg-white/80 backdrop-blur-md sticky top-0 z-10">
+          <div className="lg:col-span-8 flex flex-col h-[550px] md:h-[650px] bg-white rounded-[2rem] shadow-xl border border-border/50 overflow-hidden relative">
+            <div className="p-4 border-b flex items-center justify-between bg-white/80 backdrop-blur-md sticky top-0 z-10">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <Globe className="w-4 h-4 text-primary" />
+                <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <Globe className="w-3.5 h-3.5 text-primary" />
                 </div>
-                <h4 className="font-black text-[10px] uppercase tracking-widest text-secondary">Live Chat Beratung</h4>
+                <h4 className="font-black text-[9px] uppercase tracking-widest text-secondary">Live Chat Beratung</h4>
               </div>
-              <Badge variant="outline" className="text-[8px] font-black uppercase tracking-widest border-primary/20 text-primary">Live Sync</Badge>
+              <Badge variant="outline" className="text-[7px] font-black uppercase tracking-widest border-primary/20 text-primary">Prestige Context</Badge>
             </div>
 
-            <ScrollArea className="flex-grow p-4 md:p-10">
-              <div className="space-y-8 pb-4">
+            <ScrollArea className="flex-grow p-4 md:p-8 bg-[#fdfcfb]">
+              <div className="space-y-6 pb-4">
                 {messages.map((m, idx) => (
                   <motion.div
                     key={idx}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     className={cn(
-                      "flex gap-3 md:gap-5 max-w-[90%] md:max-w-[80%]",
+                      "flex gap-3 md:gap-4 max-w-[92%] md:max-w-[85%]",
                       m.role === 'user' ? "ml-auto flex-row-reverse" : ""
                     )}
                   >
                     <div className={cn(
-                      "w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-md",
+                      "w-8 h-8 rounded-lg flex items-center justify-center shrink-0 shadow-md",
                       m.role === 'user' ? "bg-primary text-white" : m.role === 'error' ? "bg-destructive text-white" : "bg-secondary text-white"
                     )}>
-                      {m.role === 'user' ? <User className="w-5 h-5" /> : m.role === 'error' ? <AlertCircle className="w-5 h-5" /> : <Compass className="w-5 h-5" />}
+                      {m.role === 'user' ? <User className="w-4 h-4" /> : m.role === 'error' ? <AlertCircle className="w-4 h-4" /> : <Compass className="w-4 h-4" />}
                     </div>
                     <div className={cn(
-                      "p-4 md:p-6 rounded-[1.5rem] text-sm md:text-base leading-relaxed font-bold",
+                      "p-4 rounded-[1.5rem] text-[11px] md:text-sm leading-relaxed font-bold",
                       m.role === 'user' 
                         ? "bg-primary text-white rounded-tr-none shadow-primary/10" 
                         : m.role === 'error'
                         ? "bg-destructive/10 text-destructive border border-destructive/20 rounded-tl-none"
-                        : "bg-muted/20 text-secondary rounded-tl-none border border-muted/50"
+                        : "bg-white text-secondary rounded-tl-none border border-muted/50 shadow-sm"
                     )}>
                       {m.content}
                     </div>
                   </motion.div>
                 ))}
                 {loading && (
-                  <div className="flex gap-3 md:gap-5">
-                    <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center shrink-0">
-                      <Loader2 className="w-5 h-5 text-white animate-spin" />
+                  <div className="flex gap-3 md:gap-4">
+                    <div className="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center shrink-0">
+                      <Loader2 className="w-4 h-4 text-white animate-spin" />
                     </div>
-                    <div className="p-4 md:p-6 bg-muted/20 rounded-[1.5rem] rounded-tl-none border border-muted/50 flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce" />
-                      <span className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce [animation-delay:0.2s]" />
-                      <span className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce [animation-delay:0.4s]" />
+                    <div className="p-4 bg-white rounded-[1.5rem] rounded-tl-none border border-muted/50 flex items-center gap-1.5 shadow-sm">
+                      <span className="w-1 h-1 bg-primary rounded-full animate-bounce" />
+                      <span className="w-1 h-1 bg-primary rounded-full animate-bounce [animation-delay:0.2s]" />
+                      <span className="w-1 h-1 bg-primary rounded-full animate-bounce [animation-delay:0.4s]" />
                     </div>
                   </div>
                 )}
@@ -191,13 +196,13 @@ export default function TripAdvisorPage() {
               </div>
             </ScrollArea>
 
-            <div className="p-4 md:p-8 border-t bg-white sticky bottom-0">
-              <div className="flex flex-wrap gap-2 mb-6 overflow-x-auto no-scrollbar pb-1">
+            <div className="p-4 md:p-6 border-t bg-white sticky bottom-0">
+              <div className="flex flex-wrap gap-2 mb-4 overflow-x-auto no-scrollbar pb-1">
                 {suggestions.map((s, idx) => (
                   <button
                     key={idx}
                     onClick={() => handleSend(s.text)}
-                    className="px-4 py-2 rounded-full bg-muted/30 border border-border hover:border-primary hover:bg-primary/5 transition-all text-[9px] font-black uppercase tracking-widest flex items-center gap-2 group whitespace-nowrap"
+                    className="px-3 py-1.5 rounded-full bg-muted/30 border border-border hover:border-primary hover:bg-primary/5 transition-all text-[8px] font-black uppercase tracking-widest flex items-center gap-2 group whitespace-nowrap"
                   >
                     <s.icon className="w-3 h-3 text-primary group-hover:scale-110 transition-transform" />
                     {s.text}
@@ -212,57 +217,55 @@ export default function TripAdvisorPage() {
                   <Input
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
-                    placeholder="Fragen Sie nach Routen, Preisen..."
-                    className="h-14 md:h-16 pl-6 pr-12 rounded-2xl border-muted bg-[#fdfcfb] shadow-inner focus:ring-primary/20 text-sm md:text-base font-bold"
+                    placeholder="Frag mich nach Paketen oder Preisen..."
+                    className="h-12 md:h-14 pl-5 pr-10 rounded-xl border-muted bg-[#fdfcfb] shadow-inner focus:ring-primary/20 text-xs font-bold"
                   />
-                  <Button type="button" size="icon" variant="ghost" className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-xl text-muted-foreground hover:text-primary hidden md:flex">
-                    <Mic className="w-5 h-5" />
-                  </Button>
                 </div>
                 <Button 
                   type="submit" 
                   disabled={!input.trim() || loading}
-                  className="h-14 md:h-16 px-6 md:px-8 rounded-2xl shadow-xl shadow-primary/20 group shrink-0"
+                  className="h-12 md:h-14 px-5 md:px-6 rounded-xl shadow-xl shadow-primary/20 group shrink-0 border-none"
                 >
-                  <Send className="w-5 h-5 md:mr-2 group-hover:translate-x-1 transition-transform" />
-                  <span className="hidden md:inline">Senden</span>
+                  <Send className="w-4 h-4 md:mr-2 group-hover:translate-x-1 transition-transform" />
+                  <span className="hidden md:inline text-[9px] uppercase">Senden</span>
                 </Button>
               </form>
             </div>
           </div>
 
-          {/* Compact Discovery Sidebar */}
           <aside className="lg:col-span-4 space-y-6">
-            <Card className="rounded-[2rem] border-none shadow-lg overflow-hidden">
-              <CardContent className="p-6 md:p-8 space-y-6">
+            <Card className="rounded-[2rem] border-none shadow-lg overflow-hidden bg-white">
+              <CardContent className="p-6 space-y-6">
                 <div className="flex items-center gap-3">
-                  <CloudSun className="w-5 h-5 text-primary" />
-                  <h3 className="font-headline text-lg font-bold text-secondary uppercase">Live Bedingungen</h3>
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <CloudSun className="w-4 h-4 text-primary" />
+                  </div>
+                  <h3 className="font-headline text-sm font-bold text-secondary uppercase tracking-tight">Live Bedingungen</h3>
                 </div>
                 <div className="grid grid-cols-2 gap-3">
-                  <div className="p-4 bg-muted/20 rounded-2xl border border-muted/50 text-center">
-                    <p className="text-[8px] font-black uppercase text-muted-foreground mb-1">Serengeti</p>
-                    <p className="font-bold text-base text-secondary">28°C</p>
-                    <p className="text-[8px] text-green-600 font-black uppercase mt-1 tracking-widest">Ideal</p>
+                  <div className="p-3 bg-muted/20 rounded-xl border border-muted/50 text-center">
+                    <p className="text-[7px] font-black uppercase text-muted-foreground mb-0.5">Serengeti</p>
+                    <p className="font-bold text-sm text-secondary">28°C</p>
+                    <p className="text-[7px] text-green-600 font-black uppercase mt-0.5 tracking-widest">Ideal</p>
                   </div>
-                  <div className="p-4 bg-muted/20 rounded-2xl border border-muted/50 text-center">
-                    <p className="text-[8px] font-black uppercase text-muted-foreground mb-1">Sansibar</p>
-                    <p className="font-bold text-base text-secondary">31°C</p>
-                    <p className="text-[8px] text-blue-600 font-black uppercase mt-1 tracking-widest">Sonnig</p>
+                  <div className="p-3 bg-muted/20 rounded-xl border border-muted/50 text-center">
+                    <p className="text-[7px] font-black uppercase text-muted-foreground mb-0.5">Sansibar</p>
+                    <p className="font-bold text-sm text-secondary">31°C</p>
+                    <p className="text-[7px] text-blue-600 font-black uppercase mt-0.5 tracking-widest">Sonnig</p>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="rounded-[2rem] border-none shadow-lg overflow-hidden">
-              <CardContent className="p-6 md:p-8 space-y-6">
+            <Card className="rounded-[2rem] border-none shadow-lg overflow-hidden bg-white">
+              <CardContent className="p-6 space-y-5">
                 <div className="flex items-center justify-between">
-                  <h3 className="font-headline text-lg font-bold text-secondary uppercase">Expeditionen</h3>
-                  <Link href="/safaris" className="text-[8px] font-black uppercase text-primary hover:underline">Alle</Link>
+                  <h3 className="font-headline text-sm font-bold text-secondary uppercase tracking-tight">Expeditionen</h3>
+                  <Link href="/safaris" className="text-[7px] font-black uppercase text-primary hover:underline">Alle</Link>
                 </div>
-                <div className="space-y-3">
+                <div className="space-y-2.5">
                   {pkgsLoading ? (
-                    <div className="py-4 text-center"><Loader2 className="w-5 h-5 animate-spin mx-auto text-primary" /></div>
+                    <div className="py-4 text-center"><Loader2 className="w-4 h-4 animate-spin mx-auto text-primary" /></div>
                   ) : (
                     packages?.map((pkg) => (
                       <button 
@@ -270,17 +273,17 @@ export default function TripAdvisorPage() {
                         onClick={() => selectPackage(pkg.title)}
                         className="w-full flex items-center gap-3 p-2 rounded-xl hover:bg-primary/5 border border-transparent hover:border-primary/10 transition-all text-left group"
                       >
-                        <div className="w-12 h-12 rounded-lg overflow-hidden shrink-0 bg-muted relative border border-muted">
+                        <div className="w-10 h-10 rounded-lg overflow-hidden shrink-0 bg-muted relative border border-muted">
                           <img src={pkg.imageUrl || 'https://picsum.photos/seed/pkg/100/100'} alt="" className="w-full h-full object-cover" />
                         </div>
                         <div className="flex-grow min-w-0">
-                          <p className="font-bold text-[11px] text-secondary truncate group-hover:text-primary transition-colors leading-tight">{pkg.title}</p>
-                          <div className="flex items-center gap-2 mt-1">
-                            <span className="text-[8px] font-black text-muted-foreground uppercase flex items-center gap-1"><Timer className="w-2.5 h-2.5" /> {pkg.durationDays}d</span>
-                            <span className="text-[8px] font-black text-primary uppercase">€{pkg.startingPrice.toLocaleString()}</span>
+                          <p className="font-bold text-[10px] text-secondary truncate group-hover:text-primary transition-colors leading-tight">{pkg.title}</p>
+                          <div className="flex items-center gap-2 mt-0.5">
+                            <span className="text-[7px] font-black text-muted-foreground uppercase flex items-center gap-1"><Timer className="w-2.5 h-2.5" /> {pkg.durationDays}d</span>
+                            <span className="text-[7px] font-black text-primary uppercase">€{pkg.startingPrice.toLocaleString()}</span>
                           </div>
                         </div>
-                        <ChevronRight className="w-3 h-3 text-muted-foreground group-hover:text-primary transition-all group-hover:translate-x-0.5" />
+                        <ChevronRight className="w-3 h-3 text-muted-foreground group-hover:text-primary transition-all" />
                       </button>
                     ))
                   )}
@@ -288,24 +291,22 @@ export default function TripAdvisorPage() {
               </CardContent>
             </Card>
 
-            <div className="bg-secondary text-white p-8 rounded-[2rem] shadow-xl relative overflow-hidden group">
+            <div className="bg-secondary text-white p-6 md:p-8 rounded-[2rem] shadow-xl relative overflow-hidden group">
               <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
               <div className="relative z-10 space-y-4">
                 <div className="flex items-center gap-2 text-primary">
-                  <ShieldCheck className="w-5 h-5" />
-                  <span className="text-[8px] font-black uppercase tracking-widest text-white/80">Expert Support</span>
+                  <ShieldCheck className="w-4 h-4" />
+                  <span className="text-[7px] font-black uppercase tracking-widest text-white/80">Staff Support</span>
                 </div>
-                <h3 className="font-headline text-xl font-bold leading-tight text-white uppercase">Persönliche Beratung</h3>
-                <p className="text-white/60 text-[10px] font-bold leading-relaxed uppercase">
+                <h3 className="font-headline text-lg font-bold leading-tight text-white uppercase">Persönliche Beratung</h3>
+                <p className="text-white/60 text-[9px] font-bold leading-relaxed uppercase">
                   Unser Team in Berlin hilft Ihnen gerne telefonisch weiter.
                 </p>
-                <div className="pt-2">
-                  <Link href="/contact">
-                    <Button className="w-full h-12 rounded-xl font-black text-[10px] uppercase tracking-widest group-hover:scale-[1.02] transition-transform">
-                      Experten Sprechen <ArrowRight className="w-3 h-3 ml-2" />
-                    </Button>
-                  </Link>
-                </div>
+                <Link href="/contact" className="block pt-1">
+                  <Button className="w-full h-11 rounded-xl font-black text-[9px] uppercase tracking-widest group-hover:scale-[1.02] transition-transform border-none">
+                    Experten Sprechen <ArrowRight className="w-3 h-3 ml-2" />
+                  </Button>
+                </Link>
               </div>
             </div>
           </aside>

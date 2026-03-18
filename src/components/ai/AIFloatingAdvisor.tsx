@@ -14,12 +14,15 @@ import {
   Maximize2,
   ChevronDown,
   Info,
-  MicOff
+  MicOff,
+  AlertCircle
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { askTripAdvisor } from '@/ai/flows/trip-advisor-flow';
+import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
+import { collection, query, where, limit } from 'firebase/firestore';
 import { cn } from '@/lib/utils';
 
 export function AIFloatingAdvisor() {
@@ -34,6 +37,14 @@ export function AIFloatingAdvisor() {
   const [loading, setLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<any>(null);
+  const firestore = useFirestore();
+
+  // Fetch package data for AI context
+  const pkgQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
+    return query(collection(firestore, 'packages'), where('isPublished', '==', true), limit(8));
+  }, [firestore]);
+  const { data: packages } = useCollection(pkgQuery);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -97,10 +108,20 @@ export function AIFloatingAdvisor() {
     setLoading(true);
 
     try {
-      const result = await askTripAdvisor({ message: userMsg, history: messages });
+      const result = await askTripAdvisor({ 
+        message: userMsg, 
+        history: messages.filter(m => m.role !== 'error').map(m => ({ role: m.role, content: m.content })),
+        packagesContext: packages?.map(p => ({
+          title: p.title,
+          description: p.description,
+          price: p.startingPrice,
+          duration: p.durationDays,
+          slug: p.slug
+        }))
+      });
       setMessages([...newMessages, { role: 'model', content: result.response }]);
     } catch (e) {
-      setMessages([...newMessages, { role: 'model', content: 'Funkstille in der Savanne. Bitte versuchen Sie es gleich noch einmal.' }]);
+      setMessages([...newMessages, { role: 'error', content: 'Funkstille in der Savanne. Bitte versuchen Sie es gleich noch einmal.' }]);
     } finally {
       setLoading(false);
     }
@@ -120,7 +141,7 @@ export function AIFloatingAdvisor() {
         )}
       </AnimatePresence>
 
-      <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[100] flex flex-col items-end gap-3 md:gap-4 pointer-events-none">
+      <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[100] flex flex-col items-end gap-3 md:gap-4 pointer-events-none font-bold">
         <AnimatePresence>
           {showTeaser && !isOpen && (
             <motion.div
@@ -152,28 +173,28 @@ export function AIFloatingAdvisor() {
               exit={{ opacity: 0, y: 20, scale: 0.9 }}
               className={cn(
                 "bg-white rounded-[2rem] md:rounded-[2.5rem] shadow-2xl border border-border/50 flex flex-col overflow-hidden pointer-events-auto transition-all duration-500",
-                isMinimized ? "h-16 w-64 md:h-20 md:w-72" : "h-[550px] md:h-[650px] w-[360px] md:w-[400px] max-w-[calc(100vw-32px)]"
+                isMinimized ? "h-16 w-64 md:h-20 md:w-72" : "h-[500px] md:h-[600px] w-[340px] md:w-[380px] max-w-[calc(100vw-32px)]"
               )}
             >
-              <div className="bg-secondary p-4 md:p-6 flex items-center justify-between text-white shrink-0 relative overflow-hidden">
+              <div className="bg-secondary p-4 md:p-5 flex items-center justify-between text-white shrink-0 relative overflow-hidden">
                 <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
-                  <Compass className="w-16 h-16 md:w-24 md:h-24 rotate-12" />
+                  <Compass className="w-16 h-16 md:w-20 md:h-20 rotate-12" />
                 </div>
                 
-                <div className="flex items-center gap-3 md:gap-4 relative z-10">
-                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-primary flex items-center justify-center shadow-xl border border-white/10">
+                <div className="flex items-center gap-3 relative z-10">
+                  <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-primary flex items-center justify-center shadow-xl border border-white/10">
                     <Compass className="w-5 h-5 md:w-6 md:h-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-xs md:text-sm uppercase tracking-widest leading-none">AI Advisor</h4>
+                    <h4 className="font-bold text-[10px] md:text-xs uppercase tracking-widest leading-none">AI Advisor</h4>
                     <div className="flex items-center gap-1.5 mt-1">
                       <span className={cn("w-1 h-1 rounded-full bg-green-500", !loading && "animate-pulse")} />
-                      <p className="text-[8px] text-white/40 uppercase font-black tracking-widest">Live Sync</p>
+                      <p className="text-[7px] text-white/40 uppercase font-black tracking-widest">Live Catalog Sync</p>
                     </div>
                   </div>
                 </div>
                 
-                <div className="flex items-center gap-1 md:gap-2 relative z-10">
+                <div className="flex items-center gap-1 relative z-10">
                   <button onClick={() => setIsMobileMinimized(!isMinimized)} className="p-1.5 hover:bg-white/10 rounded-lg transition-colors">
                     {isMinimized ? <Maximize2 className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
                   </button>
@@ -185,20 +206,22 @@ export function AIFloatingAdvisor() {
 
               {!isMinimized && (
                 <>
-                  <ScrollArea className="flex-grow p-4 md:p-6 bg-[#fdfcfb]">
-                    <div className="space-y-6 md:space-y-8 pb-4">
+                  <ScrollArea className="flex-grow p-4 md:p-5 bg-[#fdfcfb]">
+                    <div className="space-y-6 pb-4">
                       {messages.map((m, idx) => (
-                        <div key={idx} className={cn("flex gap-3 md:gap-4 max-w-[92%] md:max-w-[90%]", m.role === 'user' ? "ml-auto flex-row-reverse" : "")}>
+                        <div key={idx} className={cn("flex gap-3 max-w-[94%]", m.role === 'user' ? "ml-auto flex-row-reverse" : "")}>
                           <div className={cn(
-                            "w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl flex items-center justify-center shrink-0 shadow-lg border",
-                            m.role === 'user' ? "bg-primary text-white border-primary/20" : "bg-white text-secondary border-muted"
+                            "w-7 h-7 md:w-8 md:h-8 rounded-lg flex items-center justify-center shrink-0 shadow-lg border",
+                            m.role === 'user' ? "bg-primary text-white border-primary/20" : m.role === 'error' ? "bg-destructive text-white" : "bg-white text-secondary border-muted"
                           )}>
-                            {m.role === 'user' ? <User className="w-4 h-4 md:w-5 md:h-5" /> : <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-primary" />}
+                            {m.role === 'user' ? <User className="w-4 h-4" /> : m.role === 'error' ? <AlertCircle className="w-4 h-4" /> : <Sparkles className="w-4 h-4 text-primary" />}
                           </div>
                           <div className={cn(
-                            "p-4 md:p-5 rounded-[1.25rem] md:rounded-[1.5rem] text-xs md:text-sm leading-relaxed font-bold shadow-sm", 
+                            "p-3.5 rounded-[1.25rem] text-[10px] md:text-xs leading-relaxed font-bold shadow-sm", 
                             m.role === 'user' 
                               ? "bg-primary text-white rounded-tr-none" 
+                              : m.role === 'error'
+                              ? "bg-destructive/10 text-destructive border border-destructive/20 rounded-tl-none"
                               : "bg-white text-secondary border border-muted rounded-tl-none"
                           )}>
                             {m.content}
@@ -206,11 +229,11 @@ export function AIFloatingAdvisor() {
                         </div>
                       ))}
                       {loading && (
-                        <div className="flex gap-3 md:gap-4">
-                          <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-white border border-muted flex items-center justify-center shrink-0 shadow-sm">
-                            <Loader2 className="w-4 h-4 md:w-5 md:h-5 text-primary animate-spin" />
+                        <div className="flex gap-3">
+                          <div className="w-7 h-7 rounded-lg bg-white border border-muted flex items-center justify-center shrink-0 shadow-sm">
+                            <Loader2 className="w-4 h-4 text-primary animate-spin" />
                           </div>
-                          <div className="p-4 md:p-5 bg-white rounded-[1.25rem] md:rounded-[1.5rem] rounded-tl-none border border-muted flex items-center gap-1.5">
+                          <div className="p-3 bg-white rounded-[1.25rem] rounded-tl-none border border-muted flex items-center gap-1.5 shadow-sm">
                             <span className="w-1 h-1 bg-primary rounded-full animate-bounce" />
                             <span className="w-1 h-1 bg-primary rounded-full animate-bounce [animation-delay:0.2s]" />
                             <span className="w-1 h-1 bg-primary rounded-full animate-bounce [animation-delay:0.4s]" />
@@ -221,15 +244,15 @@ export function AIFloatingAdvisor() {
                     </div>
                   </ScrollArea>
 
-                  <div className="p-4 md:p-6 border-t bg-white relative">
+                  <div className="p-4 border-t bg-white relative">
                     <form onSubmit={(e) => { e.preventDefault(); handleSend(); }} className="relative flex items-center gap-2">
                       <div className="relative flex-grow">
                         <Input
                           value={input}
                           onChange={(e) => setInput(e.target.value)}
-                          placeholder={isListening ? "Ich höre zu..." : "Frag mich..."}
+                          placeholder={isListening ? "Ich höre zu..." : "Frag mich nach Safaris..."}
                           className={cn(
-                            "h-12 md:h-14 pl-4 pr-10 rounded-xl md:rounded-2xl border-muted bg-[#fdfcfb] shadow-inner focus:ring-primary/20 text-[11px] md:text-xs font-bold transition-all",
+                            "h-11 rounded-xl border-muted bg-[#fdfcfb] shadow-inner focus:ring-primary/20 text-[10px] md:text-[11px] font-bold transition-all",
                             isListening && "ring-2 ring-primary bg-primary/5"
                           )}
                         />
@@ -239,20 +262,20 @@ export function AIFloatingAdvisor() {
                           variant="ghost" 
                           onClick={toggleListening}
                           className={cn(
-                            "absolute right-1.5 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 rounded-lg transition-all",
+                            "absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 rounded-lg transition-all",
                             isListening ? "text-primary bg-primary/10 animate-pulse" : "text-muted-foreground hover:text-primary"
                           )}
                         >
-                          {isListening ? <MicOff className="w-3.5 h-3.5 md:w-4 md:h-4" /> : <Mic className="w-3.5 h-3.5 md:w-4 md:h-4" />}
+                          {isListening ? <MicOff className="w-3.5 h-3.5" /> : <Mic className="w-3.5 h-3.5" />}
                         </Button>
                       </div>
                       <Button 
                         type="submit" 
                         size="icon" 
-                        className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl shadow-xl shadow-primary/20 shrink-0" 
+                        className="w-11 h-11 rounded-xl shadow-xl shadow-primary/20 shrink-0 border-none" 
                         disabled={!input.trim() || loading}
                       >
-                        <Send className="w-4 h-4 md:w-5 md:h-5" />
+                        <Send className="w-4 h-4" />
                       </Button>
                     </form>
                   </div>
@@ -267,19 +290,19 @@ export function AIFloatingAdvisor() {
           whileTap={{ scale: 0.95 }}
           onClick={() => { setIsOpen(true); setShowTeaser(false); }}
           className={cn(
-            "w-14 h-14 md:w-20 md:h-20 rounded-[1.5rem] md:rounded-[2rem] bg-secondary text-white shadow-2xl flex items-center justify-center relative overflow-hidden transition-all duration-500 pointer-events-auto",
+            "w-14 h-14 md:w-16 md:h-16 rounded-[1.5rem] md:rounded-[2rem] bg-secondary text-white shadow-2xl flex items-center justify-center relative overflow-hidden transition-all duration-500 pointer-events-auto",
             isOpen && "scale-0 opacity-0 pointer-events-none"
           )}
         >
           <div className="absolute inset-0 bg-gradient-to-tr from-primary/40 via-transparent to-transparent opacity-50" />
-          <MessageSquare className="w-6 h-6 md:w-10 md:h-10 relative z-10" />
-          <div className="absolute top-3 right-3 md:top-5 md:right-5 z-20">
-            <span className="relative flex h-3 w-3 md:h-4 md:w-4">
+          <MessageSquare className="w-6 h-6 md:w-8 md:h-8 relative z-10" />
+          <div className="absolute top-2.5 right-2.5 md:top-3 md:right-3 z-20">
+            <span className="relative flex h-2.5 w-2.5 md:h-3 md:w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 md:h-4 md:w-4 bg-primary border-2 border-secondary"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 md:h-3 md:w-3 bg-primary border-2 border-secondary"></span>
             </span>
           </div>
-          <div className="absolute inset-0 border-[3px] md:border-4 border-primary/20 rounded-[1.5rem] md:rounded-[2rem] animate-pulse" />
+          <div className="absolute inset-0 border-[3px] border-primary/20 rounded-[1.5rem] md:rounded-[2rem] animate-pulse" />
         </motion.button>
       </div>
     </>
