@@ -153,7 +153,7 @@ export default function LoginPage() {
                 disabled={loading || isConfigMissing} 
                 className="w-full h-14 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] gap-2 shadow-xl shadow-primary/20 border-none"
               >
-                {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <>Access Dashboard <ArrowRight className="w-4 h-4 /></>}
+                {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <>Access Dashboard <ArrowRight className="w-4 h-4" /></>}
               </Button>
             </form>
           </CardContent>
