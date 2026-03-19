@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -58,14 +57,20 @@ export function useCollection<T = any>(
         setIsLoading(false);
       },
       (error: FirestoreError) => {
-        // Safer path resolution for error context. 
-        // We try to extract path from targetRefOrQuery if it's a collection,
-        // or from internal query if it's a Query.
+        // Advanced path resolution for clearer error context in the registry.
         let path = 'unknown/collection';
         if ((targetRefOrQuery as any).path) {
           path = (targetRefOrQuery as any).path;
-        } else if ((targetRefOrQuery as any)._query?.path?.segments) {
-          path = (targetRefOrQuery as any)._query.path.segments.join('/');
+        } else {
+          // If it's a Query, try to reconstruct path from segments or private properties
+          try {
+            const internalQuery = (targetRefOrQuery as any)._query || (targetRefOrQuery as any).query;
+            if (internalQuery?.path?.segments) {
+              path = internalQuery.path.segments.join('/');
+            }
+          } catch (e) {
+            // Fallback to unknown if internal structures are inaccessible
+          }
         }
 
         const contextualError = new FirestorePermissionError({

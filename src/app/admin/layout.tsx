@@ -46,6 +46,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   }, []);
 
   useEffect(() => {
+    // Auto-promotion: If user is logged in but has no role record yet, create it.
     if (mounted && user && firestore && !isAdminRoleLoading && !adminRole) {
       setDocumentNonBlocking(doc(firestore, 'roles_admin', user.uid), {
         uid: user.uid,
@@ -67,6 +68,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     }
   };
 
+  // Guard 1: Basic App & Auth Loading
   if (!mounted || isUserLoading) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-white gap-4">
@@ -76,6 +78,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     );
   }
 
+  // Guard 2: Not Logged In
   if (!user) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white p-6">
@@ -87,6 +90,17 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <p className="text-muted-foreground text-[10px] font-bold uppercase tracking-widest">Official Entry Only</p>
           <Button asChild className="w-full h-12 md:h-14 rounded-xl font-bold uppercase tracking-widest text-[10px]"><Link href="/auth/login">Staff Login</Link></Button>
         </div>
+      </div>
+    );
+  }
+
+  // Guard 3: Authenticated but waiting for Role Verification or Promotion
+  // This prevents Dashboard queries from running before the Admin status is active in rules.
+  if (isAdminRoleLoading || !adminRole) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-white gap-4">
+        <Loader2 className="w-10 h-10 text-primary animate-spin" />
+        <p className="text-secondary font-bold text-[10px] uppercase tracking-[0.3em]">Verifying Registry Status...</p>
       </div>
     );
   }
