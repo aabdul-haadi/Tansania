@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -69,7 +70,7 @@ export default function Home() {
                   suppressHydrationWarning
                 />
                 <div className="pr-2">
-                  <Button asChild className="h-7 md:h-8 rounded-lg px-3 gap-2 hidden sm:flex text-[7px] md:text-[8px] font-black uppercase shadow-none">
+                  <Button asChild className="h-7 md:h-8 rounded-lg px-3 gap-2 hidden sm:flex text-[7px] md:text-[8px] font-black uppercase shadow-none" variant="default" size="sm">
                     <Link href="/itinerary-builder">AI Planer</Link>
                   </Button>
                 </div>
@@ -126,7 +127,7 @@ export default function Home() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent p-6 md:p-8 flex flex-col justify-end">
                       <h3 className="text-white text-lg md:text-2xl font-headline font-bold mb-1 uppercase tracking-tight">{item.title}</h3>
                       <p className="text-white/70 mb-3 max-w-xs text-[8px] md:text-[10px] font-bold leading-relaxed uppercase tracking-widest">{item.desc}</p>
-                      <Button asChild className="rounded-lg px-5 h-8 md:h-9 font-bold shadow-xl text-[8px] uppercase tracking-widest border-none">
+                      <Button asChild className="rounded-lg px-5 h-8 md:h-9 font-bold shadow-xl text-[8px] uppercase tracking-widest border-none" variant="default" size="sm">
                         <Link href={item.link}>Region erleben</Link>
                       </Button>
                     </div>
