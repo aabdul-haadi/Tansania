@@ -4,10 +4,15 @@
  * 
  * This flow provides a personalized consultation experience based on the 
  * complete website knowledge graph, packages, and services.
+ * 
+ * - Auto-Learning: Queries live Firestore data to ensure responses are 
+ *   always synchronized with the latest site content.
  */
 
 import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
+import { initializeFirebase } from '@/firebase/setup';
+import { collection, getDocs, query, where, limit, orderBy } from 'firebase/firestore';
 
 const TripAdvisorInputSchema = z.object({
   message: z.string().describe('The user\'s question or request.'),
@@ -15,13 +20,6 @@ const TripAdvisorInputSchema = z.object({
     role: z.enum(['user', 'model']),
     content: z.string()
   })).optional().describe('Chat history for context.'),
-  packagesContext: z.array(z.object({
-    title: z.string(),
-    description: z.string(),
-    price: z.number().optional(),
-    duration: z.number().optional(),
-    slug: z.string().optional()
-  })).optional().describe('Details of current available safari packages.'),
 });
 
 const TripAdvisorOutputSchema = z.object({
@@ -64,16 +62,14 @@ Answer questions with rich, vivid detail. Use luxurious and evocative language. 
 
 const advisorPrompt = ai.definePrompt({
   name: 'tripAdvisorPrompt',
-  input: { schema: TripAdvisorInputSchema },
+  input: { 
+    schema: TripAdvisorInputSchema.extend({
+      liveContext: z.string().optional(),
+    })
+  },
   output: { schema: TripAdvisorOutputSchema },
   prompt: `
-{{#if packagesContext}}
-### CURRENT CATALOG (LIVE DATA):
-Here are the currently available packages in our registry. Reference these specifically when providing recommendations:
-{{#each packagesContext}}
-- **{{{title}}}**: {{{description}}} (Dauer: {{duration}} Tage, Ab €{{price}}) - [Pfad: /safaris/{{{slug}}}]
-{{/each}}
-{{/if}}
+{{{liveContext}}}
 
 User Message: {{{message}}}
 `,
@@ -87,7 +83,44 @@ const tripAdvisorFlow = ai.defineFlow(
     outputSchema: TripAdvisorOutputSchema,
   },
   async (input) => {
-    const { output } = await advisorPrompt(input, {
+    // 1. Fetch Live Context (Auto-learning from Registry)
+    const { firestore } = initializeFirebase();
+    let liveContext = "### NO LIVE DATA FOUND. USE GENERAL KNOWLEDGE.";
+    
+    if (firestore) {
+      try {
+        const [pkgsSnap, blogsSnap] = await Promise.all([
+          getDocs(query(collection(firestore, 'packages'), where('isPublished', '==', true), limit(10))),
+          getDocs(query(collection(firestore, 'blogPosts'), where('status', '==', 'PUBLISHED'), limit(5), orderBy('createdAt', 'desc')))
+        ]);
+        
+        const pkgList = pkgsSnap.docs.map(d => {
+          const data = d.data();
+          return `- **${data.title}**: ${data.description?.slice(0, 100)}... (${data.durationDays} Tage, ab €${data.startingPrice}) [Pfad: /safaris/${data.slug}]`;
+        }).join('\n');
+
+        const blogList = blogsSnap.docs.map(d => {
+          const data = d.data();
+          return `- **${data.title}**: ${data.excerpt?.slice(0, 100)}... [Pfad: /blog/${data.slug}]`;
+        }).join('\n');
+
+        liveContext = `
+### CURRENT LIVE CATALOG (AUTO-LEARNED):
+SAFARI PACKAGES:
+${pkgList}
+
+LATEST EXPERT JOURNAL ENTRIES:
+${blogList}
+`;
+      } catch (e) {
+        console.error("AI Learning Handshake Failed:", e);
+      }
+    }
+
+    const { output } = await advisorPrompt({
+      ...input,
+      liveContext
+    }, {
       messages: input.history?.map(h => ({ role: h.role, content: [{ text: h.content }] }))
     });
 
