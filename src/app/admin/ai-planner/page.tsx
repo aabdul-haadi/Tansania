@@ -22,7 +22,7 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
+import { useCollection, useFirestore, useMemoFirebase, useUser, useDoc } from '@/firebase';
 import { collection } from 'firebase/firestore';
 import { adminNavigationSitemapSuggestions } from '@/ai/flows/admin-navigation-sitemap-suggestions';
 import { adminSeoAndLinkingSuggestions } from '@/ai/flows/admin-seo-and-linking-suggestions';
@@ -30,14 +30,21 @@ import { generateAdminContentChecklist } from '@/ai/flows/admin-content-checklis
 import { cn } from '@/lib/utils';
 
 export default function AIPlannerPage() {
+  const { user } = useUser();
   const firestore = useFirestore();
   const [loading, setLoading] = useState<Record<string, boolean>>({ seo: false, nav: false, content: false });
   const [activeTab, setActiveTab] = useState('seo');
   
-  // Real Data Streams
-  const blogsQuery = useMemoFirebase(() => firestore ? collection(firestore, 'blogPosts') : null, [firestore]);
-  const packagesQuery = useMemoFirebase(() => firestore ? collection(firestore, 'packages') : null, [firestore]);
-  const pagesQuery = useMemoFirebase(() => firestore ? collection(firestore, 'pages') : null, [firestore]);
+  const canFetch = !!firestore && !!user;
+
+  // CRITICAL: Load admin role before attempting protected collection group listing
+  const adminDocRef = useMemoFirebase(() => (canFetch ? doc(firestore, 'roles_admin', user.uid) : null), [firestore, user, canFetch]);
+  const { data: adminRole } = useDoc(adminDocRef);
+
+  // Protected Data Streams - Only fire once admin status is confirmed
+  const blogsQuery = useMemoFirebase(() => (canFetch && adminRole) ? collection(firestore, 'blogPosts') : null, [canFetch, firestore, adminRole]);
+  const packagesQuery = useMemoFirebase(() => (canFetch && adminRole) ? collection(firestore, 'packages') : null, [canFetch, firestore, adminRole]);
+  const pagesQuery = useMemoFirebase(() => (canFetch && adminRole) ? collection(firestore, 'pages') : null, [canFetch, firestore, adminRole]);
 
   const { data: blogs } = useCollection(blogsQuery);
   const { data: packages } = useCollection(packagesQuery);
@@ -47,7 +54,6 @@ export default function AIPlannerPage() {
   const [navResult, setNavResult] = useState<any>(null);
   const [checklistResult, setChecklistResult] = useState<any>(null);
 
-  // Content Checklist State
   const [checklistInput, setChecklistInput] = useState({ type: 'package' as any, title: '', context: '' });
 
   const runSeoAudit = async () => {
@@ -140,7 +146,6 @@ export default function AIPlannerPage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        {/* Knowledge Stats */}
         <div className="lg:col-span-4 space-y-6">
           <Card className="border-none shadow-sm rounded-[2.5rem] bg-white border border-border/50">
             <CardHeader className="pb-2">
@@ -183,7 +188,6 @@ export default function AIPlannerPage() {
           </div>
         </div>
 
-        {/* Intelligence Tabs */}
         <div className="lg:col-span-8">
           <Tabs defaultValue="seo" onValueChange={setActiveTab} className="space-y-6">
             <TabsList className="bg-muted/30 p-1.5 h-14 rounded-2xl grid grid-cols-3 w-full border border-border">
@@ -335,3 +339,5 @@ export default function AIPlannerPage() {
     </div>
   );
 }
+
+import { doc } from 'firebase/firestore';

@@ -69,11 +69,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         updatedAt: serverTimestamp()
       }, { merge: true });
 
-      // Give the server-side rules engine a moment to synchronize the new admin record
+      // Registry Handshake: Wait 3 seconds for the rules engine to synchronize the new admin record
       // before rendering children that trigger protected collection fetches.
       setTimeout(() => {
         setIsPromoting(false);
-      }, 2000);
+      }, 3000);
     }
   }, [user, adminRole, isAdminRoleLoading, firestore, mounted, isPromoting]);
 
@@ -120,7 +120,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <div className="min-h-screen flex flex-col items-center justify-center bg-white gap-4">
         <Loader2 className="w-10 h-10 text-primary animate-spin" />
         <p className="text-secondary font-bold text-[10px] uppercase tracking-[0.3em]">
-          {isPromoting ? 'Synchronizing Registry...' : 'Verifying Identity...'}
+          {isPromoting ? 'Finalizing Registry Promotion...' : 'Verifying Identity...'}
         </p>
       </div>
     );

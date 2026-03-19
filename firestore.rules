@@ -70,11 +70,5 @@ service cloud.firestore {
     match /siteKnowledgeGraphNodes/{nodeId} {
       allow read, write: if isAdmin();
     }
-
-    // Fallback rule for development
-    match /{document=**} {
-      allow read: if true;
-      allow write: if isAdmin();
-    }
   }
 }
