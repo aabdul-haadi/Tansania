@@ -237,7 +237,7 @@ export function AIFloatingAdvisor() {
                           </div>
                           {m.action && m.route && (
                             <Link href={m.route} className="ml-10">
-                              <Button size="sm" variant="outline" className="rounded-full h-8 px-3 text-[7px] font-bold uppercase tracking-widest border-primary/20 text-primary hover:bg-primary/5 group">
+                              <Button size="sm" variant="outline" className="rounded-full h-8 px-3 text-[7px] font-bold uppercase tracking-widest border-primary/20 text-primary hover:bg-primary/5 group" suppressHydrationWarning>
                                 {m.action} <ArrowRight className="w-2.5 h-2.5 ml-1.5 group-hover:translate-x-1 transition-transform" />
                               </Button>
                             </Link>
@@ -271,12 +271,14 @@ export function AIFloatingAdvisor() {
                             "h-11 rounded-xl border-muted bg-[#fdfcfb] shadow-inner focus:ring-primary/20 text-[10px] md:text-[11px] font-bold transition-all",
                             isListening && "ring-2 ring-primary bg-primary/5"
                           )}
+                          suppressHydrationWarning
                         />
                         <Button 
                           type="button" 
                           size="icon" 
                           variant="ghost" 
                           onClick={toggleListening}
+                          suppressHydrationWarning
                           className={cn(
                             "absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 rounded-lg transition-all",
                             isListening ? "text-primary bg-primary/10 animate-pulse" : "text-muted-foreground hover:text-primary"
@@ -288,6 +290,7 @@ export function AIFloatingAdvisor() {
                       <Button 
                         type="submit" 
                         size="icon" 
+                        suppressHydrationWarning
                         className="w-11 h-11 rounded-xl shadow-xl shadow-primary/20 shrink-0 border-none" 
                         disabled={!input.trim() || loading}
                       >
@@ -305,6 +308,7 @@ export function AIFloatingAdvisor() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => { setIsOpen(true); setShowTeaser(false); }}
+          suppressHydrationWarning
           className={cn(
             "w-14 h-14 md:w-16 md:h-16 rounded-[1.5rem] md:rounded-[2rem] bg-secondary text-white shadow-2xl flex items-center justify-center relative overflow-hidden transition-all duration-500 pointer-events-auto",
             isOpen && "scale-0 opacity-0 pointer-events-none"

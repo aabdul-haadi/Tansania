@@ -1,7 +1,6 @@
-
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Compass, LayoutGrid, Search, Loader2 } from 'lucide-react';
 import { BlogCard } from '@/components/blog/BlogCard';
@@ -10,13 +9,19 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { collection, query, where, orderBy } from 'firebase/firestore';
+import { cn } from '@/lib/utils';
 
 const categories = ['Alle', 'Planung', 'Guides', 'Tipps', 'Kultur'];
 
 export default function BlogListing() {
   const [activeCategory, setActiveCategory] = useState('Alle');
   const [search, setSearch] = useState('');
+  const [mounted, setMounted] = useState(false);
   const firestore = useFirestore();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const blogQuery = useMemoFirebase(() => {
     if (!firestore) return null;
@@ -34,9 +39,6 @@ export default function BlogListing() {
     const matchesSearch = p.title.toLowerCase().includes(search.toLowerCase());
     return matchesCat && matchesSearch;
   });
-
-  // Fallback static data if Firestore is empty during initial setup
-  const displayPosts = filteredPosts.length > 0 ? filteredPosts : [];
 
   return (
     <div className="bg-background min-h-screen">
@@ -79,6 +81,7 @@ export default function BlogListing() {
                   <button
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
+                    suppressHydrationWarning
                     className={cn(
                       "px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all border",
                       activeCategory === cat 
@@ -96,9 +99,9 @@ export default function BlogListing() {
       </section>
 
       <div className="container mx-auto px-4 max-w-7xl py-16 md:py-32">
-        {isLoading ? (
+        {!mounted || isLoading ? (
           <div className="py-40 text-center"><Loader2 className="w-10 h-10 animate-spin mx-auto text-primary opacity-20" /></div>
-        ) : displayPosts.length === 0 ? (
+        ) : filteredPosts.length === 0 ? (
           <div className="py-40 text-center border-2 border-dashed rounded-[3rem] bg-muted/20">
             <LayoutGrid className="w-12 h-12 mx-auto mb-4 opacity-10" />
             <h3 className="text-2xl font-headline font-bold text-secondary uppercase tracking-tight">Das Journal ist bereit.</h3>
@@ -107,7 +110,7 @@ export default function BlogListing() {
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
             <div className="lg:col-span-8 space-y-16">
-              {displayPosts.map((post, idx) => (
+              {filteredPosts.map((post, idx) => (
                 <BlogCard key={post.id} post={post} featured={idx === 0 && !search && activeCategory === 'Alle'} />
               ))}
             </div>
@@ -119,8 +122,4 @@ export default function BlogListing() {
       </div>
     </div>
   );
-}
-
-function cn(...classes: any[]) {
-  return classes.filter(Boolean).join(' ');
 }
