@@ -78,6 +78,7 @@ export function useCollection<T = any>(
           path,
         })
 
+        // Standard emission protocol for the Next.js dev overlay
         setError(contextualError)
         setData(null)
         setIsLoading(false)

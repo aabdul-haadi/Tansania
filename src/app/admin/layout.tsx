@@ -69,11 +69,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         updatedAt: serverTimestamp()
       }, { merge: true });
 
-      // Registry Handshake: Wait 3 seconds for the rules engine to synchronize the new admin record
-      // before rendering children that trigger protected collection fetches.
+      // Registry Handshake: Wait 5 seconds for the server-side rules engine to synchronize 
+      // the new admin record before rendering children that trigger protected collection fetches.
+      // This prevents "Missing or insufficient permissions" errors during the initial transition.
       setTimeout(() => {
         setIsPromoting(false);
-      }, 3000);
+      }, 5000);
     }
   }, [user, adminRole, isAdminRoleLoading, firestore, mounted, isPromoting]);
 
@@ -120,7 +121,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <div className="min-h-screen flex flex-col items-center justify-center bg-white gap-4">
         <Loader2 className="w-10 h-10 text-primary animate-spin" />
         <p className="text-secondary font-bold text-[10px] uppercase tracking-[0.3em]">
-          {isPromoting ? 'Finalizing Registry Promotion...' : 'Verifying Identity...'}
+          {isPromoting ? 'Synchronizing Registry Promotion...' : 'Verifying Administrative Identity...'}
         </p>
       </div>
     );
