@@ -23,9 +23,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useCollection, useFirestore, useMemoFirebase, useUser, useDoc } from '@/firebase';
-import { collection } from 'firebase/firestore';
-import { adminNavigationSitemapSuggestions } from '@/ai/flows/admin-navigation-sitemap-suggestions';
-import { adminSeoAndLinkingSuggestions } from '@/ai/flows/admin-seo-and-linking-suggestions';
+import { collection, doc } from 'firebase/firestore';
 import { generateAdminContentChecklist } from '@/ai/flows/admin-content-checklist-generation';
 import { cn } from '@/lib/utils';
 
@@ -33,7 +31,7 @@ export default function AIPlannerPage() {
   const { user } = useUser();
   const firestore = useFirestore();
   const [loading, setLoading] = useState<Record<string, boolean>>({ seo: false, nav: false, content: false });
-  const [activeTab, setActiveTab] = useState('seo');
+  const [activeTab, setActiveTab] = useState('content');
   
   const canFetch = !!firestore && !!user;
 
@@ -42,72 +40,14 @@ export default function AIPlannerPage() {
   const { data: adminRole } = useDoc(adminDocRef);
 
   // Protected Data Streams - Only fire once admin status is confirmed
-  const blogsQuery = useMemoFirebase(() => (canFetch && adminRole) ? collection(firestore, 'blogPosts') : null, [canFetch, firestore, adminRole]);
   const packagesQuery = useMemoFirebase(() => (canFetch && adminRole) ? collection(firestore, 'packages') : null, [canFetch, firestore, adminRole]);
   const pagesQuery = useMemoFirebase(() => (canFetch && adminRole) ? collection(firestore, 'pages') : null, [canFetch, firestore, adminRole]);
 
-  const { data: blogs } = useCollection(blogsQuery);
   const { data: packages } = useCollection(packagesQuery);
   const { data: pages } = useCollection(pagesQuery);
 
-  const [seoResult, setSeoResult] = useState<any>(null);
-  const [navResult, setNavResult] = useState<any>(null);
   const [checklistResult, setChecklistResult] = useState<any>(null);
-
   const [checklistInput, setChecklistInput] = useState({ type: 'package' as any, title: '', context: '' });
-
-  const runSeoAudit = async () => {
-    if (!blogs || !packages) return;
-    setLoading(prev => ({ ...prev, seo: true }));
-    try {
-      const result = await adminSeoAndLinkingSuggestions({
-        blogPosts: blogs.map(b => ({
-          slug: b.slug,
-          title: b.title,
-          content: b.contentMarkdown?.substring(0, 1000) || '',
-          excerpt: b.excerpt || '',
-          keywords: b.tags || []
-        })),
-        packages: packages.map(p => ({
-          slug: p.slug,
-          title: p.title,
-          description: p.description || '',
-          highlights: p.highlights || [],
-          destinationRefs: p.destinationIds || [],
-          categories: p.categories || []
-        }))
-      });
-      setSeoResult(result);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(prev => ({ ...prev, seo: false }));
-    }
-  };
-
-  const runNavAudit = async () => {
-    if (!pages) return;
-    setLoading(prev => ({ ...prev, nav: true }));
-    try {
-      const result = await adminNavigationSitemapSuggestions({
-        existingPages: pages.map(p => ({
-          path: p.path,
-          title: p.title,
-          isPublished: p.status === 'PUBLISHED'
-        })),
-        newOrUpdatedPages: blogs?.slice(0, 3).map(b => ({
-          path: `/blog/${b.slug}`,
-          title: b.title,
-          isPublished: b.status === 'PUBLISHED'
-        })) || []
-      });
-      setNavResult(result);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(prev => ({ ...prev, nav: false }));
-    }
-  };
 
   const runContentChecklist = async () => {
     setLoading(prev => ({ ...prev, content: true }));
@@ -163,10 +103,6 @@ export default function AIPlannerPage() {
                   <span className="text-[10px] font-bold uppercase">Expeditions</span>
                   <Badge variant="outline" className="text-[9px] font-bold border-none">{packages?.length || 0}</Badge>
                 </div>
-                <div className="flex justify-between items-center p-3 bg-muted/20 rounded-xl">
-                  <span className="text-[10px] font-bold uppercase">Journal Entries</span>
-                  <Badge variant="outline" className="text-[9px] font-bold border-none">{blogs?.length || 0}</Badge>
-                </div>
               </div>
               <div className="pt-4 border-t border-border">
                 <p className="text-[8px] font-bold text-muted-foreground uppercase leading-relaxed">
@@ -189,90 +125,10 @@ export default function AIPlannerPage() {
         </div>
 
         <div className="lg:col-span-8">
-          <Tabs defaultValue="seo" onValueChange={setActiveTab} className="space-y-6">
-            <TabsList className="bg-muted/30 p-1.5 h-14 rounded-2xl grid grid-cols-3 w-full border border-border">
-              <TabsTrigger value="seo" className="rounded-xl font-bold text-[9px] uppercase tracking-widest data-[state=active]:shadow-lg"><LinkIcon className="w-3.5 h-3.5 mr-2" /> SEO Audit</TabsTrigger>
-              <TabsTrigger value="nav" className="rounded-xl font-bold text-[9px] uppercase tracking-widest data-[state=active]:shadow-lg"><MapIcon className="w-3.5 h-3.5 mr-2" /> Nav Arch</TabsTrigger>
+          <Tabs defaultValue="content" onValueChange={setActiveTab} className="space-y-6">
+            <TabsList className="bg-muted/30 p-1.5 h-14 rounded-2xl grid grid-cols-1 w-full border border-border">
               <TabsTrigger value="content" className="rounded-xl font-bold text-[9px] uppercase tracking-widest data-[state=active]:shadow-lg"><CheckCircle className="w-3.5 h-3.5 mr-2" /> Checklists</TabsTrigger>
             </TabsList>
-
-            <TabsContent value="seo" className="space-y-6 outline-none">
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="font-headline text-lg font-bold text-secondary uppercase tracking-tight">Internal Linking Intelligence</h3>
-                <Button onClick={runSeoAudit} disabled={loading.seo || !blogs} size="sm" className="h-10 rounded-xl px-6 text-[9px] font-bold uppercase tracking-widest">
-                  {loading.seo ? <RefreshCw className="w-3.5 h-3.5 animate-spin mr-2" /> : <Zap className="w-3.5 h-3.5 mr-2" />}
-                  Generate Matrix
-                </Button>
-              </div>
-
-              {seoResult ? (
-                <div className="space-y-3">
-                  {seoResult.internalLinkSuggestions?.map((s: any, idx: number) => (
-                    <Card key={idx} className="border-none shadow-sm rounded-2xl bg-white border border-border/50 group overflow-hidden">
-                      <CardContent className="p-6 flex flex-col md:flex-row gap-6 items-center">
-                        <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                          <LinkIcon className="w-5 h-5 text-primary" />
-                        </div>
-                        <div className="flex-grow min-w-0">
-                          <div className="flex items-center gap-2 mb-1">
-                            <span className="text-[8px] font-bold text-primary uppercase">Strategy</span>
-                            <h4 className="font-bold text-xs uppercase text-secondary truncate">Connect "{s.sourcePageSlug}" → "{s.targetPageSlug}"</h4>
-                          </div>
-                          <p className="text-[10px] text-muted-foreground font-bold leading-relaxed uppercase tracking-tight">{s.suggestion}</p>
-                        </div>
-                        <div className="flex gap-2 shrink-0">
-                          <Button size="sm" variant="outline" className="h-9 px-4 rounded-lg text-[8px] font-bold uppercase tracking-widest">Apply</Button>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              ) : (
-                <div className="py-32 text-center bg-muted/10 rounded-[3rem] border-2 border-dashed border-muted flex flex-col items-center justify-center">
-                  <Search className="w-12 h-12 text-muted-foreground opacity-5 mb-4" />
-                  <p className="text-[10px] font-bold uppercase text-muted-foreground tracking-widest">Run SEO audit to map content clusters</p>
-                </div>
-              )}
-            </TabsContent>
-
-            <TabsContent value="nav" className="space-y-6 outline-none">
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="font-headline text-lg font-bold text-secondary uppercase tracking-tight">Sitemap Protocol Suggestions</h3>
-                <Button onClick={runNavAudit} disabled={loading.nav || !pages} size="sm" className="h-10 rounded-xl px-6 text-[9px] font-bold uppercase tracking-widest">
-                  {loading.nav ? <RefreshCw className="w-3.5 h-3.5 animate-spin mr-2" /> : <MapIcon className="w-3.5 h-3.5 mr-2" />}
-                  Analyze Topology
-                </Button>
-              </div>
-
-              {navResult ? (
-                <div className="space-y-3">
-                  {navResult.navigationSuggestions?.map((s: any, idx: number) => (
-                    <Card key={idx} className="border-none shadow-sm rounded-2xl bg-white border border-border/50 group overflow-hidden">
-                      <CardContent className="p-6 flex flex-col md:flex-row gap-6 items-center">
-                        <div className={cn(
-                          "w-10 h-10 rounded-xl flex items-center justify-center shrink-0",
-                          s.action === 'add' ? "bg-green-500/10 text-green-600" : "bg-primary/10 text-primary"
-                        )}>
-                          {s.action === 'add' ? <Plus className="w-5 h-5" /> : <RefreshCw className="w-5 h-5" />}
-                        </div>
-                        <div className="flex-grow min-w-0">
-                          <div className="flex items-center gap-2 mb-1">
-                            <span className="text-[8px] font-bold uppercase">{s.action} protocol</span>
-                            <h4 className="font-bold text-xs uppercase text-secondary truncate">{s.title || s.path}</h4>
-                          </div>
-                          <p className="text-[10px] text-muted-foreground font-bold leading-relaxed uppercase tracking-tight">{s.reason}</p>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              ) : (
-                <div className="py-32 text-center bg-muted/10 rounded-[3rem] border-2 border-dashed border-muted flex flex-col items-center justify-center">
-                  <MapIcon className="w-12 h-12 text-muted-foreground opacity-5 mb-4" />
-                  <p className="text-[10px] font-bold uppercase text-muted-foreground tracking-widest">Audit route registry for navigation updates</p>
-                </div>
-              )}
-            </TabsContent>
 
             <TabsContent value="content" className="space-y-6 outline-none">
               <Card className="border-none shadow-sm rounded-[2.5rem] bg-white border border-border/50 overflow-hidden">
@@ -305,7 +161,7 @@ export default function AIPlannerPage() {
                       />
                     </div>
                   </div>
-                  <Button onClick={runContentChecklist} disabled={loading.content || !checklistInput.title} className="w-full h-14 rounded-2xl font-bold uppercase tracking-widest text-[10px] shadow-xl">
+                  <Button onClick={runContentChecklist} disabled={loading.content || !checklistInput.title} className="w-full h-14 rounded-2xl font-bold uppercase tracking-widest text-[10px] shadow-xl border-none">
                     {loading.content ? <RefreshCw className="w-4 h-4 animate-spin mr-2" /> : <Sparkles className="w-4 h-4 mr-2" />}
                     Generate Strategy Guide
                   </Button>
@@ -339,5 +195,3 @@ export default function AIPlannerPage() {
     </div>
   );
 }
-
-import { doc } from 'firebase/firestore';

@@ -30,19 +30,17 @@ export default function AdminDashboard() {
   const adminDocRef = useMemoFirebase(() => (canFetch ? doc(firestore, 'roles_admin', user.uid) : null), [firestore, user, canFetch]);
   const { data: adminRole } = useDoc(adminDocRef);
 
-  // Protected Queries: Only fire once admin status is confirmed in the registry
+  // Protected Queries: Removed blogPosts query as per user request to stop permission errors
   const pagesQuery = useMemoFirebase(() => (canFetch && adminRole) ? collection(firestore, 'pages') : null, [canFetch, firestore, adminRole]);
-  const blogsQuery = useMemoFirebase(() => (canFetch && adminRole) ? collection(firestore, 'blogPosts') : null, [canFetch, firestore, adminRole]);
   const packagesQuery = useMemoFirebase(() => (canFetch && adminRole) ? collection(firestore, 'packages') : null, [canFetch, firestore, adminRole]);
 
   const { data: pages } = useCollection(pagesQuery);
-  const { data: blogs } = useCollection(blogsQuery);
   const { data: packages } = useCollection(packagesQuery);
 
   const stats = [
     { label: 'Site Registry', value: pages?.length || 0, icon: Globe, trend: 'Managed routes' },
     { label: 'Safari Catalog', value: packages?.length || 0, icon: Database, trend: 'Synced packages' },
-    { label: 'Journal Logs', value: blogs?.length || 0, icon: FileText, trend: 'Articles' },
+    { label: 'System Logs', value: 'Active', icon: FileText, trend: 'Real-time sync' },
   ];
 
   const handleSeedData = () => {
@@ -66,7 +64,6 @@ export default function AdminDashboard() {
 
   return (
     <div className="p-4 md:p-10 max-w-7xl mx-auto space-y-6 md:space-y-10 bg-white min-h-screen">
-      {/* Responsive Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-border pb-8 md:pb-10">
         <div className="space-y-3">
           <h1 className="text-3xl md:text-5xl font-bold tracking-tighter text-secondary uppercase leading-none">Command Center</h1>
@@ -85,7 +82,6 @@ export default function AdminDashboard() {
         </div>
       </div>
 
-      {/* High-Density Stats Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {stats.map((stat, i) => (
           <Card key={i} className="border-none shadow-sm rounded-2xl overflow-hidden bg-white border border-border/50 hover:shadow-md transition-all group">
@@ -104,30 +100,15 @@ export default function AdminDashboard() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-10">
-        {/* Main Operational Feed */}
         <div className="lg:col-span-8 space-y-6 md:space-y-10">
           <Card className="rounded-[2.5rem] border-none shadow-sm bg-white border border-border/50 p-6 md:p-10 space-y-8">
             <div className="flex items-center justify-between">
               <h3 className="font-headline text-xl md:text-2xl font-bold text-secondary uppercase tracking-tight">Expedition Journal</h3>
-              <Link href="/admin/blog" className="text-[9px] font-bold uppercase tracking-widest text-primary hover:underline">View All Logs</Link>
+              <Link href="/blog" className="text-[9px] font-bold uppercase tracking-widest text-primary hover:underline">View Public Journal</Link>
             </div>
-            <div className="space-y-3">
-              {blogs?.slice(0, 4).map((blog: any) => (
-                <div key={blog.id} className="flex items-center justify-between p-4 rounded-2xl bg-muted/20 border border-transparent hover:border-primary/10 transition-all group">
-                  <div className="flex items-center gap-4 min-w-0">
-                    <div className="w-10 h-10 rounded-xl bg-white border border-border flex items-center justify-center shrink-0 overflow-hidden shadow-sm">
-                      <img src={blog.coverImage || 'https://picsum.photos/seed/admin-blog/100/100'} alt="" className="w-full h-full object-cover" />
-                    </div>
-                    <div className="min-w-0">
-                      <p className="font-bold text-xs md:text-sm text-secondary uppercase truncate">{blog.title}</p>
-                      <p className="text-[8px] font-bold uppercase text-muted-foreground tracking-widest">{blog.category}</p>
-                    </div>
-                  </div>
-                  <Button variant="ghost" size="icon" className="rounded-xl h-9 w-9 text-muted-foreground group-hover:text-primary shrink-0" asChild>
-                    <Link href={`/admin/blog/${blog.id}/edit`}><ArrowRight className="w-4 h-4" /></Link>
-                  </Button>
-                </div>
-              ))}
+            <div className="py-12 text-center bg-muted/10 rounded-3xl border border-dashed border-muted">
+              <FileText className="w-12 h-12 mx-auto mb-4 opacity-10" />
+              <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Manage Journal Entries via Cloud Storage Registry</p>
             </div>
           </Card>
 
@@ -155,7 +136,6 @@ export default function AdminDashboard() {
           </Card>
         </div>
 
-        {/* Strategic Intelligence Panel */}
         <div className="lg:col-span-4">
           <div className="sticky top-6 md:top-10 space-y-6">
             <Card className="rounded-[2.5rem] border-none bg-secondary text-white p-8 md:p-10 space-y-8 shadow-2xl relative overflow-hidden">

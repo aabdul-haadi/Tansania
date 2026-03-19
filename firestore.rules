@@ -45,16 +45,17 @@ service cloud.firestore {
       allow write: if isAdmin() || (request.auth != null && request.resource.data.userId == request.auth.uid);
     }
 
-    // Blog Posts and Pages: Publicly readable if published. Admins have full access.
-    // NOTE: Non-admins MUST use a filter (where('status', '==', 'PUBLISHED')) to list these.
+    // Blog Posts: Fully public reading for published content. Admin only for writes.
     match /blogPosts/{slug} {
-      allow list: if isAdmin() || (request.auth != null && request.query.limit <= 10 && resource.data.status == 'PUBLISHED');
-      allow get: if isAdmin() || resource.data.status == 'PUBLISHED';
+      allow read: if resource.data.status == 'PUBLISHED' || isAdmin();
+      allow list: if isAdmin() || resource.data.status == 'PUBLISHED';
       allow write: if isAdmin();
     }
+
+    // Pages: Fully public reading for published content. Admin only for writes.
     match /pages/{pageKey} {
-      allow list: if isAdmin() || (request.auth != null && resource.data.status == 'PUBLISHED');
-      allow get: if isAdmin() || resource.data.status == 'PUBLISHED';
+      allow read: if resource.data.status == 'PUBLISHED' || isAdmin();
+      allow list: if isAdmin() || resource.data.status == 'PUBLISHED';
       allow write: if isAdmin();
     }
 
