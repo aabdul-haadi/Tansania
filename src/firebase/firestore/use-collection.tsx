@@ -56,8 +56,8 @@ export function useCollection<T = any>(
         setError(null);
         setIsLoading(false);
       },
-      (error: FirestoreError) => {
-        // Advanced path resolution for clearer error context in the registry.
+      (serverError: FirestoreError) => {
+        // Advanced path resolution for clearer technical error context in the registry.
         let path = 'unknown/collection';
         if ((targetRefOrQuery as any).path) {
           path = (targetRefOrQuery as any).path;
@@ -88,9 +88,9 @@ export function useCollection<T = any>(
     return () => unsubscribe();
   }, [targetRefOrQuery]);
 
-  // Enforce developer safety: ensure the reference is memoized
+  // Enforce developer safety: ensure the reference is memoized to prevent savannnah loops.
   if(targetRefOrQuery && !isMemoized(targetRefOrQuery)) {
-    throw new Error('Firestore Reference/Query was not properly memoized using useMemoFirebase. This can cause infinite loops.');
+    throw new Error('Firestore Reference/Query was not properly memoized using useMemoFirebase. This can cause infinite render loops.');
   }
 
   return { data, isLoading, error };

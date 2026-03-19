@@ -14,7 +14,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { useFirestore, useUser, useCollection, useMemoFirebase, setDocumentNonBlocking } from '@/firebase';
+import { useFirestore, useUser, useCollection, useMemoFirebase, useDoc, setDocumentNonBlocking } from '@/firebase';
 import { doc, collection, serverTimestamp } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
 
@@ -26,9 +26,14 @@ export default function AdminDashboard() {
 
   const canFetch = !!firestore && !!user;
 
-  const pagesQuery = useMemoFirebase(() => canFetch ? collection(firestore, 'pages') : null, [canFetch, firestore]);
-  const blogsQuery = useMemoFirebase(() => canFetch ? collection(firestore, 'blogPosts') : null, [canFetch, firestore]);
-  const packagesQuery = useMemoFirebase(() => canFetch ? collection(firestore, 'packages') : null, [canFetch, firestore]);
+  // CRITICAL: Ensure we have the admin role record before querying protected collections
+  const adminDocRef = useMemoFirebase(() => (canFetch ? doc(firestore, 'roles_admin', user.uid) : null), [firestore, user, canFetch]);
+  const { data: adminRole } = useDoc(adminDocRef);
+
+  // Protected Queries: Only fire once admin status is confirmed in the registry
+  const pagesQuery = useMemoFirebase(() => (canFetch && adminRole) ? collection(firestore, 'pages') : null, [canFetch, firestore, adminRole]);
+  const blogsQuery = useMemoFirebase(() => (canFetch && adminRole) ? collection(firestore, 'blogPosts') : null, [canFetch, firestore, adminRole]);
+  const packagesQuery = useMemoFirebase(() => (canFetch && adminRole) ? collection(firestore, 'packages') : null, [canFetch, firestore, adminRole]);
 
   const { data: pages } = useCollection(pagesQuery);
   const { data: blogs } = useCollection(blogsQuery);

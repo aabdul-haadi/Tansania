@@ -39,8 +39,14 @@ export default function BlogPostDetail() {
     setIsMounted(true);
   }, []);
 
+  // CRITICAL: Public query must include 'status' filter to comply with security rules
   const postQuery = useMemoFirebase(() => (
-    firestore && slug ? query(collection(firestore, 'blogPosts'), where('slug', '==', slug as string), limit(1)) : null
+    firestore && slug ? query(
+      collection(firestore, 'blogPosts'), 
+      where('slug', '==', slug as string), 
+      where('status', '==', 'PUBLISHED'),
+      limit(1)
+    ) : null
   ), [firestore, slug]);
   
   const { data: posts, isLoading } = useCollection(postQuery);

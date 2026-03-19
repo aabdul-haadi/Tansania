@@ -46,12 +46,13 @@ service cloud.firestore {
     }
 
     // Blog Posts and Pages: Publicly readable if published. Admins have full access.
+    // NOTE: Non-admins MUST use a filter (where('status', '==', 'PUBLISHED')) to list these.
     match /blogPosts/{slug} {
-      allow read: if resource.data.status == 'PUBLISHED' || isAdmin();
+      allow read: if isAdmin() || resource.data.status == 'PUBLISHED';
       allow write: if isAdmin();
     }
     match /pages/{pageKey} {
-      allow read: if resource.data.status == 'PUBLISHED' || isAdmin();
+      allow read: if isAdmin() || resource.data.status == 'PUBLISHED';
       allow write: if isAdmin();
     }
 
