@@ -25,8 +25,40 @@ import { Button } from '@/components/ui/button';
 import { BlogSidebar } from '@/components/blog/BlogSidebar';
 import { BlogContactForm } from '@/components/blog/BlogContactForm';
 
-// SEEDED CONTENT for the requested "Wildebeest Migration Insights"
+// EXTENDED REGISTRY FOR BLOG POSTS
 const posts = [
+  {
+    id: 'luxus-safari-tansania-15-tage',
+    slug: 'luxus-safari-tansania-15-tage',
+    title: 'Luxus-Safari in Tansania: 15 Tage Abenteuer & Sansibar-Luxus ab 5.399 €',
+    excerpt: 'Safari und Strand in einem – erlebe das Beste aus zwei Welten! Atemberaubende Tierbegegnungen, luxuriöse Lodges und tropische Strände erwarten dich.',
+    contentMarkdown: `Safari und Strand in einem – erlebe das Beste aus zwei Welten! Atemberaubende Tierbegegnungen, luxuriöse Lodges und tropische Strände erwarten dich auf dieser 15-tägigen All-Inclusive-Reise durch Tansania und Sansibar.
+
+In einem Moment folgst du einem Löwenrudel im goldenen Licht der Serengeti, im nächsten stehst du barfuß am weißen Sandstrand Sansibars mit einem Cocktail in der Hand.
+
+### Reise-Highlights im Überblick
+- **Dauer:** 15 Tage (10 Tage Safari + 5 Tage Sansibar)
+- **Preis:** Ab 5.399€ pro Person inkl. Flug
+- **Gruppengröße:** Maximal 6 Personen für persönliches Erlebnis
+- **Safari-Parks:** Serengeti, Ngorongoro, Tarangire, Lake Manyara
+- **Sansibar:** 5 Nächte All-Inclusive in Strandvilla
+
+### Das Safari-Abenteuer
+Diese 15-tägige Luxusreise bietet alles, was du dir für eine perfekte Afrika-Erfahrung wünschst – ohne versteckte Kosten oder Überraschungen vor Ort. Alle Pirschfahrten finden in offenen 4x4-Jeeps mit erfahrenen, deutschsprachigen Guides statt.
+
+### Sansibar – Inselparadies zum Entspannen
+Nach intensiven Safari-Tagen wartet Sansibar auf dich. Ein kurzer Flug bringt dich direkt ans türkisfarbene Meer, wo du in einer exklusiven Strandvilla begrüßt wirst. Die All-Inclusive-Verpflegung lässt keine Wünsche offen – fangfrischer Fisch, tropische Früchte und die berühmten Gewürze der Insel verwöhnen deinen Gaumen.
+
+### Was diese Luxusreise auszeichnet
+1. **Kombination Safari & Strand:** Perfekte Balance aus Abenteuer und Entspannung.
+2. **Echte All-Inclusive:** Keine versteckten Kosten, komplett sorgenfrei.
+3. **Kleingruppe:** Intim statt Massentourismus (max. 6 Personen).
+4. **Handverlesene Unterkünfte:** Luxus in der Wildnis.`,
+    category: 'Planung',
+    authorName: 'Samson Kyashama',
+    createdAt: '2024-08-30T09:00:00Z',
+    coverImage: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920'
+  },
   {
     id: 'wildebeest-migration-insights',
     slug: 'wildebeest-migration-insights',
@@ -47,7 +79,7 @@ Zwischen Juli und September erreichen die Herden den Norden. Hier spielen sich d
     category: 'Planung',
     authorName: 'Samson Kyashama',
     createdAt: '2024-08-26T10:00:00Z',
-    coverImage: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920'
+    coverImage: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=1920'
   },
   {
     id: 'kalbung-in-ndutu',
@@ -98,7 +130,7 @@ export default function BlogPostDetail() {
           fill
           priority
           className="object-cover brightness-75 scale-105"
-          data-ai-hint="serengeti safari"
+          data-ai-hint="safari travel"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-secondary via-black/20 to-transparent" />
         
@@ -156,33 +188,6 @@ export default function BlogPostDetail() {
               <div className="prose prose-xl max-w-none space-y-12">
                 <div className="whitespace-pre-wrap leading-[1.8] text-sm md:text-xl font-bold text-muted-foreground uppercase tracking-tight text-justify">
                   {post.contentMarkdown}
-                </div>
-              </div>
-
-              {/* Specialist Strategy Box */}
-              <div className="mt-20 p-10 md:p-16 rounded-[3rem] bg-secondary text-white relative overflow-hidden border-none shadow-2xl">
-                <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-                <div className="relative z-10 space-y-10">
-                  <div className="flex items-center gap-4">
-                    <Sparkles className="w-8 h-8 text-primary" />
-                    <h3 className="font-headline text-3xl md:text-4xl font-black uppercase tracking-tighter leading-none">Safari Experten-Strategie</h3>
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    {[
-                      { t: "Peak Migration", d: "Die Flussüberquerungen im Norden finden meist zwischen Juli und Oktober statt. Dies ist die intensivste Zeit für Safari-Fans." },
-                      { t: "Ausrüstungs-Check", d: "Ein hochwertiges Teleobjektiv (min. 400mm) ist für die Migration unverzichtbar, um die Emotionen der Herden einzufangen." },
-                      { t: "Logistik-Vorteil", d: "Mobile Camps bieten die höchste Wahrscheinlichkeit, direkt am Geschehen zu sein, da sie den Herden saisonal folgen." },
-                      { t: "Ethik & Schutz", d: "Wir wahren stets den nötigen Abstand, um den natürlichen Lauf der Migration nicht zu stören. Respekt vor der Wildnis ist unser Credo." }
-                    ].map((tip, i) => (
-                      <div key={i} className="flex gap-5 group">
-                        <CheckCircle2 className="w-6 h-6 text-primary shrink-0 group-hover:scale-110 transition-transform" />
-                        <div>
-                          <p className="font-black text-[11px] md:text-xs mb-2 uppercase tracking-widest text-white">{tip.t}</p>
-                          <p className="text-[10px] md:text-[11px] text-white/50 leading-relaxed font-bold uppercase tracking-widest">{tip.d}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
                 </div>
               </div>
 

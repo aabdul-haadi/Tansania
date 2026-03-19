@@ -10,30 +10,30 @@ import { Badge } from '@/components/ui/badge';
 const blogPosts = [
   {
     id: 1,
+    title: "Luxus-Safari in Tansania: 15 Tage Abenteuer & Sansibar-Luxus",
+    slug: "luxus-safari-tansania-15-tage",
+    date: "30 August, 2024",
+    img: "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800",
+    tag: "Luxusreisen",
+    hint: "safari travel"
+  },
+  {
+    id: 2,
     title: "Wildebeest Migration Insights Tipps für deine Safari",
     slug: "wildebeest-migration-insights",
     date: "26 August, 2024",
-    img: "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800",
+    img: "https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800",
     tag: "Migration",
     hint: "migration herds"
   },
   {
-    id: 2,
+    id: 3,
     title: "Kalbung in Ndutu Einmaliges Naturerlebnis",
     slug: "kalbung-in-ndutu",
     date: "26 August, 2024",
     img: "https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800",
     tag: "Nationalparks",
     hint: "safari jeep"
-  },
-  {
-    id: 3,
-    title: "Mara River Crossing: Spannung pur hautnah",
-    slug: "mara-river-crossing",
-    date: "26 August, 2024",
-    img: "https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=800",
-    tag: "Wildnis",
-    hint: "river crossing"
   }
 ];
 

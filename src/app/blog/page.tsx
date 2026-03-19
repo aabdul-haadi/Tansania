@@ -8,8 +8,18 @@ import { BlogSidebar } from '@/components/blog/BlogSidebar';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 
-// SEEDED DATA for the modern unique design
+// SYNCHRONIZED REGISTRY DATA
 const blogPosts = [
+  {
+    id: 'luxus-safari-tansania-15-tage',
+    slug: 'luxus-safari-tansania-15-tage',
+    title: 'Luxus-Safari in Tansania: 15 Tage Abenteuer & Sansibar-Luxus ab 5.399 €',
+    excerpt: 'Safari und Strand in einem – erlebe das Beste aus zwei Welten! Atemberaubende Tierbegegnungen, luxuriöse Lodges und tropische Strände.',
+    category: 'Planung',
+    authorName: 'Samson Kyashama',
+    createdAt: '2024-08-30T09:00:00Z',
+    coverImage: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200'
+  },
   {
     id: 'wildebeest-migration-insights',
     slug: 'wildebeest-migration-insights',
@@ -18,7 +28,7 @@ const blogPosts = [
     category: 'Planung',
     authorName: 'Samson Kyashama',
     createdAt: '2024-08-26T10:00:00Z',
-    coverImage: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200'
+    coverImage: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=1200'
   },
   {
     id: 'kalbung-in-ndutu',
