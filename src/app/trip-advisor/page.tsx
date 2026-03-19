@@ -187,11 +187,11 @@ export default function TripAdvisorPage() {
                         {m.content}
                       </div>
                       {m.action && m.route && (
-                        <Link href={m.route}>
-                          <Button size="sm" variant="outline" className="rounded-full h-9 px-4 text-[8px] font-bold uppercase tracking-widest border-primary/20 text-primary hover:bg-primary/5 group">
+                        <Button asChild size="sm" variant="outline" className="rounded-full h-9 px-4 text-[8px] font-bold uppercase tracking-widest border-primary/20 text-primary hover:bg-primary/5 group">
+                          <Link href={m.route}>
                             {m.action} <ArrowRight className="w-3 h-3 ml-2 group-hover:translate-x-1 transition-transform" />
-                          </Button>
-                        </Link>
+                          </Link>
+                        </Button>
                       )}
                     </div>
                   </motion.div>
@@ -318,11 +318,13 @@ export default function TripAdvisorPage() {
                 <p className="text-white/60 text-[9px] font-bold leading-relaxed uppercase">
                   Unser Team in Berlin hilft Ihnen gerne telefonisch weiter.
                 </p>
-                <Link href="/contact" className="block pt-1">
-                  <Button className="w-full h-11 rounded-xl font-black text-[9px] uppercase tracking-widest group-hover:scale-[1.02] transition-transform border-none">
-                    Experten Sprechen <ArrowRight className="w-3 h-3 ml-2" />
+                <div className="pt-1">
+                  <Button asChild className="w-full h-11 rounded-xl font-black text-[9px] uppercase tracking-widest group-hover:scale-[1.02] transition-transform border-none">
+                    <Link href="/contact">
+                      Experten Sprechen <ArrowRight className="w-3 h-3 ml-2" />
+                    </Link>
                   </Button>
-                </Link>
+                </div>
               </div>
             </div>
           </aside>

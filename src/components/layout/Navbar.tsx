@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -59,7 +58,7 @@ export function Navbar() {
       )}
     >
       <nav className="container mx-auto px-4 max-w-7xl">
-        {/* Main Navbar Bar - Hides completely when menu is open to prevent overlapping */}
+        {/* Main Navbar Bar */}
         <div className={cn(
           "flex items-center justify-between transition-all duration-500 px-6 md:px-10 h-14 md:h-18 rounded-full border border-transparent",
           isScrolled 
@@ -93,6 +92,7 @@ export function Navbar() {
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <button
+                  suppressHydrationWarning
                   className={cn(
                     "flex items-center gap-3 pl-4 pr-2 h-10 md:h-12 rounded-full transition-all duration-500 border group font-bold text-[10px] uppercase tracking-[0.2em]",
                     isScrolled 
@@ -113,7 +113,6 @@ export function Navbar() {
               </SheetTrigger>
               
               <SheetContent side="right" className="w-full sm:max-w-[500px] p-0 bg-secondary border-none flex flex-col shadow-2xl overflow-hidden">
-                {/* 100% SS Clone: White Header Bar */}
                 <div className="bg-white px-6 md:px-10 py-4 flex items-center justify-between shrink-0 rounded-b-[2.5rem] md:rounded-b-[3.5rem] shadow-xl relative z-20">
                   <Link href="/" className="flex items-center gap-3">
                     <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-primary flex items-center justify-center shadow-sm">
@@ -129,7 +128,6 @@ export function Navbar() {
                     </div>
                   </Link>
 
-                  {/* SS Clone: Orange Circular Close Button */}
                   <SheetClose asChild>
                     <button className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-primary text-white flex items-center justify-center hover:bg-secondary transition-all shadow-lg group">
                       <X className="w-5 h-5 md:w-7 md:h-7 group-hover:scale-110 transition-transform" />
@@ -214,22 +212,22 @@ export function Navbar() {
                         <p className="text-[10px] text-white/40 font-bold uppercase tracking-widest leading-relaxed mb-6">
                           Unser Büro in Berlin nimmt jetzt exklusive Anfragen für die Große Tierwanderung entgegen.
                         </p>
-                        <Link href="/trip-advisor">
-                          <Button size="sm" className="w-full rounded-xl bg-primary text-white font-bold text-[9px] uppercase tracking-widest h-11 border-none shadow-xl">
+                        <Button asChild size="sm" className="w-full rounded-xl bg-primary text-white font-bold text-[9px] uppercase tracking-widest h-11 border-none shadow-xl">
+                          <Link href="/trip-advisor">
                             AI Berater Fragen <MessageSquare className="w-3.5 h-3.5 ml-2" />
-                          </Button>
-                        </Link>
+                          </Link>
+                        </Button>
                       </div>
                     </div>
                   </div>
                 </ScrollArea>
 
                 <div className="p-6 md:p-8 border-t border-white/5 bg-secondary relative z-30 shadow-[0_-10px_40px_rgba(0,0,0,0.2)]">
-                  <Link href="/trip-planner" className="block">
-                    <Button className="w-full h-14 md:h-16 rounded-2xl bg-primary text-white font-bold text-[10px] md:text-xs uppercase tracking-[0.3em] shadow-2xl hover:scale-[1.02] transition-transform border-none">
+                  <Button asChild className="w-full h-14 md:h-16 rounded-2xl bg-primary text-white font-bold text-[10px] md:text-xs uppercase tracking-[0.3em] shadow-2xl hover:scale-[1.02] transition-transform border-none">
+                    <Link href="/trip-planner">
                       JETZT REISE PLANEN <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
-                  </Link>
+                    </Link>
+                  </Button>
                   <div className="mt-6 flex items-center justify-between gap-4">
                     <div className="flex items-center gap-2">
                       <ShieldCheck className="w-4 h-4 text-primary" />

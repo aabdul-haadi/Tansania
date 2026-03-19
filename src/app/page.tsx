@@ -62,13 +62,21 @@ export default function Home() {
               <div className="relative flex items-center bg-white rounded-xl shadow-2xl overflow-hidden h-11 md:h-12 border border-border/50">
                 <div className="pl-4 text-primary shrink-0"><Search className="w-4 h-4 md:w-5 md:h-5" /></div>
                 <Input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Wohin soll die Reise gehen?" className="h-full border-none bg-transparent text-secondary font-bold placeholder:text-muted-foreground/50 text-[10px] md:text-xs focus-visible:ring-0 uppercase tracking-widest" />
-                <Link href="/itinerary-builder" className="pr-2"><Button className="h-7 md:h-8 rounded-lg px-3 gap-2 hidden sm:flex text-[7px] md:text-[8px] font-black uppercase">AI Planer</Button></Link>
+                <div className="pr-2">
+                  <Button asChild className="h-7 md:h-8 rounded-lg px-3 gap-2 hidden sm:flex text-[7px] md:text-[8px] font-black uppercase shadow-none">
+                    <Link href="/itinerary-builder">AI Planer</Link>
+                  </Button>
+                </div>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mt-6">
-              <Link href="/safaris"><Button size="lg" className="w-full sm:w-auto rounded-full px-8 h-11 md:h-12 text-[8px] md:text-[9px] font-bold shadow-xl uppercase tracking-widest border-none">Katalog ansehen</Button></Link>
-              <Link href="/trip-advisor"><Button size="lg" variant="outline" className="w-full sm:w-auto rounded-full px-8 h-11 md:h-12 text-[8px] md:text-[9px] font-bold border-white/20 text-white hover:bg-white/10 backdrop-blur-md bg-black/20 uppercase tracking-widest"><MessageSquare className="w-3.5 h-3.5 mr-2" /> AI Beratung</Button></Link>
+              <Button asChild size="lg" className="w-full sm:w-auto rounded-full px-8 h-11 md:h-12 text-[8px] md:text-[9px] font-bold shadow-xl uppercase tracking-widest border-none">
+                <Link href="/safaris">Katalog ansehen</Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="w-full sm:w-auto rounded-full px-8 h-11 md:h-12 text-[8px] md:text-[9px] font-bold border-white/20 text-white hover:bg-white/10 backdrop-blur-md bg-black/20 uppercase tracking-widest">
+                <Link href="/trip-advisor"><MessageSquare className="w-3.5 h-3.5 mr-2" /> AI Beratung</Link>
+              </Button>
             </div>
           </motion.div>
         </div>
@@ -112,7 +120,9 @@ export default function Home() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent p-6 md:p-8 flex flex-col justify-end">
                       <h3 className="text-white text-lg md:text-2xl font-headline font-bold mb-1 uppercase tracking-tight">{item.title}</h3>
                       <p className="text-white/70 mb-3 max-w-xs text-[8px] md:text-[10px] font-bold leading-relaxed uppercase tracking-widest">{item.desc}</p>
-                      <Link href={item.link}><Button className="rounded-lg px-5 h-8 md:h-9 font-bold shadow-xl text-[8px] uppercase tracking-widest border-none">Region erleben</Button></Link>
+                      <Button asChild className="rounded-lg px-5 h-8 md:h-9 font-bold shadow-xl text-[8px] uppercase tracking-widest border-none">
+                        <Link href={item.link}>Region erleben</Link>
+                      </Button>
                     </div>
                   </motion.div>
                 </CarouselItem>
