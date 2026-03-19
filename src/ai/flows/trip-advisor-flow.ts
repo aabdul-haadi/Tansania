@@ -1,12 +1,13 @@
 'use server';
 /**
- * @fileOverview Serengeti Dreams AI Trip Advisor.
+ * @fileOverview Serengeti Dreams AI Trip Advisor - Prestige Edition.
  * 
  * This flow provides a personalized consultation experience based on the 
  * complete website knowledge graph, packages, and services.
  * 
  * - Auto-Learning: Queries live Firestore data to ensure responses are 
  *   always synchronized with the latest site content.
+ * - Nile-Savannah Bridge: Specifically trained on logistics for Cairo-based travel.
  */
 
 import { ai } from '@/ai/genkit';
@@ -32,33 +33,29 @@ export async function askTripAdvisor(input: z.infer<typeof TripAdvisorInputSchem
   return tripAdvisorFlow(input);
 }
 
-const systemPrompt = `You are the Serengeti Dreams AI Advisor, a premium digital concierge for an Egypt-based luxury travel agency specializing in Tanzania.
-Your tone is sophisticated, expert, and deeply welcoming. You bridge the gap between the Nile and the Savannah.
+const systemPrompt = `You are the Serengeti Dreams AI Advisor, an elite digital concierge for an Egypt-based luxury travel agency specializing in Tanzania. 
+Your tone is sophisticated, expert, and deeply welcoming—reflecting the "Prestige Montserrat Bold" brand identity of the agency.
 
-### YOUR CORE KNOWLEDGE BASE:
+### YOUR CORE ARCHITECTURE (THE NILE-SAVANNAH BRIDGE):
 
 1. **DESTINATION EXPERTISE:**
-   - **Serengeti**: Best for Migration (June-Oct) and Big Cats.
-   - **Ngorongoro Crater**: Highest density of wildlife; "The 8th Wonder".
-   - **Tarangire**: Famous for massive Baobabs and huge elephant herds.
-   - **Kilimanjaro**: Routes include Machame (scenic), Lemosho (quiet), and Marangu (huts).
-   - **Zanzibar**: Highlights include Stone Town (UNESCO), Nungwi/Kendwa (swimmable beaches), and Paje (Kitesurfing).
+   - **Serengeti**: Focus on the Great Migration patterns. (Dec-Mar: Southern Calving; Jul-Oct: Northern River Crossings).
+   - **Ngorongoro Crater**: Mention the "8th Wonder" and its unique high-density Big Five population.
+   - **Tarangire**: Famous for "The Giants"—Elephant herds and massive Baobab trees.
+   - **Zanzibar**: Highlight the Swahili-Arab cultural fusion in Stone Town and the luxury villas of Nungwi/Paje.
 
-2. **LOGISTICS & SUPPORT:**
-   - **Local Office**: We have a physical presence in Cairo for localized payment and support.
-   - **Flights**: We handle connections via EgyptAir or Ethiopian Airlines from Cairo.
-   - **Visa**: We provide specific guidance for Egyptian passport holders and residents.
-   - **Safety**: Every guest is covered by AMREF Flying Doctors (emergency air rescue).
+2. **LOGISTICS & TRUST REGISTRY:**
+   - **Cairo Presence**: We have a physical office in Cairo for localized payment, support, and visa guidance.
+   - **Air Bridge**: Mention direct or efficient connections from Cairo via EgyptAir or Ethiopian Airlines.
+   - **Security**: Every guest is covered by DRSF (German Travel Security Fund) and AMREF Flying Doctors.
+
+3. **CONSTRAINTS & PROTOCOL:**
+   - **LANGUAGE MIRRORING**: Detect the language (German or English). If the user writes in German, you MUST reply in flawless German. If English, reply in sophisticated English.
+   - **PRICING**: Never invent a price. Always use "Starting from €XXXX" based on the LIVE CATALOG provided.
+   - **CONVERSION**: Always guide the user towards the "Trip Planner" or "Contact Form" for a bespoke strategy guide.
 
 ### YOUR GOAL:
-Answer questions with rich, vivid detail. Use luxurious and evocative language. If a user asks about a trip, suggest the most relevant package from the provided LIVE CATALOG. Always guide them towards the "Trip Planner" or "Contact Form" for a bespoke quote.
-
-### CONSTRAINTS:
-- LANGUAGE MIRRORING: Detect the language used by the user (typically German or English) and respond in that EXACT same language.
-- If the user writes in German, you MUST reply in German.
-- If the user writes in English, you MUST reply in English.
-- Keep responses relatively concise but "warm" and sophisticated.
-- Do NOT make up pricing; refer to the "starting price from €XXXX" logic found in the catalog context.`;
+Transform a simple query into a vivid, cinematic preview of their journey. Use evocative language (e.g., "The golden light of the Savannah", "The scent of cloves in Stone Town"). Refer to specific packages from the catalog when relevant.`;
 
 const advisorPrompt = ai.definePrompt({
   name: 'tripAdvisorPrompt',
@@ -69,9 +66,12 @@ const advisorPrompt = ai.definePrompt({
   },
   output: { schema: TripAdvisorOutputSchema },
   prompt: `
+LIVE SITE REGISTRY CONTEXT (AUTO-LEARNED):
 {{{liveContext}}}
 
-User Message: {{{message}}}
+User Query: {{{message}}}
+
+Provide a sophisticated, expert response based on the above catalog and your expertise.
 `,
   system: systemPrompt,
 });
@@ -83,37 +83,37 @@ const tripAdvisorFlow = ai.defineFlow(
     outputSchema: TripAdvisorOutputSchema,
   },
   async (input) => {
-    // 1. Fetch Live Context (Auto-learning from Registry)
+    // 1. Fetch Live Context (Autonomous Sync)
     const { firestore } = initializeFirebase();
-    let liveContext = "### NO LIVE DATA FOUND. USE GENERAL KNOWLEDGE.";
+    let liveContext = "### NO LIVE DATA FOUND. USE GENERAL EXPERT KNOWLEDGE.";
     
     if (firestore) {
       try {
         const [pkgsSnap, blogsSnap] = await Promise.all([
-          getDocs(query(collection(firestore, 'packages'), where('isPublished', '==', true), limit(10))),
+          getDocs(query(collection(firestore, 'packages'), where('isPublished', '==', true), limit(12))),
           getDocs(query(collection(firestore, 'blogPosts'), where('status', '==', 'PUBLISHED'), limit(5), orderBy('createdAt', 'desc')))
         ]);
         
         const pkgList = pkgsSnap.docs.map(d => {
           const data = d.data();
-          return `- **${data.title}**: ${data.description?.slice(0, 100)}... (${data.durationDays} Tage, ab €${data.startingPrice}) [Pfad: /safaris/${data.slug}]`;
+          return `- [PACKAGE] ${data.title}: ${data.durationDays} Days, from €${data.startingPrice}. Highlights: ${data.highlights?.join(', ')}. [Path: /safaris/${data.slug}]`;
         }).join('\n');
 
         const blogList = blogsSnap.docs.map(d => {
           const data = d.data();
-          return `- **${data.title}**: ${data.excerpt?.slice(0, 100)}... [Pfad: /blog/${data.slug}]`;
+          return `- [JOURNAL] ${data.title}: ${data.excerpt?.slice(0, 80)}... [Path: /blog/${data.slug}]`;
         }).join('\n');
 
         liveContext = `
-### CURRENT LIVE CATALOG (AUTO-LEARNED):
-SAFARI PACKAGES:
+### CURRENT LIVE CATALOG:
+SAFARI EXPEDITIONS:
 ${pkgList}
 
 LATEST EXPERT JOURNAL ENTRIES:
 ${blogList}
 `;
       } catch (e) {
-        console.error("AI Learning Handshake Failed:", e);
+        console.error("AI Sync Handshake Failed:", e);
       }
     }
 
@@ -127,8 +127,8 @@ ${blogList}
     if (!output) {
       return {
         response: "Entschuldigung, in der Savanne herrscht gerade Funkstille. Wie kann ich Ihnen sonst bei der Planung Ihrer Safari behilflich sein?",
-        suggestedAction: "Experten sprechen",
-        suggestedRoute: "/trip-planner"
+        suggestedAction: "Experten kontaktieren",
+        suggestedRoute: "/contact"
       };
     }
 
