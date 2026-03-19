@@ -61,7 +61,13 @@ export default function Home() {
             <div className="max-w-md md:max-w-lg mx-auto relative px-2">
               <div className="relative flex items-center bg-white rounded-xl shadow-2xl overflow-hidden h-11 md:h-12 border border-border/50">
                 <div className="pl-4 text-primary shrink-0"><Search className="w-4 h-4 md:w-5 md:h-5" /></div>
-                <Input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Wohin soll die Reise gehen?" className="h-full border-none bg-transparent text-secondary font-bold placeholder:text-muted-foreground/50 text-[10px] md:text-xs focus-visible:ring-0 uppercase tracking-widest" />
+                <Input 
+                  value={searchQuery} 
+                  onChange={(e) => setSearchQuery(e.target.value)} 
+                  placeholder="Wohin soll die Reise gehen?" 
+                  className="h-full border-none bg-transparent text-secondary font-bold placeholder:text-muted-foreground/50 text-[10px] md:text-xs focus-visible:ring-0 uppercase tracking-widest" 
+                  suppressHydrationWarning
+                />
                 <div className="pr-2">
                   <Button asChild className="h-7 md:h-8 rounded-lg px-3 gap-2 hidden sm:flex text-[7px] md:text-[8px] font-black uppercase shadow-none">
                     <Link href="/itinerary-builder">AI Planer</Link>

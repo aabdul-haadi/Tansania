@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -34,6 +34,11 @@ const experiences = [
 
 export function ZanzibarEscape() {
   const [activeExp, setActiveExp] = useState(experiences[0]);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   return (
     <section className="py-8 lg:py-16 bg-white overflow-hidden">
@@ -92,6 +97,7 @@ export function ZanzibarEscape() {
                     <button
                       key={exp.id}
                       onClick={() => setActiveExp(exp)}
+                      suppressHydrationWarning
                       className={cn(
                         "whitespace-nowrap px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all border",
                         activeExp.id === exp.id 
@@ -105,18 +111,20 @@ export function ZanzibarEscape() {
                 </div>
 
                 <div className="min-h-[60px]">
-                  <AnimatePresence mode="wait">
-                    <motion.p
-                      key={activeExp.id}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.4 }}
-                      className="text-sm md:text-base text-secondary font-bold leading-relaxed uppercase tracking-widest"
-                    >
-                      {activeExp.text}
-                    </motion.p>
-                  </AnimatePresence>
+                  {isMounted && (
+                    <AnimatePresence mode="wait">
+                      <motion.p
+                        key={activeExp.id}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.4 }}
+                        className="text-sm md:text-base text-secondary font-bold leading-relaxed uppercase tracking-widest"
+                      >
+                        {activeExp.text}
+                      </motion.p>
+                    </AnimatePresence>
+                  )}
                 </div>
               </motion.div>
 
@@ -127,11 +135,9 @@ export function ZanzibarEscape() {
                 }}
                 className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-4"
               >
-                <Link href="/safaris">
-                  <Button size="lg" className="rounded-full px-10 h-14 font-bold shadow-xl text-[10px] uppercase tracking-widest">
-                    Erweiterungen Entdecken
-                  </Button>
-                </Link>
+                <Button asChild size="lg" className="rounded-full px-10 h-14 font-bold shadow-xl text-[10px] uppercase tracking-widest">
+                  <Link href="/safaris">Erweiterungen Entdecken</Link>
+                </Button>
                 <Link href="/trip-planner" className="text-[10px] font-bold flex items-center gap-2 group hover:text-primary transition-colors min-h-[44px] text-foreground uppercase tracking-widest">
                   Mit Safari kombinieren
                   <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

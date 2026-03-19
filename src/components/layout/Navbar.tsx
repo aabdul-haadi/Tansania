@@ -129,7 +129,10 @@ export function Navbar() {
                   </Link>
 
                   <SheetClose asChild>
-                    <button className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-primary text-white flex items-center justify-center hover:bg-secondary transition-all shadow-lg group">
+                    <button 
+                      suppressHydrationWarning
+                      className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-primary text-white flex items-center justify-center hover:bg-secondary transition-all shadow-lg group"
+                    >
                       <X className="w-5 h-5 md:w-7 md:h-7 group-hover:scale-110 transition-transform" />
                     </button>
                   </SheetClose>
