@@ -15,18 +15,17 @@ import {
   Sparkles, 
   Users,
   Compass,
-  Download,
-  Share2,
   Calendar,
   Waves,
   Mountain,
   Heart,
-  Plane
+  Plus
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useDoc, useFirestore, useMemoFirebase } from '@/firebase';
 import { doc } from 'firebase/firestore';
 import { cn } from '@/lib/utils';
@@ -87,7 +86,7 @@ export default function PackageDetailPage() {
   }
 
   return (
-    <div className="bg-[#fdfcfb] min-h-screen">
+    <div className="bg-[#fdfcfb] min-h-screen font-bold">
       <section className="relative h-[70vh] md:h-[90vh] w-full overflow-hidden flex flex-col md:flex-row bg-[#0a0a0a]">
         <div className="w-full md:w-1/2 h-1/2 md:h-full relative overflow-hidden">
           <Image 
@@ -148,7 +147,7 @@ export default function PackageDetailPage() {
       <div className="container mx-auto px-4 max-w-7xl pt-10 md:pt-24 pb-32">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20">
           
-          <main className="lg:col-span-8 space-y-16 md:space-y-40">
+          <main className="lg:col-span-8 space-y-16 md:space-y-32">
             <section ref={overviewRef} className="space-y-8">
               <div className="space-y-4">
                 <span className="text-primary font-bold uppercase tracking-[0.4em] text-[9px] block">Das Erlebnis</span>
@@ -161,32 +160,81 @@ export default function PackageDetailPage() {
               </div>
             </section>
 
+            {/* Revamped Itinerary Section - 100% SS CLONE */}
             <section ref={itineraryRef} className="space-y-12">
-              <div className="text-center md:text-left">
-                <h3 className="font-headline text-3xl md:text-7xl font-bold text-secondary uppercase">Das <span className="text-primary">Journal</span></h3>
+              <div className="text-center space-y-4">
+                <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary uppercase tracking-tighter leading-none">Ihr Reiseverlauf</h2>
+                <p className="text-muted-foreground font-bold text-[10px] md:text-sm uppercase tracking-widest max-w-xl mx-auto opacity-60">
+                  Eine sorgfältig kuratierte Route durch die schönsten Regionen Tansanias
+                </p>
               </div>
 
-              <div className="space-y-8 relative">
-                <div className="absolute left-6 top-0 bottom-0 w-px bg-muted hidden md:block" />
-
-                {(pkg.itineraryDays || []).map((day: any, idx: number) => (
-                  <motion.div key={idx} className="group relative md:pl-20">
-                    <Card className="bg-white rounded-[1.5rem] md:rounded-[3rem] overflow-hidden shadow-sm border border-border/50">
-                      <div className="flex flex-col md:flex-row">
-                        <div className="md:w-[40%] aspect-video md:aspect-auto relative overflow-hidden">
-                          <Image src={day.img || `https://picsum.photos/seed/day-${idx}/800/600`} alt={day.title} fill className="object-cover" />
-                          <div className="absolute top-3 left-3 bg-secondary text-white px-3 py-1 rounded-full text-[8px] font-bold">Tag {day.day || idx + 1}</div>
-                        </div>
-                        <div className="p-6 md:p-10 md:w-[60%] space-y-4">
-                          <div className="flex items-center gap-2 text-primary font-bold text-[8px] uppercase tracking-widest">
-                            <MapPin className="w-3 h-3" /> {day.location}
+              <Card className="bg-white rounded-[2rem] md:rounded-[2.5rem] shadow-2xl border border-border/50 overflow-hidden">
+                <CardContent className="p-4 md:p-10">
+                  <Accordion type="single" collapsible className="w-full">
+                    {(pkg.itineraryDays || []).map((day: any, idx: number) => (
+                      <AccordionItem 
+                        key={idx} 
+                        value={`item-${idx}`} 
+                        className="border-b border-border/50 last:border-none py-2"
+                      >
+                        <AccordionTrigger className="hover:no-underline py-6 group [&>svg]:hidden">
+                          <div className="flex items-center gap-6 md:gap-10 w-full text-left">
+                            <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#FAF7F2] flex items-center justify-center shrink-0 shadow-sm border border-[#F0EBE0]">
+                              <span className="text-lg md:text-xl font-headline font-black text-[#8B735B]">
+                                {day.day || idx + 1}
+                              </span>
+                            </div>
+                            <div className="flex-grow min-w-0 pr-4">
+                              <h4 className="font-headline text-sm md:text-xl font-bold text-secondary uppercase tracking-tight group-hover:text-primary transition-colors">
+                                {day.title}
+                              </h4>
+                              <p className="text-muted-foreground text-[10px] md:text-sm font-bold truncate mt-1 opacity-80">
+                                {day.desc}
+                              </p>
+                            </div>
+                            <ChevronRight className="w-5 h-5 text-[#D1C4B2] group-data-[state=open]:rotate-90 transition-transform shrink-0" />
                           </div>
-                          <h4 className="font-headline text-lg md:text-3xl font-bold text-secondary uppercase leading-tight">{day.title}</h4>
-                          <p className="text-muted-foreground font-light leading-relaxed text-xs md:text-base">{day.desc}</p>
-                        </div>
-                      </div>
-                    </Card>
-                  </motion.div>
+                        </AccordionTrigger>
+                        <AccordionContent className="pb-10 pl-[72px] md:pl-[104px] pr-6">
+                          <div className="space-y-6">
+                            <div className="flex items-center gap-2 text-primary font-black text-[9px] md:text-[10px] uppercase tracking-widest">
+                              <MapPin className="w-3.5 h-3.5" /> {day.location}
+                            </div>
+                            <p className="text-muted-foreground text-sm md:text-base font-bold leading-relaxed uppercase tracking-tight">
+                              {day.desc}
+                            </p>
+                            {day.img && (
+                              <div className="relative aspect-video rounded-3xl overflow-hidden shadow-lg border border-border/50 mt-4">
+                                <Image src={day.img} alt={day.title} fill className="object-cover" />
+                              </div>
+                            )}
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                    ))}
+                  </Accordion>
+                </CardContent>
+              </Card>
+            </section>
+
+            <section ref={hotelsRef} className="space-y-12">
+              <div className="flex flex-col md:flex-row justify-between items-end gap-6">
+                <div className="max-w-xl">
+                  <span className="text-primary font-bold uppercase tracking-[0.4em] text-[9px] block">Premium Residenzen</span>
+                  <h2 className="font-headline text-2xl md:text-5xl font-bold text-secondary leading-tight uppercase">Die <span className="text-primary">Unterkünfte</span></h2>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {[1, 2].map(i => (
+                  <div key={i} className="group relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-xl bg-muted">
+                    <img src={`https://picsum.photos/seed/hotel-${i}/800/1000`} alt="Lodge" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
+                    <div className="absolute bottom-8 left-8 right-8 text-white">
+                      <p className="text-primary font-bold text-[9px] uppercase tracking-widest mb-2">Luxury Camp</p>
+                      <h4 className="text-2xl font-headline font-bold uppercase">Serengeti Heritage</h4>
+                    </div>
+                  </div>
                 ))}
               </div>
             </section>
