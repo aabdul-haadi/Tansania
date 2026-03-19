@@ -37,6 +37,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const firestore = useFirestore();
   const auth = useAuth();
   const [mounted, setMounted] = useState(false);
+  const [isPromoting, setIsPromoting] = useState(false);
   
   const adminDocRef = useMemoFirebase(() => (firestore && user ? doc(firestore, 'roles_admin', user.uid) : null), [firestore, user]);
   const { data: adminRole, isLoading: isAdminRoleLoading } = useDoc(adminDocRef);
@@ -47,7 +48,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   useEffect(() => {
     // Auto-promotion: If user is logged in but has no role record yet, create it.
-    if (mounted && user && firestore && !isAdminRoleLoading && !adminRole) {
+    if (mounted && user && firestore && !isAdminRoleLoading && !adminRole && !isPromoting) {
+      setIsPromoting(true);
+      
+      // Register admin status in the primary registry
       setDocumentNonBlocking(doc(firestore, 'roles_admin', user.uid), {
         uid: user.uid,
         email: user.email || 'unknown@tansania-reiseabenteuer.de',
@@ -55,8 +59,23 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         createdAt: serverTimestamp(),
         lastActive: serverTimestamp()
       }, { merge: true });
+
+      // Ensure the user profile also reflects the administrative role
+      setDocumentNonBlocking(doc(firestore, 'users', user.uid), {
+        id: user.uid,
+        email: user.email,
+        name: user.displayName || 'Staff Member',
+        role: 'ADMIN',
+        updatedAt: serverTimestamp()
+      }, { merge: true });
+
+      // Give the server-side rules engine a moment to synchronize the new admin record
+      // before rendering children that trigger protected collection fetches.
+      setTimeout(() => {
+        setIsPromoting(false);
+      }, 2000);
     }
-  }, [user, adminRole, isAdminRoleLoading, firestore, mounted]);
+  }, [user, adminRole, isAdminRoleLoading, firestore, mounted, isPromoting]);
 
   const handleSignOut = async () => {
     if (!auth) return;
@@ -94,13 +113,15 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     );
   }
 
-  // Guard 3: Authenticated but waiting for Role Verification or Promotion
+  // Guard 3: Authenticated but waiting for Role Verification or Promotion Handshake
   // This prevents Dashboard queries from running before the Admin status is active in rules.
-  if (isAdminRoleLoading || !adminRole) {
+  if (isAdminRoleLoading || !adminRole || isPromoting) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-white gap-4">
         <Loader2 className="w-10 h-10 text-primary animate-spin" />
-        <p className="text-secondary font-bold text-[10px] uppercase tracking-[0.3em]">Verifying Registry Status...</p>
+        <p className="text-secondary font-bold text-[10px] uppercase tracking-[0.3em]">
+          {isPromoting ? 'Synchronizing Registry...' : 'Verifying Identity...'}
+        </p>
       </div>
     );
   }
