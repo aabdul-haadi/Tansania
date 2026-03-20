@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useMemo } from 'react';
@@ -6,27 +5,16 @@ import {
   Search, 
   ExternalLink,
   MapPin,
-  ShieldCheck,
-  Sparkles,
-  FileCode,
-  ArrowRight,
   Globe,
-  Zap,
   Lock,
-  ChevronRight,
-  Monitor,
-  Activity,
-  CheckCircle2,
-  AlertCircle,
   Layers,
-  Database,
+  Activity,
   Tag,
-  Clock
+  ShoppingBag
 } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
@@ -83,14 +71,13 @@ const siteRegistry = [
     ]
   },
   {
-    category: "05. Operational Systems",
-    id: "ops",
-    icon: Lock,
+    category: "05. Partner Services & Stores",
+    id: "services",
+    icon: ShoppingBag,
     routes: [
-      { title: "Admin Dashboard", path: "/admin", status: "SECURE", type: "ADMIN", sub: "Command" },
-      { title: "Site Planner AI", path: "/admin/ai-planner", status: "SECURE", type: "ADMIN", sub: "Strategy" },
-      { title: "Master Catalog", path: "/admin/packages", status: "SECURE", type: "ADMIN", sub: "Data" },
-      { title: "Site Settings", path: "/admin/settings", status: "SECURE", type: "ADMIN", sub: "Config" },
+      { title: "Reise-Store", path: "/reise-shop", status: "LIVE", type: "STATIC", sub: "Retail Hub" },
+      { title: "Guest Protection", path: "/services/guest-protection", status: "LIVE", type: "STATIC", sub: "Insurance" },
+      { title: "Partner Program", path: "/partner", status: "LIVE", type: "STATIC", sub: "B2B" },
     ]
   }
 ];
@@ -143,7 +130,7 @@ export default function SiteRegistry() {
         <div className="relative group max-w-2xl">
           <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground transition-colors group-focus-within:text-primary" />
           <Input 
-            placeholder="Filter infrastructure directory by name, path or category..." 
+            placeholder="Filter infrastructure directory..." 
             className="h-14 pl-14 rounded-2xl border-none bg-muted/20 shadow-inner font-bold text-xs uppercase tracking-widest focus:ring-2 focus:ring-primary/20"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -189,10 +176,6 @@ export default function SiteRegistry() {
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="hidden md:flex flex-col items-end mr-4">
-                        <span className="text-[8px] font-black uppercase text-muted-foreground tracking-widest">Render Protocol</span>
-                        <span className="text-[9px] font-bold text-secondary">{route.type}</span>
-                      </div>
                       <Button variant="ghost" size="icon" className="rounded-xl h-11 w-11 text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all" asChild suppressHydrationWarning>
                         <Link href={route.path} target="_blank">
                           <ExternalLink className="w-4.5 h-4.5" />

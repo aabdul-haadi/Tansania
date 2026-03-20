@@ -9,15 +9,10 @@ import {
   ArrowRight,
   Compass, 
   Zap,
-  Mountain,
-  Waves,
-  ShieldCheck,
-  ChevronRight,
   Globe,
-  MessageSquare,
   Tag,
   Activity,
-  Layers,
+  ShoppingBag,
   Sparkles
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -138,6 +133,7 @@ export function Navbar() {
                           { name: 'Safari Catalog', href: '/safaris', icon: Compass, desc: 'Wildlife Master Hub' },
                           { name: 'National Parks', href: '/national-parks', icon: Globe, desc: 'Biodiversity Registry' },
                           { name: 'Expedition Journal', href: '/blog', icon: Activity, desc: 'Latest Reports & Stories' },
+                          { name: 'Reise-Store', href: '/reise-shop', icon: ShoppingBag, desc: 'Curated Safari Gear' },
                         ].map((link) => (
                           <Link key={link.name} href={link.href} className="group flex items-center justify-between p-5 rounded-[1.5rem] bg-white/5 border border-transparent hover:border-primary/20 hover:bg-white/10 transition-all duration-500 shadow-sm hover:shadow-lg">
                             <div className="flex items-center gap-5">
@@ -170,29 +166,6 @@ export function Navbar() {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-10">
-                      <div className="space-y-4">
-                        <p className="text-primary font-black uppercase tracking-[0.4em] text-[9px] mb-2 block">03. Themed Collection</p>
-                        <nav className="flex flex-col gap-3">
-                          {['Flitterwochen', 'Familien-Safari', 'Luxus-Expedition', 'Camping Abenteuer', 'Migration Specialist'].map(t => (
-                            <Link key={t} href="/safaris" className="text-[10px] font-black text-white/60 hover:text-primary transition-colors uppercase tracking-widest border-l-2 border-white/5 pl-3 hover:border-primary">
-                              {t}
-                            </Link>
-                          ))}
-                        </nav>
-                      </div>
-                      <div className="space-y-4">
-                        <p className="text-primary font-black uppercase tracking-[0.4em] text-[9px] mb-2 block">04. Offer Documents</p>
-                        <nav className="flex flex-col gap-3">
-                          {['Last Minute 2026', 'Early Bird 2027', 'Special Itineraries', 'Group Deals'].map(s => (
-                            <Link key={s} href="/offers" className="text-[10px] font-black text-white/60 hover:text-primary transition-colors uppercase tracking-widest border-l-2 border-white/5 pl-3 hover:border-primary">
-                              {s}
-                            </Link>
-                          ))}
-                        </nav>
-                      </div>
-                    </div>
-
                     <div className="bg-white/5 rounded-[2rem] p-8 border border-white/10 relative overflow-hidden group shadow-2xl">
                       <Zap className="absolute -top-4 -right-4 w-20 h-20 text-primary opacity-10" />
                       <div className="relative z-10 text-white">
@@ -211,16 +184,6 @@ export function Navbar() {
                   <Button asChild className="w-full h-14 md:h-16 rounded-2xl bg-primary text-white font-black text-[10px] md:text-xs uppercase tracking-[0.3em] shadow-2xl hover:scale-[1.02] transition-transform border-none" suppressHydrationWarning>
                     <Link href="/trip-planner">JETZT REISE PLANEN <ArrowRight className="w-4 h-4 ml-2" /></Link>
                   </Button>
-                  <div className="mt-6 flex items-center justify-between gap-4">
-                    <div className="flex items-center gap-2">
-                      <ShieldCheck className="w-4 h-4 text-primary" />
-                      <span className="text-[8px] font-black uppercase tracking-widest text-white/40">DRSF Certified</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                      <span className="text-[8px] font-black uppercase tracking-widest text-white/40">Registry Sync Online</span>
-                    </div>
-                  </div>
                 </div>
               </SheetContent>
             </Sheet>

@@ -5,7 +5,6 @@
  * This flow provides a personalized consultation experience using live context.
  * - RAG Architecture: Fetches live packages and blogs to provide factual data.
  * - Fault-Tolerance: Handles Firestore sync failures gracefully.
- * - Nile-Savannah Bridge: Optimized for Cairo-based luxury travel context.
  */
 
 import { ai } from '@/ai/genkit';
@@ -19,6 +18,9 @@ const TripAdvisorInputSchema = z.object({
     role: z.enum(['user', 'model']),
     content: z.string()
   })).optional().describe('Chat history for context.'),
+  // Added optional context fields to prevent validation errors from frontend-passed data
+  packagesContext: z.array(z.any()).optional(),
+  liveContext: z.string().optional(),
 });
 
 const TripAdvisorOutputSchema = z.object({
@@ -57,9 +59,7 @@ GOAL: Transform queries into cinematic previews of their journey based on actual
 const advisorPrompt = ai.definePrompt({
   name: 'tripAdvisorPrompt',
   input: { 
-    schema: TripAdvisorInputSchema.extend({
-      liveContext: z.string().optional(),
-    })
+    schema: TripAdvisorInputSchema
   },
   output: { schema: TripAdvisorOutputSchema },
   prompt: `
@@ -86,7 +86,6 @@ const tripAdvisorFlow = ai.defineFlow(
     
     if (firestore) {
       try {
-        // Querying without orderBy to ensure immediate execution without index requirement
         const [pkgsSnap, blogsSnap] = await Promise.all([
           getDocs(query(collection(firestore, 'packages'), where('isPublished', '==', true), limit(8))),
           getDocs(query(collection(firestore, 'blogPosts'), where('status', '==', 'PUBLISHED'), limit(4)))
@@ -111,7 +110,6 @@ LATEST EXPERT JOURNAL ENTRIES:
 ${blogList || 'None listed yet.'}
 `;
       } catch (e) {
-        // Log locally but don't crash the flow
         console.warn("AI Context Handshake Bypassed (resilience mode):", e);
       }
     }
