@@ -1,19 +1,16 @@
 'use server';
 /**
- * @fileOverview Serengeti Dreams AI Trip Advisor - Prestige Edition.
+ * @fileOverview Serengeti Dreams AI Trip Advisor - Resilient Prestige Edition.
  * 
- * This flow provides a personalized consultation experience based on the 
- * complete website knowledge graph, packages, and services.
- * 
- * - Auto-Learning: Queries live Firestore data to ensure responses are 
- *   always synchronized with the latest site content.
- * - Nile-Savannah Bridge: Specifically trained on logistics for Cairo-based travel.
+ * This flow provides a personalized consultation experience.
+ * - Fault-Tolerance: Handles Firestore sync failures gracefully.
+ * - Nile-Savannah Bridge: Optimized for Cairo-based luxury travel context.
  */
 
 import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
 import { initializeFirebase } from '@/firebase/setup';
-import { collection, getDocs, query, where, limit, orderBy } from 'firebase/firestore';
+import { collection, getDocs, query, where, limit } from 'firebase/firestore';
 
 const TripAdvisorInputSchema = z.object({
   message: z.string().describe('The user\'s question or request.'),
@@ -25,8 +22,8 @@ const TripAdvisorInputSchema = z.object({
 
 const TripAdvisorOutputSchema = z.object({
   response: z.string().describe('The AI\'s helpful, expert response.'),
-  suggestedAction: z.string().optional().describe('A recommended next step (e.g., "Check the 15-day itinerary").'),
-  suggestedRoute: z.string().optional().describe('A link to a relevant page on the site.'),
+  suggestedAction: z.string().optional().describe('A recommended next step.'),
+  suggestedRoute: z.string().optional().describe('A link to a relevant page.'),
 });
 
 export async function askTripAdvisor(input: z.infer<typeof TripAdvisorInputSchema>) {
@@ -34,28 +31,26 @@ export async function askTripAdvisor(input: z.infer<typeof TripAdvisorInputSchem
 }
 
 const systemPrompt = `You are the Serengeti Dreams AI Advisor, an elite digital concierge for an Egypt-based luxury travel agency specializing in Tanzania. 
-Your tone is sophisticated, expert, and deeply welcoming—reflecting the "Prestige Montserrat Bold" brand identity of the agency.
+Your tone is sophisticated, expert, and deeply welcoming—reflecting the "Montserrat Bold" prestige brand.
 
 ### YOUR CORE ARCHITECTURE (THE NILE-SAVANNAH BRIDGE):
 
 1. **DESTINATION EXPERTISE:**
-   - **Serengeti**: Focus on the Great Migration patterns. (Dec-Mar: Southern Calving; Jul-Oct: Northern River Crossings).
-   - **Ngorongoro Crater**: Mention the "8th Wonder" and its unique high-density Big Five population.
-   - **Tarangire**: Famous for "The Giants"—Elephant herds and massive Baobab trees.
-   - **Zanzibar**: Highlight the Swahili-Arab cultural fusion in Stone Town and the luxury villas of Nungwi/Paje.
+   - **Serengeti**: Focus on the Great Migration. Dec-Mar: Calving; Jul-Oct: River Crossings.
+   - **Ngorongoro**: Highlight the 25,000+ large mammals in the crater.
+   - **Zanzibar**: Emphasize the Swahili-Arab fusion and luxury beach villas.
 
-2. **LOGISTICS & TRUST REGISTRY:**
-   - **Cairo Presence**: We have a physical office in Cairo for localized payment, support, and visa guidance.
-   - **Air Bridge**: Mention direct or efficient connections from Cairo via EgyptAir or Ethiopian Airlines.
-   - **Security**: Every guest is covered by DRSF (German Travel Security Fund) and AMREF Flying Doctors.
+2. **LOGISTICS & TRUST:**
+   - **Cairo Presence**: We have a physical office in Cairo for localized payment and visa guidance.
+   - **Flight Links**: Efficient connections from Cairo via EgyptAir or Ethiopian Airlines.
+   - **Security**: Every guest is covered by DRSF (German Travel Security Fund).
 
-3. **CONSTRAINTS & PROTOCOL:**
-   - **LANGUAGE MIRRORING**: Detect the language (German or English). If the user writes in German, you MUST reply in flawless German. If English, reply in sophisticated English.
-   - **PRICING**: Never invent a price. Always use "Starting from €XXXX" based on the LIVE CATALOG provided.
-   - **CONVERSION**: Always guide the user towards the "Trip Planner" or "Contact Form" for a bespoke strategy guide.
+3. **CONSTRAINTS:**
+   - **LANGUAGE**: Reply in the language used by the user (German or English).
+   - **PRICING**: Use "Starting from €XXXX" based on the provided live context.
+   - **ACTION**: Guide the user towards "Trip Planner" or "Contact Form" for bespoke planning.
 
-### YOUR GOAL:
-Transform a simple query into a vivid, cinematic preview of their journey. Use evocative language (e.g., "The golden light of the Savannah", "The scent of cloves in Stone Town"). Refer to specific packages from the catalog when relevant.`;
+GOAL: Transform queries into cinematic previews of their journey.`;
 
 const advisorPrompt = ai.definePrompt({
   name: 'tripAdvisorPrompt',
@@ -66,12 +61,12 @@ const advisorPrompt = ai.definePrompt({
   },
   output: { schema: TripAdvisorOutputSchema },
   prompt: `
-LIVE SITE REGISTRY CONTEXT (AUTO-LEARNED):
+LIVE SITE REGISTRY CONTEXT:
 {{{liveContext}}}
 
 User Query: {{{message}}}
 
-Provide a sophisticated, expert response based on the above catalog and your expertise.
+Provide an expert, prestige response based on the above catalog and your expertise.
 `,
   system: systemPrompt,
 });
@@ -83,55 +78,59 @@ const tripAdvisorFlow = ai.defineFlow(
     outputSchema: TripAdvisorOutputSchema,
   },
   async (input) => {
-    // 1. Fetch Live Context (Autonomous Sync)
+    // 1. Fetch Live Context (Fault-Tolerant Sync)
     const { firestore } = initializeFirebase();
     let liveContext = "### NO LIVE DATA FOUND. USE GENERAL EXPERT KNOWLEDGE.";
     
     if (firestore) {
       try {
+        // Querying without orderBy to ensure immediate execution without index requirement
         const [pkgsSnap, blogsSnap] = await Promise.all([
-          getDocs(query(collection(firestore, 'packages'), where('isPublished', '==', true), limit(12))),
-          getDocs(query(collection(firestore, 'blogPosts'), where('status', '==', 'PUBLISHED'), limit(5), orderBy('createdAt', 'desc')))
+          getDocs(query(collection(firestore, 'packages'), where('isPublished', '==', true), limit(8))),
+          getDocs(query(collection(firestore, 'blogPosts'), where('status', '==', 'PUBLISHED'), limit(4)))
         ]);
         
         const pkgList = pkgsSnap.docs.map(d => {
           const data = d.data();
-          return `- [PACKAGE] ${data.title}: ${data.durationDays} Days, from €${data.startingPrice}. Highlights: ${data.highlights?.join(', ')}. [Path: /safaris/${data.slug}]`;
+          return `- [PACKAGE] ${data.title}: ${data.durationDays} Days, from €${data.startingPrice}. [Path: /safaris/${data.slug}]`;
         }).join('\n');
 
         const blogList = blogsSnap.docs.map(d => {
           const data = d.data();
-          return `- [JOURNAL] ${data.title}: ${data.excerpt?.slice(0, 80)}... [Path: /blog/${data.slug}]`;
+          return `- [JOURNAL] ${data.title}: ${data.excerpt?.slice(0, 60)}... [Path: /blog/${data.slug}]`;
         }).join('\n');
 
         liveContext = `
 ### CURRENT LIVE CATALOG:
 SAFARI EXPEDITIONS:
-${pkgList}
+${pkgList || 'None listed yet.'}
 
 LATEST EXPERT JOURNAL ENTRIES:
-${blogList}
+${blogList || 'None listed yet.'}
 `;
       } catch (e) {
-        console.error("AI Sync Handshake Failed:", e);
+        // Log locally but don't crash the flow
+        console.warn("AI Context Handshake Bypassed (resilience mode):", e);
       }
     }
 
-    const { output } = await advisorPrompt({
-      ...input,
-      liveContext
-    }, {
-      messages: input.history?.map(h => ({ role: h.role, content: [{ text: h.content }] }))
-    });
+    try {
+      const { output } = await advisorPrompt({
+        ...input,
+        liveContext
+      }, {
+        messages: input.history?.map(h => ({ role: h.role, content: [{ text: h.content }] }))
+      });
 
-    if (!output) {
+      if (!output) throw new Error('Empty AI response');
+      return output;
+    } catch (err) {
+      console.error("Genkit Generation Failed:", err);
       return {
         response: "Entschuldigung, in der Savanne herrscht gerade Funkstille. Wie kann ich Ihnen sonst bei der Planung Ihrer Safari behilflich sein?",
         suggestedAction: "Experten kontaktieren",
         suggestedRoute: "/contact"
       };
     }
-
-    return output;
   }
 );

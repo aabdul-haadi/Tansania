@@ -6,10 +6,31 @@ import { Compass, LayoutGrid, Search, Loader2 } from 'lucide-react';
 import { BlogCard } from '@/components/blog/BlogCard';
 import { BlogSidebar } from '@/components/blog/BlogSidebar';
 import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
-import { collection, query, where, orderBy } from 'firebase/firestore';
 import { cn } from '@/lib/utils';
+
+// Static seed data for immediate UI availability as requested
+const SEED_POSTS = [
+  {
+    id: 'luxus-safari-15-tage',
+    slug: 'luxus-safari-tansania-15-tage',
+    title: 'Luxus-Safari in Tansania: 15 Tage Abenteuer & Sansibar-Luxus',
+    excerpt: 'Erlebe das Beste aus zwei Welten! Atemberaubende Tierbegegnungen in der Serengeti und tropische Entspannung auf Sansibar.',
+    category: 'Guides',
+    authorName: 'Samson Kyashama',
+    createdAt: new Date().toISOString(),
+    coverImage: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200'
+  },
+  {
+    id: 'wildebeest-migration',
+    slug: 'wildebeest-migration-insights',
+    title: 'Wildebeest Migration Insights: Tipps für deine Safari',
+    excerpt: 'Verstehen Sie die Rhythmen der Natur. Ein tiefer Einblick in das größte Spektakel der Serengeti.',
+    category: 'Planning',
+    authorName: 'Serengeti Dreams Expert',
+    createdAt: new Date().toISOString(),
+    coverImage: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=1200'
+  }
+];
 
 const categories = ['Alle', 'Planung', 'Guides', 'Tipps', 'Kultur'];
 
@@ -17,34 +38,23 @@ export default function BlogListing() {
   const [activeCategory, setActiveCategory] = useState('Alle');
   const [search, setSearch] = useState('');
   const [mounted, setMounted] = useState(false);
-  const firestore = useFirestore();
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  const blogQuery = useMemoFirebase(() => {
-    if (!firestore) return null;
-    return query(
-      collection(firestore, 'blogPosts'),
-      where('status', '==', 'PUBLISHED'),
-      orderBy('createdAt', 'desc')
-    );
-  }, [firestore]);
-
-  const { data: blogPosts, isLoading } = useCollection(blogQuery);
-
-  const filteredPosts = (blogPosts || []).filter(p => {
+  const filteredPosts = SEED_POSTS.filter(p => {
     const matchesCat = activeCategory === 'Alle' || p.category === activeCategory;
     const matchesSearch = p.title.toLowerCase().includes(search.toLowerCase());
     return matchesCat && matchesSearch;
   });
 
+  if (!mounted) return null;
+
   return (
-    <div className="bg-background min-h-screen">
-      {/* Cinematic Header */}
-      <section className="bg-secondary pt-32 pb-20 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none" />
+    <div className="bg-[#fdfcfb] min-h-screen font-bold">
+      <section className="bg-secondary pt-32 pb-20 relative overflow-hidden border-none">
+        <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-end gap-10">
             <div className="max-w-3xl">
@@ -53,7 +63,7 @@ export default function BlogListing() {
                 animate={{ opacity: 1, x: 0 }}
                 className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[9px] font-black uppercase tracking-[0.4em] mb-6"
               >
-                <Compass className="w-3.5 h-3.5" /> Expeditions-Journal
+                <Compass className="w-3.5 h-3.5" /> Journal Registry
               </motion.div>
               <motion.h1 
                 initial={{ opacity: 0, y: 20 }}
@@ -61,7 +71,7 @@ export default function BlogListing() {
                 transition={{ delay: 0.1 }}
                 className="font-headline text-4xl md:text-7xl lg:text-8xl font-bold leading-none text-white uppercase tracking-tighter"
               >
-                Geschichten vom <br /><span className="text-primary">Nil zur Savanne</span>
+                Vom Nil zur <br /><span className="text-primary">Savanne</span>
               </motion.h1>
             </div>
             
@@ -72,7 +82,7 @@ export default function BlogListing() {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Thema suchen..." 
-                  className="h-12 pl-11 pr-6 rounded-xl border-white/10 bg-white/5 text-white placeholder:text-white/20 font-bold text-[10px] uppercase tracking-widest w-full md:w-80 focus:ring-primary/30"
+                  className="h-12 pl-11 pr-6 rounded-xl border-white/10 bg-white/5 text-white placeholder:text-white/20 font-bold text-[10px] uppercase tracking-widest w-full md:w-80"
                   suppressHydrationWarning
                 />
               </div>
@@ -99,13 +109,11 @@ export default function BlogListing() {
       </section>
 
       <div className="container mx-auto px-4 max-w-7xl py-16 md:py-32">
-        {!mounted || isLoading ? (
-          <div className="py-40 text-center"><Loader2 className="w-10 h-10 animate-spin mx-auto text-primary opacity-20" /></div>
-        ) : filteredPosts.length === 0 ? (
+        {filteredPosts.length === 0 ? (
           <div className="py-40 text-center border-2 border-dashed rounded-[3rem] bg-muted/20">
             <LayoutGrid className="w-12 h-12 mx-auto mb-4 opacity-10" />
-            <h3 className="text-2xl font-headline font-bold text-secondary uppercase tracking-tight">Das Journal ist bereit.</h3>
-            <p className="text-[10px] font-bold uppercase text-muted-foreground mt-2">Warten auf den ersten Bericht aus der Savanne.</p>
+            <h3 className="text-2xl font-headline font-bold text-secondary uppercase tracking-tight">Registry Empty</h3>
+            <p className="text-[10px] font-bold uppercase text-muted-foreground mt-2 tracking-widest">Keine Berichte gefunden.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
