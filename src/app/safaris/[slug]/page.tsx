@@ -27,9 +27,41 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useDoc, useFirestore, useMemoFirebase } from '@/firebase';
-import { doc } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
 import { cn } from '@/lib/utils';
 import { ContactSection } from '@/components/sections/ContactSection';
+import { getCanonicalUrl, siteConfig } from '@/lib/seo-config';
+import { JsonLd } from '@/components/seo/JsonLd';
+
+/**
+ * GENERATE METADATA (SERVER-SIDE SEO)
+ */
+export async function generateMetadata({ params }: any) {
+  const { slug } = params;
+  const { firestore } = (await import('@/firebase/setup')).initializeFirebase();
+  
+  if (!firestore) return {};
+
+  const docRef = doc(firestore, 'packages', slug);
+  const snap = await getDoc(docRef);
+  const pkg = snap.data();
+
+  if (!pkg) return { title: 'Package Not Found' };
+
+  return {
+    title: `${pkg.title} | Tanzania Safari`,
+    description: pkg.description?.slice(0, 160),
+    alternates: {
+      canonical: `/safaris/${slug}`,
+    },
+    openGraph: {
+      title: pkg.title,
+      description: pkg.description?.slice(0, 160),
+      url: getCanonicalUrl(`/safaris/${slug}`),
+      images: [{ url: pkg.imageUrl || siteConfig.ogImage }],
+    },
+  };
+}
 
 const navItems = [
   { id: 'overview', label: 'Übersicht' },
@@ -87,6 +119,23 @@ export default function PackageDetailPage() {
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-bold">
+      <JsonLd 
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'Product',
+          name: pkg.title,
+          description: pkg.description,
+          image: pkg.imageUrl,
+          brand: { '@type': 'Brand', name: siteConfig.name },
+          offers: {
+            '@type': 'Offer',
+            price: pkg.startingPrice,
+            priceCurrency: 'EUR',
+            availability: 'https://schema.org/InStock',
+            url: getCanonicalUrl(`/safaris/${pkg.slug}`),
+          },
+        }}
+      />
       <section className="relative h-[70vh] md:h-[90vh] w-full overflow-hidden flex flex-col md:flex-row bg-[#0a0a0a]">
         <div className="w-full md:w-1/2 h-1/2 md:h-full relative overflow-hidden">
           <Image 

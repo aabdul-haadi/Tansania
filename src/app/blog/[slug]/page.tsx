@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -27,7 +26,52 @@ import { Button } from '@/components/ui/button';
 import { BlogSidebar } from '@/components/blog/BlogSidebar';
 import { BlogContactForm } from '@/components/blog/BlogContactForm';
 import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
-import { collection, query, where, limit } from 'firebase/firestore';
+import { collection, query, where, limit, getDocs } from 'firebase/firestore';
+import { getCanonicalUrl, siteConfig } from '@/lib/seo-config';
+import { JsonLd } from '@/components/seo/JsonLd';
+
+/**
+ * GENERATE METADATA (SERVER-SIDE SEO)
+ * Note: While this is a 'use client' file, Next.js allows generateMetadata 
+ * in the same file if exported. For best results in complex apps, 
+ * metadata is often moved to a server-side layout or separate page file.
+ */
+export async function generateMetadata({ params }: any) {
+  const { slug } = params;
+  const { firestore } = (await import('@/firebase/setup')).initializeFirebase();
+  
+  if (!firestore) return {};
+
+  const q = query(collection(firestore, 'blogPosts'), where('slug', '==', slug), limit(1));
+  const snap = await getDocs(q);
+  const post = snap.docs[0]?.data();
+
+  if (!post) return { title: 'Story Not Found' };
+
+  return {
+    title: post.title,
+    description: post.excerpt,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      url: getCanonicalUrl(`/blog/${slug}`),
+      type: 'article',
+      publishedTime: post.createdAt,
+      authors: [post.authorName],
+      images: [
+        {
+          url: post.coverImage || siteConfig.ogImage,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+  };
+}
 
 export default function BlogPostDetail() {
   const { slug } = useParams();
@@ -72,6 +116,32 @@ export default function BlogPostDetail() {
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-bold">
+      <JsonLd 
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'BlogPosting',
+          headline: post.title,
+          description: post.excerpt,
+          image: post.coverImage || siteConfig.ogImage,
+          datePublished: post.createdAt,
+          author: {
+            '@type': 'Person',
+            name: post.authorName,
+          },
+          publisher: {
+            '@type': 'Organization',
+            name: siteConfig.name,
+            logo: {
+              '@type': 'ImageObject',
+              url: `${siteConfig.url}/logo.png`,
+            },
+          },
+          mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': getCanonicalUrl(`/blog/${post.slug}`),
+          },
+        }}
+      />
       <motion.div className="fixed top-0 left-0 right-0 h-1 bg-primary z-[110] origin-left" style={{ scaleX }} />
 
       {/* Cinematic Header */}

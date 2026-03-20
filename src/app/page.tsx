@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, ShieldCheck, Heart, Map, Clock, Sparkles, Search, MessageSquare } from 'lucide-react';
+import { Search, MessageSquare, ShieldCheck, Heart, Map, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
@@ -15,18 +15,20 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from "@/components/ui/carousel";
-import { SafariMap } from '@/components/sections/SafariMap';
-import { ImmersiveReveal } from '@/components/sections/ImmersiveReveal';
-import { CinematicQuote } from '@/components/sections/CinematicQuote';
-import { Testimonials } from '@/components/sections/Testimonials';
-import { KilimanjaroSummit } from '@/components/sections/KilimanjaroSummit';
-import { ZanzibarEscape } from '@/components/sections/ZanzibarEscape';
-import { SafariVideo } from '@/components/sections/SafariVideo';
-import { FAQ } from '@/components/sections/FAQ';
-import { ExpertiseNarrative } from '@/components/sections/ExpertiseNarrative';
-import { MeetTheSpecialists } from '@/components/sections/MeetTheSpecialists';
-import { AfricaVariety } from '@/components/sections/AfricaVariety';
+import { SafariMap } from '@/components/home/SafariMap';
+import { ImmersiveReveal } from '@/components/home/ImmersiveReveal';
+import { CinematicQuote } from '@/components/home/CinematicQuote';
+import { Testimonials } from '@/components/home/Testimonials';
+import { KilimanjaroSummit } from '@/components/home/KilimanjaroSummit';
+import { ZanzibarEscape } from '@/components/home/ZanzibarEscape';
+import { SafariVideo } from '@/components/home/SafariVideo';
+import { FAQ } from '@/components/home/FAQ';
+import { ExpertiseNarrative } from '@/components/home/ExpertiseNarrative';
+import { MeetTheSpecialists } from '@/components/home/MeetTheSpecialists';
+import { AfricaVariety } from '@/components/home/AfricaVariety';
 import { Reiseblog } from '@/components/home/Reiseblog';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { siteConfig } from '@/lib/seo-config';
 
 export default function Home() {
   const [tanzaniaApi, setTanzaniaApi] = useState<CarouselApi>();
@@ -42,6 +44,20 @@ export default function Home() {
 
   return (
     <div className="relative font-bold">
+      <JsonLd 
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'WebSite',
+          name: siteConfig.name,
+          url: siteConfig.url,
+          potentialAction: {
+            '@type': 'SearchAction',
+            target: `${siteConfig.url}/safaris?search={search_term_string}`,
+            'query-input': 'required name=search_term_string'
+          }
+        }}
+      />
+      
       {/* Dynamic Cinematic Hero */}
       <section className="relative h-[60vh] md:h-[75vh] flex items-center justify-center overflow-hidden">
         <HeroBackgroundSlider 
@@ -57,7 +73,6 @@ export default function Home() {
               Die Seele der <br /><span className="text-primary">Serengeti</span>
             </h1>
             
-            {/* Search Protocol */}
             <div className="max-w-md md:max-w-lg mx-auto relative px-2">
               <div className="relative flex items-center bg-white rounded-xl shadow-2xl overflow-hidden h-11 md:h-12 border border-border/50">
                 <div className="pl-4 text-primary shrink-0"><Search className="w-4 h-4 md:w-5 md:h-5" /></div>

@@ -3,7 +3,7 @@
  * @fileOverview Serengeti Dreams AI Trip Advisor - RAG-Enhanced Prestige Edition.
  * 
  * This flow provides a personalized consultation experience using live context.
- * - RAG Architecture: Fetches live packages and blogs to provide factual data.
+ * - RAG Architecture: Fetches live packages, blogs, and destinations to provide factual data.
  * - Fault-Tolerance: Handles Firestore sync failures gracefully.
  */
 
@@ -18,7 +18,6 @@ const TripAdvisorInputSchema = z.object({
     role: z.enum(['user', 'model']),
     content: z.string()
   })).optional().describe('Chat history for context.'),
-  // Added optional context fields to prevent validation errors from frontend-passed data
   packagesContext: z.array(z.any()).optional(),
   liveContext: z.string().optional(),
 });
@@ -33,7 +32,7 @@ export async function askTripAdvisor(input: z.infer<typeof TripAdvisorInputSchem
   return tripAdvisorFlow(input);
 }
 
-const systemPrompt = `You are the Serengeti Dreams AI Advisor, an elite digital concierge for an Egypt-based luxury travel agency specializing in Tanzania. 
+const systemPrompt = `You are the Serengeti Dreams AI Advisor, an elite senior concierge for an Egypt-based luxury travel agency specializing in Tanzania. 
 Your tone is sophisticated, expert, and deeply welcoming—reflecting the "Montserrat Bold" prestige brand.
 
 ### YOUR CORE ARCHITECTURE (THE NILE-SAVANNAH BRIDGE):
@@ -42,7 +41,7 @@ Your tone is sophisticated, expert, and deeply welcoming—reflecting the "Monts
    - **Serengeti**: Focus on the Great Migration. Dec-Mar: Calving; Jul-Oct: River Crossings.
    - **Ngorongoro**: Highlight the 25,000+ large mammals in the crater.
    - **Zanzibar**: Emphasize the Swahili-Arab fusion and luxury beach villas.
-   - **Use the provided LIVE CATALOG data** to recommend specific packages and blog stories.
+   - **ACTION**: You MUST use the provided LIVE CATALOG data below to recommend specific published packages and journal entries. Be factual and specific.
 
 2. **LOGISTICS & TRUST:**
    - **Cairo Presence**: We have a physical office in Cairo for localized payment and visa guidance.
@@ -52,9 +51,9 @@ Your tone is sophisticated, expert, and deeply welcoming—reflecting the "Monts
 3. **CONSTRAINTS:**
    - **LANGUAGE**: Reply in the language used by the user (German or English).
    - **PRICING**: Use "Starting from €XXXX" based on the provided live context.
-   - **ACTION**: Guide the user towards "Trip Planner" or "Contact Form" for bespoke planning.
+   - **PROACTIVITY**: Always suggest a logical next step (e.g., "Trip Planner" for custom routes or "Contact" for Berlin office).
 
-GOAL: Transform queries into cinematic previews of their journey based on actual live data.`;
+GOAL: Transform queries into cinematic previews of their journey based on actual live site data.`;
 
 const advisorPrompt = ai.definePrompt({
   name: 'tripAdvisorPrompt',
@@ -68,7 +67,7 @@ LIVE SITE REGISTRY CONTEXT (RAG DATA):
 
 User Query: {{{message}}}
 
-Provide an expert, prestige response based on the above catalog and your expertise.
+Provide a detailed, expert prestige response based on the above catalog. Highlight specific packages if they match the user's intent.
 `,
   system: systemPrompt,
 });
@@ -80,15 +79,17 @@ const tripAdvisorFlow = ai.defineFlow(
     outputSchema: TripAdvisorOutputSchema,
   },
   async (input) => {
-    // 1. RAG Handshake: Fetch Live Context
+    // 1. RAG Handshake: Fetch Live Context from full registry
     const { firestore } = initializeFirebase();
     let liveContext = "### NO LIVE DATA FOUND. USE GENERAL EXPERT KNOWLEDGE.";
     
     if (firestore) {
       try {
-        const [pkgsSnap, blogsSnap] = await Promise.all([
-          getDocs(query(collection(firestore, 'packages'), where('isPublished', '==', true), limit(8))),
-          getDocs(query(collection(firestore, 'blogPosts'), where('status', '==', 'PUBLISHED'), limit(4)))
+        // Fetching more context for 500+ page awareness
+        const [pkgsSnap, blogsSnap, destsSnap] = await Promise.all([
+          getDocs(query(collection(firestore, 'packages'), where('isPublished', '==', true), limit(15))),
+          getDocs(query(collection(firestore, 'blogPosts'), where('status', '==', 'PUBLISHED'), limit(10))),
+          getDocs(query(collection(firestore, 'destinations'), where('isPublished', '==', true), limit(8)))
         ]);
         
         const pkgList = pkgsSnap.docs.map(d => {
@@ -98,13 +99,21 @@ const tripAdvisorFlow = ai.defineFlow(
 
         const blogList = blogsSnap.docs.map(d => {
           const data = d.data();
-          return `- [JOURNAL] ${data.title}: ${data.excerpt?.slice(0, 60)}... [Path: /blog/${data.slug}]`;
+          return `- [JOURNAL] ${data.title}: ${data.excerpt?.slice(0, 80)}... [Path: /blog/${data.slug}]`;
+        }).join('\n');
+
+        const destList = destsSnap.docs.map(d => {
+          const data = d.data();
+          return `- [COUNTRY HUB] ${data.name}: ${data.description?.slice(0, 120)}... [Path: /destinations/${data.slug}]`;
         }).join('\n');
 
         liveContext = `
-### CURRENT LIVE CATALOG:
+### CURRENT LIVE CATALOG REGISTRY:
 SAFARI EXPEDITIONS:
 ${pkgList || 'None listed yet.'}
+
+COUNTRY HUB GUIDES:
+${destList || 'None listed yet.'}
 
 LATEST EXPERT JOURNAL ENTRIES:
 ${blogList || 'None listed yet.'}
