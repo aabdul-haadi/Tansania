@@ -1,8 +1,9 @@
 'use server';
 /**
- * @fileOverview Serengeti Dreams AI Trip Advisor - Resilient Prestige Edition.
+ * @fileOverview Serengeti Dreams AI Trip Advisor - RAG-Enhanced Prestige Edition.
  * 
- * This flow provides a personalized consultation experience.
+ * This flow provides a personalized consultation experience using live context.
+ * - RAG Architecture: Fetches live packages and blogs to provide factual data.
  * - Fault-Tolerance: Handles Firestore sync failures gracefully.
  * - Nile-Savannah Bridge: Optimized for Cairo-based luxury travel context.
  */
@@ -35,10 +36,11 @@ Your tone is sophisticated, expert, and deeply welcoming—reflecting the "Monts
 
 ### YOUR CORE ARCHITECTURE (THE NILE-SAVANNAH BRIDGE):
 
-1. **DESTINATION EXPERTISE:**
+1. **DESTINATION EXPERTISE (RAG-DRIVEN):**
    - **Serengeti**: Focus on the Great Migration. Dec-Mar: Calving; Jul-Oct: River Crossings.
    - **Ngorongoro**: Highlight the 25,000+ large mammals in the crater.
    - **Zanzibar**: Emphasize the Swahili-Arab fusion and luxury beach villas.
+   - **Use the provided LIVE CATALOG data** to recommend specific packages and blog stories.
 
 2. **LOGISTICS & TRUST:**
    - **Cairo Presence**: We have a physical office in Cairo for localized payment and visa guidance.
@@ -50,7 +52,7 @@ Your tone is sophisticated, expert, and deeply welcoming—reflecting the "Monts
    - **PRICING**: Use "Starting from €XXXX" based on the provided live context.
    - **ACTION**: Guide the user towards "Trip Planner" or "Contact Form" for bespoke planning.
 
-GOAL: Transform queries into cinematic previews of their journey.`;
+GOAL: Transform queries into cinematic previews of their journey based on actual live data.`;
 
 const advisorPrompt = ai.definePrompt({
   name: 'tripAdvisorPrompt',
@@ -61,7 +63,7 @@ const advisorPrompt = ai.definePrompt({
   },
   output: { schema: TripAdvisorOutputSchema },
   prompt: `
-LIVE SITE REGISTRY CONTEXT:
+LIVE SITE REGISTRY CONTEXT (RAG DATA):
 {{{liveContext}}}
 
 User Query: {{{message}}}
@@ -78,7 +80,7 @@ const tripAdvisorFlow = ai.defineFlow(
     outputSchema: TripAdvisorOutputSchema,
   },
   async (input) => {
-    // 1. Fetch Live Context (Fault-Tolerant Sync)
+    // 1. RAG Handshake: Fetch Live Context
     const { firestore } = initializeFirebase();
     let liveContext = "### NO LIVE DATA FOUND. USE GENERAL EXPERT KNOWLEDGE.";
     
