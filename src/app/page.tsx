@@ -46,21 +46,21 @@ export default function Home() {
         
         <div className="container relative z-20 mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
-            <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-primary/20 border border-primary/30 text-primary text-[10px] font-black uppercase tracking-[0.4em] mb-8">
+            <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-primary/20 border border-primary/30 text-primary text-[11px] font-black uppercase tracking-[0.4em] mb-8">
               <Sparkles className="w-3 h-3" /> Prestige Safari Registry
             </div>
-            <h1 className="font-headline text-4xl md:text-8xl lg:text-[10rem] font-black text-white leading-none tracking-tighter uppercase mb-8">
+            <h1 className="font-headline text-5xl md:text-8xl lg:text-8xl xl:text-[10rem] font-black text-white leading-[0.85] tracking-tighter uppercase mb-12">
               TANSANIA <br /><span className="text-primary">MASTER</span>
             </h1>
             
             <div className="max-w-2xl mx-auto flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link href="/safaris" className="w-full sm:w-auto">
-                <Button size="lg" className="w-full rounded-full px-12 h-16 font-black text-xs uppercase tracking-[0.3em] shadow-2xl border-none">
+                <Button size="lg" className="w-full rounded-full px-12 h-16 md:h-20 font-black text-xs md:text-sm uppercase tracking-[0.3em] shadow-2xl border-none">
                   Katalog Erkunden
                 </Button>
               </Link>
               <Link href="/trip-planner" className="w-full sm:w-auto">
-                <Button size="lg" variant="outline" className="w-full rounded-full px-12 h-16 font-black text-xs uppercase tracking-[0.3em] border-white/20 text-white hover:bg-white/10 backdrop-blur-md">
+                <Button size="lg" variant="outline" className="w-full rounded-full px-12 h-16 md:h-20 font-black text-xs md:text-sm uppercase tracking-[0.3em] border-white/20 text-white hover:bg-white hover:text-secondary backdrop-blur-md">
                   Reise Designen
                 </Button>
               </Link>
@@ -70,7 +70,7 @@ export default function Home() {
       </section>
 
       {/* Trust Registry Bar */}
-      <section className="py-6 bg-white border-y border-border/50">
+      <section className="py-8 bg-white border-y border-border/50">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {[
@@ -79,9 +79,9 @@ export default function Home() {
               { icon: Map, label: "8 Country Hubs" },
               { icon: Clock, label: "24/7 Support" }
             ].map((item, idx) => (
-              <div key={idx} className="flex flex-col items-center gap-2 group">
-                <item.icon className="w-5 h-5 text-primary transition-transform group-hover:scale-110" />
-                <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">{item.label}</span>
+              <div key={idx} className="flex flex-col items-center gap-3 group">
+                <item.icon className="w-6 h-6 text-primary transition-transform group-hover:scale-110" />
+                <span className="text-[11px] font-black uppercase tracking-widest text-muted-foreground">{item.label}</span>
               </div>
             ))}
           </div>
@@ -96,12 +96,12 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
             <div className="max-w-2xl">
               <span className="text-registry mb-4 block">Destination Portfolio</span>
-              <h2 className="font-headline text-3xl md:text-6xl font-black uppercase leading-none tracking-tighter">
+              <h2 className="font-headline text-4xl md:text-7xl font-black uppercase leading-[0.9] tracking-tighter">
                 Erkunden Sie die <br /><span className="text-primary">Nationalparks</span>
               </h2>
             </div>
             <Link href="/national-parks">
-              <Button variant="outline" className="rounded-xl px-8 h-12 text-[10px] font-black uppercase tracking-widest border-muted">
+              <Button variant="outline" className="rounded-xl px-8 h-12 md:h-14 text-[11px] font-black uppercase tracking-widest border-muted">
                 Alle Parks ansehen <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
@@ -116,10 +116,10 @@ export default function Home() {
               >
                 <Image src={item.img} alt={item.title} fill className="object-cover opacity-80 transition-transform duration-1000 group-hover:scale-110" data-ai-hint={item.hint} />
                 <div className="absolute inset-0 bg-gradient-to-t from-secondary via-black/20 to-transparent p-10 flex flex-col justify-end">
-                  <h3 className="text-2xl font-black text-white uppercase mb-2">{item.title}</h3>
-                  <p className="text-white/60 text-[10px] font-bold uppercase tracking-widest leading-relaxed mb-6 line-clamp-2">{item.desc}</p>
+                  <h3 className="text-3xl font-black text-white uppercase mb-2 leading-tight">{item.title}</h3>
+                  <p className="text-white/60 text-[11px] font-bold uppercase tracking-widest leading-relaxed mb-6 line-clamp-2">{item.desc}</p>
                   <Link href={item.link}>
-                    <Button variant="outline" className="w-full rounded-xl border-white/20 text-white font-black text-[10px] uppercase h-12 hover:bg-primary hover:border-primary">
+                    <Button variant="outline" className="w-full rounded-xl border-white/20 text-white font-black text-[11px] uppercase h-12 md:h-14 hover:bg-primary hover:border-primary">
                       Park Erleben
                     </Button>
                   </Link>
