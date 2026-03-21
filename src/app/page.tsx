@@ -4,8 +4,9 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Search, MessageSquare, ShieldCheck, Heart, Map, Clock, ArrowRight, Sparkles } from 'lucide-react';
+import { Search, MessageSquare, ShieldCheck, Heart, Map, Clock, ArrowRight, Sparkles, Globe, Compass } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { SafariMap } from '@/components/sections/SafariMap';
 import { ImmersiveReveal } from '@/components/sections/ImmersiveReveal';
 import { CinematicQuote } from '@/components/sections/CinematicQuote';
@@ -27,46 +28,145 @@ export default function Home() {
   ];
 
   return (
-    <div className="relative">
-      {/* 500+ Page Infrastructure Hero */}
-      <section className="relative h-[70vh] md:h-screen flex items-center justify-center overflow-hidden bg-secondary">
-        <Image 
-          src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
-          alt="Serengeti Dreams Master Hero" 
-          fill 
-          priority 
-          className="object-cover brightness-50 scale-105"
-          data-ai-hint="serengeti safari"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-background" />
-        
-        <div className="container relative z-20 mx-auto px-4 text-center">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
-            <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-primary/20 border border-primary/30 text-primary text-[11px] font-black uppercase tracking-[0.4em] mb-8">
-              <Sparkles className="w-3 h-3" /> Prestige Safari Registry
-            </div>
-            <h1 className="font-headline text-4xl md:text-7xl lg:text-8xl font-black text-white leading-[0.85] tracking-tighter uppercase mb-12">
-              TANSANIA <br /><span className="text-primary">MASTER</span>
-            </h1>
-            
-            <div className="max-w-2xl mx-auto flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link href="/safaris" className="w-full sm:w-auto">
-                <Button size="lg" className="w-full rounded-full px-12 h-16 md:h-20 font-black text-xs md:text-sm uppercase tracking-[0.3em] shadow-2xl border-none">
-                  Katalog Erkunden
-                </Button>
-              </Link>
-              <Link href="/trip-planner" className="w-full sm:w-auto">
-                <Button size="lg" variant="outline" className="w-full rounded-full px-12 h-16 md:h-20 font-black text-xs md:text-sm uppercase tracking-[0.3em] border-white/20 text-white hover:bg-white hover:text-secondary backdrop-blur-md">
-                  Reise Designen
-                </Button>
-              </Link>
-            </div>
-          </motion.div>
+    <div className="relative bg-background">
+      {/* CREATIVE MODERN HERO: Floating Cinematic Logic */}
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-secondary">
+        {/* Dynamic Background */}
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
+            alt="Serengeti Savannah" 
+            fill 
+            priority 
+            className="object-cover brightness-[0.35] scale-105"
+            data-ai-hint="serengeti safari"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent" />
+          
+          {/* Topographic Accent Overlay */}
+          <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         </div>
+        
+        <div className="container relative z-10 mx-auto px-4 max-w-7xl pt-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            {/* Left Content Column */}
+            <div className="lg:col-span-7 space-y-10">
+              <motion.div 
+                initial={{ opacity: 0, x: -30 }} 
+                animate={{ opacity: 1, x: 0 }} 
+                transition={{ duration: 0.8 }}
+                className="space-y-6"
+              >
+                <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full glass-card text-primary text-[10px] md:text-xs font-black uppercase tracking-[0.4em]">
+                  <Sparkles className="w-4 h-4" /> Established 2014 • SDL Berlin
+                </div>
+                
+                <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[0.9] tracking-tighter uppercase">
+                  TANSANIA <br />
+                  <span className="text-primary">PRESTIGE</span>
+                </h1>
+                
+                <p className="max-w-xl text-white/60 font-bold text-sm md:text-xl uppercase tracking-widest leading-relaxed">
+                  Experten-gestaltete Safaris & exklusive Sansibar-Fluchten. <br className="hidden md:block" />
+                  Ihre Reise, in Berlin konzipiert – in Afrika gelebt.
+                </p>
+              </motion.div>
+
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                transition={{ delay: 0.3, duration: 0.8 }}
+                className="flex flex-col sm:flex-row gap-4 pt-4"
+              >
+                <Link href="/safaris" className="w-full sm:w-auto">
+                  <Button size="xl" className="w-full border-none shadow-2xl">
+                    Katalog Erkunden
+                  </Button>
+                </Link>
+                <Link href="/trip-advisor" className="w-full sm:w-auto">
+                  <Button size="xl" variant="glass" className="w-full shadow-xl">
+                    AI Advisor <ArrowRight className="w-5 h-5 ml-2" />
+                  </Button>
+                </Link>
+              </motion.div>
+
+              {/* Authority Pulse */}
+              <motion.div 
+                initial={{ opacity: 0 }} 
+                animate={{ opacity: 1 }} 
+                transition={{ delay: 0.6 }}
+                className="flex items-center gap-8 pt-8 border-t border-white/10 max-w-md"
+              >
+                <div className="flex flex-col">
+                  <span className="text-white font-black text-2xl">500+</span>
+                  <span className="text-[8px] text-white/40 uppercase tracking-widest font-bold">Destinations-Paths</span>
+                </div>
+                <div className="w-px h-10 bg-white/10" />
+                <div className="flex flex-col">
+                  <span className="text-white font-black text-2xl">100%</span>
+                  <span className="text-[8px] text-white/40 uppercase tracking-widest font-bold">Privat-Safaris</span>
+                </div>
+                <div className="w-px h-10 bg-white/10" />
+                <div className="flex flex-col">
+                  <span className="text-white font-black text-2xl">24/7</span>
+                  <span className="text-[8px] text-white/40 uppercase tracking-widest font-bold">Expert Support</span>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Right Visual Floating Card */}
+            <div className="lg:col-span-5 hidden lg:block">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9, rotate: 2 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                transition={{ delay: 0.4, duration: 1.2 }}
+                className="relative"
+              >
+                <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full" />
+                <Card className="glass-card rounded-[3rem] p-10 relative overflow-hidden group shadow-2xl border-white/10">
+                  <div className="absolute top-0 right-0 p-8 opacity-10"><Compass className="w-32 h-32 rotate-12" /></div>
+                  <div className="relative z-10 space-y-8">
+                    <div className="flex items-center gap-4">
+                      <div className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center shadow-lg">
+                        <Globe className="w-8 h-8 text-white" />
+                      </div>
+                      <div>
+                        <h3 className="font-headline text-2xl font-bold text-white uppercase tracking-tight">Active Registry</h3>
+                        <p className="text-[10px] text-primary font-black uppercase tracking-[0.3em]">Live Status: Safe to Book</p>
+                      </div>
+                    </div>
+                    <p className="text-white/60 font-bold leading-relaxed text-sm uppercase tracking-widest">
+                      Alle unsere Routen sind aktuell auf die Große Tierwanderung und regionale Wetterbedingungen 2026/2027 abgestimmt.
+                    </p>
+                    <div className="pt-4 space-y-3">
+                      {["HanseMerkur Absicherung", "Deutsche Reiseleitung", "Bespoke Itinerary Architect"].map((feat, i) => (
+                        <div key={i} className="flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-white/80">
+                          <ShieldCheck className="w-4 h-4 text-primary" /> {feat}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </Card>
+              </motion.div>
+            </div>
+
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <motion.div 
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 2 }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 hidden md:flex flex-col items-center gap-2"
+        >
+          <span className="text-[8px] font-black text-white/20 uppercase tracking-[0.4em]">Scroll</span>
+          <div className="w-px h-12 bg-gradient-to-b from-primary to-transparent" />
+        </motion.div>
       </section>
 
       {/* Trust Registry Bar */}
-      <section className="py-8 bg-white border-y border-border/50">
+      <section className="py-10 bg-white border-y border-border/50 relative z-30">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {[
@@ -115,7 +215,7 @@ export default function Home() {
                   <h3 className="text-2xl md:text-3xl font-black text-white uppercase mb-2 leading-tight">{item.title}</h3>
                   <p className="text-white/60 text-[11px] font-bold uppercase tracking-widest leading-relaxed mb-6 line-clamp-2">{item.desc}</p>
                   <Link href={item.link}>
-                    <Button variant="outline" className="w-full rounded-xl border-white/20 text-white font-black text-[11px] uppercase h-12 md:h-14 hover:bg-primary hover:border-primary">
+                    <Button variant="outline" className="w-full rounded-xl border-white/20 text-white font-black text-[11px] uppercase h-12 md:h-14">
                       Park Erleben
                     </Button>
                   </Link>
