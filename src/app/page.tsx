@@ -49,7 +49,7 @@ export default function Home() {
             <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-primary/20 border border-primary/30 text-primary text-[11px] font-black uppercase tracking-[0.4em] mb-8">
               <Sparkles className="w-3 h-3" /> Prestige Safari Registry
             </div>
-            <h1 className="font-headline text-5xl md:text-8xl lg:text-8xl xl:text-[10rem] font-black text-white leading-[0.85] tracking-tighter uppercase mb-12">
+            <h1 className="font-headline text-4xl md:text-7xl lg:text-8xl font-black text-white leading-[0.85] tracking-tighter uppercase mb-12">
               TANSANIA <br /><span className="text-primary">MASTER</span>
             </h1>
             
@@ -96,7 +96,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
             <div className="max-w-2xl">
               <span className="text-registry mb-4 block">Destination Portfolio</span>
-              <h2 className="font-headline text-4xl md:text-7xl font-black uppercase leading-[0.9] tracking-tighter">
+              <h2 className="font-headline text-4xl md:text-6xl font-black uppercase leading-[0.9] tracking-tighter">
                 Erkunden Sie die <br /><span className="text-primary">Nationalparks</span>
               </h2>
             </div>
@@ -116,7 +116,7 @@ export default function Home() {
               >
                 <Image src={item.img} alt={item.title} fill className="object-cover opacity-80 transition-transform duration-1000 group-hover:scale-110" data-ai-hint={item.hint} />
                 <div className="absolute inset-0 bg-gradient-to-t from-secondary via-black/20 to-transparent p-10 flex flex-col justify-end">
-                  <h3 className="text-3xl font-black text-white uppercase mb-2 leading-tight">{item.title}</h3>
+                  <h3 className="text-2xl md:text-3xl font-black text-white uppercase mb-2 leading-tight">{item.title}</h3>
                   <p className="text-white/60 text-[11px] font-bold uppercase tracking-widest leading-relaxed mb-6 line-clamp-2">{item.desc}</p>
                   <Link href={item.link}>
                     <Button variant="outline" className="w-full rounded-xl border-white/20 text-white font-black text-[11px] uppercase h-12 md:h-14 hover:bg-primary hover:border-primary">

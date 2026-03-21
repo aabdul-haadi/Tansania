@@ -49,7 +49,7 @@ export default function TanzaniaMasterHub() {
             <Badge className="bg-primary text-white border-none px-5 py-2 text-[11px] font-black uppercase tracking-[0.4em] mb-6 shadow-2xl">
               Das Herz von Afrika
             </Badge>
-            <h1 className="font-headline text-5xl md:text-8xl lg:text-9xl font-bold text-white mb-8 leading-[0.85] tracking-tighter uppercase">
+            <h1 className="font-headline text-4xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-[0.85] tracking-tighter uppercase">
               TANSANIA <br /><span className="text-primary">MASTER</span>
             </h1>
             <p className="max-w-2xl mx-auto text-[11px] md:text-xl text-white/90 font-black uppercase tracking-[0.3em] leading-relaxed">
@@ -65,7 +65,7 @@ export default function TanzaniaMasterHub() {
           <div className="lg:col-span-5 space-y-10">
             <div className="space-y-6">
               <span className="text-primary font-black uppercase tracking-[0.4em] text-[11px] block">National-Registry</span>
-              <h2 className="font-headline text-4xl md:text-7xl font-bold text-secondary uppercase leading-[0.9] tracking-tighter">
+              <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary uppercase leading-[0.9] tracking-tighter">
                 EINE WELT <br />IN EINEM <span className="text-primary">LAND</span>
               </h2>
               <p className="text-muted-foreground font-bold leading-relaxed text-sm md:text-xl uppercase tracking-tight opacity-80">
@@ -98,7 +98,7 @@ export default function TanzaniaMasterHub() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
               <div className="absolute bottom-8 left-8">
                 <p className="text-primary font-black text-[10px] uppercase tracking-widest mb-2">Signature Experience</p>
-                <h4 className="text-3xl font-headline font-bold text-white uppercase leading-none">Big Five Safari</h4>
+                <h4 className="text-2xl md:text-3xl font-headline font-bold text-white uppercase leading-none">Big Five Safari</h4>
               </div>
             </div>
             <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl bg-muted md:translate-y-12">
@@ -106,7 +106,7 @@ export default function TanzaniaMasterHub() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
               <div className="absolute bottom-8 left-8">
                 <p className="text-primary font-black text-[10px] uppercase tracking-widest mb-2">Island Escape</p>
-                <h4 className="text-3xl font-headline font-bold text-white uppercase leading-none">Sansibar Luxus</h4>
+                <h4 className="text-2xl md:text-3xl font-headline font-bold text-white uppercase leading-none">Sansibar Luxus</h4>
               </div>
             </div>
           </div>
@@ -119,7 +119,7 @@ export default function TanzaniaMasterHub() {
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
             <div className="max-w-2xl">
               <span className="text-primary font-black uppercase tracking-[0.4em] text-[11px] mb-2 block">Aktuelle Kollektion</span>
-              <h2 className="font-headline text-4xl md:text-7xl font-bold text-secondary uppercase tracking-tighter leading-[0.9]">UNSERE <br /><span className="text-primary">EXPEDITIONEN</span></h2>
+              <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary uppercase tracking-tighter leading-[0.9]">UNSERE <br /><span className="text-primary">EXPEDITIONEN</span></h2>
             </div>
             <Link href="/safaris">
               <Button variant="outline" className="rounded-xl px-8 h-12 md:h-14 text-[11px] font-black uppercase tracking-widest border-muted">Alle Pakete ansehen</Button>
