@@ -1,39 +1,27 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, MessageSquare, ShieldCheck, Heart, Map, Clock } from 'lucide-react';
+import { Search, MessageSquare, ShieldCheck, Heart, Map, Clock, ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-  type CarouselApi,
-} from "@/components/ui/carousel";
-import { SafariMap } from '@/components/home/SafariMap';
-import { ImmersiveReveal } from '@/components/home/ImmersiveReveal';
-import { CinematicQuote } from '@/components/home/CinematicQuote';
-import { Testimonials } from '@/components/home/Testimonials';
-import { KilimanjaroSummit } from '@/components/home/KilimanjaroSummit';
-import { ZanzibarEscape } from '@/components/home/ZanzibarEscape';
-import { SafariVideo } from '@/components/home/SafariVideo';
-import { FAQ } from '@/components/home/FAQ';
-import { ExpertiseNarrative } from '@/components/home/ExpertiseNarrative';
-import { MeetTheSpecialists } from '@/components/home/MeetTheSpecialists';
-import { AfricaVariety } from '@/components/home/AfricaVariety';
-import { Reiseblog } from '@/components/home/Reiseblog';
-import { JsonLd } from '@/components/seo/JsonLd';
-import { siteConfig } from '@/lib/seo-config';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { SafariMap } from '@/components/sections/SafariMap';
+import { ImmersiveReveal } from '@/components/sections/ImmersiveReveal';
+import { CinematicQuote } from '@/components/sections/CinematicQuote';
+import { Testimonials } from '@/components/sections/Testimonials';
+import { KilimanjaroSummit } from '@/components/sections/KilimanjaroSummit';
+import { ZanzibarEscape } from '@/components/sections/ZanzibarEscape';
+import { SafariVideo } from '@/components/sections/SafariVideo';
+import { FAQ } from '@/components/sections/FAQ';
+import { ExpertiseNarrative } from '@/components/sections/ExpertiseNarrative';
+import { MeetTheSpecialists } from '@/components/sections/MeetTheSpecialists';
+import { AfricaVariety } from '@/components/sections/AfricaVariety';
+import { ContactSection } from '@/components/shared/ContactSection';
 
 export default function Home() {
-  const [tanzaniaApi, setTanzaniaApi] = useState<CarouselApi>();
-  const [searchQuery, setSearchQuery] = useState('');
-
   const highlights = [
     { title: "Sansibar Küste", desc: "Makellose weiße Sandstrände und historische Gewürzküste.", img: 'https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=1200', link: "/destinations/zanzibar", hint: "zanzibar beach" },
     { title: "Serengeti Ebenen", desc: "Erleben Sie die legendäre Große Tierwanderung am Horizont.", img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200', link: "/destinations/serengeti", hint: "serengeti wildlife" },
@@ -43,74 +31,57 @@ export default function Home() {
   ];
 
   return (
-    <div className="relative font-bold">
-      <JsonLd 
-        data={{
-          '@context': 'https://schema.org',
-          '@type': 'WebSite',
-          name: siteConfig.name,
-          url: siteConfig.url,
-          potentialAction: {
-            '@type': 'SearchAction',
-            target: `${siteConfig.url}/safaris?search={search_term_string}`,
-            'query-input': 'required name=search_term_string'
-          }
-        }}
-      />
-      
-      {/* Dynamic Cinematic Hero */}
-      <section className="relative h-[60vh] md:h-[75vh] flex items-center justify-center overflow-hidden">
-        <HeroBackgroundSlider 
-          images={[
-            { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920', hint: "serengeti safari" },
-            { src: 'https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=1920', hint: "zanzibar beach" },
-            { src: 'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1920', hint: "mount kilimanjaro" }
-          ]} 
+    <div className="relative">
+      {/* 500+ Page Infrastructure Hero */}
+      <section className="relative h-[70vh] md:h-screen flex items-center justify-center overflow-hidden bg-secondary">
+        <Image 
+          src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
+          alt="Serengeti Dreams Master Hero" 
+          fill 
+          priority 
+          className="object-cover brightness-50 scale-105"
+          data-ai-hint="serengeti safari"
         />
-        <div className="container relative z-20 mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-4xl mx-auto text-center">
-            <h1 className="font-headline text-3xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-[1] uppercase tracking-tighter">
-              Die Seele der <br /><span className="text-primary">Serengeti</span>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-background" />
+        
+        <div className="container relative z-20 mx-auto px-4 text-center">
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
+            <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-primary/20 border border-primary/30 text-primary text-[10px] font-black uppercase tracking-[0.4em] mb-8">
+              <Sparkles className="w-3 h-3" /> Prestige Safari Registry
+            </div>
+            <h1 className="font-headline text-4xl md:text-8xl lg:text-[10rem] font-black text-white leading-none tracking-tighter uppercase mb-8">
+              TANSANIA <br /><span className="text-primary">MASTER</span>
             </h1>
             
-            <div className="max-w-md md:max-w-lg mx-auto relative px-2">
-              <div className="relative flex items-center bg-white rounded-xl shadow-2xl overflow-hidden h-11 md:h-12 border border-border/50">
-                <div className="pl-4 text-primary shrink-0"><Search className="w-4 h-4 md:w-5 md:h-5" /></div>
-                <Input 
-                  value={searchQuery} 
-                  onChange={(e) => setSearchQuery(e.target.value)} 
-                  placeholder="Wohin soll die Reise gehen?" 
-                  className="h-full border-none bg-transparent text-secondary font-bold placeholder:text-muted-foreground/50 text-[10px] md:text-xs focus-visible:ring-0 uppercase tracking-widest" 
-                  suppressHydrationWarning
-                />
-                <div className="pr-2">
-                  <Button asChild className="h-7 md:h-8 rounded-lg px-3 gap-2 hidden sm:flex text-[7px] md:text-[8px] font-black uppercase shadow-none" variant="default" size="sm" suppressHydrationWarning>
-                    <Link href="/itinerary-builder">AI Planer</Link>
-                  </Button>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mt-6">
-              <Button asChild size="lg" className="w-full sm:w-auto rounded-full px-8 h-11 md:h-12 text-[8px] md:text-[9px] font-bold shadow-xl uppercase tracking-widest border-none" suppressHydrationWarning>
-                <Link href="/safaris">Katalog ansehen</Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="w-full sm:w-auto rounded-full px-8 h-11 md:h-12 text-[8px] md:text-[9px] font-bold border-white/20 text-white hover:bg-white/10 backdrop-blur-md bg-black/20 uppercase tracking-widest" suppressHydrationWarning>
-                <Link href="/trip-advisor"><MessageSquare className="w-3.5 h-3.5 mr-2" /> AI Beratung</Link>
-              </Button>
+            <div className="max-w-2xl mx-auto flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Link href="/safaris" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full rounded-full px-12 h-16 font-black text-xs uppercase tracking-[0.3em] shadow-2xl border-none">
+                  Katalog Erkunden
+                </Button>
+              </Link>
+              <Link href="/trip-planner" className="w-full sm:w-auto">
+                <Button size="lg" variant="outline" className="w-full rounded-full px-12 h-16 font-black text-xs uppercase tracking-[0.3em] border-white/20 text-white hover:bg-white/10 backdrop-blur-md">
+                  Reise Designen
+                </Button>
+              </Link>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* Trust Registry Bar */}
-      <section className="py-3 md:py-4 bg-white border-y border-border/50">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 items-center">
-            {[{ icon: ShieldCheck, label: "Sicher Reisen" }, { icon: Heart, label: "Nachhaltigkeit" }, { icon: Map, label: "Private Guides" }, { icon: Clock, label: "24/7 Support" }].map((item, idx) => (
-              <div key={idx} className="flex flex-col items-center gap-1 group">
-                <item.icon className="w-3.5 h-3.5 text-primary transition-transform group-hover:scale-110" />
-                <span className="text-[7px] md:text-[8px] font-bold tracking-widest text-muted-foreground uppercase text-center">{item.label}</span>
+      <section className="py-6 bg-white border-y border-border/50">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { icon: ShieldCheck, label: "Sicher Buchen" },
+              { icon: Heart, label: "Nachhaltigkeit" },
+              { icon: Map, label: "8 Country Hubs" },
+              { icon: Clock, label: "24/7 Support" }
+            ].map((item, idx) => (
+              <div key={idx} className="flex flex-col items-center gap-2 group">
+                <item.icon className="w-5 h-5 text-primary transition-transform group-hover:scale-110" />
+                <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">{item.label}</span>
               </div>
             ))}
           </div>
@@ -119,43 +90,48 @@ export default function Home() {
 
       <ExpertiseNarrative />
 
-      {/* Highlights Registry */}
-      <section className="py-8 md:py-12 relative overflow-hidden bg-muted/10">
+      {/* Scale Hub: National Parks */}
+      <section className="py-16 md:py-32 bg-muted/10">
         <div className="container mx-auto px-4 max-w-7xl">
-          <Carousel setApi={setTanzaniaApi} opts={{ align: "start", loop: true }} className="w-full">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-6 gap-4">
-              <div className="max-w-xl">
-                <span className="text-primary font-bold uppercase tracking-[0.3em] text-[8px] mb-1 block">Exklusive Reiseziele</span>
-                <h2 className="font-headline text-xl md:text-4xl font-bold leading-tight uppercase tracking-tighter">Das Beste von Tansania</h2>
-              </div>
-              <div className="flex gap-2">
-                <CarouselPrevious className="static translate-y-0 h-8 w-8 rounded-full border-muted" />
-                <CarouselNext className="static translate-y-0 h-8 w-8 rounded-full border-muted" />
-              </div>
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div className="max-w-2xl">
+              <span className="text-registry mb-4 block">Destination Portfolio</span>
+              <h2 className="font-headline text-3xl md:text-6xl font-black uppercase leading-none tracking-tighter">
+                Erkunden Sie die <br /><span className="text-primary">Nationalparks</span>
+              </h2>
             </div>
-            <CarouselContent className="-ml-4">
-              {highlights.map((item, idx) => (
-                <CarouselItem key={idx} className="pl-4 md:basis-1/2 lg:basis-1/2">
-                  <motion.div whileHover={{ y: -4 }} className="relative aspect-[16/10] rounded-[1.25rem] md:rounded-[2rem] overflow-hidden group shadow-lg h-full bg-muted border border-border/50">
-                    <Image src={item.img} alt={item.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-105" data-ai-hint={item.hint} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent p-6 md:p-8 flex flex-col justify-end">
-                      <h3 className="text-white text-lg md:text-2xl font-headline font-bold mb-1 uppercase tracking-tight">{item.title}</h3>
-                      <p className="text-white/70 mb-3 max-w-xs text-[8px] md:text-[10px] font-bold leading-relaxed uppercase tracking-widest">{item.desc}</p>
-                      <Button asChild className="rounded-lg px-5 h-8 md:h-9 font-bold shadow-xl text-[8px] uppercase tracking-widest border-none" variant="default" size="sm" suppressHydrationWarning>
-                        <Link href={item.link}>Region erleben</Link>
-                      </Button>
-                    </div>
-                  </motion.div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
+            <Link href="/national-parks">
+              <Button variant="outline" className="rounded-xl px-8 h-12 text-[10px] font-black uppercase tracking-widest border-muted">
+                Alle Parks ansehen <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {highlights.slice(0, 3).map((item, idx) => (
+              <motion.div 
+                key={idx}
+                whileHover={{ y: -8 }}
+                className="relative aspect-[4/5] rounded-[3rem] overflow-hidden group shadow-xl bg-secondary"
+              >
+                <Image src={item.img} alt={item.title} fill className="object-cover opacity-80 transition-transform duration-1000 group-hover:scale-110" data-ai-hint={item.hint} />
+                <div className="absolute inset-0 bg-gradient-to-t from-secondary via-black/20 to-transparent p-10 flex flex-col justify-end">
+                  <h3 className="text-2xl font-black text-white uppercase mb-2">{item.title}</h3>
+                  <p className="text-white/60 text-[10px] font-bold uppercase tracking-widest leading-relaxed mb-6 line-clamp-2">{item.desc}</p>
+                  <Link href={item.link}>
+                    <Button variant="outline" className="w-full rounded-xl border-white/20 text-white font-black text-[10px] uppercase h-12 hover:bg-primary hover:border-primary">
+                      Park Erleben
+                    </Button>
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
       <SafariMap />
       <AfricaVariety />
-      <Reiseblog />
       <SafariVideo />
       <KilimanjaroSummit />
       <ZanzibarEscape />
@@ -164,24 +140,7 @@ export default function Home() {
       <Testimonials />
       <CinematicQuote />
       <FAQ />
-    </div>
-  );
-}
-
-function HeroBackgroundSlider({ images }: { images: { src: string, hint: string }[] }) {
-  const [index, setIndex] = useState(0);
-  useEffect(() => { 
-    const timer = setInterval(() => setIndex((prev) => (prev + 1) % images.length), 6000); 
-    return () => clearInterval(timer); 
-  }, [images.length]);
-  return (
-    <div className="absolute inset-0 z-0">
-      <AnimatePresence mode="popLayout">
-        <motion.div key={index} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1.2 }} className="absolute inset-0">
-          <Image src={images[index].src} alt="Hero" fill className="object-cover" priority data-ai-hint={images[index].hint} />
-        </motion.div>
-      </AnimatePresence>
-      <div className="absolute inset-0 bg-black/40 z-10" />
+      <ContactSection />
     </div>
   );
 }

@@ -5,56 +5,32 @@
 @layer base {
   :root {
     /* COLORS: Professional Registry Palette */
-    --background: 0 0% 96%;
-    --foreground: 0 0% 10%;
+    --background: 0 0% 98%;
+    --foreground: 0 0% 8%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 10%;
+    --card-foreground: 0 0% 8%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
+    --popover-foreground: 0 0% 8%;
     
     --primary: 19 89% 47%;
-    --primary-foreground: 0 0% 98%;
+    --primary-foreground: 0 0% 100%;
     
     --secondary: 0 0% 8%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary-foreground: 0 0% 100%;
     
-    --muted: 0 0% 92%;
-    --muted-foreground: 0 0% 35%;
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 40%;
     
     --accent: 30 53% 64%;
     --accent-foreground: 0 0% 10%;
     
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
     
-    --border: 0 0% 88%;
-    --input: 0 0% 88%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
     --ring: 19 89% 47%;
-    --radius: 1rem;
-
-    /* REFINED TYPOGRAPHY: Slightly increased for readability while remaining compact */
-    --text-xs: 0.7rem;    /* 11.2px */
-    --text-sm: 0.8rem;    /* 12.8px */
-    --text-base: 0.9rem;  /* 14.4px - Main Body */
-    --text-lg: 1rem;      /* 16px */
-    --text-xl: 1.125rem;  /* 18px */
-    --text-2xl: 1.25rem;  /* 20px */
-    --text-3xl: 1.5rem;   /* 24px */
-    --text-4xl: 2rem;     /* 32px */
-    --text-5xl: 2.5rem;   /* 40px */
-    --text-6xl: 3.5rem;   /* 56px */
-    --text-7xl: 4.5rem;   /* 72px */
-    --text-8xl: 5.5rem;   /* 88px */
-    --text-9xl: 7rem;     /* 112px */
-  }
-
-  .dark {
-    --background: 0 0% 6%;
-    --foreground: 0 0% 96%;
-    --primary: 19 89% 55%;
-    --secondary: 0 0% 12%;
-    --muted: 0 0% 12%;
-    --border: 0 0% 15%;
+    --radius: 1.5rem;
   }
 }
 
@@ -63,10 +39,6 @@
     @apply border-border;
   }
   
-  html {
-    font-size: 16px; 
-  }
-
   body {
     @apply bg-background text-foreground antialiased font-bold;
     font-family: 'Montserrat', sans-serif !important;
@@ -74,7 +46,6 @@
     background-repeat: repeat;
     background-size: 200px;
     background-attachment: fixed;
-    font-size: var(--text-base);
   }
 
   /* STRICT BRANDING: Forcible removal of ALL italics */
@@ -83,42 +54,25 @@
     @apply not-italic !important;
   }
 
-  /* Global Bold & Scale Enforcement */
+  /* Global Bold Enforcement */
   p, span, div, a, li, input, button, select, textarea {
-    @apply font-bold;
+    @apply font-bold tracking-tight;
   }
 
-  h1 { font-size: var(--text-6xl); @apply leading-none tracking-tighter uppercase; }
-  h2 { font-size: var(--text-5xl); @apply leading-tight tracking-tighter uppercase; }
-  h3 { font-size: var(--text-3xl); @apply leading-tight tracking-tighter uppercase; }
-  h4 { font-size: var(--text-xl); @apply leading-tight tracking-tighter uppercase; }
-  h5 { font-size: var(--text-lg); @apply uppercase; }
-  h6 { font-size: var(--text-base); @apply uppercase; }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-black uppercase tracking-tighter;
+  }
 }
 
-/* Utility Classes for Prestige Density */
-.text-prestige {
-  @apply font-black uppercase tracking-[0.3em];
-  font-size: var(--text-xs);
+/* Prestige Utility Classes */
+.rounded-prestige {
+  @apply rounded-[2.5rem];
 }
 
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+.shadow-prestige {
+  @apply shadow-[0_20px_50px_rgba(0,0,0,0.1)];
 }
 
-.ease-prestige {
-  transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-5px); }
-}
-
-.animate-float {
-  animation: float 5s ease-in-out infinite;
+.text-registry {
+  @apply text-[10px] font-black uppercase tracking-[0.4em] text-primary;
 }
