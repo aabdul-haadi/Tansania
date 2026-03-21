@@ -49,18 +49,12 @@ export default function TripAdvisorPage() {
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
-  const scrollAreaViewportRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-  // STABILIZED VIEWPORT: Precision Scroll Management targets only the chat viewport
+  // STABILIZED VIEWPORT: Precision scroll target prevents page jumping
   useEffect(() => {
-    if (scrollAreaViewportRef.current) {
-      const scrollArea = scrollAreaViewportRef.current.querySelector('[data-radix-scroll-area-viewport]');
-      if (scrollArea) {
-        scrollArea.scrollTo({
-          top: scrollArea.scrollHeight,
-          behavior: 'smooth'
-        });
-      }
+    if (scrollRef.current) {
+      scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
   }, [messages, loading]);
 
@@ -96,7 +90,7 @@ export default function TripAdvisorPage() {
 
   return (
     <div className="h-screen bg-[#fdfcfb] pt-20 flex flex-col font-bold overflow-hidden">
-      {/* COMPACTED HEADER: Reduced height with subtle background image */}
+      {/* COMPACTED HEADER: Prestige Density Protocol */}
       <section className="bg-white border-b py-2 md:py-3 relative overflow-hidden shrink-0">
         <div className="absolute inset-0 opacity-[0.05] pointer-events-none">
           <Image 
@@ -140,62 +134,61 @@ export default function TripAdvisorPage() {
               </div>
             </div>
 
-            {/* INTERNAL SCROLL: Prevents page jumping */}
-            <div className="flex-grow min-h-0 relative" ref={scrollAreaViewportRef}>
-              <ScrollArea className="h-full w-full bg-[#fdfcfb]">
-                <div className="p-4 md:p-6 space-y-5">
-                  {messages.map((m, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className={cn(
-                        "flex gap-3 max-w-[95%] md:max-w-[85%]",
-                        m.role === 'user' ? "ml-auto flex-row-reverse" : ""
-                      )}
-                    >
-                      <div className={cn(
-                        "w-8 h-8 rounded-xl flex items-center justify-center shrink-0 shadow-lg border",
-                        m.role === 'user' ? "bg-primary text-white border-primary/20" : m.role === 'error' ? "bg-destructive text-white" : "bg-secondary text-white border-white/5"
-                      )}>
-                        {m.role === 'user' ? <User className="w-3.5 h-3.5" /> : m.role === 'error' ? <AlertCircle className="w-3.5 h-3.5" /> : <Compass className="w-3.5 h-3.5" />}
-                      </div>
-                      <div className="flex flex-col gap-2">
-                        <div className={cn(
-                          "p-4 rounded-[1.25rem] md:rounded-[1.5rem] text-[10px] md:text-sm leading-relaxed font-bold shadow-sm",
-                          m.role === 'user' 
-                            ? "bg-primary text-white rounded-tr-none shadow-primary/10" 
-                            : m.role === 'error'
-                            ? "bg-destructive/10 text-destructive border border-destructive/20 rounded-tl-none"
-                            : "bg-white text-secondary rounded-tl-none border border-muted/50"
-                        )}>
-                          {m.content}
-                        </div>
-                        {m.action && m.route && (
-                          <Button asChild size="sm" variant="outline" className="rounded-full h-7 px-3 text-[7px] font-black uppercase tracking-[0.2em] border-primary/30 text-primary hover:bg-primary/5 group w-fit" suppressHydrationWarning>
-                            <Link href={m.route}>
-                              {m.action} <ArrowRight className="w-2.5 h-2.5 ml-1 group-hover:translate-x-1 transition-transform" />
-                            </Link>
-                          </Button>
-                        )}
-                      </div>
-                    </motion.div>
-                  ))}
-                  {loading && (
-                    <div className="flex gap-3">
-                      <div className="w-8 h-8 rounded-xl bg-secondary flex items-center justify-center shrink-0 shadow-lg border border-white/5">
-                        <Loader2 className="w-3.5 h-3.5 text-white animate-spin" />
-                      </div>
-                      <div className="p-3 bg-white rounded-[1.25rem] rounded-tl-none border border-muted/50 flex items-center gap-1 shadow-sm">
-                        <span className="w-1 h-1 bg-primary rounded-full animate-bounce" />
-                        <span className="w-1 h-1 bg-primary rounded-full animate-bounce [animation-delay:0.2s]" />
-                        <span className="w-1 h-1 bg-primary rounded-full animate-bounce [animation-delay:0.4s]" />
-                      </div>
+            {/* INTERNAL SCROLL: Prevents page jumping by targeting the viewport directly */}
+            <ScrollArea className="flex-grow bg-[#fdfcfb]">
+              <div className="p-4 md:p-6 space-y-5">
+                {messages.map((m, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className={cn(
+                      "flex gap-3 max-w-[95%] md:max-w-[85%]",
+                      m.role === 'user' ? "ml-auto flex-row-reverse" : ""
+                    )}
+                  >
+                    <div className={cn(
+                      "w-8 h-8 rounded-xl flex items-center justify-center shrink-0 shadow-lg border",
+                      m.role === 'user' ? "bg-primary text-white border-primary/20" : m.role === 'error' ? "bg-destructive text-white" : "bg-secondary text-white border-white/5"
+                    )}>
+                      {m.role === 'user' ? <User className="w-3.5 h-3.5" /> : m.role === 'error' ? <AlertCircle className="w-3.5 h-3.5" /> : <Compass className="w-3.5 h-3.5" />}
                     </div>
-                  )}
-                </div>
-              </ScrollArea>
-            </div>
+                    <div className="flex flex-col gap-2">
+                      <div className={cn(
+                        "p-4 rounded-[1.25rem] md:rounded-[1.5rem] text-[10px] md:text-sm leading-relaxed font-bold shadow-sm",
+                        m.role === 'user' 
+                          ? "bg-primary text-white rounded-tr-none shadow-primary/10" 
+                          : m.role === 'error'
+                          ? "bg-destructive/10 text-destructive border border-destructive/20 rounded-tl-none"
+                          : "bg-white text-secondary rounded-tl-none border border-muted/50"
+                      )}>
+                        {m.content}
+                      </div>
+                      {m.action && m.route && (
+                        <Button asChild size="sm" variant="outline" className="rounded-full h-7 px-3 text-[7px] font-black uppercase tracking-[0.2em] border-primary/30 text-primary hover:bg-primary/5 group w-fit" suppressHydrationWarning>
+                          <Link href={m.route}>
+                            {m.action} <ArrowRight className="w-2.5 h-2.5 ml-1 group-hover:translate-x-1 transition-transform" />
+                          </Link>
+                        </Button>
+                      )}
+                    </div>
+                  </motion.div>
+                ))}
+                {loading && (
+                  <div className="flex gap-3">
+                    <div className="w-8 h-8 rounded-xl bg-secondary flex items-center justify-center shrink-0 shadow-lg border border-white/5">
+                      <Loader2 className="w-3.5 h-3.5 text-white animate-spin" />
+                    </div>
+                    <div className="p-3 bg-white rounded-[1.25rem] rounded-tl-none border border-muted/50 flex items-center gap-1 shadow-sm">
+                      <span className="w-1 h-1 bg-primary rounded-full animate-bounce" />
+                      <span className="w-1 h-1 bg-primary rounded-full animate-bounce [animation-delay:0.2s]" />
+                      <span className="w-1 h-1 bg-primary rounded-full animate-bounce [animation-delay:0.4s]" />
+                    </div>
+                  </div>
+                )}
+                <div ref={scrollRef} className="h-1" />
+              </div>
+            </ScrollArea>
 
             <div className="p-3 md:p-4 border-t bg-white shrink-0 shadow-[0_-10px_40px_rgba(0,0,0,0.02)]">
               <div className="flex flex-wrap gap-1.5 mb-3 overflow-x-auto no-scrollbar pb-1">

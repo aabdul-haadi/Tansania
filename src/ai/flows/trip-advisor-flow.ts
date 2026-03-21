@@ -4,7 +4,7 @@
  * 
  * This flow provides a personalized consultation experience using live context.
  * - RAG Architecture: Fetches live packages, blogs, and destinations to provide factual data.
- * - Fault-Tolerance: Handles Firestore sync failures gracefully.
+ * - Resilience: Handles Firestore sync failures and prompt complexity gracefully.
  */
 
 import { ai } from '@/ai/genkit';
@@ -79,32 +79,31 @@ const tripAdvisorFlow = ai.defineFlow(
     outputSchema: TripAdvisorOutputSchema,
   },
   async (input) => {
-    // 1. RAG Handshake: Fetch Live Context from full registry
     const { firestore } = initializeFirebase();
     let liveContext = "### NO LIVE DATA FOUND. USE GENERAL EXPERT KNOWLEDGE.";
     
     if (firestore) {
       try {
-        // Fetching more context for 500+ page awareness
+        // RESILIENT RAG: Index-independent queries to prevent "Funkstille"
         const [pkgsSnap, blogsSnap, destsSnap] = await Promise.all([
-          getDocs(query(collection(firestore, 'packages'), where('isPublished', '==', true), limit(15))),
-          getDocs(query(collection(firestore, 'blogPosts'), where('status', '==', 'PUBLISHED'), limit(10))),
-          getDocs(query(collection(firestore, 'destinations'), where('isPublished', '==', true), limit(8)))
+          getDocs(query(collection(firestore, 'packages'), where('isPublished', '==', true), limit(10))),
+          getDocs(query(collection(firestore, 'blogPosts'), where('status', '==', 'PUBLISHED'), limit(5))),
+          getDocs(query(collection(firestore, 'destinations'), where('isPublished', '==', true), limit(5)))
         ]);
         
         const pkgList = pkgsSnap.docs.map(d => {
           const data = d.data();
-          return `- [PACKAGE] ${data.title}: ${data.durationDays} Days, from €${data.startingPrice}. [Path: /safaris/${data.slug}]`;
+          return `- [PACKAGE] ${data.title}: ${data.durationDays} Days, from €${data.startingPrice}. [/safaris/${data.slug}]`;
         }).join('\n');
 
         const blogList = blogsSnap.docs.map(d => {
           const data = d.data();
-          return `- [JOURNAL] ${data.title}: ${data.excerpt?.slice(0, 80)}... [Path: /blog/${data.slug}]`;
+          return `- [JOURNAL] ${data.title}: ${data.excerpt?.slice(0, 60)}... [/blog/${data.slug}]`;
         }).join('\n');
 
         const destList = destsSnap.docs.map(d => {
           const data = d.data();
-          return `- [COUNTRY HUB] ${data.name}: ${data.description?.slice(0, 120)}... [Path: /destinations/${data.slug}]`;
+          return `- [HUB] ${data.name}: ${data.description?.slice(0, 100)}... [/destinations/${data.slug}]`;
         }).join('\n');
 
         liveContext = `
@@ -126,9 +125,12 @@ ${blogList || 'None listed yet.'}
     try {
       const { output } = await advisorPrompt({
         ...input,
-        liveContext
+        liveContext: liveContext || ""
       }, {
-        messages: input.history?.map(h => ({ role: h.role, content: [{ text: h.content }] }))
+        messages: input.history?.map(h => ({ 
+          role: h.role === 'model' ? 'model' : 'user', 
+          content: [{ text: h.content }] 
+        })) || []
       });
 
       if (!output) throw new Error('Empty AI response');
@@ -136,7 +138,7 @@ ${blogList || 'None listed yet.'}
     } catch (err) {
       console.error("Genkit Generation Failed:", err);
       return {
-        response: "Entschuldigung, in der Savanne herrscht gerade Funkstille. Wie kann ich Ihnen sonst bei der Planung Ihrer Safari behilflich sein?",
+        response: "Entschuldigung, in der Savanne herrscht gerade Funkstille. Wir prüfen die Verbindung zu unseren Experten in Berlin. Wie kann ich Ihnen sonst behilflich sein?",
         suggestedAction: "Experten kontaktieren",
         suggestedRoute: "/contact"
       };
