@@ -3,11 +3,9 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Search, MessageSquare, ShieldCheck, Heart, Map, Clock, ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { SafariMap } from '@/components/sections/SafariMap';
 import { ImmersiveReveal } from '@/components/sections/ImmersiveReveal';
 import { CinematicQuote } from '@/components/sections/CinematicQuote';
@@ -26,8 +24,6 @@ export default function Home() {
     { title: "Sansibar Küste", desc: "Makellose weiße Sandstrände und historische Gewürzküste.", img: 'https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=1200', link: "/destinations/zanzibar", hint: "zanzibar beach" },
     { title: "Serengeti Ebenen", desc: "Erleben Sie die legendäre Große Tierwanderung am Horizont.", img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200', link: "/destinations/serengeti", hint: "serengeti wildlife" },
     { title: "Ngorongoro Krater", desc: "Ein natürliches Amphitheater der Wildnis in einem Vulkan.", img: 'https://images.unsplash.com/photo-1580502304784-8985b777da59?q=80&w=1200', link: "/destinations/ngorongoro", hint: "ngorongoro crater" },
-    { title: "Tarangire Giganten", desc: "Heimat riesiger Affenbrotbäume und großer Elefantenherden.", img: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=1200', link: "/destinations/tarangire", hint: "tarangire elephants" },
-    { title: "Kilimandscharo", desc: "Das Dach Afrikas, majestätisch über den Wolken.", img: 'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1200', link: "/destinations/kilimanjaro", hint: "mount kilimanjaro" },
   ];
 
   return (
@@ -108,7 +104,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {highlights.slice(0, 3).map((item, idx) => (
+            {highlights.map((item, idx) => (
               <motion.div 
                 key={idx}
                 whileHover={{ y: -8 }}

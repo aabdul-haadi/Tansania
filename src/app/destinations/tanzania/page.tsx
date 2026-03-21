@@ -7,11 +7,7 @@ import { motion } from 'framer-motion';
 import { 
   Compass, 
   Map, 
-  Camera, 
-  Zap, 
-  Star, 
   ArrowRight, 
-  CheckCircle2,
   Mountain,
   Palmtree,
   Sun
