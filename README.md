@@ -12,15 +12,14 @@ The application uses a **Registry-First Architecture** to manage a vast content 
   - `admin/`: The **Command Center** for registry management and AI auditing.
 - `src/components/`: Modularized by domain for extreme scalability.
   - `blog/`: Editorial components and the integrated inquiry protocol.
-  - `home/`: High-density cinematic landing sections.
+  - `sections/`: High-density reusable UI regions (Heros, Mosaics, FAQs).
   - `packages/`: Global master cards for safari listings.
   - `layout/`: Responsive prestige navigation and footer registries.
-  - `ai/`: Floating concierge and advisor interfaces.
+  - `shared/`: Lead capture, contact sections, and global utilities.
 - `src/ai/`: Powered by **Firebase Genkit**.
   - `flows/`: RAG-based trip advisor, SEO audit engine, and itinerary architect.
 - `src/firebase/`: Robust synchronization layer.
   - `firestore/`: Custom hooks (`useCollection`, `useDoc`) with permission error emitters.
-  - `non-blocking/`: Optimized mutation patterns for instant UI response.
 
 ## 🧠 Autonomous Intelligence (AI)
 
@@ -43,14 +42,9 @@ The UI strictly follows a **High-Density Prestige Standard**:
 
 ## 🛠️ Technical Protocols
 
-1.  **Hydration Safety**: Every interactive trigger uses `suppressHydrationWarning` and client-side mounting guards to prevent mismatches from browser extensions.
-2.  **Registry Handshake**: The Admin Layout implements a 5-second handshake to ensure Firestore security rules are synchronized before data fetches.
-3.  **Non-Blocking Mutations**: All data writes (Inquiries, Bookings, Settings) use non-blocking patterns to keep the UI fluid and responsive.
-4.  **Integrated Inquiry Protocol**: A specialized iframe-based form system with dynamic resizing for seamless lead generation.
-
-## 🚀 Deployment & Operations
-
-The site is configured for **Firebase App Hosting** and uses **Next.js ISR (Incremental Static Regeneration)** for the Blog and Safari Catalog to ensure ultra-fast load times even with 500+ active paths.
+1.  **Hydration Safety**: Every interactive trigger uses `suppressHydrationWarning` and client-side mounting guards to prevent mismatches.
+2.  **Registry Handshake**: The Admin Layout implements a 5-second handshake to ensure Firestore security rules are synchronized.
+3.  **Non-Blocking Mutations**: All data writes (Inquiries, Bookings, Settings) use non-blocking patterns to keep the UI fluid.
 
 ---
 **Serengeti Dreams Operational Registry** | *Established 2014 • Digital Core 2025*
