@@ -21,15 +21,9 @@ import { AfricaVariety } from '@/components/sections/AfricaVariety';
 import { ContactSection } from '@/components/shared/ContactSection';
 
 export default function Home() {
-  const highlights = [
-    { title: "Sansibar Küste", desc: "Makellose weiße Sandstrände und historische Gewürzküste.", img: 'https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=1200', link: "/destinations/zanzibar", hint: "zanzibar beach" },
-    { title: "Serengeti Ebenen", desc: "Erleben Sie die legendäre Große Tierwanderung am Horizont.", img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200', link: "/destinations/serengeti", hint: "serengeti wildlife" },
-    { title: "Ngorongoro Krater", desc: "Ein natürliches Amphitheater der Wildnis in einem Vulkan.", img: 'https://images.unsplash.com/photo-1580502304784-8985b777da59?q=80&w=1200', link: "/destinations/ngorongoro", hint: "ngorongoro crater" },
-  ];
-
   return (
     <div className="relative bg-background">
-      {/* COMPACTED PRESTIGE HERO: Reduced Weights & Balanced Sizes */}
+      {/* COMPACTED PRESTIGE HERO */}
       <section className="relative min-h-[80vh] md:min-h-screen flex items-center overflow-hidden bg-secondary">
         <div className="absolute inset-0 z-0">
           <Image 
@@ -54,16 +48,12 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
                 className="space-y-4 md:space-y-6"
               >
-                <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-primary text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] mx-auto lg:mx-0">
-                  <Sparkles className="w-3.5 h-3.5" /> Destination Registry Active
-                </div>
-                
-                <h1 className="font-headline text-3xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight uppercase">
+                <h1 className="font-headline text-4xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] tracking-tight uppercase">
                   TANSANIA <br />
                   <span className="text-primary">PRESTIGE</span>
                 </h1>
                 
-                <p className="max-w-xl mx-auto lg:mx-0 text-white/60 font-bold text-xs md:text-lg uppercase tracking-widest leading-relaxed">
+                <p className="max-w-xl mx-auto lg:mx-0 text-white/60 font-bold text-sm md:text-xl uppercase tracking-widest leading-relaxed">
                   Experten-gestaltete Safaris & exklusive Sansibar-Fluchten. <br className="hidden md:block" />
                   Ihre Reise, in Berlin konzipiert – in Afrika gelebt.
                 </p>
@@ -76,12 +66,12 @@ export default function Home() {
                 className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start"
               >
                 <Link href="/safaris" className="w-full sm:w-auto">
-                  <Button size="xl" className="w-full h-12 md:h-16 px-8 rounded-xl font-bold shadow-2xl">
+                  <Button size="xl" className="w-full h-14 md:h-16 px-8 rounded-xl font-bold shadow-2xl">
                     Katalog Erkunden
                   </Button>
                 </Link>
                 <Link href="/trip-advisor" className="w-full sm:w-auto">
-                  <Button size="xl" variant="glass" className="w-full h-12 md:h-16 px-8 rounded-xl shadow-xl">
+                  <Button size="xl" variant="glass" className="w-full h-14 md:h-16 px-8 rounded-xl shadow-xl">
                     AI Advisor <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </Link>
@@ -94,18 +84,18 @@ export default function Home() {
                 className="flex items-center justify-center lg:justify-start gap-6 md:gap-8 pt-6 md:pt-8 border-t border-white/10 max-w-md mx-auto lg:mx-0"
               >
                 <div className="flex flex-col text-white">
-                  <span className="font-bold text-lg md:text-xl">500+</span>
-                  <span className="text-[7px] md:text-[8px] text-white/40 uppercase tracking-widest font-bold">Paths</span>
+                  <span className="font-bold text-xl md:text-2xl">500+</span>
+                  <span className="text-[8px] md:text-[9px] text-white/40 uppercase tracking-widest font-bold">Paths</span>
                 </div>
                 <div className="w-px h-8 md:h-10 bg-white/10" />
                 <div className="flex flex-col text-white">
-                  <span className="font-bold text-lg md:text-xl">100%</span>
-                  <span className="text-[7px] md:text-[8px] text-white/40 uppercase tracking-widest font-bold">Privat</span>
+                  <span className="font-bold text-xl md:text-2xl">100%</span>
+                  <span className="text-[8px] md:text-[9px] text-white/40 uppercase tracking-widest font-bold">Privat</span>
                 </div>
                 <div className="w-px h-8 md:h-10 bg-white/10" />
                 <div className="flex flex-col text-white">
-                  <span className="font-bold text-lg md:text-xl">24/7</span>
-                  <span className="text-[7px] md:text-[8px] text-white/40 uppercase tracking-widest font-bold">Support</span>
+                  <span className="font-bold text-xl md:text-2xl">24/7</span>
+                  <span className="text-[8px] md:text-[9px] text-white/40 uppercase tracking-widest font-bold">Support</span>
                 </div>
               </motion.div>
             </div>
