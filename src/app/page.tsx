@@ -4,9 +4,9 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Search, MessageSquare, ShieldCheck, Heart, Map, Clock, ArrowRight, Sparkles, Globe, Compass } from 'lucide-react';
+import { ShieldCheck, ArrowRight, Sparkles, Globe, Compass } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { SafariMap } from '@/components/sections/SafariMap';
 import { ImmersiveReveal } from '@/components/sections/ImmersiveReveal';
 import { CinematicQuote } from '@/components/sections/CinematicQuote';
@@ -29,9 +29,8 @@ export default function Home() {
 
   return (
     <div className="relative bg-background">
-      {/* CREATIVE MODERN HERO: Floating Cinematic Logic */}
+      {/* CREATIVE MODERN HERO: Split-Narrative Glass Logic */}
       <section className="relative min-h-screen flex items-center overflow-hidden bg-secondary">
-        {/* Dynamic Background */}
         <div className="absolute inset-0 z-0">
           <Image 
             src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
@@ -42,15 +41,12 @@ export default function Home() {
             data-ai-hint="serengeti safari"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent" />
-          
-          {/* Topographic Accent Overlay */}
           <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         </div>
         
         <div className="container relative z-10 mx-auto px-4 max-w-7xl pt-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
-            {/* Left Content Column */}
             <div className="lg:col-span-7 space-y-10">
               <motion.div 
                 initial={{ opacity: 0, x: -30 }} 
@@ -58,7 +54,7 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
                 className="space-y-6"
               >
-                <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full glass-card text-primary text-[10px] md:text-xs font-black uppercase tracking-[0.4em]">
+                <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-primary text-[10px] md:text-xs font-black uppercase tracking-[0.4em]">
                   <Sparkles className="w-4 h-4" /> Established 2014 • SDL Berlin
                 </div>
                 
@@ -91,31 +87,29 @@ export default function Home() {
                 </Link>
               </motion.div>
 
-              {/* Authority Pulse */}
               <motion.div 
                 initial={{ opacity: 0 }} 
                 animate={{ opacity: 1 }} 
                 transition={{ delay: 0.6 }}
                 className="flex items-center gap-8 pt-8 border-t border-white/10 max-w-md"
               >
-                <div className="flex flex-col">
-                  <span className="text-white font-black text-2xl">500+</span>
+                <div className="flex flex-col text-white">
+                  <span className="font-black text-2xl">500+</span>
                   <span className="text-[8px] text-white/40 uppercase tracking-widest font-bold">Destinations-Paths</span>
                 </div>
                 <div className="w-px h-10 bg-white/10" />
-                <div className="flex flex-col">
-                  <span className="text-white font-black text-2xl">100%</span>
+                <div className="flex flex-col text-white">
+                  <span className="font-black text-2xl">100%</span>
                   <span className="text-[8px] text-white/40 uppercase tracking-widest font-bold">Privat-Safaris</span>
                 </div>
                 <div className="w-px h-10 bg-white/10" />
-                <div className="flex flex-col">
-                  <span className="text-white font-black text-2xl">24/7</span>
+                <div className="flex flex-col text-white">
+                  <span className="font-black text-2xl">24/7</span>
                   <span className="text-[8px] text-white/40 uppercase tracking-widest font-bold">Expert Support</span>
                 </div>
               </motion.div>
             </div>
 
-            {/* Right Visual Floating Card */}
             <div className="lg:col-span-5 hidden lg:block">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9, rotate: 2 }}
@@ -124,7 +118,7 @@ export default function Home() {
                 className="relative"
               >
                 <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full" />
-                <Card className="glass-card rounded-[3rem] p-10 relative overflow-hidden group shadow-2xl border-white/10">
+                <Card className="bg-white/10 backdrop-blur-xl border border-white/10 rounded-[3rem] p-10 relative overflow-hidden group shadow-2xl">
                   <div className="absolute top-0 right-0 p-8 opacity-10"><Compass className="w-32 h-32 rotate-12" /></div>
                   <div className="relative z-10 space-y-8">
                     <div className="flex items-center gap-4">
@@ -154,7 +148,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
         <motion.div 
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
@@ -165,15 +158,14 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Trust Registry Bar */}
       <section className="py-10 bg-white border-y border-border/50 relative z-30">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               { icon: ShieldCheck, label: "Sicher Buchen" },
-              { icon: Heart, label: "Nachhaltigkeit" },
-              { icon: Map, label: "8 Country Hubs" },
-              { icon: Clock, label: "24/7 Support" }
+              { icon: Sparkles, label: "Prestige Standard" },
+              { icon: Globe, label: "8 Country Hubs" },
+              { icon: Compass, label: "24/7 Support" }
             ].map((item, idx) => (
               <div key={idx} className="flex flex-col items-center gap-3 group">
                 <item.icon className="w-6 h-6 text-primary transition-transform group-hover:scale-110" />
@@ -186,12 +178,11 @@ export default function Home() {
 
       <ExpertiseNarrative />
 
-      {/* Scale Hub: National Parks */}
       <section className="py-16 md:py-32 bg-muted/10">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
             <div className="max-w-2xl">
-              <span className="text-registry mb-4 block">Destination Portfolio</span>
+              <span className="text-[11px] font-black uppercase tracking-[0.4em] text-primary mb-4 block">Destination Portfolio</span>
               <h2 className="font-headline text-4xl md:text-6xl font-black uppercase leading-[0.9] tracking-tighter">
                 Erkunden Sie die <br /><span className="text-primary">Nationalparks</span>
               </h2>
@@ -215,7 +206,7 @@ export default function Home() {
                   <h3 className="text-2xl md:text-3xl font-black text-white uppercase mb-2 leading-tight">{item.title}</h3>
                   <p className="text-white/60 text-[11px] font-bold uppercase tracking-widest leading-relaxed mb-6 line-clamp-2">{item.desc}</p>
                   <Link href={item.link}>
-                    <Button variant="outline" className="w-full rounded-xl border-white/20 text-white font-black text-[11px] uppercase h-12 md:h-14">
+                    <Button variant="glass" className="w-full rounded-xl font-black text-[11px] uppercase h-12 md:h-14">
                       Park Erleben
                     </Button>
                   </Link>
