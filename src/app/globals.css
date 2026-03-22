@@ -32,19 +32,19 @@
     --ring: 19 89% 47%;
     --radius: 1.5rem;
 
-    /* REFINED TYPOGRAPHY: Compacted Majestic Scale */
+    /* BALANCED PRESTIGE SCALE: Majesty without Overlap */
     --text-xs: 0.75rem;     /* 12px */
     --text-sm: 0.875rem;    /* 14px */
     --text-base: 1rem;      /* 16px */
     --text-lg: 1.125rem;    /* 18px */
     --text-xl: 1.25rem;     /* 20px */
     --text-2xl: 1.5rem;     /* 24px */
-    --text-3xl: 1.75rem;    /* 28px */
-    --text-4xl: 2.25rem;    /* 36px - Compacted Mobile Title */
-    --text-5xl: 3rem;       /* 48px - Standard Headline */
-    --text-6xl: 3.5rem;     /* 56px - Large Headline */
-    --text-7xl: 4.5rem;     /* 72px - Extra Large */
-    --text-8xl: 6rem;       /* 96px - Majestic Desktop Cap */
+    --text-3xl: 1.875rem;   /* 30px */
+    --text-4xl: 2.25rem;    /* 36px */
+    --text-5xl: 2.75rem;    /* 44px */
+    --text-6xl: 3.25rem;    /* 52px */
+    --text-7xl: 3.75rem;    /* 60px */
+    --text-8xl: 4.5rem;     /* 72px */
   }
 }
 
@@ -68,27 +68,27 @@
     @apply not-italic !important;
   }
 
-  /* Global Bold Enforcement */
+  /* Global Typography Protocol: Reduced Weight & Tracking */
   p, span, div, a, li, input, button, select, textarea {
     @apply font-bold tracking-tight;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-black uppercase tracking-tighter leading-none;
+    @apply font-bold uppercase tracking-tight leading-tight;
   }
 }
 
 /* Prestige Utility Classes */
 .rounded-prestige {
-  @apply rounded-[2.5rem];
+  @apply rounded-[2rem];
 }
 
 .shadow-prestige {
-  @apply shadow-[0_20px_50px_rgba(0,0,0,0.1)];
+  @apply shadow-[0_20px_50px_rgba(0,0,0,0.08)];
 }
 
 .text-registry {
-  @apply text-[11px] font-black uppercase tracking-[0.4em] text-primary;
+  @apply text-[11px] font-bold uppercase tracking-[0.3em] text-primary;
 }
 
 .glass-card {
