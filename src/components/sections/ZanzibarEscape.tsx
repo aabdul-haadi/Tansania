@@ -70,7 +70,7 @@ export function ZanzibarEscape() {
                   hidden: { opacity: 0, y: 15 },
                   visible: { opacity: 1, y: 0 }
                 }}
-                className="font-headline text-3xl md:text-5xl lg:text-6xl font-bold leading-tight uppercase tracking-tighter"
+                className="font-headline text-3xl md:text-5xl font-bold leading-tight uppercase tracking-tight"
               >
                 Entschleunigung an der <br /> Swahili-Küste
               </motion.h2>

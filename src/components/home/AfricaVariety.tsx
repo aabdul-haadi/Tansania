@@ -29,11 +29,11 @@ export function AfricaVariety() {
             <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="inline-flex items-center gap-2 text-primary font-bold text-[10px] uppercase tracking-[0.4em] mb-4">
               <Globe className="w-3 h-3" /> Kontinentale Vielfalt
             </motion.div>
-            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="font-headline text-4xl md:text-6xl font-bold leading-tight text-foreground uppercase">
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="font-headline text-3xl md:text-5xl font-bold leading-tight text-foreground uppercase tracking-tight">
               Entdecke Afrika in seiner <br /><span className="text-primary">ganzen Vielfalt</span>
             </motion.h2>
           </div>
-          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-muted-foreground font-bold leading-relaxed max-w-md text-sm md:text-base border-l-2 border-primary/20 pl-6 uppercase">
+          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-muted-foreground font-bold leading-relaxed max-w-md text-sm md:text-base border-l-2 border-primary/20 pl-6 uppercase tracking-widest">
             Von der endlosen Savanne Tansanias bis zu den Pyramiden Ägyptens – jede Reise erzählt ihre eigene Geschichte.
           </motion.p>
         </div>

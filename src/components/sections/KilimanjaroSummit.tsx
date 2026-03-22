@@ -68,7 +68,7 @@ export function KilimanjaroSummit() {
                   visible: { opacity: 1, y: 0 }
                 }}
               >
-                <h2 className="font-headline text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.1] mb-2 text-foreground uppercase tracking-tighter">
+                <h2 className="font-headline text-3xl md:text-5xl font-bold leading-tight mb-2 text-foreground uppercase tracking-tight">
                   Besteigen Sie das <br /> Dach Afrikas
                 </h2>
                 <div className="w-24 h-0.5 bg-primary/30" />

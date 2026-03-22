@@ -46,7 +46,7 @@ export function SafariMap() {
               <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-3 block">
                 Expeditionslogistik
               </span>
-              <h2 className="font-headline text-4xl md:text-6xl font-bold leading-tight text-white uppercase">
+              <h2 className="font-headline text-3xl md:text-5xl font-bold leading-tight text-white uppercase tracking-tight">
                 Von Kairo in die <span className="text-primary">Savanne</span>
               </h2>
             </div>

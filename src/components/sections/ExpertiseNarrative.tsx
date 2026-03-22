@@ -18,7 +18,7 @@ export function ExpertiseNarrative() {
           >
             <div className="space-y-2 md:space-y-4">
               <span className="text-primary font-bold uppercase tracking-[0.3em] text-[9px] md:text-[10px] block">Persönliches Abenteuer</span>
-              <h2 className="font-headline text-2xl md:text-4xl font-bold leading-tight text-foreground uppercase tracking-tight">
+              <h2 className="font-headline text-3xl md:text-5xl font-bold leading-tight text-foreground uppercase tracking-tight">
                 Ihre maßgeschneiderte <br />
                 <span className="text-primary">Afrikanische Odyssee</span>
               </h2>
