@@ -6,46 +6,46 @@ import { Sparkles, Leaf, ShieldCheck, Heart, Wind, Palmtree, Mountain } from 'lu
 
 export function ExpertiseNarrative() {
   return (
-    <section className="py-8 md:py-16 bg-white overflow-hidden">
+    <section className="py-12 md:py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4 max-w-5xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
           
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-4 md:space-y-6"
+            className="space-y-6 md:space-y-8"
           >
-            <div>
-              <span className="text-primary font-bold uppercase tracking-[0.3em] text-[8px] mb-1 block">Persönliches Abenteuer</span>
-              <h2 className="font-headline text-2xl md:text-4xl lg:text-5xl font-bold leading-tight mb-2 text-foreground uppercase tracking-tighter">
+            <div className="space-y-2 md:space-y-4">
+              <span className="text-primary font-bold uppercase tracking-[0.3em] text-[9px] md:text-[10px] block">Persönliches Abenteuer</span>
+              <h2 className="font-headline text-3xl md:text-5xl font-black leading-[1.1] text-foreground uppercase tracking-tighter">
                 Ihre maßgeschneiderte <br />
                 <span className="text-primary">Afrikanische Odyssee</span>
               </h2>
-              <div className="w-10 h-0.5 bg-primary/20 rounded-full" />
+              <div className="w-12 h-1 bg-primary/20 rounded-full" />
             </div>
 
-            <div className="text-muted-foreground font-bold leading-relaxed text-[10px] md:text-xs lg:text-sm space-y-2 uppercase tracking-tight">
+            <div className="text-muted-foreground font-bold leading-relaxed text-xs md:text-base space-y-4 uppercase tracking-widest opacity-80">
               <p>
-                Ein Urlaub in Tansania ist ein Versprechen an alle Sinne: der würzige Duft von wildem Salbei, das ferne Brüllen eines Löwen.
+                Ein Urlaub in Tansania ist ein Versprechen an alle Sinne: der würzige Duft von wildem Salbei, das ferne Brüllen eines Löwen und das sanfte Rauschen des Indischen Ozeans.
               </p>
               <p>
-                Bei <strong className="font-bold text-secondary">Tansania Reiseabenteuer</strong> verbinden wir 10 Jahre lokale Expertise mit Leidenschaft.
+                Bei <strong className="font-black text-secondary">Tansania Reiseabenteuer</strong> verbinden wir 10 Jahre lokale Expertise mit Leidenschaft für den Kontinent.
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-2 pt-1">
+            <div className="grid grid-cols-2 gap-4 pt-2">
               {[
                 { icon: Leaf, label: "Nachhaltig" },
                 { icon: ShieldCheck, label: "Experten-Guides" },
                 { icon: Sparkles, label: "Exklusiv" },
                 { icon: Heart, label: "Maßgeschneidert" }
               ].map((item, i) => (
-                <div key={i} className="flex items-center gap-2">
-                  <div className="w-5 h-5 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                    <item.icon className="w-2.5 h-2.5 text-primary" />
+                <div key={i} className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                    <item.icon className="w-4 h-4 text-primary" />
                   </div>
-                  <span className="text-[8px] md:text-[9px] font-bold uppercase tracking-wider text-secondary">{item.label}</span>
+                  <span className="text-[10px] md:text-[11px] font-black uppercase tracking-widest text-secondary">{item.label}</span>
                 </div>
               ))}
             </div>
@@ -57,26 +57,26 @@ export function ExpertiseNarrative() {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="aspect-[16/10] lg:aspect-square rounded-[1.25rem] md:rounded-[2rem] overflow-hidden shadow-xl">
+            <div className="aspect-[4/3] md:aspect-square rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border border-border/50">
               <img 
                 src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200&auto=format&fit=crop" 
                 alt="Safari Erlebnis" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
             </div>
             
             <motion.div 
-              animate={{ y: [0, -5, 0] }}
-              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-              className="absolute -bottom-3 -left-3 bg-primary p-3 md:p-5 rounded-[1rem] shadow-xl hidden md:block max-w-[180px]"
+              animate={{ y: [0, -10, 0] }}
+              transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+              className="absolute -bottom-6 -left-6 bg-secondary text-white p-6 md:p-8 rounded-[2rem] shadow-2xl hidden md:block max-w-[240px] border border-white/5"
             >
-              <p className="text-[8px] font-bold leading-relaxed mb-2 text-white uppercase">
+              <p className="text-[10px] md:text-xs font-bold leading-relaxed mb-4 uppercase tracking-widest opacity-90">
                 "Schließe deine Augen und stelle dir vor, wie die Sonne den Kraterrand in pures Gold taucht."
               </p>
-              <div className="mt-1 flex items-center gap-2">
-                <div className="w-2.5 h-px bg-secondary" />
-                <span className="text-[7px] font-black uppercase tracking-widest text-secondary">Tansania Experten</span>
+              <div className="flex items-center gap-3">
+                <div className="w-6 h-px bg-primary" />
+                <span className="text-[8px] font-black uppercase tracking-[0.3em] text-primary">Tansania Experten</span>
               </div>
             </motion.div>
           </motion.div>

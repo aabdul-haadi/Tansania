@@ -11,8 +11,8 @@ import { SafariMap } from '@/components/sections/SafariMap';
 import { ImmersiveReveal } from '@/components/sections/ImmersiveReveal';
 import { CinematicQuote } from '@/components/sections/CinematicQuote';
 import { Testimonials } from '@/components/sections/Testimonials';
-import { KilimanjaroSummit } from '@/components/sections/KilimanjaroSummit';
-import { ZanzibarEscape } from '@/components/sections/ZanzibarEscape';
+import { KilimanjaroSummit } from '@/components/home/KilimanjaroSummit';
+import { ZanzibarEscape } from '@/components/home/ZanzibarEscape';
 import { SafariVideo } from '@/components/sections/SafariVideo';
 import { FAQ } from '@/components/sections/FAQ';
 import { ExpertiseNarrative } from '@/components/sections/ExpertiseNarrative';
@@ -29,8 +29,8 @@ export default function Home() {
 
   return (
     <div className="relative bg-background">
-      {/* CREATIVE MODERN HERO: Split-Narrative Glass Logic */}
-      <section className="relative min-h-screen flex items-center overflow-hidden bg-secondary">
+      {/* COMPACTED PRESTIGE HERO */}
+      <section className="relative min-h-[85vh] md:min-h-screen flex items-center overflow-hidden bg-secondary">
         <div className="absolute inset-0 z-0">
           <Image 
             src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
@@ -45,25 +45,25 @@ export default function Home() {
         </div>
         
         <div className="container relative z-10 mx-auto px-4 max-w-7xl pt-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
             
-            <div className="lg:col-span-7 space-y-10">
+            <div className="lg:col-span-7 space-y-6 md:space-y-10">
               <motion.div 
                 initial={{ opacity: 0, x: -30 }} 
                 animate={{ opacity: 1, x: 0 }} 
                 transition={{ duration: 0.8 }}
-                className="space-y-6"
+                className="space-y-4 md:space-y-6"
               >
                 <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-primary text-[10px] md:text-xs font-black uppercase tracking-[0.4em]">
-                  <Sparkles className="w-4 h-4" /> Established 2014 • SDL Berlin
+                  <Sparkles className="w-4 h-4" /> Destination Registry Active
                 </div>
                 
-                <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[0.9] tracking-tighter uppercase">
+                <h1 className="font-headline text-4xl md:text-7xl lg:text-8xl font-black text-white leading-[0.9] tracking-tighter uppercase">
                   TANSANIA <br />
                   <span className="text-primary">PRESTIGE</span>
                 </h1>
                 
-                <p className="max-w-xl text-white/60 font-bold text-sm md:text-xl uppercase tracking-widest leading-relaxed">
+                <p className="max-w-xl text-white/60 font-bold text-xs md:text-xl uppercase tracking-widest leading-relaxed">
                   Experten-gestaltete Safaris & exklusive Sansibar-Fluchten. <br className="hidden md:block" />
                   Ihre Reise, in Berlin konzipiert – in Afrika gelebt.
                 </p>
@@ -73,7 +73,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }} 
                 animate={{ opacity: 1, y: 0 }} 
                 transition={{ delay: 0.3, duration: 0.8 }}
-                className="flex flex-col sm:flex-row gap-4 pt-4"
+                className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-2 md:pt-4"
               >
                 <Link href="/safaris" className="w-full sm:w-auto">
                   <Button size="xl" className="w-full border-none shadow-2xl">
@@ -91,21 +91,21 @@ export default function Home() {
                 initial={{ opacity: 0 }} 
                 animate={{ opacity: 1 }} 
                 transition={{ delay: 0.6 }}
-                className="flex items-center gap-8 pt-8 border-t border-white/10 max-w-md"
+                className="flex items-center gap-6 md:gap-8 pt-6 md:pt-8 border-t border-white/10 max-w-md"
               >
                 <div className="flex flex-col text-white">
-                  <span className="font-black text-2xl">500+</span>
-                  <span className="text-[8px] text-white/40 uppercase tracking-widest font-bold">Destinations-Paths</span>
+                  <span className="font-black text-xl md:text-2xl">500+</span>
+                  <span className="text-[7px] md:text-[8px] text-white/40 uppercase tracking-widest font-bold">Paths</span>
                 </div>
-                <div className="w-px h-10 bg-white/10" />
+                <div className="w-px h-8 md:h-10 bg-white/10" />
                 <div className="flex flex-col text-white">
-                  <span className="font-black text-2xl">100%</span>
-                  <span className="text-[8px] text-white/40 uppercase tracking-widest font-bold">Privat-Safaris</span>
+                  <span className="font-black text-xl md:text-2xl">100%</span>
+                  <span className="text-[7px] md:text-[8px] text-white/40 uppercase tracking-widest font-bold">Privat</span>
                 </div>
-                <div className="w-px h-10 bg-white/10" />
+                <div className="w-px h-8 md:h-10 bg-white/10" />
                 <div className="flex flex-col text-white">
-                  <span className="font-black text-2xl">24/7</span>
-                  <span className="text-[8px] text-white/40 uppercase tracking-widest font-bold">Expert Support</span>
+                  <span className="font-black text-xl md:text-2xl">24/7</span>
+                  <span className="text-[7px] md:text-[8px] text-white/40 uppercase tracking-widest font-bold">Support</span>
                 </div>
               </motion.div>
             </div>
@@ -151,25 +151,25 @@ export default function Home() {
         <motion.div 
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 hidden md:flex flex-col items-center gap-2"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 hidden md:flex flex-col items-center gap-2"
         >
           <span className="text-[8px] font-black text-white/20 uppercase tracking-[0.4em]">Scroll</span>
           <div className="w-px h-12 bg-gradient-to-b from-primary to-transparent" />
         </motion.div>
       </section>
 
-      <section className="py-10 bg-white border-y border-border/50 relative z-30">
+      <section className="py-8 md:py-10 bg-white border-y border-border/50 relative z-30">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {[
               { icon: ShieldCheck, label: "Sicher Buchen" },
               { icon: Sparkles, label: "Prestige Standard" },
               { icon: Globe, label: "8 Country Hubs" },
               { icon: Compass, label: "24/7 Support" }
             ].map((item, idx) => (
-              <div key={idx} className="flex flex-col items-center gap-3 group">
-                <item.icon className="w-6 h-6 text-primary transition-transform group-hover:scale-110" />
-                <span className="text-[11px] font-black uppercase tracking-widest text-muted-foreground">{item.label}</span>
+              <div key={idx} className="flex flex-col items-center gap-2 md:gap-3 group">
+                <item.icon className="w-5 h-5 md:w-6 md:h-6 text-primary transition-transform group-hover:scale-110" />
+                <span className="text-[9px] md:text-[11px] font-black uppercase tracking-widest text-muted-foreground">{item.label}</span>
               </div>
             ))}
           </div>
@@ -178,35 +178,35 @@ export default function Home() {
 
       <ExpertiseNarrative />
 
-      <section className="py-16 md:py-32 bg-muted/10">
+      <section className="py-12 md:py-32 bg-muted/10">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 gap-6 md:gap-8">
             <div className="max-w-2xl">
-              <span className="text-[11px] font-black uppercase tracking-[0.4em] text-primary mb-4 block">Destination Portfolio</span>
-              <h2 className="font-headline text-4xl md:text-6xl font-black uppercase leading-[0.9] tracking-tighter">
+              <span className="text-[9px] md:text-[11px] font-black uppercase tracking-[0.4em] text-primary mb-3 md:mb-4 block">Destination Portfolio</span>
+              <h2 className="font-headline text-3xl md:text-6xl font-black uppercase leading-[0.9] tracking-tighter">
                 Erkunden Sie die <br /><span className="text-primary">Nationalparks</span>
               </h2>
             </div>
             <Link href="/national-parks">
-              <Button variant="outline" className="rounded-xl px-8 h-12 md:h-14 text-[11px] font-black uppercase tracking-widest border-muted">
+              <Button variant="outline" className="w-full md:w-auto rounded-xl px-8 h-12 md:h-14 text-[9px] md:text-[11px] font-black uppercase tracking-widest border-muted">
                 Alle Parks ansehen <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {highlights.map((item, idx) => (
               <motion.div 
                 key={idx}
                 whileHover={{ y: -8 }}
-                className="relative aspect-[4/5] rounded-[3rem] overflow-hidden group shadow-xl bg-secondary"
+                className="relative aspect-[4/5] rounded-[2rem] md:rounded-[3rem] overflow-hidden group shadow-xl bg-secondary"
               >
                 <Image src={item.img} alt={item.title} fill className="object-cover opacity-80 transition-transform duration-1000 group-hover:scale-110" data-ai-hint={item.hint} />
-                <div className="absolute inset-0 bg-gradient-to-t from-secondary via-black/20 to-transparent p-10 flex flex-col justify-end">
-                  <h3 className="text-2xl md:text-3xl font-black text-white uppercase mb-2 leading-tight">{item.title}</h3>
-                  <p className="text-white/60 text-[11px] font-bold uppercase tracking-widest leading-relaxed mb-6 line-clamp-2">{item.desc}</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-secondary via-black/20 to-transparent p-8 md:p-10 flex flex-col justify-end">
+                  <h3 className="text-xl md:text-3xl font-black text-white uppercase mb-2 leading-tight">{item.title}</h3>
+                  <p className="text-white/60 text-[9px] md:text-[11px] font-bold uppercase tracking-widest leading-relaxed mb-6 line-clamp-2">{item.desc}</p>
                   <Link href={item.link}>
-                    <Button variant="glass" className="w-full rounded-xl font-black text-[11px] uppercase h-12 md:h-14">
+                    <Button variant="glass" className="w-full rounded-xl font-black text-[9px] md:text-[11px] uppercase h-12 md:h-14">
                       Park Erleben
                     </Button>
                   </Link>
