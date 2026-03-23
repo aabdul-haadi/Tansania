@@ -1,27 +1,39 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 import { 
   Sparkles, 
-  CheckCircle2, 
   Phone, 
   Mail, 
   Globe, 
   Compass, 
   Zap,
   ShieldCheck,
-  ArrowRight,
+  CheckCircle2,
   Clock
 } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
-import { cn } from '@/lib/utils';
 
 export function ContactSection() {
   const [isMounted, setIsMounted] = useState(false);
+  const [formHeight, setFormHeight] = useState(600); // Sensible default
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
     setIsMounted(true);
+
+    // Listen for form height messages from the embedded iframe
+    function handleFormMessage(e: MessageEvent) {
+      // Validate origin if possible, but the app domain is dynamic in this environment
+      if (e.data && typeof e.data === 'object') {
+        if (e.data.formHeight) {
+          setFormHeight(e.data.formHeight);
+        }
+      }
+    }
+
+    window.addEventListener('message', handleFormMessage);
+    return () => window.removeEventListener('message', handleFormMessage);
   }, []);
 
   const steps = [
@@ -72,9 +84,9 @@ export function ContactSection() {
         </div>
 
         {/* The Manifest Frame */}
-        <div className="flex flex-col lg:flex-row bg-white rounded-[2.5rem] md:rounded-[4rem] shadow-2xl overflow-hidden border border-border/50 min-h-[750px] relative">
+        <div className="flex flex-col lg:flex-row bg-white rounded-[2.5rem] md:rounded-[4rem] shadow-2xl overflow-hidden border border-border/50 relative">
           
-          {/* Left: Expertise Hub (Desktop Only Decorative/Info) */}
+          {/* Left: Expertise Hub */}
           <div className="w-full lg:w-[38%] bg-secondary text-white relative flex flex-col p-10 md:p-16 justify-between overflow-hidden">
             <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
             <div className="absolute -top-20 -left-20 w-64 h-64 bg-primary/10 rounded-full blur-[100px]" />
@@ -143,11 +155,15 @@ export function ContactSection() {
               </div>
             </div>
 
-            <div className="flex-grow relative min-h-[650px]">
+            <div 
+              className="relative overflow-hidden transition-all duration-300 ease-in-out"
+              style={{ height: `${formHeight}px` }}
+            >
               {isMounted ? (
                 <iframe
+                  ref={iframeRef}
                   src="https://app.tansania-reiseabenteuer.de/forms/embed/d54e9b2ee319416a81cf32551a1bc3d3"
-                  className="w-full h-full min-h-[650px] border-none overflow-hidden"
+                  className="w-full h-full border-none overflow-hidden"
                   scrolling="no"
                   title="Expedition Inquiry Form"
                   loading="lazy"
