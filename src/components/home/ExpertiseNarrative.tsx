@@ -11,8 +11,8 @@ export function ExpertiseNarrative() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-5">
             <div>
-              <span className="text-primary font-bold uppercase tracking-[0.3em] text-[9px] mb-1.5 block">Persönliches Abenteuer</span>
-              <h2 className="font-headline text-3xl md:text-5xl font-bold leading-tight mb-3 text-foreground uppercase">
+              <span className="text-primary font-bold uppercase tracking-[0.3em] text-[9px] mb-1.5 block text-prestige">Persönliches Abenteuer</span>
+              <h2 className="font-headline text-3xl md:text-5xl font-bold leading-[0.9] mb-3 text-foreground uppercase tracking-tighter">
                 Ihre maßgeschneiderte <br /><span className="text-primary">Afrikanische Odyssee</span>
               </h2>
             </div>

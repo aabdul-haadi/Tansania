@@ -29,7 +29,7 @@ export function AfricaVariety() {
             <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="inline-flex items-center gap-2 text-primary font-bold text-[10px] uppercase tracking-[0.4em] mb-4">
               <Globe className="w-3 h-3" /> Kontinentale Vielfalt
             </motion.div>
-            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="font-headline text-3xl md:text-5xl font-bold leading-tight text-foreground uppercase tracking-tight">
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="font-headline text-3xl md:text-5xl font-bold leading-[0.9] text-foreground uppercase tracking-tighter">
               Entdecke Afrika in seiner <br /><span className="text-primary">ganzen Vielfalt</span>
             </motion.h2>
           </div>
@@ -46,7 +46,7 @@ export function AfricaVariety() {
                 <p className="text-primary font-bold text-[8px] md:text-[10px] uppercase tracking-[0.2em] mb-1 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">Erkunden</p>
                 <h3 className="text-white font-headline text-xl md:text-2xl font-bold leading-tight mb-2 uppercase">{dest.name}</h3>
                 <p className="text-white/60 text-[10px] md:text-xs font-bold leading-relaxed mb-4 line-clamp-2 uppercase">{dest.desc}</p>
-                <Link href={`/destinations/${dest.slug}`} className="inline-flex items-center gap-2 text-white font-bold text-[10px] uppercase tracking-widest group/link">Details <ArrowRight className="w-3 h-3 text-primary transition-transform group-hover/link:translate-x-1" /></Link>
+                <Link href={`/destinations/${dest.slug}`} className="inline-flex items-center gap-2 text-white font-bold text-[10px] uppercase tracking-widest group/link">Details <ArrowRight className="w-3 h-3 text-primary transition-transform group/link:translate-x-1" /></Link>
               </div>
             </motion.div>
           ))}

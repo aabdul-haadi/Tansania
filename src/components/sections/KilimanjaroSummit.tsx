@@ -68,7 +68,7 @@ export function KilimanjaroSummit() {
                   visible: { opacity: 1, y: 0 }
                 }}
               >
-                <h2 className="font-headline text-3xl md:text-5xl font-bold leading-tight mb-2 text-foreground uppercase tracking-tight">
+                <h2 className="font-headline text-3xl md:text-5xl font-bold leading-[0.9] mb-2 text-foreground uppercase tracking-tighter">
                   Besteigen Sie das <br /> Dach Afrikas
                 </h2>
                 <div className="w-24 h-0.5 bg-primary/30" />
@@ -79,7 +79,7 @@ export function KilimanjaroSummit() {
                   hidden: { opacity: 0, y: 15 },
                   visible: { opacity: 1, y: 0 }
                 }}
-                className="text-muted-foreground text-base lg:text-lg font-bold leading-relaxed max-w-md uppercase tracking-widest"
+                className="text-muted-foreground text-base lg:text-lg font-bold leading-snug max-w-md uppercase tracking-widest"
               >
                 Erleben Sie eine sicherheitsorientierte Reise mit spezialisierten Akklimatisierungsprotokollen auf legendären Routen.
               </motion.p>

@@ -70,7 +70,7 @@ export function ZanzibarEscape() {
                   hidden: { opacity: 0, y: 15 },
                   visible: { opacity: 1, y: 0 }
                 }}
-                className="font-headline text-3xl md:text-5xl font-bold leading-tight uppercase tracking-tight"
+                className="font-headline text-3xl md:text-5xl font-bold leading-[0.9] uppercase tracking-tighter"
               >
                 Entschleunigung an der <br /> Swahili-Küste
               </motion.h2>
@@ -80,7 +80,7 @@ export function ZanzibarEscape() {
                   hidden: { opacity: 0, y: 15 },
                   visible: { opacity: 1, y: 0 }
                 }}
-                className="text-muted-foreground text-sm md:text-base font-bold leading-relaxed max-w-md uppercase tracking-widest"
+                className="text-muted-foreground text-sm md:text-base font-bold leading-snug max-w-md uppercase tracking-widest"
               >
                 Kombinieren Sie Ihre Safari mit dem entspannten Rhythmus der Insel Sansibar und dem Duft der Gewürze.
               </motion.p>

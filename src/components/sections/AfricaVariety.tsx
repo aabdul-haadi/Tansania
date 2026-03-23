@@ -89,7 +89,7 @@ export function AfricaVariety() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="font-headline text-3xl md:text-5xl font-bold leading-tight text-foreground uppercase tracking-tight"
+              className="font-headline text-3xl md:text-5xl font-bold leading-[0.9] text-foreground uppercase tracking-tighter"
             >
               Entdecke Afrika in seiner <br />
               <span className="text-primary">ganzen Vielfalt</span>
@@ -137,7 +137,7 @@ export function AfricaVariety() {
                 </p>
                 
                 <Link href={`/destinations/${dest.slug}`} className="inline-flex items-center gap-1.5 text-white font-bold text-[7px] md:text-[8px] uppercase tracking-widest group/link">
-                  Details <ArrowRight className="w-2.5 h-2.5 text-primary transition-transform group-hover/link:translate-x-1" />
+                  Details <ArrowRight className="w-2.5 h-2.5 text-primary transition-transform group/link:translate-x-1" />
                 </Link>
               </div>
             </motion.div>
