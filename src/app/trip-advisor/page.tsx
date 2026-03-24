@@ -17,7 +17,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Badge } from '@/components/ui/badge';
-import { Card, CardContent } from '@/components/ui/card';
 import { askTripAdvisor } from '@/ai/flows/trip-advisor-flow';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -65,6 +64,11 @@ export default function TripAdvisorPage() {
         message: userText,
         history: messages.filter(m => m.role !== 'error').map(m => ({ role: m.role as any, content: m.content }))
       });
+      
+      if (!result || !result.response) {
+        throw new Error('No response from advisor');
+      }
+
       setMessages([...newMessages, { 
         role: 'model', 
         content: result.response,
@@ -72,9 +76,10 @@ export default function TripAdvisorPage() {
         route: result.suggestedRoute
       }]);
     } catch (error) {
+      console.error("Advisor Error:", error);
       setMessages([...newMessages, { 
         role: 'error', 
-        content: 'In der Savanne gibt es gerade Funkstille. Bitte prüfen Sie Ihre Verbindung.' 
+        content: 'In der Savanne herrscht gerade Funkstille. Die Verbindung zum Berliner Büro wird synchronisiert. Bitte versuchen Sie es in wenigen Augenblicken erneut.' 
       }]);
     } finally {
       setLoading(false);
@@ -154,7 +159,7 @@ export default function TripAdvisorPage() {
                           {m.content}
                         </div>
                         {m.action && m.route && (
-                          <Button asChild size="sm" variant="outline" className="rounded-full h-8 px-4 text-[8px] font-black uppercase tracking-widest border-primary/30 text-primary hover:bg-primary/5 group w-fit" suppressHydrationWarning>
+                          <Button asChild size="sm" variant="outline" className="rounded-full h-8 px-4 text-[8px] font-black uppercase tracking-widest border-primary/30 text-primary hover:bg-primary/5 group w-fit">
                             <Link href={m.route}>
                               {m.action} <ArrowRight className="w-3 h-3 ml-1.5 group-hover:translate-x-1 transition-transform" />
                             </Link>
@@ -186,7 +191,6 @@ export default function TripAdvisorPage() {
                       key={idx}
                       onClick={() => handleSend(s.text)}
                       className="px-4 py-2 rounded-full bg-muted/30 border border-border hover:border-primary hover:bg-primary/5 transition-all text-[8px] font-black uppercase tracking-widest flex items-center gap-2 whitespace-nowrap"
-                      suppressHydrationWarning
                     >
                       <s.icon className="w-3 h-3 text-primary" />
                       {s.text}
@@ -202,13 +206,11 @@ export default function TripAdvisorPage() {
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="Frag mich nach Safaris..."
                     className="h-12 md:h-14 pl-6 rounded-xl border-none bg-muted/20 shadow-inner focus:ring-2 focus:ring-primary/20 text-[11px] md:text-sm font-bold uppercase"
-                    suppressHydrationWarning
                   />
                   <Button 
                     type="submit" 
                     disabled={!input.trim() || loading}
                     className="h-12 md:h-14 px-6 md:px-10 rounded-xl shadow-xl shadow-primary/20 group transition-all hover:scale-[1.02] border-none shrink-0"
-                    suppressHydrationWarning
                   >
                     <Send className="w-4 h-4 md:mr-2 group-hover:translate-x-1 transition-transform" />
                     <span className="hidden md:inline text-[10px] font-black uppercase tracking-widest">Absenden</span>
@@ -247,7 +249,7 @@ export default function TripAdvisorPage() {
                     Sprechen Sie direkt mit unseren Experten in Berlin, um Ihre Reise zu finalisieren.
                   </p>
                   <div className="pt-2">
-                    <Button asChild className="w-full h-12 rounded-xl bg-primary text-white font-black text-[10px] uppercase tracking-widest shadow-xl border-none" suppressHydrationWarning>
+                    <Button asChild className="w-full h-12 rounded-xl bg-primary text-white font-black text-[10px] uppercase tracking-widest shadow-xl border-none">
                       <Link href="/contact">Anfrage Senden <ArrowRight className="w-4 h-4 ml-2" /></Link>
                     </Button>
                   </div>
