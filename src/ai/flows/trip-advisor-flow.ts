@@ -1,4 +1,3 @@
-
 'use server';
 /**
  * @fileOverview Serengeti Dreams AI Trip Advisor - RAG-Enhanced Prestige Edition.
@@ -70,11 +69,11 @@ const tripAdvisorFlow = ai.defineFlow(
     outputSchema: TripAdvisorOutputSchema,
   },
   async (input) => {
-    const { firestore } = initializeFirebase();
     let liveContext = "### NO LIVE DATA FOUND. USE GENERAL EXPERT KNOWLEDGE & SUGGEST CONTACTING OFFICE.";
     
-    if (firestore) {
-      try {
+    try {
+      const { firestore } = initializeFirebase();
+      if (firestore) {
         const [pkgsSnap, blogsSnap, destsSnap] = await Promise.all([
           getDocs(query(collection(firestore, 'packages'), where('isPublished', '==', true), limit(10))),
           getDocs(query(collection(firestore, 'blogPosts'), where('status', '==', 'PUBLISHED'), limit(5))),
@@ -107,9 +106,9 @@ ${destList || 'None.'}
 ARTICLES:
 ${blogList || 'None.'}
 `;
-      } catch (e) {
-        console.warn("RAG Handshake Bypassed:", e);
       }
+    } catch (e) {
+      console.warn("RAG Handshake Bypassed or Initialization Failed:", e);
     }
 
     try {

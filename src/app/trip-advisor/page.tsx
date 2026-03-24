@@ -97,8 +97,8 @@ export default function TripAdvisorPage() {
 
   return (
     <div className="min-h-screen bg-[#fdfcfb] flex flex-col font-bold">
-      {/* Cinematic Prestige Hero - No top padding to go behind navbar */}
-      <section className="relative h-[60vh] md:h-[75vh] w-full shrink-0 overflow-hidden bg-secondary">
+      {/* Cinematic Prestige Hero - Full Bleed behind Navbar */}
+      <section className="relative h-[60vh] md:h-[70vh] w-full shrink-0 overflow-hidden bg-secondary">
         <Image 
           src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
           alt="Serengeti Savannah" 
@@ -106,9 +106,9 @@ export default function TripAdvisorPage() {
           priority
           className="object-cover brightness-[0.4] scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
         
-        <div className="container relative z-10 mx-auto px-6 md:px-10 h-full flex flex-col justify-end pb-16 md:pb-24">
+        <div className="container relative z-10 mx-auto px-6 md:px-10 h-full flex flex-col justify-end pb-16 md:pb-20">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -141,7 +141,7 @@ export default function TripAdvisorPage() {
         <div className="container mx-auto px-4 max-w-7xl h-full flex flex-col py-8 md:py-12 gap-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 flex-grow">
             
-            <div className="lg:col-span-8 flex flex-col bg-[#fdfcfb] rounded-[2.5rem] md:rounded-[3.5rem] border border-border/50 overflow-hidden shadow-sm relative min-h-[500px] md:min-h-[650px]">
+            <div className="lg:col-span-8 flex flex-col bg-[#fdfcfb] rounded-[2.5rem] md:rounded-[3.5rem] border border-border/50 overflow-hidden shadow-sm relative min-h-[500px] md:min-h-[600px]">
               <ScrollArea className="flex-grow">
                 <div className="p-6 md:p-12 space-y-10">
                   {messages.map((m, idx) => (

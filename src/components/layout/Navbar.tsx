@@ -15,12 +15,6 @@ import {
 import { cn } from '@/lib/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { Button } from '@/components/ui/button';
 
 export function Navbar() {
@@ -127,62 +121,44 @@ export function Navbar() {
               </div>
 
               <ScrollArea className="flex-grow">
-                <div className="px-10 py-6 flex flex-col items-start gap-8">
-                  <nav className="flex flex-col gap-5">
-                    <Link href="/" className="text-xl font-bold uppercase tracking-tight hover:text-primary transition-colors">Home</Link>
+                <div className="px-10 py-6 flex flex-col gap-10">
+                  <nav className="flex flex-col gap-6">
                     {primaryLinks.map((link) => (
                       <Link 
                         key={link.name} 
                         href={link.href} 
-                        className="text-xl font-bold uppercase tracking-tight hover:text-primary transition-colors"
+                        className="text-2xl md:text-3xl font-black uppercase tracking-tighter hover:text-primary transition-colors leading-none"
                       >
                         {link.name}
                       </Link>
                     ))}
                   </nav>
 
-                  <div className="w-full h-px bg-white/10 my-4" />
+                  <div className="w-full h-px bg-white/10" />
 
-                  <Accordion type="single" collapsible className="w-full space-y-6">
-                    <AccordionItem value="destinations" className="border-none">
-                      <AccordionTrigger className="text-[11px] font-black uppercase tracking-[0.3em] text-primary/80 hover:no-underline [&>svg]:hidden flex justify-between items-center group p-0">
-                        <span>REISEZIELE</span>
-                        <ChevronDown className="w-4 h-4 group-data-[state=open]:rotate-180 transition-all opacity-40" />
-                      </AccordionTrigger>
-                      <AccordionContent className="flex flex-col gap-4 pt-6 pb-2">
-                        <Link href="/safaris" className="text-base font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest">SAFARI</Link>
-                        <Link href="/destinations/kilimanjaro" className="text-base font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest">KILIMANDSCHARO</Link>
-                        <Link href="/destinations/zanzibar" className="text-base font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest">SANSIBAR</Link>
-                      </AccordionContent>
-                    </AccordionItem>
-
-                    <AccordionItem value="services" className="border-none">
-                      <AccordionTrigger className="text-[11px] font-black uppercase tracking-[0.3em] text-primary/80 hover:no-underline [&>svg]:hidden flex justify-between items-center group p-0">
-                        <span>DIENSTLEISTUNGEN</span>
-                        <ChevronDown className="w-4 h-4 group-data-[state=open]:rotate-180 transition-all opacity-40" />
-                      </AccordionTrigger>
-                      <AccordionContent className="flex flex-col gap-4 pt-6 pb-2">
-                        <Link href="/services/guest-protection" className="text-base font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest">VERSICHERUNG</Link>
-                        <Link href="/reise-shop" className="text-base font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest">REISE-STORE</Link>
-                        <Link href="/partner" className="text-base font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest">PARTNER</Link>
-                      </AccordionContent>
-                    </AccordionItem>
-
-                    <AccordionItem value="reisen2026" className="border-none">
-                      <AccordionTrigger className="text-[11px] font-black uppercase tracking-[0.3em] text-primary/80 hover:no-underline [&>svg]:hidden flex justify-between items-center group p-0">
-                        <span>REISEN 2026</span>
-                        <ChevronDown className="w-4 h-4 group-data-[state=open]:rotate-180 transition-all opacity-40" />
-                      </AccordionTrigger>
-                      <AccordionContent className="flex flex-col gap-4 pt-6 pb-2">
-                        <Link href="/safaris?year=2026" className="text-base font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest">EXPEDITIONEN 2026</Link>
-                        <Link href="/trip-advisor" className="text-base font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest text-primary">AI TRIP ADVISOR</Link>
-                      </AccordionContent>
-                    </AccordionItem>
-                  </Accordion>
+                  <div className="flex flex-col gap-6">
+                    <div className="space-y-4">
+                      <p className="text-[10px] font-black uppercase tracking-[0.4em] text-primary/60">Destinations</p>
+                      <div className="flex flex-col gap-3">
+                        <Link href="/safaris" className="text-sm font-bold text-white/80 hover:text-white uppercase tracking-widest">Safari Portfolio</Link>
+                        <Link href="/destinations/kilimanjaro" className="text-sm font-bold text-white/80 hover:text-white uppercase tracking-widest">Kilimandscharo</Link>
+                        <Link href="/destinations/zanzibar" className="text-sm font-bold text-white/80 hover:text-white uppercase tracking-widest">Sansibar Paradise</Link>
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-4">
+                      <p className="text-[10px] font-black uppercase tracking-[0.4em] text-primary/60">Services</p>
+                      <div className="flex flex-col gap-3">
+                        <Link href="/services/guest-protection" className="text-sm font-bold text-white/80 hover:text-white uppercase tracking-widest">Insurance</Link>
+                        <Link href="/reise-shop" className="text-sm font-bold text-white/80 hover:text-white uppercase tracking-widest">Registry Shop</Link>
+                        <Link href="/trip-advisor" className="text-sm font-bold text-primary hover:text-white uppercase tracking-widest">AI Trip Advisor</Link>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </ScrollArea>
 
-              <div className="p-10 border-t border-white/5 bg-black/50 backdrop-blur-md flex flex-col gap-10 items-center">
+              <div className="p-10 border-t border-white/5 bg-black/50 backdrop-blur-md flex flex-col gap-10 items-center shrink-0">
                 <div className="flex gap-8">
                   <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-primary hover:border-primary transition-all group">
                     <Facebook className="w-5 h-5 text-white" />
