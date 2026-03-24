@@ -8,17 +8,19 @@ import {
   X, 
   ArrowRight,
   Compass, 
-  Zap,
-  Globe,
-  Tag,
-  Activity,
-  ShoppingBag,
+  ChevronDown,
   Sparkles
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -106,7 +108,8 @@ export function Navbar() {
                 </button>
               </SheetTrigger>
               
-              <SheetContent side="right" className="w-full sm:max-w-[500px] p-0 bg-secondary border-none flex flex-col shadow-2xl overflow-hidden font-bold">
+              <SheetContent side="right" className="w-full sm:max-w-[550px] p-0 bg-secondary border-none flex flex-col shadow-2xl overflow-hidden font-bold">
+                {/* Modern Sheet Header */}
                 <div className="bg-white px-6 md:px-10 py-4 flex items-center justify-between shrink-0 rounded-b-[2.5rem] md:rounded-b-[3.5rem] shadow-xl relative z-20">
                   <Link href="/" className="flex items-center gap-3">
                     <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-primary flex items-center justify-center shadow-sm">
@@ -125,65 +128,110 @@ export function Navbar() {
                 </div>
 
                 <ScrollArea className="flex-grow">
-                  <div className="p-6 md:p-10 space-y-12">
-                    <div className="space-y-4">
-                      <p className="text-primary font-black uppercase tracking-[0.4em] text-[9px] mb-2 block">01. Master Expeditions</p>
-                      <nav className="grid grid-cols-1 gap-3">
-                        {[
-                          { name: 'Safari Catalog', href: '/safaris', icon: Compass, desc: 'Wildlife Master Hub' },
-                          { name: 'National Parks', href: '/national-parks', icon: Globe, desc: 'Biodiversity Registry' },
-                          { name: 'Expedition Journal', href: '/blog', icon: Activity, desc: 'Latest Reports & Stories' },
-                          { name: 'Reise-Store', href: '/reise-shop', icon: ShoppingBag, desc: 'Curated Safari Gear' },
-                        ].map((link) => (
-                          <Link key={link.name} href={link.href} className="group flex items-center justify-between p-5 rounded-[1.5rem] bg-white/5 border border-transparent hover:border-primary/20 hover:bg-white/10 transition-all duration-500 shadow-sm hover:shadow-lg">
-                            <div className="flex items-center gap-5">
-                              <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center group-hover:bg-primary transition-colors border border-white/5 shadow-sm">
-                                <link.icon className="w-6 h-6 text-white" />
-                              </div>
-                              <div>
-                                <h3 className="font-headline text-lg font-bold text-white uppercase leading-none">{link.name}</h3>
-                                <p className="text-[8px] font-black text-white/40 uppercase tracking-widest mt-1.5">{link.desc}</p>
-                              </div>
-                            </div>
-                            <ArrowRight className="w-5 h-5 text-white/20 group-hover:text-primary transition-all group-hover:translate-x-1" />
-                          </Link>
-                        ))}
-                      </nav>
-                    </div>
+                  <div className="p-8 md:p-16 space-y-12">
+                    {/* Primary Links Registry */}
+                    <nav className="flex flex-col gap-6 md:gap-8">
+                      {[
+                        { name: 'Über uns', href: '/about' },
+                        { name: 'Reisetipps', href: '/blog?category=Tipps' },
+                        { name: 'Unser Magazin', href: '/blog' },
+                        { name: 'FAQ', href: '/faq' },
+                        { name: 'Reiseblog', href: '/blog' },
+                        { name: 'Kontakt', href: '/contact' },
+                      ].map((link) => (
+                        <Link 
+                          key={link.name} 
+                          href={link.href} 
+                          className="text-2xl md:text-4xl font-black uppercase tracking-tighter text-white hover:text-primary transition-all duration-300"
+                        >
+                          {link.name}
+                        </Link>
+                      ))}
+                    </nav>
 
-                    <div className="space-y-4">
-                      <p className="text-primary font-black uppercase tracking-[0.4em] text-[9px] mb-2 block">02. Regional Portfolio (8 Countries)</p>
-                      <div className="grid grid-cols-2 gap-3">
-                        {['Ägypten', 'Tansania', 'Kenia', 'Botswana', 'Südafrika', 'Namibia', 'Uganda', 'Ruanda'].map((dest) => (
-                          <Link 
-                            key={dest} 
-                            href={`/destinations/${dest === 'Ägypten' ? 'egypt' : dest.toLowerCase()}`}
-                            className="px-4 py-4 rounded-xl bg-white/5 border border-white/10 text-[9px] font-black text-white/60 uppercase tracking-widest hover:border-primary hover:text-white transition-all text-center shadow-sm"
-                          >
-                            {dest}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
+                    <div className="h-px bg-white/10 w-full" />
 
-                    <div className="bg-white/5 rounded-[2rem] p-8 border border-white/10 relative overflow-hidden group shadow-2xl">
-                      <Zap className="absolute -top-4 -right-4 w-20 h-20 text-primary opacity-10" />
-                      <div className="relative z-10 text-white">
-                        <span className="text-[8px] font-black uppercase tracking-[0.4em] text-primary mb-3 block">Bespoke Planning</span>
-                        <h4 className="font-headline text-2xl font-bold uppercase mb-2 tracking-tighter">AI Expedition Planner</h4>
-                        <p className="text-[10px] text-white/40 font-bold uppercase tracking-widest leading-relaxed mb-6">Create your own 15-day luxury itinerary in real-time with our smart engine.</p>
-                        <Button asChild size="sm" className="w-full rounded-xl bg-primary text-white font-black text-[9px] uppercase tracking-widest h-11 border-none shadow-xl" suppressHydrationWarning>
-                          <Link href="/itinerary-builder">Start Building Now <Sparkles className="w-3.5 h-3.5 ml-2" /></Link>
-                        </Button>
-                      </div>
-                    </div>
+                    {/* Sub-Registries Accordion */}
+                    <Accordion type="single" collapsible className="w-full space-y-4">
+                      <AccordionItem value="destinations" className="border-none">
+                        <AccordionTrigger className="text-xl md:text-2xl font-black uppercase tracking-widest text-primary py-0 hover:no-underline [&>svg]:hidden flex justify-between items-center group">
+                          <span>REISEZIELE</span>
+                          <ChevronDown className="w-6 h-6 text-white/20 group-data-[state=open]:rotate-180 group-data-[state=open]:text-primary transition-all" />
+                        </AccordionTrigger>
+                        <AccordionContent className="flex flex-col gap-4 pt-6 pb-2">
+                          {[
+                            { name: 'SAFARI', href: '/safaris' },
+                            { name: 'KILIMANDSCHARO', href: '/destinations/kilimanjaro' },
+                            { name: 'SANSIBAR', href: '/destinations/zanzibar' },
+                          ].map((sub) => (
+                            <Link 
+                              key={sub.name} 
+                              href={sub.href} 
+                              className="text-lg md:text-xl font-bold text-white/60 hover:text-white transition-colors pl-6 border-l-2 border-white/5 hover:border-primary"
+                            >
+                              {sub.name}
+                            </Link>
+                          ))}
+                        </AccordionContent>
+                      </AccordionItem>
+
+                      <AccordionItem value="services" className="border-none">
+                        <AccordionTrigger className="text-xl md:text-2xl font-black uppercase tracking-widest text-primary py-0 hover:no-underline [&>svg]:hidden flex justify-between items-center group">
+                          <span>DIENSTLEISTUNGEN</span>
+                          <ChevronDown className="w-6 h-6 text-white/20 group-data-[state=open]:rotate-180 group-data-[state=open]:text-primary transition-all" />
+                        </AccordionTrigger>
+                        <AccordionContent className="flex flex-col gap-4 pt-6 pb-2">
+                          {[
+                            { name: 'REISEVERSICHERUNG', href: '/services/guest-protection' },
+                            { name: 'REISE-STORE', href: '/reise-shop' },
+                            { name: 'PARTNER PROGRAMM', href: '/partner' },
+                          ].map((sub) => (
+                            <Link 
+                              key={sub.name} 
+                              href={sub.href} 
+                              className="text-lg md:text-xl font-bold text-white/60 hover:text-white transition-colors pl-6 border-l-2 border-white/5 hover:border-primary"
+                            >
+                              {sub.name}
+                            </Link>
+                          ))}
+                        </AccordionContent>
+                      </AccordionItem>
+
+                      <AccordionItem value="reisen2026" className="border-none">
+                        <AccordionTrigger className="text-xl md:text-2xl font-black uppercase tracking-widest text-primary py-0 hover:no-underline [&>svg]:hidden flex justify-between items-center group">
+                          <span>REISEN 2026</span>
+                          <ChevronDown className="w-6 h-6 text-white/20 group-data-[state=open]:rotate-180 group-data-[state=open]:text-primary transition-all" />
+                        </AccordionTrigger>
+                        <AccordionContent className="flex flex-col gap-4 pt-6 pb-2">
+                          {[
+                            { name: 'GROSSE MIGRATION 2026', href: '/safaris' },
+                            { name: 'FAM TRIP 2026', href: '/fam-trip' },
+                            { name: 'EXKLUSIV-ITINERARIES', href: '/itinerary-builder' },
+                          ].map((sub) => (
+                            <Link 
+                              key={sub.name} 
+                              href={sub.href} 
+                              className="text-lg md:text-xl font-bold text-white/60 hover:text-white transition-colors pl-6 border-l-2 border-white/5 hover:border-primary"
+                            >
+                              {sub.name}
+                            </Link>
+                          ))}
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
                   </div>
                 </ScrollArea>
 
-                <div className="p-6 md:p-8 border-t border-white/5 bg-secondary relative z-30 shadow-[0_-10px_40px_rgba(0,0,0,0.2)]">
-                  <Button asChild className="w-full h-14 md:h-16 rounded-2xl bg-primary text-white font-black text-[10px] md:text-xs uppercase tracking-[0.3em] shadow-2xl hover:scale-[1.02] transition-transform border-none" suppressHydrationWarning>
-                    <Link href="/trip-planner">JETZT REISE PLANEN <ArrowRight className="w-4 h-4 ml-2" /></Link>
+                {/* Fixed CTA Registry Footer */}
+                <div className="p-6 md:p-10 border-t border-white/5 bg-secondary relative z-30 shadow-[0_-10px_40px_rgba(0,0,0,0.2)]">
+                  <Button asChild className="w-full h-14 md:h-20 rounded-2xl bg-primary text-white font-black text-[10px] md:text-sm uppercase tracking-[0.3em] shadow-2xl hover:scale-[1.02] transition-transform border-none" suppressHydrationWarning>
+                    <Link href="/trip-planner">JETZT ANFRAGEN <ArrowRight className="w-4 h-4 ml-2" /></Link>
                   </Button>
+                  <div className="mt-6 flex justify-center items-center gap-4 text-white/20 text-[8px] font-black uppercase tracking-widest">
+                    <span>Registry 2026</span>
+                    <div className="w-1 h-1 rounded-full bg-primary" />
+                    <span>Berlin • Kairo</span>
+                  </div>
                 </div>
               </SheetContent>
             </Sheet>
