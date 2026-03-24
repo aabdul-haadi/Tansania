@@ -24,7 +24,6 @@ export function ContactSection() {
 
     // Listen for form height messages from the embedded iframe
     function handleFormMessage(e: MessageEvent) {
-      // Validate origin if possible, but the app domain is dynamic in this environment
       if (e.data && typeof e.data === 'object') {
         if (e.data.formHeight) {
           setFormHeight(e.data.formHeight);
@@ -167,7 +166,6 @@ export function ContactSection() {
                   scrolling="no"
                   title="Expedition Inquiry Form"
                   loading="lazy"
-                  allowTransparency
                 />
               ) : (
                 <div className="absolute inset-0 flex items-center justify-center bg-muted/5 animate-pulse">

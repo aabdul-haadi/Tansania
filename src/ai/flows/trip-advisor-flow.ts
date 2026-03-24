@@ -74,28 +74,30 @@ const tripAdvisorFlow = ai.defineFlow(
     try {
       const { firestore } = initializeFirebase();
       if (firestore) {
-        const [pkgsSnap, blogsSnap, destsSnap] = await Promise.all([
+        // Attempt to fetch live data but ensure failure doesn't crash the entire flow
+        const [pkgsSnap, blogsSnap, destsSnap] = await Promise.allSettled([
           getDocs(query(collection(firestore, 'packages'), where('isPublished', '==', true), limit(10))),
           getDocs(query(collection(firestore, 'blogPosts'), where('status', '==', 'PUBLISHED'), limit(5))),
           getDocs(query(collection(firestore, 'destinations'), where('isPublished', '==', true), limit(5)))
         ]);
         
-        const pkgList = pkgsSnap.docs.map(d => {
+        const pkgList = pkgsSnap.status === 'fulfilled' ? pkgsSnap.value.docs.map(d => {
           const data = d.data();
           return `- [PACKAGE] ${data.title}: ${data.durationDays} Tage, ab €${data.startingPrice}. URL: /safaris/${data.slug}`;
-        }).join('\n');
+        }).join('\n') : '';
 
-        const blogList = blogsSnap.docs.map(d => {
+        const blogList = blogsSnap.status === 'fulfilled' ? blogsSnap.value.docs.map(d => {
           const data = d.data();
           return `- [JOURNAL] ${data.title}: ${data.excerpt?.slice(0, 80)}... URL: /blog/${data.slug}`;
-        }).join('\n');
+        }).join('\n') : '';
 
-        const destList = destsSnap.docs.map(d => {
+        const destList = destsSnap.status === 'fulfilled' ? destsSnap.value.docs.map(d => {
           const data = d.data();
           return `- [HUB] ${data.name}: ${data.description?.slice(0, 120)}... URL: /destinations/${data.slug}`;
-        }).join('\n');
+        }).join('\n') : '';
 
-        liveContext = `
+        if (pkgList || blogList || destList) {
+          liveContext = `
 ### LIVE SITE REGISTRY (FACTS):
 PACKAGES:
 ${pkgList || 'None.'}
@@ -106,6 +108,7 @@ ${destList || 'None.'}
 ARTICLES:
 ${blogList || 'None.'}
 `;
+        }
       }
     } catch (e) {
       console.warn("RAG Handshake Bypassed or Initialization Failed:", e);
