@@ -8,7 +8,9 @@ import {
   X, 
   ArrowRight,
   Compass, 
-  ChevronDown
+  ChevronDown,
+  Instagram,
+  Facebook
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -49,13 +51,14 @@ export function Navbar() {
     setIsOpen(false);
   }, [pathname]);
 
-  const navLinks = [
-    { name: 'Über uns', href: '/about' },
-    { name: 'Reisetipps', href: '/blog?category=Tipps' },
-    { name: 'Unser Magazin', href: '/blog' },
+  const primaryLinks = [
+    { name: 'HOME', href: '/' },
+    { name: 'ÜBER UNS', href: '/about' },
+    { name: 'REISETIPPS', href: '/blog?category=Tipps' },
+    { name: 'UNSER MAGAZIN', href: '/blog' },
+    { name: 'REISEBLOG', href: '/blog' },
     { name: 'FAQ', href: '/faq' },
-    { name: 'Reiseblog', href: '/blog' },
-    { name: 'Kontakt', href: '/contact' },
+    { name: 'KONTAKT', href: '/contact' },
   ];
 
   return (
@@ -68,10 +71,10 @@ export function Navbar() {
     >
       <nav className="container mx-auto px-4 max-w-7xl">
         <div className={cn(
-          "flex items-center justify-between transition-all duration-500 px-6 md:px-8 h-14 md:h-16 rounded-full border",
+          "flex items-center justify-between transition-all duration-500 px-6 md:px-8 h-14 md:h-16 rounded-full",
           isScrolled 
-            ? "bg-white text-secondary shadow-2xl border-border" 
-            : "bg-transparent text-white border-transparent",
+            ? "bg-white/95 backdrop-blur-md text-secondary shadow-2xl border border-border" 
+            : "bg-transparent text-white border border-transparent",
           isOpen ? "opacity-0 pointer-events-none" : "opacity-100"
         )}>
           <Link href="/" className="flex items-center gap-3 group">
@@ -104,88 +107,85 @@ export function Navbar() {
                     : "bg-white/10 text-white border-white/20 hover:bg-white hover:text-secondary"
                 )}
               >
-                <span>Registry</span>
+                <span>Menu</span>
                 <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-white/20 flex items-center justify-center">
                   <Menu className="w-4 h-4" />
                 </div>
               </button>
             </SheetTrigger>
             
-            <SheetContent side="right" className="w-full sm:max-w-[380px] p-0 bg-secondary border-none flex flex-col shadow-2xl font-bold">
-              <div className="bg-white px-6 py-4 flex items-center justify-between shrink-0 border-b border-border">
-                <div className="flex items-center gap-2">
-                  <Compass className="w-5 h-5 text-primary" />
-                  <span className="font-black text-[9px] uppercase tracking-widest text-secondary">Site Registry</span>
-                </div>
+            <SheetContent side="right" className="w-full sm:max-w-[450px] p-0 bg-black/95 text-white border-none flex flex-col shadow-2xl font-bold">
+              <div className="px-8 py-8 flex items-center justify-between shrink-0">
+                <Link href="/" className="flex items-center gap-2">
+                  <Compass className="w-6 h-6 text-primary" />
+                  <span className="font-black text-[10px] uppercase tracking-[0.4em] text-white">Registry</span>
+                </Link>
                 <SheetClose asChild>
-                  <button className="w-9 h-9 rounded-xl bg-muted flex items-center justify-center text-secondary hover:bg-primary hover:text-white transition-all">
-                    <X className="w-4 h-4" />
+                  <button className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all">
+                    <X className="w-5 h-5" />
                   </button>
                 </SheetClose>
               </div>
 
               <ScrollArea className="flex-grow">
-                <div className="p-8 space-y-10">
-                  {/* Compact Primary Links */}
-                  <nav className="flex flex-col gap-4">
-                    {navLinks.map((link) => (
+                <div className="px-10 py-10 flex flex-col items-start gap-8">
+                  <nav className="flex flex-col gap-6">
+                    {primaryLinks.map((link) => (
                       <Link 
                         key={link.name} 
                         href={link.href} 
-                        className="text-lg font-black uppercase tracking-widest text-white/80 hover:text-primary transition-colors border-b border-white/5 pb-2"
+                        className="text-2xl md:text-4xl font-headline font-black uppercase tracking-tight hover:text-primary transition-colors"
                       >
                         {link.name}
                       </Link>
                     ))}
                   </nav>
 
-                  {/* High-Density Accordion Registry */}
-                  <Accordion type="single" collapsible className="w-full space-y-2">
-                    <AccordionItem value="destinations" className="border-none bg-white/5 rounded-2xl px-4">
-                      <AccordionTrigger className="text-[10px] font-black uppercase tracking-[0.3em] text-primary/80 py-4 hover:no-underline [&>svg]:hidden flex justify-between items-center group">
+                  <div className="w-full h-px bg-white/10 my-4" />
+
+                  <Accordion type="single" collapsible className="w-full space-y-4">
+                    <AccordionItem value="destinations" className="border-none">
+                      <AccordionTrigger className="text-sm font-black uppercase tracking-[0.3em] text-primary/80 hover:no-underline [&>svg]:hidden flex justify-between items-center group p-0">
                         <span>REISEZIELE</span>
-                        <ChevronDown className="w-3.5 h-3.5 group-data-[state=open]:rotate-180 transition-all" />
+                        <ChevronDown className="w-4 h-4 group-data-[state=open]:rotate-180 transition-all" />
                       </AccordionTrigger>
-                      <AccordionContent className="flex flex-col gap-3 pt-2 pb-4">
-                        <Link href="/safaris" className="text-[11px] font-black text-white/40 hover:text-white transition-colors uppercase tracking-widest">SAFARI</Link>
-                        <Link href="/destinations/kilimanjaro" className="text-[11px] font-black text-white/40 hover:text-white transition-colors uppercase tracking-widest">KILIMANDSCHARO</Link>
-                        <Link href="/destinations/zanzibar" className="text-[11px] font-black text-white/40 hover:text-white transition-colors uppercase tracking-widest">SANSIBAR</Link>
+                      <AccordionContent className="flex flex-col gap-4 pt-6 pb-2">
+                        <Link href="/safaris" className="text-lg font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest">SAFARI</Link>
+                        <Link href="/destinations/kilimanjaro" className="text-lg font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest">KILIMANDSCHARO</Link>
+                        <Link href="/destinations/zanzibar" className="text-lg font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest">SANSIBAR</Link>
                       </AccordionContent>
                     </AccordionItem>
 
-                    <AccordionItem value="services" className="border-none bg-white/5 rounded-2xl px-4">
-                      <AccordionTrigger className="text-[10px] font-black uppercase tracking-[0.3em] text-primary/80 py-4 hover:no-underline [&>svg]:hidden flex justify-between items-center group">
-                        <span>DIENSTLEISTUNGEN</span>
-                        <ChevronDown className="w-3.5 h-3.5 group-data-[state=open]:rotate-180 transition-all" />
+                    <AccordionItem value="services" className="border-none">
+                      <AccordionTrigger className="text-sm font-black uppercase tracking-[0.3em] text-primary/80 hover:no-underline [&>svg]:hidden flex justify-between items-center group p-0">
+                        <span>SERVICES</span>
+                        <ChevronDown className="w-4 h-4 group-data-[state=open]:rotate-180 transition-all" />
                       </AccordionTrigger>
-                      <AccordionContent className="flex flex-col gap-3 pt-2 pb-4">
-                        <Link href="/services/guest-protection" className="text-[11px] font-black text-white/40 hover:text-white transition-colors uppercase tracking-widest">REISEVERSICHERUNG</Link>
-                        <Link href="/reise-shop" className="text-[11px] font-black text-white/40 hover:text-white transition-colors uppercase tracking-widest">REISE-STORE</Link>
-                        <Link href="/partner" className="text-[11px] font-black text-white/40 hover:text-white transition-colors uppercase tracking-widest">PARTNER PROGRAMM</Link>
-                      </AccordionContent>
-                    </AccordionItem>
-
-                    <AccordionItem value="reisen2026" className="border-none bg-white/5 rounded-2xl px-4">
-                      <AccordionTrigger className="text-[10px] font-black uppercase tracking-[0.3em] text-primary/80 py-4 hover:no-underline [&>svg]:hidden flex justify-between items-center group">
-                        <span>REISEN 2026</span>
-                        <ChevronDown className="w-3.5 h-3.5 group-data-[state=open]:rotate-180 transition-all" />
-                      </AccordionTrigger>
-                      <AccordionContent className="flex flex-col gap-3 pt-2 pb-4">
-                        <Link href="/safaris" className="text-[11px] font-black text-white/40 hover:text-white transition-colors uppercase tracking-widest">GROSSE MIGRATION 2026</Link>
-                        <Link href="/fam-trip" className="text-[11px] font-black text-white/40 hover:text-white transition-colors uppercase tracking-widest">FAM TRIP 2026</Link>
-                        <Link href="/itinerary-builder" className="text-[11px] font-black text-white/40 hover:text-white transition-colors uppercase tracking-widest">EXKLUSIV-ITINERARIES</Link>
+                      <AccordionContent className="flex flex-col gap-4 pt-6 pb-2">
+                        <Link href="/services/guest-protection" className="text-lg font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest">VERSICHERUNG</Link>
+                        <Link href="/reise-shop" className="text-lg font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest">REISE-STORE</Link>
                       </AccordionContent>
                     </AccordionItem>
                   </Accordion>
                 </div>
               </ScrollArea>
 
-              <div className="p-6 border-t border-white/5 bg-secondary/50 backdrop-blur-md">
-                <Button asChild className="w-full h-14 rounded-xl bg-primary text-white font-black text-[10px] uppercase tracking-[0.3em] shadow-xl hover:scale-[1.02] transition-transform border-none">
+              <div className="p-10 border-t border-white/5 bg-black/50 backdrop-blur-md flex flex-col gap-10 items-center">
+                <div className="flex gap-6">
+                  <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-primary hover:border-primary transition-all group">
+                    <Facebook className="w-5 h-5 text-white" />
+                  </a>
+                  <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-primary hover:border-primary transition-all group">
+                    <Instagram className="w-5 h-5 text-white" />
+                  </a>
+                </div>
+                
+                <Button asChild className="w-full h-16 rounded-xl bg-primary text-white font-black text-xs uppercase tracking-[0.3em] shadow-2xl hover:scale-[1.02] transition-transform border-none">
                   <Link href="/trip-planner">JETZT ANFRAGEN <ArrowRight className="w-4 h-4 ml-2" /></Link>
                 </Button>
-                <p className="mt-4 text-center text-[7px] font-black uppercase tracking-widest text-white/20">
-                  Berlin HQ • Official Registry 2026
+                
+                <p className="text-[8px] font-black uppercase tracking-[0.4em] text-white/20">
+                  Berlin • SDL Official Registry 2026
                 </p>
               </div>
             </SheetContent>
