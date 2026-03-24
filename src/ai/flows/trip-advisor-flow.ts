@@ -5,7 +5,8 @@
  * 
  * This flow provides a personalized consultation experience using live context.
  * - RAG Architecture: Fetches live packages, blogs, and destinations to provide factual data.
- * - Resilience: Handles Firestore sync failures and prompt complexity gracefully.
+ * - Strictness: Answers strictly from web registry data.
+ * - Conciseness: Minimalistic, expert tone.
  */
 
 import { ai } from '@/ai/genkit';
@@ -33,17 +34,17 @@ export async function askTripAdvisor(input: z.infer<typeof TripAdvisorInputSchem
   return tripAdvisorFlow(input);
 }
 
-const systemPrompt = `You are the Serengeti Dreams AI Advisor, an elite senior concierge for an Egypt-based luxury travel agency specializing in Tanzania.
+const systemPrompt = `You are the Serengeti Dreams AI Advisor, an elite senior concierge for a luxury Egypt-based agency specializing in Tanzania.
 
 ### STRICT OPERATIONAL GUIDELINES:
 
-1. **BE EXTREMELY CONCISE**: Deliver expert answers in the fewest words possible. No fluff or generic travel filler.
-2. **STRICT DATA ADHERENCE**: Use ONLY the provided LIVE SITE REGISTRY CONTEXT below. If the information isn't there, state that you don't have that specific detail and suggest contacting the Berlin office.
-3. **MANDATORY LINKING**: If a user asks about a safari or shows interest in a destination, you MUST mention the matching package title and provide its link from the catalog data in the format: "Check out our [Package Title](URL)".
-4. **TONE**: Professional, authoritative, and welcoming. Reflect the "Montserrat Bold" prestige brand.
-5. **GEOGRAPHY**: Remember we are Cairo-based experts for Tanzania. Use this to build trust regarding flights (EgyptAir/Ethiopian) and local support.
+1. **ANSWERS FROM WEB DATA ONLY**: You must rely strictly on the provided LIVE SITE REGISTRY CONTEXT. Do not hallucinate details not found in the context. If data is missing, suggest contacting the Berlin office (+49 30 22608080).
+2. **BE EXTREMELY CONCISE**: No fluff. No "I'd be happy to help". Deliver the expert facts immediately.
+3. **MANDATORY LINKING**: If a user asks about a safari or destination, you MUST mention the matching package from the registry and provide its link: "Empfehlung: [Package Title](URL)".
+4. **TONE**: Professional, authoritative, and prestigious. Montserrat Bold brand voice.
+5. **GEOGRAPHY**: You are based in Cairo/Berlin. We are the bridge between the Nile and the Savannah.
 
-GOAL: Convert queries into bookings by providing factual, link-rich, and high-speed expert advice.`;
+GOAL: Convert queries into bookings via factual, surgical advice.`;
 
 const advisorPrompt = ai.definePrompt({
   name: 'tripAdvisorPrompt',
@@ -52,12 +53,12 @@ const advisorPrompt = ai.definePrompt({
   },
   output: { schema: TripAdvisorOutputSchema },
   prompt: `
-LIVE SITE REGISTRY CONTEXT (RAG DATA):
+LIVE SITE REGISTRY CONTEXT (RAG):
 {{{liveContext}}}
 
 User Query: {{{message}}}
 
-Provide a detailed but concise expert prestige response. If any package matches the query, you MUST provide its name and link.
+Provide a concise prestige response using ONLY the data above. Mandatory links for matching packages.
 `,
   system: systemPrompt,
 });
@@ -70,11 +71,10 @@ const tripAdvisorFlow = ai.defineFlow(
   },
   async (input) => {
     const { firestore } = initializeFirebase();
-    let liveContext = "### NO LIVE DATA FOUND. USE GENERAL EXPERT KNOWLEDGE.";
+    let liveContext = "### NO LIVE DATA FOUND. USE GENERAL EXPERT KNOWLEDGE & SUGGEST CONTACTING OFFICE.";
     
     if (firestore) {
       try {
-        // RESILIENT RAG: Index-independent queries to prevent "Funkstille"
         const [pkgsSnap, blogsSnap, destsSnap] = await Promise.all([
           getDocs(query(collection(firestore, 'packages'), where('isPublished', '==', true), limit(10))),
           getDocs(query(collection(firestore, 'blogPosts'), where('status', '==', 'PUBLISHED'), limit(5))),
@@ -83,32 +83,32 @@ const tripAdvisorFlow = ai.defineFlow(
         
         const pkgList = pkgsSnap.docs.map(d => {
           const data = d.data();
-          return `- [PACKAGE] ${data.title}: ${data.durationDays} Days, from €${data.startingPrice}. URL: /safaris/${data.slug}`;
+          return `- [PACKAGE] ${data.title}: ${data.durationDays} Tage, ab €${data.startingPrice}. URL: /safaris/${data.slug}`;
         }).join('\n');
 
         const blogList = blogsSnap.docs.map(d => {
           const data = d.data();
-          return `- [JOURNAL] ${data.title}: ${data.excerpt?.slice(0, 60)}... URL: /blog/${data.slug}`;
+          return `- [JOURNAL] ${data.title}: ${data.excerpt?.slice(0, 80)}... URL: /blog/${data.slug}`;
         }).join('\n');
 
         const destList = destsSnap.docs.map(d => {
           const data = d.data();
-          return `- [HUB] ${data.name}: ${data.description?.slice(0, 100)}... URL: /destinations/${data.slug}`;
+          return `- [HUB] ${data.name}: ${data.description?.slice(0, 120)}... URL: /destinations/${data.slug}`;
         }).join('\n');
 
         liveContext = `
-### CURRENT LIVE CATALOG REGISTRY:
-SAFARI EXPEDITIONS:
-${pkgList || 'None listed yet.'}
+### LIVE SITE REGISTRY (FACTS):
+PACKAGES:
+${pkgList || 'None.'}
 
-COUNTRY HUB GUIDES:
-${destList || 'None listed yet.'}
+DESTINATIONS:
+${destList || 'None.'}
 
-LATEST EXPERT JOURNAL ENTRIES:
-${blogList || 'None listed yet.'}
+ARTICLES:
+${blogList || 'None.'}
 `;
       } catch (e) {
-        console.warn("AI Context Handshake Bypassed (resilience mode):", e);
+        console.warn("RAG Handshake Bypassed:", e);
       }
     }
 
@@ -123,13 +123,13 @@ ${blogList || 'None listed yet.'}
         })) || []
       });
 
-      if (!output) throw new Error('Empty AI response');
+      if (!output) throw new Error('AI Generation Failed');
       return output;
     } catch (err) {
-      console.error("Genkit Generation Failed:", err);
+      console.error("Genkit Flow Error:", err);
       return {
-        response: "Entschuldigung, in der Savanne herrscht gerade Funkstille. Wir prüfen die Verbindung zu unseren Experten in Berlin. Wie kann ich Ihnen sonst behilflich sein?",
-        suggestedAction: "Experten kontaktieren",
+        response: "Entschuldigung, in der Savanne herrscht gerade Funkstille. Wir synchronisieren unsere Daten mit Berlin. Wie kann ich Ihnen direkt behilflich sein?",
+        suggestedAction: "Kontakt aufnehmen",
         suggestedRoute: "/contact"
       };
     }
