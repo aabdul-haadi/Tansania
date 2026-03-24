@@ -52,13 +52,12 @@ export function Navbar() {
   }, [pathname]);
 
   const primaryLinks = [
-    { name: 'HOME', href: '/' },
-    { name: 'ÜBER UNS', href: '/about' },
-    { name: 'REISETIPPS', href: '/blog?category=Tipps' },
-    { name: 'UNSER MAGAZIN', href: '/blog' },
-    { name: 'REISEBLOG', href: '/blog' },
+    { name: 'Über uns', href: '/about' },
+    { name: 'Reisetipps', href: '/blog?category=Tipps' },
+    { name: 'Unser Magazin', href: '/blog' },
     { name: 'FAQ', href: '/faq' },
-    { name: 'KONTAKT', href: '/contact' },
+    { name: 'Reiseblog', href: '/blog' },
+    { name: 'Kontakt', href: '/contact' },
   ];
 
   return (
@@ -107,7 +106,7 @@ export function Navbar() {
                     : "bg-white/10 text-white border-white/20 hover:bg-white hover:text-secondary"
                 )}
               >
-                <span>Menu</span>
+                <span>Registry</span>
                 <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-white/20 flex items-center justify-center">
                   <Menu className="w-4 h-4" />
                 </div>
@@ -118,7 +117,7 @@ export function Navbar() {
               <div className="px-8 py-8 flex items-center justify-between shrink-0">
                 <Link href="/" className="flex items-center gap-2">
                   <Compass className="w-6 h-6 text-primary" />
-                  <span className="font-black text-[10px] uppercase tracking-[0.4em] text-white">Registry</span>
+                  <span className="font-black text-[10px] uppercase tracking-[0.4em] text-white">SDL Official</span>
                 </Link>
                 <SheetClose asChild>
                   <button className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all">
@@ -128,13 +127,14 @@ export function Navbar() {
               </div>
 
               <ScrollArea className="flex-grow">
-                <div className="px-10 py-10 flex flex-col items-start gap-8">
-                  <nav className="flex flex-col gap-6">
+                <div className="px-10 py-6 flex flex-col items-start gap-8">
+                  <nav className="flex flex-col gap-5">
+                    <Link href="/" className="text-xl font-bold uppercase tracking-tight hover:text-primary transition-colors">Home</Link>
                     {primaryLinks.map((link) => (
                       <Link 
                         key={link.name} 
                         href={link.href} 
-                        className="text-2xl md:text-4xl font-headline font-black uppercase tracking-tight hover:text-primary transition-colors"
+                        className="text-xl font-bold uppercase tracking-tight hover:text-primary transition-colors"
                       >
                         {link.name}
                       </Link>
@@ -143,27 +143,39 @@ export function Navbar() {
 
                   <div className="w-full h-px bg-white/10 my-4" />
 
-                  <Accordion type="single" collapsible className="w-full space-y-4">
+                  <Accordion type="single" collapsible className="w-full space-y-6">
                     <AccordionItem value="destinations" className="border-none">
-                      <AccordionTrigger className="text-sm font-black uppercase tracking-[0.3em] text-primary/80 hover:no-underline [&>svg]:hidden flex justify-between items-center group p-0">
+                      <AccordionTrigger className="text-[11px] font-black uppercase tracking-[0.3em] text-primary/80 hover:no-underline [&>svg]:hidden flex justify-between items-center group p-0">
                         <span>REISEZIELE</span>
-                        <ChevronDown className="w-4 h-4 group-data-[state=open]:rotate-180 transition-all" />
+                        <ChevronDown className="w-4 h-4 group-data-[state=open]:rotate-180 transition-all opacity-40" />
                       </AccordionTrigger>
                       <AccordionContent className="flex flex-col gap-4 pt-6 pb-2">
-                        <Link href="/safaris" className="text-lg font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest">SAFARI</Link>
-                        <Link href="/destinations/kilimanjaro" className="text-lg font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest">KILIMANDSCHARO</Link>
-                        <Link href="/destinations/zanzibar" className="text-lg font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest">SANSIBAR</Link>
+                        <Link href="/safaris" className="text-base font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest">SAFARI</Link>
+                        <Link href="/destinations/kilimanjaro" className="text-base font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest">KILIMANDSCHARO</Link>
+                        <Link href="/destinations/zanzibar" className="text-base font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest">SANSIBAR</Link>
                       </AccordionContent>
                     </AccordionItem>
 
                     <AccordionItem value="services" className="border-none">
-                      <AccordionTrigger className="text-sm font-black uppercase tracking-[0.3em] text-primary/80 hover:no-underline [&>svg]:hidden flex justify-between items-center group p-0">
-                        <span>SERVICES</span>
-                        <ChevronDown className="w-4 h-4 group-data-[state=open]:rotate-180 transition-all" />
+                      <AccordionTrigger className="text-[11px] font-black uppercase tracking-[0.3em] text-primary/80 hover:no-underline [&>svg]:hidden flex justify-between items-center group p-0">
+                        <span>DIENSTLEISTUNGEN</span>
+                        <ChevronDown className="w-4 h-4 group-data-[state=open]:rotate-180 transition-all opacity-40" />
                       </AccordionTrigger>
                       <AccordionContent className="flex flex-col gap-4 pt-6 pb-2">
-                        <Link href="/services/guest-protection" className="text-lg font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest">VERSICHERUNG</Link>
-                        <Link href="/reise-shop" className="text-lg font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest">REISE-STORE</Link>
+                        <Link href="/services/guest-protection" className="text-base font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest">VERSICHERUNG</Link>
+                        <Link href="/reise-shop" className="text-base font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest">REISE-STORE</Link>
+                        <Link href="/partner" className="text-base font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest">PARTNER</Link>
+                      </AccordionContent>
+                    </AccordionItem>
+
+                    <AccordionItem value="reisen2026" className="border-none">
+                      <AccordionTrigger className="text-[11px] font-black uppercase tracking-[0.3em] text-primary/80 hover:no-underline [&>svg]:hidden flex justify-between items-center group p-0">
+                        <span>REISEN 2026</span>
+                        <ChevronDown className="w-4 h-4 group-data-[state=open]:rotate-180 transition-all opacity-40" />
+                      </AccordionTrigger>
+                      <AccordionContent className="flex flex-col gap-4 pt-6 pb-2">
+                        <Link href="/safaris?year=2026" className="text-base font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest">EXPEDITIONEN 2026</Link>
+                        <Link href="/trip-advisor" className="text-base font-bold text-white/60 hover:text-white transition-colors uppercase tracking-widest text-primary">AI TRIP ADVISOR</Link>
                       </AccordionContent>
                     </AccordionItem>
                   </Accordion>
@@ -171,7 +183,7 @@ export function Navbar() {
               </ScrollArea>
 
               <div className="p-10 border-t border-white/5 bg-black/50 backdrop-blur-md flex flex-col gap-10 items-center">
-                <div className="flex gap-6">
+                <div className="flex gap-8">
                   <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-primary hover:border-primary transition-all group">
                     <Facebook className="w-5 h-5 text-white" />
                   </a>

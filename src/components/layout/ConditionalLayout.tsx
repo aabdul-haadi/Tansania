@@ -16,6 +16,7 @@ export function ConditionalLayout({ children }: { children: React.ReactNode }) {
   // Define routes that should NOT have the public header/footer
   const isAdmin = pathname?.startsWith('/admin');
   const isAuth = pathname?.startsWith('/auth');
+  const isAdvisorPage = pathname === '/trip-advisor';
 
   if (isAdmin || isAuth) {
     return <div className="flex flex-col min-h-screen w-full">{children}</div>;
@@ -27,7 +28,8 @@ export function ConditionalLayout({ children }: { children: React.ReactNode }) {
       <main className="flex-grow">
         {children}
       </main>
-      <AIFloatingAdvisor />
+      {/* Hide the floating advisor on the dedicated trip advisor page to prevent duplication */}
+      {!isAdvisorPage && <AIFloatingAdvisor />}
       <Footer />
     </>
   );
