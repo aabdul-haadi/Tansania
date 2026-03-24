@@ -5,7 +5,7 @@
  * This flow provides a personalized consultation experience using live context.
  * - RAG Architecture: Fetches live packages, blogs, and destinations to provide factual data.
  * - Strictness: Answers strictly from web registry data.
- * - Conciseness: Minimalistic, expert tone.
+ * - Resiliency: Implements a global error boundary to prevent "Systemausfall" crashes.
  */
 
 import { ai } from '@/ai/genkit';
@@ -30,7 +30,17 @@ const TripAdvisorOutputSchema = z.object({
 });
 
 export async function askTripAdvisor(input: z.infer<typeof TripAdvisorInputSchema>) {
-  return tripAdvisorFlow(input);
+  // Global Resilience Boundary
+  try {
+    return await tripAdvisorFlow(input);
+  } catch (error) {
+    console.error("Critical AI Advisor Failure:", error);
+    return {
+      response: "Jambo! Entschuldigung, in der Savanne herrscht gerade Funkstille. Wir synchronisieren unsere Daten mit dem Berliner Büro. Wie kann ich Ihnen direkt behilflich sein?",
+      suggestedAction: "Kontakt aufnehmen",
+      suggestedRoute: "/contact"
+    };
+  }
 }
 
 const systemPrompt = `You are the Serengeti Dreams AI Advisor, an elite senior concierge for a luxury Egypt-based agency specializing in Tanzania.
@@ -128,7 +138,7 @@ ${blogList || 'None.'}
       if (!output) throw new Error('AI Generation Failed');
       return output;
     } catch (err) {
-      console.error("Genkit Flow Error:", err);
+      console.error("Genkit Flow Inner Error:", err);
       return {
         response: "Entschuldigung, in der Savanne herrscht gerade Funkstille. Wir synchronisieren unsere Daten mit Berlin. Wie kann ich Ihnen direkt behilflich sein?",
         suggestedAction: "Kontakt aufnehmen",

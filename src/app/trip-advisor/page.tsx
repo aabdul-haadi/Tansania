@@ -11,9 +11,7 @@ import {
   Loader2, 
   Globe,
   AlertCircle,
-  CloudSun,
-  Mic,
-  MicOff
+  CloudSun
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -67,6 +65,7 @@ export default function TripAdvisorPage() {
     setLoading(true);
 
     try {
+      // Server Action Handshake - askTripAdvisor has an internal fallback to prevent crashes
       const result = await askTripAdvisor({
         message: userText,
         history: messages.filter(m => m.role !== 'error').map(m => ({ role: m.role as any, content: m.content }))
@@ -83,7 +82,7 @@ export default function TripAdvisorPage() {
         route: result.suggestedRoute
       }]);
     } catch (error) {
-      console.error("Advisor Error:", error);
+      console.error("Advisor Handshake Error:", error);
       setMessages([...newMessages, { 
         role: 'error', 
         content: 'In der Savanne herrscht gerade Funkstille. Die Verbindung zum Berliner Büro wird synchronisiert. Bitte versuchen Sie es in wenigen Augenblicken erneut.' 
@@ -93,11 +92,9 @@ export default function TripAdvisorPage() {
     }
   };
 
-  if (!mounted) return null;
-
   return (
     <div className="min-h-screen bg-[#fdfcfb] flex flex-col font-bold">
-      {/* Cinematic Prestige Hero - Full Bleed behind Navbar */}
+      {/* Cinematic Prestige Hero - Full Bleed */}
       <section className="relative h-[60vh] md:h-[70vh] w-full shrink-0 overflow-hidden bg-secondary">
         <Image 
           src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
@@ -136,100 +133,108 @@ export default function TripAdvisorPage() {
         </div>
       </section>
 
-      {/* Main Chat Interface */}
+      {/* Main Chat Interface - Hydration Guarded Only for Interactive Content */}
       <div className="flex-grow flex flex-col bg-white shadow-[0_-20px_60px_rgba(0,0,0,0.15)] rounded-t-[3rem] md:rounded-t-[4rem] -mt-12 relative z-20">
         <div className="container mx-auto px-4 max-w-7xl h-full flex flex-col py-8 md:py-12 gap-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 flex-grow">
             
             <div className="lg:col-span-8 flex flex-col bg-[#fdfcfb] rounded-[2.5rem] md:rounded-[3.5rem] border border-border/50 overflow-hidden shadow-sm relative min-h-[500px] md:min-h-[600px]">
-              <ScrollArea className="flex-grow">
-                <div className="p-6 md:p-12 space-y-10">
-                  {messages.map((m, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className={cn(
-                        "flex gap-5 max-w-[95%] md:max-w-[85%]",
-                        m.role === 'user' ? "ml-auto flex-row-reverse" : ""
-                      )}
-                    >
-                      <div className={cn(
-                        "w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 shadow-lg border",
-                        m.role === 'user' ? "bg-primary text-white border-primary/20" : m.role === 'error' ? "bg-destructive text-white" : "bg-secondary text-white border-white/5"
-                      )}>
-                        {m.role === 'user' ? <User className="w-6 h-6" /> : <Compass className="w-6 h-6" />}
-                      </div>
-                      <div className="flex flex-col gap-4">
-                        <div className={cn(
-                          "p-6 md:p-8 rounded-[2rem] text-sm md:text-lg leading-relaxed font-bold shadow-sm",
-                          m.role === 'user' 
-                            ? "bg-primary text-white rounded-tr-none" 
-                            : m.role === 'error'
-                            ? "bg-destructive/10 text-destructive border border-destructive/20 rounded-tl-none"
-                            : "bg-white text-secondary rounded-tl-none border border-border/50"
-                        )}>
-                          {m.content}
+              {mounted ? (
+                <>
+                  <ScrollArea className="flex-grow">
+                    <div className="p-6 md:p-12 space-y-10">
+                      {messages.map((m, idx) => (
+                        <motion.div
+                          key={idx}
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          className={cn(
+                            "flex gap-5 max-w-[95%] md:max-w-[85%]",
+                            m.role === 'user' ? "ml-auto flex-row-reverse" : ""
+                          )}
+                        >
+                          <div className={cn(
+                            "w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 shadow-lg border",
+                            m.role === 'user' ? "bg-primary text-white border-primary/20" : m.role === 'error' ? "bg-destructive text-white" : "bg-secondary text-white border-white/5"
+                          )}>
+                            {m.role === 'user' ? <User className="w-6 h-6" /> : <Compass className="w-6 h-6" />}
+                          </div>
+                          <div className="flex flex-col gap-4">
+                            <div className={cn(
+                              "p-6 md:p-8 rounded-[2rem] text-sm md:text-lg leading-relaxed font-bold shadow-sm",
+                              m.role === 'user' 
+                                ? "bg-primary text-white rounded-tr-none" 
+                                : m.role === 'error'
+                                ? "bg-destructive/10 text-destructive border border-destructive/20 rounded-tl-none"
+                                : "bg-white text-secondary rounded-tl-none border border-border/50"
+                            )}>
+                              {m.content}
+                            </div>
+                            {m.action && m.route && (
+                              <Button asChild variant="outline" className="rounded-full h-11 px-6 text-[10px] font-black uppercase tracking-widest border-primary/30 text-primary hover:bg-primary/5 group w-fit shadow-md">
+                                <Link href={m.route}>
+                                  {m.action} <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                                </Link>
+                              </Button>
+                            )}
+                          </div>
+                        </motion.div>
+                      ))}
+                      {loading && (
+                        <div className="flex gap-5">
+                          <div className="w-12 h-12 rounded-2xl bg-secondary flex items-center justify-center shrink-0 shadow-lg">
+                            <Loader2 className="w-6 h-6 text-white animate-spin" />
+                          </div>
+                          <div className="p-6 bg-white rounded-[2rem] rounded-tl-none border border-border/50 flex items-center gap-3 shadow-sm">
+                            <span className="w-2.5 h-2.5 bg-primary rounded-full animate-bounce" />
+                            <span className="w-2.5 h-2.5 bg-primary rounded-full animate-bounce [animation-delay:0.2s]" />
+                            <span className="w-2.5 h-2.5 bg-primary rounded-full animate-bounce [animation-delay:0.4s]" />
+                          </div>
                         </div>
-                        {m.action && m.route && (
-                          <Button asChild variant="outline" className="rounded-full h-11 px-6 text-[10px] font-black uppercase tracking-widest border-primary/30 text-primary hover:bg-primary/5 group w-fit shadow-md">
-                            <Link href={m.route}>
-                              {m.action} <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                            </Link>
-                          </Button>
-                        )}
-                      </div>
-                    </motion.div>
-                  ))}
-                  {loading && (
-                    <div className="flex gap-5">
-                      <div className="w-12 h-12 rounded-2xl bg-secondary flex items-center justify-center shrink-0 shadow-lg">
-                        <Loader2 className="w-6 h-6 text-white animate-spin" />
-                      </div>
-                      <div className="p-6 bg-white rounded-[2rem] rounded-tl-none border border-border/50 flex items-center gap-3 shadow-sm">
-                        <span className="w-2.5 h-2.5 bg-primary rounded-full animate-bounce" />
-                        <span className="w-2.5 h-2.5 bg-primary rounded-full animate-bounce [animation-delay:0.2s]" />
-                        <span className="w-2.5 h-2.5 bg-primary rounded-full animate-bounce [animation-delay:0.4s]" />
-                      </div>
+                      )}
+                      <div ref={scrollRef} className="h-1" />
                     </div>
-                  )}
-                  <div ref={scrollRef} className="h-1" />
-                </div>
-              </ScrollArea>
+                  </ScrollArea>
 
-              <div className="p-6 md:p-10 bg-white border-t border-border/50 shrink-0">
-                <div className="flex gap-3 mb-8 overflow-x-auto no-scrollbar pb-2">
-                  {suggestions.map((s, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => handleSend(s.text)}
-                      className="px-6 py-3 rounded-full bg-muted/30 border border-border hover:border-primary hover:bg-primary/5 transition-all text-[10px] font-black uppercase tracking-widest flex items-center gap-3 whitespace-nowrap shadow-sm"
+                  <div className="p-6 md:p-10 bg-white border-t border-border/50 shrink-0">
+                    <div className="flex gap-3 mb-8 overflow-x-auto no-scrollbar pb-2">
+                      {suggestions.map((s, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => handleSend(s.text)}
+                          className="px-6 py-3 rounded-full bg-muted/30 border border-border hover:border-primary hover:bg-primary/5 transition-all text-[10px] font-black uppercase tracking-widest flex items-center gap-3 whitespace-nowrap shadow-sm"
+                        >
+                          <s.icon className="w-4 h-4 text-primary" />
+                          {s.text}
+                        </button>
+                      ))}
+                    </div>
+                    <form 
+                      onSubmit={(e) => { e.preventDefault(); handleSend(); }}
+                      className="flex items-center gap-4"
                     >
-                      <s.icon className="w-4 h-4 text-primary" />
-                      {s.text}
-                    </button>
-                  ))}
+                      <Input
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        placeholder="Frag mich nach Safaris..."
+                        className="h-16 md:h-20 pl-10 rounded-3xl border-none bg-muted/20 shadow-inner focus:ring-2 focus:ring-primary/20 text-base md:text-xl font-bold uppercase tracking-tight"
+                      />
+                      <Button 
+                        type="submit" 
+                        disabled={!input.trim() || loading}
+                        className="h-16 md:h-20 px-10 md:px-16 rounded-3xl shadow-2xl shadow-primary/20 group transition-all hover:scale-[1.02] border-none shrink-0"
+                      >
+                        <Send className="w-6 h-6 md:mr-4 group-hover:translate-x-1 transition-transform" />
+                        <span className="hidden md:inline text-[12px] font-black uppercase tracking-[0.2em]">Absenden</span>
+                      </Button>
+                    </form>
+                  </div>
+                </>
+              ) : (
+                <div className="flex-grow flex items-center justify-center p-12">
+                  <Loader2 className="w-10 h-10 animate-spin text-primary opacity-20" />
                 </div>
-                <form 
-                  onSubmit={(e) => { e.preventDefault(); handleSend(); }}
-                  className="flex items-center gap-4"
-                >
-                  <Input
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    placeholder="Frag mich nach Safaris..."
-                    className="h-16 md:h-20 pl-10 rounded-3xl border-none bg-muted/20 shadow-inner focus:ring-2 focus:ring-primary/20 text-base md:text-xl font-bold uppercase tracking-tight"
-                  />
-                  <Button 
-                    type="submit" 
-                    disabled={!input.trim() || loading}
-                    className="h-16 md:h-20 px-10 md:px-16 rounded-3xl shadow-2xl shadow-primary/20 group transition-all hover:scale-[1.02] border-none shrink-0"
-                  >
-                    <Send className="w-6 h-6 md:mr-4 group-hover:translate-x-1 transition-transform" />
-                    <span className="hidden md:inline text-[12px] font-black uppercase tracking-[0.2em]">Absenden</span>
-                  </Button>
-                </form>
-              </div>
+              )}
             </div>
 
             <aside className="lg:col-span-4 space-y-8 hidden lg:flex flex-col min-h-0">
