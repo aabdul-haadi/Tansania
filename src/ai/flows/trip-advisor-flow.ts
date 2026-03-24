@@ -1,3 +1,4 @@
+
 'use server';
 /**
  * @fileOverview Serengeti Dreams AI Trip Advisor - RAG-Enhanced Prestige Edition.
@@ -32,28 +33,17 @@ export async function askTripAdvisor(input: z.infer<typeof TripAdvisorInputSchem
   return tripAdvisorFlow(input);
 }
 
-const systemPrompt = `You are the Serengeti Dreams AI Advisor, an elite senior concierge for an Egypt-based luxury travel agency specializing in Tanzania. 
-Your tone is sophisticated, expert, and deeply welcoming—reflecting the "Montserrat Bold" prestige brand.
+const systemPrompt = `You are the Serengeti Dreams AI Advisor, an elite senior concierge for an Egypt-based luxury travel agency specializing in Tanzania.
 
-### YOUR CORE ARCHITECTURE (THE NILE-SAVANNAH BRIDGE):
+### STRICT OPERATIONAL GUIDELINES:
 
-1. **DESTINATION EXPERTISE (RAG-DRIVEN):**
-   - **Serengeti**: Focus on the Great Migration. Dec-Mar: Calving; Jul-Oct: River Crossings.
-   - **Ngorongoro**: Highlight the 25,000+ large mammals in the crater.
-   - **Zanzibar**: Emphasize the Swahili-Arab fusion and luxury beach villas.
-   - **ACTION**: You MUST use the provided LIVE CATALOG data below to recommend specific published packages and journal entries. Be factual and specific.
+1. **BE EXTREMELY CONCISE**: Deliver expert answers in the fewest words possible. No fluff or generic travel filler.
+2. **STRICT DATA ADHERENCE**: Use ONLY the provided LIVE SITE REGISTRY CONTEXT below. If the information isn't there, state that you don't have that specific detail and suggest contacting the Berlin office.
+3. **MANDATORY LINKING**: If a user asks about a safari or shows interest in a destination, you MUST mention the matching package title and provide its link from the catalog data in the format: "Check out our [Package Title](URL)".
+4. **TONE**: Professional, authoritative, and welcoming. Reflect the "Montserrat Bold" prestige brand.
+5. **GEOGRAPHY**: Remember we are Cairo-based experts for Tanzania. Use this to build trust regarding flights (EgyptAir/Ethiopian) and local support.
 
-2. **LOGISTICS & TRUST:**
-   - **Cairo Presence**: We have a physical office in Cairo for localized payment and visa guidance.
-   - **Flight Links**: Efficient connections from Cairo via EgyptAir or Ethiopian Airlines.
-   - **Security**: Every guest is covered by DRSF (German Travel Security Fund).
-
-3. **CONSTRAINTS:**
-   - **LANGUAGE**: Reply in the language used by the user (German or English).
-   - **PRICING**: Use "Starting from €XXXX" based on the provided live context.
-   - **PROACTIVITY**: Always suggest a logical next step (e.g., "Trip Planner" for custom routes or "Contact" for Berlin office).
-
-GOAL: Transform queries into cinematic previews of their journey based on actual live site data.`;
+GOAL: Convert queries into bookings by providing factual, link-rich, and high-speed expert advice.`;
 
 const advisorPrompt = ai.definePrompt({
   name: 'tripAdvisorPrompt',
@@ -67,7 +57,7 @@ LIVE SITE REGISTRY CONTEXT (RAG DATA):
 
 User Query: {{{message}}}
 
-Provide a detailed, expert prestige response based on the above catalog. Highlight specific packages if they match the user's intent.
+Provide a detailed but concise expert prestige response. If any package matches the query, you MUST provide its name and link.
 `,
   system: systemPrompt,
 });
@@ -93,17 +83,17 @@ const tripAdvisorFlow = ai.defineFlow(
         
         const pkgList = pkgsSnap.docs.map(d => {
           const data = d.data();
-          return `- [PACKAGE] ${data.title}: ${data.durationDays} Days, from €${data.startingPrice}. [/safaris/${data.slug}]`;
+          return `- [PACKAGE] ${data.title}: ${data.durationDays} Days, from €${data.startingPrice}. URL: /safaris/${data.slug}`;
         }).join('\n');
 
         const blogList = blogsSnap.docs.map(d => {
           const data = d.data();
-          return `- [JOURNAL] ${data.title}: ${data.excerpt?.slice(0, 60)}... [/blog/${data.slug}]`;
+          return `- [JOURNAL] ${data.title}: ${data.excerpt?.slice(0, 60)}... URL: /blog/${data.slug}`;
         }).join('\n');
 
         const destList = destsSnap.docs.map(d => {
           const data = d.data();
-          return `- [HUB] ${data.name}: ${data.description?.slice(0, 100)}... [/destinations/${data.slug}]`;
+          return `- [HUB] ${data.name}: ${data.description?.slice(0, 100)}... URL: /destinations/${data.slug}`;
         }).join('\n');
 
         liveContext = `
