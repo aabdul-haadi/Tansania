@@ -87,31 +87,34 @@ export default function TripAdvisorPage() {
   };
 
   return (
-    <div className="h-screen bg-[#fdfcfb] pt-20 flex flex-col overflow-hidden font-bold">
-      {/* Cinematic Prestige Hero Strip */}
-      <section className="relative h-32 md:h-40 shrink-0 overflow-hidden bg-secondary border-b border-white/5">
+    <div className="h-screen bg-[#fdfcfb] flex flex-col overflow-hidden font-bold">
+      {/* Cinematic Prestige Hero Strip - Now covering navbar area */}
+      <section className="relative h-[40vh] md:h-[50vh] shrink-0 overflow-hidden bg-secondary border-b border-white/5">
         <Image 
           src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
           alt="Serengeti Savannah" 
           fill 
           priority
-          className="object-cover opacity-40 brightness-75 scale-105"
+          className="object-cover brightness-[0.4] scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-transparent" />
         
-        <div className="container relative z-10 mx-auto px-6 md:px-10 h-full flex flex-col justify-center">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div className="container relative z-10 mx-auto px-6 md:px-10 h-full flex flex-col justify-end pb-12 md:pb-16">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="space-y-1 md:space-y-2"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="space-y-3"
             >
-              <div className="inline-flex items-center gap-2 px-2.5 py-0.5 bg-primary/20 backdrop-blur-md rounded-full border border-primary/30 text-white text-[7px] md:text-[8px] font-black uppercase tracking-[0.4em]">
-                <Sparkles className="w-2.5 h-2.5 text-primary" /> Intelligent Concierge
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/20 backdrop-blur-md rounded-full border border-primary/30 text-white text-[8px] font-black uppercase tracking-[0.4em]">
+                <Sparkles className="w-3 h-3 text-primary" /> Intelligent Concierge
               </div>
-              <h1 className="font-headline text-2xl md:text-4xl font-black text-white leading-none tracking-tighter uppercase">
+              <h1 className="font-headline text-3xl md:text-6xl font-black text-white leading-none tracking-tighter uppercase">
                 AI Trip <span className="text-primary">Advisor</span>
               </h1>
+              <p className="text-white/60 text-[10px] font-bold uppercase tracking-widest leading-relaxed max-w-md">
+                Echtzeit-Synchronisierung mit unserer 500+ Seiten Safari-Registry für präzise, exklusive Beratung.
+              </p>
             </motion.div>
             <div className="flex items-center gap-3">
               <Badge variant="outline" className="text-[7px] font-black uppercase tracking-widest border-white/10 text-white/60 px-3 h-7 bg-white/5">RAG LIVE SYNC</Badge>
@@ -128,7 +131,7 @@ export default function TripAdvisorPage() {
         <div className="container mx-auto px-4 max-w-7xl h-full flex flex-col py-4 md:py-6 gap-4">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 flex-grow min-h-0">
             
-            <div className="lg:col-span-8 flex flex-col bg-[#fdfcfb] rounded-[2rem] border border-border/50 overflow-hidden shadow-sm">
+            <div className="lg:col-span-8 flex flex-col bg-[#fdfcfb] rounded-[2rem] border border-border/50 overflow-hidden shadow-sm relative">
               <ScrollArea className="flex-grow">
                 <div className="p-6 md:p-10 space-y-6">
                   {messages.map((m, idx) => (
