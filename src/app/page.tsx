@@ -113,7 +113,7 @@ export default function Home() {
                   <div className="relative z-10 space-y-6">
                     <div className="flex items-center gap-4">
                       <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center shadow-lg">
-                        <Globe className="w-6 h-6 text-white" />
+                        <Sparkles className="w-6 h-6 text-white" />
                       </div>
                       <div>
                         <h3 className="font-bold text-xl text-white uppercase tracking-tight">Active Registry</h3>

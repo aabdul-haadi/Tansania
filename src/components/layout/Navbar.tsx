@@ -8,7 +8,6 @@ import {
   X, 
   ArrowRight,
   Compass, 
-  ChevronDown,
   Instagram,
   Facebook
 } from 'lucide-react';
@@ -138,20 +137,12 @@ export function Navbar() {
 
                   <div className="flex flex-col gap-6">
                     <div className="space-y-4">
-                      <p className="text-[10px] font-black uppercase tracking-[0.4em] text-primary/60">Destinations</p>
+                      <p className="text-[10px] font-black uppercase tracking-[0.4em] text-primary/60">Portfolio</p>
                       <div className="flex flex-col gap-3">
-                        <Link href="/safaris" className="text-sm font-bold text-white/80 hover:text-white uppercase tracking-widest">Safari Portfolio</Link>
-                        <Link href="/destinations/kilimanjaro" className="text-sm font-bold text-white/80 hover:text-white uppercase tracking-widest">Kilimandscharo</Link>
+                        <Link href="/safaris" className="text-sm font-bold text-white/80 hover:text-white uppercase tracking-widest">Safari Catalog</Link>
+                        <Link href="/destinations/egypt" className="text-sm font-bold text-white/80 hover:text-white uppercase tracking-widest">Egypt Specialist</Link>
+                        <Link href="/destinations/tanzania" className="text-sm font-bold text-white/80 hover:text-white uppercase tracking-widest">Tanzania Master</Link>
                         <Link href="/destinations/zanzibar" className="text-sm font-bold text-white/80 hover:text-white uppercase tracking-widest">Sansibar Paradise</Link>
-                      </div>
-                    </div>
-                    
-                    <div className="space-y-4">
-                      <p className="text-[10px] font-black uppercase tracking-[0.4em] text-primary/60">Services</p>
-                      <div className="flex flex-col gap-3">
-                        <Link href="/services/guest-protection" className="text-sm font-bold text-white/80 hover:text-white uppercase tracking-widest">Insurance</Link>
-                        <Link href="/reise-shop" className="text-sm font-bold text-white/80 hover:text-white uppercase tracking-widest">Registry Shop</Link>
-                        <Link href="/trip-advisor" className="text-sm font-bold text-primary hover:text-white uppercase tracking-widest">AI Trip Advisor</Link>
                       </div>
                     </div>
                   </div>
