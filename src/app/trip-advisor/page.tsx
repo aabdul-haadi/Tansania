@@ -10,7 +10,6 @@ import {
   ArrowRight, 
   Loader2, 
   Globe,
-  AlertCircle,
   CloudSun
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -65,16 +64,11 @@ export default function TripAdvisorPage() {
     setLoading(true);
 
     try {
-      // Server Action Handshake - askTripAdvisor has an internal fallback to prevent crashes
       const result = await askTripAdvisor({
         message: userText,
         history: messages.filter(m => m.role !== 'error').map(m => ({ role: m.role as any, content: m.content }))
       });
       
-      if (!result || !result.response) {
-        throw new Error('No response from advisor');
-      }
-
       setMessages([...newMessages, { 
         role: 'model', 
         content: result.response,
@@ -94,7 +88,7 @@ export default function TripAdvisorPage() {
 
   return (
     <div className="min-h-screen bg-[#fdfcfb] flex flex-col font-bold">
-      {/* Cinematic Prestige Hero - Full Bleed */}
+      {/* Cinematic Prestige Hero - Fixed Bleed */}
       <section className="relative h-[60vh] md:h-[70vh] w-full shrink-0 overflow-hidden bg-secondary">
         <Image 
           src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
@@ -133,13 +127,17 @@ export default function TripAdvisorPage() {
         </div>
       </section>
 
-      {/* Main Chat Interface - Hydration Guarded Only for Interactive Content */}
+      {/* Main Chat Interface */}
       <div className="flex-grow flex flex-col bg-white shadow-[0_-20px_60px_rgba(0,0,0,0.15)] rounded-t-[3rem] md:rounded-t-[4rem] -mt-12 relative z-20">
         <div className="container mx-auto px-4 max-w-7xl h-full flex flex-col py-8 md:py-12 gap-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 flex-grow">
             
             <div className="lg:col-span-8 flex flex-col bg-[#fdfcfb] rounded-[2.5rem] md:rounded-[3.5rem] border border-border/50 overflow-hidden shadow-sm relative min-h-[500px] md:min-h-[600px]">
-              {mounted ? (
+              {!mounted ? (
+                <div className="flex-grow flex items-center justify-center p-12">
+                  <Loader2 className="w-10 h-10 animate-spin text-primary opacity-20" />
+                </div>
+              ) : (
                 <>
                   <ScrollArea className="flex-grow">
                     <div className="p-6 md:p-12 space-y-10">
@@ -161,7 +159,7 @@ export default function TripAdvisorPage() {
                           </div>
                           <div className="flex flex-col gap-4">
                             <div className={cn(
-                              "p-6 md:p-8 rounded-[2rem] text-sm md:text-lg leading-relaxed font-bold shadow-sm",
+                              "p-6 md:p-8 rounded-[2rem] text-sm md:text-lg leading-relaxed font-bold shadow-sm whitespace-pre-wrap",
                               m.role === 'user' 
                                 ? "bg-primary text-white rounded-tr-none" 
                                 : m.role === 'error'
@@ -230,10 +228,6 @@ export default function TripAdvisorPage() {
                     </form>
                   </div>
                 </>
-              ) : (
-                <div className="flex-grow flex items-center justify-center p-12">
-                  <Loader2 className="w-10 h-10 animate-spin text-primary opacity-20" />
-                </div>
               )}
             </div>
 

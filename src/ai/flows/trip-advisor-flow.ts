@@ -5,7 +5,7 @@
  * This flow provides a personalized consultation experience using live context.
  * - RAG Architecture: Fetches live packages, blogs, and destinations to provide factual data.
  * - Strictness: Answers strictly from web registry data.
- * - Resiliency: Implements a global error boundary to prevent "Systemausfall" crashes.
+ * - Resilience: Implements a global error boundary to prevent "Systemausfall" crashes.
  */
 
 import { ai } from '@/ai/genkit';
@@ -30,14 +30,14 @@ const TripAdvisorOutputSchema = z.object({
 });
 
 export async function askTripAdvisor(input: z.infer<typeof TripAdvisorInputSchema>) {
-  // Global Resilience Boundary
+  // Global Resilience Boundary: Never throw, always return a prestige fallback
   try {
     return await tripAdvisorFlow(input);
   } catch (error) {
     console.error("Critical AI Advisor Failure:", error);
     return {
-      response: "Jambo! Entschuldigung, in der Savanne herrscht gerade Funkstille. Wir synchronisieren unsere Daten mit dem Berliner Büro. Wie kann ich Ihnen direkt behilflich sein?",
-      suggestedAction: "Kontakt aufnehmen",
+      response: "Jambo! In der Savanne herrscht gerade Funkstille. Wir synchronisieren unsere Daten mit dem Berliner Büro (+49 30 22608080). Wie kann ich Ihnen direkt behilflich sein?",
+      suggestedAction: "Experten kontaktieren",
       suggestedRoute: "/contact"
     };
   }
@@ -47,7 +47,7 @@ const systemPrompt = `You are the Serengeti Dreams AI Advisor, an elite senior c
 
 ### STRICT OPERATIONAL GUIDELINES:
 
-1. **ANSWERS FROM WEB DATA ONLY**: You must rely strictly on the provided LIVE SITE REGISTRY CONTEXT. Do not hallucinate details not found in the context. If data is missing, suggest contacting the Berlin office (+49 30 22608080).
+1. **ANSWERS FROM WEB DATA ONLY**: You must rely strictly on the provided LIVE SITE REGISTRY CONTEXT. Do not hallucinate details not found in the context. If data is missing, suggest contacting the Berlin office.
 2. **BE EXTREMELY CONCISE**: No fluff. No "I'd be happy to help". Deliver the expert facts immediately.
 3. **MANDATORY LINKING**: If a user asks about a safari or destination, you MUST mention the matching package from the registry and provide its link: "Empfehlung: [Package Title](URL)".
 4. **TONE**: Professional, authoritative, and prestigious. Montserrat Bold brand voice.
@@ -84,7 +84,6 @@ const tripAdvisorFlow = ai.defineFlow(
     try {
       const { firestore } = initializeFirebase();
       if (firestore) {
-        // Attempt to fetch live data but ensure failure doesn't crash the entire flow
         const [pkgsSnap, blogsSnap, destsSnap] = await Promise.allSettled([
           getDocs(query(collection(firestore, 'packages'), where('isPublished', '==', true), limit(10))),
           getDocs(query(collection(firestore, 'blogPosts'), where('status', '==', 'PUBLISHED'), limit(5))),
@@ -98,52 +97,33 @@ const tripAdvisorFlow = ai.defineFlow(
 
         const blogList = blogsSnap.status === 'fulfilled' ? blogsSnap.value.docs.map(d => {
           const data = d.data();
-          return `- [JOURNAL] ${data.title}: ${data.excerpt?.slice(0, 80)}... URL: /blog/${data.slug}`;
+          return `- [JOURNAL] ${data.title}: URL: /blog/${data.slug}`;
         }).join('\n') : '';
 
         const destList = destsSnap.status === 'fulfilled' ? destsSnap.value.docs.map(d => {
           const data = d.data();
-          return `- [HUB] ${data.name}: ${data.description?.slice(0, 120)}... URL: /destinations/${data.slug}`;
+          return `- [HUB] ${data.name}: URL: /destinations/${data.slug}`;
         }).join('\n') : '';
 
         if (pkgList || blogList || destList) {
-          liveContext = `
-### LIVE SITE REGISTRY (FACTS):
-PACKAGES:
-${pkgList || 'None.'}
-
-DESTINATIONS:
-${destList || 'None.'}
-
-ARTICLES:
-${blogList || 'None.'}
-`;
+          liveContext = `### LIVE SITE REGISTRY (FACTS):\nPACKAGES:\n${pkgList}\n\nDESTINATIONS:\n${destList}\n\nARTICLES:\n${blogList}`;
         }
       }
     } catch (e) {
-      console.warn("RAG Handshake Bypassed or Initialization Failed:", e);
+      console.warn("RAG Handshake Bypassed:", e);
     }
 
-    try {
-      const { output } = await advisorPrompt({
-        ...input,
-        liveContext: liveContext || ""
-      }, {
-        messages: input.history?.map(h => ({ 
-          role: h.role === 'model' ? 'model' : 'user', 
-          content: [{ text: h.content }] 
-        })) || []
-      });
+    const { output } = await advisorPrompt({
+      ...input,
+      liveContext
+    }, {
+      messages: input.history?.map(h => ({ 
+        role: h.role === 'model' ? 'model' : 'user', 
+        content: [{ text: h.content }] 
+      })) || []
+    });
 
-      if (!output) throw new Error('AI Generation Failed');
-      return output;
-    } catch (err) {
-      console.error("Genkit Flow Inner Error:", err);
-      return {
-        response: "Entschuldigung, in der Savanne herrscht gerade Funkstille. Wir synchronisieren unsere Daten mit Berlin. Wie kann ich Ihnen direkt behilflich sein?",
-        suggestedAction: "Kontakt aufnehmen",
-        suggestedRoute: "/contact"
-      };
-    }
+    if (!output) throw new Error('AI Generation Failed');
+    return output;
   }
 );
