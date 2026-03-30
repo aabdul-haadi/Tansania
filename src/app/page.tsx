@@ -50,7 +50,7 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
                 className="space-y-4 md:space-y-6"
               >
-                <div className="inline-flex items-center gap-2 text-primary font-bold text-[9px] md:text-10px] uppercase tracking-[0.4em] mb-2">
+                <div className="inline-flex items-center gap-2 text-primary font-bold text-[9px] md:text-[10px] uppercase tracking-[0.4em] mb-2">
                   <Compass className="w-4 h-4" /> Official Site Registry
                 </div>
                 <h1 className="font-headline text-4xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] tracking-tight uppercase">

@@ -47,7 +47,7 @@ export function VisualJournalGrid() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: idx * 0.1 }}
-              className={`relative rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden group shadow-2xl ${img.className}`}
+              className={`relative rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden group shadow-2xl border border-white/5 ${img.className}`}
             >
               <Image 
                 src={img.src} 
@@ -56,8 +56,17 @@ export function VisualJournalGrid() {
                 className="object-cover transition-transform duration-1000 group-hover:scale-105" 
                 data-ai-hint={img.hint}
               />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
-              <div className="absolute inset-0 border border-white/5 rounded-[1.5rem] md:rounded-[2.5rem] pointer-events-none" />
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-transparent transition-colors duration-500" />
+              
+              {/* Subtle architectural frame */}
+              <div className="absolute inset-0 border border-white/10 rounded-[1.5rem] md:rounded-[2.5rem] pointer-events-none z-20 group-hover:border-primary/20 transition-colors" />
+              
+              {/* Modern glass indicator */}
+              <div className="absolute bottom-6 right-6 z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full">
+                  <p className="text-[8px] font-black text-white uppercase tracking-widest">Detail View</p>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
