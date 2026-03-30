@@ -1,20 +1,15 @@
-
 "use client";
 
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ShieldCheck, ArrowRight, Sparkles, Globe, Compass, ChevronRight } from 'lucide-react';
+import { ArrowRight, Compass, Globe, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { SafariMap } from '@/components/sections/SafariMap';
-import { ImmersiveReveal } from '@/components/sections/ImmersiveReveal';
-import { CinematicQuote } from '@/components/sections/CinematicQuote';
 import { Testimonials } from '@/components/sections/Testimonials';
-import { KilimanjaroSummit } from '@/components/home/KilimanjaroSummit';
-import { ZanzibarEscape } from '@/components/home/ZanzibarEscape';
-import { SafariVideo } from '@/components/sections/SafariVideo';
+import { CinematicQuote } from '@/components/sections/CinematicQuote';
 import { FAQ } from '@/components/sections/FAQ';
 import { ExpertiseNarrative } from '@/components/sections/ExpertiseNarrative';
 import { AfricaVariety } from '@/components/sections/AfricaVariety';
@@ -23,7 +18,6 @@ import { TrustStrip } from '@/components/sections/TrustStrip';
 import { ProcessSection } from '@/components/sections/ProcessSection';
 import { AtmosphericGallery } from '@/components/sections/AtmosphericGallery';
 import { FeaturedPackages } from '@/components/sections/FeaturedPackages';
-import { SunriseCTA } from '@/components/sections/SunriseCTA';
 
 export default function Home() {
   return (
@@ -151,8 +145,7 @@ export default function Home() {
       {/* 10 LEAD-FORMULAR */}
       <ContactSection />
 
-      {/* 11 FINALER CTA */}
-      <SunriseCTA />
+      {/* 11 Finaler CTA removed as requested */}
     </div>
   );
 }

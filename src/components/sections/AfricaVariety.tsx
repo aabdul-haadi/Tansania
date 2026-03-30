@@ -89,7 +89,7 @@ export function AfricaVariety() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="font-headline text-3xl md:text-5xl font-bold leading-[0.9] text-foreground uppercase tracking-tighter"
+              className="font-headline text-xl md:text-3xl font-bold leading-[0.9] text-foreground uppercase tracking-tighter"
             >
               Entdecke Afrika in seiner <br />
               <span className="text-primary">ganzen Vielfalt</span>
