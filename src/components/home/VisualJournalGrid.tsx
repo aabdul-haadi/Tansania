@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -9,25 +10,25 @@ const journalImages = [
   { 
     src: "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200", 
     hint: "serengeti herds", 
-    className: "md:col-span-7 md:row-span-4",
+    className: "md:col-span-8 md:row-span-6",
     aspect: "aspect-[4/5] md:aspect-auto"
   },
   { 
     src: "https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800", 
     hint: "safari jeep", 
-    className: "md:col-span-5 md:row-span-2",
+    className: "md:col-span-4 md:row-span-3",
     aspect: "aspect-square md:aspect-auto"
   },
   { 
     src: "https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=800", 
     hint: "elephant savannah", 
-    className: "md:col-span-5 md:row-span-2",
+    className: "md:col-span-4 md:row-span-3",
     aspect: "aspect-square md:aspect-auto"
   },
   { 
     src: "https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=1200", 
     hint: "zanzibar water", 
-    className: "md:col-span-12 md:row-span-2",
+    className: "md:col-span-12 md:row-span-3",
     aspect: "aspect-[21/9] md:aspect-auto"
   }
 ];
@@ -36,6 +37,7 @@ export function VisualJournalGrid() {
   return (
     <section className="py-10 md:py-20 bg-white overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
+        {/* Header Registry */}
         <div className="flex flex-col md:flex-row items-end justify-between mb-10 md:mb-16 gap-6">
           <div className="max-w-2xl">
             <motion.div
@@ -51,7 +53,7 @@ export function VisualJournalGrid() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="font-headline text-2xl md:text-5xl font-bold text-secondary uppercase tracking-tighter leading-none"
+              className="font-headline text-3xl md:text-5xl font-bold text-secondary uppercase tracking-tighter leading-[0.9]"
             >
               DIE WILDNIS <br /><span className="text-primary">SPÜREN</span>
             </motion.h2>
@@ -67,8 +69,8 @@ export function VisualJournalGrid() {
           </motion.p>
         </div>
 
-        {/* Unique Asymmetric Registry Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 md:h-[900px]">
+        {/* High-Performance Bento Architecture */}
+        <div className="grid grid-cols-1 md:grid-cols-12 md:grid-rows-9 gap-4 md:gap-6 md:h-[1000px]">
           {journalImages.map((img, idx) => (
             <motion.div
               key={idx}
@@ -77,26 +79,34 @@ export function VisualJournalGrid() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: idx * 0.1 }}
               className={cn(
-                "relative rounded-[2rem] md:rounded-[3.5rem] overflow-hidden group shadow-prestige border border-border/50",
+                "relative rounded-[2rem] md:rounded-[3.5rem] overflow-hidden group shadow-prestige border border-border/50 bg-muted",
                 img.className,
                 img.aspect
               )}
             >
               <Image 
                 src={img.src} 
-                alt="Safari Visual" 
+                alt="Safari Visual Asset" 
                 fill 
                 className="object-cover transition-transform duration-1000 group-hover:scale-105" 
                 data-ai-hint={img.hint}
               />
               
               {/* Prestige Overlay Protocol */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
               {/* Floating Metadata Tag */}
-              <div className="absolute bottom-8 right-8 z-30 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+              <div className="absolute bottom-6 right-6 md:bottom-10 md:right-10 z-30 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
                 <div className="px-5 py-2.5 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full shadow-2xl">
-                  <p className="text-[8px] font-black text-white uppercase tracking-[0.3em]">Registry Asset No. {idx + 1}</p>
+                  <p className="text-[8px] font-black text-white uppercase tracking-[0.3em]">Captured by SDL Expert • Asset {idx + 1}</p>
+                </div>
+              </div>
+
+              {/* Status Indicator Overlays */}
+              <div className="absolute top-6 left-6 md:top-10 md:left-10 z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="flex items-center gap-2 px-3 py-1 bg-primary/20 backdrop-blur-md rounded-full border border-primary/30">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                  <span className="text-[7px] font-black text-white uppercase tracking-[0.2em]">Live Registry</span>
                 </div>
               </div>
 
