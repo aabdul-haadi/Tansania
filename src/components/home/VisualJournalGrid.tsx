@@ -37,8 +37,8 @@ export function VisualJournalGrid() {
   return (
     <section className="py-10 md:py-20 bg-white overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
-        {/* Header Registry */}
-        <div className="flex flex-col md:flex-row items-end justify-between mb-10 md:mb-16 gap-6">
+        {/* Header Registry - Fixed Mobile Alignment */}
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-10 md:mb-16 gap-6">
           <div className="max-w-2xl">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -92,17 +92,14 @@ export function VisualJournalGrid() {
                 data-ai-hint={img.hint}
               />
               
-              {/* Prestige Overlay Protocol */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
-              {/* Floating Metadata Tag */}
               <div className="absolute bottom-6 right-6 md:bottom-10 md:right-10 z-30 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
                 <div className="px-5 py-2.5 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full shadow-2xl">
                   <p className="text-[8px] font-black text-white uppercase tracking-[0.3em]">Captured by SDL Expert • Asset {idx + 1}</p>
                 </div>
               </div>
 
-              {/* Status Indicator Overlays */}
               <div className="absolute top-6 left-6 md:top-10 md:left-10 z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                 <div className="flex items-center gap-2 px-3 py-1 bg-primary/20 backdrop-blur-md rounded-full border border-primary/30">
                   <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
@@ -110,7 +107,6 @@ export function VisualJournalGrid() {
                 </div>
               </div>
 
-              {/* Architectural Border Guard */}
               <div className="absolute inset-0 border border-white/5 rounded-[2rem] md:rounded-[3.5rem] pointer-events-none z-20 group-hover:border-primary/20 transition-colors" />
             </motion.div>
           ))}

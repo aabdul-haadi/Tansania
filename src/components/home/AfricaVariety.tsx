@@ -26,9 +26,10 @@ export function AfricaVariety() {
   }, []);
 
   return (
-    <section className="py-8 md:py-16 bg-background">
+    <section className="py-10 md:py-20 bg-background">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="flex flex-col md:flex-row items-end justify-between gap-6 mb-8 md:mb-12">
+        {/* Header Registry - Fixed Mobile Alignment */}
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-10 md:mb-16">
           <div className="max-w-xl">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
