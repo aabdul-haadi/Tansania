@@ -1,10 +1,11 @@
+
 "use client";
 
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ShieldCheck, ArrowRight, Sparkles, Globe, Compass } from 'lucide-react';
+import { ShieldCheck, ArrowRight, Sparkles, Globe, Compass, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { SafariMap } from '@/components/sections/SafariMap';
@@ -16,14 +17,20 @@ import { ZanzibarEscape } from '@/components/home/ZanzibarEscape';
 import { SafariVideo } from '@/components/sections/SafariVideo';
 import { FAQ } from '@/components/sections/FAQ';
 import { ExpertiseNarrative } from '@/components/sections/ExpertiseNarrative';
-import { MeetTheSpecialists } from '@/components/sections/MeetTheSpecialists';
 import { AfricaVariety } from '@/components/sections/AfricaVariety';
 import { ContactSection } from '@/components/shared/ContactSection';
+import { TrustStrip } from '@/components/sections/TrustStrip';
+import { ProcessSection } from '@/components/sections/ProcessSection';
+import { AtmosphericGallery } from '@/components/sections/AtmosphericGallery';
+import { FeaturedPackages } from '@/components/sections/FeaturedPackages';
+import { SunriseCTA } from '@/components/sections/SunriseCTA';
 
 export default function Home() {
   return (
     <div className="relative bg-background">
-      {/* COMPACTED PRESTIGE HERO */}
+      {/* 01 Navigation managed via Layout */}
+      
+      {/* 02 HERO SECTION */}
       <section className="relative min-h-[80vh] md:min-h-screen flex items-center overflow-hidden bg-secondary">
         <div className="absolute inset-0 z-0">
           <Image 
@@ -48,6 +55,9 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
                 className="space-y-4 md:space-y-6"
               >
+                <div className="inline-flex items-center gap-2 text-primary font-bold text-[9px] md:text-[10px] uppercase tracking-[0.4em] mb-2">
+                  <Compass className="w-4 h-4" /> Official Site Registry
+                </div>
                 <h1 className="font-headline text-4xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] tracking-tight uppercase">
                   TANSANIA <br />
                   <span className="text-primary">PRESTIGE</span>
@@ -76,28 +86,6 @@ export default function Home() {
                   </Button>
                 </Link>
               </motion.div>
-
-              <motion.div 
-                initial={{ opacity: 0 }} 
-                animate={{ opacity: 1 }} 
-                transition={{ delay: 0.6 }}
-                className="flex items-center justify-center lg:justify-start gap-6 md:gap-8 pt-6 md:pt-8 border-t border-white/10 max-w-md mx-auto lg:mx-0"
-              >
-                <div className="flex flex-col text-white">
-                  <span className="font-bold text-xl md:text-2xl">500+</span>
-                  <span className="text-[8px] md:text-[9px] text-white/40 uppercase tracking-widest font-bold">Paths</span>
-                </div>
-                <div className="w-px h-8 md:h-10 bg-white/10" />
-                <div className="flex flex-col text-white">
-                  <span className="font-bold text-xl md:text-2xl">100%</span>
-                  <span className="text-[8px] md:text-[9px] text-white/40 uppercase tracking-widest font-bold">Privat</span>
-                </div>
-                <div className="w-px h-8 md:h-10 bg-white/10" />
-                <div className="flex flex-col text-white">
-                  <span className="font-bold text-xl md:text-2xl">24/7</span>
-                  <span className="text-[8px] md:text-[9px] text-white/40 uppercase tracking-widest font-bold">Support</span>
-                </div>
-              </motion.div>
             </div>
 
             <div className="lg:col-span-5 hidden lg:block">
@@ -109,7 +97,7 @@ export default function Home() {
               >
                 <div className="absolute inset-0 bg-primary/10 blur-[100px] rounded-full" />
                 <Card className="bg-white/10 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-8 relative overflow-hidden group shadow-2xl">
-                  <div className="absolute top-0 right-0 p-6 opacity-5"><Compass className="w-24 h-24 rotate-12" /></div>
+                  <div className="absolute top-0 right-0 p-6 opacity-5"><Globe className="w-24 h-24 rotate-12" /></div>
                   <div className="relative z-10 space-y-6">
                     <div className="flex items-center gap-4">
                       <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center shadow-lg">
@@ -123,13 +111,6 @@ export default function Home() {
                     <p className="text-white/60 font-bold leading-relaxed text-sm uppercase tracking-widest">
                       Alle unsere Routen sind aktuell auf die Große Tierwanderung und regionale Wetterbedingungen 2026/2027 abgestimmt.
                     </p>
-                    <div className="pt-2 space-y-3">
-                      {["HanseMerkur Absicherung", "Deutsche Reiseleitung", "Bespoke Itinerary Architect"].map((feat, i) => (
-                        <div key={i} className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-white/80">
-                          <ShieldCheck className="w-4 h-4 text-primary" /> {feat}
-                        </div>
-                      ))}
-                    </div>
                   </div>
                 </Card>
               </motion.div>
@@ -139,37 +120,39 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-6 md:py-10 bg-white border-y border-border/50 relative z-30">
-        <div className="container mx-auto px-4 max-w-7xl">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {[
-              { icon: ShieldCheck, label: "Sicher Buchen" },
-              { icon: Sparkles, label: "Prestige Standard" },
-              { icon: Globe, label: "8 Country Hubs" },
-              { icon: Compass, label: "24/7 Support" }
-            ].map((item, idx) => (
-              <div key={idx} className="flex flex-col items-center gap-2 md:gap-3 group">
-                <item.icon className="w-5 h-5 md:w-6 md:h-6 text-primary transition-transform group-hover:scale-110" />
-                <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-muted-foreground">{item.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* 03 TRUST STRIP */}
+      <TrustStrip />
 
+      {/* 04 WARUM WIR */}
       <ExpertiseNarrative />
 
-      <SafariMap />
+      {/* 05 REISEZIELE / KONTINENTALE VIELFALT */}
       <AfricaVariety />
-      <SafariVideo />
-      <KilimanjaroSummit />
-      <ZanzibarEscape />
-      <MeetTheSpecialists />
-      <ImmersiveReveal />
+
+      {/* 06 SO FUNKTIONIERT ES */}
+      <ProcessSection />
+
+      {/* EXPEDITIONSLOGISTIK */}
+      <SafariMap />
+
+      {/* 07 KUNDENSTIMMEN */}
       <Testimonials />
       <CinematicQuote />
+
+      {/* 08 SAFARI-PAKETE */}
+      <FeaturedPackages />
+
+      {/* 09 FOTO-GALERIE */}
+      <AtmosphericGallery />
+
+      {/* 12 FAQ */}
       <FAQ />
+
+      {/* 10 LEAD-FORMULAR */}
       <ContactSection />
+
+      {/* 11 FINALER CTA */}
+      <SunriseCTA />
     </div>
   );
 }

@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useRef } from 'react';
@@ -5,10 +6,10 @@ import { motion, useScroll, useSpring } from 'framer-motion';
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const destinations = [
-  { id: 'cairo', name: 'Kairo', x: 100, y: 40, desc: 'Das Tor zum Nil' },
-  { id: 'serengeti', name: 'Serengeti', x: 80, y: 120, desc: 'Herz der Wildnis' },
-  { id: 'ngorongoro', name: 'Krater', x: 100, y: 160, desc: 'Vulkanischer Garten' },
-  { id: 'zanzibar', name: 'Sansibar', x: 140, y: 200, desc: 'Gewürzküste' },
+  { id: 'cairo', name: 'Kairo Registry', x: 100, y: 40, desc: 'Berlin-Kairo-Achse' },
+  { id: 'serengeti', name: 'Serengeti Hub', x: 80, y: 120, desc: 'Expeditions-Zentrum' },
+  { id: 'ngorongoro', name: 'Krater Logistik', x: 100, y: 160, desc: 'Wildlife Monitoring' },
+  { id: 'zanzibar', name: 'Sansibar Port', x: 140, y: 200, desc: 'Finaler Relax-Punkt' },
 ];
 
 export function SafariMap() {
@@ -46,7 +47,7 @@ export function SafariMap() {
               <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-3 block">
                 Expeditionslogistik
               </span>
-              <h2 className="font-headline text-3xl md:text-5xl font-bold leading-tight text-white uppercase tracking-tight">
+              <h2 className="font-headline text-3xl md:text-6xl font-bold leading-tight text-white uppercase tracking-tight">
                 Von Kairo in die <span className="text-primary">Savanne</span>
               </h2>
             </div>
@@ -96,14 +97,10 @@ export function SafariMap() {
                   </linearGradient>
                 </defs>
                 
-                {/* Topographic Accents */}
                 <g className="opacity-[0.05] stroke-white">
                   <circle cx="100" cy="120" r="100" strokeWidth="0.5" strokeDasharray="2 4" />
-                  <path d="M0 80 C 50 60, 150 100, 200 70" strokeWidth="0.5" />
-                  <path d="M0 180 C 50 200, 150 160, 200 190" strokeWidth="0.5" />
                 </g>
 
-                {/* Journey Trace Background */}
                 <path 
                   d={journeyPath} 
                   stroke="rgba(255,255,255,0.08)" 
@@ -112,7 +109,6 @@ export function SafariMap() {
                   strokeLinejoin="round" 
                 />
 
-                {/* Active Animated Path */}
                 <motion.path 
                   d={journeyPath} 
                   stroke="url(#glowGradient)" 
@@ -123,25 +119,14 @@ export function SafariMap() {
                   filter="url(#glow)"
                 />
 
-                {/* Dynamic Destination Nodes */}
-                {destinations.map((dest, i) => (
-                  <g key={dest.id}>
-                    {/* Main Node */}
-                    <circle 
-                      cx={dest.x} 
-                      cy={dest.y} 
-                      r="5" 
-                      className="fill-primary"
-                    />
-                    {/* Labels */}
-                    <text
-                      x={dest.x + 12}
-                      y={dest.y + 4}
-                      className="fill-white/30 text-[7px] font-bold uppercase tracking-[0.2em] hidden md:block pointer-events-none"
-                    >
-                      {dest.name}
-                    </text>
-                  </g>
+                {destinations.map((dest) => (
+                  <circle 
+                    key={dest.id}
+                    cx={dest.x} 
+                    cy={dest.y} 
+                    r="5" 
+                    className="fill-primary"
+                  />
                 ))}
               </svg>
             </div>
