@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -7,23 +8,23 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Compass, Globe, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { SafariMap } from '@/components/sections/SafariMap';
-import { Testimonials } from '@/components/sections/Testimonials';
-import { CinematicQuote } from '@/components/sections/CinematicQuote';
-import { FAQ } from '@/components/sections/FAQ';
-import { ExpertiseNarrative } from '@/components/sections/ExpertiseNarrative';
-import { AfricaVariety } from '@/components/sections/AfricaVariety';
+
+// HOMEPAGE REGISTRY COMPONENTS
+import { SafariMap } from '@/components/home/SafariMap';
+import { Testimonials } from '@/components/home/Testimonials';
+import { CinematicQuote } from '@/components/home/CinematicQuote';
+import { FAQ } from '@/components/home/FAQ';
+import { ExpertiseNarrative } from '@/components/home/ExpertiseNarrative';
+import { AfricaVariety } from '@/components/home/AfricaVariety';
 import { ContactSection } from '@/components/shared/ContactSection';
-import { TrustStrip } from '@/components/sections/TrustStrip';
-import { ProcessSection } from '@/components/sections/ProcessSection';
-import { AtmosphericGallery } from '@/components/sections/AtmosphericGallery';
-import { FeaturedPackages } from '@/components/sections/FeaturedPackages';
+import { TrustStrip } from '@/components/home/TrustStrip';
+import { ProcessSection } from '@/components/home/ProcessSection';
+import { VisualJournalGrid } from '@/components/home/VisualJournalGrid';
+import { FeaturedPackages } from '@/components/home/FeaturedPackages';
 
 export default function Home() {
   return (
     <div className="relative bg-background">
-      {/* 01 Navigation managed via Layout */}
-      
       {/* 02 HERO SECTION */}
       <section className="relative min-h-[80vh] md:min-h-screen flex items-center overflow-hidden bg-secondary">
         <div className="absolute inset-0 z-0">
@@ -49,7 +50,7 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
                 className="space-y-4 md:space-y-6"
               >
-                <div className="inline-flex items-center gap-2 text-primary font-bold text-[9px] md:text-[10px] uppercase tracking-[0.4em] mb-2">
+                <div className="inline-flex items-center gap-2 text-primary font-bold text-[9px] md:text-10px] uppercase tracking-[0.4em] mb-2">
                   <Compass className="w-4 h-4" /> Official Site Registry
                 </div>
                 <h1 className="font-headline text-4xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] tracking-tight uppercase">
@@ -120,7 +121,7 @@ export default function Home() {
       {/* 04 WARUM WIR */}
       <ExpertiseNarrative />
 
-      {/* 05 REISEZIELE / KONTINENTALE VIELFALT */}
+      {/* 05 REISEZIELE */}
       <AfricaVariety />
 
       {/* 06 SO FUNKTIONIERT ES */}
@@ -137,15 +138,13 @@ export default function Home() {
       <FeaturedPackages />
 
       {/* 09 FOTO-GALERIE */}
-      <AtmosphericGallery />
+      <VisualJournalGrid />
 
       {/* 12 FAQ */}
       <FAQ />
 
       {/* 10 LEAD-FORMULAR */}
       <ContactSection />
-
-      {/* 11 Finaler CTA removed as requested */}
     </div>
   );
 }

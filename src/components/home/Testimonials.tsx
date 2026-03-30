@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -40,12 +41,12 @@ export function Testimonials() {
   }, [api]);
 
   return (
-    <section className="py-10 md:py-16 bg-white overflow-hidden border-y border-border/50">
+    <section className="py-8 md:py-12 bg-white overflow-hidden border-y border-border/50">
       <div className="container mx-auto px-4 max-w-4xl text-center">
         <Carousel setApi={setApi} opts={{ loop: true, align: "center" }} className="w-full">
           <CarouselContent>
             {testimonials.map((item, idx) => (
-              <CarouselItem key={idx} className="flex flex-col items-center">
+              <CarouselItem key={idx} className="flex flex-col items-center text-center">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={current}
@@ -53,9 +54,9 @@ export function Testimonials() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.5 }}
-                    className="space-y-4"
+                    className="space-y-3"
                   >
-                    <blockquote className="font-headline text-lg md:text-3xl font-bold leading-tight text-foreground uppercase tracking-tighter max-w-2xl mx-auto">
+                    <blockquote className="font-headline text-lg md:text-2xl font-bold leading-tight text-foreground uppercase tracking-tighter max-w-2xl mx-auto">
                       „{item.quote}“
                     </blockquote>
                     <div className="space-y-0.5">
@@ -70,7 +71,7 @@ export function Testimonials() {
             ))}
           </CarouselContent>
         </Carousel>
-        <div className="flex justify-center items-center gap-1.5 mt-6">
+        <div className="flex justify-center items-center gap-1.5 mt-4">
           {testimonials.map((_, idx) => (
             <button
               key={idx}
