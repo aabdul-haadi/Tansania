@@ -53,7 +53,7 @@ export default function Home() {
           <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         </div>
         
-        <div className="container relative z-10 mx-auto px-4 max-w-7xl h-full flex flex-col justify-center md:pt-16">
+        <div className="container relative z-10 mx-auto px-4 max-w-7xl h-full flex flex-col justify-end pb-16 md:justify-center md:pb-0 md:pt-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-center">
             
             <div className="lg:col-span-8 space-y-3 md:space-y-4 text-center lg:text-left">
@@ -74,7 +74,7 @@ export default function Home() {
                 </div>
                 
                 {/* Unified Narrative Promise */}
-                <p className="max-w-md mx-auto lg:mx-0 text-white font-bold text-[10px] sm:text-xs md:text-sm uppercase tracking-widest leading-relaxed pt-20 md:pt-0">
+                <p className="max-w-md mx-auto lg:mx-0 text-white font-bold text-[10px] sm:text-xs md:text-sm uppercase tracking-widest leading-relaxed">
                   Experten-gestaltete Safaris & exklusive Sansibar-Fluchten.
                   <br />
                   In Berlin konzipiert – in Afrika gelebt.
@@ -111,9 +111,16 @@ export default function Home() {
             transition={{ delay: 0.6 }}
             className="flex flex-col items-center md:items-end gap-2"
           >
-            <button className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center text-white hover:bg-primary hover:border-primary transition-all duration-500 group shadow-2xl">
+            <motion.button 
+              animate={{ 
+                boxShadow: ["0 0 0px rgba(227, 81, 13, 0)", "0 0 20px rgba(227, 81, 13, 0.3)", "0 0 0px rgba(227, 81, 13, 0)"],
+                scale: [1, 1.05, 1]
+              }}
+              transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+              className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center text-white hover:bg-primary hover:border-primary transition-all duration-500 group shadow-2xl"
+            >
               <Play className="w-4 h-4 md:w-5 md:h-5 fill-current group-hover:scale-110 transition-transform ml-1" />
-            </button>
+            </motion.button>
             <div className="text-center md:text-right">
               <p className="text-[6px] md:text-[7px] font-black text-white/40 uppercase tracking-[0.4em]">Visual Discovery</p>
               <p className="text-[8px] md:text-[9px] font-black text-white uppercase tracking-widest">Watch Expedition Film</p>
