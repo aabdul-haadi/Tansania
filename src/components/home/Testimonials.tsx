@@ -46,15 +46,15 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="py-16 md:py-32 bg-white overflow-hidden">
+    <section className="py-12 md:py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
         {/* Section Header */}
-        <div className="text-center mb-12 md:mb-20 space-y-4">
+        <div className="text-center mb-10 md:mb-16 space-y-2">
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-3xl md:text-5xl font-normal text-[#3A3634] uppercase tracking-tighter"
+            className="font-headline text-2xl md:text-4xl font-normal text-[#3A3634] uppercase tracking-tighter"
           >
             Was unsere Gäste sagen
           </motion.h2>
@@ -63,7 +63,7 @@ export function Testimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-[#8A8581] font-normal text-xs md:text-sm uppercase tracking-widest opacity-80"
+            className="text-[#8A8581] font-normal text-[10px] md:text-xs uppercase tracking-widest opacity-80"
           >
             Authentische Erfahrungen von zufriedenen Reisenden
           </motion.p>
@@ -103,29 +103,29 @@ export function Testimonials() {
 
 function TestimonialCard({ item }: { item: any }) {
   return (
-    <div className="bg-white rounded-xl p-8 shadow-sm border border-border/40 h-full flex flex-col transition-all duration-500 hover:shadow-md">
+    <div className="bg-white rounded-xl p-6 md:p-8 shadow-sm border border-border/40 h-full flex flex-col transition-all duration-500 hover:shadow-md">
       {/* Gold Stars Protocol */}
-      <div className="flex gap-1 mb-6">
+      <div className="flex gap-1 mb-5">
         {[...Array(5)].map((_, i) => (
-          <Star key={i} className="w-4 h-4 fill-[#C9A876] text-[#C9A876]" />
+          <Star key={i} className="w-3.5 h-3.5 fill-[#C9A876] text-[#C9A876]" />
         ))}
       </div>
 
       {/* Narrative Body */}
-      <div className="flex-grow mb-8">
-        <p className="text-[14px] md:text-[15px] leading-[1.6] text-[#8A8581] font-normal italic">
+      <div className="flex-grow mb-6">
+        <p className="text-[13px] md:text-[14px] leading-[1.6] text-[#8A8581] font-normal italic">
           "{item.quote}"
         </p>
       </div>
 
-      <Separator className="bg-border/40 mb-6" />
+      <Separator className="bg-border/40 mb-5" />
 
       {/* Sign-off Registry */}
       <div className="space-y-1">
-        <p className="text-[14px] font-bold text-[#3A3634] uppercase tracking-tight">
+        <p className="text-[13px] font-bold text-[#3A3634] uppercase tracking-tight">
           {item.author}
         </p>
-        <p className="text-[11px] font-normal text-[#8A8581] uppercase tracking-widest opacity-70">
+        <p className="text-[10px] font-normal text-[#8A8581] uppercase tracking-widest opacity-70">
           {item.category}
         </p>
       </div>

@@ -54,14 +54,14 @@ const SIGNATURE_REISEN = [
 
 export function FeaturedPackages() {
   return (
-    <section className="py-16 md:py-32 bg-white relative z-10">
+    <section className="py-12 md:py-24 bg-white relative z-10">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center mb-16 md:mb-24 space-y-4">
+        <div className="text-center mb-12 md:mb-16 space-y-2">
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-3xl md:text-5xl font-normal text-[#3A3634] uppercase tracking-tighter"
+            className="font-headline text-2xl md:text-4xl font-normal text-[#3A3634] uppercase tracking-tighter"
           >
             Unsere Signature Reisen
           </motion.h2>
@@ -70,7 +70,7 @@ export function FeaturedPackages() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-[#8A8581] font-normal text-[11px] md:text-[14px] max-w-2xl mx-auto leading-relaxed"
+            className="text-[#8A8581] font-normal text-[10px] md:text-[13px] max-w-2xl mx-auto leading-relaxed"
           >
             Sorgfältig komponierte Reiserouten – als Inspiration oder Ausgangspunkt für <br className="hidden md:block" /> Ihre individuelle Planung
           </motion.p>

@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -53,14 +54,14 @@ const categories = [
 
 export function TravelCategories() {
   return (
-    <section className="pt-8 pb-16 md:pt-12 md:pb-24 bg-white">
+    <section className="pt-8 pb-12 md:pt-12 md:pb-24 bg-white">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center mb-12 md:mb-16 space-y-3">
+        <div className="text-center mb-10 md:mb-16 space-y-2">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tighter"
+            className="font-headline text-2xl md:text-4xl font-normal text-secondary uppercase tracking-tighter"
           >
             Welche Reise passt zu Ihnen?
           </motion.h2>
@@ -69,7 +70,7 @@ export function TravelCategories() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground font-normal text-[10px] md:text-sm uppercase tracking-widest max-w-xl mx-auto opacity-80"
+            className="text-muted-foreground font-normal text-[10px] md:text-xs uppercase tracking-widest max-w-xl mx-auto opacity-80"
           >
             Entdecken Sie unsere sorgfältig kuratierten Reisekategorien
           </motion.p>
@@ -83,7 +84,7 @@ export function TravelCategories() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="group relative aspect-[16/11] md:aspect-[4/3] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-xl bg-muted border border-border/50"
+              className="group relative aspect-[16/11] md:aspect-[4/3] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-xl bg-muted border border-border/50"
             >
               <Image 
                 src={cat.img} 
@@ -95,7 +96,7 @@ export function TravelCategories() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
               
-              <div className="absolute inset-0 p-8 md:p-10 flex flex-col justify-end">
+              <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end">
                 <h3 className="text-white font-headline text-lg md:text-2xl font-normal uppercase tracking-tight mb-2">
                   {cat.title}
                 </h3>

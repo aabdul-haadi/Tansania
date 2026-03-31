@@ -4,7 +4,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Zap, Compass, ArrowRight } from 'lucide-react';
+import { Zap, ArrowRight } from 'lucide-react';
 import { TravelCategories } from '@/components/home/TravelCategories';
 import { FeaturedPackages } from '@/components/home/FeaturedPackages';
 import { WhyUs } from '@/components/home/WhyUs';
@@ -38,7 +38,7 @@ export default function Home() {
         </Link>
       </div>
 
-      {/* HERO SECTION - 100% SS CLONE */}
+      {/* HERO SECTION - COMPACTED CLONE */}
       <section className="relative min-h-[85vh] md:min-h-screen flex items-center overflow-hidden bg-secondary">
         {/* Background Visual Asset */}
         <div className="absolute inset-0 z-0">
@@ -54,51 +54,51 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
         </div>
 
-        {/* Massive Background Wordmark - Precise SS Protocol */}
+        {/* Massive Background Wordmark - Compacted Protocol */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-10 overflow-hidden">
           <motion.h2 
             initial={{ opacity: 0, scale: 1.1 }}
             animate={{ opacity: 0.15, scale: 1 }}
             transition={{ duration: 2 }}
-            className="font-headline font-bold text-[20vw] lg:text-[25vw] text-white uppercase tracking-[0.2em] leading-none whitespace-nowrap"
+            className="font-headline font-bold text-[20vw] lg:text-[20vw] text-white uppercase tracking-[0.2em] leading-none whitespace-nowrap"
           >
             TANSANIA
           </motion.h2>
         </div>
         
         <div className="container relative z-20 mx-auto px-6 md:px-10 max-w-7xl h-full flex flex-col justify-center pt-20">
-          <div className="max-w-3xl space-y-8 md:space-y-12">
+          <div className="max-w-3xl space-y-6 md:space-y-10">
             <motion.div 
               initial={{ opacity: 0, x: -30 }} 
               animate={{ opacity: 1, x: 0 }} 
               transition={{ duration: 0.8 }}
-              className="space-y-6 md:space-y-8"
+              className="space-y-4 md:space-y-6"
             >
-              {/* Main Architectural Headline */}
-              <h1 className="font-headline font-normal text-white text-4xl md:text-6xl lg:text-8xl leading-[1.1] tracking-tighter uppercase">
+              {/* Main Architectural Headline - Compacted */}
+              <h1 className="font-headline font-normal text-white text-3xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tighter uppercase">
                 Ihre maßgeschneiderte <br />
                 Luxusreise durch Tansania
               </h1>
               
-              {/* Narrative Description */}
-              <p className="max-w-xl text-white/90 font-normal text-sm md:text-xl leading-relaxed opacity-90">
+              {/* Narrative Description - Compacted */}
+              <p className="max-w-xl text-white/90 font-normal text-[13px] md:text-lg leading-relaxed opacity-90">
                 Erleben Sie exklusive Safaris, handverlesene Lodges und unvergessliche Momente. Persönlich geplant, individuell gestaltet.
               </p>
 
-              {/* Technical Registry Small Footer */}
+              {/* Technical Registry Small Footer - Compacted */}
               <div className="pt-4 border-t border-white/10">
-                <p className="text-[10px] md:text-xs font-normal text-white/60 uppercase tracking-widest">
+                <p className="text-[9px] md:text-[11px] font-normal text-white/60 uppercase tracking-widest">
                   Über 15 Jahre Expertise · Deutschsprachige Betreuung · Premium-Reisen ab €5.000
                 </p>
               </div>
             </motion.div>
 
-            {/* Interaction Protocol Triggers */}
+            {/* Interaction Protocol Triggers - Desktop Only as per instruction */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }} 
               animate={{ opacity: 1, y: 0 }} 
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4"
+              className="hidden sm:flex flex-col sm:flex-row gap-4"
             >
               <Link href="/trip-planner">
                 <Button className="w-full sm:w-auto h-14 px-8 rounded-lg bg-white text-secondary hover:bg-primary hover:text-white transition-all duration-500 font-bold text-[10px] uppercase tracking-widest border-none group shadow-2xl">

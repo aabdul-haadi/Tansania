@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -61,12 +62,12 @@ export function TanzaniaDestinations() {
   return (
     <section className="pb-12 md:pb-24 pt-8 md:pt-12 bg-white">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center mb-12 md:mb-16 space-y-3">
+        <div className="text-center mb-10 md:mb-16 space-y-2">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tighter"
+            className="font-headline text-2xl md:text-4xl font-normal text-secondary uppercase tracking-tighter"
           >
             Entdecken Sie Tansania
           </motion.h2>
@@ -75,7 +76,7 @@ export function TanzaniaDestinations() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground font-normal text-[10px] md:text-sm uppercase tracking-widest max-w-xl mx-auto opacity-80"
+            className="text-muted-foreground font-normal text-[10px] md:text-xs uppercase tracking-widest max-w-xl mx-auto opacity-80"
           >
             Die schönsten Destinationen für Ihre individuelle Reise
           </motion.p>
@@ -109,7 +110,7 @@ function DestinationCard({ dest }: { dest: any }) {
       initial={{ opacity: 0, scale: 0.98 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
-      className="group relative aspect-[4/5] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-xl bg-muted transition-all duration-700 hover:shadow-2xl border border-border/50"
+      className="group relative aspect-[4/5] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-xl bg-muted transition-all duration-700 hover:shadow-2xl border border-border/50"
     >
       <Image 
         src={dest.img} 
@@ -121,7 +122,7 @@ function DestinationCard({ dest }: { dest: any }) {
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
       
-      <div className="absolute inset-0 p-8 md:p-10 flex flex-col justify-end">
+      <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end">
         <h3 className="text-white font-headline text-xl md:text-3xl font-normal uppercase tracking-tighter mb-2">
           {dest.name}
         </h3>
