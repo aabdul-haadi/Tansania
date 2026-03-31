@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -14,7 +13,7 @@ import { Testimonials } from '@/components/home/Testimonials';
 import { CinematicQuote } from '@/components/home/CinematicQuote';
 import { FAQ } from '@/components/home/FAQ';
 import { ExpertiseNarrative } from '@/components/home/ExpertiseNarrative';
-import { AfricaVariety } from '@/components/home/AfricaVariety';
+import { TanzaniaDestinations } from '@/components/home/TanzaniaDestinations';
 import { ContactSection } from '@/components/shared/ContactSection';
 import { TrustStrip } from '@/components/home/TrustStrip';
 import { ProcessSection } from '@/components/home/ProcessSection';
@@ -135,8 +134,8 @@ export default function Home() {
       {/* 04 WARUM WIR */}
       <ExpertiseNarrative />
 
-      {/* 05 REISEZIELE - Kontinentale Vielfalt */}
-      <AfricaVariety />
+      {/* 05 REISEZIELE - Regional Portfolio */}
+      <TanzaniaDestinations />
 
       {/* 06 SO FUNKTIONIERT ES */}
       <ProcessSection />
