@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -20,6 +19,7 @@ import { ProcessSection } from '@/components/home/ProcessSection';
 import { VisualJournalGrid } from '@/components/home/VisualJournalGrid';
 import { FeaturedPackages } from '@/components/home/FeaturedPackages';
 import { ExpertiseNarrative } from '@/components/home/ExpertiseNarrative';
+import { FinalCTA } from '@/components/home/FinalCTA';
 
 export default function Home() {
   return (
@@ -138,7 +138,7 @@ export default function Home() {
       {/* 07 CINEMATIC BREAKER */}
       <CinematicQuote />
 
-      {/* 08 EXPERTISE & SAFARI-PAKETE - PLACED BEFORE PROCESS SECTION */}
+      {/* 08 EXPERTISE & SAFARI-PAKETE */}
       <ExpertiseNarrative />
       <FeaturedPackages />
 
@@ -156,6 +156,9 @@ export default function Home() {
 
       {/* 12 FAQ */}
       <FAQ />
+
+      {/* 11 FINAL CTA PORTAL */}
+      <FinalCTA />
 
       {/* 10 LEAD-FORMULAR */}
       <ContactSection />

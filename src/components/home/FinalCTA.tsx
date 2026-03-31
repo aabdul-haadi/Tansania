@@ -1,0 +1,67 @@
+"use client";
+
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { ArrowRight, Phone } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+
+export function FinalCTA() {
+  return (
+    <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center justify-center overflow-hidden bg-secondary">
+      {/* Background Cinematic Asset */}
+      <div className="absolute inset-0 z-0">
+        <Image 
+          src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
+          alt="Tansania Safari Sunset Elephants" 
+          fill 
+          priority 
+          className="object-cover brightness-[0.4] scale-105"
+          data-ai-hint="safari sunset"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/60" />
+        <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+      </div>
+
+      {/* Content Protocol */}
+      <div className="container relative z-10 mx-auto px-4 max-w-5xl text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="space-y-8 md:space-y-12"
+        >
+          <div className="space-y-4 md:space-y-6">
+            <h2 className="font-headline text-3xl md:text-6xl lg:text-7xl font-bold text-white uppercase tracking-tighter leading-tight">
+              Bereit für Ihr <br />
+              <span className="text-primary">Tansania-Abenteuer?</span>
+            </h2>
+            <p className="text-white/90 font-bold text-[10px] md:text-lg uppercase tracking-widest max-w-2xl mx-auto leading-relaxed">
+              Lassen Sie uns gemeinsam Ihre individuelle Traumreise gestalten. <br className="hidden md:block" />
+              Persönlich, professionell und mit Leidenschaft für Afrika.
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 pt-4">
+            <Link href="/trip-planner" className="w-full sm:w-auto">
+              <Button size="lg" className="w-full sm:w-auto rounded-xl px-10 h-14 md:h-16 bg-white text-secondary hover:bg-primary hover:text-white transition-all duration-500 font-black text-[10px] md:text-xs uppercase tracking-[0.2em] shadow-2xl border-none group">
+                Kostenlose Beratung anfragen <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+            
+            <a href="tel:+493022608080" className="w-full sm:w-auto">
+              <Button size="lg" variant="outline" className="w-full sm:w-auto rounded-xl px-10 h-14 md:h-16 border-white/40 text-white hover:bg-white/10 backdrop-blur-md font-black text-[10px] md:text-xs uppercase tracking-[0.2em] group">
+                <Phone className="w-4 h-4 mr-2" /> Jetzt anrufen
+              </Button>
+            </a>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Technical Horizon Line */}
+      <div className="absolute bottom-0 inset-x-0 h-px bg-white/10" />
+    </section>
+  );
+}
