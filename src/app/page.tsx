@@ -56,11 +56,7 @@ export default function Home() {
         </div>
 
         {/* Massive Background Wordmark Protocol */}
-        <div className="absolute inset-0 z-0 flex items-center justify-center overflow-hidden pointer-events-none select-none">
-          <span className="text-[25vw] font-black text-white/[0.03] md:text-white/[0.05] uppercase tracking-tighter leading-none transform -translate-y-10">
-            Tansania
-          </span>
-        </div>
+      
 
         {/* Main Content Container */}
         <div className="container relative z-20 mx-auto px-6 md:px-10 max-w-7xl h-full flex flex-col justify-center pt-20 md:pt-0">

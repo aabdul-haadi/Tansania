@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -8,75 +9,110 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Plus } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 const faqs = [
   {
-    question: "Warum bei einer Berliner Agentur buchen?",
-    answer: "Tansania Reiseabenteuer SDL verbindet lokale Expertise vor Ort mit deutscher Sicherheit und Rechtssicherheit. Wir bieten persönliche Beratung in unserem Berliner Büro und sind 24/7 für Sie erreichbar."
+    question: "Wie läuft der Planungsprozess ab?",
+    answer: "Unser Prozess beginnt mit einem persönlichen Gespräch, in dem wir Ihre Wünsche aufnehmen. Daraufhin erstellen wir einen individuellen Erstentwurf, den wir gemeinsam mit Ihnen so lange verfeinern, bis er perfekt zu Ihren Vorstellungen passt."
   },
   {
-    question: "Wann findet die Große Tierwanderung statt?",
-    answer: "Die Migration ist ein ganzjähriger Kreislauf. Besonders spektakulär sind die Flussüberquerungen im Norden der Serengeti von Juli bis Oktober sowie die Kalbungszeit im Süden von Januar bis März."
+    question: "Kann ich online buchen und bezahlen?",
+    answer: "Ja, nach der Finalisierung Ihres Reiseplans erhalten Sie Zugang zu unserem sicheren Buchungsportal. Wir bieten verschiedene gesicherte Zahlungsmethoden an, die alle durch den Deutschen Reisesicherungsfonds abgesichert sind."
   },
   {
-    question: "Kann ich Safari mit Strandurlaub kombinieren?",
-    answer: "Absolut. Unsere 'Bush & Beach' Pakete sind unsere Spezialität. Wir organisieren nahtlose Transfers von den Nationalparks direkt zu den exklusivsten Resorts auf Sansibar."
+    question: "Wie individuell können Sie meine Reise gestalten?",
+    answer: "Da wir uns auf private Safaris spezialisiert haben, sind wir zu 100% flexibel. Von der Wahl der Lodges über die tägliche Route bis hin zu speziellen kulinarischen Wünschen gestalten wir jedes Detail nach Ihren Vorgaben."
   },
   {
-    question: "Sind die Touren privat oder in Gruppen?",
-    answer: "Wir spezialisieren uns auf private, maßgeschneiderte Expeditionen. Sie reisen in Ihrem eigenen Tempo mit einem privaten Guide und Fahrzeug, ohne Kompromisse bei der Exklusivität."
+    question: "Wie schnell erhalte ich eine Antwort auf meine Anfrage?",
+    answer: "In der Regel erhalten Sie innerhalb von 24 Stunden eine erste Rückmeldung von unseren Spezialisten in Berlin. Ein detailliertes Angebot liegt Ihnen meist nach 48 Stunden vor."
+  },
+  {
+    question: "Was kostet eine Safari-Reise nach Tansania?",
+    answer: "Die Kosten hängen stark von der Reisezeit und dem gewünschten Komfortlevel ab. Als Richtwert für eine hochwertige, private Safari inkl. Lodges sollten Sie mit einem Budget ab ca. 5.000 € pro Person planen."
+  },
+  {
+    question: "Sprechen die Guides vor Ort Deutsch?",
+    answer: "Wir verfügen über einen Pool an exzellenten, staatlich geprüften Guides, die fließend Deutsch sprechen. Bitte geben Sie uns bei der Planung Bescheid, damit wir Ihren Wunschguide frühzeitig reservieren können."
+  },
+  {
+    question: "Welche Reisezeit ist die beste für eine Safari?",
+    answer: "Tansania ist ein Ganzjahresziel. Die Trockenzeiten von Juni bis Oktober sind ideal für Tierbeobachtungen, während die Monate Januar bis März perfekt für die Kalbungszeit im Süden der Serengeti sind."
+  },
+  {
+    question: "Sind die Reisen auch für Familien mit Kindern geeignet?",
+    answer: "Absolut. Wir planen spezielle Familiensafaris mit kürzeren Fahrtzeiten und familienfreundlichen Lodges, die über Pools und spezielle Aktivitäten für Kinder verfügen."
   }
 ];
 
 export function FAQ() {
   return (
-    <section className="py-10 md:py-16 bg-[#fdfcfb]">
-      <div className="container mx-auto px-4 max-w-2xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-10"
-        >
-          <span className="text-[8px] md:text-[9px] font-bold uppercase tracking-[0.4em] text-primary mb-2 block">
-            Technical Registry
-          </span>
-          <h2 className="font-headline text-xl md:text-3xl font-bold mb-3 uppercase tracking-tighter text-secondary">
-            ALLES <span className="text-primary">WISSENSWERTE</span>
-          </h2>
-          <p className="text-muted-foreground text-[9px] md:text-[10px] font-bold uppercase tracking-widest opacity-60">
-            Häufig gestellte Fragen zu Ihrer nächsten Expedition.
-          </p>
-        </motion.div>
+    <section className="py-16 md:py-24 bg-white">
+      <div className="container mx-auto px-4 max-w-4xl">
+        {/* Header Protocol */}
+        <div className="text-center mb-12 md:mb-16">
+          <motion.h2 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-headline text-3xl md:text-5xl font-normal text-[#3A3634] mb-4"
+          >
+            Häufig gestellte Fragen
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-[#8A8581] font-normal text-[13px] md:text-[15px]"
+          >
+            Alles, was Sie über Ihre Tansania-Reise wissen müssen
+          </motion.p>
+        </div>
 
+        {/* Accordion Registry */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          <Accordion type="single" collapsible className="w-full space-y-3">
+          <Accordion type="single" collapsible className="w-full space-y-4">
             {faqs.map((faq, index) => (
               <AccordionItem 
                 key={index} 
                 value={`item-${index}`}
-                className="bg-white border border-border/50 rounded-xl md:rounded-[1.5rem] px-5 md:px-8 shadow-sm transition-all hover:shadow-md hover:border-primary/20 overflow-hidden group"
+                className="bg-white border border-border/60 rounded-lg md:rounded-xl shadow-sm overflow-hidden"
               >
-                <AccordionTrigger className="font-bold text-[11px] md:text-sm py-5 md:py-6 hover:no-underline text-left uppercase tracking-tight text-secondary group-data-[state=open]:text-primary transition-colors [&>svg]:hidden">
-                  <div className="flex items-center justify-between w-full gap-4">
-                    <span>{faq.question}</span>
-                    <div className="w-7 h-7 rounded-full bg-muted flex items-center justify-center shrink-0 group-hover:bg-primary/10 transition-colors">
-                      <Plus className="w-3.5 h-3.5 text-secondary group-data-[state=open]:rotate-45 group-data-[state=open]:text-primary transition-all duration-300" />
-                    </div>
-                  </div>
+                <AccordionTrigger className="font-normal text-[13px] md:text-[15px] py-5 px-6 md:px-8 hover:no-underline text-left text-[#3A3634] transition-colors">
+                  {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground text-[9px] md:text-[10px] leading-relaxed pb-6 font-bold uppercase tracking-widest opacity-80 max-w-[95%]">
+                <AccordionContent className="text-[#8A8581] text-[13px] md:text-[14px] leading-relaxed px-6 md:px-8 pb-6 font-normal">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
+        </motion.div>
+
+        {/* Bottom CTA Protocol */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="mt-16 text-center space-y-6"
+        >
+          <p className="text-[#8A8581] text-[13px] md:text-[15px] font-normal">
+            Weitere Fragen? Wir sind für Sie da.
+          </p>
+          <Link href="/contact" className="inline-block">
+            <Button className="rounded-lg px-8 h-14 bg-[#3A3634] text-white hover:bg-primary transition-all duration-500 font-bold text-[11px] uppercase tracking-widest border-none shadow-lg">
+              Jetzt Kontakt aufnehmen
+            </Button>
+          </Link>
         </motion.div>
       </div>
     </section>
