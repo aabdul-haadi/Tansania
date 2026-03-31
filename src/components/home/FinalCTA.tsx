@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -32,14 +31,14 @@ export function FinalCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="space-y-4 md:space-y-6"
+          className="space-y-3 md:space-y-4"
         >
-          <div className="space-y-2 md:space-y-3">
+          <div className="space-y-2">
             <h2 className="font-headline text-xl md:text-4xl font-bold text-white uppercase tracking-tighter leading-tight">
               Bereit für Ihr <br />
               <span className="text-primary">Tansania-Abenteuer?</span>
             </h2>
-            <p className="text-white/90 font-bold text-[7px] md:text-xs uppercase tracking-widest max-w-xl mx-auto leading-relaxed opacity-80">
+            <p className="text-white/90 font-bold text-[6px] md:text-[9px] uppercase tracking-[0.3em] max-w-xl mx-auto leading-relaxed opacity-70">
               Lassen Sie uns gemeinsam Ihre individuelle Traumreise gestalten. <br className="hidden md:block" />
               Persönlich, professionell und mit Leidenschaft für Afrika.
             </p>
