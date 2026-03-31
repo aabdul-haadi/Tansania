@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -28,22 +27,43 @@ export function ProcessSection() {
     <section className="py-10 md:py-20 bg-[#fdfcfb]">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12 md:mb-16 space-y-3">
-          <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px]">Registry Protocol</span>
-          <h2 className="font-headline text-2xl md:text-5xl font-bold text-secondary uppercase tracking-tighter">
+          <motion.span 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-primary font-bold uppercase tracking-[0.4em] text-[10px]"
+          >
+            Registry Protocol
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="font-headline text-2xl md:text-5xl font-bold text-secondary uppercase tracking-tighter"
+          >
             SO FUNKTIONIERT <span className="text-primary">ES</span>
-          </h2>
+          </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 relative">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            visible: { transition: { staggerChildren: 0.2 } }
+          }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 relative"
+        >
           <div className="hidden md:block absolute top-1/2 left-0 right-0 h-px bg-border -translate-y-1/2 z-0" />
           
           {steps.map((step, idx) => (
             <motion.div 
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 }
+              }}
               className="relative z-10 flex flex-col items-center text-center space-y-6"
             >
               <div className="w-16 h-16 md:w-20 md:h-20 rounded-[1.5rem] md:rounded-[2rem] bg-white shadow-2xl flex items-center justify-center border border-border group hover:bg-primary transition-all duration-500">
@@ -57,7 +77,7 @@ export function ProcessSection() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

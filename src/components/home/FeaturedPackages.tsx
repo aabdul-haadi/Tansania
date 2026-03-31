@@ -1,7 +1,7 @@
-
 "use client";
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { PackageCard } from '@/components/shared/PackageCard';
 import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { collection, query, where, limit } from 'firebase/firestore';
@@ -14,7 +14,6 @@ export function FeaturedPackages() {
   
   const { data: packages, isLoading } = useCollection(pkgQuery);
 
-  // High-prestige fallbacks for initial display
   const fallbacks = [
     {
       id: 'luxury-combo',
@@ -54,17 +53,46 @@ export function FeaturedPackages() {
     <section className="py-10 md:py-20 bg-white">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12 md:mb-16 space-y-3">
-          <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px]">Safari Catalog</span>
-          <h2 className="font-headline text-2xl md:text-5xl font-bold text-secondary uppercase tracking-tighter">
+          <motion.span 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-primary font-bold uppercase tracking-[0.4em] text-[10px]"
+          >
+            Safari Catalog
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="font-headline text-2xl md:text-5xl font-bold text-secondary uppercase tracking-tighter"
+          >
             AKTUELE <span className="text-primary">EXPEDITIONEN</span>
-          </h2>
+          </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            visible: { transition: { staggerChildren: 0.2 } }
+          }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10"
+        >
           {displayPkgs.map((pkg: any) => (
-            <PackageCard key={pkg.id} pkg={pkg} />
+            <motion.div 
+              key={pkg.id}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 }
+              }}
+            >
+              <PackageCard pkg={pkg} />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

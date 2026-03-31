@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -37,27 +36,21 @@ export function VisualJournalGrid() {
   return (
     <section className="py-10 md:py-20 bg-white overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
-        {/* Header Registry - Fixed Mobile Alignment */}
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-10 md:mb-16 gap-6">
-          <div className="max-w-2xl">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center gap-2 text-primary font-bold text-[9px] md:text-[10px] uppercase tracking-[0.4em] mb-3"
-            >
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-2xl"
+          >
+            <div className="inline-flex items-center gap-2 text-primary font-bold text-[9px] md:text-[10px] uppercase tracking-[0.4em] mb-3">
               <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
               Live Visual Journal
-            </motion.div>
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="font-headline text-3xl md:text-5xl font-bold text-secondary uppercase tracking-tighter leading-[0.9]"
-            >
+            </div>
+            <h2 className="font-headline text-3xl md:text-5xl font-bold text-secondary uppercase tracking-tighter leading-[0.9]">
               DIE WILDNIS <br /><span className="text-primary">SPÜREN</span>
-            </motion.h2>
-          </div>
+            </h2>
+          </motion.div>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -69,15 +62,22 @@ export function VisualJournalGrid() {
           </motion.p>
         </div>
 
-        {/* High-Performance Bento Architecture */}
-        <div className="grid grid-cols-1 md:grid-cols-12 md:grid-rows-9 gap-4 md:gap-6 md:h-[1000px]">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            visible: { transition: { staggerChildren: 0.1 } }
+          }}
+          className="grid grid-cols-1 md:grid-cols-12 md:grid-rows-9 gap-4 md:gap-6 md:h-[1000px]"
+        >
           {journalImages.map((img, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, scale: 0.98 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: idx * 0.1 }}
+              variants={{
+                hidden: { opacity: 0, scale: 0.95 },
+                visible: { opacity: 1, scale: 1 }
+              }}
               className={cn(
                 "relative rounded-[2rem] md:rounded-[3.5rem] overflow-hidden group shadow-prestige border border-border/50 bg-muted",
                 img.className,
@@ -106,11 +106,9 @@ export function VisualJournalGrid() {
                   <span className="text-[7px] font-black text-white uppercase tracking-[0.2em]">Live Registry</span>
                 </div>
               </div>
-
-              <div className="absolute inset-0 border border-white/5 rounded-[2rem] md:rounded-[3.5rem] pointer-events-none z-20 group-hover:border-primary/20 transition-colors" />
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

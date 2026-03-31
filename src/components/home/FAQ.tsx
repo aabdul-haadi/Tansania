@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -52,8 +51,8 @@ export function FAQ() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
