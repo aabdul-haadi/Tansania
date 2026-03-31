@@ -5,17 +5,17 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Sparkles, ShieldCheck, Heart, ArrowRight, Users, CheckCircle2 } from 'lucide-react';
+import { Sparkles, ShieldCheck, ArrowRight, Users, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export function ExpertiseNarrative() {
   return (
-    <section className="py-16 md:py-32 bg-white overflow-hidden font-bold">
+    <section className="pt-8 pb-16 md:pt-16 md:pb-32 bg-white overflow-hidden font-bold">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-20 items-center">
           
           {/* Content Column: The Narrative Registry */}
-          <div className="lg:col-span-7 space-y-10 md:space-y-12">
+          <div className="lg:col-span-7 space-y-8 md:space-y-10">
             <div className="space-y-6">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
@@ -36,7 +36,7 @@ export function ExpertiseNarrative() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="bg-muted/30 p-8 md:p-10 rounded-[2rem] relative overflow-hidden"
+                className="bg-muted/30 p-6 md:p-8 rounded-[2rem] relative overflow-hidden"
               >
                 <div className="absolute top-0 right-0 p-6 opacity-5"><Sparkles className="w-20 h-20" /></div>
                 <p className="text-sm md:text-base font-bold leading-relaxed text-secondary uppercase tracking-tight">
@@ -106,7 +106,7 @@ export function ExpertiseNarrative() {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl border border-border/50"
+              className="relative aspect-[4/5] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border border-border/50"
             >
               <Image 
                 src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200" 
@@ -116,15 +116,12 @@ export function ExpertiseNarrative() {
                 data-ai-hint="ngorongoro crater"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              <div className="absolute bottom-10 left-10 right-10">
-                <div className="px-5 py-2.5 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full shadow-2xl">
-                  <p className="text-[8px] font-black text-white uppercase tracking-[0.4em]">SDL Signature View • Asset 01</p>
+              <div className="absolute bottom-8 left-8 right-8">
+                <div className="px-4 py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full shadow-2xl inline-block">
+                  <p className="text-[8px] font-black text-white uppercase tracking-[0.4em]">SDL Signature View</p>
                 </div>
               </div>
             </motion.div>
-            
-            <div className="absolute -top-10 -right-10 w-48 h-48 bg-primary/5 rounded-full blur-[80px] pointer-events-none" />
-            <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-secondary/5 rounded-full blur-[100px] pointer-events-none" />
           </div>
         </div>
       </div>

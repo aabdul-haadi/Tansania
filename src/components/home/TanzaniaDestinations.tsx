@@ -54,9 +54,9 @@ const destinations = [
 
 export function TanzaniaDestinations() {
   return (
-    <section className="py-16 md:py-32 bg-white overflow-hidden font-bold">
+    <section className="py-12 md:py-24 bg-white overflow-hidden font-bold">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 mb-16 md:mb-24">
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 mb-12 md:mb-16">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -125,7 +125,7 @@ function DestinationCard({ item, className }: { item: any, className?: string })
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       className={cn(
-        "group relative rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-xl border border-border/50 bg-muted transition-all duration-700",
+        "group relative rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-xl border border-border/50 bg-muted transition-all duration-700",
         className
       )}
     >
@@ -140,13 +140,13 @@ function DestinationCard({ item, className }: { item: any, className?: string })
       </div>
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
       
-      <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end">
+      <div className="absolute inset-0 p-8 md:p-10 flex flex-col justify-end">
         <div className="space-y-4">
           <div className="space-y-1">
-            <p className="text-primary font-black text-[8px] md:text-[10px] uppercase tracking-[0.4em] leading-none mb-2">
+            <p className="text-primary font-black text-[8px] md:text-[9px] uppercase tracking-[0.4em] leading-none mb-2">
               {item.label}
             </p>
-            <h3 className="text-white font-headline text-2xl md:text-4xl font-black uppercase tracking-tighter leading-none mb-4">
+            <h3 className="text-white font-headline text-2xl md:text-3xl font-black uppercase tracking-tighter leading-none mb-4">
               {item.name}
             </h3>
           </div>
@@ -158,7 +158,7 @@ function DestinationCard({ item, className }: { item: any, className?: string })
           <div className="pt-4 flex items-center justify-between">
             <Link href={`/destinations/${item.slug}`}>
               <Button size="icon" className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 text-white hover:bg-primary hover:border-primary transition-all group/btn shadow-2xl">
-                <ArrowRight className="w-5 h-5 md:w-6 md:h-6 transition-transform group-hover/btn:translate-x-1" />
+                <ArrowRight className="w-5 h-5 md:w-6 md:h-6 transition-transform group/btn:translate-x-1" />
               </Button>
             </Link>
           </div>
