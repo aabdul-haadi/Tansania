@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -100,7 +101,7 @@ export function TanzaniaDestinations() {
             className="md:col-span-3 lg:col-span-4" 
           />
 
-          {/* Kilimanjaro */}
+          {/* Kilimandscharo */}
           <DestinationCard 
             item={destinations[3]} 
             className="md:col-span-3 lg:col-span-6" 
