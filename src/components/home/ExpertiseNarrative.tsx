@@ -64,7 +64,7 @@ export function ExpertiseNarrative() {
                   <h4 className="font-bold text-sm md:text-base text-secondary uppercase tracking-tight">Guides mit echten Wurzeln</h4>
                 </div>
                 <p className="text-[9px] md:text-xs text-muted-foreground font-bold uppercase tracking-widest leading-relaxed">
-                  Unsere lokalen Partner in Arusha sind keine Angestellten — es sind Freunde, die wir seit Jahren kennen.
+                  Unsere lokalen Partner in Arusha sind keine Angestellten — es sind Freunde, die wir seit Jahren kennen und denen wir unsere eigene Familie anvertrauen würden.
                 </p>
               </div>
 
@@ -76,7 +76,7 @@ export function ExpertiseNarrative() {
                   <h4 className="font-bold text-sm md:text-base text-secondary uppercase tracking-tight">TATO-Mitglied & Nachhaltig</h4>
                 </div>
                 <p className="text-[9px] md:text-xs text-muted-foreground font-bold uppercase tracking-widest leading-relaxed">
-                  Jede Buchung stärkt die lokale Wirtschaft und schützt Ökosysteme. Das ist unser Geschäftsmodell.
+                  Jede Buchung bei uns stärkt die lokale Wirtschaft und schützt die Ökosysteme, die Sie besuchen. Das ist kein Marketing — es ist unser Geschäftsmodell.
                 </p>
               </div>
 
