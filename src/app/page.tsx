@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -65,17 +66,19 @@ export default function Home() {
                   <Compass className="w-3 h-3" /> Über 15 Jahre Expertise · Deutschsprachige Betreuung · Premium-Reisen
                 </div>
                 <h1 className="font-headline text-3xl md:text-5xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tighter uppercase max-w-5xl">
-                  Ihre maßgeschneiderte <br /><span className="text-primary">Luxusreise</span> durch Tansania
+                  <span className="sm:hidden">Maßgeschneiderte <br /> Luxusreisen</span>
+                  <span className="hidden sm:block">Ihre maßgeschneiderte <br /><span className="text-primary">Luxusreise</span> durch Tansania</span>
                 </h1>
                 <p className="max-w-xl mx-auto lg:mx-0 text-white font-bold text-[10px] md:text-sm uppercase tracking-widest leading-relaxed opacity-90">
-                  Erleben Sie exklusive Safaris, handverlesene Lodges und unvergessliche Momente. Persönlich geplant, individuell gestaltet.
+                  <span className="sm:hidden">Exklusive Safaris & handverlesene Lodges.</span>
+                  <span className="hidden sm:block">Erleben Sie exklusive Safaris, handverlesene Lodges und unvergessliche Momente. Persönlich geplant, individuell gestaltet.</span>
                 </p>
               </motion.div>
               <motion.div 
                 initial={{ opacity: 0, y: 20 }} 
                 animate={{ opacity: 1, y: 0 }} 
                 transition={{ delay: 0.3, duration: 0.8 }}
-                className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start pt-4"
+                className="hidden sm:flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start pt-4"
               >
                 <Link href="/safaris" className="w-full sm:w-auto">
                   <Button className="w-full sm:w-44 h-12 md:h-14 px-6 rounded-xl font-black shadow-xl border-none text-[9px] uppercase tracking-widest">
