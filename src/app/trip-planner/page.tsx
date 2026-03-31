@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -10,21 +11,20 @@ import {
   Users, 
   MapPin,
   ArrowRight, 
-  ArrowLeft,
-  CheckCircle2,
-  Leaf,
-  Sparkles,
-  Mountain,
-  Palmtree,
-  Send,
-  Compass,
-  Globe,
-  ShieldCheck,
-  Clock,
-  ChevronRight,
-  RefreshCw,
-  Home,
-  AlertCircle
+  CheckCircle2, 
+  Leaf, 
+  Sparkles, 
+  Mountain, 
+  Palmtree, 
+  Send, 
+  Compass, 
+  Globe, 
+  ShieldCheck, 
+  Clock, 
+  ChevronRight, 
+  RefreshCw, 
+  Home, 
+  AlertCircle 
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -128,8 +128,8 @@ export default function TripPlanner() {
             </div>
             
             <div className="space-y-4 mb-12">
-              <h2 className="font-headline text-3xl md:text-5xl font-bold mb-4 uppercase tracking-tighter text-secondary leading-none">Systemausfall</h2>
-              <p className="text-muted-foreground text-xs md:text-sm font-bold uppercase tracking-[0.2em] leading-relaxed max-w-md mx-auto">
+              <h2 className="font-headline text-3xl md:text-5xl font-bold mb-4 uppercase tracking-tighter text-secondary leading-none text-center">Systemausfall</h2>
+              <p className="text-muted-foreground text-xs md:text-sm font-bold uppercase tracking-[0.2em] leading-relaxed max-w-md mx-auto text-center">
                 In der Savanne gab es ein technisches Gewitter. Wir versuchen, die Verbindung wiederherzustellen.
               </p>
             </div>
@@ -149,30 +149,42 @@ export default function TripPlanner() {
   }
 
   return (
-    <div className="min-h-screen bg-[#fdfcfb] pt-24 pb-12 font-bold overflow-hidden">
-      <div className="container mx-auto px-4 max-w-7xl">
+    <div className="min-h-screen bg-[#fdfcfb] font-bold overflow-hidden">
+      {/* Cinematic Hero Protocol */}
+      <section className="relative h-[50vh] md:h-[65vh] w-full flex items-center justify-center overflow-hidden bg-secondary">
+        <Image 
+          src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
+          alt="Serengeti Savannah" 
+          fill 
+          priority
+          className="object-cover brightness-[0.4] scale-105"
+          data-ai-hint="serengeti savannah"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-[#fdfcfb]" />
         
-        {/* Cinematic Header Protocol */}
-        <header className="flex flex-col items-center text-center mb-12 md:mb-16 space-y-6">
+        <div className="container relative z-10 mx-auto px-4 text-center">
           <motion.div 
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] border border-primary/20"
+            className="space-y-6"
           >
-            <Sparkles className="w-3.5 h-3.5" /> AI Expedition Architect
-          </motion.div>
-          
-          <div className="space-y-2">
-            <h1 className="font-headline text-3xl md:text-7xl lg:text-8xl font-black text-secondary uppercase tracking-tighter leading-none">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/20 backdrop-blur-md rounded-full border border-primary/30 text-white text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em]">
+              <Sparkles className="w-3.5 h-3.5 text-primary" /> AI Expedition Architect
+            </div>
+            <h1 className="font-headline text-4xl md:text-7xl lg:text-8xl font-black text-white leading-none tracking-tighter uppercase">
               DESIGN YOUR <br /><span className="text-primary">SAFARI</span>
             </h1>
-            <p className="text-muted-foreground text-[10px] md:text-sm font-bold uppercase tracking-widest opacity-60">
+            <p className="text-white/60 text-[10px] md:text-sm font-bold uppercase tracking-widest leading-relaxed max-w-xl mx-auto">
               Personalized Inquiry Protocol • Official Registry 2026/27
             </p>
-          </div>
+          </motion.div>
+        </div>
+      </section>
 
-          {/* Technical Progress Protocol */}
-          <div className="flex items-center gap-3 pt-6 md:pt-10">
+      <div className="container mx-auto px-4 max-w-7xl -mt-12 md:-mt-24 relative z-30 pb-24">
+        {/* Progress Indicator */}
+        <div className="flex justify-center mb-12 md:mb-16">
+          <div className="flex items-center gap-3">
             {[1, 2, 3].map(i => (
               <div key={i} className="flex items-center">
                 <div className={cn(
@@ -185,7 +197,7 @@ export default function TripPlanner() {
               </div>
             ))}
           </div>
-        </header>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-20">
           
