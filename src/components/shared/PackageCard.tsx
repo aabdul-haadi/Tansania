@@ -4,7 +4,6 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { 
   Clock, 
   Users,
@@ -30,7 +29,7 @@ interface PackageCardProps {
 
 /**
  * 100% High-Fidelity Clone of the Signature Card.
- * Precise vertical stack architecture as per screenshot.
+ * Updated accent color to #C9A876 as requested.
  */
 export function PackageCard({ pkg, className }: PackageCardProps) {
   return (
@@ -49,12 +48,12 @@ export function PackageCard({ pkg, className }: PackageCardProps) {
       {/* Content Protocol */}
       <div className="p-6 md:p-8 flex flex-col flex-grow">
         <div className="space-y-4 flex-grow">
-          {/* Headline */}
-          <h3 className="font-headline text-xl md:text-2xl font-normal text-[#3A3634] leading-tight">
+          {/* Headline - Cormorant Garamond 500 */}
+          <h3 className="font-headline text-xl md:text-2xl font-medium text-[#3A3634] leading-tight">
             {pkg.title}
           </h3>
           
-          {/* Narrative */}
+          {/* Narrative - Inter */}
           <p className="text-[13px] text-[#8A8581] font-normal leading-relaxed line-clamp-2">
             {pkg.excerpt}
           </p>
@@ -62,19 +61,19 @@ export function PackageCard({ pkg, className }: PackageCardProps) {
           {/* Technical Metadata Row */}
           <div className="flex items-center gap-5 pt-1">
             <div className="flex items-center gap-2 text-[11px] font-normal text-[#8A8581]">
-              <Clock className="w-3.5 h-3.5 text-primary" /> 
+              <Clock className="w-3.5 h-3.5 text-[#C9A876]" /> 
               {pkg.durationDays} Tage
             </div>
             <div className="flex items-center gap-2 text-[11px] font-normal text-[#8A8581]">
-              <Users className="w-3.5 h-3.5 text-primary" /> 
+              <Users className="w-3.5 h-3.5 text-[#C9A876]" /> 
               {pkg.groupSize}
             </div>
           </div>
 
-          {/* Tag Cloud Registry */}
+          {/* Tag Cloud Registry - Updated to #C9A876 */}
           <div className="flex flex-wrap gap-2 pt-2">
             {(pkg.highlights || []).map((h, i) => (
-              <span key={i} className="text-[9px] font-bold uppercase tracking-tight text-primary px-3 py-1.5 rounded-full bg-[#fdf7f2]">
+              <span key={i} className="text-[9px] font-bold uppercase tracking-tight text-[#C9A876] px-3 py-1.5 rounded-full bg-[#C9A876]/10">
                 {h}
               </span>
             ))}
@@ -90,7 +89,7 @@ export function PackageCard({ pkg, className }: PackageCardProps) {
             </span>
           </div>
           
-          <Link href={`/safaris/${pkg.slug}`} className="group/btn inline-flex items-center gap-2 text-[11px] font-bold text-[#3A3634] hover:text-primary transition-colors">
+          <Link href={`/safaris/${pkg.slug}`} className="group/btn inline-flex items-center gap-2 text-[11px] font-bold text-[#3A3634] hover:text-[#C9A876] transition-colors">
             Anfrage stellen <ArrowRight className="w-3 h-3 transition-transform group-hover/btn:translate-x-1" />
           </Link>
         </div>
