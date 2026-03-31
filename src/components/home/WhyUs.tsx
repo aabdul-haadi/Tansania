@@ -39,8 +39,8 @@ const reasons = [
 
 export function WhyUs() {
   return (
-    <section className="py-16 md:py-32 bg-white font-bold">
-      <div className="container mx-auto px-4 max-w-7xl">
+    <section className="pt-8 md:pt-12 pb-16 md:pb-32 bg-white font-bold">
+      <div className="container mx-auto px-4 max-get-7xl">
         <div className="text-center mb-16 md:mb-24 space-y-4">
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}

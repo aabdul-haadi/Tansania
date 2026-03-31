@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -10,7 +9,7 @@ import { Button } from '@/components/ui/button';
 
 export function FinalCTA() {
   return (
-    <section className="relative min-h-[50vh] md:min-h-[60vh] flex items-center justify-center overflow-hidden bg-secondary">
+    <section className="relative min-h-[40vh] md:min-h-[50vh] flex items-center justify-center overflow-hidden bg-secondary">
       {/* Background Cinematic Asset */}
       <div className="absolute inset-0 z-0">
         <Image 
@@ -26,35 +25,35 @@ export function FinalCTA() {
       </div>
 
       {/* Content Protocol */}
-      <div className="container relative z-10 mx-auto px-4 max-w-5xl text-center">
+      <div className="container relative z-10 mx-auto px-4 max-w-4xl text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="space-y-6 md:space-y-10"
+          className="space-y-4 md:space-y-6"
         >
-          <div className="space-y-3 md:space-y-4">
-            <h2 className="font-headline text-2xl md:text-4xl lg:text-5xl font-bold text-white uppercase tracking-tighter leading-tight">
+          <div className="space-y-2 md:space-y-3">
+            <h2 className="font-headline text-xl md:text-4xl font-bold text-white uppercase tracking-tighter leading-tight">
               Bereit für Ihr <br />
               <span className="text-primary">Tansania-Abenteuer?</span>
             </h2>
-            <p className="text-white/90 font-bold text-[9px] md:text-base uppercase tracking-widest max-w-2xl mx-auto leading-relaxed">
+            <p className="text-white/90 font-bold text-[8px] md:text-sm uppercase tracking-widest max-w-xl mx-auto leading-relaxed opacity-80">
               Lassen Sie uns gemeinsam Ihre individuelle Traumreise gestalten. <br className="hidden md:block" />
               Persönlich, professionell und mit Leidenschaft für Afrika.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 pt-2">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 md:gap-3 pt-2">
             <Link href="/trip-planner" className="w-full sm:w-auto">
-              <Button size="lg" className="w-full sm:w-auto rounded-xl px-8 h-12 md:h-14 bg-white text-secondary hover:bg-primary hover:text-white transition-all duration-500 font-black text-[9px] md:text-xs uppercase tracking-[0.2em] shadow-2xl border-none group">
-                Kostenlose Beratung anfragen <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              <Button size="default" className="w-full sm:w-auto rounded-lg px-6 h-10 md:h-12 bg-white text-secondary hover:bg-primary hover:text-white transition-all duration-500 font-black text-[8px] md:text-[10px] uppercase tracking-[0.2em] shadow-xl border-none group">
+                Kostenlose Beratung anfragen <ArrowRight className="w-3.5 h-3.5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
             
             <a href="tel:+493022608080" className="w-full sm:w-auto">
-              <Button size="lg" className="w-full sm:w-auto rounded-xl px-8 h-12 md:h-14 bg-white text-secondary hover:bg-secondary hover:text-white transition-all duration-500 font-black text-[9px] md:text-xs uppercase tracking-[0.2em] shadow-2xl border-none group">
-                <Phone className="w-4 h-4 mr-2" /> Jetzt anrufen
+              <Button size="default" className="w-full sm:w-auto rounded-lg px-6 h-10 md:h-12 bg-white text-secondary hover:bg-secondary hover:text-white transition-all duration-500 font-black text-[8px] md:text-[10px] uppercase tracking-[0.2em] shadow-xl border-none group">
+                <Phone className="w-3.5 h-3.5 mr-2" /> Jetzt anrufen
               </Button>
             </a>
           </div>
