@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -40,7 +41,7 @@ const reasons = [
 export function WhyUs() {
   return (
     <section className="pt-8 md:pt-12 pb-16 md:pb-32 bg-white font-bold">
-      <div className="container mx-auto px-4 max-get-7xl">
+      <div className="container mx-auto px-6 md:px-10 max-w-7xl">
         <div className="text-center mb-16 md:mb-24 space-y-4">
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}

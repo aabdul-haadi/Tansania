@@ -43,7 +43,7 @@ export default function Home() {
       <section className="relative min-h-[70vh] md:min-h-[90vh] flex items-center overflow-hidden bg-secondary">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
+            src="/banner-1.webp" 
             alt="Serengeti Dreams Visual" 
             fill 
             priority 
