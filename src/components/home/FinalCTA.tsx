@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -38,7 +39,7 @@ export function FinalCTA() {
               Bereit für Ihr <br />
               <span className="text-primary">Tansania-Abenteuer?</span>
             </h2>
-            <p className="text-white/90 font-bold text-[8px] md:text-sm uppercase tracking-widest max-w-xl mx-auto leading-relaxed opacity-80">
+            <p className="text-white/90 font-bold text-[7px] md:text-xs uppercase tracking-widest max-w-xl mx-auto leading-relaxed opacity-80">
               Lassen Sie uns gemeinsam Ihre individuelle Traumreise gestalten. <br className="hidden md:block" />
               Persönlich, professionell und mit Leidenschaft für Afrika.
             </p>

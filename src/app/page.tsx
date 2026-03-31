@@ -2,24 +2,24 @@
 "use client";
 
 import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, Compass, Globe, Sparkles, Zap, Play } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-
-import { CinematicQuote } from '@/components/home/CinematicQuote';
-import { FAQ } from '@/components/home/FAQ';
+import Link from 'next/link';
+import { Zap } from 'lucide-react';
 import { TravelCategories } from '@/components/home/TravelCategories';
-import { TanzaniaDestinations } from '@/components/home/TanzaniaDestinations';
-import { ContactSection } from '@/components/shared/ContactSection';
-import { TrustStrip } from '@/components/home/TrustStrip';
-import { ProcessSection } from '@/components/home/ProcessSection';
-import { VisualJournalGrid } from '@/components/home/VisualJournalGrid';
 import { FeaturedPackages } from '@/components/home/FeaturedPackages';
-import { FinalCTA } from '@/components/home/FinalCTA';
-import { Testimonials } from '@/components/home/Testimonials';
 import { WhyUs } from '@/components/home/WhyUs';
+import { ProcessSection } from '@/components/home/ProcessSection';
+import { CinematicQuote } from '@/components/home/CinematicQuote';
+import { TanzaniaDestinations } from '@/components/home/TanzaniaDestinations';
+import { VisualJournalGrid } from '@/components/home/VisualJournalGrid';
+import { Testimonials } from '@/components/home/Testimonials';
+import { ContactSection } from '@/components/shared/ContactSection';
+import { FAQ } from '@/components/home/FAQ';
+import { FinalCTA } from '@/components/home/FinalCTA';
+import { TrustStrip } from '@/components/home/TrustStrip';
+import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+import { Compass, Play } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -39,7 +39,7 @@ export default function Home() {
         </Link>
       </div>
 
-      {/* 02 HERO SECTION - Cinematic Registry Protocol */}
+      {/* HERO SECTION */}
       <section className="relative min-h-[70vh] md:min-h-[90vh] flex items-center overflow-hidden bg-secondary">
         <div className="absolute inset-0 z-0">
           <Image 
@@ -56,7 +56,6 @@ export default function Home() {
         
         <div className="container relative z-10 mx-auto px-4 max-w-7xl h-full flex flex-col justify-end pb-16 md:justify-center md:pb-0 md:pt-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-center">
-            
             <div className="lg:col-span-8 space-y-3 md:space-y-4 text-center lg:text-left">
               <motion.div 
                 initial={{ opacity: 0, x: -30 }} 
@@ -72,14 +71,12 @@ export default function Home() {
                     <span className="text-primary">PRESTIGE</span>
                   </h1>
                 </div>
-                
                 <p className="max-w-md mx-auto lg:mx-0 text-white font-bold text-[10px] sm:text-xs md:text-sm uppercase tracking-widest leading-relaxed hidden md:block">
                   Experten-gestaltete Safaris & exklusive Sansibar-Fluchten.
                   <br />
                   In Berlin konzipiert – in Afrika gelebt.
                 </p>
               </motion.div>
-
               <motion.div 
                 initial={{ opacity: 0, y: 20 }} 
                 animate={{ opacity: 1, y: 0 }} 
@@ -126,40 +123,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 03 TRUST STRIP */}
       <TrustStrip />
-
-      {/* 04 TRAVEL CATEGORIES */}
       <TravelCategories />
-
-      {/* 05 SIGNATURE REISEN */}
       <FeaturedPackages />
-
-      {/* 06 WHY US */}
       <WhyUs />
-
-      {/* 07 PROCESS SECTION */}
       <ProcessSection />
-
-      {/* 08 CINEMATIC QUOTE */}
       <CinematicQuote />
-
-      {/* 09 TANZANIA DESTINATIONS DISCOVERY */}
       <TanzaniaDestinations />
-
-      {/* 10 FOTO-GALERIE - Visual Journal */}
       <VisualJournalGrid />
-
-      {/* 11 REVIEWS SECTION */}
       <Testimonials />
-
-      {/* 12 LEAD-FORMULAR */}
       <ContactSection />
-
-      {/* 13 FAQ */}
       <FAQ />
-
-      {/* 14 FINAL CTA PORTAL */}
       <FinalCTA />
     </div>
   );
