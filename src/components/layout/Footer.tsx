@@ -11,7 +11,7 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
           <div className="flex flex-col gap-6">
             <Link href="/" className="flex items-center gap-3 group">
-              <img src="/logo/logo1.png" alt="Logo" className="h-12 w-auto rounded-lg" />
+              <img src="/iconlogo.jpg" alt="Tansania Reiseabenteuer" className="h-12 w-auto rounded-lg shadow-xl" />
               <span className="font-headline font-bold text-xl text-primary uppercase leading-tight">
                 Tansania Reiseabenteuer
               </span>
