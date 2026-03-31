@@ -9,7 +9,6 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 
 import { SafariMap } from '@/components/home/SafariMap';
-import { Testimonials } from '@/components/home/Testimonials';
 import { CinematicQuote } from '@/components/home/CinematicQuote';
 import { FAQ } from '@/components/home/FAQ';
 import { TravelCategories } from '@/components/home/TravelCategories';
@@ -19,7 +18,6 @@ import { TrustStrip } from '@/components/home/TrustStrip';
 import { ProcessSection } from '@/components/home/ProcessSection';
 import { VisualJournalGrid } from '@/components/home/VisualJournalGrid';
 import { FeaturedPackages } from '@/components/home/FeaturedPackages';
-import { ExpertiseNarrative } from '@/components/home/ExpertiseNarrative';
 import { FinalCTA } from '@/components/home/FinalCTA';
 
 export default function Home() {
@@ -142,8 +140,7 @@ export default function Home() {
       {/* 07 CINEMATIC BREAKER */}
       <CinematicQuote />
 
-      {/* 08 EXPERTISE & SAFARI-PAKETE */}
-      <ExpertiseNarrative />
+      {/* 08 SAFARI-PAKETE */}
       <FeaturedPackages />
 
       {/* 06 SO FUNKTIONIERT ES */}
@@ -151,9 +148,6 @@ export default function Home() {
 
       {/* EXPEDITIONSLOGISTIK - Von Kairo in die Savanne */}
       <SafariMap />
-
-      {/* 07 KUNDENSTIMMEN */}
-      <Testimonials />
 
       {/* 09 FOTO-GALERIE - Visual Journal */}
       <VisualJournalGrid />

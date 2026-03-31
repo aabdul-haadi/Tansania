@@ -25,11 +25,12 @@ export function FeaturedPackages() {
       category: 'Signature',
       highlights: ['Big Five', 'Luxuslodges', 'Privatguide'],
       excerpt: 'Serengeti, Ngorongoro und Tarangire – die zeitlose Route durch Tansanias berühmteste Nationalparks.',
-      imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800'
+      imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800',
+      rating: 4.9
     },
     {
       id: 'honeymoon-escape',
-      title: 'Safari & Sansibar Honeymoon',
+      title: 'Safari & Sansibar Honeymoon Special',
       slug: 'safari-sansibar-honeymoon',
       startingPrice: 8900,
       durationDays: 14,
@@ -37,11 +38,12 @@ export function FeaturedPackages() {
       category: 'Romantik',
       highlights: ['Flitterwochen-Special', 'Boutique-Lodges', 'Private Insel'],
       excerpt: 'Die perfekte Kombination aus aufregender Wildlife-Safari und romantischem Strandurlaub auf Sansibar.',
-      imageUrl: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800'
+      imageUrl: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800',
+      rating: 5.0
     },
     {
       id: 'exclusive-luxury',
-      title: 'Exklusive Luxury Safari',
+      title: 'Exklusive Ultra-Luxury Safari Expedition',
       slug: 'exklusive-luxury-safari',
       startingPrice: 12000,
       durationDays: 12,
@@ -49,11 +51,12 @@ export function FeaturedPackages() {
       category: 'Prestige',
       highlights: ['Ultra-Luxury', 'Heißluftballon', 'Private Safaris'],
       excerpt: 'Tansanias schönste Wildparks in den luxuriösesten Unterkünften mit höchstem Service-Standard.',
-      imageUrl: 'https://images.unsplash.com/photo-1577971132997-c10be9372519?q=80&w=800'
+      imageUrl: 'https://images.unsplash.com/photo-1577971132997-c10be9372519?q=80&w=800',
+      rating: 4.9
     },
     {
       id: 'family-safari',
-      title: 'Familiensafari Tansania',
+      title: 'Familiensafari Abenteuer Tansania',
       slug: 'familiensafari-tansania',
       startingPrice: 5200,
       durationDays: 11,
@@ -61,15 +64,16 @@ export function FeaturedPackages() {
       category: 'Familie',
       highlights: ['Familienfreundlich', 'Kulturelle Begegnungen', 'Flexible Planung'],
       excerpt: 'Kinderfreundliche Lodges, spannende Tierbegegnungen und unvergessliche Abenteuer für alle Generationen.',
-      imageUrl: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=800'
+      imageUrl: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=800',
+      rating: 4.8
     }
   ];
 
   const displayPkgs = packages && packages.length > 0 ? packages : fallbacks;
 
   return (
-    <section className="py-16 md:py-32 bg-white">
-      <div className="container mx-auto px-4 max-w-6xl">
+    <section className="pt-4 pb-24 md:pt-8 md:pb-40 bg-white">
+      <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-16 md:mb-24 space-y-4">
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
@@ -97,7 +101,7 @@ export function FeaturedPackages() {
           variants={{
             visible: { transition: { staggerChildren: 0.1 } }
           }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12"
+          className="grid grid-cols-1 md:grid-cols-2 gap-y-24 md:gap-y-32 gap-x-12"
         >
           {displayPkgs.map((pkg: any) => (
             <motion.div 
