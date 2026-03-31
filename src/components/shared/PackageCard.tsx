@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -34,15 +35,10 @@ interface PackageCardProps {
 /**
  * High-Prestige Overlapping Safari Card.
  * Designed for the Signature Expedition Registry.
- * Fixed: Missing Button import and 404 optimization protocol.
  */
 export function PackageCard({ pkg, className }: PackageCardProps) {
   return (
-    <motion.div 
-      whileHover={{ y: -8 }}
-      transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-      className={cn("group flex flex-col h-full", className)}
-    >
+    <div className={cn("group flex flex-col h-full", className)}>
       {/* Image Hub - Rounded Top Protocol */}
       <div className="relative aspect-[16/10] md:aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-sm z-0 shrink-0">
         <Image 
@@ -63,7 +59,11 @@ export function PackageCard({ pkg, className }: PackageCardProps) {
       </div>
 
       {/* Overlapping Content Box - Architectural Layering */}
-      <div className="relative -mt-16 md:-mt-24 mx-4 md:mx-10 bg-white rounded-[2rem] p-6 md:p-10 shadow-2xl border border-border/50 z-10 flex flex-col flex-grow transition-all duration-500 group-hover:shadow-primary/10">
+      <motion.div 
+        whileHover={{ y: -8 }}
+        transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+        className="relative -mt-16 md:-mt-24 mx-4 md:mx-10 bg-white rounded-[2rem] p-6 md:p-10 shadow-2xl border border-border/50 z-10 flex flex-col flex-grow transition-all duration-500 group-hover:shadow-primary/10"
+      >
         <div className="space-y-6 flex-grow flex flex-col">
           {/* Metadata Pulse */}
           <div className="flex items-center justify-between">
@@ -83,14 +83,14 @@ export function PackageCard({ pkg, className }: PackageCardProps) {
             </div>
           </div>
 
-          {/* Editorial Title */}
+          {/* Editorial Title - Cormorant Garamond 500 */}
           <Link href={`/safaris/${pkg.slug}`}>
-            <h3 className="font-headline text-lg md:text-2xl font-bold text-secondary hover:text-primary transition-colors leading-tight uppercase tracking-tight line-clamp-2">
+            <h3 className="font-headline text-lg md:text-2xl font-medium text-secondary hover:text-primary transition-colors leading-tight uppercase tracking-tight line-clamp-2">
               {pkg.title}
             </h3>
           </Link>
           
-          <p className="text-[10px] md:text-xs text-muted-foreground font-bold uppercase tracking-widest leading-relaxed line-clamp-2 opacity-70">
+          <p className="text-[10px] md:text-xs text-muted-foreground font-normal uppercase tracking-widest leading-relaxed line-clamp-2 opacity-70">
             {pkg.excerpt || 'Sorgfältig geplante Route durch die spektakulärsten Gebiete Tansanias.'}
           </p>
 
@@ -118,7 +118,7 @@ export function PackageCard({ pkg, className }: PackageCardProps) {
             </Link>
           </div>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 }

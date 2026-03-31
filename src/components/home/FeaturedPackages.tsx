@@ -44,12 +44,12 @@ export function FeaturedPackages() {
   
   const { data: packages, isLoading } = useCollection(pkgQuery);
 
-  const displayPkgs = packages && packages.length > 0 ? packages : FALLBACK_PACKAGES;
+  const displayPkgs = (packages && packages.length > 0) ? packages : FALLBACK_PACKAGES;
 
   return (
-    <section className="pt-4 pb-20 md:pt-8 md:pb-32 bg-white relative z-10">
+    <section className="pt-4 pb-20 md:pt-8 md:pb-32 bg-white relative z-10 overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center mb-16 md:mb-20 space-y-3">
+        <div className="text-center mb-16 md:mb-24 space-y-3">
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -69,28 +69,19 @@ export function FeaturedPackages() {
           </motion.p>
         </div>
 
-        <motion.div 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{
-            visible: { transition: { staggerChildren: 0.1 } }
-          }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-y-24 md:gap-y-32 gap-x-12"
-        >
-          {displayPkgs.map((pkg: any) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-24 md:gap-y-32 gap-x-12">
+          {displayPkgs.map((pkg: any, idx: number) => (
             <motion.div 
-              key={pkg.id}
-              variants={{
-                hidden: { opacity: 0, y: 30 },
-                visible: { opacity: 1, y: 0 }
-              }}
-              transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+              key={pkg.id || idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "0px 0px -50px 0px" }}
+              transition={{ duration: 0.8, delay: idx * 0.1, ease: [0.23, 1, 0.32, 1] }}
             >
               <PackageCard pkg={pkg} />
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

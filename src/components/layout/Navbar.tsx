@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -80,14 +81,14 @@ export function Navbar() {
             <div className="flex items-baseline gap-1.5">
               <span className={cn(
                 "font-headline font-black uppercase tracking-tighter whitespace-nowrap transition-all duration-500",
-                "text-sm sm:text-base md:text-xl"
+                "text-base sm:text-lg md:text-2xl"
               )}>
                 Tansania
               </span>
               <span className={cn(
                 "font-headline font-normal uppercase tracking-tighter whitespace-nowrap transition-all duration-500",
                 "hidden sm:inline-block",
-                "sm:text-sm md:text-lg",
+                "sm:text-sm md:text-xl",
                 isScrolled ? "text-primary" : "text-white"
               )}>
                 Reiseabenteuer
