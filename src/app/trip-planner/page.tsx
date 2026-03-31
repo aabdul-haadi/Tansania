@@ -8,6 +8,7 @@ import * as z from 'zod';
 import { 
   Calendar, 
   Users, 
+  MapPin,
   ArrowRight, 
   ArrowLeft,
   CheckCircle2,
