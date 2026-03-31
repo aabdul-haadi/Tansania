@@ -71,20 +71,20 @@ export function Navbar() {
         )}>
           <Link href="/" className="flex items-center gap-3 group">
             <div className={cn(
-              "w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-500 shadow-sm",
+              "w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-500 shadow-sm shrink-0",
               isScrolled ? "bg-primary" : "bg-white/10 backdrop-blur-md border border-white/20"
             )}>
               <Compass className="w-6 h-6 text-white" />
             </div>
-            <div className="flex flex-col">
-              <span className="font-headline font-black text-[10px] md:text-xs leading-none uppercase tracking-tighter">
+            <div className="hidden min-[301px]:flex items-baseline gap-1.5">
+              <span className="font-headline font-black text-[9px] sm:text-[11px] md:text-sm leading-none uppercase tracking-tighter whitespace-nowrap">
                 Tansania
-              </span>
-              <span className={cn(
-                "font-headline font-black text-[10px] md:text-xs leading-none uppercase tracking-tighter transition-colors",
-                isScrolled ? "text-primary" : "text-white"
-              )}>
-                Reiseabenteuer
+                <span className={cn(
+                  "ml-1 transition-colors",
+                  isScrolled ? "text-primary" : "text-white"
+                )}>
+                  Reiseabenteuer
+                </span>
               </span>
             </div>
           </Link>
