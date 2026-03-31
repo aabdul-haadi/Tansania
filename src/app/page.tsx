@@ -17,6 +17,7 @@ import { ContactSection } from '@/components/shared/ContactSection';
 import { FAQ } from '@/components/home/FAQ';
 import { FinalCTA } from '@/components/home/FinalCTA';
 import { TrustStrip } from '@/components/home/TrustStrip';
+import { MagazinInspiration } from '@/components/home/MagazinInspiration';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 
@@ -40,72 +41,79 @@ export default function Home() {
 
       {/* HERO SECTION - REFINED CLONE */}
       <section className="relative min-h-[85vh] md:min-h-screen flex items-center overflow-hidden bg-secondary">
-  {/* Background Visual Asset */}
-  <div className="absolute inset-0 z-0">
-    <Image 
-      src="/banner-1.webp" 
-      alt="Serengeti Dreams Signature Visual" 
-      fill 
-      priority 
-      unoptimized
-      className="object-cover brightness-[0.6] scale-105"
-      data-ai-hint="elephant forest"
-    />
-    <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
-  </div>
-
-  {/* Main Content Container */}
-  <div className="container relative z-20 mx-auto px-6 md:px-10 max-w-7xl h-full flex flex-col justify-center pt-20 md:pt-0">
-    <div className="max-w-3xl space-y-6 md:space-y-10">
-      <motion.div 
-        initial={{ opacity: 0, x: -30 }} 
-        animate={{ opacity: 1, x: 0 }} 
-        transition={{ duration: 0.8 }}
-        className="space-y-4 md:space-y-6"
-      >
-        {/* Main Architectural Headline */}
-        <h1 className="font-light text-white text-3xl sm:text-4xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tighter font-serif">
-          Ihre maßgeschneiderte <br />
-          Luxusreise durch Tansania
-        </h1>
-
-        {/* Narrative Description */}
-        <p className="max-w-xl text-white/90 font-normal text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed opacity-90 tracking-widest">
-          Erleben Sie exklusive Safaris, handverlesene Lodges und unvergessliche Momente. Persönlich geplant, individuell gestaltet.
-        </p>
-
-        {/* Technical Registry Small Footer */}
-        <div className="pt-4 border-t border-white/10">
-          <p className="text-[8px] sm:text-[9px] md:text-[10px] font-normal text-white/60 uppercase tracking-widest">
-            Über 15 Jahre Expertise · Deutschsprachige Betreuung · Premium-Reisen ab €5.000
-          </p>
+        {/* Background Visual Asset */}
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="/banner-1.webp" 
+            alt="Serengeti Dreams Signature Visual" 
+            fill 
+            priority 
+            unoptimized
+            className="object-cover brightness-[0.6] scale-105"
+            data-ai-hint="elephant forest"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
         </div>
-      </motion.div>
 
-      {/* Interaction Protocol Triggers */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }} 
-        animate={{ opacity: 1, y: 0 }} 
-        transition={{ delay: 0.3, duration: 0.8 }}
-        className="flex flex-col sm:flex-row gap-4 pt-4 md:pt-0 pb-4 md:pb-0"
-      >
-        <Link href="/trip-planner">
-          <Button className="w-full sm:w-auto h-12 px-8 rounded-lg bg-white text-secondary hover:bg-primary hover:text-white transition-all duration-500 font-bold text-[10px] uppercase tracking-widest border-none group shadow-2xl">
-            Reiseberatung anfragen <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-          </Button>
-        </Link>
-        <Link href="/safaris">
-          <Button variant="outline" className="w-full sm:w-auto h-12 px-8 rounded-lg bg-transparent text-white border-white/40 hover:bg-white/10 hover:border-white font-bold text-[10px] uppercase tracking-widest transition-all duration-500">
-            Unsere Reisen entdecken
-          </Button>
-        </Link>
-      </motion.div>
-    </div>
-  </div>
+        {/* Massive Background Wordmark Protocol */}
+        <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none overflow-hidden">
+          <span className="text-[25vw] md:text-[20vw] font-headline font-black text-white opacity-[0.05] tracking-tighter uppercase leading-none select-none">
+            TANSANIA
+          </span>
+        </div>
 
-  {/* Global Registry Noise Texture */}
-  <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none" />
-</section>
+        {/* Main Content Container */}
+        <div className="container relative z-20 mx-auto px-6 md:px-10 max-w-7xl h-full flex flex-col justify-center pt-20 md:pt-0">
+          <div className="max-w-3xl space-y-6 md:space-y-10">
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }} 
+              animate={{ opacity: 1, x: 0 }} 
+              transition={{ duration: 0.8 }}
+              className="space-y-4 md:space-y-6"
+            >
+              {/* Main Architectural Headline */}
+              <h1 className="font-headline font-normal text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tighter uppercase">
+                Ihre maßgeschneiderte <br />
+                Luxusreise durch Tansania
+              </h1>
+
+              {/* Narrative Description */}
+              <p className="max-w-xl text-white/90 font-normal text-[13px] sm:text-base md:text-lg lg:text-xl leading-relaxed opacity-90 tracking-widest">
+                Erleben Sie exklusive Safaris, handverlesene Lodges und unvergessliche Momente. Persönlich geplant, individuell gestaltet.
+              </p>
+
+              {/* Technical Registry Small Footer */}
+              <div className="pt-4 border-t border-white/10">
+                <p className="text-[8px] sm:text-[9px] md:text-[10px] font-normal text-white/60 uppercase tracking-widest">
+                  Über 15 Jahre Expertise · Deutschsprachige Betreuung · Premium-Reisen ab €5.000
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Interaction Protocol Triggers */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="flex flex-col sm:flex-row gap-4 pt-4 md:pt-0 pb-4 md:pb-0"
+            >
+              <Link href="/trip-planner">
+                <Button className="w-full sm:w-auto h-12 px-8 rounded-lg bg-white text-secondary hover:bg-primary hover:text-white transition-all duration-500 font-bold text-[10px] uppercase tracking-widest border-none group shadow-2xl">
+                  Reiseberatung anfragen <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+              <Link href="/safaris">
+                <Button variant="outline" className="w-full sm:w-auto h-12 px-8 rounded-lg bg-transparent text-white border-white/40 hover:bg-white/10 hover:border-white font-bold text-[10px] uppercase tracking-widest transition-all duration-500">
+                  Unsere Reisen entdecken
+                </Button>
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Global Registry Noise Texture */}
+        <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none" />
+      </section>
 
       <TrustStrip />
       
@@ -120,6 +128,7 @@ export default function Home() {
         <Testimonials />
         <ContactSection />
         <FAQ />
+        <MagazinInspiration />
         <FinalCTA />
       </div>
     </div>
