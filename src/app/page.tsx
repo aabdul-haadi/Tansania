@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight, Compass, Globe, Sparkles, Zap, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
 
 import { SafariMap } from '@/components/home/SafariMap';
 import { CinematicQuote } from '@/components/home/CinematicQuote';
@@ -19,6 +18,7 @@ import { ProcessSection } from '@/components/home/ProcessSection';
 import { VisualJournalGrid } from '@/components/home/VisualJournalGrid';
 import { FeaturedPackages } from '@/components/home/FeaturedPackages';
 import { FinalCTA } from '@/components/home/FinalCTA';
+import { Testimonials } from '@/components/home/Testimonials';
 
 export default function Home() {
   return (
@@ -42,11 +42,12 @@ export default function Home() {
       <section className="relative min-h-[70vh] md:min-h-[90vh] flex items-center overflow-hidden bg-secondary">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/banner-1.webp" 
+            src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
             alt="Serengeti Dreams Visual" 
             fill 
             priority 
             className="object-cover brightness-75 scale-105"
+            data-ai-hint="serengeti safari"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent md:bg-gradient-to-r md:from-black/30 md:via-transparent" />
           <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
@@ -62,7 +63,6 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
                 className="space-y-2 md:space-y-3"
               >
-                {/* Desktop-only Headline Hierarchy */}
                 <div className="hidden md:block">
                   <div className="inline-flex items-center gap-2 text-primary font-black text-[9px] uppercase tracking-[0.4em] mb-1">
                     <Compass className="w-3.5 h-3.5" /> Registry 2026/27
@@ -72,7 +72,6 @@ export default function Home() {
                   </h1>
                 </div>
                 
-                {/* Unified Narrative Promise - Desktop Only */}
                 <p className="max-w-md mx-auto lg:mx-0 text-white font-bold text-[10px] sm:text-xs md:text-sm uppercase tracking-widest leading-relaxed hidden md:block">
                   Experten-gestaltete Safaris & exklusive Sansibar-Fluchten.
                   <br />
@@ -80,7 +79,6 @@ export default function Home() {
                 </p>
               </motion.div>
 
-              {/* Desktop-only Action Row */}
               <motion.div 
                 initial={{ opacity: 0, y: 20 }} 
                 animate={{ opacity: 1, y: 0 }} 
@@ -102,7 +100,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Cinematic Video Protocol Bottom Anchor - Centered on Mobile, Right on Desktop */}
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 md:left-auto md:right-10 md:translate-x-0 z-20">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -116,7 +113,7 @@ export default function Home() {
                 scale: [1, 1.05, 1]
               }}
               transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-              className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center text-white hover:bg-primary hover:border-primary transition-all duration-500 group shadow-2xl"
+              className="w-12 h-12 md:h-14 md:w-14 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center text-white hover:bg-primary hover:border-primary transition-all duration-500 group shadow-2xl"
             >
               <Play className="w-4 h-4 md:w-5 md:h-5 fill-current group-hover:scale-110 transition-transform ml-1" />
             </motion.button>
@@ -152,14 +149,17 @@ export default function Home() {
       {/* 09 FOTO-GALERIE - Visual Journal */}
       <VisualJournalGrid />
 
+      {/* 13 REVIEWS SECTION - Strategic Social Proof */}
+      <Testimonials />
+
+      {/* 10 LEAD-FORMULAR - Primary Inquiry Protocol */}
+      <ContactSection />
+
       {/* 12 FAQ */}
       <FAQ />
 
       {/* 11 FINAL CTA PORTAL */}
       <FinalCTA />
-
-      {/* 10 LEAD-FORMULAR */}
-      <ContactSection />
     </div>
   );
 }
