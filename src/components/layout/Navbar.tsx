@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -69,6 +70,7 @@ export function Navbar() {
             : "bg-transparent text-white border border-transparent",
           isOpen ? "opacity-0 pointer-events-none" : "opacity-100"
         )}>
+          {/* Logo Registry Hub */}
           <Link href="/" className="flex items-center gap-3 group">
             <div className={cn(
               "w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-500 shadow-sm shrink-0",
@@ -76,15 +78,19 @@ export function Navbar() {
             )}>
               <Compass className="w-6 h-6 text-white" />
             </div>
-            <div className="hidden min-[301px]:flex items-baseline gap-1.5">
-              <span className="font-headline font-black text-[9px] sm:text-[11px] md:text-sm leading-none uppercase tracking-tighter whitespace-nowrap">
+            <div className="flex items-baseline gap-1.5">
+              <span className={cn(
+                "font-headline font-black uppercase tracking-tighter whitespace-nowrap transition-all duration-500",
+                "text-xs sm:text-base md:text-xl" // Increased "Tansania" word scale
+              )}>
                 Tansania
-                <span className={cn(
-                  "ml-1 transition-colors",
-                  isScrolled ? "text-primary" : "text-white"
-                )}>
-                  Reiseabenteuer
-                </span>
+              </span>
+              <span className={cn(
+                "font-headline font-normal uppercase tracking-tighter whitespace-nowrap transition-all duration-500",
+                "text-[9px] sm:text-[11px] md:text-sm",
+                isScrolled ? "text-primary" : "text-white"
+              )}>
+                Reiseabenteuer
               </span>
             </div>
           </Link>

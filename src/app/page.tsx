@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -37,7 +38,7 @@ export default function Home() {
         </Link>
       </div>
 
-      {/* HERO SECTION - Special handling for hero text alignment */}
+      {/* HERO SECTION - Refined Elegant Architecture */}
       <section className="relative min-h-[70vh] md:min-h-[95vh] flex items-center overflow-hidden bg-secondary">
         <div className="absolute inset-0 z-0">
           <Image 
@@ -61,18 +62,29 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
                 className="space-y-3 md:space-y-5"
               >
-                <div className="inline-flex items-center justify-center lg:justify-start gap-2 text-primary font-bold text-[8px] uppercase tracking-[0.4em] mb-1">
+                {/* Technical Registry Badge */}
+                <div className="inline-flex items-center justify-center lg:justify-start gap-2 text-primary font-bold text-[8px] md:text-[10px] uppercase tracking-[0.4em] mb-1">
                   <Compass className="w-3 h-3" /> Über 15 Jahre Expertise · Deutschsprachige Betreuung · Premium-Reisen
                 </div>
-                <h1 className="font-headline font-normal text-white leading-none tracking-tighter uppercase max-w-5xl !text-center lg:!text-left">
-                  <span className="sm:hidden text-4xl">Maßgeschneiderte <br /> Luxusreisen</span>
-                  <span className="hidden sm:block">Ihre maßgeschneiderte <br /><span className="text-primary">Luxusreise</span> durch Tansania</span>
+                
+                {/* Main Architectural Headline */}
+                <h1 className="font-headline font-normal text-white leading-[1.1] tracking-tighter uppercase max-w-5xl !text-center lg:!text-left">
+                  <span className="sm:hidden text-3xl">Maßgeschneiderte <br /> Luxusreisen</span>
+                  <span className="hidden sm:block text-4xl md:text-5xl lg:text-[3.5rem]">
+                    Ihre maßgeschneiderte <br /><span className="text-primary">Luxusreise</span> durch Tansania
+                  </span>
                 </h1>
-                <p className="max-w-xl mx-auto lg:mx-0 text-white font-normal text-sm md:text-lg uppercase tracking-widest leading-relaxed opacity-90 !text-center lg:!text-left">
-                  <span className="sm:hidden">Exklusive Safaris & handverlesene Lodges.</span>
-                  <span className="hidden sm:block">Erleben Sie exklusive Safaris, handverlesene Lodges und unvergessliche Momente. Persönlich geplant, individuell gestaltet.</span>
+                
+                {/* Narrative Promise */}
+                <p className="max-w-2xl mx-auto lg:mx-0 text-white font-normal text-sm md:text-lg uppercase tracking-widest leading-relaxed opacity-90 !text-center lg:!text-left">
+                  <span className="sm:hidden text-[10px]">Exklusive Safaris & handverlesene Lodges.</span>
+                  <span className="hidden sm:block">
+                    Erleben Sie exklusive Safaris, handverlesene Lodges und unvergessliche Momente. Persönlich geplant, individuell gestaltet.
+                  </span>
                 </p>
               </motion.div>
+
+              {/* Desktop Conversion Triggers */}
               <motion.div 
                 initial={{ opacity: 0, y: 20 }} 
                 animate={{ opacity: 1, y: 0 }} 
@@ -94,6 +106,7 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Video Trigger Overlay */}
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 md:left-auto md:right-10 md:translate-x-0 z-20">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
