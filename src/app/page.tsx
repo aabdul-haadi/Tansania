@@ -132,14 +132,14 @@ export default function Home() {
       {/* 04 TRAVEL CATEGORIES */}
       <TravelCategories />
 
+      {/* 08 SAFARI-PAKETE */}
+      <FeaturedPackages />
+
       {/* 05 TANZANIA DESTINATIONS DISCOVERY */}
       <TanzaniaDestinations />
 
       {/* 07 CINEMATIC BREAKER */}
       <CinematicQuote />
-
-      {/* 08 SAFARI-PAKETE */}
-      <FeaturedPackages />
 
       {/* 09 WHY TRAVEL WITH US */}
       <WhyUs />
