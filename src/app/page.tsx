@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -38,7 +37,7 @@ export default function Home() {
         </Link>
       </div>
 
-      {/* HERO SECTION */}
+      {/* HERO SECTION - Special handling for hero text alignment */}
       <section className="relative min-h-[70vh] md:min-h-[95vh] flex items-center overflow-hidden bg-secondary">
         <div className="absolute inset-0 z-0">
           <Image 
@@ -46,8 +45,8 @@ export default function Home() {
             alt="Serengeti Dreams Master Visual" 
             fill 
             priority 
+            unoptimized
             className="object-cover brightness-[0.45] scale-105"
-            data-ai-hint="serengeti safari"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent md:bg-gradient-to-r md:from-black/40 md:via-transparent" />
           <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
@@ -62,14 +61,14 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
                 className="space-y-3 md:space-y-5"
               >
-                <div className="inline-flex items-center gap-2 text-primary font-black text-[8px] uppercase tracking-[0.4em] mb-1">
+                <div className="inline-flex items-center justify-center lg:justify-start gap-2 text-primary font-bold text-[8px] uppercase tracking-[0.4em] mb-1">
                   <Compass className="w-3 h-3" /> Über 15 Jahre Expertise · Deutschsprachige Betreuung · Premium-Reisen
                 </div>
-                <h1 className="font-headline text-3xl md:text-5xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tighter uppercase max-w-5xl">
-                  <span className="sm:hidden">Maßgeschneiderte <br /> Luxusreisen</span>
+                <h1 className="font-headline font-normal text-white leading-none tracking-tighter uppercase max-w-5xl !text-center lg:!text-left">
+                  <span className="sm:hidden text-4xl">Maßgeschneiderte <br /> Luxusreisen</span>
                   <span className="hidden sm:block">Ihre maßgeschneiderte <br /><span className="text-primary">Luxusreise</span> durch Tansania</span>
                 </h1>
-                <p className="max-w-xl mx-auto lg:mx-0 text-white font-bold text-[10px] md:text-sm uppercase tracking-widest leading-relaxed opacity-90">
+                <p className="max-w-xl mx-auto lg:mx-0 text-white font-normal text-sm md:text-lg uppercase tracking-widest leading-relaxed opacity-90 !text-center lg:!text-left">
                   <span className="sm:hidden">Exklusive Safaris & handverlesene Lodges.</span>
                   <span className="hidden sm:block">Erleben Sie exklusive Safaris, handverlesene Lodges und unvergessliche Momente. Persönlich geplant, individuell gestaltet.</span>
                 </p>
@@ -81,12 +80,12 @@ export default function Home() {
                 className="hidden sm:flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start pt-4"
               >
                 <Link href="/safaris" className="w-full sm:w-auto">
-                  <Button className="w-full sm:w-44 h-12 md:h-14 px-6 rounded-xl font-black shadow-xl border-none text-[9px] uppercase tracking-widest">
+                  <Button className="w-full sm:w-44 h-12 md:h-14 px-6 rounded-xl font-bold shadow-xl border-none text-[9px] uppercase tracking-widest">
                     Katalog Erkunden
                   </Button>
                 </Link>
                 <Link href="/trip-advisor" className="w-full sm:w-auto">
-                  <Button variant="glass" className="w-full sm:w-44 h-12 md:h-14 px-6 rounded-xl shadow-xl border-white/20 text-[9px] font-black uppercase tracking-widest">
+                  <Button variant="glass" className="w-full sm:w-44 h-12 md:h-14 px-6 rounded-xl shadow-xl border-white/20 text-[9px] font-bold uppercase tracking-widest">
                     AI Advisor <Zap className="w-3 h-3 ml-1.5 fill-current" />
                   </Button>
                 </Link>
@@ -121,17 +120,20 @@ export default function Home() {
       </section>
 
       <TrustStrip />
-      <TravelCategories />
-      <FeaturedPackages />
-      <WhyUs />
-      <ProcessSection />
-      <CinematicQuote />
-      <TanzaniaDestinations />
-      <VisualJournalGrid />
-      <Testimonials />
-      <ContactSection />
-      <FAQ />
-      <FinalCTA />
+      
+      <div className="space-y-0">
+        <TravelCategories />
+        <FeaturedPackages />
+        <WhyUs />
+        <ProcessSection />
+        <CinematicQuote />
+        <TanzaniaDestinations />
+        <VisualJournalGrid />
+        <Testimonials />
+        <ContactSection />
+        <FAQ />
+        <FinalCTA />
+      </div>
     </div>
   );
 }

@@ -6,20 +6,20 @@
   :root {
     /* COLORS: Professional Registry Palette */
     --background: 0 0% 98%;
-    --foreground: 0 0% 8%;
+    --foreground: 20 6% 22%; /* #3A3634 equivalent */
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 8%;
+    --card-foreground: 20 6% 22%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 8%;
+    --popover-foreground: 20 6% 22%;
     
     --primary: 19 89% 47%;
     --primary-foreground: 0 0% 100%;
     
-    --secondary: 0 0% 8%;
+    --secondary: 20 6% 22%;
     --secondary-foreground: 0 0% 100%;
     
     --muted: 0 0% 94%;
-    --muted-foreground: 0 0% 40%;
+    --muted-foreground: 30 4% 52%; /* #8A8581 equivalent */
     
     --accent: 30 53% 64%;
     --accent-foreground: 0 0% 10%;
@@ -32,7 +32,7 @@
     --ring: 19 89% 47%;
     --radius: 1.5rem;
 
-    /* BALANCED PRESTIGE SCALE: Majesty without Overlap */
+    /* BALANCED PRESTIGE SCALE */
     --text-xs: 0.75rem;     /* 12px */
     --text-sm: 0.875rem;    /* 14px */
     --text-base: 1rem;      /* 16px */
@@ -54,27 +54,52 @@
   }
   
   body {
-    @apply bg-background text-foreground antialiased font-bold;
-    font-family: 'Montserrat', sans-serif !important;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
     background-image: url("https://grainy-gradients.vercel.app/noise.svg");
     background-repeat: repeat;
     background-size: 200px;
     background-attachment: fixed;
   }
 
-  /* STRICT BRANDING: Forcible removal of ALL italics */
-  i, em, .italic, .font-italic, .prose em, .prose i, [style*="italic"] {
-    font-style: normal !important;
-    @apply not-italic !important;
-  }
-
-  /* Global Typography Protocol: Reduced Weight & Tracking */
-  p, span, div, a, li, input, button, select, textarea {
-    @apply font-bold tracking-tight;
-  }
-
+  /* Titles Registry */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold uppercase tracking-tight leading-tight;
+    @apply text-center font-normal;
+    font-family: 'Cormorant Garamond', serif;
+    color: #3A3634;
+    line-height: 1;
+    font-style: normal;
+  }
+
+  /* Mobile Title Scaling */
+  h1 { @apply text-4xl md:text-6xl lg:text-[4.5rem]; }
+  h2 { @apply text-3xl md:text-[3rem]; } /* Targeted 48px */
+  h3 { @apply text-2xl md:text-4xl; }
+
+  /* Paragraphs Registry */
+  p, span, div, li {
+    @apply text-center font-normal leading-[1.55];
+    font-family: 'Inter', sans-serif;
+    color: #8A8581;
+    font-size: 0.875rem; /* 14px mobile */
+    font-style: normal;
+  }
+
+  @screen md {
+    p, span, div, li {
+      font-size: 1rem; /* 16px tablet */
+    }
+  }
+
+  @screen lg {
+    p, span, div, li {
+      font-size: 1.125rem; /* 18px desktop */
+    }
+  }
+
+  /* Technical Constraint: Force No Italics */
+  i, em, .italic, .font-italic {
+    font-style: normal !important;
   }
 }
 
@@ -89,8 +114,4 @@
 
 .text-registry {
   @apply text-[11px] font-bold uppercase tracking-[0.3em] text-primary;
-}
-
-.glass-card {
-  @apply bg-white/10 backdrop-blur-xl border border-white/20;
 }

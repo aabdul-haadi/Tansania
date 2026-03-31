@@ -39,14 +39,14 @@ const reasons = [
 
 export function WhyUs() {
   return (
-    <section className="pt-8 md:pt-12 pb-16 md:pb-24 bg-white font-bold">
+    <section className="pt-8 md:pt-12 pb-16 md:pb-24 bg-white">
       <div className="container mx-auto px-6 md:px-10 max-w-7xl">
         <div className="text-center mb-12 md:mb-20 space-y-3">
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-2xl md:text-4xl font-black text-secondary uppercase tracking-tighter"
+            className="font-headline text-3xl md:text-[3rem] text-[#3A3634] uppercase tracking-tighter"
           >
             Warum mit uns reisen?
           </motion.h2>
@@ -55,7 +55,7 @@ export function WhyUs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground font-black text-[9px] md:text-[10px] uppercase tracking-widest max-w-2xl mx-auto opacity-60"
+            className="text-[#8A8581] font-normal text-sm md:text-lg uppercase tracking-widest max-w-2xl mx-auto"
           >
             Was unsere Reiseplanung auszeichnet
           </motion.p>
@@ -69,16 +69,16 @@ export function WhyUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.05 }}
-              className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-5"
+              className="flex flex-col items-center text-center space-y-5"
             >
               <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#f8f5f0] flex items-center justify-center shrink-0 shadow-sm border border-[#ede7e0] transition-all duration-500 hover:scale-105 group">
                 <item.icon className="w-6 h-6 md:w-7 md:h-7 text-[#c5a880] group-hover:text-primary transition-colors" />
               </div>
               <div className="space-y-2">
-                <h3 className="font-headline text-lg md:text-xl font-bold text-secondary uppercase tracking-tight">
+                <h3 className="font-headline text-lg md:text-xl text-[#3A3634] uppercase tracking-tight">
                   {item.title}
                 </h3>
-                <p className="text-muted-foreground font-bold text-[9px] md:text-[10px] uppercase tracking-widest leading-relaxed opacity-80 max-w-[260px] lg:max-w-none">
+                <p className="text-[#8A8581] font-normal text-xs md:text-sm uppercase tracking-widest leading-relaxed max-w-[260px] lg:max-w-none">
                   {item.desc}
                 </p>
               </div>

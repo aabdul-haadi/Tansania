@@ -17,6 +17,7 @@ export function FinalCTA() {
           alt="Tansania Safari Sunset" 
           fill 
           priority 
+          unoptimized
           className="object-cover brightness-[0.4] scale-105"
           data-ai-hint="safari sunset"
         />
@@ -34,24 +35,24 @@ export function FinalCTA() {
           className="space-y-3 md:space-y-4"
         >
           <div className="space-y-2">
-            <h2 className="font-headline text-lg md:text-3xl font-bold text-white uppercase tracking-tighter leading-tight">
+            <h2 className="font-headline text-2xl md:text-[3rem] font-normal text-white uppercase tracking-tighter leading-tight text-center">
               Bereit für Ihr <br />
               <span className="text-primary">Tansania-Abenteuer?</span>
             </h2>
-            <p className="text-white/90 font-bold text-[6px] md:text-[8px] uppercase tracking-[0.3em] max-w-xl mx-auto leading-relaxed opacity-70">
+            <p className="text-white font-normal text-[10px] md:text-sm uppercase tracking-[0.3em] max-w-xl mx-auto leading-relaxed opacity-90 text-center">
               Lassen Sie uns gemeinsam Ihre individuelle Traumreise gestalten. Persönlich, professionell und mit Leidenschaft für Afrika.
             </p>
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-2 md:gap-3 pt-2">
             <Link href="/trip-planner" className="w-full sm:w-auto">
-              <Button size="default" className="w-full sm:w-auto rounded-lg px-6 h-10 md:h-12 bg-white text-secondary hover:bg-primary hover:text-white transition-all duration-500 font-black text-[8px] md:text-[10px] uppercase tracking-[0.2em] shadow-xl border-none group">
+              <Button size="default" className="w-full sm:w-auto rounded-lg px-6 h-10 md:h-12 bg-white text-secondary hover:bg-primary hover:text-white transition-all duration-500 font-bold text-[8px] md:text-[10px] uppercase tracking-[0.2em] shadow-xl border-none group">
                 Kostenlose Beratung anfragen <ArrowRight className="w-3.5 h-3.5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
             
             <a href="tel:+493022608080" className="w-full sm:w-auto">
-              <Button size="default" className="w-full sm:w-auto rounded-lg px-6 h-10 md:h-12 bg-white text-secondary hover:bg-secondary hover:text-white transition-all duration-500 font-black text-[8px] md:text-[10px] uppercase tracking-[0.2em] shadow-xl border-none group">
+              <Button size="default" className="w-full sm:w-auto rounded-lg px-6 h-10 md:h-12 bg-white text-secondary hover:bg-secondary hover:text-white transition-all duration-500 font-bold text-[8px] md:text-[10px] uppercase tracking-[0.2em] shadow-xl border-none group">
                 <Phone className="w-3.5 h-3.5 mr-2" /> Jetzt anrufen
               </Button>
             </a>
