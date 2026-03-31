@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <div className="relative bg-background">
       {/* 02 HERO SECTION */}
-      <section className="relative min-h-[80vh] md:min-h-screen flex items-center overflow-hidden bg-secondary">
+      <section className="relative min-h-[60vh] md:min-h-screen flex items-center overflow-hidden bg-secondary">
         <div className="absolute inset-0 z-0">
           <Image 
             src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
@@ -40,7 +40,7 @@ export default function Home() {
           <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         </div>
         
-        <div className="container relative z-10 mx-auto px-4 max-w-7xl pt-12 md:pt-20">
+        <div className="container relative z-10 mx-auto px-4 max-w-7xl pt-8 md:pt-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
             
             <div className="lg:col-span-7 space-y-6 md:space-y-8 text-center lg:text-left">
@@ -71,12 +71,12 @@ export default function Home() {
                 className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start"
               >
                 <Link href="/safaris" className="w-full sm:w-auto">
-                  <Button size="xl" className="w-full h-14 md:h-16 px-8 rounded-xl font-bold shadow-2xl">
+                  <Button size="xl" className="w-full h-12 md:h-16 px-6 md:px-8 rounded-xl font-bold shadow-2xl">
                     Katalog Erkunden
                   </Button>
                 </Link>
                 <Link href="/trip-advisor" className="w-full sm:w-auto">
-                  <Button size="xl" variant="glass" className="w-full h-14 md:h-16 px-8 rounded-xl shadow-xl">
+                  <Button size="xl" variant="glass" className="w-full h-12 md:h-16 px-6 md:px-8 rounded-xl shadow-xl">
                     AI Advisor <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </Link>
