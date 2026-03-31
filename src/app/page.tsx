@@ -38,13 +38,13 @@ export default function Home() {
         </Link>
       </div>
 
-      {/* HERO SECTION - COMPACTED CLONE */}
+      {/* HERO SECTION - REFINED CLONE */}
       <section className="relative min-h-[85vh] md:min-h-screen flex items-center overflow-hidden bg-secondary">
-        {/* Background Visual Asset */}
+        {/* Background Visual Asset - UPDATED TO banner-1.webp */}
         <div className="absolute inset-0 z-0">
           <Image 
-            src="https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=1920" 
-            alt="Serengeti Dreams Master Elephant" 
+            src="/banner-1.webp" 
+            alt="Serengeti Dreams Signature Visual" 
             fill 
             priority 
             unoptimized
@@ -75,13 +75,13 @@ export default function Home() {
               className="space-y-4 md:space-y-6"
             >
               {/* Main Architectural Headline - Compacted */}
-              <h1 className="font-headline font-normal text-white text-3xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tighter uppercase">
+              <h1 className="font-headline font-normal text-white text-3xl md:text-6xl leading-[1.1] tracking-tighter uppercase">
                 Ihre maßgeschneiderte <br />
                 Luxusreise durch Tansania
               </h1>
               
               {/* Narrative Description - Compacted */}
-              <p className="max-w-xl text-white/90 font-normal text-[13px] md:text-lg leading-relaxed opacity-90">
+              <p className="max-w-xl text-white/90 font-normal text-[13px] md:text-lg leading-relaxed opacity-90 uppercase tracking-widest">
                 Erleben Sie exklusive Safaris, handverlesene Lodges und unvergessliche Momente. Persönlich geplant, individuell gestaltet.
               </p>
 
@@ -93,7 +93,7 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Interaction Protocol Triggers - Desktop Only as per instruction */}
+            {/* Interaction Protocol Triggers - Desktop Only */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }} 
               animate={{ opacity: 1, y: 0 }} 
