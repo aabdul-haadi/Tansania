@@ -1,6 +1,8 @@
+
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { 
   Phone, 
@@ -21,20 +23,48 @@ import { ContactSection } from '@/components/shared/ContactSection';
 
 export default function ContactPage() {
   return (
-    <div className="bg-[#fdfcfb] min-h-screen font-bold pt-32 pb-20">
-      <div className="container mx-auto px-4 max-w-7xl">
-        <header className="text-center mb-16 md:mb-24 space-y-6">
-          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-[0.4em] border border-primary/20">
-            <Globe className="w-3.5 h-3.5" /> Registry HQ
+    <div className="bg-[#fdfcfb] min-h-screen font-bold">
+      {/* 02 CINEMATIC HERO: Registry Entry */}
+      <section className="relative h-[60vh] md:h-[75vh] flex items-center justify-center overflow-hidden bg-secondary">
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
+            alt="Contact Berlin Header" 
+            fill 
+            priority 
+            className="object-cover brightness-[0.4] scale-105"
+            data-ai-hint="serengeti savannah"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/20" />
+          <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+        </div>
+        
+        <div className="container relative z-10 mx-auto px-4 text-center space-y-6">
+          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/20 text-white text-[10px] font-black uppercase tracking-[0.4em] border border-primary/30 backdrop-blur-md">
+            <Globe className="w-3.5 h-3.5 text-primary" /> Registry HQ
           </motion.div>
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="font-headline text-4xl md:text-8xl font-black text-secondary uppercase tracking-tighter leading-none">
+          
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ delay: 0.1 }} 
+            className="font-headline text-4xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none"
+          >
             KONTAKT <br /><span className="text-primary">BERLIN</span>
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-muted-foreground font-black text-[10px] md:text-sm uppercase tracking-widest max-w-xl mx-auto opacity-60">
-            Ihre Verbindung zwischen Spree und Serengeti. Unsere Spezialisten beraten Sie persönlich.
+          
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ delay: 0.2 }} 
+            className="text-white/60 font-black text-[10px] md:text-sm uppercase tracking-widest max-w-xl mx-auto leading-relaxed"
+          >
+            Ihre Verbindung zwischen Spree und Serengeti. <br />Unsere Spezialisten beraten Sie persönlich.
           </motion.p>
-        </header>
+        </div>
+      </section>
 
+      <div className="container mx-auto px-4 max-w-7xl py-12 md:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20 md:mb-32">
           {/* Official Registry Data */}
           <div className="lg:col-span-4 space-y-4">
