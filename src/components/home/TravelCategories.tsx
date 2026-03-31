@@ -53,7 +53,7 @@ const categories = [
 
 export function TravelCategories() {
   return (
-    <section className="py-16 md:py-32 bg-white font-bold">
+    <section className="pt-8 pb-16 md:pt-12 md:pb-32 bg-white font-bold">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12 md:mb-20 space-y-4">
           <motion.h2 
