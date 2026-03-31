@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -6,13 +7,17 @@ import { PackageCard } from '@/components/shared/PackageCard';
 import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { collection, query, where, limit } from 'firebase/firestore';
 
+/**
+ * Signature Expedition Registry.
+ * High-density grid featuring flagship safari offerings.
+ */
 export function FeaturedPackages() {
   const firestore = useFirestore();
   const pkgQuery = useMemoFirebase(() => (
     firestore ? query(collection(firestore, 'packages'), where('isPublished', '==', true), limit(4)) : null
   ), [firestore]);
   
-  const { data: packages } = useCollection(pkgQuery);
+  const { data: packages, isLoading } = useCollection(pkgQuery);
 
   const fallbacks = [
     {
@@ -43,10 +48,11 @@ export function FeaturedPackages() {
     }
   ];
 
+  // Logic: Use live data if available, otherwise show high-prestige fallbacks
   const displayPkgs = packages && packages.length > 0 ? packages : fallbacks;
 
   return (
-    <section className="pt-4 pb-20 md:pt-8 md:pb-32 bg-white">
+    <section className="pt-4 pb-20 md:pt-8 md:pb-32 bg-white relative z-10">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-16 md:mb-20 space-y-3">
           <motion.h2 
@@ -68,10 +74,11 @@ export function FeaturedPackages() {
           </motion.p>
         </div>
 
+        {/* Technical Staggered Grid */}
         <motion.div 
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
           variants={{
             visible: { transition: { staggerChildren: 0.1 } }
           }}
@@ -81,9 +88,10 @@ export function FeaturedPackages() {
             <motion.div 
               key={pkg.id}
               variants={{
-                hidden: { opacity: 0, y: 20 },
+                hidden: { opacity: 0, y: 30 },
                 visible: { opacity: 1, y: 0 }
               }}
+              transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
             >
               <PackageCard pkg={pkg} />
             </motion.div>

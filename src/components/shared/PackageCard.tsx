@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -31,13 +32,15 @@ interface PackageCardProps {
   className?: string;
 }
 
+/**
+ * High-Prestige Overlapping Safari Card.
+ * Designed for the Signature Expedition Registry.
+ */
 export function PackageCard({ pkg, className }: PackageCardProps) {
   return (
     <motion.div 
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      whileHover={{ y: -5 }}
+      whileHover={{ y: -8 }}
+      transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
       className={cn("group flex flex-col h-full", className)}
     >
       {/* Image Hub - Rounded Top Protocol */}
@@ -58,7 +61,7 @@ export function PackageCard({ pkg, className }: PackageCardProps) {
         </div>
       </div>
 
-      {/* Overlapping Content Box - Architectural UI UX */}
+      {/* Overlapping Content Box - Architectural Layering */}
       <div className="relative -mt-16 md:-mt-24 mx-4 md:mx-10 bg-white rounded-[2rem] p-6 md:p-10 shadow-2xl border border-border/50 z-10 flex flex-col flex-grow transition-all duration-500 group-hover:shadow-primary/10">
         <div className="space-y-6 flex-grow flex flex-col">
           {/* Metadata Pulse */}
@@ -108,7 +111,7 @@ export function PackageCard({ pkg, className }: PackageCardProps) {
               </span>
             </div>
             <Link href={`/safaris/${pkg.slug}`}>
-              <Button size="icon" className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-secondary text-white hover:bg-primary transition-all shadow-xl group/btn border-none">
+              <Button size="icon" className="w-12 h-12 md:h-14 rounded-2xl bg-secondary text-white hover:bg-primary transition-all shadow-xl group/btn border-none">
                 <ArrowRight className="w-5 h-5 transition-transform group-hover/btn:translate-x-1" />
               </Button>
             </Link>
