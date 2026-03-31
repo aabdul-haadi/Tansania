@@ -85,7 +85,7 @@ export function ProcessSection() {
 
                 {/* Content Matrix */}
                 <div className="space-y-3 max-w-[240px]">
-                  <h3 className="font-headline text-base md:text-lg font-black text-secondary uppercase tracking-tight leading-tight">
+                  <h3 className="font-headline text-base md:text-lg font-bold text-secondary uppercase tracking-tight leading-tight">
                     {step.title}
                   </h3>
                   <p className="text-muted-foreground font-bold text-[9px] md:text-[10px] uppercase tracking-widest leading-relaxed opacity-80">

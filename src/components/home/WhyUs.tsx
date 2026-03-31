@@ -75,10 +75,10 @@ export function WhyUs() {
                 <item.icon className="w-6 h-6 md:w-7 md:h-7 text-[#c5a880] group-hover:text-primary transition-colors" />
               </div>
               <div className="space-y-2">
-                <h3 className="font-headline text-lg md:text-xl font-black text-secondary uppercase tracking-tight">
+                <h3 className="font-headline text-lg md:text-xl font-bold text-secondary uppercase tracking-tight">
                   {item.title}
                 </h3>
-                <p className="text-muted-foreground font-black text-[9px] md:text-[10px] uppercase tracking-widest leading-relaxed opacity-80 max-w-[260px] lg:max-w-none">
+                <p className="text-muted-foreground font-bold text-[9px] md:text-[10px] uppercase tracking-widest leading-relaxed opacity-80 max-w-[260px] lg:max-w-none">
                   {item.desc}
                 </p>
               </div>
