@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -35,6 +34,7 @@ interface PackageCardProps {
 /**
  * High-Prestige Overlapping Safari Card.
  * Designed for the Signature Expedition Registry.
+ * Fixed: Missing Button import and 404 optimization protocol.
  */
 export function PackageCard({ pkg, className }: PackageCardProps) {
   return (
@@ -49,6 +49,7 @@ export function PackageCard({ pkg, className }: PackageCardProps) {
           src={pkg.imageUrl || 'https://picsum.photos/seed/safari/800/600'} 
           alt={pkg.title} 
           fill 
+          unoptimized
           className="object-cover transition-transform duration-1000 group-hover:scale-110" 
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-transparent" />
@@ -105,7 +106,7 @@ export function PackageCard({ pkg, className }: PackageCardProps) {
           {/* Prestige Conversion Row */}
           <div className="mt-auto pt-8 border-t border-muted flex items-center justify-between">
             <div className="flex flex-col">
-              <span className="text-[8px] font-black uppercase text-muted-foreground tracking-[0.2em] mb-1">Invesition ab</span>
+              <span className="text-[8px] font-black uppercase text-muted-foreground tracking-[0.2em] mb-1">Investition ab</span>
               <span className="text-xl md:text-2xl font-black text-secondary tracking-tighter">
                 €{pkg.startingPrice?.toLocaleString('de-DE')}
               </span>

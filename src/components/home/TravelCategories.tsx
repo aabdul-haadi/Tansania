@@ -60,7 +60,7 @@ export function TravelCategories() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-2xl md:text-5xl font-black text-secondary uppercase tracking-tighter"
+            className="font-headline text-2xl md:text-4xl font-black text-secondary uppercase tracking-tighter"
           >
             Welche Reise passt zu Ihnen?
           </motion.h2>
@@ -89,6 +89,7 @@ export function TravelCategories() {
                 src={cat.img} 
                 alt={cat.title} 
                 fill 
+                unoptimized
                 className="object-cover transition-transform duration-1000 group-hover:scale-110"
                 data-ai-hint={cat.hint}
               />

@@ -117,6 +117,7 @@ function DestinationCard({ dest }: { dest: any }) {
         src={dest.img} 
         alt={dest.name} 
         fill 
+        unoptimized
         className="object-cover transition-transform duration-1000 group-hover:scale-110"
         data-ai-hint={dest.hint}
       />
