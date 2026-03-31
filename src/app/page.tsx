@@ -73,8 +73,8 @@ export default function Home() {
                   </h1>
                 </div>
                 
-                {/* Unified Narrative Promise */}
-                <p className="max-w-md mx-auto lg:mx-0 text-white font-bold text-[10px] sm:text-xs md:text-sm uppercase tracking-widest leading-relaxed">
+                {/* Unified Narrative Promise - Desktop Only */}
+                <p className="max-w-md mx-auto lg:mx-0 text-white font-bold text-[10px] sm:text-xs md:text-sm uppercase tracking-widest leading-relaxed hidden md:block">
                   Experten-gestaltete Safaris & exklusive Sansibar-Fluchten.
                   <br />
                   In Berlin konzipiert – in Afrika gelebt.
@@ -103,8 +103,8 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Cinematic Video Protocol Bottom Anchor - Anchored Right */}
-        <div className="absolute bottom-10 right-10 z-20">
+        {/* Cinematic Video Protocol Bottom Anchor - Centered on Mobile, Right on Desktop */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 md:left-auto md:right-10 md:translate-x-0 z-20">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
