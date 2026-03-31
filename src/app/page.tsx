@@ -12,7 +12,7 @@ import { SafariMap } from '@/components/home/SafariMap';
 import { Testimonials } from '@/components/home/Testimonials';
 import { CinematicQuote } from '@/components/home/CinematicQuote';
 import { FAQ } from '@/components/home/FAQ';
-import { ExpertiseNarrative } from '@/components/home/ExpertiseNarrative';
+import { TravelCategories } from '@/components/home/TravelCategories';
 import { ContactSection } from '@/components/shared/ContactSection';
 import { TrustStrip } from '@/components/home/TrustStrip';
 import { ProcessSection } from '@/components/home/ProcessSection';
@@ -130,8 +130,8 @@ export default function Home() {
       {/* 03 TRUST STRIP */}
       <TrustStrip />
 
-      {/* 04 WARUM WIR */}
-      <ExpertiseNarrative />
+      {/* 04 TRAVEL CATEGORIES (Replaces ExpertiseNarrative) */}
+      <TravelCategories />
 
       {/* 06 SO FUNKTIONIERT ES */}
       <ProcessSection />
