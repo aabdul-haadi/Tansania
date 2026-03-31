@@ -36,10 +36,10 @@ export function ExpertiseNarrative() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="bg-muted/30 p-8 md:p-10 rounded-[2rem] border-l-8 border-primary relative overflow-hidden"
+                className="bg-muted/30 p-8 md:p-10 rounded-[2rem] relative overflow-hidden"
               >
                 <div className="absolute top-0 right-0 p-6 opacity-5"><Sparkles className="w-20 h-20" /></div>
-                <p className="text-base md:text-xl font-bold leading-relaxed text-secondary uppercase tracking-tight">
+                <p className="text-sm md:text-base font-bold leading-relaxed text-secondary uppercase tracking-tight">
                   „Schließe deine Augen. Stell dir vor, wie die Sonne den Kraterrand des Ngorongoro in pures Gold taucht — und du der einzige Mensch bist, der diesen Moment sieht."
                 </p>
               </motion.div>
@@ -117,8 +117,8 @@ export function ExpertiseNarrative() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <div className="absolute bottom-10 left-10 right-10">
-                <div className="p-6 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl">
-                  <p className="text-[10px] font-black text-white uppercase tracking-[0.4em]">SDL Signature View • Asset 01</p>
+                <div className="px-5 py-2.5 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full shadow-2xl">
+                  <p className="text-[8px] font-black text-white uppercase tracking-[0.4em]">SDL Signature View • Asset 01</p>
                 </div>
               </div>
             </motion.div>
