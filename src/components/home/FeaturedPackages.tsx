@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -5,6 +6,35 @@ import { motion } from 'framer-motion';
 import { PackageCard } from '@/components/shared/PackageCard';
 import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { collection, query, where, limit } from 'firebase/firestore';
+
+const FALLBACK_PACKAGES = [
+  {
+    id: 'safari-sansibar-15',
+    title: '15 Tage Safari in Tansania und Sansibar',
+    slug: 'safari-tansania-sansibar-15-tage',
+    startingPrice: 5399,
+    durationDays: 15,
+    groupSize: '2-6 Personen',
+    category: 'Signature',
+    highlights: ['Big Five', 'Luxuslodges', 'Privatguide'],
+    excerpt: 'Serengeti, Ngorongoro und Tarangire – die zeitlose Route durch Tansanias berühmteste Nationalparks.',
+    imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800',
+    rating: 4.9
+  },
+  {
+    id: 'honeymoon-escape',
+    title: 'Safari & Sansibar Honeymoon Special',
+    slug: 'safari-sansibar-honeymoon',
+    startingPrice: 8900,
+    durationDays: 14,
+    groupSize: '2 Personen',
+    category: 'Romantik',
+    highlights: ['Flitterwochen-Special', 'Boutique-Lodges', 'Private Insel'],
+    excerpt: 'Die perfekte Kombination aus aufregender Wildlife-Safari und romantischem Strandurlaub auf Sansibar.',
+    imageUrl: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800',
+    rating: 5.0
+  }
+];
 
 export function FeaturedPackages() {
   const firestore = useFirestore();
@@ -14,36 +44,7 @@ export function FeaturedPackages() {
   
   const { data: packages, isLoading } = useCollection(pkgQuery);
 
-  const fallbacks = [
-    {
-      id: 'safari-sansibar-15',
-      title: '15 Tage Safari in Tansania und Sansibar',
-      slug: 'safari-tansania-sansibar-15-tage',
-      startingPrice: 5399,
-      durationDays: 15,
-      groupSize: '2-6 Personen',
-      category: 'Signature',
-      highlights: ['Big Five', 'Luxuslodges', 'Privatguide'],
-      excerpt: 'Serengeti, Ngorongoro und Tarangire – die zeitlose Route durch Tansanias berühmteste Nationalparks.',
-      imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800',
-      rating: 4.9
-    },
-    {
-      id: 'honeymoon-escape',
-      title: 'Safari & Sansibar Honeymoon Special',
-      slug: 'safari-sansibar-honeymoon',
-      startingPrice: 8900,
-      durationDays: 14,
-      groupSize: '2 Personen',
-      category: 'Romantik',
-      highlights: ['Flitterwochen-Special', 'Boutique-Lodges', 'Private Insel'],
-      excerpt: 'Die perfekte Kombination aus aufregender Wildlife-Safari und romantischem Strandurlaub auf Sansibar.',
-      imageUrl: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800',
-      rating: 5.0
-    }
-  ];
-
-  const displayPkgs = packages && packages.length > 0 ? packages : fallbacks;
+  const displayPkgs = packages && packages.length > 0 ? packages : FALLBACK_PACKAGES;
 
   return (
     <section className="pt-4 pb-20 md:pt-8 md:pb-32 bg-white relative z-10">
@@ -71,7 +72,7 @@ export function FeaturedPackages() {
         <motion.div 
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true }}
           variants={{
             visible: { transition: { staggerChildren: 0.1 } }
           }}

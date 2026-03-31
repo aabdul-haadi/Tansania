@@ -81,13 +81,14 @@ export function Navbar() {
             <div className="flex items-baseline gap-1.5">
               <span className={cn(
                 "font-headline font-black uppercase tracking-tighter whitespace-nowrap transition-all duration-500",
-                "text-xs sm:text-base md:text-xl" // Increased "Tansania" word scale
+                "text-sm sm:text-base md:text-xl"
               )}>
                 Tansania
               </span>
               <span className={cn(
                 "font-headline font-normal uppercase tracking-tighter whitespace-nowrap transition-all duration-500",
-                "text-[9px] sm:text-[11px] md:text-sm",
+                "hidden sm:inline-block",
+                "sm:text-[11px] md:text-sm",
                 isScrolled ? "text-primary" : "text-white"
               )}>
                 Reiseabenteuer
