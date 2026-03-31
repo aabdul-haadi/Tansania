@@ -39,8 +39,8 @@ export default function Home() {
         </Link>
       </div>
 
-      {/* HERO SECTION - REFINED ARCHITECTURE */}
-      <section className="relative min-h-[85vh] md:min-h-screen flex items-center overflow-hidden bg-secondary">
+      {/* HERO SECTION - COMPACTED ARCHITECTURE */}
+      <section className="relative min-h-[75vh] md:min-h-[85vh] flex items-center overflow-hidden bg-secondary">
         {/* Background Visual Asset */}
         <div className="absolute inset-0 z-0">
           <Image 
@@ -55,8 +55,15 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
         </div>
 
+        {/* Massive Background Wordmark Protocol */}
+        <div className="absolute inset-0 z-0 flex items-center justify-center overflow-hidden pointer-events-none select-none">
+          <span className="text-[25vw] font-black text-white/[0.03] md:text-white/[0.05] uppercase tracking-tighter leading-none transform -translate-y-10">
+            Tansania
+          </span>
+        </div>
+
         {/* Main Content Container */}
-        <div className="container relative z-20 mx-auto px-6 md:px-10 max-w-7xl h-full flex flex-col justify-center pt-20 md:pt-0">
+        <div className="container relative z-20 mx-auto px-6 md:px-10 max-w-7xl h-full flex flex-col justify-center pt-20 md:pt-12">
           <div className="max-w-3xl space-y-6 md:space-y-10">
             <motion.div 
               initial={{ opacity: 0, x: -30 }} 
@@ -88,7 +95,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }} 
               animate={{ opacity: 1, y: 0 }} 
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 pt-4 md:pt-0 pb-4 md:pb-0"
+              className="flex flex-col sm:flex-row gap-4 pt-4 md:pt-0"
             >
               <Link href="/trip-planner">
                 <Button className="w-full sm:w-auto h-12 px-8 rounded-lg bg-white text-secondary hover:bg-primary hover:text-white transition-all duration-500 font-bold text-[10px] uppercase tracking-widest border-none group shadow-2xl">
