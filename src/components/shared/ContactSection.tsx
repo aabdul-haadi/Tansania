@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Sparkles, 
   Phone, 
@@ -42,7 +42,7 @@ export function ContactSection() {
   ];
 
   return (
-    <section id="inquiry" className="py-16 md:py-32 bg-[#fdfcfb] relative overflow-hidden font-bold">
+    <section id="inquiry" className="py-8 md:py-16 bg-[#fdfcfb] relative overflow-hidden font-bold">
       {/* Topographic Background Decor */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none">
         <svg width="100%" height="100%" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
@@ -67,7 +67,7 @@ export function ContactSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="font-headline text-3xl md:text-7xl font-black text-secondary uppercase tracking-tighter leading-none"
+            className="font-headline text-2xl md:text-5xl font-black text-secondary uppercase tracking-tighter leading-none"
           >
             Ihre Expedition <br /><span className="text-primary">Beginnt Hier</span>
           </motion.h2>

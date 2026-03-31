@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from 'react';
@@ -21,7 +20,9 @@ import {
   Globe,
   ShieldCheck,
   Clock,
-  ChevronRight
+  ChevronRight,
+  RefreshCw,
+  Home
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -33,7 +34,7 @@ import { collection, serverTimestamp } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
-import Image from 'next/image';
+import { ContactSection } from '@/components/shared/ContactSection';
 
 const formSchema = z.object({
   name: z.string().min(2, "Name ist erforderlich"),
@@ -65,6 +66,7 @@ export default function TripPlanner() {
     handleSubmit,
     setValue,
     watch,
+    reset,
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -93,6 +95,12 @@ export default function TripPlanner() {
     toast({ title: "Anfrage gesendet", description: "Unsere Experten werden Sie in Kürze kontaktieren." });
   };
 
+  const handleReset = () => {
+    reset();
+    setStep(1);
+    setSubmitted(false);
+  };
+
   const toggleDestination = (id: string) => {
     const next = selectedDestinations.includes(id) 
       ? selectedDestinations.filter(d => d !== id) 
@@ -106,29 +114,44 @@ export default function TripPlanner() {
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }} 
           animate={{ opacity: 1, scale: 1 }} 
-          className="text-center p-12 bg-white rounded-[3rem] shadow-2xl max-w-xl w-full border border-border/50"
+          className="text-center p-8 md:p-16 bg-white rounded-[2.5rem] md:rounded-[4rem] shadow-2xl max-w-2xl w-full border border-border/50 relative overflow-hidden"
         >
-          <div className="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-8 border border-green-500/20">
-            <CheckCircle2 className="w-10 h-10 text-green-600" />
+          <div className="absolute top-0 right-0 p-8 opacity-[0.03] pointer-events-none">
+            <Compass className="w-32 h-32 text-secondary" />
           </div>
-          <h2 className="font-headline text-3xl md:text-4xl font-bold mb-4 uppercase tracking-tighter text-secondary">Anfrage Erhalten</h2>
-          <p className="text-muted-foreground text-sm font-bold mb-10 uppercase tracking-widest leading-relaxed">
-            Vielen Dank. Unsere Spezialisten in Berlin prüfen Ihren Plan und melden sich innerhalb von 24 Stunden bei Ihnen.
-          </p>
-          <Button asChild className="rounded-xl px-12 h-14 font-black uppercase text-[10px] tracking-[0.2em] shadow-xl border-none">
-            <Link href="/">Zurück zum Registry</Link>
-          </Button>
+
+          <div className="relative z-10">
+            <div className="w-20 h-20 bg-green-500/10 rounded-2xl flex items-center justify-center mx-auto mb-10 border border-green-500/20 shadow-inner">
+              <CheckCircle2 className="w-10 h-10 text-green-600" />
+            </div>
+            
+            <div className="space-y-4 mb-12">
+              <h2 className="font-headline text-3xl md:text-5xl font-bold mb-4 uppercase tracking-tighter text-secondary leading-none">Anfrage <br /><span className="text-primary">Erfolgreich</span></h2>
+              <p className="text-muted-foreground text-xs md:text-sm font-bold uppercase tracking-[0.2em] leading-relaxed max-w-md mx-auto">
+                Vielen Dank. Unsere Spezialisten in Berlin prüfen Ihren Plan und melden sich innerhalb von 24 Stunden bei Ihnen.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-3 max-w-sm mx-auto">
+              <Button onClick={handleReset} variant="outline" className="w-full rounded-xl h-14 gap-3 border-primary/20 text-primary hover:bg-primary/5 font-black text-[10px] uppercase tracking-widest">
+                <RefreshCw className="w-4 h-4" /> Neue Planung Starten
+              </Button>
+              <Button asChild className="w-full rounded-xl h-14 gap-3 shadow-lg shadow-primary/20 font-black text-[10px] uppercase tracking-widest border-none">
+                <Link href="/"><Home className="w-4 h-4" /> Zur Startseite</Link>
+              </Button>
+            </div>
+          </div>
         </motion.div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#fdfcfb] pt-32 pb-20 font-bold overflow-hidden">
+    <div className="min-h-screen bg-[#fdfcfb] pt-24 pb-12 font-bold overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
         
         {/* Cinematic Header Protocol */}
-        <header className="flex flex-col items-center text-center mb-16 space-y-6">
+        <header className="flex flex-col items-center text-center mb-12 md:mb-16 space-y-6">
           <motion.div 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -138,7 +161,7 @@ export default function TripPlanner() {
           </motion.div>
           
           <div className="space-y-2">
-            <h1 className="font-headline text-4xl md:text-7xl lg:text-8xl font-black text-secondary uppercase tracking-tighter leading-none">
+            <h1 className="font-headline text-3xl md:text-7xl lg:text-8xl font-black text-secondary uppercase tracking-tighter leading-none">
               DESIGN YOUR <br /><span className="text-primary">SAFARI</span>
             </h1>
             <p className="text-muted-foreground text-[10px] md:text-sm font-bold uppercase tracking-widest opacity-60">
@@ -147,7 +170,7 @@ export default function TripPlanner() {
           </div>
 
           {/* Technical Progress Protocol */}
-          <div className="flex items-center gap-3 pt-8">
+          <div className="flex items-center gap-3 pt-6 md:pt-10">
             {[1, 2, 3].map(i => (
               <div key={i} className="flex items-center">
                 <div className={cn(
@@ -162,7 +185,7 @@ export default function TripPlanner() {
           </div>
         </header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-20">
           
           {/* Main Architect Frame */}
           <div className="lg:col-span-8">
@@ -361,6 +384,9 @@ export default function TripPlanner() {
           </aside>
 
         </div>
+
+        {/* Support Section Registry */}
+        <ContactSection />
       </div>
     </div>
   );
