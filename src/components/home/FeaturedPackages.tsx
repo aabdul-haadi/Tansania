@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -7,10 +6,6 @@ import { PackageCard } from '@/components/shared/PackageCard';
 import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { collection, query, where, limit } from 'firebase/firestore';
 
-/**
- * Signature Expedition Registry.
- * High-density grid featuring flagship safari offerings.
- */
 export function FeaturedPackages() {
   const firestore = useFirestore();
   const pkgQuery = useMemoFirebase(() => (
@@ -48,7 +43,6 @@ export function FeaturedPackages() {
     }
   ];
 
-  // Logic: Use live data if available, otherwise show high-prestige fallbacks
   const displayPkgs = packages && packages.length > 0 ? packages : fallbacks;
 
   return (
@@ -59,22 +53,21 @@ export function FeaturedPackages() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-2xl md:text-4xl font-bold text-secondary uppercase tracking-tighter"
+            className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tighter"
           >
-            Unsere <span className="text-primary">Signature Reisen</span>
+            Unsere <span className="text-primary italic">Signature Reisen</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground font-bold text-[9px] md:text-[10px] uppercase tracking-widest max-w-2xl mx-auto opacity-60 leading-relaxed"
+            className="text-muted-foreground font-normal text-[10px] md:text-sm uppercase tracking-widest max-w-2xl mx-auto opacity-80 leading-relaxed"
           >
             Sorgfältig komponierte Reiserouten – als Inspiration oder Ausgangspunkt für Ihre individuelle Planung
           </motion.p>
         </div>
 
-        {/* Technical Staggered Grid */}
         <motion.div 
           initial="hidden"
           whileInView="visible"

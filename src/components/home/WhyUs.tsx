@@ -46,7 +46,7 @@ export function WhyUs() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-3xl md:text-[3rem] text-[#3A3634] uppercase tracking-tighter"
+            className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tighter"
           >
             Warum mit uns reisen?
           </motion.h2>
@@ -55,7 +55,7 @@ export function WhyUs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-[#8A8581] font-normal text-sm md:text-lg uppercase tracking-widest max-w-2xl mx-auto"
+            className="text-muted-foreground font-normal text-[10px] md:text-sm uppercase tracking-widest max-w-2xl mx-auto opacity-80"
           >
             Was unsere Reiseplanung auszeichnet
           </motion.p>
@@ -75,10 +75,10 @@ export function WhyUs() {
                 <item.icon className="w-6 h-6 md:w-7 md:h-7 text-[#c5a880] group-hover:text-primary transition-colors" />
               </div>
               <div className="space-y-2">
-                <h3 className="font-headline text-lg md:text-xl text-[#3A3634] uppercase tracking-tight">
+                <h3 className="font-headline text-lg md:text-2xl font-normal text-secondary uppercase tracking-tight">
                   {item.title}
                 </h3>
-                <p className="text-[#8A8581] font-normal text-xs md:text-sm uppercase tracking-widest leading-relaxed max-w-[260px] lg:max-w-none">
+                <p className="text-muted-foreground font-normal text-[10px] md:text-xs uppercase tracking-widest leading-relaxed max-w-[260px] lg:max-w-none">
                   {item.desc}
                 </p>
               </div>

@@ -59,14 +59,14 @@ const destinations = [
 
 export function TanzaniaDestinations() {
   return (
-    <section className="pb-12 md:pb-24 pt-8 md:pt-12 bg-white font-bold">
+    <section className="pb-12 md:pb-24 pt-8 md:pt-12 bg-white">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12 md:mb-16 space-y-3">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-2xl md:text-4xl font-black text-secondary uppercase tracking-tighter"
+            className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tighter"
           >
             Entdecken Sie Tansania
           </motion.h2>
@@ -75,20 +75,18 @@ export function TanzaniaDestinations() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground font-black text-[9px] md:text-[10px] uppercase tracking-widest max-w-xl mx-auto opacity-60"
+            className="text-muted-foreground font-normal text-[10px] md:text-sm uppercase tracking-widest max-w-xl mx-auto opacity-80"
           >
             Die schönsten Destinationen für Ihre individuelle Reise
           </motion.p>
         </div>
 
-        {/* Desktop Grid */}
         <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {destinations.map((dest, idx) => (
             <DestinationCard key={idx} dest={dest} />
           ))}
         </div>
 
-        {/* Mobile Slider */}
         <div className="md:hidden -mx-4">
           <Carousel opts={{ align: "start", loop: true }} className="w-full">
             <CarouselContent className="-ml-4">
@@ -124,15 +122,15 @@ function DestinationCard({ dest }: { dest: any }) {
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
       
       <div className="absolute inset-0 p-8 md:p-10 flex flex-col justify-end">
-        <h3 className="text-white font-headline text-xl md:text-2xl font-black uppercase tracking-tighter mb-2">
+        <h3 className="text-white font-headline text-xl md:text-3xl font-normal uppercase tracking-tighter mb-2">
           {dest.name}
         </h3>
-        <p className="text-white/70 text-[9px] md:text-[10px] font-bold leading-relaxed mb-6 uppercase tracking-widest line-clamp-2">
+        <p className="text-white/70 text-[9px] md:text-[10px] font-normal leading-relaxed mb-6 uppercase tracking-widest line-clamp-2">
           {dest.desc}
         </p>
         
-        <Link href={`/destinations/${dest.slug}`} className="inline-flex items-center gap-2 text-white font-black text-[8px] md:text-[9px] uppercase tracking-[0.2em] group/link">
-          Mehr erfahren <ArrowRight className="w-3 h-3 text-primary transition-transform group-hover/link:translate-x-1" />
+        <Link href={`/destinations/${dest.slug}`} className="inline-flex items-center gap-2 text-white font-bold text-[8px] md:text-[9px] uppercase tracking-[0.2em] group/link">
+          Mehr erfahren <ArrowRight className="w-3 h-3 text-primary transition-transform group/link:translate-x-1" />
         </Link>
       </div>
     </motion.div>

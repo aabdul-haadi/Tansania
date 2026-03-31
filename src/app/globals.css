@@ -6,7 +6,7 @@
   :root {
     /* COLORS: Professional Registry Palette */
     --background: 0 0% 98%;
-    --foreground: 20 6% 22%; /* #3A3634 equivalent */
+    --foreground: 30 4% 52%; /* #8A8581 */
     --card: 0 0% 100%;
     --card-foreground: 20 6% 22%;
     --popover: 0 0% 100%;
@@ -15,11 +15,11 @@
     --primary: 19 89% 47%;
     --primary-foreground: 0 0% 100%;
     
-    --secondary: 20 6% 22%;
+    --secondary: 20 6% 22%; /* #3A3634 equivalent */
     --secondary-foreground: 0 0% 100%;
     
     --muted: 0 0% 94%;
-    --muted-foreground: 30 4% 52%; /* #8A8581 equivalent */
+    --muted-foreground: 30 4% 52%;
     
     --accent: 30 53% 64%;
     --accent-foreground: 0 0% 10%;
@@ -33,18 +33,18 @@
     --radius: 1.5rem;
 
     /* BALANCED PRESTIGE SCALE */
-    --text-xs: 0.75rem;     /* 12px */
-    --text-sm: 0.875rem;    /* 14px */
-    --text-base: 1rem;      /* 16px */
-    --text-lg: 1.125rem;    /* 18px */
-    --text-xl: 1.25rem;     /* 20px */
-    --text-2xl: 1.5rem;     /* 24px */
-    --text-3xl: 1.875rem;   /* 30px */
-    --text-4xl: 2.25rem;    /* 36px */
-    --text-5xl: 2.75rem;    /* 44px */
-    --text-6xl: 3.25rem;    /* 52px */
-    --text-7xl: 3.75rem;    /* 60px */
-    --text-8xl: 4.5rem;     /* 72px */
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+    --text-4xl: 2.25rem;
+    --text-5xl: 2.75rem;
+    --text-6xl: 3.25rem;
+    --text-7xl: 3.75rem;
+    --text-8xl: 4.5rem;
   }
 }
 
@@ -62,11 +62,17 @@
     background-attachment: fixed;
   }
 
-  /* Titles Registry - Reverted to Montserrat Bold Prestige */
+  /* Titles Registry - Standardized to Cormorant Garamond 400 */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-headline font-bold leading-tight;
-    color: #141414;
+    @apply font-headline font-normal leading-tight;
+    color: #3A3634;
     font-style: normal;
+  }
+
+  /* Paragraph standard */
+  p {
+    @apply text-foreground font-normal;
+    color: #8A8581;
   }
 
   /* Technical Constraint: Force No Italics */
@@ -75,7 +81,6 @@
   }
 }
 
-/* Prestige Utility Classes */
 .rounded-prestige {
   @apply rounded-[2rem];
 }

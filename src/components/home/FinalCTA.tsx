@@ -10,7 +10,6 @@ import { Button } from '@/components/ui/button';
 export function FinalCTA() {
   return (
     <section className="relative min-h-[40vh] md:min-h-[50vh] flex items-center justify-center overflow-hidden bg-secondary">
-      {/* Background Cinematic Asset */}
       <div className="absolute inset-0 z-0">
         <Image 
           src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
@@ -25,7 +24,6 @@ export function FinalCTA() {
         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
       </div>
 
-      {/* Content Protocol */}
       <div className="container relative z-10 mx-auto px-4 max-w-4xl text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -35,11 +33,11 @@ export function FinalCTA() {
           className="space-y-3 md:space-y-4"
         >
           <div className="space-y-2">
-            <h2 className="font-headline text-2xl md:text-[3rem] font-normal text-white uppercase tracking-tighter leading-tight text-center">
+            <h2 className="font-headline text-2xl md:text-5xl font-normal text-white uppercase tracking-tighter leading-tight text-center">
               Bereit für Ihr <br />
               <span className="text-primary">Tansania-Abenteuer?</span>
             </h2>
-            <p className="text-white font-normal text-[10px] md:text-sm uppercase tracking-[0.3em] max-w-xl mx-auto leading-relaxed opacity-90 text-center">
+            <p className="text-white/90 font-normal text-[7px] md:text-[10px] uppercase tracking-[0.3em] max-w-xl mx-auto leading-relaxed text-center">
               Lassen Sie uns gemeinsam Ihre individuelle Traumreise gestalten. Persönlich, professionell und mit Leidenschaft für Afrika.
             </p>
           </div>
@@ -47,7 +45,7 @@ export function FinalCTA() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-2 md:gap-3 pt-2">
             <Link href="/trip-planner" className="w-full sm:w-auto">
               <Button size="default" className="w-full sm:w-auto rounded-lg px-6 h-10 md:h-12 bg-white text-secondary hover:bg-primary hover:text-white transition-all duration-500 font-bold text-[8px] md:text-[10px] uppercase tracking-[0.2em] shadow-xl border-none group">
-                Kostenlose Beratung anfragen <ArrowRight className="w-3.5 h-3.5 ml-2 group-hover:translate-x-1 transition-transform" />
+                Beratung anfragen <ArrowRight className="w-3.5 h-3.5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
             
@@ -60,7 +58,6 @@ export function FinalCTA() {
         </motion.div>
       </div>
 
-      {/* Technical Horizon Line */}
       <div className="absolute bottom-0 inset-x-0 h-px bg-white/10" />
     </section>
   );

@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { FirebaseClientProvider } from '@/firebase/client-provider';
 import { ConditionalLayout } from '@/components/layout/ConditionalLayout';
-import { siteConfig, getCanonicalUrl } from '@/lib/seo-config';
+import { siteConfig } from '@/lib/seo-config';
 import { JsonLd } from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: [
       {
-        url: '/og-image.jpg', // Ensure this exists in /public
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
         alt: siteConfig.name,
@@ -82,9 +82,8 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
         
-        {/* Global Structured Data */}
         <JsonLd
           data={{
             '@context': 'https://schema.org',

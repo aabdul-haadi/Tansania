@@ -21,7 +21,7 @@ import { Button } from '@/components/ui/button';
 
 export default function Home() {
   return (
-    <div className="relative bg-background font-bold">
+    <div className="relative bg-background font-normal">
       {/* STICKY RIGHT CTA PROTOCOL */}
       <div className="fixed right-0 top-1/2 -translate-y-1/2 z-[90] hidden md:flex flex-col gap-2">
         <Link href="/trip-planner">
@@ -30,14 +30,14 @@ export default function Home() {
             className="bg-primary text-white p-4 rounded-l-2xl shadow-2xl flex flex-col items-center gap-3 cursor-pointer border-y border-l border-white/20 backdrop-blur-md"
           >
             <Zap className="w-5 h-5 fill-white" />
-            <span className="text-[9px] font-black uppercase tracking-[0.3em] [writing-mode:vertical-lr] rotate-180 py-2">
+            <span className="text-[9px] font-bold uppercase tracking-[0.3em] [writing-mode:vertical-lr] rotate-180 py-2">
               Express Inquiry
             </span>
           </motion.div>
         </Link>
       </div>
 
-      {/* HERO SECTION - Reverted to Montserrat Bold Prestige */}
+      {/* HERO SECTION - REFINED TYPOGRAPHY */}
       <section className="relative min-h-[70vh] md:min-h-[95vh] flex items-center overflow-hidden bg-secondary">
         <div className="absolute inset-0 z-0">
           <Image 
@@ -66,8 +66,8 @@ export default function Home() {
                   <Compass className="w-3 h-3" /> Über 15 Jahre Expertise · Deutschsprachige Betreuung · Premium-Reisen
                 </div>
                 
-                {/* Main Architectural Headline */}
-                <h1 className="font-headline font-black text-white leading-[1.1] tracking-tighter uppercase max-w-5xl !text-center lg:!text-left">
+                {/* Main Architectural Headline - NORMAL WEIGHT CORMORANT */}
+                <h1 className="font-headline font-normal text-white leading-[1.1] tracking-tighter uppercase max-w-5xl !text-center lg:!text-left">
                   <span className="sm:hidden text-2xl">Maßgeschneiderte <br /> Luxusreisen</span>
                   <span className="hidden sm:block text-4xl md:text-5xl lg:text-7xl">
                     Ihre maßgeschneiderte <br /><span className="text-primary">Luxusreise</span> durch Tansania
@@ -75,7 +75,7 @@ export default function Home() {
                 </h1>
                 
                 {/* Narrative Promise */}
-                <p className="max-w-2xl mx-auto lg:mx-0 text-white font-bold text-sm md:text-lg uppercase tracking-widest leading-relaxed opacity-90 !text-center lg:!text-left">
+                <p className="max-w-2xl mx-auto lg:mx-0 text-white font-normal text-sm md:text-lg uppercase tracking-widest leading-relaxed opacity-90 !text-center lg:!text-left">
                   <span className="sm:hidden text-[10px]">Exklusive Safaris & handverlesene Lodges.</span>
                   <span className="hidden sm:block">
                     Erleben Sie exklusive Safaris, handverlesene Lodges und unvergessliche Momente. Persönlich geplant, individuell gestaltet.
@@ -124,8 +124,8 @@ export default function Home() {
               <Play className="w-4 h-4 md:w-5 md:h-5 fill-current group-hover:scale-110 transition-transform ml-1" />
             </motion.button>
             <div className="text-center md:text-right">
-              <p className="text-[6px] md:text-[7px] font-black text-white/40 uppercase tracking-[0.4em]">Visual Discovery</p>
-              <p className="text-[8px] md:text-[9px] font-black text-white uppercase tracking-widest">Watch Expedition Film</p>
+              <p className="text-[6px] md:text-[7px] font-bold text-white/40 uppercase tracking-[0.4em]">Visual Discovery</p>
+              <p className="text-[8px] md:text-[9px] font-bold text-white uppercase tracking-widest">Watch Expedition Film</p>
             </div>
           </motion.div>
         </div>
@@ -134,25 +134,12 @@ export default function Home() {
       <TrustStrip />
       
       <div className="space-y-0">
-        {/* Step 1: Categories */}
         <TravelCategories />
-        
-        {/* Step 2: Signature Offers (Re-positioned as per turn history) */}
         <FeaturedPackages />
-        
-        {/* Step 3: Trust Registry (Compacted) */}
         <WhyUs />
-        
-        {/* Step 4: Process Methodology */}
         <ProcessSection />
-        
-        {/* Step 5: Emotional Transition */}
         <CinematicQuote />
-        
-        {/* Step 6: Regional Exploration */}
         <TanzaniaDestinations />
-        
-        {/* Secondary Discovery Elements */}
         <VisualJournalGrid />
         <Testimonials />
         <ContactSection />
