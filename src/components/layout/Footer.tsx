@@ -12,7 +12,7 @@ export function Footer() {
           <div className="flex flex-col gap-6">
             <Link href="/" className="flex items-center gap-3 group">
               <img src="/iconlogo.jpg" alt="Tansania Reiseabenteuer" className="h-10 md:h-12 w-auto rounded-lg shadow-xl" />
-              <span className="font-headline font-bold text-sm md:text-base text-primary uppercase leading-tight whitespace-nowrap">
+              <span className="font-headline font-bold text-[10px] md:text-xs text-primary uppercase leading-tight whitespace-nowrap tracking-tighter">
                 Tansania Reiseabenteuer
               </span>
             </Link>
