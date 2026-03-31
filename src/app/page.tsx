@@ -135,6 +135,13 @@ export default function Home() {
       {/* 04 TRAVEL CATEGORIES */}
       <TravelCategories />
 
+      {/* 07 CINEMATIC BREAKER */}
+      <CinematicQuote />
+
+      {/* 08 EXPERTISE & SAFARI-PAKETE - PLACED BEFORE PROCESS SECTION */}
+      <ExpertiseNarrative />
+      <FeaturedPackages />
+
       {/* 06 SO FUNKTIONIERT ES */}
       <ProcessSection />
 
@@ -143,11 +150,6 @@ export default function Home() {
 
       {/* 07 KUNDENSTIMMEN */}
       <Testimonials />
-      <CinematicQuote />
-
-      {/* 08 EXPERTISE & SAFARI-PAKETE */}
-      <ExpertiseNarrative />
-      <FeaturedPackages />
 
       {/* 09 FOTO-GALERIE - Visual Journal */}
       <VisualJournalGrid />
