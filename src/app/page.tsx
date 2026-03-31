@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -31,21 +32,21 @@ export default function Home() {
             alt="Serengeti Dreams Hero" 
             fill 
             priority 
-            className="object-cover brightness-[0.35] scale-105"
+            className="object-cover brightness-[0.5] scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/20 to-transparent" />
           <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         </div>
         
         <div className="container relative z-10 mx-auto px-4 max-w-7xl pt-4 md:pt-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
             
-            <div className="lg:col-span-7 space-y-6 md:space-y-8 text-center lg:text-left">
+            <div className="lg:col-span-7 space-y-4 md:space-y-6 text-center lg:text-left">
               <motion.div 
                 initial={{ opacity: 0, x: -30 }} 
                 animate={{ opacity: 1, x: 0 }} 
                 transition={{ duration: 0.8 }}
-                className="space-y-4 md:space-y-6"
+                className="space-y-3 md:space-y-4"
               >
                 <div className="inline-flex items-center gap-2 text-primary font-bold text-[9px] md:text-[10px] uppercase tracking-[0.4em] mb-2">
                   <Compass className="w-4 h-4" /> Official Site Registry
