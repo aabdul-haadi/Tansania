@@ -19,7 +19,7 @@ const destinations = [
 
 export function AfricaVariety() {
   return (
-    <section className="py-10 md:py-16 bg-background">
+    <section className="py-8 md:py-16 bg-background">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-10 md:mb-16">
           <motion.div 
@@ -73,7 +73,7 @@ export function AfricaVariety() {
                 data-ai-hint={dest.hint}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
-              <div className="absolute inset-0 p-4 md:p-6 flex flex-col justify-end">
+              <div className="absolute inset-0 p-4 md:p-6 flex flex-col justify-end text-left">
                 <p className="text-primary font-bold text-[7px] md:text-[8px] uppercase tracking-[0.2em] mb-0.5 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
                   Erkunden
                 </p>

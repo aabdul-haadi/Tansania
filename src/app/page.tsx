@@ -8,7 +8,6 @@ import { ArrowRight, Compass, Globe, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 
-// HOMEPAGE REGISTRY COMPONENTS - Moved to dedicated home directory
 import { SafariMap } from '@/components/home/SafariMap';
 import { Testimonials } from '@/components/home/Testimonials';
 import { CinematicQuote } from '@/components/home/CinematicQuote';
@@ -24,16 +23,15 @@ import { FeaturedPackages } from '@/components/home/FeaturedPackages';
 export default function Home() {
   return (
     <div className="relative bg-background">
-      {/* 02 HERO SECTION - Compacted for Mobile */}
+      {/* 02 HERO SECTION - Compacted for Mobile with local asset */}
       <section className="relative min-h-[60vh] md:min-h-screen flex items-center overflow-hidden bg-secondary">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
-            alt="Serengeti Savannah" 
+            src="/img/banner-1.webp" 
+            alt="Serengeti Dreams Hero" 
             fill 
             priority 
             className="object-cover brightness-[0.35] scale-105"
-            data-ai-hint="serengeti safari"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent" />
           <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
