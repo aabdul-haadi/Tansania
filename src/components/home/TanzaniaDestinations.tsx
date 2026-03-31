@@ -59,7 +59,7 @@ const destinations = [
 
 export function TanzaniaDestinations() {
   return (
-    <section className="py-12 md:py-24 bg-white font-bold">
+    <section className="pb-12 md:pb-24 pt-8 md:pt-12 bg-white font-bold">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12 md:mb-20 space-y-4">
           <motion.h2 

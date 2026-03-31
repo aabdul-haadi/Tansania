@@ -19,6 +19,7 @@ import { VisualJournalGrid } from '@/components/home/VisualJournalGrid';
 import { FeaturedPackages } from '@/components/home/FeaturedPackages';
 import { FinalCTA } from '@/components/home/FinalCTA';
 import { Testimonials } from '@/components/home/Testimonials';
+import { WhyUs } from '@/components/home/WhyUs';
 
 export default function Home() {
   return (
@@ -139,6 +140,9 @@ export default function Home() {
 
       {/* 08 SAFARI-PAKETE */}
       <FeaturedPackages />
+
+      {/* 09 WHY TRAVEL WITH US */}
+      <WhyUs />
 
       {/* 06 SO FUNKTIONIERT ES */}
       <ProcessSection />
