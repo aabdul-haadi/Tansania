@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -88,7 +87,7 @@ export function Navbar() {
               <span className={cn(
                 "font-headline font-normal uppercase tracking-tighter whitespace-nowrap transition-all duration-500",
                 "hidden sm:inline-block",
-                "sm:text-[11px] md:text-sm",
+                "sm:text-sm md:text-lg",
                 isScrolled ? "text-primary" : "text-white"
               )}>
                 Reiseabenteuer
