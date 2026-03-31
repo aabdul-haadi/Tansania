@@ -39,7 +39,7 @@ export default function Home() {
         </Link>
       </div>
 
-      {/* HERO SECTION - REFINED CLONE */}
+      {/* HERO SECTION - REFINED ARCHITECTURE */}
       <section className="relative min-h-[85vh] md:min-h-screen flex items-center overflow-hidden bg-secondary">
         {/* Background Visual Asset */}
         <div className="absolute inset-0 z-0">
@@ -55,13 +55,6 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
         </div>
 
-        {/* Massive Background Wordmark Protocol */}
-        <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none overflow-hidden">
-          <span className="text-[25vw] md:text-[20vw] font-headline font-black text-white opacity-[0.05] tracking-tighter uppercase leading-none select-none">
-            TANSANIA
-          </span>
-        </div>
-
         {/* Main Content Container */}
         <div className="container relative z-20 mx-auto px-6 md:px-10 max-w-7xl h-full flex flex-col justify-center pt-20 md:pt-0">
           <div className="max-w-3xl space-y-6 md:space-y-10">
@@ -72,13 +65,13 @@ export default function Home() {
               className="space-y-4 md:space-y-6"
             >
               {/* Main Architectural Headline */}
-              <h1 className="font-headline font-normal text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tighter uppercase">
+              <h1 className="font-light text-white text-3xl sm:text-4xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tighter font-serif">
                 Ihre maßgeschneiderte <br />
                 Luxusreise durch Tansania
               </h1>
 
               {/* Narrative Description */}
-              <p className="max-w-xl text-white/90 font-normal text-[13px] sm:text-base md:text-lg lg:text-xl leading-relaxed opacity-90 tracking-widest">
+              <p className="max-w-xl text-white/90 font-normal text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed opacity-90 tracking-widest">
                 Erleben Sie exklusive Safaris, handverlesene Lodges und unvergessliche Momente. Persönlich geplant, individuell gestaltet.
               </p>
 
