@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button';
 
 export function ExpertiseNarrative() {
   return (
-    <section className="pt-8 pb-16 md:pt-16 md:pb-32 bg-white overflow-hidden font-bold">
+    <section className="py-16 md:py-32 bg-white overflow-hidden font-bold border-t border-border/50">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-20 items-center">
           
@@ -61,7 +61,7 @@ export function ExpertiseNarrative() {
                   <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
                     <Users className="w-5 h-5 text-primary" />
                   </div>
-                  <h4 className="font-bold text-sm md:text-base text-secondary uppercase tracking-tight">Guides mit echten Wurzeln</h4>
+                  <h4 className="font-bold text-sm md:text-base text-secondary uppercase tracking-tight leading-tight">Guides mit echten Wurzeln vor Ort</h4>
                 </div>
                 <p className="text-[9px] md:text-xs text-muted-foreground font-bold uppercase tracking-widest leading-relaxed">
                   Unsere lokalen Partner in Arusha sind keine Angestellten — es sind Freunde, die wir seit Jahren kennen und denen wir unsere eigene Familie anvertrauen würden.
@@ -73,7 +73,7 @@ export function ExpertiseNarrative() {
                   <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
                     <ShieldCheck className="w-5 h-5 text-primary" />
                   </div>
-                  <h4 className="font-bold text-sm md:text-base text-secondary uppercase tracking-tight">TATO-Mitglied & Nachhaltig</h4>
+                  <h4 className="font-bold text-sm md:text-base text-secondary uppercase tracking-tight leading-tight">TATO-Mitglied & nachhaltig zertifiziert</h4>
                 </div>
                 <p className="text-[9px] md:text-xs text-muted-foreground font-bold uppercase tracking-widest leading-relaxed">
                   Jede Buchung bei uns stärkt die lokale Wirtschaft und schützt die Ökosysteme, die Sie besuchen. Das ist kein Marketing — es ist unser Geschäftsmodell.
@@ -85,7 +85,7 @@ export function ExpertiseNarrative() {
                   <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center shrink-0">
                     <CheckCircle2 className="w-5 h-5 text-primary" />
                   </div>
-                  <h4 className="font-bold text-sm md:text-base text-secondary uppercase tracking-tight">100% privat — Ihr Jeep, Ihr Guide, Ihr Tempo</h4>
+                  <h4 className="font-bold text-sm md:text-base text-secondary uppercase tracking-tight leading-tight">100% privat — Ihr Jeep, Ihr Guide, Ihr Tempo</h4>
                 </div>
                 <p className="text-[9px] md:text-xs text-muted-foreground font-bold uppercase tracking-widest leading-relaxed">
                   Kein Gruppenbus. Kein Kompromiss. Das ist der Unterschied zwischen einer Reise und einem Erlebnis.

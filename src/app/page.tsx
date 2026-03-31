@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -18,6 +19,7 @@ import { TrustStrip } from '@/components/home/TrustStrip';
 import { ProcessSection } from '@/components/home/ProcessSection';
 import { VisualJournalGrid } from '@/components/home/VisualJournalGrid';
 import { FeaturedPackages } from '@/components/home/FeaturedPackages';
+import { ExpertiseNarrative } from '@/components/home/ExpertiseNarrative';
 
 export default function Home() {
   return (
@@ -130,7 +132,7 @@ export default function Home() {
       {/* 03 TRUST STRIP */}
       <TrustStrip />
 
-      {/* 04 TRAVEL CATEGORIES (Replaces ExpertiseNarrative) */}
+      {/* 04 TRAVEL CATEGORIES */}
       <TravelCategories />
 
       {/* 06 SO FUNKTIONIERT ES */}
@@ -143,7 +145,8 @@ export default function Home() {
       <Testimonials />
       <CinematicQuote />
 
-      {/* 08 SAFARI-PAKETE */}
+      {/* 08 EXPERTISE & SAFARI-PAKETE */}
+      <ExpertiseNarrative />
       <FeaturedPackages />
 
       {/* 09 FOTO-GALERIE - Visual Journal */}
