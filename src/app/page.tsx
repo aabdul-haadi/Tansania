@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -22,7 +21,7 @@ import { Button } from '@/components/ui/button';
 
 export default function Home() {
   return (
-    <div className="relative bg-background">
+    <div className="relative bg-background font-bold">
       {/* STICKY RIGHT CTA PROTOCOL */}
       <div className="fixed right-0 top-1/2 -translate-y-1/2 z-[90] hidden md:flex flex-col gap-2">
         <Link href="/trip-planner">
@@ -38,7 +37,7 @@ export default function Home() {
         </Link>
       </div>
 
-      {/* HERO SECTION - Refined Elegant Architecture */}
+      {/* HERO SECTION - Reverted to Montserrat Bold Prestige */}
       <section className="relative min-h-[70vh] md:min-h-[95vh] flex items-center overflow-hidden bg-secondary">
         <div className="absolute inset-0 z-0">
           <Image 
@@ -68,15 +67,15 @@ export default function Home() {
                 </div>
                 
                 {/* Main Architectural Headline */}
-                <h1 className="font-headline font-normal text-white leading-[1.1] tracking-tighter uppercase max-w-5xl !text-center lg:!text-left">
-                  <span className="sm:hidden text-3xl">Maßgeschneiderte <br /> Luxusreisen</span>
-                  <span className="hidden sm:block text-4xl md:text-5xl lg:text-[3.5rem]">
+                <h1 className="font-headline font-black text-white leading-[1.1] tracking-tighter uppercase max-w-5xl !text-center lg:!text-left">
+                  <span className="sm:hidden text-2xl">Maßgeschneiderte <br /> Luxusreisen</span>
+                  <span className="hidden sm:block text-4xl md:text-5xl lg:text-7xl">
                     Ihre maßgeschneiderte <br /><span className="text-primary">Luxusreise</span> durch Tansania
                   </span>
                 </h1>
                 
                 {/* Narrative Promise */}
-                <p className="max-w-2xl mx-auto lg:mx-0 text-white font-normal text-sm md:text-lg uppercase tracking-widest leading-relaxed opacity-90 !text-center lg:!text-left">
+                <p className="max-w-2xl mx-auto lg:mx-0 text-white font-bold text-sm md:text-lg uppercase tracking-widest leading-relaxed opacity-90 !text-center lg:!text-left">
                   <span className="sm:hidden text-[10px]">Exklusive Safaris & handverlesene Lodges.</span>
                   <span className="hidden sm:block">
                     Erleben Sie exklusive Safaris, handverlesene Lodges und unvergessliche Momente. Persönlich geplant, individuell gestaltet.
@@ -135,12 +134,25 @@ export default function Home() {
       <TrustStrip />
       
       <div className="space-y-0">
+        {/* Step 1: Categories */}
         <TravelCategories />
+        
+        {/* Step 2: Signature Offers (Re-positioned as per turn history) */}
         <FeaturedPackages />
+        
+        {/* Step 3: Trust Registry (Compacted) */}
         <WhyUs />
+        
+        {/* Step 4: Process Methodology */}
         <ProcessSection />
+        
+        {/* Step 5: Emotional Transition */}
         <CinematicQuote />
+        
+        {/* Step 6: Regional Exploration */}
         <TanzaniaDestinations />
+        
+        {/* Secondary Discovery Elements */}
         <VisualJournalGrid />
         <Testimonials />
         <ContactSection />

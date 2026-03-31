@@ -62,39 +62,11 @@
     background-attachment: fixed;
   }
 
-  /* Titles Registry */
+  /* Titles Registry - Reverted to Montserrat Bold Prestige */
   h1, h2, h3, h4, h5, h6 {
-    @apply text-center font-normal;
-    font-family: 'Cormorant Garamond', serif;
-    color: #3A3634;
-    line-height: 1;
+    @apply font-headline font-bold leading-tight;
+    color: #141414;
     font-style: normal;
-  }
-
-  /* Mobile Title Scaling */
-  h1 { @apply text-4xl md:text-6xl lg:text-[4.5rem]; }
-  h2 { @apply text-3xl md:text-[3rem]; } /* Targeted 48px */
-  h3 { @apply text-2xl md:text-4xl; }
-
-  /* Paragraphs Registry */
-  p, span, div, li {
-    @apply text-center font-normal leading-[1.55];
-    font-family: 'Inter', sans-serif;
-    color: #8A8581;
-    font-size: 0.875rem; /* 14px mobile */
-    font-style: normal;
-  }
-
-  @screen md {
-    p, span, div, li {
-      font-size: 1rem; /* 16px tablet */
-    }
-  }
-
-  @screen lg {
-    p, span, div, li {
-      font-size: 1.125rem; /* 18px desktop */
-    }
   }
 
   /* Technical Constraint: Force No Italics */

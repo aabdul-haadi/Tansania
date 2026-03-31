@@ -11,7 +11,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
-        headline: ['Cormorant Garamond', 'serif'],
+        headline: ['Montserrat', 'sans-serif'],
         code: ['monospace'],
       },
       transitionTimingFunction: {
