@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -62,13 +61,13 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
                 className="space-y-3 md:space-y-5"
               >
-                <div className="inline-flex items-center gap-2 text-primary font-black text-[8px] md:text-[10px] uppercase tracking-[0.4em] mb-1">
-                  <Compass className="w-3.5 h-3.5" /> Über 15 Jahre Expertise · Deutschsprachige Betreuung · Premium-Reisen
+                <div className="inline-flex items-center gap-2 text-primary font-black text-[8px] uppercase tracking-[0.4em] mb-1">
+                  <Compass className="w-3 h-3" /> Über 15 Jahre Expertise · Deutschsprachige Betreuung · Premium-Reisen
                 </div>
-                <h1 className="font-headline text-3xl md:text-6xl lg:text-8xl font-bold text-white leading-[1.1] tracking-tighter uppercase max-w-5xl">
+                <h1 className="font-headline text-3xl md:text-5xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tighter uppercase max-w-5xl">
                   Ihre maßgeschneiderte <br /><span className="text-primary">Luxusreise</span> durch Tansania
                 </h1>
-                <p className="max-w-2xl mx-auto lg:mx-0 text-white font-bold text-[10px] sm:text-xs md:text-sm lg:text-base uppercase tracking-widest leading-relaxed">
+                <p className="max-w-xl mx-auto lg:mx-0 text-white font-bold text-[10px] md:text-sm uppercase tracking-widest leading-relaxed opacity-90">
                   Erleben Sie exklusive Safaris, handverlesene Lodges und unvergessliche Momente. Persönlich geplant, individuell gestaltet.
                 </p>
               </motion.div>
@@ -79,13 +78,13 @@ export default function Home() {
                 className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start pt-4"
               >
                 <Link href="/safaris" className="w-full sm:w-auto">
-                  <Button className="w-full sm:w-48 h-12 md:h-14 px-6 rounded-xl font-black shadow-xl border-none text-[10px] uppercase tracking-widest">
+                  <Button className="w-full sm:w-44 h-12 md:h-14 px-6 rounded-xl font-black shadow-xl border-none text-[9px] uppercase tracking-widest">
                     Katalog Erkunden
                   </Button>
                 </Link>
                 <Link href="/trip-advisor" className="w-full sm:w-auto">
-                  <Button variant="glass" className="w-full sm:w-48 h-12 md:h-14 px-6 rounded-xl shadow-xl border-white/20 text-[10px] font-black uppercase tracking-widest">
-                    AI Advisor <Zap className="w-3.5 h-3.5 ml-1.5 fill-current" />
+                  <Button variant="glass" className="w-full sm:w-44 h-12 md:h-14 px-6 rounded-xl shadow-xl border-white/20 text-[9px] font-black uppercase tracking-widest">
+                    AI Advisor <Zap className="w-3 h-3 ml-1.5 fill-current" />
                   </Button>
                 </Link>
               </motion.div>

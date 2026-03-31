@@ -34,13 +34,12 @@ export function FinalCTA() {
           className="space-y-3 md:space-y-4"
         >
           <div className="space-y-2">
-            <h2 className="font-headline text-xl md:text-4xl font-bold text-white uppercase tracking-tighter leading-tight">
+            <h2 className="font-headline text-lg md:text-3xl font-bold text-white uppercase tracking-tighter leading-tight">
               Bereit für Ihr <br />
               <span className="text-primary">Tansania-Abenteuer?</span>
             </h2>
-            <p className="text-white/90 font-bold text-[6px] md:text-[9px] uppercase tracking-[0.3em] max-w-xl mx-auto leading-relaxed opacity-70">
-              Lassen Sie uns gemeinsam Ihre individuelle Traumreise gestalten. <br className="hidden md:block" />
-              Persönlich, professionell und mit Leidenschaft für Afrika.
+            <p className="text-white/90 font-bold text-[6px] md:text-[8px] uppercase tracking-[0.3em] max-w-xl mx-auto leading-relaxed opacity-70">
+              Lassen Sie uns gemeinsam Ihre individuelle Traumreise gestalten. Persönlich, professionell und mit Leidenschaft für Afrika.
             </p>
           </div>
 

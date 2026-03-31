@@ -35,15 +35,15 @@ const steps = [
 
 export function ProcessSection() {
   return (
-    <section className="pb-16 md:pb-32 pt-8 md:pt-12 bg-[#fdfcfb] overflow-hidden font-bold">
+    <section className="pb-16 md:pb-24 pt-8 md:pt-12 bg-[#fdfcfb] overflow-hidden font-bold">
       <div className="container mx-auto px-4 max-w-7xl">
         {/* Header Registry */}
-        <div className="text-center mb-16 md:mb-24 space-y-4">
+        <div className="text-center mb-12 md:mb-20 space-y-3">
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-3xl md:text-5xl font-black text-secondary uppercase tracking-tighter"
+            className="font-headline text-2xl md:text-4xl font-black text-secondary uppercase tracking-tighter"
           >
             So einfach geht's
           </motion.h2>
@@ -52,18 +52,18 @@ export function ProcessSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground font-black text-[10px] md:text-sm uppercase tracking-widest max-w-2xl mx-auto opacity-60"
+            className="text-muted-foreground font-black text-[9px] md:text-[10px] uppercase tracking-widest max-w-2xl mx-auto opacity-60"
           >
             In vier Schritten zu Ihrer persönlichen Traumreise
           </motion.p>
         </div>
 
         {/* Process Protocol Grid */}
-        <div className="relative mb-20">
+        <div className="relative mb-16">
           {/* Desktop Connecting Line */}
-          <div className="hidden lg:block absolute top-[60px] left-[10%] right-[10%] h-px bg-border z-0" />
+          <div className="hidden lg:block absolute top-[50px] left-[10%] right-[10%] h-px bg-border z-0" />
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-14 relative z-10">
             {steps.map((step, idx) => (
               <motion.div
                 key={step.id}
@@ -74,21 +74,21 @@ export function ProcessSection() {
                 className="flex flex-col items-center text-center"
               >
                 {/* Icon Hub with Number Badge */}
-                <div className="relative mb-8 md:mb-10">
-                  <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-white shadow-xl border border-border/50 flex items-center justify-center transition-all duration-500 hover:scale-105 group">
-                    <step.icon className="w-8 h-8 md:w-10 md:h-10 text-secondary group-hover:text-primary transition-colors" />
+                <div className="relative mb-6 md:mb-8">
+                  <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white shadow-xl border border-border/50 flex items-center justify-center transition-all duration-500 hover:scale-105 group">
+                    <step.icon className="w-6 h-6 md:w-8 md:h-8 text-secondary group-hover:text-primary transition-colors" />
                   </div>
-                  <div className="absolute top-0 -right-2 md:-right-4 w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#c5a880] text-white flex items-center justify-center font-black text-[10px] md:text-xs shadow-lg border-2 border-white">
+                  <div className="absolute top-0 -right-1 w-7 h-7 md:w-8 md:h-8 rounded-full bg-[#c5a880] text-white flex items-center justify-center font-black text-[9px] md:text-[10px] shadow-lg border-2 border-white">
                     {step.id}
                   </div>
                 </div>
 
                 {/* Content Matrix */}
-                <div className="space-y-4 max-w-[260px]">
-                  <h3 className="font-headline text-lg md:text-xl font-black text-secondary uppercase tracking-tight leading-tight">
+                <div className="space-y-3 max-w-[240px]">
+                  <h3 className="font-headline text-base md:text-lg font-black text-secondary uppercase tracking-tight leading-tight">
                     {step.title}
                   </h3>
-                  <p className="text-muted-foreground font-bold text-[10px] md:text-xs uppercase tracking-widest leading-relaxed opacity-80">
+                  <p className="text-muted-foreground font-bold text-[9px] md:text-[10px] uppercase tracking-widest leading-relaxed opacity-80">
                     {step.desc}
                   </p>
                 </div>
@@ -100,7 +100,7 @@ export function ProcessSection() {
         {/* Action Trigger */}
         <div className="flex justify-center">
           <Link href="/trip-planner">
-            <Button size="xl" className="rounded-xl px-12 h-14 md:h-16 bg-[#3d3935] text-white hover:bg-secondary font-black text-[10px] md:text-xs uppercase tracking-[0.3em] shadow-2xl border-none">
+            <Button size="lg" className="rounded-xl px-10 h-12 md:h-14 bg-[#3d3935] text-white hover:bg-secondary font-black text-[9px] md:text-[10px] uppercase tracking-[0.3em] shadow-2xl border-none">
               Jetzt starten
             </Button>
           </Link>

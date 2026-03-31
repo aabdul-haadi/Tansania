@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -41,46 +40,20 @@ export function FeaturedPackages() {
       excerpt: 'Die perfekte Kombination aus aufregender Wildlife-Safari und romantischem Strandurlaub auf Sansibar.',
       imageUrl: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800',
       rating: 5.0
-    },
-    {
-      id: 'exclusive-luxury',
-      title: 'Exklusive Ultra-Luxury Safari Expedition',
-      slug: 'exklusive-luxury-safari',
-      startingPrice: 12000,
-      durationDays: 12,
-      groupSize: '2-6 Personen',
-      category: 'Prestige',
-      highlights: ['Ultra-Luxury', 'Heißluftballon', 'Private Safaris'],
-      excerpt: 'Tansanias schönste Wildparks in den luxuriösesten Unterkünften mit höchstem Service-Standard.',
-      imageUrl: 'https://images.unsplash.com/photo-1577971132997-c10be9372519?q=80&w=800',
-      rating: 4.9
-    },
-    {
-      id: 'family-safari',
-      title: 'Familiensafari Abenteuer Tansania',
-      slug: 'familiensafari-tansania',
-      startingPrice: 5200,
-      durationDays: 11,
-      groupSize: '4-6 Personen',
-      category: 'Familie',
-      highlights: ['Familienfreundlich', 'Kulturelle Begegnungen', 'Flexible Planung'],
-      excerpt: 'Kinderfreundliche Lodges, spannende Tierbegegnungen und unvergessliche Abenteuer für alle Generationen.',
-      imageUrl: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=800',
-      rating: 4.8
     }
   ];
 
   const displayPkgs = packages && packages.length > 0 ? packages : fallbacks;
 
   return (
-    <section className="pt-4 pb-24 md:pt-8 md:pb-40 bg-white">
+    <section className="pt-4 pb-20 md:pt-8 md:pb-32 bg-white">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center mb-16 md:mb-24 space-y-4">
+        <div className="text-center mb-16 md:mb-20 space-y-3">
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-3xl md:text-5xl font-bold text-secondary uppercase tracking-tighter"
+            className="font-headline text-2xl md:text-4xl font-bold text-secondary uppercase tracking-tighter"
           >
             Unsere <span className="text-primary">Signature Reisen</span>
           </motion.h2>
@@ -89,7 +62,7 @@ export function FeaturedPackages() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground font-bold text-[10px] md:text-sm uppercase tracking-widest max-w-2xl mx-auto opacity-60 leading-relaxed"
+            className="text-muted-foreground font-bold text-[9px] md:text-[10px] uppercase tracking-widest max-w-2xl mx-auto opacity-60 leading-relaxed"
           >
             Sorgfältig komponierte Reiserouten – als Inspiration oder Ausgangspunkt für Ihre individuelle Planung
           </motion.p>

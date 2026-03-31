@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -40,14 +39,14 @@ const reasons = [
 
 export function WhyUs() {
   return (
-    <section className="pt-8 md:pt-12 pb-16 md:pb-32 bg-white font-bold">
+    <section className="pt-8 md:pt-12 pb-16 md:pb-24 bg-white font-bold">
       <div className="container mx-auto px-6 md:px-10 max-w-7xl">
-        <div className="text-center mb-16 md:mb-24 space-y-4">
+        <div className="text-center mb-12 md:mb-20 space-y-3">
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-3xl md:text-5xl font-black text-secondary uppercase tracking-tighter"
+            className="font-headline text-2xl md:text-4xl font-black text-secondary uppercase tracking-tighter"
           >
             Warum mit uns reisen?
           </motion.h2>
@@ -56,13 +55,13 @@ export function WhyUs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground font-black text-[10px] md:text-sm uppercase tracking-widest max-w-2xl mx-auto opacity-60"
+            className="text-muted-foreground font-black text-[9px] md:text-[10px] uppercase tracking-widest max-w-2xl mx-auto opacity-60"
           >
             Was unsere Reiseplanung auszeichnet
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16 md:gap-y-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-12 md:gap-y-20">
           {reasons.map((item, idx) => (
             <motion.div
               key={idx}
@@ -70,16 +69,16 @@ export function WhyUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.05 }}
-              className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6"
+              className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-5"
             >
-              <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#f8f5f0] flex items-center justify-center shrink-0 shadow-sm border border-[#ede7e0] transition-all duration-500 hover:scale-105 group">
-                <item.icon className="w-7 h-7 md:w-9 md:h-9 text-[#c5a880] group-hover:text-primary transition-colors" />
+              <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#f8f5f0] flex items-center justify-center shrink-0 shadow-sm border border-[#ede7e0] transition-all duration-500 hover:scale-105 group">
+                <item.icon className="w-6 h-6 md:w-7 md:h-7 text-[#c5a880] group-hover:text-primary transition-colors" />
               </div>
-              <div className="space-y-3">
-                <h3 className="font-headline text-xl md:text-2xl font-black text-secondary uppercase tracking-tight">
+              <div className="space-y-2">
+                <h3 className="font-headline text-lg md:text-xl font-black text-secondary uppercase tracking-tight">
                   {item.title}
                 </h3>
-                <p className="text-muted-foreground font-black text-[10px] md:text-xs lg:text-sm uppercase tracking-widest leading-relaxed opacity-80 max-w-[280px] lg:max-w-none">
+                <p className="text-muted-foreground font-black text-[9px] md:text-[10px] uppercase tracking-widest leading-relaxed opacity-80 max-w-[260px] lg:max-w-none">
                   {item.desc}
                 </p>
               </div>
