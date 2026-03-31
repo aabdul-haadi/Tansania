@@ -52,7 +52,7 @@ export function FinalCTA() {
             </Link>
             
             <a href="tel:+493022608080" className="w-full sm:w-auto">
-              <Button size="lg" variant="outline" className="w-full sm:w-auto rounded-xl px-10 h-14 md:h-16 border-white/40 text-white hover:bg-white/10 backdrop-blur-md font-black text-[10px] md:text-xs uppercase tracking-[0.2em] group">
+              <Button size="lg" className="w-full sm:w-auto rounded-xl px-10 h-14 md:h-16 bg-white text-secondary hover:bg-secondary hover:text-white hover:border-white/20 transition-all duration-500 font-black text-[10px] md:text-xs uppercase tracking-[0.2em] shadow-2xl border-none group">
                 <Phone className="w-4 h-4 mr-2" /> Jetzt anrufen
               </Button>
             </a>
