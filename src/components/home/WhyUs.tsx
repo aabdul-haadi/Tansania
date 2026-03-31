@@ -75,7 +75,7 @@ export function WhyUs() {
                 <item.icon className="w-6 h-6 md:w-7 md:h-7 text-[#c5a880] group-hover:text-primary transition-colors" />
               </div>
               <div className="space-y-2">
-                <h3 className="font-headline text-lg md:text-2xl font-normal text-secondary uppercase tracking-tight">
+                <h3 className="font-headline text-lg md:text-2xl font-medium text-secondary uppercase tracking-tight">
                   {item.title}
                 </h3>
                 <p className="text-muted-foreground font-normal text-[10px] md:text-xs uppercase tracking-widest leading-relaxed max-w-[260px] lg:max-w-none">

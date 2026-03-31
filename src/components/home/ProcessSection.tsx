@@ -82,7 +82,7 @@ export function ProcessSection() {
                 </div>
 
                 <div className="space-y-3 max-w-[240px]">
-                  <h3 className="font-headline text-base md:text-xl font-normal text-secondary uppercase tracking-tight leading-tight">
+                  <h3 className="font-headline text-base md:text-xl font-medium text-secondary uppercase tracking-tight leading-tight">
                     {step.title}
                   </h3>
                   <p className="text-muted-foreground font-normal text-[10px] md:text-xs uppercase tracking-widest leading-relaxed">
