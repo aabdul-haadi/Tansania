@@ -6,7 +6,7 @@ import { Sparkles, Leaf, ShieldCheck, Heart } from 'lucide-react';
 
 export function ExpertiseNarrative() {
   return (
-    <section className="py-8 md:py-16 bg-white overflow-hidden">
+    <section className="py-10 md:py-20 bg-white overflow-hidden">
       <div className="container mx-auto px-4 max-w-5xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
           

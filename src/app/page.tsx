@@ -23,11 +23,11 @@ import { FeaturedPackages } from '@/components/home/FeaturedPackages';
 export default function Home() {
   return (
     <div className="relative bg-background">
-      {/* 02 HERO SECTION - Compacted for Mobile with local asset */}
+      {/* 02 HERO SECTION - High-Density Protocol */}
       <section className="relative min-h-[60vh] md:min-h-screen flex items-center overflow-hidden bg-secondary">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/img/banner-1.webp" 
+            src="/banner-1.webp" 
             alt="Serengeti Dreams Hero" 
             fill 
             priority 
@@ -118,13 +118,13 @@ export default function Home() {
       {/* 04 WARUM WIR */}
       <ExpertiseNarrative />
 
-      {/* 05 REISEZIELE */}
+      {/* 05 REISEZIELE - Kontinentale Vielfalt */}
       <AfricaVariety />
 
       {/* 06 SO FUNKTIONIERT ES */}
       <ProcessSection />
 
-      {/* EXPEDITIONSLOGISTIK */}
+      {/* EXPEDITIONSLOGISTIK - Von Kairo in die Savanne */}
       <SafariMap />
 
       {/* 07 KUNDENSTIMMEN */}
@@ -134,7 +134,7 @@ export default function Home() {
       {/* 08 SAFARI-PAKETE */}
       <FeaturedPackages />
 
-      {/* 09 FOTO-GALERIE */}
+      {/* 09 FOTO-GALERIE - Visual Journal */}
       <VisualJournalGrid />
 
       {/* 12 FAQ */}

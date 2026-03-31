@@ -19,14 +19,14 @@ const destinations = [
 
 export function AfricaVariety() {
   return (
-    <section className="py-8 md:py-16 bg-background">
+    <section className="py-10 md:py-20 bg-background">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-10 md:mb-16">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-xl"
+            className="max-w-xl text-left"
           >
             <div className="inline-flex items-center gap-2 text-primary font-bold text-[8px] uppercase tracking-[0.4em] mb-2">
               <Globe className="w-2.5 h-2.5" /> Kontinentale Vielfalt
@@ -41,7 +41,7 @@ export function AfricaVariety() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground font-bold leading-relaxed max-w-xs text-[9px] md:text-xs border-l-2 border-primary/20 pl-4 uppercase tracking-widest"
+            className="text-muted-foreground font-bold leading-relaxed max-w-xs text-[9px] md:text-xs border-l-2 border-primary/20 pl-4 uppercase tracking-widest text-left"
           >
             Von der Savanne Tansanias bis zu den Pyramiden Ägyptens – jede Reise erzählt ihre eigene Geschichte.
           </motion.p>
