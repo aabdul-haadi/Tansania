@@ -56,6 +56,7 @@ export function TanzaniaDestinations() {
   return (
     <section className="py-12 md:py-24 bg-white overflow-hidden font-bold">
       <div className="container mx-auto px-4 max-w-7xl">
+        {/* Header Registry */}
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 mb-12 md:mb-16">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -66,10 +67,12 @@ export function TanzaniaDestinations() {
             <div className="inline-flex items-center gap-2 text-primary font-black uppercase tracking-[0.4em] text-[9px] md:text-[10px] mb-2">
               <Globe className="w-4 h-4" /> Regionale Registry
             </div>
-            <h2 className="font-headline text-3xl md:text-6xl font-black leading-[0.9] text-secondary uppercase tracking-tighter">
-              Ihre <br /><span className="text-primary">Reiseziele</span>
-            </h2>
-            <p className="text-lg md:text-2xl font-black text-secondary/80 uppercase tracking-tight">Das Beste von Tansania.</p>
+            <div className="space-y-1">
+              <h2 className="font-headline text-3xl md:text-6xl font-black leading-[0.9] text-secondary uppercase tracking-tighter">
+                Ihre <br /><span className="text-primary">Reiseziele</span>
+              </h2>
+              <p className="text-lg md:text-2xl font-black text-secondary/80 uppercase tracking-tight">Das Beste von Tansania.</p>
+            </div>
           </motion.div>
           
           <div className="flex flex-col items-start md:items-end gap-6">
@@ -82,32 +85,33 @@ export function TanzaniaDestinations() {
           </div>
         </div>
 
+        {/* Mosaic Registry Grid */}
         <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-4 md:gap-6">
-          {/* Serengeti - Featured Large */}
+          {/* Serengeti - The Flagship Anchor */}
           <DestinationCard 
             item={destinations[0]} 
             className="md:col-span-6 lg:col-span-8 lg:row-span-2 aspect-[4/3] md:aspect-auto" 
           />
           
-          {/* Zanzibar */}
+          {/* Zanzibar - Island Port */}
           <DestinationCard 
             item={destinations[1]} 
             className="md:col-span-3 lg:col-span-4" 
           />
           
-          {/* Ngorongoro */}
+          {/* Ngorongoro - Heritage Port */}
           <DestinationCard 
             item={destinations[2]} 
             className="md:col-span-3 lg:col-span-4" 
           />
 
-          {/* Kilimandscharo */}
+          {/* Kilimandscharo - Summit Port */}
           <DestinationCard 
             item={destinations[3]} 
             className="md:col-span-3 lg:col-span-6" 
           />
 
-          {/* Tarangire */}
+          {/* Tarangire - Wildlife Port */}
           <DestinationCard 
             item={destinations[4]} 
             className="md:col-span-3 lg:col-span-6" 
