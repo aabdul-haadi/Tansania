@@ -4,7 +4,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Zap } from 'lucide-react';
+import { Zap, Compass, Play } from 'lucide-react';
 import { TravelCategories } from '@/components/home/TravelCategories';
 import { FeaturedPackages } from '@/components/home/FeaturedPackages';
 import { WhyUs } from '@/components/home/WhyUs';
@@ -19,7 +19,6 @@ import { FinalCTA } from '@/components/home/FinalCTA';
 import { TrustStrip } from '@/components/home/TrustStrip';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { Compass, Play } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -40,56 +39,52 @@ export default function Home() {
       </div>
 
       {/* HERO SECTION */}
-      <section className="relative min-h-[70vh] md:min-h-[90vh] flex items-center overflow-hidden bg-secondary">
+      <section className="relative min-h-[70vh] md:min-h-[95vh] flex items-center overflow-hidden bg-secondary">
         <div className="absolute inset-0 z-0">
           <Image 
             src="/banner-1.webp" 
-            alt="Serengeti Dreams Visual" 
+            alt="Serengeti Dreams Master Visual" 
             fill 
             priority 
-            className="object-cover brightness-75 scale-105"
+            className="object-cover brightness-[0.45] scale-105"
             data-ai-hint="serengeti safari"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent md:bg-gradient-to-r md:from-black/30 md:via-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent md:bg-gradient-to-r md:from-black/40 md:via-transparent" />
           <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         </div>
         
         <div className="container relative z-10 mx-auto px-4 max-w-7xl h-full flex flex-col justify-end pb-16 md:justify-center md:pb-0 md:pt-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-center">
-            <div className="lg:col-span-8 space-y-3 md:space-y-4 text-center lg:text-left">
+            <div className="lg:col-span-10 space-y-4 md:space-y-6 text-center lg:text-left">
               <motion.div 
                 initial={{ opacity: 0, x: -30 }} 
                 animate={{ opacity: 1, x: 0 }} 
                 transition={{ duration: 0.8 }}
-                className="space-y-2 md:space-y-3"
+                className="space-y-3 md:space-y-5"
               >
-                <div className="hidden md:block">
-                  <div className="inline-flex items-center gap-2 text-primary font-black text-[9px] uppercase tracking-[0.4em] mb-1">
-                    <Compass className="w-3.5 h-3.5" /> Registry 2026/27
-                  </div>
-                  <h1 className="font-headline text-4xl md:text-6xl lg:text-8xl font-bold text-white leading-[1.1] tracking-tighter uppercase">
-                    <span className="text-primary">PRESTIGE</span>
-                  </h1>
+                <div className="inline-flex items-center gap-2 text-primary font-black text-[8px] md:text-[10px] uppercase tracking-[0.4em] mb-1">
+                  <Compass className="w-3.5 h-3.5" /> Über 15 Jahre Expertise · Deutschsprachige Betreuung · Premium-Reisen
                 </div>
-                <p className="max-w-md mx-auto lg:mx-0 text-white font-bold text-[10px] sm:text-xs md:text-sm uppercase tracking-widest leading-relaxed hidden md:block">
-                  Experten-gestaltete Safaris & exklusive Sansibar-Fluchten.
-                  <br />
-                  In Berlin konzipiert – in Afrika gelebt.
+                <h1 className="font-headline text-3xl md:text-6xl lg:text-8xl font-bold text-white leading-[1.1] tracking-tighter uppercase max-w-5xl">
+                  Ihre maßgeschneiderte <br /><span className="text-primary">Luxusreise</span> durch Tansania
+                </h1>
+                <p className="max-w-2xl mx-auto lg:mx-0 text-white font-bold text-[10px] sm:text-xs md:text-sm lg:text-base uppercase tracking-widest leading-relaxed">
+                  Erleben Sie exklusive Safaris, handverlesene Lodges und unvergessliche Momente. Persönlich geplant, individuell gestaltet.
                 </p>
               </motion.div>
               <motion.div 
                 initial={{ opacity: 0, y: 20 }} 
                 animate={{ opacity: 1, y: 0 }} 
                 transition={{ delay: 0.3, duration: 0.8 }}
-                className="hidden md:flex flex-col sm:flex-row gap-2.5 md:gap-3 justify-center lg:justify-start pt-2"
+                className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start pt-4"
               >
                 <Link href="/safaris" className="w-full sm:w-auto">
-                  <Button className="w-full sm:w-44 h-10 md:h-12 px-5 rounded-lg font-black shadow-xl border-none text-[10px] uppercase tracking-widest">
+                  <Button className="w-full sm:w-48 h-12 md:h-14 px-6 rounded-xl font-black shadow-xl border-none text-[10px] uppercase tracking-widest">
                     Katalog Erkunden
                   </Button>
                 </Link>
                 <Link href="/trip-advisor" className="w-full sm:w-auto">
-                  <Button variant="glass" className="w-full sm:w-44 h-10 md:h-12 px-5 rounded-lg shadow-xl border-white/20 text-[10px] font-black uppercase tracking-widest">
+                  <Button variant="glass" className="w-full sm:w-48 h-12 md:h-14 px-6 rounded-xl shadow-xl border-white/20 text-[10px] font-black uppercase tracking-widest">
                     AI Advisor <Zap className="w-3.5 h-3.5 ml-1.5 fill-current" />
                   </Button>
                 </Link>
