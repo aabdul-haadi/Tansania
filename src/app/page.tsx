@@ -132,34 +132,34 @@ export default function Home() {
       {/* 04 TRAVEL CATEGORIES */}
       <TravelCategories />
 
-      {/* 08 SAFARI-PAKETE */}
+      {/* 05 SIGNATURE REISEN */}
       <FeaturedPackages />
 
-      {/* 05 TANZANIA DESTINATIONS DISCOVERY */}
-      <TanzaniaDestinations />
-
-      {/* 07 CINEMATIC BREAKER */}
-      <CinematicQuote />
-
-      {/* 09 WHY TRAVEL WITH US */}
+      {/* 06 WHY US */}
       <WhyUs />
 
-      {/* 06 SO FUNKTIONIERT ES */}
+      {/* 07 PROCESS SECTION */}
       <ProcessSection />
 
-      {/* 09 FOTO-GALERIE - Visual Journal */}
+      {/* 08 CINEMATIC QUOTE */}
+      <CinematicQuote />
+
+      {/* 09 TANZANIA DESTINATIONS DISCOVERY */}
+      <TanzaniaDestinations />
+
+      {/* 10 FOTO-GALERIE - Visual Journal */}
       <VisualJournalGrid />
 
-      {/* 13 REVIEWS SECTION - Strategic Social Proof */}
+      {/* 11 REVIEWS SECTION */}
       <Testimonials />
 
-      {/* 10 LEAD-FORMULAR - Primary Inquiry Protocol */}
+      {/* 12 LEAD-FORMULAR */}
       <ContactSection />
 
-      {/* 12 FAQ */}
+      {/* 13 FAQ */}
       <FAQ />
 
-      {/* 11 FINAL CTA PORTAL */}
+      {/* 14 FINAL CTA PORTAL */}
       <FinalCTA />
     </div>
   );
