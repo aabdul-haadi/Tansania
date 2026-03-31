@@ -24,7 +24,7 @@ export function ProcessSection() {
   ];
 
   return (
-    <section className="py-10 md:py-20 bg-[#fdfcfb]">
+    <section className="py-10 md:py-16 bg-[#fdfcfb]">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12 md:mb-16 space-y-3">
           <motion.span 

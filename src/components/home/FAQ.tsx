@@ -31,7 +31,7 @@ const faqs = [
 
 export function FAQ() {
   return (
-    <section className="py-10 md:py-20 bg-[#fdfcfb]">
+    <section className="py-10 md:py-16 bg-[#fdfcfb]">
       <div className="container mx-auto px-4 max-w-3xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

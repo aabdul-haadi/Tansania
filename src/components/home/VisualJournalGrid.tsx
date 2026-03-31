@@ -34,7 +34,7 @@ const journalImages = [
 
 export function VisualJournalGrid() {
   return (
-    <section className="py-10 md:py-20 bg-white overflow-hidden">
+    <section className="py-10 md:py-16 bg-white overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-10 md:mb-16 gap-6">
           <motion.div 
@@ -79,7 +79,7 @@ export function VisualJournalGrid() {
                 visible: { opacity: 1, scale: 1 }
               }}
               className={cn(
-                "relative rounded-[2rem] md:rounded-[3.5rem] overflow-hidden group shadow-prestige border border-border/50 bg-muted",
+                "relative rounded-[2rem] md:rounded-[3.5rem] overflow-hidden group shadow-xl border border-border/50 bg-muted",
                 img.className,
                 img.aspect
               )}

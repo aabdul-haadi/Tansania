@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useRef } from 'react';
@@ -32,7 +31,7 @@ export function SafariMap() {
   return (
     <section 
       ref={containerRef} 
-      className="py-10 md:py-20 bg-[#0a0a0a] text-white overflow-hidden relative border-y border-white/5"
+      className="py-10 md:py-16 bg-[#0a0a0a] text-white overflow-hidden relative border-y border-white/5"
       style={{
         backgroundImage: `radial-gradient(rgba(255,255,255,0.05) 1px, transparent 0)`,
         backgroundSize: '24px 24px'

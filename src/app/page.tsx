@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -9,7 +8,7 @@ import { ArrowRight, Compass, Globe, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 
-// HOMEPAGE REGISTRY COMPONENTS
+// HOMEPAGE REGISTRY COMPONENTS - Moved to dedicated home directory
 import { SafariMap } from '@/components/home/SafariMap';
 import { Testimonials } from '@/components/home/Testimonials';
 import { CinematicQuote } from '@/components/home/CinematicQuote';
