@@ -25,7 +25,7 @@ import { FeaturedPackages } from '@/components/home/FeaturedPackages';
 export default function Home() {
   return (
     <div className="relative bg-background">
-      {/* 02 HERO SECTION */}
+      {/* 02 HERO SECTION - Compacted for Mobile */}
       <section className="relative min-h-[60vh] md:min-h-screen flex items-center overflow-hidden bg-secondary">
         <div className="absolute inset-0 z-0">
           <Image 
@@ -40,7 +40,7 @@ export default function Home() {
           <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         </div>
         
-        <div className="container relative z-10 mx-auto px-4 max-w-7xl pt-8 md:pt-20">
+        <div className="container relative z-10 mx-auto px-4 max-w-7xl pt-4 md:pt-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
             
             <div className="lg:col-span-7 space-y-6 md:space-y-8 text-center lg:text-left">
@@ -68,15 +68,15 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }} 
                 animate={{ opacity: 1, y: 0 }} 
                 transition={{ delay: 0.3, duration: 0.8 }}
-                className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start"
+                className="flex flex-col sm:flex-row gap-2.5 md:gap-4 justify-center lg:justify-start"
               >
                 <Link href="/safaris" className="w-full sm:w-auto">
-                  <Button size="xl" className="w-full h-12 md:h-16 px-6 md:px-8 rounded-xl font-bold shadow-2xl">
+                  <Button className="w-full h-10 md:h-16 px-5 md:px-8 rounded-xl font-bold shadow-2xl border-none">
                     Katalog Erkunden
                   </Button>
                 </Link>
                 <Link href="/trip-advisor" className="w-full sm:w-auto">
-                  <Button size="xl" variant="glass" className="w-full h-12 md:h-16 px-6 md:px-8 rounded-xl shadow-xl">
+                  <Button variant="glass" className="w-full h-10 md:h-16 px-5 md:px-8 rounded-xl shadow-xl border-white/20">
                     AI Advisor <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </Link>
