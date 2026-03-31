@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -7,7 +8,6 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Compass, Globe, Sparkles, Zap, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-import { SafariMap } from '@/components/home/SafariMap';
 import { CinematicQuote } from '@/components/home/CinematicQuote';
 import { FAQ } from '@/components/home/FAQ';
 import { TravelCategories } from '@/components/home/TravelCategories';
@@ -146,9 +146,6 @@ export default function Home() {
 
       {/* 06 SO FUNKTIONIERT ES */}
       <ProcessSection />
-
-      {/* EXPEDITIONSLOGISTIK - Von Kairo in die Savanne */}
-      <SafariMap />
 
       {/* 09 FOTO-GALERIE - Visual Journal */}
       <VisualJournalGrid />
