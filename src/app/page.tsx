@@ -13,6 +13,7 @@ import { Testimonials } from '@/components/home/Testimonials';
 import { CinematicQuote } from '@/components/home/CinematicQuote';
 import { FAQ } from '@/components/home/FAQ';
 import { TravelCategories } from '@/components/home/TravelCategories';
+import { TanzaniaDestinations } from '@/components/home/TanzaniaDestinations';
 import { ContactSection } from '@/components/shared/ContactSection';
 import { TrustStrip } from '@/components/home/TrustStrip';
 import { ProcessSection } from '@/components/home/ProcessSection';
@@ -134,6 +135,9 @@ export default function Home() {
 
       {/* 04 TRAVEL CATEGORIES */}
       <TravelCategories />
+
+      {/* 05 TANZANIA DESTINATIONS DISCOVERY */}
+      <TanzaniaDestinations />
 
       {/* 07 CINEMATIC BREAKER */}
       <CinematicQuote />
