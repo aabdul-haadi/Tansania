@@ -42,7 +42,7 @@ export function ContactSection() {
   ];
 
   return (
-    <section id="inquiry" className="py-8 md:py-16 bg-[#fdfcfb] relative overflow-hidden font-bold">
+    <section id="inquiry" className="py-6 md:py-12 bg-[#fdfcfb] relative overflow-hidden font-bold">
       {/* Topographic Background Decor */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none">
         <svg width="100%" height="100%" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
@@ -53,7 +53,7 @@ export function ContactSection() {
       </div>
 
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
-        <div className="flex flex-col items-center text-center mb-12 md:mb-20 space-y-4">
+        <div className="flex flex-col items-center text-center mb-10 md:mb-16 space-y-4">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -67,7 +67,7 @@ export function ContactSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="font-headline text-2xl md:text-5xl font-black text-secondary uppercase tracking-tighter leading-none"
+            className="font-headline text-xl md:text-4xl font-black text-secondary uppercase tracking-tighter leading-none"
           >
             Ihre Expedition <br /><span className="text-primary">Beginnt Hier</span>
           </motion.h2>
@@ -76,7 +76,7 @@ export function ContactSection() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-muted-foreground font-black text-[10px] md:text-sm uppercase tracking-widest max-w-2xl leading-relaxed opacity-60"
+            className="text-muted-foreground font-black text-[9px] md:text-sm uppercase tracking-widest max-w-2xl leading-relaxed opacity-60"
           >
             Vom ersten Gedanken bis zum ersten Schritt in der Savanne – unsere Spezialisten begleiten Sie persönlich.
           </motion.p>

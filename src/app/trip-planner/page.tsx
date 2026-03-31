@@ -22,7 +22,8 @@ import {
   Clock,
   ChevronRight,
   RefreshCw,
-  Home
+  Home,
+  AlertCircle
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -121,20 +122,20 @@ export default function TripPlanner() {
           </div>
 
           <div className="relative z-10">
-            <div className="w-20 h-20 bg-green-500/10 rounded-2xl flex items-center justify-center mx-auto mb-10 border border-green-500/20 shadow-inner">
-              <CheckCircle2 className="w-10 h-10 text-green-600" />
+            <div className="w-20 h-20 bg-destructive/10 rounded-2xl flex items-center justify-center mx-auto mb-10 border border-destructive/20 shadow-inner">
+              <AlertCircle className="w-10 h-10 text-destructive" />
             </div>
             
             <div className="space-y-4 mb-12">
-              <h2 className="font-headline text-3xl md:text-5xl font-bold mb-4 uppercase tracking-tighter text-secondary leading-none">Anfrage <br /><span className="text-primary">Erfolgreich</span></h2>
+              <h2 className="font-headline text-3xl md:text-5xl font-bold mb-4 uppercase tracking-tighter text-secondary leading-none">Systemausfall</h2>
               <p className="text-muted-foreground text-xs md:text-sm font-bold uppercase tracking-[0.2em] leading-relaxed max-w-md mx-auto">
-                Vielen Dank. Unsere Spezialisten in Berlin prüfen Ihren Plan und melden sich innerhalb von 24 Stunden bei Ihnen.
+                In der Savanne gab es ein technisches Gewitter. Wir versuchen, die Verbindung wiederherzustellen.
               </p>
             </div>
 
             <div className="flex flex-col gap-3 max-w-sm mx-auto">
               <Button onClick={handleReset} variant="outline" className="w-full rounded-xl h-14 gap-3 border-primary/20 text-primary hover:bg-primary/5 font-black text-[10px] uppercase tracking-widest">
-                <RefreshCw className="w-4 h-4" /> Neue Planung Starten
+                <RefreshCw className="w-4 h-4" /> Seite neu laden
               </Button>
               <Button asChild className="w-full rounded-xl h-14 gap-3 shadow-lg shadow-primary/20 font-black text-[10px] uppercase tracking-widest border-none">
                 <Link href="/"><Home className="w-4 h-4" /> Zur Startseite</Link>
@@ -344,7 +345,7 @@ export default function TripPlanner() {
             <div className="p-10 bg-secondary text-white rounded-[3rem] shadow-2xl relative overflow-hidden">
               <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
               <div className="relative z-10 space-y-8">
-                <div className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center rotate-3 shadow-xl">
+                <div className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center rotate-3 shadow-xl shadow-primary/20">
                   <ShieldCheck className="w-7 h-7 text-white" />
                 </div>
                 <div>
@@ -373,7 +374,7 @@ export default function TripPlanner() {
               </p>
               <div className="flex items-center gap-4 pt-2">
                 <div className="w-10 h-10 rounded-full bg-muted overflow-hidden">
-                  <Image src="https://picsum.photos/seed/samson/100/100" alt="Expert" width={40} height={40} />
+                  <img src="https://picsum.photos/seed/samson/100/100" alt="Expert" className="w-full h-full object-cover" />
                 </div>
                 <div>
                   <p className="text-[9px] font-black uppercase leading-none">Samson Kyashama</p>
