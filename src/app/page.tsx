@@ -40,14 +40,14 @@ export default function Home() {
       </div>
 
       {/* 02 HERO SECTION - Cinematic Registry Protocol */}
-      <section className="relative min-h-[60vh] md:min-h-[85vh] flex items-center overflow-hidden bg-secondary">
+      <section className="relative min-h-[70vh] md:min-h-[90vh] flex items-center overflow-hidden bg-secondary">
         <div className="absolute inset-0 z-0">
           <Image 
             src="/banner-1.webp" 
             alt="Serengeti Dreams Visual" 
             fill 
             priority 
-            className="object-cover brightness-[0.7] scale-105"
+            className="object-cover brightness-75 scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent md:bg-gradient-to-r md:from-black/30 md:via-transparent" />
           <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
@@ -68,7 +68,7 @@ export default function Home() {
                   <div className="inline-flex items-center gap-2 text-primary font-black text-[9px] uppercase tracking-[0.4em] mb-1">
                     <Compass className="w-3.5 h-3.5" /> Registry 2026/27
                   </div>
-                  <h1 className="font-headline text-5xl md:text-7xl lg:text-9xl font-bold text-white leading-[1.1] tracking-tighter uppercase">
+                  <h1 className="font-headline text-4xl md:text-6xl lg:text-8xl font-bold text-white leading-[1.1] tracking-tighter uppercase">
                     <span className="text-primary">PRESTIGE</span>
                   </h1>
                 </div>
@@ -103,20 +103,20 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Cinematic Video Protocol Bottom Anchor */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 md:left-10 md:translate-x-0 z-20">
+        {/* Cinematic Video Protocol Bottom Anchor - Anchored Right */}
+        <div className="absolute bottom-10 right-10 z-20">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
-            className="flex flex-col items-center md:items-start gap-3"
+            className="flex flex-col items-center md:items-end gap-2"
           >
-            <button className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center text-white hover:bg-primary hover:border-primary transition-all duration-500 group shadow-2xl">
-              <Play className="w-5 h-5 md:w-6 md:h-6 fill-current group-hover:scale-110 transition-transform ml-1" />
+            <button className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center text-white hover:bg-primary hover:border-primary transition-all duration-500 group shadow-2xl">
+              <Play className="w-4 h-4 md:w-5 md:h-5 fill-current group-hover:scale-110 transition-transform ml-1" />
             </button>
-            <div className="text-center md:text-left">
-              <p className="text-[7px] md:text-[8px] font-black text-white/40 uppercase tracking-[0.4em]">Visual Discovery</p>
-              <p className="text-[9px] md:text-[10px] font-black text-white uppercase tracking-widest">Watch Expedition Film</p>
+            <div className="text-center md:text-right">
+              <p className="text-[6px] md:text-[7px] font-black text-white/40 uppercase tracking-[0.4em]">Visual Discovery</p>
+              <p className="text-[8px] md:text-[9px] font-black text-white uppercase tracking-widest">Watch Expedition Film</p>
             </div>
           </motion.div>
         </div>
