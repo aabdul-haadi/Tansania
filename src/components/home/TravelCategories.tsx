@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -94,6 +93,8 @@ export function TravelCategories() {
                 className="object-cover transition-transform duration-1000 group-hover:scale-110"
                 data-ai-hint={cat.hint}
               />
+              {/* Added subtle light uniform overlay and gradient for maximum text visibility */}
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
               
               <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end">

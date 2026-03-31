@@ -55,43 +55,33 @@ export default function Home() {
         </div>
 
         {/* Massive Background Wordmark - Compacted Protocol */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-10 overflow-hidden">
-          <motion.h2 
-            initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ opacity: 0.15, scale: 1 }}
-            transition={{ duration: 2 }}
-            className="font-headline font-bold text-[20vw] lg:text-[20vw] text-white uppercase tracking-[0.2em] leading-none whitespace-nowrap"
-          >
-            TANSANIA
-          </motion.h2>
-        </div>
+     
         
         <div className="container relative z-20 mx-auto px-6 md:px-10 max-w-7xl h-full flex flex-col justify-center pt-20">
-          <div className="max-w-3xl space-y-6 md:space-y-10">
-            <motion.div 
-              initial={{ opacity: 0, x: -30 }} 
-              animate={{ opacity: 1, x: 0 }} 
-              transition={{ duration: 0.8 }}
-              className="space-y-4 md:space-y-6"
-            >
-              {/* Main Architectural Headline - Compacted */}
-              <h1 className="font-headline font-normal text-white text-3xl md:text-6xl leading-[1.1] tracking-tighter uppercase">
-                Ihre maßgeschneiderte <br />
-                Luxusreise durch Tansania
-              </h1>
-              
-              {/* Narrative Description - Compacted */}
-              <p className="max-w-xl text-white/90 font-normal text-[13px] md:text-lg leading-relaxed opacity-90 uppercase tracking-widest">
-                Erleben Sie exklusive Safaris, handverlesene Lodges und unvergessliche Momente. Persönlich geplant, individuell gestaltet.
-              </p>
+  <div className="max-w-3xl space-y-6 md:space-y-10">
+    <motion.div 
+      initial={{ opacity: 0, x: -30 }} 
+      animate={{ opacity: 1, x: 0 }} 
+      transition={{ duration: 0.8 }}
+      className="space-y-4 md:space-y-6"
+    >
+      {/* Main Architectural Headline */}
+      <h1 className="font-thin text-white text-6xl md:text-7xl leading-[1.1] tracking-tighter font-serif">        Ihre maßgeschneiderte <br />
+        Luxusreise durch Tansania
+      </h1>
 
-              {/* Technical Registry Small Footer - Compacted */}
-              <div className="pt-4 border-t border-white/10">
-                <p className="text-[9px] md:text-[11px] font-normal text-white/60 uppercase tracking-widest">
-                  Über 15 Jahre Expertise · Deutschsprachige Betreuung · Premium-Reisen ab €5.000
-                </p>
-              </div>
-            </motion.div>
+      {/* Narrative Description */}
+      <p className="max-w-xl text-white/90 font-normal text-[24px] md:text-lg leading-relaxed opacity-90 tracking-widest">
+        Erleben Sie exklusive Safaris, handverlesene Lodges und unvergessliche Momente. Persönlich geplant, individuell gestaltet.
+      </p>
+
+      {/* Technical Registry Small Footer */}
+      <div className="pt-4 border-t border-white/10">
+        <p className="text-[9px] md:text-[11px] font-normal text-white/60 uppercase tracking-widest">
+          Über 15 Jahre Expertise · Deutschsprachige Betreuung · Premium-Reisen ab €5.000
+        </p>
+      </div>
+    </motion.div>
 
             {/* Interaction Protocol Triggers - Desktop Only */}
             <motion.div 
