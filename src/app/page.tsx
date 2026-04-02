@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -39,7 +38,7 @@ export default function Home() {
         </Link>
       </div>
 
-      {/* HERO SECTION - RECALIBRATED POSITIONING TO PREVENT BOTTOM CROPPING */}
+      {/* HERO SECTION - RECALIBRATED FOR MAXIMUM LEGIBILITY */}
       <section className="relative min-h-[85vh] md:h-screen flex items-center overflow-hidden bg-secondary">
         {/* Background Visual Asset */}
         <div className="absolute inset-0 z-0">
@@ -48,35 +47,35 @@ export default function Home() {
             alt="Serengeti Dreams Signature Visual" 
             fill 
             priority 
-            className="object-cover object-bottom brightness-[0.6]"
+            className="object-cover object-bottom brightness-[0.55]"
             data-ai-hint="elephant forest"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50" />
         </div>
 
         {/* Main Content Container */}
         <div className="container relative z-20 mx-auto px-6 md:px-10 max-w-7xl h-full flex flex-col justify-center pt-20 md:pt-0">
-          <div className="max-w-3xl space-y-4 md:space-y-6">
+          <div className="max-w-3xl space-y-6 md:space-y-8">
             <motion.div 
               initial={{ opacity: 0, x: -30 }} 
               animate={{ opacity: 1, x: 0 }} 
               transition={{ duration: 0.8 }}
-              className="space-y-3 md:space-y-4"
+              className="space-y-4 md:space-y-6"
             >
-              {/* Main Architectural Headline */}
-              <h1 className="font-light text-white text-2xl sm:text-3xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tighter font-serif">
+              {/* Main Architectural Headline - Improved Weight */}
+              <h1 className="font-bold text-white text-3xl sm:text-4xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tighter font-serif uppercase">
                 Ihre maßgeschneiderte <br />
                 Luxusreise durch Tansania
               </h1>
 
-              {/* Narrative Description */}
-              <p className="max-w-xl text-white/90 font-normal text-[12px] sm:text-sm md:text-base lg:text-lg leading-relaxed opacity-90 tracking-widest">
+              {/* Narrative Description - Improved Legibility */}
+              <p className="max-w-xl text-white font-medium text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed tracking-wide">
                 Erleben Sie exklusive Safaris, handverlesene Lodges und unvergessliche Momente. Persönlich geplant, individuell gestaltet.
               </p>
 
               {/* Technical Registry Small Footer */}
-              <div className="pt-3 border-t border-white/10">
-                <p className="text-[8px] sm:text-[9px] md:text-[10px] font-normal text-white/60 uppercase tracking-widest">
+              <div className="pt-4 border-t border-white/20">
+                <p className="text-[9px] sm:text-[10px] md:text-[11px] font-bold text-white/80 uppercase tracking-[0.2em]">
                   Über 15 Jahre Expertise · Deutschsprachige Betreuung · Premium-Reisen ab €5.000
                 </p>
               </div>
@@ -87,15 +86,15 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }} 
               animate={{ opacity: 1, y: 0 }} 
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 pt-2 md:pt-0 pb-4 md:pb-0"
+              className="flex flex-col sm:flex-row gap-4 pt-4 md:pt-0 pb-4 md:pb-0"
             >
               <Link href="/trip-planner">
-                <Button className="w-full sm:w-auto h-12 px-8 rounded-lg bg-white text-secondary hover:bg-primary hover:text-white transition-all duration-500 font-bold text-[10px] uppercase tracking-widest border-none group shadow-2xl">
+                <Button className="w-full sm:w-auto h-14 px-10 rounded-lg bg-white text-secondary hover:bg-primary hover:text-white transition-all duration-500 font-bold text-[11px] uppercase tracking-widest border-none group shadow-2xl">
                   Reiseberatung anfragen <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
               <Link href="/safaris">
-                <Button variant="outline" className="w-full sm:w-auto h-12 px-8 rounded-lg bg-transparent text-white border-white/40 hover:bg-white/10 hover:border-white font-bold text-[10px] uppercase tracking-widest transition-all duration-500">
+                <Button variant="outline" className="w-full sm:w-auto h-14 px-10 rounded-lg bg-transparent text-white border-white/40 hover:bg-white/10 hover:border-white font-bold text-[11px] uppercase tracking-widest transition-all duration-500">
                   Unsere Reisen entdecken
                 </Button>
               </Link>

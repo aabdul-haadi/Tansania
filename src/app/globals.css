@@ -6,7 +6,7 @@
   :root {
     /* COLORS: Professional Registry Palette */
     --background: 0 0% 98%;
-    --foreground: 30 4% 52%; /* #8A8581 */
+    --foreground: 20 6% 35%; /* Darkened for significantly better readability */
     --card: 0 0% 100%;
     --card-foreground: 20 6% 22%;
     --popover: 0 0% 100%;
@@ -72,7 +72,6 @@
   /* Paragraph standard */
   p {
     @apply text-foreground font-normal;
-    color: #8A8581;
   }
 
   /* Technical Constraint: Force No Italics */

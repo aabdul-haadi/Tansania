@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -47,7 +46,7 @@ export function WhyUs() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-2xl md:text-4xl font-normal text-secondary uppercase tracking-tighter"
+            className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tighter"
           >
             Warum mit uns reisen?
           </motion.h2>
@@ -56,7 +55,7 @@ export function WhyUs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground font-normal text-[10px] md:text-xs uppercase tracking-widest max-w-2xl mx-auto opacity-80"
+            className="text-muted-foreground font-medium text-xs md:text-sm uppercase tracking-widest max-w-2xl mx-auto opacity-80"
           >
             Was unsere Reiseplanung auszeichnet
           </motion.p>
@@ -72,14 +71,14 @@ export function WhyUs() {
               transition={{ delay: idx * 0.05 }}
               className="flex flex-col items-center text-center space-y-4"
             >
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#f8f5f0] flex items-center justify-center shrink-0 shadow-sm border border-[#ede7e0] transition-all duration-500 hover:scale-105 group">
-                <item.icon className="w-5 h-5 md:w-6 md:h-6 text-[#c5a880] group-hover:text-primary transition-colors" />
+              <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#f8f5f0] flex items-center justify-center shrink-0 shadow-sm border border-[#ede7e0] transition-all duration-500 hover:scale-105 group">
+                <item.icon className="w-6 h-6 md:w-7 md:h-7 text-[#c5a880] group-hover:text-primary transition-colors" />
               </div>
-              <div className="space-y-1">
-                <h3 className="font-headline text-base md:text-xl font-medium text-secondary uppercase tracking-tight">
+              <div className="space-y-2">
+                <h3 className="font-headline text-lg md:text-2xl font-medium text-secondary uppercase tracking-tight">
                   {item.title}
                 </h3>
-                <p className="text-muted-foreground font-normal text-[10px] md:text-[11px] uppercase tracking-widest leading-relaxed max-w-[260px] lg:max-w-none">
+                <p className="text-muted-foreground font-medium text-xs md:text-sm uppercase tracking-widest leading-relaxed max-w-[280px] lg:max-w-none">
                   {item.desc}
                 </p>
               </div>

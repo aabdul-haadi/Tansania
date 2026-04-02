@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -61,7 +60,7 @@ export function TravelCategories() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-2xl md:text-4xl font-normal text-secondary uppercase tracking-tighter"
+            className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tighter"
           >
             Welche Reise passt zu Ihnen?
           </motion.h2>
@@ -70,7 +69,7 @@ export function TravelCategories() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground font-normal text-[10px] md:text-xs uppercase tracking-widest max-w-xl mx-auto opacity-80"
+            className="text-muted-foreground font-medium text-xs md:text-sm uppercase tracking-widest max-w-xl mx-auto opacity-80"
           >
             Entdecken Sie unsere sorgfältig kuratierten Reisekategorien
           </motion.p>
@@ -93,19 +92,19 @@ export function TravelCategories() {
                 className="object-cover transition-transform duration-1000 group-hover:scale-110"
                 data-ai-hint={cat.hint}
               />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-500" />
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
               
               <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end">
-                <h3 className="text-white font-headline text-lg md:text-2xl font-normal uppercase tracking-tight mb-2">
+                <h3 className="text-white font-headline text-2xl md:text-3xl font-normal uppercase tracking-tight mb-2">
                   {cat.title}
                 </h3>
-                <p className="text-white/70 text-[9px] md:text-[10px] font-normal leading-relaxed mb-6 uppercase tracking-widest line-clamp-2 opacity-80">
+                <p className="text-white/90 text-xs md:text-sm font-medium leading-relaxed mb-6 uppercase tracking-widest line-clamp-2">
                   {cat.desc}
                 </p>
                 
-                <Link href={cat.href} className="inline-flex items-center gap-2 text-white font-bold text-[8px] md:text-[9px] uppercase tracking-[0.2em] group/link">
-                  Mehr erfahren <ArrowRight className="w-3 h-3 text-primary transition-transform group/link:translate-x-1" />
+                <Link href={cat.href} className="inline-flex items-center gap-2 text-white font-bold text-[10px] md:text-[11px] uppercase tracking-[0.2em] group/link">
+                  Mehr erfahren <ArrowRight className="w-3.5 h-3.5 text-primary transition-transform group/link:translate-x-1" />
                 </Link>
               </div>
             </motion.div>

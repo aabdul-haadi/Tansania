@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -30,6 +29,7 @@ interface PackageCardProps {
 /**
  * 100% High-Fidelity Clone of the Signature Card.
  * Updated accent color to #C9A876 as requested.
+ * Readability enhanced with larger text and better weights.
  */
 export function PackageCard({ pkg, className }: PackageCardProps) {
   return (
@@ -49,23 +49,23 @@ export function PackageCard({ pkg, className }: PackageCardProps) {
       <div className="p-6 md:p-8 flex flex-col flex-grow">
         <div className="space-y-4 flex-grow">
           {/* Headline - Cormorant Garamond 500 */}
-          <h3 className="font-headline text-xl md:text-2xl font-medium text-[#3A3634] leading-tight">
+          <h3 className="font-headline text-2xl md:text-3xl font-medium text-[#3A3634] leading-tight">
             {pkg.title}
           </h3>
           
-          {/* Narrative - Inter */}
-          <p className="text-[13px] text-[#8A8581] font-normal leading-relaxed line-clamp-2">
+          {/* Narrative - Inter - Readability Improved */}
+          <p className="text-sm md:text-base text-[#4A4543] font-normal leading-relaxed line-clamp-3">
             {pkg.excerpt}
           </p>
 
           {/* Technical Metadata Row */}
           <div className="flex items-center gap-5 pt-1">
-            <div className="flex items-center gap-2 text-[11px] font-normal text-[#8A8581]">
-              <Clock className="w-3.5 h-3.5 text-[#C9A876]" /> 
+            <div className="flex items-center gap-2 text-xs font-semibold text-[#8A8581] uppercase tracking-widest">
+              <Clock className="w-4 h-4 text-[#C9A876]" /> 
               {pkg.durationDays} Tage
             </div>
-            <div className="flex items-center gap-2 text-[11px] font-normal text-[#8A8581]">
-              <Users className="w-3.5 h-3.5 text-[#C9A876]" /> 
+            <div className="flex items-center gap-2 text-xs font-semibold text-[#8A8581] uppercase tracking-widest">
+              <Users className="w-4 h-4 text-[#C9A876]" /> 
               {pkg.groupSize}
             </div>
           </div>
@@ -73,7 +73,7 @@ export function PackageCard({ pkg, className }: PackageCardProps) {
           {/* Tag Cloud Registry - Updated to #C9A876 */}
           <div className="flex flex-wrap gap-2 pt-2">
             {(pkg.highlights || []).map((h, i) => (
-              <span key={i} className="text-[9px] font-bold uppercase tracking-tight text-[#C9A876] px-3 py-1.5 rounded-full bg-[#C9A876]/10">
+              <span key={i} className="text-[10px] font-bold uppercase tracking-widest text-[#C9A876] px-3.5 py-1.5 rounded-full bg-[#C9A876]/10">
                 {h}
               </span>
             ))}
@@ -83,14 +83,14 @@ export function PackageCard({ pkg, className }: PackageCardProps) {
         {/* Conversion Footer */}
         <div className="mt-8 pt-6 border-t border-border/50 flex items-center justify-between">
           <div className="flex items-baseline gap-1">
-            <span className="text-[12px] font-normal text-[#3A3634]">ab</span>
-            <span className="text-lg font-bold text-[#3A3634]">
+            <span className="text-xs font-medium text-[#8A8581] uppercase tracking-widest">ab</span>
+            <span className="text-xl font-bold text-[#3A3634]">
               €{pkg.startingPrice?.toLocaleString('de-DE')}
             </span>
           </div>
           
-          <Link href={`/safaris/${pkg.slug}`} className="group/btn inline-flex items-center gap-2 text-[11px] font-bold text-[#3A3634] hover:text-[#C9A876] transition-colors">
-            Anfrage stellen <ArrowRight className="w-3 h-3 transition-transform group-hover/btn:translate-x-1" />
+          <Link href={`/safaris/${pkg.slug}`} className="group/btn inline-flex items-center gap-2 text-xs font-bold text-[#3A3634] hover:text-[#C9A876] transition-colors uppercase tracking-widest">
+            Anfrage stellen <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
           </Link>
         </div>
       </div>

@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -62,7 +61,7 @@ export function MagazinInspiration() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-[#8A8581] font-normal text-[10px] md:text-[13px] uppercase tracking-widest opacity-80"
+              className="text-[#8A8581] font-medium text-xs md:text-sm uppercase tracking-widest opacity-80"
             >
               Expertenwissen und Reisetipps aus erster Hand
             </motion.p>
@@ -126,20 +125,20 @@ function MagazineCard({ post }: { post: any }) {
       {/* Content Protocol */}
       <div className="p-6 md:p-8 flex flex-col flex-grow">
         <div className="flex items-center gap-4 mb-5">
-          <span className="text-[9px] font-bold uppercase tracking-tight text-[#C9A876] px-3 py-1.5 rounded-full bg-[#C9A876]/10">
+          <span className="text-[10px] font-bold uppercase tracking-widest text-[#C9A876] px-3 py-1.5 rounded-full bg-[#C9A876]/10">
             {post.category}
           </span>
-          <div className="flex items-center gap-1.5 text-[10px] font-normal text-[#8A8581] uppercase tracking-widest">
-            <Calendar className="w-3 h-3 text-[#C9A876]/60" />
+          <div className="flex items-center gap-1.5 text-[11px] font-medium text-[#8A8581] uppercase tracking-widest">
+            <Calendar className="w-3.5 h-3.5 text-[#C9A876]/60" />
             {post.date}
           </div>
         </div>
 
         <div className="space-y-4 flex-grow">
-          <h3 className="font-headline text-xl md:text-2xl font-medium text-[#3A3634] leading-tight uppercase tracking-tight group-hover:text-[#C9A876] transition-colors">
+          <h3 className="font-headline text-xl md:text-3xl font-medium text-[#3A3634] leading-tight uppercase tracking-tight group-hover:text-[#C9A876] transition-colors">
             {post.title}
           </h3>
-          <p className="text-[12px] md:text-[13px] text-[#8A8581] font-normal leading-relaxed line-clamp-3">
+          <p className="text-sm md:text-base text-[#4A4543] font-normal leading-relaxed line-clamp-3">
             {post.excerpt}
           </p>
         </div>
