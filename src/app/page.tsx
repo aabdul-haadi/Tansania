@@ -39,9 +39,9 @@ export default function Home() {
         </Link>
       </div>
 
-      {/* HERO SECTION - COMPACTED ARCHITECTURE */}
-      <section className="relative min-h-[75vh] md:min-h-[85vh] flex items-center overflow-hidden bg-secondary">
-        {/* Background Visual Asset - Updated to production path */}
+      {/* HERO SECTION - INCREASED HEIGHT */}
+      <section className="relative min-h-[85vh] md:h-screen flex items-center overflow-hidden bg-secondary">
+        {/* Background Visual Asset */}
         <div className="absolute inset-0 z-0">
           <Image 
             src="/assets/images/home/home-banner-1.webp" 
