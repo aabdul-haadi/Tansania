@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -62,8 +63,8 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="space-y-4 md:space-y-6"
             >
-              {/* Main Architectural Headline - Calibrated Scale */}
-              <h1 className="font-bold text-white text-2xl sm:text-3xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tighter font-serif uppercase">
+              {/* Main Architectural Headline - Calibrated Scale & Weight */}
+              <h1 className="font-medium text-white text-2xl sm:text-3xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tighter font-serif uppercase">
                 Ihre maßgeschneiderte <br />
                 Luxusreise durch Tansania
               </h1>

@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -68,13 +69,13 @@ export function Navbar() {
             : "bg-transparent text-white border border-transparent",
           isOpen ? "opacity-0 pointer-events-none" : "opacity-100"
         )}>
-          {/* Logo Registry Hub - Updated to official Brand Logo */}
+          {/* Logo Registry Hub - Official Brand Logo with no background/shadow */}
           <Link href="/" className="flex items-center gap-2 md:gap-3 group shrink-0">
             <img 
               src="/iconlogo.jpg" 
               alt="Tansania Reiseabenteuer" 
               className={cn(
-                "h-8 md:h-10 w-auto rounded-lg transition-all duration-500 shadow-md shrink-0",
+                "h-8 md:h-10 w-auto transition-all duration-500 shrink-0",
                 !isScrolled && "brightness-110"
               )} 
             />
@@ -115,7 +116,7 @@ export function Navbar() {
             <SheetContent side="right" className="w-full sm:max-w-[450px] p-0 bg-black/95 text-white border-none flex flex-col shadow-2xl font-bold">
               <div className="px-8 py-8 flex items-center justify-between shrink-0">
                 <Link href="/" className="flex items-center gap-3">
-                  <img src="/iconlogo.jpg" alt="SDL" className="h-8 w-auto rounded-lg" />
+                  <img src="/iconlogo.jpg" alt="SDL" className="h-8 w-auto" />
                   <span className="font-black text-[10px] uppercase tracking-[0.4em] text-white">SDL Official</span>
                 </Link>
                 <SheetClose asChild>
