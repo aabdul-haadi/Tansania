@@ -5,8 +5,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Clock, ArrowRight, ChevronRight, Calendar } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
+import { ArrowRight, Calendar } from 'lucide-react';
 import {
   Carousel,
   CarouselContent,
@@ -20,7 +19,7 @@ const magazinePosts = [
     category: "Unterkünfte",
     date: "15. März 2026",
     excerpt: "Entdecken Sie unsere handverlesene Auswahl der luxuriösesten und authentischsten Unterkünfte im Herzen der Serengeti.",
-    img: "https://images.unsplash.com/photo-1577971132997-c10be9372519?q=80&w=800",
+    img: "/assets/images/home/Magazin-1.webp",
     hint: "safari lodge"
   },
   {
@@ -29,7 +28,7 @@ const magazinePosts = [
     category: "Reiseziele",
     date: "8. März 2026",
     excerpt: "Erleben Sie die authentische Seite Sansibars – von versteckten Stränden bis zu lokalen Gewürzmärkten.",
-    img: "https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=800",
+    img: "/assets/images/home/Magazin-2.webp",
     hint: "zanzibar beach"
   },
   {
@@ -38,7 +37,7 @@ const magazinePosts = [
     category: "Reisetipps",
     date: "1. März 2026",
     excerpt: "Von der richtigen Kleidung bis zur Kameraausrüstung – alles, was Sie für Ihre perfekte Safari wissen müssen.",
-    img: "https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800",
+    img: "/assets/images/home/Magazi-3.webp",
     hint: "safari gear"
   }
 ];
@@ -119,7 +118,6 @@ function MagazineCard({ post }: { post: any }) {
           src={post.img} 
           alt={post.title} 
           fill 
-          unoptimized
           className="object-cover transition-transform duration-1000 group-hover:scale-105"
           data-ai-hint={post.hint}
         />
@@ -148,7 +146,7 @@ function MagazineCard({ post }: { post: any }) {
 
         <div className="mt-8 pt-6 border-t border-border/50">
           <Link href={`/blog`} className="inline-flex items-center gap-2 text-[11px] font-bold text-[#3A3634] hover:text-[#C9A876] transition-colors group/link">
-            Weiterlesen <ArrowRight className="w-3 h-3 transition-transform group-hover/link:translate-x-1" />
+            Weiterlesen <ArrowRight className="w-3 h-3 transition-transform group/link:translate-x-1" />
           </Link>
         </div>
       </div>

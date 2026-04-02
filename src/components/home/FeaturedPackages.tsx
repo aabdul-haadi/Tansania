@@ -15,7 +15,7 @@ const SIGNATURE_REISEN = [
     groupSize: '2-4 Personen',
     highlights: ['Big Five', 'Luxuslodges', 'Privatguide'],
     excerpt: 'Serengeti, Ngorongoro und Tarangire – die zeitlose Route durch Tansanias berühmteste Nationalparks',
-    imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800'
+    imageUrl: '/assets/images/home/pkg-1.webp'
   },
   {
     id: 'safari-honeymoon',
@@ -26,7 +26,7 @@ const SIGNATURE_REISEN = [
     groupSize: '2 Personen',
     highlights: ['Flitterwochen-Special', 'Boutique-Lodges', 'Private Insel'],
     excerpt: 'Die perfekte Kombination aus aufregender Wildlife-Safari und romantischem Strandurlaub auf Sansibar',
-    imageUrl: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800'
+    imageUrl: '/assets/images/home/pkg-2.webp'
   },
   {
     id: 'exclusive-luxury',
@@ -37,18 +37,18 @@ const SIGNATURE_REISEN = [
     groupSize: '2-6 Personen',
     highlights: ['Ultra-Luxury', 'Heißluftballon', 'Private Safaris'],
     excerpt: 'Tansanias schönste Wildparks in den luxuriösesten Unterkünften mit höchstem Service-Standard',
-    imageUrl: 'https://images.unsplash.com/photo-1577971132997-c10be9372519?q=80&w=800'
+    imageUrl: '/assets/images/home/pkg-3.webp'
   },
   {
     id: 'familien-safari',
     title: 'Familiensafari Tansania',
-    slug: 'familiensafari-tansania',
+    slug: 'familien-safari-tansania',
     startingPrice: 5200,
     durationDays: 11,
     groupSize: '4-6 Personen',
     highlights: ['Familienfreundlich', 'Kulturelle Begegnungen', 'Flexible Planung'],
     excerpt: 'Kinderfreundliche Lodges, spannende Tierbegegnungen und unvergessliche Abenteuer für alle Generationen',
-    imageUrl: 'https://images.unsplash.com/photo-1580502304784-8985b777da59?q=80&w=800'
+    imageUrl: '/assets/images/home/pkg-4.webp'
   }
 ];
 

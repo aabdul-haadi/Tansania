@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -7,25 +8,25 @@ import { cn } from '@/lib/utils';
 
 const journalImages = [
   { 
-    src: "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200", 
+    src: "/assets/images/home/gal-1.webp", 
     hint: "serengeti herds", 
     className: "md:col-span-8 md:row-span-6",
     aspect: "aspect-[4/5] md:aspect-auto"
   },
   { 
-    src: "https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800", 
+    src: "/assets/images/home/gal-2.webp", 
     hint: "safari jeep", 
     className: "md:col-span-4 md:row-span-3",
     aspect: "aspect-square md:aspect-auto"
   },
   { 
-    src: "https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=800", 
+    src: "/assets/images/home/gal-3.webp", 
     hint: "elephant savannah", 
     className: "md:col-span-4 md:row-span-3",
     aspect: "aspect-square md:aspect-auto"
   },
   { 
-    src: "https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=1200", 
+    src: "/assets/images/home/park-1.webp", 
     hint: "zanzibar water", 
     className: "md:col-span-12 md:row-span-3",
     aspect: "aspect-[21/9] md:aspect-auto"

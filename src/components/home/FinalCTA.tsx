@@ -11,14 +11,13 @@ import { Button } from '@/components/ui/button';
 export function FinalCTA() {
   return (
     <section className="relative min-h-[50vh] md:min-h-[60vh] flex items-center justify-center overflow-hidden bg-secondary">
-      {/* High-Fidelity Background Visual */}
+      {/* High-Fidelity Background Visual - Updated to production asset */}
       <div className="absolute inset-0 z-0">
         <Image 
-          src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
+          src="/assets/images/home/final-cta-bg.webp" 
           alt="Tansania Safari Terrace Sunset" 
           fill 
           priority 
-          unoptimized
           className="object-cover brightness-[0.5] scale-105"
           data-ai-hint="safari terrace elephants"
         />

@@ -17,42 +17,42 @@ const destinations = [
   {
     name: "Serengeti",
     desc: "Die endlose Savanne und die große Tierwanderung",
-    img: "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800",
+    img: "/assets/images/home/park-1.webp",
     slug: "serengeti",
     hint: "serengeti herds"
   },
   {
     name: "Ngorongoro Krater",
     desc: "Das achte Weltwunder mit unglaublicher Tierdichte",
-    img: "https://images.unsplash.com/photo-1580502304784-8985b777da59?q=80&w=800",
+    img: "/assets/images/home/park-2.webp",
     slug: "ngorongoro",
     hint: "ngorongoro crater"
   },
   {
     name: "Tarangire",
     desc: "Elefantenherden und majestätische Baobab-Bäume",
-    img: "https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=800",
+    img: "/assets/images/home/park-3.webp",
     slug: "tarangire",
     hint: "elephant savannah"
   },
   {
     name: "Sansibar",
     desc: "Traumstrände und exotische Gewürzinsel-Kultur",
-    img: "https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=800",
+    img: "/assets/images/home/park-4.webp",
     slug: "zanzibar",
     hint: "zanzibar beach"
   },
   {
     name: "Kilimandscharo",
     desc: "Afrikas höchster Gipfel und ultimative Herausforderung",
-    img: "https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=800",
+    img: "/assets/images/home/park-5.webp",
     slug: "kilimanjaro",
     hint: "mount kilimanjaro"
   },
   {
     name: "Arusha NP",
     desc: "Das grüne Juwel am Fuße des Mount Meru",
-    img: "https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=800",
+    img: "/assets/images/home/park-6.webp",
     slug: "arusha",
     hint: "mount meru"
   }
@@ -116,7 +116,6 @@ function DestinationCard({ dest }: { dest: any }) {
         src={dest.img} 
         alt={dest.name} 
         fill 
-        unoptimized
         className="object-cover transition-transform duration-1000 group-hover:scale-110"
         data-ai-hint={dest.hint}
       />

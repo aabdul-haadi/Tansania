@@ -41,22 +41,18 @@ export default function Home() {
 
       {/* HERO SECTION - COMPACTED ARCHITECTURE */}
       <section className="relative min-h-[75vh] md:min-h-[85vh] flex items-center overflow-hidden bg-secondary">
-        {/* Background Visual Asset */}
+        {/* Background Visual Asset - Updated to production path */}
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/banner-1.webp" 
+            src="/assets/images/home/home-banner-1.webp" 
             alt="Serengeti Dreams Signature Visual" 
             fill 
             priority 
-            unoptimized
             className="object-cover brightness-[0.6] scale-105"
             data-ai-hint="elephant forest"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
         </div>
-
-        {/* Massive Background Wordmark Protocol */}
-      
 
         {/* Main Content Container */}
         <div className="container relative z-20 mx-auto px-6 md:px-10 max-w-7xl h-full flex flex-col justify-center pt-20 md:pt-0">
