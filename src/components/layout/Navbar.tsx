@@ -86,9 +86,9 @@ export function Navbar() {
                 Tansania
               </span>
               <span className={cn(
-                "font-headline font-normal uppercase tracking-tighter whitespace-nowrap transition-all duration-500",
+                "font-headline font-black uppercase tracking-tighter whitespace-nowrap transition-all duration-500",
                 "hidden sm:inline-block",
-                "sm:text-sm md:text-xl",
+                "text-base sm:text-lg md:text-2xl",
                 isScrolled ? "text-primary" : "text-white"
               )}>
                 Reiseabenteuer

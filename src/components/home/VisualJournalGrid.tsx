@@ -8,34 +8,8 @@ import { cn } from '@/lib/utils';
 
 export function VisualJournalGrid() {
   return (
-    <section className="py-16 md:py-32 bg-white overflow-hidden">
+    <section className="pb-16 md:pb-32 pt-4 md:pt-8 bg-white overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 md:mb-20 gap-6">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-2xl"
-          >
-            <div className="inline-flex items-center gap-2 text-primary font-bold text-[9px] md:text-[10px] uppercase tracking-[0.4em] mb-3">
-              <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              Live Visual Journal
-            </div>
-            <h2 className="font-headline text-3xl md:text-5xl font-bold text-secondary uppercase tracking-tighter leading-[0.9]">
-              DIE WILDNIS <br /><span className="text-primary">SPÜREN</span>
-            </h2>
-          </motion.div>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-muted-foreground font-bold text-[9px] md:text-sm uppercase tracking-widest max-w-xs border-l-2 border-primary/20 pl-6 leading-relaxed"
-          >
-            Echte Momente aus der Savanne. Unsere Guides dokumentieren täglich die Magie Tansanias.
-          </motion.p>
-        </div>
-
         <motion.div 
           initial="hidden"
           whileInView="visible"
