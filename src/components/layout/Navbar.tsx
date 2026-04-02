@@ -8,7 +8,6 @@ import {
   Menu, 
   X, 
   ArrowRight,
-  Compass, 
   Instagram,
   Facebook
 } from 'lucide-react';
@@ -64,30 +63,32 @@ export function Navbar() {
     >
       <nav className="container mx-auto px-4 max-w-7xl">
         <div className={cn(
-          "flex items-center justify-between transition-all duration-500 px-6 md:px-8 h-14 md:h-16 rounded-full",
+          "flex items-center justify-between transition-all duration-500 px-4 md:px-8 h-14 md:h-16 rounded-full",
           isScrolled 
             ? "bg-white/95 backdrop-blur-md text-secondary shadow-2xl border border-border" 
             : "bg-transparent text-white border border-transparent",
           isOpen ? "opacity-0 pointer-events-none" : "opacity-100"
         )}>
-          {/* Logo Registry Hub */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className={cn(
-              "w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-500 shadow-sm shrink-0",
-              isScrolled ? "bg-primary" : "bg-white/10 backdrop-blur-md border border-white/20"
-            )}>
-              <Compass className="w-6 h-6 text-white" />
-            </div>
-            <div className="flex items-baseline gap-1.5">
+          {/* Logo Registry Hub - Updated to official Brand Logo */}
+          <Link href="/" className="flex items-center gap-2 md:gap-3 group shrink-0">
+            <img 
+              src="/iconlogo.jpg" 
+              alt="Tansania Reiseabenteuer" 
+              className={cn(
+                "h-8 md:h-10 w-auto rounded-lg transition-all duration-500 shadow-md shrink-0",
+                !isScrolled && "brightness-110"
+              )} 
+            />
+            <div className="flex items-baseline gap-1 md:gap-1.5">
               <span className={cn(
                 "font-headline font-black uppercase tracking-tighter whitespace-nowrap transition-all duration-500",
-                "text-base sm:text-lg md:text-2xl"
+                "text-sm sm:text-lg md:text-2xl"
               )}>
                 Tansania
               </span>
               <span className={cn(
                 "font-headline font-black uppercase tracking-tighter whitespace-nowrap transition-all duration-500",
-                "text-base sm:text-lg md:text-2xl",
+                "text-sm sm:text-lg md:text-2xl",
                 isScrolled ? "text-primary" : "text-white"
               )}>
                 Reiseabenteuer
@@ -99,23 +100,23 @@ export function Navbar() {
             <SheetTrigger asChild>
               <button
                 className={cn(
-                  "flex items-center gap-3 pl-4 pr-2 h-10 md:h-11 rounded-full transition-all duration-500 border font-black text-[9px] uppercase tracking-[0.2em]",
+                  "flex items-center gap-2 md:gap-3 pl-3 md:pl-4 pr-1.5 md:pr-2 h-9 md:h-11 rounded-full transition-all duration-500 border font-black text-[9px] uppercase tracking-[0.2em] shrink-0",
                   isScrolled 
                     ? "bg-secondary text-white border-secondary" 
                     : "bg-white/10 text-white border-white/20 hover:bg-white hover:text-secondary"
                 )}
               >
-                <span>Registry</span>
-                <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-white/20 flex items-center justify-center">
-                  <Menu className="w-4 h-4" />
+                <span className="hidden min-[400px]:inline">Registry</span>
+                <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-white/20 flex items-center justify-center">
+                  <Menu className="w-3.5 h-3.5 md:w-4 md:h-4" />
                 </div>
               </button>
             </SheetTrigger>
             
             <SheetContent side="right" className="w-full sm:max-w-[450px] p-0 bg-black/95 text-white border-none flex flex-col shadow-2xl font-bold">
               <div className="px-8 py-8 flex items-center justify-between shrink-0">
-                <Link href="/" className="flex items-center gap-2">
-                  <Compass className="w-6 h-6 text-primary" />
+                <Link href="/" className="flex items-center gap-3">
+                  <img src="/iconlogo.jpg" alt="SDL" className="h-8 w-auto rounded-lg" />
                   <span className="font-black text-[10px] uppercase tracking-[0.4em] text-white">SDL Official</span>
                 </Link>
                 <SheetClose asChild>
