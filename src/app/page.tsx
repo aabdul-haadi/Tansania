@@ -39,7 +39,7 @@ export default function Home() {
         </Link>
       </div>
 
-      {/* HERO SECTION - INCREASED HEIGHT */}
+      {/* HERO SECTION - RECALIBRATED POSITIONING TO PREVENT BOTTOM CROPPING */}
       <section className="relative min-h-[85vh] md:h-screen flex items-center overflow-hidden bg-secondary">
         {/* Background Visual Asset */}
         <div className="absolute inset-0 z-0">
@@ -48,7 +48,7 @@ export default function Home() {
             alt="Serengeti Dreams Signature Visual" 
             fill 
             priority 
-            className="object-cover brightness-[0.6] scale-105"
+            className="object-cover object-bottom brightness-[0.6]"
             data-ai-hint="elephant forest"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />

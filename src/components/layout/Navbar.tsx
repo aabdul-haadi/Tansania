@@ -87,7 +87,6 @@ export function Navbar() {
               </span>
               <span className={cn(
                 "font-headline font-black uppercase tracking-tighter whitespace-nowrap transition-all duration-500",
-                "hidden sm:inline-block",
                 "text-base sm:text-lg md:text-2xl",
                 isScrolled ? "text-primary" : "text-white"
               )}>
