@@ -9,6 +9,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
 
 interface PackageCardProps {
   pkg: {
@@ -27,13 +28,12 @@ interface PackageCardProps {
 }
 
 /**
- * 100% High-Fidelity Clone of the Signature Card.
- * Updated accent color to #C9A876 as requested.
- * Readability enhanced with larger text and better weights.
+ * Optimized Signature Card.
+ * Compacted for better responsiveness and vertical density.
  */
 export function PackageCard({ pkg, className }: PackageCardProps) {
   return (
-    <div className={cn("bg-white rounded-[1rem] overflow-hidden shadow-sm border border-border/40 hover:shadow-md transition-all duration-500 flex flex-col h-full group", className)}>
+    <div className={cn("bg-white rounded-[1.25rem] md:rounded-[1.5rem] overflow-hidden shadow-sm border border-border/40 hover:shadow-md transition-all duration-500 flex flex-col h-full group", className)}>
       {/* Top Visual Hub */}
       <div className="relative aspect-[16/10] overflow-hidden shrink-0">
         <Image 
@@ -46,51 +46,53 @@ export function PackageCard({ pkg, className }: PackageCardProps) {
       </div>
 
       {/* Content Protocol */}
-      <div className="p-6 md:p-8 flex flex-col flex-grow">
-        <div className="space-y-4 flex-grow">
+      <div className="p-5 md:p-7 flex flex-col flex-grow">
+        <div className="space-y-3 flex-grow">
           {/* Headline - Cormorant Garamond 500 */}
-          <h3 className="font-headline text-2xl md:text-3xl font-medium text-[#3A3634] leading-tight">
+          <h3 className="font-headline text-xl md:text-2xl font-medium text-[#3A3634] leading-tight uppercase tracking-tight">
             {pkg.title}
           </h3>
           
-          {/* Narrative - Inter - Readability Improved */}
-          <p className="text-sm md:text-base text-[#4A4543] font-normal leading-relaxed line-clamp-3">
+          {/* Narrative - Inter - Compacted for high density */}
+          <p className="text-xs md:text-sm text-[#4A4543] font-normal leading-relaxed line-clamp-2 opacity-80 uppercase tracking-widest">
             {pkg.excerpt}
           </p>
 
           {/* Technical Metadata Row */}
-          <div className="flex items-center gap-5 pt-1">
-            <div className="flex items-center gap-2 text-xs font-semibold text-[#8A8581] uppercase tracking-widest">
-              <Clock className="w-4 h-4 text-[#C9A876]" /> 
+          <div className="flex items-center gap-4 pt-1">
+            <div className="flex items-center gap-1.5 text-[9px] font-bold text-[#8A8581] uppercase tracking-widest">
+              <Clock className="w-3 h-3 text-[#C9A876]" /> 
               {pkg.durationDays} Tage
             </div>
-            <div className="flex items-center gap-2 text-xs font-semibold text-[#8A8581] uppercase tracking-widest">
-              <Users className="w-4 h-4 text-[#C9A876]" /> 
-              {pkg.groupSize}
+            <div className="flex items-center gap-1.5 text-[9px] font-bold text-[#8A8581] uppercase tracking-widest">
+              <Users className="w-3 h-3 text-[#C9A876]" /> 
+              {pkg.groupSize || 'Privat'}
             </div>
           </div>
 
-          {/* Tag Cloud Registry - Updated to #C9A876 */}
-          <div className="flex flex-wrap gap-2 pt-2">
-            {(pkg.highlights || []).map((h, i) => (
-              <span key={i} className="text-[10px] font-bold uppercase tracking-widest text-[#C9A876] px-3.5 py-1.5 rounded-full bg-[#C9A876]/10">
+          {/* Tag Cloud Registry */}
+          <div className="flex flex-wrap gap-1.5 pt-1">
+            {(pkg.highlights || []).slice(0, 3).map((h, i) => (
+              <span key={i} className="text-[8px] font-bold uppercase tracking-widest text-[#C9A876] px-2.5 py-1 rounded-md bg-[#C9A876]/5 border border-[#C9A876]/10">
                 {h}
               </span>
             ))}
           </div>
         </div>
 
-        {/* Conversion Footer */}
-        <div className="mt-8 pt-6 border-t border-border/50 flex items-center justify-between">
-          <div className="flex items-baseline gap-1">
-            <span className="text-xs font-medium text-[#8A8581] uppercase tracking-widest">ab</span>
-            <span className="text-xl font-bold text-[#3A3634]">
+        {/* Conversion Footer - Compact Protocol */}
+        <div className="mt-6 pt-4 border-t border-border/40 flex items-center justify-between gap-4">
+          <div className="flex flex-col">
+            <span className="text-[8px] font-bold text-[#8A8581] uppercase tracking-[0.2em] leading-none mb-1">Ab Preis</span>
+            <span className="text-base md:text-xl font-bold text-[#3A3634] leading-none tracking-tighter">
               €{pkg.startingPrice?.toLocaleString('de-DE')}
             </span>
           </div>
           
-          <Link href={`/safaris/${pkg.slug}`} className="group/btn inline-flex items-center gap-2 text-xs font-bold text-[#3A3634] hover:text-[#C9A876] transition-colors uppercase tracking-widest">
-            Anfrage stellen <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+          <Link href={`/safaris/${pkg.slug}`}>
+            <Button variant="outline" size="sm" className="h-9 px-4 rounded-lg text-[9px] font-bold border-border/60 hover:border-primary/40 hover:text-primary transition-all flex items-center gap-2">
+              DETAILS <ArrowRight className="w-3 h-3" />
+            </Button>
           </Link>
         </div>
       </div>
