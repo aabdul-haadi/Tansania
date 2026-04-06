@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -103,19 +102,18 @@ export function Navbar() {
                     : "bg-white/10 text-white border-white/20 hover:bg-white hover:text-secondary"
                 )}
               >
-                <span className="hidden md:inline font-black text-[9px] uppercase tracking-[0.2em] mr-3">Registry</span>
                 <Menu className="w-4 h-4 transition-transform group-hover:scale-110" />
               </button>
             </SheetTrigger>
             
             <SheetContent side="right" className="w-full sm:max-w-[450px] p-0 bg-white text-secondary border-none flex flex-col shadow-2xl font-bold">
-              {/* Header inside menu */}
+              {/* Header inside menu - BRAND NAME REPLACED SDL OFFICIAL */}
               <div className="px-8 py-10 flex items-center border-b border-border/50 shrink-0">
                 <Link href="/" className="flex items-center gap-3">
                   <img src="/iconlogo.jpg" alt="SDL" className="h-10 w-auto" />
-                  <div className="flex flex-col">
-                    <span className="font-black text-[10px] uppercase tracking-[0.4em] text-secondary leading-none">SDL Official</span>
-                    <span className="font-bold text-[7px] uppercase tracking-[0.2em] text-primary mt-1">Berlin Head Office</span>
+                  <div className="flex items-baseline gap-1">
+                    <span className="font-headline font-black uppercase tracking-tighter text-lg">Tansania</span>
+                    <span className="font-headline font-black uppercase tracking-tighter text-lg text-primary">Reiseabenteuer</span>
                   </div>
                 </Link>
               </div>
@@ -139,7 +137,7 @@ export function Navbar() {
                   <div className="flex flex-col gap-8">
                     <div className="space-y-6">
                       <p className="text-[10px] font-black uppercase tracking-[0.4em] text-primary/60 flex items-center gap-2">
-                        <Globe className="w-3 h-3" /> Core Portfolio
+                        <Globe className="w-3" /> Core Portfolio
                       </p>
                       <div className="flex flex-col gap-5">
                         {[

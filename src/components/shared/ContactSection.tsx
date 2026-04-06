@@ -1,9 +1,8 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { 
-  Sparkles, 
   Phone, 
   Mail, 
   Globe, 
@@ -11,18 +10,18 @@ import {
   Zap,
   ShieldCheck,
   CheckCircle2,
-  Clock
+  Clock,
+  Sparkles
 } from 'lucide-react';
 
 export function ContactSection() {
   const [isMounted, setIsMounted] = useState(false);
-  const [formHeight, setFormHeight] = useState(600); // Sensible default
+  const [formHeight, setFormHeight] = useState(600);
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
     setIsMounted(true);
 
-    // Listen for form height messages from the embedded iframe
     function handleFormMessage(e: MessageEvent) {
       if (e.data && typeof e.data === 'object') {
         if (e.data.formHeight) {
@@ -36,26 +35,26 @@ export function ContactSection() {
   }, []);
 
   const steps = [
-    { icon: Mail, label: "Anfrage", sub: "Senden" },
-    { icon: Compass, label: "Analyse", sub: "Durch Experten" },
-    { icon: Zap, label: "Abenteuer", sub: "Starten" }
+    { icon: Mail, label: "Ihre Vision", sub: "Anfrage senden" },
+    { icon: Compass, label: "Experten Design", sub: "Route entwerfen" },
+    { icon: Zap, label: "Ihr Abenteuer", sub: "Safari starten" }
   ];
 
   return (
-    <section id="inquiry" className="py-12 md:py-24 bg-[#fdfcfb] relative overflow-hidden">
-      {/* Topographic Background Decor */}
+    <section id="inquiry" className="py-16 md:py-24 bg-[#fdfcfb] relative overflow-hidden">
+      {/* Dynamic Background Ornament */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none">
         <svg width="100%" height="100%" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
           <path d="M0 100 C 100 80, 300 150, 400 100 S 700 50, 800 100" fill="none" stroke="currentColor" strokeWidth="1" />
-          <path d="M0 200 C 150 180, 250 250, 400 200 S 650 150, 800 200" fill="none" stroke="currentColor" strokeWidth="1" />
           <path d="M0 300 C 100 350, 400 250, 500 300 S 700 350, 800 300" fill="none" stroke="currentColor" strokeWidth="1" />
         </svg>
       </div>
 
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
-        <div className="text-center mb-10 md:mb-16 space-y-2">
+        {/* Harmonized Header Registry */}
+        <div className="text-center mb-12 md:mb-16 space-y-2">
           <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tighter"
@@ -63,7 +62,7 @@ export function ContactSection() {
             Ihre Expedition beginnt hier
           </motion.h2>
           <motion.p 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
@@ -73,80 +72,77 @@ export function ContactSection() {
           </motion.p>
         </div>
 
-        {/* The Manifest Frame */}
-        <div className="flex flex-col lg:flex-row bg-white rounded-[2.5rem] md:rounded-[4rem] shadow-2xl overflow-hidden border border-border/50 relative">
+        {/* Modern Compact Manifest Frame */}
+        <div className="bg-white rounded-[2.5rem] md:rounded-[3rem] shadow-sm border border-border/40 overflow-hidden flex flex-col lg:flex-row min-h-[600px] relative transition-all duration-500 hover:shadow-xl">
           
-          {/* Left: Expertise Hub */}
-          <div className="w-full lg:w-[38%] bg-secondary text-white relative flex flex-col p-10 md:p-16 justify-between overflow-hidden">
-            <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-            <div className="absolute -top-20 -left-20 w-64 h-64 bg-primary/10 rounded-full blur-[100px]" />
-            
-            <div className="relative z-10 space-y-12">
-              <div className="space-y-6">
-                <div className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center rotate-3 shadow-xl shadow-primary/20">
-                  <Globe className="w-7 h-7 text-white" />
+          {/* Info Protocol Column - MODERN LIGHT THEME */}
+          <div className="w-full lg:w-[35%] bg-[#FDF7F2] p-8 md:p-12 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-border/40">
+            <div className="space-y-12">
+              <div className="space-y-4">
+                <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center shadow-sm border border-[#F0EBE0]">
+                  <Sparkles className="w-6 h-6 text-primary" />
                 </div>
-                <div>
-                  <h3 className="text-2xl md:text-4xl font-black uppercase leading-none tracking-tighter mb-4">
-                    Expertise <br /><span className="text-primary">Registry</span>
-                  </h3>
-                  <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.3em] leading-relaxed">
-                    Berlin Head Office • Kairo Branch • Safari Ops
-                  </p>
-                </div>
+                <h3 className="text-xl md:text-2xl font-headline font-bold text-secondary uppercase tracking-tight">
+                  Premium <br />Beratung
+                </h3>
+                <p className="text-[11px] font-bold text-muted-foreground uppercase tracking-widest leading-relaxed">
+                  Berlin Head Office • Safari Ops
+                </p>
               </div>
 
-              {/* Steps Protocol */}
+              {/* Step Flow Protocol */}
               <div className="space-y-8">
                 {steps.map((step, i) => (
-                  <div key={i} className="flex items-center gap-6 group">
-                    <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 transition-all group-hover:bg-primary group-hover:border-primary">
-                      <step.icon className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
+                  <div key={i} className="flex items-center gap-5 group">
+                    <div className="w-10 h-10 rounded-xl bg-white border border-[#F0EBE0] flex items-center justify-center shrink-0 shadow-sm group-hover:border-primary transition-all duration-500">
+                      <step.icon className="w-4 h-4 text-primary" />
                     </div>
-                    <div>
-                      <p className="text-[10px] font-black uppercase tracking-widest text-primary leading-none mb-1">{step.label}</p>
-                      <p className="text-[8px] font-black uppercase tracking-[0.2em] text-white/40">{step.sub}</p>
+                    <div className="space-y-0.5">
+                      <p className="text-[11px] font-black uppercase tracking-widest text-secondary">{step.label}</p>
+                      <p className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground/60">{step.sub}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="relative z-10 pt-12 border-t border-white/10 space-y-6">
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10">
-                  <Phone className="w-4 h-4 text-primary" />
+            <div className="pt-12 space-y-6">
+              <div className="flex items-center gap-4 group cursor-pointer">
+                <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center border border-[#F0EBE0] group-hover:bg-primary group-hover:border-primary transition-all shadow-sm">
+                  <Phone className="w-4 h-4 text-primary group-hover:text-white transition-colors" />
                 </div>
                 <div>
-                  <p className="text-[8px] font-black uppercase text-white/40 mb-0.5">Hotline Berlin</p>
-                  <p className="text-sm font-black uppercase">+49 30 22608080</p>
+                  <p className="text-[8px] font-bold uppercase text-muted-foreground tracking-widest">Hotline</p>
+                  <p className="text-sm font-black text-secondary tracking-tight">+49 30 22608080</p>
                 </div>
               </div>
-              <div className="flex items-center gap-4 p-4 bg-white/5 rounded-2xl border border-white/10">
-                <ShieldCheck className="w-5 h-5 text-primary shrink-0" />
-                <p className="text-[8px] font-black uppercase tracking-widest leading-tight text-white/80">
-                  Volle Absicherung durch den <br /><span className="text-white">Deutschen Reisesicherungsfonds</span>
+              <div className="p-5 bg-white rounded-2xl border border-[#F0EBE0] shadow-sm">
+                <div className="flex items-center gap-3 mb-2">
+                  <ShieldCheck className="w-4 h-4 text-primary" />
+                  <span className="text-[9px] font-bold uppercase text-secondary tracking-widest">DRSF Schutz</span>
+                </div>
+                <p className="text-[9px] font-medium text-muted-foreground uppercase tracking-wider leading-relaxed">
+                  Ihre Reise ist durch den Deutschen Reisesicherungsfonds abgesichert.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Right: The Embedded Manifest (Form) */}
-          <div className="w-full lg:w-[62%] relative bg-white flex flex-col">
-            {/* Form Header Overlay */}
-            <div className="p-6 md:p-8 border-b border-border/50 flex items-center justify-between bg-white/80 backdrop-blur-md sticky top-0 z-20">
+          {/* Form Integration Frame */}
+          <div className="flex-1 bg-white flex flex-col">
+            <div className="p-6 md:p-8 border-b border-border/40 flex items-center justify-between bg-white/50 backdrop-blur-sm sticky top-0 z-20">
               <div className="flex items-center gap-3">
                 <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-secondary">Berlin Office Active</span>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-secondary">Registry Active</span>
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="w-3.5 h-3.5 text-primary" />
-                <span className="text-[8px] md:text-[9px] font-black uppercase tracking-widest text-muted-foreground">Antwort in 24h</span>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Response in 24h</span>
               </div>
             </div>
 
             <div 
-              className="relative overflow-hidden transition-all duration-300 ease-in-out"
+              className="relative overflow-hidden transition-all duration-500 ease-in-out"
               style={{ height: `${formHeight}px` }}
             >
               {isMounted ? (
@@ -155,58 +151,28 @@ export function ContactSection() {
                   src="https://app.tansania-reiseabenteuer.de/forms/embed/d54e9b2ee319416a81cf32551a1bc3d3"
                   className="w-full h-full border-none overflow-hidden"
                   scrolling="no"
-                  title="Expedition Inquiry Form"
+                  title="Contact Registry Form"
                   loading="lazy"
                 />
               ) : (
-                <div className="absolute inset-0 flex items-center justify-center bg-muted/5 animate-pulse">
-                  <p className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground">Initializing Manifest...</p>
+                <div className="h-full flex items-center justify-center bg-muted/5 animate-pulse">
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Initializing Manifest...</p>
                 </div>
               )}
             </div>
 
-            {/* Form Footer Trust Strip */}
-            <div className="p-6 bg-muted/10 border-t border-border/50 flex flex-wrap justify-center gap-8 md:gap-12">
-              <div className="flex items-center gap-2 text-[8px] font-black uppercase tracking-widest text-muted-foreground/60">
-                <CheckCircle2 className="w-3 h-3 text-primary" /> DSGVO Konform
-              </div>
-              <div className="flex items-center gap-2 text-[8px] font-black uppercase tracking-widest text-muted-foreground/60">
-                <CheckCircle2 className="w-3 h-3 text-primary" /> SSL Verschlüsselt
-              </div>
-              <div className="flex items-center gap-2 text-[8px] font-black uppercase tracking-widest text-muted-foreground/60">
-                <CheckCircle2 className="w-3 h-3 text-primary" /> Ohne Verpflichtung
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Support Registry Bar */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-          <div className="p-6 bg-white rounded-2xl border border-border/50 shadow-sm flex items-center gap-5 group hover:border-primary/20 transition-all">
-            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
-              <Mail className="w-5 h-5" />
-            </div>
-            <div>
-              <p className="text-[8px] font-black uppercase text-muted-foreground mb-0.5">Offiziell</p>
-              <p className="text-[10px] font-black uppercase tracking-tight truncate">info@tansania-reiseabenteuer.de</p>
-            </div>
-          </div>
-          <div className="p-6 bg-white rounded-2xl border border-border/50 shadow-sm flex items-center gap-5 group hover:border-primary/20 transition-all">
-            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
-              <Phone className="w-5 h-5" />
-            </div>
-            <div>
-              <p className="text-[8px] font-black uppercase text-muted-foreground mb-0.5">Zentrale</p>
-              <p className="text-[10px] font-black uppercase tracking-tight">+49 30 22608080</p>
-            </div>
-          </div>
-          <div className="p-6 bg-white rounded-2xl border border-border/50 shadow-sm flex items-center gap-5 group hover:border-primary/20 transition-all">
-            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
-              <ShieldCheck className="w-5 h-5" />
-            </div>
-            <div>
-              <p className="text-[8px] font-black uppercase text-muted-foreground mb-0.5">Absicherung</p>
-              <p className="text-[10px] font-black uppercase tracking-tight">DRSF Mitglied 2026</p>
+            {/* Light Professional Trust Bar */}
+            <div className="p-6 bg-[#fdfcfb] border-t border-border/40 flex flex-wrap justify-center gap-8 md:gap-16">
+              {[
+                { icon: CheckCircle2, label: "DSGVO KONFORM" },
+                { icon: ShieldCheck, label: "SSL VERSCHLÜSSELT" },
+                { icon: Globe, label: "OFFIZIELLE REGISTRY" }
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-widest text-muted-foreground/60">
+                  <item.icon className="w-3.5 h-3.5 text-primary/40" />
+                  {item.label}
+                </div>
+              ))}
             </div>
           </div>
         </div>
