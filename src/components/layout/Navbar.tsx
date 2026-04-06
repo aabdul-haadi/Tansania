@@ -106,26 +106,26 @@ export function Navbar() {
               </button>
             </SheetTrigger>
             
-            <SheetContent side="right" className="w-full sm:max-w-[450px] p-0 bg-white text-secondary border-none flex flex-col shadow-2xl font-bold">
-              {/* Header inside menu - BRAND NAME REPLACED SDL OFFICIAL */}
-              <div className="px-8 py-10 flex items-center border-b border-border/50 shrink-0">
+            <SheetContent side="right" className="w-[85vw] sm:max-w-[400px] p-0 bg-white text-secondary border-none flex flex-col shadow-2xl font-bold">
+              {/* Header inside menu */}
+              <div className="px-6 py-8 flex items-center border-b border-border/50 shrink-0">
                 <Link href="/" className="flex items-center gap-3">
-                  <img src="/iconlogo.jpg" alt="SDL" className="h-10 w-auto" />
+                  <img src="/iconlogo.jpg" alt="SDL" className="h-8 w-auto" />
                   <div className="flex items-baseline gap-1">
-                    <span className="font-headline font-black uppercase tracking-tighter text-lg">Tansania</span>
-                    <span className="font-headline font-black uppercase tracking-tighter text-lg text-primary">Reiseabenteuer</span>
+                    <span className="font-headline font-black uppercase tracking-tighter text-sm md:text-lg">Tansania</span>
+                    <span className="font-headline font-black uppercase tracking-tighter text-sm md:text-lg text-primary">Reiseabenteuer</span>
                   </div>
                 </Link>
               </div>
 
               <ScrollArea className="flex-grow">
-                <div className="px-10 py-12 flex flex-col gap-12">
-                  <nav className="flex flex-col gap-8">
+                <div className="px-8 py-10 flex flex-col gap-10">
+                  <nav className="flex flex-col gap-6">
                     {primaryLinks.map((link) => (
                       <Link 
                         key={link.name} 
                         href={link.href} 
-                        className="text-3xl md:text-4xl font-headline font-black uppercase tracking-tighter hover:text-primary transition-colors leading-none"
+                        className="text-xl md:text-2xl font-headline font-black uppercase tracking-tighter hover:text-primary transition-colors leading-none"
                       >
                         {link.name}
                       </Link>
@@ -134,12 +134,12 @@ export function Navbar() {
 
                   <div className="w-full h-px bg-border/50" />
 
-                  <div className="flex flex-col gap-8">
-                    <div className="space-y-6">
-                      <p className="text-[10px] font-black uppercase tracking-[0.4em] text-primary/60 flex items-center gap-2">
+                  <div className="flex flex-col gap-6">
+                    <div className="space-y-4">
+                      <p className="text-[9px] font-black uppercase tracking-[0.4em] text-primary/60 flex items-center gap-2">
                         <Globe className="w-3" /> Core Portfolio
                       </p>
-                      <div className="flex flex-col gap-5">
+                      <div className="flex flex-col gap-4">
                         {[
                           { name: 'Safari Catalog', href: '/safaris' },
                           { name: 'Egypt Specialist', href: '/destinations/egypt' },
@@ -149,7 +149,7 @@ export function Navbar() {
                           <Link 
                             key={p.name} 
                             href={p.href} 
-                            className="text-sm font-black text-secondary/70 hover:text-primary uppercase tracking-widest transition-colors"
+                            className="text-[11px] font-black text-secondary/70 hover:text-primary uppercase tracking-widest transition-colors"
                           >
                             {p.name}
                           </Link>
@@ -160,23 +160,23 @@ export function Navbar() {
                 </div>
               </ScrollArea>
 
-              <div className="p-10 border-t border-border bg-[#fdfcfb] flex flex-col gap-10 items-center shrink-0">
-                <div className="flex gap-8">
-                  <a href="#" className="w-12 h-12 rounded-2xl border border-border flex items-center justify-center hover:bg-primary hover:border-primary transition-all group">
-                    <Facebook className="w-5 h-5 text-secondary group-hover:text-white" />
+              <div className="p-8 border-t border-border bg-[#fdfcfb] flex flex-col gap-8 items-center shrink-0">
+                <div className="flex gap-6">
+                  <a href="#" className="w-10 h-10 rounded-xl border border-border flex items-center justify-center hover:bg-primary hover:border-primary transition-all group">
+                    <Facebook className="w-4 h-4 text-secondary group-hover:text-white" />
                   </a>
-                  <a href="#" className="w-12 h-12 rounded-2xl border border-border flex items-center justify-center hover:bg-primary hover:border-primary transition-all group">
-                    <Instagram className="w-5 h-5 text-secondary group-hover:text-white" />
+                  <a href="#" className="w-10 h-10 rounded-xl border border-border flex items-center justify-center hover:bg-primary hover:border-primary transition-all group">
+                    <Instagram className="w-4 h-4 text-secondary group-hover:text-white" />
                   </a>
                 </div>
                 
-                <Button asChild className="w-full h-16 rounded-2xl bg-secondary text-white font-black text-xs uppercase tracking-[0.3em] shadow-xl hover:bg-primary transition-all border-none">
+                <Button asChild className="w-full h-14 rounded-2xl bg-secondary text-white font-black text-[10px] uppercase tracking-[0.2em] shadow-xl hover:bg-primary transition-all border-none">
                   <Link href="/trip-planner" className="flex items-center justify-center gap-3">
                     JETZT ANFRAGEN <ArrowRight className="w-4 h-4" />
                   </Link>
                 </Button>
                 
-                <p className="text-[8px] font-black uppercase tracking-[0.4em] text-muted-foreground/40">
+                <p className="text-[7px] font-black uppercase tracking-[0.4em] text-muted-foreground/40">
                   Registry 2026 • Established 2014
                 </p>
               </div>
