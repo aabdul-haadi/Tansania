@@ -42,7 +42,7 @@ export function ContactSection() {
   ];
 
   return (
-    <section id="inquiry" className="py-6 md:py-12 bg-[#fdfcfb] relative overflow-hidden font-bold">
+    <section id="inquiry" className="py-12 md:py-24 bg-[#fdfcfb] relative overflow-hidden">
       {/* Topographic Background Decor */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none">
         <svg width="100%" height="100%" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
@@ -53,30 +53,21 @@ export function ContactSection() {
       </div>
 
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
-        <div className="flex flex-col items-center text-center mb-10 md:mb-16 space-y-4">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] border border-primary/20"
-          >
-            <Sparkles className="w-3.5 h-3.5" /> Registry Protocol
-          </motion.div>
+        <div className="text-center mb-10 md:mb-16 space-y-2">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="font-headline text-xl md:text-4xl font-black text-secondary uppercase tracking-tighter leading-none"
+            className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tighter"
           >
-            Ihre Expedition <br /><span className="text-primary">Beginnt Hier</span>
+            Ihre Expedition beginnt hier
           </motion.h2>
           <motion.p 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-muted-foreground font-black text-[9px] md:text-sm uppercase tracking-widest max-w-2xl leading-relaxed opacity-60"
+            transition={{ delay: 0.1 }}
+            className="text-muted-foreground font-normal text-xs md:text-sm uppercase tracking-widest max-w-xl mx-auto opacity-80"
           >
             Vom ersten Gedanken bis zum ersten Schritt in der Savanne – unsere Spezialisten begleiten Sie persönlich.
           </motion.p>
