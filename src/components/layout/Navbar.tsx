@@ -8,12 +8,19 @@ import {
   ArrowRight,
   Instagram,
   Facebook,
-  Globe
+  Globe,
+  ChevronDown
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,6 +59,17 @@ export function Navbar() {
     { name: 'Kontakt', href: '/contact' },
   ];
 
+  const countries = [
+    { name: 'Tansania', href: '/destinations/tanzania' },
+    { name: 'Sansibar', href: '/destinations/zanzibar' },
+    { name: 'Kenia', href: '/destinations/kenya' },
+    { name: 'Ägypten', href: '/destinations/egypt' },
+    { name: 'Südafrika', href: '/destinations/south-africa' },
+    { name: 'Namibia', href: '/destinations/namibia' },
+    { name: 'Botswana', href: '/destinations/botswana' },
+    { name: 'Uganda', href: '/destinations/uganda' },
+  ];
+
   return (
     <header 
       className={cn(
@@ -68,7 +86,7 @@ export function Navbar() {
             : "bg-transparent text-white border border-transparent",
           isOpen ? "opacity-0 pointer-events-none" : "opacity-100"
         )}>
-          {/* Logo Registry Hub - Official Icon Asset */}
+          {/* Brand Logo - Official Icon Asset */}
           <Link href="/" className="flex items-center gap-2 md:gap-3 group shrink-0">
             <img 
               src="/iconlogo.jpg" 
@@ -91,7 +109,7 @@ export function Navbar() {
             </div>
           </Link>
 
-          {/* Simple Creative Hamburger Trigger */}
+          {/* Minimalist Hamburger Trigger */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <button
@@ -107,8 +125,8 @@ export function Navbar() {
             </SheetTrigger>
             
             <SheetContent side="right" className="w-[85vw] sm:max-w-[400px] p-0 bg-white text-secondary border-none flex flex-col shadow-2xl font-bold">
-              {/* Header inside menu */}
-              <div className="px-6 py-8 flex items-center border-b border-border/50 shrink-0">
+              {/* Menu Header Registry */}
+              <div className="px-6 py-6 md:py-8 flex items-center border-b border-border/50 shrink-0">
                 <Link href="/" className="flex items-center gap-3">
                   <img src="/iconlogo.jpg" alt="SDL" className="h-8 w-auto" />
                   <div className="flex items-baseline gap-1">
@@ -119,13 +137,38 @@ export function Navbar() {
               </div>
 
               <ScrollArea className="flex-grow">
-                <div className="px-8 py-10 flex flex-col gap-10">
-                  <nav className="flex flex-col gap-6">
+                <div className="px-8 py-6 md:py-10 flex flex-col gap-8 md:gap-10">
+                  <nav className="flex flex-col gap-5 md:gap-6">
+                    {/* Destinations Dropdown Protocol */}
+                    <Accordion type="single" collapsible className="w-full">
+                      <AccordionItem value="destinations" className="border-none">
+                        <AccordionTrigger className="text-lg md:text-xl font-headline font-black uppercase tracking-tighter hover:text-primary transition-colors leading-none py-0 hover:no-underline [&>svg]:hidden">
+                          <div className="flex items-center justify-between w-full">
+                            <span>REISEZIELE</span>
+                            <ChevronDown className="w-4 h-4 text-primary" />
+                          </div>
+                        </AccordionTrigger>
+                        <AccordionContent className="pt-4 pb-2 pl-4">
+                          <div className="flex flex-col gap-3 border-l-2 border-primary/20 pl-4">
+                            {countries.map((country) => (
+                              <Link 
+                                key={country.name} 
+                                href={country.href}
+                                className="text-xs md:text-sm font-black text-secondary/60 hover:text-primary uppercase tracking-widest transition-colors"
+                              >
+                                {country.name}
+                              </Link>
+                            ))}
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
+
                     {primaryLinks.map((link) => (
                       <Link 
                         key={link.name} 
                         href={link.href} 
-                        className="text-xl md:text-2xl font-headline font-black uppercase tracking-tighter hover:text-primary transition-colors leading-none"
+                        className="text-lg md:text-xl font-headline font-black uppercase tracking-tighter hover:text-primary transition-colors leading-none"
                       >
                         {link.name}
                       </Link>
@@ -137,30 +180,21 @@ export function Navbar() {
                   <div className="flex flex-col gap-6">
                     <div className="space-y-4">
                       <p className="text-[9px] font-black uppercase tracking-[0.4em] text-primary/60 flex items-center gap-2">
-                        <Globe className="w-3" /> Core Portfolio
+                        <Globe className="w-3" /> Explore Catalog
                       </p>
-                      <div className="flex flex-col gap-4">
-                        {[
-                          { name: 'Safari Catalog', href: '/safaris' },
-                          { name: 'Egypt Specialist', href: '/destinations/egypt' },
-                          { name: 'Tanzania Master', href: '/destinations/tanzania' },
-                          { name: 'Zanzibar Paradise', href: '/destinations/zanzibar' }
-                        ].map((p) => (
-                          <Link 
-                            key={p.name} 
-                            href={p.href} 
-                            className="text-[11px] font-black text-secondary/70 hover:text-primary uppercase tracking-widest transition-colors"
-                          >
-                            {p.name}
-                          </Link>
-                        ))}
-                      </div>
+                      <Link 
+                        href="/safaris" 
+                        className="text-[11px] font-black text-secondary/70 hover:text-primary uppercase tracking-widest transition-colors"
+                      >
+                        Safari-Kollektion
+                      </Link>
                     </div>
                   </div>
                 </div>
               </ScrollArea>
 
-              <div className="p-8 border-t border-border bg-[#fdfcfb] flex flex-col gap-8 items-center shrink-0">
+              {/* Menu Footer Status */}
+              <div className="p-8 border-t border-border bg-[#fdfcfb] flex flex-col gap-6 md:gap-8 items-center shrink-0">
                 <div className="flex gap-6">
                   <a href="#" className="w-10 h-10 rounded-xl border border-border flex items-center justify-center hover:bg-primary hover:border-primary transition-all group">
                     <Facebook className="w-4 h-4 text-secondary group-hover:text-white" />
