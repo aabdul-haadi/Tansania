@@ -1,6 +1,6 @@
 'use server';
 /**
- * @fileOverview Serengeti Dreams AI Trip Advisor - RAG-Enhanced Prestige Edition.
+ * @fileOverview Tansania Reiseabenteuer AI Trip Advisor - RAG-Enhanced Prestige Edition.
  * 
  * This flow provides a personalized consultation experience using live context.
  * - RAG Architecture: Fetches live packages, blogs, and destinations to provide factual data.
@@ -43,7 +43,7 @@ export async function askTripAdvisor(input: z.infer<typeof TripAdvisorInputSchem
   }
 }
 
-const systemPrompt = `You are the Serengeti Dreams AI Advisor, an elite senior concierge for a luxury Egypt-based agency specializing in Tanzania.
+const systemPrompt = `You are the Tansania Reiseabenteuer AI Advisor, an elite senior concierge for a luxury Egypt-based agency specializing in Tanzania.
 
 ### STRICT OPERATIONAL GUIDELINES:
 

@@ -15,7 +15,7 @@ export function SafariVideo() {
             viewport={{ once: true }}
             className="text-xs font-bold uppercase tracking-[0.3em] text-primary mb-3"
           >
-            Serengeti Dreams Cinema
+            Tansania Reiseabenteuer Cinema
           </motion.span>
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
@@ -52,7 +52,7 @@ export function SafariVideo() {
 
           <iframe
             src="https://www.youtube.com/embed/unBMVxhl-C0"
-            title="Serengeti Dreams Experience"
+            title="Tansania Reiseabenteuer Experience"
             className="absolute inset-0 w-full h-full border-none"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen

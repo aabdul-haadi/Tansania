@@ -1,20 +1,20 @@
 /**
- * @fileOverview Centralized SEO configuration for Serengeti Dreams.
+ * @fileOverview Centralized SEO configuration for Tansania Reiseabenteuer.
  * Acts as the single source of truth for site-wide metadata and canonicals.
  */
 
 export const siteConfig = {
-  name: 'Serengeti Dreams',
-  shortName: 'SerengetiDreams',
-  description: 'Expert Egypt-based travel agency specializing in luxury Tanzania safaris, Serengeti expeditions, and Zanzibar beach escapes.',
+  name: 'Tansania Reiseabenteuer',
+  shortName: 'TansaniaReise',
+  description: 'Ihr Experte für exklusive Safari-Erlebnisse und Traumurlaube in Tansania und Sansibar. Persönlich geplant, individuell gestaltet.',
   url: 'https://www.tansania-reiseabenteuer.de', // Replace with your production domain
   ogImage: 'https://www.tansania-reiseabenteuer.de/og-default.jpg',
   links: {
-    twitter: 'https://twitter.com/serengetidreams',
-    facebook: 'https://facebook.com/serengetidreams',
-    instagram: 'https://instagram.com/serengetidreams',
+    twitter: 'https://twitter.com/tansaniareisen',
+    facebook: 'https://facebook.com/tansaniareisen',
+    instagram: 'https://instagram.com/tansaniareisen',
   },
-  author: 'Serengeti Dreams SDL',
+  author: 'Tansania Reiseabenteuer SDL',
   locale: 'de_DE',
 };
 

@@ -45,7 +45,7 @@ const prompt = ai.definePrompt({
   name: 'adminContentChecklistPrompt',
   input: { schema: AdminContentChecklistInputSchema },
   output: { schema: AdminContentChecklistOutputSchema },
-  prompt: `You are an expert content strategist and SEO specialist for a premium Egypt-based travel agency named "Serengeti Dreams", specializing in Tanzania safari packages (Serengeti + Zanzibar).
+  prompt: `You are an expert content strategist and SEO specialist for a premium Egypt-based travel agency named "Tansania Reiseabenteuer", specializing in Tanzania safari packages (Serengeti + Zanzibar).
 Your goal is to generate a detailed, structured content checklist for a new web page, ensuring it is comprehensive, well-structured, and optimized for SEO, reflecting a luxury, modern, and trustworthy feel.
 
 The new page is a '{{{pageType}}}' page.

@@ -38,7 +38,7 @@ const suggestions = [
 
 export default function TripAdvisorPage() {
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'model', content: 'Jambo! Ich bin Ihr persönlicher Serengeti Dreams Berater. Wie kann ich Ihnen heute helfen, Ihr afrikanisches Abenteuer zu planen?' }
+    { role: 'model', content: 'Jambo! Ich bin Ihr persönlicher Tansania Reiseabenteuer Berater. Wie kann ich Ihnen heute helfen, Ihr afrikanisches Abenteuer zu planen?' }
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -93,7 +93,7 @@ export default function TripAdvisorPage() {
       <section className="relative h-[60vh] md:h-[70vh] w-full shrink-0 overflow-hidden bg-secondary">
         <Image 
           src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
-          alt="Serengeti Savannah" 
+          alt="Tansania Savannah" 
           fill 
           priority
           className="object-cover brightness-[0.4] scale-105"

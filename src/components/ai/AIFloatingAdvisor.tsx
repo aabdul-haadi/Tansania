@@ -34,7 +34,7 @@ export function AIFloatingAdvisor() {
   const [input, setInput] = useState('');
   const [isListening, setIsListening] = useState(false);
   const [messages, setMessages] = useState<any[]>([
-    { role: 'model', content: 'Jambo! Ich bin Ihr persönlicher Safari-Concierge. Wie kann ich Ihre Reise von Ägypten nach Tansania heute zu etwas ganz Besonderem machen?' }
+    { role: 'model', content: 'Jambo! Ich bin Ihr persönlicher Tansania Reiseabenteuer Concierge. Wie kann ich Ihre Reise heute zu etwas ganz Besonderem machen?' }
   ]);
   const [loading, setLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);

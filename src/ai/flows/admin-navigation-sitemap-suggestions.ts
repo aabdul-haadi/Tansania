@@ -63,13 +63,13 @@ const prompt = ai.definePrompt({
   name: 'adminNavigationSitemapPrompt',
   input: { schema: AdminNavigationSitemapSuggestionsInputSchema },
   output: { schema: AdminNavigationSitemapSuggestionsOutputSchema },
-  prompt: `You are an AI assistant specialized in website architecture, SEO, and user experience for luxury travel agencies. Your goal is to analyze existing and new/updated web pages for a Tanzania safari travel agency named "Serengeti Dreams" and provide comprehensive recommendations for updating the site's navigation menu and sitemap.
+  prompt: `You are an AI assistant specialized in website architecture, SEO, and user experience for luxury travel agencies. Your goal is to analyze existing and new/updated web pages for a Tanzania safari travel agency named "Tansania Reiseabenteuer" and provide comprehensive recommendations for updating the site's navigation menu and sitemap.
 
 Consider the following:
 -   **Logical Organization**: Group related pages together for intuitive user flow.
 -   **User Discoverability**: Make it easy for users to find important information, especially popular safaris, destinations, and booking-related content.
 -   **SEO Best Practices**: Ensure search engines can crawl and index new content effectively. Prioritize important pages.
--   **Luxury Travel Context**: Maintain a premium, elegant, and modern feel consistent with Serengeti Dreams' brand. Avoid clutter.
+-   **Luxury Travel Context**: Maintain a premium, elegant, and modern feel consistent with the brand. Avoid clutter.
 -   **Egypt-based agency**: Keep the core business of "Egypt-based experts for Tanzania Safaris" in mind when suggesting content and navigation.
 -   **Specific Routes**: Consider typical routes like '/', '/destinations', '/safaris', '/trip-planner', '/about', '/contact', '/blog', '/reviews', '/policies/terms', '/policies/privacy', '/policies/cancellation', '/auth/login', '/auth/register', '/dashboard'. Admin routes are not for public navigation/sitemap.
 

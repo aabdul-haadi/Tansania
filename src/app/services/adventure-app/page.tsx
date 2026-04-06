@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Smartphone, MapPin, CloudOff, Info, Share2, Compass } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -12,7 +11,7 @@ export default function AdventureAppPage() {
             <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary mb-2 block">Digital Navigator</span>
             <h1 className="font-headline text-4xl md:text-6xl font-bold mb-6 leading-tight uppercase">Your Safari <br /><span className="text-primary">In Your Pocket</span></h1>
             <p className="text-muted-foreground text-lg leading-relaxed font-bold mb-8 uppercase tracking-widest">
-              The Serengeti Dreams app provides real-time tracking, offline maps, and detailed wildlife guides during your expedition.
+              The Tansania Reiseabenteuer app provides real-time tracking, offline maps, and detailed wildlife guides during your expedition.
             </p>
             
             <div className="space-y-6 mb-10">

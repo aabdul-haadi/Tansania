@@ -43,7 +43,7 @@ const itineraryBuilderFlow = ai.defineFlow(
   },
   async (input) => {
     const { output } = await ai.generate({
-      system: `You are the Serengeti Dreams Itinerary Architect. 
+      system: `You are the Tansania Reiseabenteuer Itinerary Architect. 
       Create a high-end, logical safari flow. 
       Budget context: Value (~€300/day), Premium (~€600/day), Ultra-Luxury (~€1200/day).
       Language: German (as it is an SDL Berlin based agency).`,

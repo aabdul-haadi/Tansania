@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -45,7 +44,7 @@ export default function Home() {
         <div className="absolute inset-0 z-0">
           <Image 
             src="/assets/images/home/home-banner-1.webp" 
-            alt="Serengeti Dreams Signature Visual" 
+            alt="Tansania Reiseabenteuer Signature Visual" 
             fill 
             priority 
             className="object-cover object-bottom brightness-[0.55]"
