@@ -6,10 +6,10 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { 
   Menu, 
-  X, 
   ArrowRight,
   Instagram,
-  Facebook
+  Facebook,
+  Globe
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -69,7 +69,7 @@ export function Navbar() {
             : "bg-transparent text-white border border-transparent",
           isOpen ? "opacity-0 pointer-events-none" : "opacity-100"
         )}>
-          {/* Logo Registry Hub - Brand name hidden on mobile as requested */}
+          {/* Logo Registry Hub - Official Icon Asset */}
           <Link href="/" className="flex items-center gap-2 md:gap-3 group shrink-0">
             <img 
               src="/iconlogo.jpg" 
@@ -80,13 +80,11 @@ export function Navbar() {
               )} 
             />
             <div className="hidden sm:flex items-baseline gap-1 md:gap-1.5">
-              <span className={cn(
-                "font-headline font-black uppercase tracking-tighter whitespace-nowrap transition-all duration-500 text-sm sm:text-lg md:text-2xl"
-              )}>
+              <span className="font-headline font-black uppercase tracking-tighter whitespace-nowrap text-sm sm:text-lg md:text-2xl">
                 Tansania
               </span>
               <span className={cn(
-                "font-headline font-black uppercase tracking-tighter whitespace-nowrap transition-all duration-500 text-sm sm:text-lg md:text-2xl",
+                "font-headline font-black uppercase tracking-tighter whitespace-nowrap text-sm sm:text-lg md:text-2xl transition-colors duration-500",
                 isScrolled ? "text-primary" : "text-white"
               )}>
                 Reiseabenteuer
@@ -94,79 +92,94 @@ export function Navbar() {
             </div>
           </Link>
 
+          {/* Simple Creative Hamburger Trigger */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <button
                 className={cn(
-                  "flex items-center justify-center w-10 h-10 md:w-auto md:h-11 md:pl-4 md:pr-2 rounded-full transition-all duration-500 border shrink-0",
+                  "flex items-center justify-center w-10 h-10 md:w-auto md:h-11 md:px-4 rounded-full transition-all duration-500 border shrink-0 group",
                   isScrolled 
-                    ? "bg-secondary text-white border-secondary" 
+                    ? "bg-secondary text-white border-secondary shadow-lg" 
                     : "bg-white/10 text-white border-white/20 hover:bg-white hover:text-secondary"
                 )}
               >
-                <span className="hidden md:inline font-black text-[9px] uppercase tracking-[0.2em] mr-2">Registry</span>
-                <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-white/20 flex items-center justify-center">
-                  <Menu className="w-3.5 h-3.5 md:w-4 md:h-4" />
-                </div>
+                <span className="hidden md:inline font-black text-[9px] uppercase tracking-[0.2em] mr-3">Registry</span>
+                <Menu className="w-4 h-4 transition-transform group-hover:scale-110" />
               </button>
             </SheetTrigger>
             
-            <SheetContent side="right" className="w-full sm:max-w-[450px] p-0 bg-black/95 text-white border-none flex flex-col shadow-2xl font-bold">
+            <SheetContent side="right" className="w-full sm:max-w-[450px] p-0 bg-white text-secondary border-none flex flex-col shadow-2xl font-bold">
               {/* Header inside menu */}
-              <div className="px-8 py-10 flex items-center justify-between shrink-0">
+              <div className="px-8 py-10 flex items-center border-b border-border/50 shrink-0">
                 <Link href="/" className="flex items-center gap-3">
                   <img src="/iconlogo.jpg" alt="SDL" className="h-10 w-auto" />
-                  <span className="font-black text-[10px] uppercase tracking-[0.4em] text-white">SDL Official</span>
+                  <div className="flex flex-col">
+                    <span className="font-black text-[10px] uppercase tracking-[0.4em] text-secondary leading-none">SDL Official</span>
+                    <span className="font-bold text-[7px] uppercase tracking-[0.2em] text-primary mt-1">Berlin Head Office</span>
+                  </div>
                 </Link>
-                {/* redundant close button removed - SheetContent handles it at the top right */}
               </div>
 
               <ScrollArea className="flex-grow">
-                <div className="px-10 py-6 flex flex-col gap-10">
-                  <nav className="flex flex-col gap-6">
+                <div className="px-10 py-12 flex flex-col gap-12">
+                  <nav className="flex flex-col gap-8">
                     {primaryLinks.map((link) => (
                       <Link 
                         key={link.name} 
                         href={link.href} 
-                        className="text-3xl md:text-4xl font-black uppercase tracking-tighter hover:text-primary transition-colors leading-none"
+                        className="text-3xl md:text-4xl font-headline font-black uppercase tracking-tighter hover:text-primary transition-colors leading-none"
                       >
                         {link.name}
                       </Link>
                     ))}
                   </nav>
 
-                  <div className="w-full h-px bg-white/10" />
+                  <div className="w-full h-px bg-border/50" />
 
-                  <div className="flex flex-col gap-6">
-                    <div className="space-y-4">
-                      <p className="text-[10px] font-black uppercase tracking-[0.4em] text-primary/60">Portfolio</p>
-                      <div className="flex flex-col gap-4">
-                        <Link href="/safaris" className="text-base font-bold text-white/80 hover:text-white uppercase tracking-widest">Safari Catalog</Link>
-                        <Link href="/destinations/egypt" className="text-base font-bold text-white/80 hover:text-white uppercase tracking-widest">Egypt Specialist</Link>
-                        <Link href="/destinations/tanzania" className="text-base font-bold text-white/80 hover:text-white uppercase tracking-widest">Tanzania Master</Link>
-                        <Link href="/destinations/zanzibar" className="text-base font-bold text-white/80 hover:text-white uppercase tracking-widest">Sansibar Paradise</Link>
+                  <div className="flex flex-col gap-8">
+                    <div className="space-y-6">
+                      <p className="text-[10px] font-black uppercase tracking-[0.4em] text-primary/60 flex items-center gap-2">
+                        <Globe className="w-3 h-3" /> Core Portfolio
+                      </p>
+                      <div className="flex flex-col gap-5">
+                        {[
+                          { name: 'Safari Catalog', href: '/safaris' },
+                          { name: 'Egypt Specialist', href: '/destinations/egypt' },
+                          { name: 'Tanzania Master', href: '/destinations/tanzania' },
+                          { name: 'Zanzibar Paradise', href: '/destinations/zanzibar' }
+                        ].map((p) => (
+                          <Link 
+                            key={p.name} 
+                            href={p.href} 
+                            className="text-sm font-black text-secondary/70 hover:text-primary uppercase tracking-widest transition-colors"
+                          >
+                            {p.name}
+                          </Link>
+                        ))}
                       </div>
                     </div>
                   </div>
                 </div>
               </ScrollArea>
 
-              <div className="p-10 border-t border-white/5 bg-black/50 backdrop-blur-md flex flex-col gap-10 items-center shrink-0">
+              <div className="p-10 border-t border-border bg-[#fdfcfb] flex flex-col gap-10 items-center shrink-0">
                 <div className="flex gap-8">
-                  <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-primary hover:border-primary transition-all group">
-                    <Facebook className="w-5 h-5 text-white" />
+                  <a href="#" className="w-12 h-12 rounded-2xl border border-border flex items-center justify-center hover:bg-primary hover:border-primary transition-all group">
+                    <Facebook className="w-5 h-5 text-secondary group-hover:text-white" />
                   </a>
-                  <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-primary hover:border-primary transition-all group">
-                    <Instagram className="w-5 h-5 text-white" />
+                  <a href="#" className="w-12 h-12 rounded-2xl border border-border flex items-center justify-center hover:bg-primary hover:border-primary transition-all group">
+                    <Instagram className="w-5 h-5 text-secondary group-hover:text-white" />
                   </a>
                 </div>
                 
-                <Button asChild className="w-full h-16 rounded-xl bg-primary text-white font-black text-xs uppercase tracking-[0.3em] shadow-2xl hover:scale-[1.02] transition-transform border-none">
-                  <Link href="/trip-planner">JETZT ANFRAGEN <ArrowRight className="w-4 h-4 ml-2" /></Link>
+                <Button asChild className="w-full h-16 rounded-2xl bg-secondary text-white font-black text-xs uppercase tracking-[0.3em] shadow-xl hover:bg-primary transition-all border-none">
+                  <Link href="/trip-planner" className="flex items-center justify-center gap-3">
+                    JETZT ANFRAGEN <ArrowRight className="w-4 h-4" />
+                  </Link>
                 </Button>
                 
-                <p className="text-[8px] font-black uppercase tracking-[0.4em] text-white/20">
-                  Berlin • SDL Official Registry 2026
+                <p className="text-[8px] font-black uppercase tracking-[0.4em] text-muted-foreground/40">
+                  Registry 2026 • Established 2014
                 </p>
               </div>
             </SheetContent>
