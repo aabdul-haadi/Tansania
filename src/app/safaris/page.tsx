@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -13,6 +14,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export default function SafarisPage() {
   const firestore = useFirestore();
@@ -38,6 +40,8 @@ export default function SafarisPage() {
   });
 
   const categories = ['All', 'Signature', 'Expedition', 'Wildlife', 'Honeymoon'];
+
+  const elephantsSunset = PlaceHolderImages.find(img => img.id === 'elephants-sunset-lake');
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-bold">
@@ -190,7 +194,7 @@ export default function SafarisPage() {
               <div className="space-y-2">
                 <span className="text-primary font-bold uppercase tracking-[0.4em] text-[8px] md:text-[9px] mb-2 block">MENSCHLICHE EXPERTISE</span>
                 <h3 className="font-headline text-2xl md:text-4xl font-bold text-secondary uppercase tracking-tighter">Direkter Kontakt</h3>
-                <p className="text-[9px] md:text-10px font-bold uppercase tracking-widest text-muted-foreground leading-relaxed max-w-xs mx-auto">
+                <p className="text-[9px] md:text-10px font-bold uppercase tracking-widest text-muted-foreground leading-relaxed max-xs mx-auto">
                   Unsere Spezialisten in Berlin entwerfen Ihre Route von Grund auf neu – mit Herz und Verstand.
                 </p>
               </div>
@@ -211,11 +215,11 @@ export default function SafarisPage() {
           {/* Tile 4: Atmospheric Image (Bottom Left on Desktop, Order-4 on Mobile) */}
           <div className="relative aspect-video md:aspect-auto min-h-[350px] md:min-h-full overflow-hidden order-4 md:order-3 border-t border-border/40">
             <Image 
-              src="https://images.unsplash.com/photo-1539760397268-33f5146dd9e2?q=80&w=1200"
-              alt="Safari Balloon Over Serengeti"
+              src={elephantsSunset?.imageUrl || "https://images.unsplash.com/photo-1539760397268-33f5146dd9e2?q=80&w=1200"}
+              alt="Elephants at Sunset near Lake"
               fill
               className="object-cover"
-              data-ai-hint="safari balloon"
+              data-ai-hint={elephantsSunset?.imageHint || "elephants sunset"}
             />
             <div className="absolute inset-0 bg-black/10" />
             <div className="absolute inset-0 flex items-center justify-center p-10 text-center">

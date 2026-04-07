@@ -54,6 +54,12 @@
       "description": "Mount Kilimanjaro at sunrise above the clouds",
       "imageUrl": "https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1080&auto=format&fit=crop",
       "imageHint": "mount kilimanjaro"
+    },
+    {
+      "id": "elephants-sunset-lake",
+      "description": "Closeup shot of elephants standing near a lake at sunset",
+      "imageUrl": "https://img.freepik.com/free-photo/closeup-shot-elephants-standing-near-lake-sunset_181624-29375.jpg?semt=ais_incoming&w=740&q=80",
+      "imageHint": "elephants sunset"
     }
   ]
 }
