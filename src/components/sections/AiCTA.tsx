@@ -105,8 +105,8 @@ export function AiCTA() {
           />
           <div className="absolute inset-0 bg-black/10" />
           <div className="absolute inset-0 flex items-center justify-center p-4 sm:p-6 md:p-10 text-center">
-            <div className="p-6 sm:p-8 md:p-10 bg-white/5 backdrop-blur-sm border border-white/10 rounded-[2.5rem] w-[85%] max-w-[320px] shadow-2xl">
-              <p className="text-white font-headline text-base sm:text-xl md:text-2xl uppercase tracking-tight leading-tight">
+            <div className="p-6 sm:p-8 md:p-10 bg-white/5 backdrop-blur-sm border border-white/10 rounded-[2.5rem] w-[85%] max-w-[320px] shadow-2xl text-center">
+              <p className="text-white font-headline text-base sm:text-xl md:text-2xl uppercase tracking-tight leading-tight text-center">
                 "Persönlichkeit ist durch nichts zu ersetzen."
               </p>
             </div>
