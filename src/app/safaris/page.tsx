@@ -4,7 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Search, Compass, LayoutGrid, Sparkles, ArrowRight, Zap, MapPin } from 'lucide-react';
+import { Search, Compass, LayoutGrid, Sparkles, ArrowRight, Zap, MapPin, Phone, MessageSquare } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
@@ -42,7 +42,7 @@ export default function SafarisPage() {
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-bold">
-      {/* COMPACT DARK HERO: Savannen-Kollektion Protocol */}
+      {/* COMPACT DARK HERO */}
       <section className="relative h-[45vh] md:h-[60vh] w-full flex items-center justify-center overflow-hidden bg-secondary">
         <div className="absolute inset-0 z-0">
           <Image 
@@ -63,7 +63,7 @@ export default function SafarisPage() {
             transition={{ duration: 0.8 }}
             className="space-y-4"
           >
-            <h1 className="text-white uppercase leading-none tracking-tighter text-3xl md:text-6xl lg:text-7xl whitespace-nowrap">
+            <h1 className="text-white uppercase leading-none tracking-tighter text-3xl md:text-6xl lg:text-7xl">
               Savannen-Kollektion
             </h1>
             <p className="max-w-xl mx-auto text-white/60 font-bold text-[9px] md:text-sm uppercase tracking-widest leading-relaxed">
@@ -131,67 +131,95 @@ export default function SafarisPage() {
         )}
       </section>
 
-      {/* CREATIVE CTA HUB: Individuelle Expedition Protocol */}
-      <section className="py-12 md:py-32 bg-[#fdfcfb] border-t border-border/40">
-        <div className="container mx-auto px-4 max-w-7xl">
-          <div className="relative group">
-            {/* Background Glow */}
-            <div className="absolute -inset-4 bg-primary/5 rounded-[4rem] blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+      {/* TAILOR-MADE EXPEDITION MOSAIC SECTION */}
+      <section className="bg-white border-t border-border/40 overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          
+          {/* Top Left: Strategy Hub */}
+          <div className="bg-[#4A5D23] text-white p-10 md:p-20 flex flex-col justify-center items-center text-center space-y-8 min-h-[400px]">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="space-y-4"
+            >
+              <h2 className="font-headline text-3xl md:text-5xl font-bold uppercase tracking-tighter leading-tight">
+                Individuelle <br /> Expedition?
+              </h2>
+              <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] text-white/70">
+                Sie finden nicht das passende Paket? Unsere Experten entwerfen Ihre Route.
+              </p>
+            </motion.div>
             
-            <div className="relative bg-white rounded-[2.5rem] md:rounded-[4rem] shadow-2xl border border-border/50 overflow-hidden flex flex-col lg:flex-row min-h-[500px]">
-              {/* Visual Registry Column */}
-              <div className="w-full lg:w-1/2 relative h-[300px] lg:h-auto overflow-hidden">
-                <Image 
-                  src="https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=1200"
-                  alt="Individuelle Planung"
-                  fill
-                  className="object-cover transition-transform duration-1000 group-hover:scale-105"
-                  data-ai-hint="safari planning"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-secondary/80 via-transparent to-transparent lg:bg-gradient-to-r lg:from-secondary/40" />
-                
-                {/* Floating Badge */}
-                <div className="absolute bottom-8 left-8 flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-primary/20 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-2xl">
-                    <Sparkles className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="text-white drop-shadow-md">
-                    <p className="text-[8px] font-black uppercase tracking-[0.2em]">Strategy Registry</p>
-                    <p className="text-sm font-bold uppercase">Bespoke Protocol</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Content Registry Column */}
-              <div className="flex-1 p-8 md:p-12 lg:p-20 flex flex-col justify-center space-y-10">
-                <div className="space-y-6">
-                  <div className="inline-flex items-center gap-2 text-primary font-bold text-[9px] md:text-[10px] uppercase tracking-[0.4em]">
-                    <Compass className="w-4 h-4" /> Personal Customization
-                  </div>
-                  <h2 className="font-headline text-3xl md:text-5xl lg:text-6xl font-bold text-secondary uppercase tracking-tighter leading-[0.9]">
-                    INDIVIDUELLE <br /><span className="text-primary">EXPEDITION?</span>
-                  </h2>
-                  <p className="text-muted-foreground font-bold text-xs md:text-lg uppercase tracking-tight leading-relaxed max-w-xl opacity-80">
-                    Sie finden nicht das passende Paket? Unsere Experten in Berlin entwerfen Ihre Route von Grund auf neu – synchronisiert mit Logistik und Wildlife-Events.
-                  </p>
-                </div>
-
-                {/* Conversion Protocol Hub */}
-                <div className="flex flex-col sm:flex-row items-center gap-4">
-                  <Link href="/trip-advisor" className="w-full sm:w-auto">
-                    <Button size="xl" className="w-full h-13 md:h-16 rounded-xl bg-secondary text-white border-none shadow-2xl hover:bg-primary transition-all font-black text-[10px] tracking-[0.2em] group">
-                      ASK AI ADVISOR <Sparkles className="w-4 h-4 ml-3" />
-                    </Button>
-                  </Link>
-                  <Link href="#inquiry" className="w-full sm:w-auto">
-                    <Button variant="outline" size="xl" className="w-full h-13 md:h-16 rounded-xl border-border hover:border-primary/20 hover:text-primary transition-all font-black text-[10px] tracking-[0.2em]">
-                      EXPERTEN KONTAKTIEREN
-                    </Button>
-                  </Link>
-                </div>
-              </div>
+            <div className="flex flex-col gap-4 w-full max-w-xs">
+              <Link href="/trip-planner">
+                <Button className="w-full h-12 md:h-14 rounded-lg bg-[#C9A876] text-secondary hover:bg-white hover:text-secondary font-black text-[10px] uppercase tracking-widest border-none transition-all shadow-xl">
+                  REISE DESIGNEN STARTEN
+                </Button>
+              </Link>
+              <Link href="/trip-advisor">
+                <Button variant="outline" className="w-full h-12 md:h-14 rounded-lg border-white/20 bg-white/5 text-white hover:bg-white/10 font-black text-[10px] uppercase tracking-widest transition-all">
+                  ASK AI ADVISOR <Sparkles className="w-3.5 h-3.5 ml-2" />
+                </Button>
+              </Link>
             </div>
           </div>
+
+          {/* Top Right: Guide Image */}
+          <div className="relative aspect-[16/10] md:aspect-auto min-h-[400px] overflow-hidden">
+            <Image 
+              src="https://images.unsplash.com/photo-1731355775887-e6b2484f494c?q=80&w=1200"
+              alt="Safari Guide"
+              fill
+              className="object-cover"
+              data-ai-hint="safari guide"
+            />
+            <div className="absolute inset-0 bg-black/10" />
+          </div>
+
+          {/* Bottom Left: Balloon Image */}
+          <div className="relative aspect-[16/10] md:aspect-auto min-h-[400px] overflow-hidden order-4 md:order-3">
+            <Image 
+              src="https://images.unsplash.com/photo-1539760397268-33f5146dd9e2?q=80&w=1200"
+              alt="Safari Balloon"
+              fill
+              className="object-cover"
+              data-ai-hint="safari balloon"
+            />
+            <div className="absolute inset-0 bg-black/5" />
+          </div>
+
+          {/* Bottom Right: Expert Contact Hub */}
+          <div className="bg-[#FDF7F2] p-10 md:p-20 flex flex-col justify-center items-center text-center space-y-10 min-h-[400px] order-3 md:order-4">
+            <div className="space-y-4">
+              <div className="relative w-24 h-24 md:w-32 md:h-32 mx-auto">
+                <div className="absolute inset-0 bg-[#C9A876] rounded-full transform rotate-6 scale-105" />
+                <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white shadow-xl">
+                  <img src="https://picsum.photos/seed/expert-maria/200/200" alt="Specialist" className="w-full h-full object-cover" />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <h3 className="font-headline text-2xl md:text-4xl font-bold text-secondary uppercase tracking-tighter">Experten Sprechen</h3>
+                <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Unsere Spezialisten sind für Sie da</p>
+              </div>
+            </div>
+
+            <div className="space-y-3 w-full max-w-xs">
+              <a href="tel:+493022608080" className="flex items-center gap-4 p-4 bg-[#e3510d] rounded-lg text-white shadow-lg hover:scale-[1.02] transition-transform group">
+                <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+                  <Phone className="w-4 h-4 text-white" />
+                </div>
+                <div className="text-left">
+                  <p className="text-[7px] font-black uppercase opacity-60">HOTLINE BERLIN</p>
+                  <p className="text-xs font-black">+49 30 22608080</p>
+                </div>
+              </a>
+              <Link href="/contact" className="block text-[9px] font-black uppercase tracking-widest text-secondary/60 hover:text-primary transition-colors py-2">
+                ANDERE LÄNDER & KONTAKTWEGE
+              </Link>
+            </div>
+          </div>
+
         </div>
       </section>
 
