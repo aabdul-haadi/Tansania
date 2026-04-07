@@ -23,7 +23,7 @@ const features = [
     desc: "Kein geteilter Bus, keine Kompromisse. Ihr eigener Jeep und Ihr privater Guide garantieren ein exklusives Abenteuer in Ihrem eigenen Tempo.",
     icon: Compass,
     size: "mid",
-    bg: "bg-secondary text-white"
+    bg: "bg-primary text-white" // CHANGED: Bright and different from black/charcoal
   },
   {
     id: "03",
@@ -39,7 +39,7 @@ const features = [
     desc: "TATO-Mitglied & DRSF-abgesichert. Wir übernehmen die volle Verantwortung für Ihre Reise – von der Planung in Berlin bis zur Umsetzung vor Ort.",
     icon: ShieldCheck,
     size: "small",
-    bg: "bg-primary/5 border border-primary/10"
+    bg: "bg-[#FDF7F2] border border-[#F0EBE0]"
   }
 ];
 
@@ -106,28 +106,31 @@ export function WhyUs() {
             </div>
           </motion.div>
 
-          {/* Tile 02: High Contrast Accent Tile */}
+          {/* Tile 02: High Contrast Accent Tile - BRIGHT & DIFF */}
           <motion.div 
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="md:col-span-4 rounded-[2rem] md:rounded-[3rem] bg-secondary p-8 md:p-10 flex flex-col justify-between shadow-xl relative overflow-hidden"
+            className={cn(
+              "md:col-span-4 rounded-[2rem] md:rounded-[3rem] p-8 md:p-10 flex flex-col justify-between shadow-xl relative overflow-hidden",
+              features[1].bg
+            )}
           >
             <div className="absolute top-0 right-0 p-6 opacity-10"><Compass className="w-24 h-24 rotate-12 text-white" /></div>
             <div className="relative z-10 space-y-6">
-              <div className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/10">
-                <Compass className="w-6 h-6 text-primary" />
+              <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/20">
+                <Compass className="w-6 h-6 text-white" />
               </div>
               <h3 className="font-headline text-2xl text-white uppercase tracking-tight leading-tight">
                 {features[1].title}
               </h3>
-              <p className="text-white/60 font-normal text-[11px] md:text-xs leading-relaxed uppercase tracking-widest">
+              <p className="text-white/90 font-normal text-[11px] md:text-xs leading-relaxed uppercase tracking-widest">
                 {features[1].desc}
               </p>
             </div>
-            <div className="relative z-10 pt-8 mt-auto border-t border-white/10">
-              <span className="text-[9px] font-bold text-primary uppercase tracking-[0.3em]">Privacy Protocol</span>
+            <div className="relative z-10 pt-8 mt-auto border-t border-white/20">
+              <span className="text-[9px] font-bold text-white uppercase tracking-[0.3em]">Privacy Protocol</span>
             </div>
           </motion.div>
 
