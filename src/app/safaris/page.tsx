@@ -61,9 +61,6 @@ export default function SafarisPage() {
             transition={{ duration: 0.8 }}
             className="space-y-4"
           >
-            <Badge className="bg-primary text-white border-none px-4 py-1 text-[8px] md:text-[10px] font-bold uppercase tracking-[0.4em] shadow-2xl">
-              Official Catalog 2026/27
-            </Badge>
             <h1 className="text-white uppercase leading-none tracking-tighter text-3xl md:text-6xl lg:text-7xl whitespace-nowrap">
               Savannen-Kollektion
             </h1>
