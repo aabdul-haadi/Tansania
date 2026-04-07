@@ -4,7 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Search, Compass, LayoutGrid, Sparkles, ArrowRight, Zap, MapPin, Phone, MessageSquare } from 'lucide-react';
+import { Search, Compass, LayoutGrid, Sparkles, ArrowRight, Zap, MapPin, Phone, MessageSquare, Headphones } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
@@ -131,92 +131,107 @@ export default function SafarisPage() {
         )}
       </section>
 
-      {/* TAILOR-MADE EXPEDITION MOSAIC SECTION */}
+      {/* TAILOR-MADE EXPEDITION MOSAIC SECTION - RECALIBRATED 100% RESPONSIVE */}
       <section className="bg-white border-t border-border/40 overflow-hidden">
         <div className="grid grid-cols-1 md:grid-cols-2">
           
-          {/* Top Left: Strategy Hub */}
-          <div className="bg-[#4A5D23] text-white p-10 md:p-20 flex flex-col justify-center items-center text-center space-y-8 min-h-[400px]">
+          {/* Tile 1: Strategy Hub (Top Left) */}
+          <div className="bg-[#141414] text-white p-8 md:p-16 lg:p-24 flex flex-col justify-center items-center text-center space-y-8 md:space-y-10 min-h-[450px] order-1">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="space-y-4"
             >
-              <h2 className="font-headline text-3xl md:text-5xl font-bold uppercase tracking-tighter leading-tight">
-                Individuelle <br /> Expedition?
+              <h2 className="font-headline text-3xl md:text-5xl lg:text-6xl font-bold uppercase tracking-tighter leading-tight">
+                Individuelle <br /> <span className="text-primary">Expedition</span>
               </h2>
-              <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] text-white/70">
-                Sie finden nicht das passende Paket? Unsere Experten entwerfen Ihre Route.
+              <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] text-white/60 max-w-sm mx-auto">
+                Sie finden nicht das passende Paket? Unsere Experten entwerfen Ihre Route von Grund auf neu.
               </p>
             </motion.div>
             
             <div className="flex flex-col gap-4 w-full max-w-xs">
               <Link href="/trip-planner">
-                <Button className="w-full h-12 md:h-14 rounded-lg bg-[#C9A876] text-secondary hover:bg-white hover:text-secondary font-black text-[10px] uppercase tracking-widest border-none transition-all shadow-xl">
-                  REISE DESIGNEN STARTEN
+                <Button className="w-full h-12 md:h-14 rounded-xl bg-primary text-white hover:bg-white hover:text-secondary font-black text-[10px] uppercase tracking-widest border-none transition-all shadow-2xl">
+                  IHRE ROUTE PLANEN
                 </Button>
               </Link>
               <Link href="/trip-advisor">
-                <Button variant="outline" className="w-full h-12 md:h-14 rounded-lg border-white/20 bg-white/5 text-white hover:bg-white/10 font-black text-[10px] uppercase tracking-widest transition-all">
-                  ASK AI ADVISOR <Sparkles className="w-3.5 h-3.5 ml-2" />
+                <Button variant="outline" className="w-full h-12 md:h-14 rounded-xl border-white/20 bg-white/5 text-white hover:bg-white/10 font-black text-[10px] uppercase tracking-widest transition-all">
+                  AI CONCIERGE FRAGEN <Sparkles className="w-3.5 h-3.5 ml-2 text-primary" />
                 </Button>
               </Link>
             </div>
           </div>
 
-          {/* Top Right: Guide Image */}
-          <div className="relative aspect-[16/10] md:aspect-auto min-h-[400px] overflow-hidden">
+          {/* Tile 2: Guide Image (Top Right) */}
+          <div className="relative aspect-video md:aspect-auto min-h-[350px] md:min-h-full overflow-hidden order-2">
             <Image 
               src="https://images.unsplash.com/photo-1731355775887-e6b2484f494c?q=80&w=1200"
-              alt="Safari Guide"
+              alt="Safari Expert Guide"
               fill
               className="object-cover"
               data-ai-hint="safari guide"
             />
-            <div className="absolute inset-0 bg-black/10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+            <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white shadow-xl">
+                <Headphones className="w-5 h-5" />
+              </div>
+              <span className="text-white text-[10px] font-black uppercase tracking-widest">Expert Care Registry</span>
+            </div>
           </div>
 
-          {/* Bottom Left: Balloon Image */}
-          <div className="relative aspect-[16/10] md:aspect-auto min-h-[400px] overflow-hidden order-4 md:order-3">
-            <Image 
-              src="https://images.unsplash.com/photo-1539760397268-33f5146dd9e2?q=80&w=1200"
-              alt="Safari Balloon"
-              fill
-              className="object-cover"
-              data-ai-hint="safari balloon"
-            />
-            <div className="absolute inset-0 bg-black/5" />
-          </div>
-
-          {/* Bottom Right: Expert Contact Hub */}
-          <div className="bg-[#FDF7F2] p-10 md:p-20 flex flex-col justify-center items-center text-center space-y-10 min-h-[400px] order-3 md:order-4">
-            <div className="space-y-4">
+          {/* Tile 3: Expert Contact Hub (Bottom Left / Stacks after Balloon on Desktop) */}
+          <div className="bg-[#FDF7F2] p-8 md:p-16 lg:p-24 flex flex-col justify-center items-center text-center space-y-10 min-h-[450px] order-4 md:order-3 border-t border-border/40">
+            <div className="space-y-6">
               <div className="relative w-24 h-24 md:w-32 md:h-32 mx-auto">
-                <div className="absolute inset-0 bg-[#C9A876] rounded-full transform rotate-6 scale-105" />
-                <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white shadow-xl">
-                  <img src="https://picsum.photos/seed/expert-maria/200/200" alt="Specialist" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-[#C9A876]/20 rounded-full transform rotate-6 scale-110" />
+                <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white shadow-2xl">
+                  <img src="https://picsum.photos/seed/expert-maria/200/200" alt="Travel Specialist" className="w-full h-full object-cover" />
                 </div>
+                <div className="absolute -bottom-2 -right-2 bg-green-500 w-6 h-6 rounded-full border-4 border-white shadow-lg" title="Expert Online" />
               </div>
               <div className="space-y-2">
-                <h3 className="font-headline text-2xl md:text-4xl font-bold text-secondary uppercase tracking-tighter">Experten Sprechen</h3>
-                <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Unsere Spezialisten sind für Sie da</p>
+                <h3 className="font-headline text-2xl md:text-4xl font-bold text-secondary uppercase tracking-tighter">Persönlicher Kontakt</h3>
+                <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Unsere Spezialisten sind jetzt für Sie da</p>
               </div>
             </div>
 
             <div className="space-y-3 w-full max-w-xs">
-              <a href="tel:+493022608080" className="flex items-center gap-4 p-4 bg-[#e3510d] rounded-lg text-white shadow-lg hover:scale-[1.02] transition-transform group">
-                <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center shrink-0">
-                  <Phone className="w-4 h-4 text-white" />
+              <a href="tel:+493022608080" className="flex items-center gap-4 p-4 bg-secondary text-white rounded-xl shadow-xl hover:bg-primary transition-all group overflow-hidden relative">
+                <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center shrink-0 relative z-10">
+                  <Phone className="w-4 h-4 text-primary" />
                 </div>
-                <div className="text-left">
-                  <p className="text-[7px] font-black uppercase opacity-60">HOTLINE BERLIN</p>
-                  <p className="text-xs font-black">+49 30 22608080</p>
+                <div className="text-left relative z-10">
+                  <p className="text-[7px] font-black uppercase opacity-60">DIREKTVERBINDUNG BERLIN</p>
+                  <p className="text-xs font-black tracking-tight">+49 30 22608080</p>
                 </div>
               </a>
-              <Link href="/contact" className="block text-[9px] font-black uppercase tracking-widest text-secondary/60 hover:text-primary transition-colors py-2">
-                ANDERE LÄNDER & KONTAKTWEGE
+              <Link href="/contact" className="block text-[9px] font-black uppercase tracking-widest text-secondary/40 hover:text-primary transition-colors py-2">
+                KONTAKTWEGE ANSEHEN
               </Link>
+            </div>
+          </div>
+
+          {/* Tile 4: Balloon Image (Bottom Right / Stacks before Contact on Desktop) */}
+          <div className="relative aspect-video md:aspect-auto min-h-[350px] md:min-h-full overflow-hidden order-3 md:order-4 border-t border-border/40">
+            <Image 
+              src="https://images.unsplash.com/photo-1539760397268-33f5146dd9e2?q=80&w=1200"
+              alt="Safari Balloon Over Serengeti"
+              fill
+              className="object-cover"
+              data-ai-hint="safari balloon"
+            />
+            <div className="absolute inset-0 bg-black/10" />
+            <div className="absolute inset-0 flex items-center justify-center p-10 text-center">
+              <div className="p-6 md:p-10 bg-white/10 backdrop-blur-xl border border-white/20 rounded-[2.5rem] max-w-xs shadow-2xl">
+                <p className="text-white font-headline text-lg md:text-2xl uppercase tracking-tight leading-tight">
+                  "Der Traum beginnt dort, wo die Planung endet."
+                </p>
+              </div>
             </div>
           </div>
 
