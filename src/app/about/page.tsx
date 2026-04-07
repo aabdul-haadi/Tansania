@@ -39,17 +39,17 @@ const guides = [
 export default function AboutPage() {
   return (
     <div className="bg-background min-h-screen">
-      {/* Immersive Cinematic Hero */}
-      <header className="relative h-[60vh] md:h-[80vh] w-full overflow-hidden flex items-center justify-center">
+      {/* Immersive Cinematic Hero - Lightened Overlay */}
+      <header className="relative h-[60vh] md:h-[80vh] w-full overflow-hidden flex items-center justify-center bg-white border-b border-border">
         <Image
           src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920"
           alt="Afrikanische Savanne"
           fill
           priority
-          className="object-cover"
+          className="object-cover opacity-40 brightness-110"
           data-ai-hint="serengeti savannah"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-transparent to-background" />
         
         <div className="container relative z-10 mx-auto px-4 text-center">
           <motion.div
@@ -60,11 +60,11 @@ export default function AboutPage() {
             <Badge className="bg-primary text-white border-none px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.4em] mb-6 shadow-xl">
               Authentisch. Unvergesslich. Exklusiv.
             </Badge>
-            <h1 className="text-white mb-6 drop-shadow-2xl">
+            <h1 className="text-secondary mb-6 drop-shadow-sm text-4xl md:text-7xl">
               Ihr Schlüssel zum <br />
               <span className="text-primary">Herzen Afrikas</span>
             </h1>
-            <p className="max-w-2xl mx-auto text-white/80 font-bold uppercase tracking-widest px-4">
+            <p className="max-w-2xl mx-auto text-secondary/60 font-bold uppercase tracking-widest px-4">
               Wir verbinden den Nil mit der Savanne – durch Abenteuer, die weit über das Gewöhnliche hinausgehen.
             </p>
           </motion.div>
@@ -82,7 +82,7 @@ export default function AboutPage() {
           >
             <div>
               <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-2 block">Unsere Vision</span>
-              <h2 className="text-secondary uppercase">
+              <h2 className="text-secondary uppercase text-3xl md:text-5xl">
                 Mehr als nur ein <br /><span className="text-primary">Urlaub</span>
               </h2>
             </div>
@@ -129,13 +129,13 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Founder Spotlight */}
-      <section className="py-16 md:py-24 bg-secondary text-white relative overflow-hidden">
+      {/* Founder Spotlight - Updated to Lighter Color Palette */}
+      <section className="py-16 md:py-24 bg-[#FDF7F2] text-secondary relative overflow-hidden border-y border-border">
         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-5 relative">
-              <div className="aspect-square rounded-[2rem] md:rounded-[3.5rem] overflow-hidden border-8 border-white/5 shadow-2xl">
+              <div className="aspect-square rounded-[2rem] md:rounded-[3.5rem] overflow-hidden border-8 border-white shadow-2xl">
                 <Image 
                   src="https://picsum.photos/seed/samson-kyashama/800/800" 
                   alt="Samson Kyashama" 
@@ -150,30 +150,30 @@ export default function AboutPage() {
             <div className="lg:col-span-7 space-y-6 md:space-y-10">
               <div>
                 <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-3 block">Der Visionär</span>
-                <h2 className="text-white uppercase">
+                <h2 className="text-secondary uppercase text-3xl md:text-5xl">
                   Maßgeschneidert von <br /><span className="text-primary">Samson Kyashama</span>
                 </h2>
               </div>
-              <p className="text-white font-medium leading-relaxed text-sm md:text-lg opacity-90">
+              <p className="text-secondary/80 font-medium leading-relaxed text-sm md:text-lg">
                 Unter der Führung von Samson Kyashama, einem gebürtigen Tansanier und erfahrenen Safari-Experten, entwerfen wir Reisen, die Ihre kühnsten Träume übertreffen. Jede Safari, jede Besteigung und jedes kulturelle Erlebnis wird persönlich abgestimmt.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 pt-4">
                 <div className="flex gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
                     <Award className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <p className="font-bold text-[10px] text-white uppercase tracking-widest">Lokale Expertise</p>
-                    <p className="text-[10px] text-white/60 font-medium uppercase mt-1">Tief verwurzelt in Tansania.</p>
+                    <p className="font-bold text-[10px] text-secondary uppercase tracking-widest">Lokale Expertise</p>
+                    <p className="text-[10px] text-secondary/60 font-medium uppercase mt-1">Tief verwurzelt in Tansania.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
                     <Sparkles className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <p className="font-bold text-[10px] text-white uppercase tracking-widest">Einzigartige Erlebnisse</p>
-                    <p className="text-[10px] text-white/60 font-medium uppercase mt-1">Abenteuer so individuell wie Sie.</p>
+                    <p className="font-bold text-[10px] text-secondary uppercase tracking-widest">Einzigartige Erlebnisse</p>
+                    <p className="text-[10px] text-secondary/60 font-medium uppercase mt-1">Abenteuer so individuell wie Sie.</p>
                   </div>
                 </div>
               </div>
@@ -187,7 +187,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-12 md:mb-20">
             <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-3 block">Unser Versprechen</span>
-            <h2 className="text-secondary uppercase">Warum Tansania <br /><span className="text-primary">Reiseabenteuer?</span></h2>
+            <h2 className="text-secondary uppercase text-3xl md:text-5xl">Warum Tansania <br /><span className="text-primary">Reiseabenteuer?</span></h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
@@ -231,7 +231,7 @@ export default function AboutPage() {
           <div className="flex flex-col md:flex-row items-end justify-between mb-12 md:mb-16 gap-6">
             <div>
               <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-2 block">Hinter den Kulissen</span>
-              <h2 className="text-secondary uppercase">Unser <span className="text-primary">Team</span></h2>
+              <h2 className="text-secondary uppercase text-3xl md:text-5xl">Unser <span className="text-primary">Team</span></h2>
             </div>
             <p className="text-muted-foreground text-[10px] font-bold uppercase tracking-widest max-w-xs border-l-2 border-primary/20 pl-6 hidden md:block">
               Die Spezialisten in Berlin, die Ihre Träume in detaillierte Pläne verwandeln.
@@ -250,9 +250,9 @@ export default function AboutPage() {
               >
                 <div className="relative aspect-square w-full rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden mb-4 md:mb-6 shadow-lg border border-border/50">
                   <Image src={member.img} alt={member.name} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
-                  <div className="absolute inset-0 bg-black/20 group-hover:opacity-0 transition-opacity" />
+                  <div className="absolute inset-0 bg-black/10 group-hover:opacity-0 transition-opacity" />
                 </div>
-                <h4 className="text-secondary uppercase leading-none mb-1 md:mb-2">{member.name}</h4>
+                <h4 className="text-secondary uppercase leading-none mb-1 md:mb-2 text-xl">{member.name}</h4>
                 <p className="text-[9px] font-bold text-primary uppercase tracking-widest mb-3 md:mb-4">{member.role}</p>
                 <Button variant="link" className="h-auto p-0 text-[10px] font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors">Mehr erfahren</Button>
               </motion.div>
@@ -267,7 +267,7 @@ export default function AboutPage() {
           <div className="flex flex-col md:flex-row items-end justify-between mb-12 md:mb-16 gap-6">
             <div>
               <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-2 block">Die Experten im Busch</span>
-              <h2 className="text-secondary uppercase">Unsere <span className="text-primary">Safari Guides</span></h2>
+              <h2 className="text-secondary uppercase text-3xl md:text-5xl">Unsere <span className="text-primary">Safari Guides</span></h2>
             </div>
             <p className="text-muted-foreground text-[10px] font-bold uppercase tracking-widest max-w-xs border-l-2 border-primary/20 pl-6 hidden md:block">
               Staatlich geprüfte Guides mit jahrelanger Erfahrung in der Wildnis Tansanias.
@@ -296,8 +296,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Video / Final CTA */}
-      <section className="py-16 md:py-32 bg-secondary relative overflow-hidden mx-4 md:mx-10 rounded-[2rem] md:rounded-[5rem] mb-12 shadow-2xl">
+      {/* Video / Final CTA - Lightened Color Protocol */}
+      <section className="py-16 md:py-32 bg-[#FDF7F2] relative overflow-hidden mx-4 md:mx-10 rounded-[2rem] md:rounded-[5rem] mb-12 shadow-2xl border border-border/50">
         <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         <div className="container relative z-10 mx-auto px-4 text-center">
           <motion.div
@@ -308,37 +308,37 @@ export default function AboutPage() {
           >
             <div className="space-y-4">
               <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px]">Bereit für das Abenteuer?</span>
-              <h2 className="text-white uppercase leading-none">
+              <h2 className="text-secondary uppercase leading-none text-3xl md:text-5xl">
                 Willkommen im <br /><span className="text-primary">Herzen Afrikas</span>
               </h2>
-              <p className="text-white/80 text-sm md:text-lg font-medium uppercase tracking-widest max-w-2xl mx-auto">
+              <p className="text-secondary/60 text-sm md:text-lg font-medium uppercase tracking-widest max-w-2xl mx-auto">
                 Dort, wo die Savanne niemals schläft und Ihre Träume Wirklichkeit werden.
               </p>
             </div>
 
-            <div className="relative aspect-video w-full rounded-[1.5rem] md:rounded-[3.5rem] overflow-hidden bg-black/40 border border-white/10 shadow-2xl group cursor-pointer">
+            <div className="relative aspect-video w-full max-w-3xl mx-auto rounded-[1.5rem] md:rounded-[3.5rem] overflow-hidden bg-muted border border-border shadow-2xl group cursor-pointer">
               <Image 
                 src="https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1200" 
                 alt="Kilimandscharo Aufstieg" 
                 fill 
-                className="object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000"
+                className="object-cover opacity-80 group-hover:scale-105 transition-transform duration-1000"
                 data-ai-hint="mount kilimanjaro"
               />
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
                 <div className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-primary flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
                   <Camera className="w-8 h-8 md:w-12 md:h-12 text-white fill-current" />
                 </div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-white">Kilimandscharo Video</p>
+                <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-white drop-shadow-md">Kilimandscharo Video</p>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link href="/trip-planner" className="w-full sm:w-auto">
-                <Button size="lg" className="w-full rounded-xl px-12 h-11 md:h-14 font-bold text-[10px] uppercase tracking-[0.3em] shadow-2xl group">
+                <Button size="lg" className="w-full rounded-xl px-12 h-11 md:h-14 font-bold text-[10px] uppercase tracking-[0.3em] shadow-2xl group border-none">
                   Reise Planen <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
-              <Link href="/contact" className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/80 hover:text-primary transition-colors py-4">
+              <Link href="/contact" className="text-[10px] font-bold uppercase tracking-[0.4em] text-secondary/60 hover:text-primary transition-colors py-4">
                 Experten sprechen
               </Link>
             </div>
