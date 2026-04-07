@@ -59,8 +59,8 @@ export default function SafarisPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-secondary/20" />
         </div>
         
-        {/* Added top padding to content container */}
-        <div className="container relative z-10 mx-auto px-4 text-center space-y-6 pt-16 md:pt-24">
+        {/* INCREASED TOP PADDING FOR ARCHITECTURAL BALANCE */}
+        <div className="container relative z-10 mx-auto px-4 text-center space-y-6 pt-24 md:pt-32">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -222,10 +222,11 @@ export default function SafarisPage() {
               className="object-cover"
               data-ai-hint={elephantsSunset?.imageHint || "elephants sunset"}
             />
-            {/* Reduced opacity of overlay from 40 to 10 for very light effect */}
+            {/* Very light image overlay */}
             <div className="absolute inset-0 bg-black/10" />
             <div className="absolute inset-0 flex items-center justify-center p-10 text-center">
-              <div className="p-6 md:p-10 bg-white/10 backdrop-blur-xl border border-white/20 rounded-[2.5rem] max-w-xs shadow-2xl">
+              {/* RECALIBRATED ULTRA-LIGHT OVERLAY: bg-white/5 + backdrop-blur-sm */}
+              <div className="p-6 md:p-10 bg-white/5 backdrop-blur-sm border border-white/10 rounded-[2.5rem] max-w-xs shadow-2xl">
                 <p className="text-white font-headline text-lg md:text-2xl uppercase tracking-tight leading-tight">
                   "Persönlichkeit ist durch nichts zu ersetzen."
                 </p>
