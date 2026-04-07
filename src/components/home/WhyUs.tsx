@@ -44,8 +44,8 @@ const features = [
 
 export function WhyUs() {
   return (
-    <section className="py-12 md:py-24 bg-[#fdfcfb] overflow-hidden border-t border-border/40">
-      <div className="container mx-auto px-4 max-get-7xl">
+    <section className="pt-8 pb-12 md:pt-12 md:pb-24 bg-white overflow-hidden border-t border-border/40">
+      <div className="container mx-auto px-4 max-w-7xl">
         
         {/* Standardized Header Protocol */}
         <div className="text-center mb-10 md:mb-16 space-y-2">
