@@ -14,7 +14,8 @@ import {
   Users,
   Compass,
   Star,
-  ShieldCheck
+  ShieldCheck,
+  Map as MapIcon
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -68,42 +69,52 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-bold">
-      {/* 01 COMPACT DARK HERO - Signature Protocol */}
-      <section className="relative min-h-[60vh] md:min-h-[85vh] w-full overflow-hidden flex flex-col md:flex-row bg-secondary">
-        <div className="w-full md:w-1/2 h-1/2 md:h-full relative overflow-hidden">
+      {/* 01 IMMERSIVE CINEMA HERO - Full Width Protocol */}
+      <section className="relative h-[80vh] md:h-[90vh] w-full overflow-hidden bg-secondary">
+        <div className="absolute inset-0 z-0">
           <Image 
             src={pkg.imageUrl || 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920'} 
             alt={pkg.title} 
             fill 
             priority
-            className="object-cover scale-105 brightness-90"
+            className="object-cover scale-105 brightness-[0.7]"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-secondary via-transparent to-transparent md:hidden" />
+          {/* Bottom Shadow Scrim */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
         </div>
         
-        <div className="w-full md:w-1/2 h-1/2 md:h-full flex items-center justify-center p-6 md:p-20 relative z-10">
+        <div className="container relative z-10 mx-auto px-4 h-full flex flex-col justify-end pb-12 md:pb-24">
           <motion.div 
-            initial={{ opacity: 0, x: 20 }} 
-            animate={{ opacity: 1, x: 0 }} 
-            transition={{ duration: 0.8 }}
-            className="space-y-8 md:space-y-10 max-w-xl text-center md:text-left pt-16 md:pt-24 lg:pt-32"
+            initial={{ opacity: 0, y: 30 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="max-w-4xl mx-auto text-center space-y-6 md:space-y-8"
           >
-            <div className="space-y-4">
-              <h1 className="font-headline text-3xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tighter uppercase">
-                {pkg.title}
-              </h1>
-              <p className="text-white/60 font-bold text-[10px] md:text-sm uppercase tracking-[0.3em] leading-relaxed max-w-md mx-auto md:mx-0">
-                {pkg.durationDays} Tage Expedition • In Berlin konzipiert – am Nil gelebt.
+            <div className="space-y-2 md:space-y-4">
+              <p className="text-white font-bold text-[10px] md:text-xs uppercase tracking-[0.5em] opacity-90">
+                {pkg.category || 'TANSANIA · SANSIBAR'}
               </p>
+              <h1 className="font-headline text-3xl md:text-7xl lg:text-8xl font-normal text-white leading-tight tracking-tighter uppercase">
+                {pkg.title || 'Traumabenteuer in Afrika'}
+              </h1>
             </div>
             
-            <div className="flex flex-wrap gap-3 justify-center md:justify-start">
-               <div className="flex items-center gap-3 bg-white/5 backdrop-blur-xl px-5 py-3.5 rounded-2xl border border-white/10 text-white font-bold text-[10px] uppercase tracking-widest">
-                 <Clock className="w-4 h-4 text-primary" /> {pkg.durationDays} Tage
-               </div>
-               <div className="flex items-center gap-3 bg-primary px-5 py-3.5 rounded-2xl text-white font-bold text-[10px] uppercase tracking-widest shadow-xl">
-                 <Zap className="w-4 h-4 text-white" /> ab €{pkg.startingPrice?.toLocaleString()}
-               </div>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+               <Button 
+                 onClick={() => scrollTo('inquiry')}
+                 size="lg"
+                 className="w-full sm:w-auto rounded-lg h-12 md:h-14 px-10 bg-[#C9A876] text-white hover:bg-[#B89765] border-none font-bold text-[11px] uppercase tracking-widest shadow-2xl"
+               >
+                 Jetzt Anfragen
+               </Button>
+               <Button 
+                 onClick={() => scrollTo('itinerary')}
+                 variant="outline"
+                 size="lg"
+                 className="w-full sm:w-auto rounded-lg h-12 md:h-14 px-10 bg-white/5 backdrop-blur-md text-white border-white/40 hover:bg-white/10 hover:border-white font-bold text-[11px] uppercase tracking-widest transition-all"
+               >
+                 <MapIcon className="w-4 h-4 mr-2" /> Reiseroute
+               </Button>
             </div>
           </motion.div>
         </div>
@@ -127,7 +138,11 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
             ))}
           </div>
           <div className="hidden lg:flex items-center gap-6">
-            <Button onClick={() => scrollTo('inquiry')} className="rounded-xl h-11 px-8 text-[10px] font-black uppercase tracking-widest shadow-xl border-none">JETZT ANFRAGEN</Button>
+            <div className="text-right">
+              <p className="text-[8px] font-black uppercase text-muted-foreground leading-none mb-1">Preise ab</p>
+              <p className="text-xs font-black text-secondary">€{pkg.startingPrice?.toLocaleString()}</p>
+            </div>
+            <Button onClick={() => scrollTo('inquiry')} className="rounded-xl h-11 px-8 text-[10px] font-black uppercase tracking-widest shadow-xl border-none">ANFRAGE SENDEN</Button>
           </div>
         </div>
       </div>
@@ -140,7 +155,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
             {/* Section: Overview */}
             <section ref={overviewRef} className="space-y-10 scroll-mt-32">
               <div className="space-y-6">
-                <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] block">Das Master-Programm</span>
+                <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] block">Expeditions-Check</span>
                 <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary leading-[0.9] uppercase tracking-tighter">
                   VOM NIL ZU DEN <br /><span className="text-primary">SAVANNEN TANSANIAS</span>
                 </h2>
@@ -245,7 +260,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
                     <div className="absolute bottom-8 left-8 right-8 text-white">
                       <p className="text-primary font-bold text-[9px] uppercase tracking-widest mb-2">Signature Lodge</p>
-                      <h4 className="text-2xl font-headline font-bold uppercase">Serengeti Heritage</h4>
+                      <h4 className="text-2xl font-headline font-bold uppercase">Handverlesene Auswahl</h4>
                     </div>
                   </div>
                 ))}
