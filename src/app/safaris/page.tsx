@@ -59,7 +59,8 @@ export default function SafarisPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-secondary/20" />
         </div>
         
-        <div className="container relative z-10 mx-auto px-4 text-center space-y-6">
+        {/* Added top padding to content container */}
+        <div className="container relative z-10 mx-auto px-4 text-center space-y-6 pt-16 md:pt-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -221,6 +222,7 @@ export default function SafarisPage() {
               className="object-cover"
               data-ai-hint={elephantsSunset?.imageHint || "elephants sunset"}
             />
+            {/* Reduced opacity of overlay from 40 to 10 for very light effect */}
             <div className="absolute inset-0 bg-black/10" />
             <div className="absolute inset-0 flex items-center justify-center p-10 text-center">
               <div className="p-6 md:p-10 bg-white/10 backdrop-blur-xl border border-white/20 rounded-[2.5rem] max-w-xs shadow-2xl">
