@@ -11,7 +11,8 @@ import {
   Award,
   Sparkles,
   ArrowRight,
-  Camera
+  Camera,
+  Play
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -210,7 +211,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Guides Section */}
+      {/* Safari Guides Section - Refined UI/UX */}
       <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col md:flex-row items-end justify-between mb-12 md:mb-16 gap-6">
@@ -232,7 +233,7 @@ export default function AboutPage() {
                 transition={{ delay: i * 0.05 }}
                 className="group flex flex-col items-center text-center p-4 md:p-6 bg-white rounded-[1.5rem] md:rounded-[2rem] border border-border/50 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-500"
               >
-                <div className="relative w-16 h-16 md:w-24 md:h-24 rounded-full overflow-hidden mb-4 md:mb-6 border-2 border-muted transition-colors shadow-inner">
+                <div className="relative w-16 h-16 md:w-24 md:h-24 rounded-full overflow-hidden mb-4 md:mb-6 border-2 border-muted shadow-inner">
                   <Image src={guide.img} alt={guide.name} fill className="object-cover" />
                 </div>
                 <h4 className="text-xs md:text-sm text-secondary uppercase leading-tight mb-1">{guide.name}</h4>
@@ -244,50 +245,52 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* FINAL LIGHT CTA */}
-      <section className="py-16 md:py-32 bg-[#FDF7F2] relative overflow-hidden mx-4 md:mx-10 rounded-[2rem] md:rounded-[5rem] mb-12 shadow-2xl border border-border/50">
+      {/* FINAL CINEMATIC CTA - YouTube Embed Integration */}
+      <section className="py-16 md:py-32 bg-[#FDF7F2] relative overflow-hidden mx-4 md:mx-10 rounded-[2.5rem] md:rounded-[5rem] mb-12 shadow-2xl border border-border/50">
         <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         <div className="container relative z-10 mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="max-w-4xl mx-auto space-y-8 md:space-y-12"
+            className="max-w-5xl mx-auto space-y-12 md:space-y-16"
           >
             <div className="space-y-4">
               <h2 className="text-secondary uppercase text-3xl md:text-6xl tracking-tighter leading-none">
                 Willkommen im <br /><span className="text-primary">Herzen Afrikas</span>
               </h2>
-              <p className="text-secondary/60 text-xs md:text-sm font-bold uppercase tracking-widest max-w-2xl mx-auto">
+              <p className="text-secondary/60 text-[10px] md:text-sm font-bold uppercase tracking-[0.4em] max-w-2xl mx-auto">
                 Dort, wo die Savanne niemals schläft und Ihre Träume Wirklichkeit werden.
               </p>
             </div>
 
-            <a href="https://youtu.be/uVilAKUc8zE" target="_blank" rel="noopener noreferrer" className="block w-full max-w-3xl mx-auto group">
-              <div className="relative aspect-video w-full rounded-[1.5rem] md:rounded-[3.5rem] overflow-hidden bg-muted border border-border shadow-2xl cursor-pointer">
-                <Image 
-                  src="https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1200" 
-                  alt="Kilimandscharo Aufstieg" 
-                  fill 
-                  className="object-cover opacity-80 group-hover:scale-105 transition-transform duration-1000"
-                  data-ai-hint="mount kilimanjaro"
+            {/* Embedded High-Prestige Video Asset */}
+            <div className="w-full max-w-4xl mx-auto">
+              <div className="relative aspect-video w-full rounded-[2rem] md:rounded-[3.5rem] overflow-hidden bg-secondary shadow-[0_30px_100px_rgba(0,0,0,0.2)] border-8 border-white group">
+                <iframe
+                  src="https://www.youtube.com/embed/uVilAKUc8zE?autoplay=0&rel=0&modestbranding=1"
+                  title="Kilimandscharo Expedition"
+                  className="absolute inset-0 w-full h-full border-none"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
                 />
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-                  <div className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-primary flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
-                    <Camera className="w-8 h-8 md:w-12 md:h-12 text-white fill-current" />
+                {/* Floating Video Badge */}
+                <div className="absolute top-6 left-6 pointer-events-none">
+                  <div className="flex items-center gap-2 px-4 py-2 bg-black/40 backdrop-blur-md rounded-full border border-white/10">
+                    <Play className="w-3 h-3 text-primary fill-primary" />
+                    <span className="text-[8px] font-black text-white uppercase tracking-[0.2em]">Live Expedition Registry</span>
                   </div>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-white drop-shadow-md">Kilimandscharo Video</p>
                 </div>
               </div>
-            </a>
+            </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Link href="/trip-planner" className="w-full sm:w-auto">
-                <Button size="lg" className="w-full rounded-xl px-12 h-11 md:h-14 font-black text-[10px] uppercase tracking-[0.3em] shadow-2xl group border-none">
+                <Button size="lg" className="w-full rounded-xl px-12 h-12 md:h-16 font-black text-[10px] uppercase tracking-[0.3em] shadow-2xl group border-none">
                   Reise Planen <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
-              <Link href="/contact" className="text-[10px] font-black uppercase tracking-[0.4em] text-secondary/60 hover:text-primary transition-colors py-4">
+              <Link href="/contact" className="text-[10px] font-black uppercase tracking-[0.4em] text-secondary/60 hover:text-primary transition-colors py-4 px-6 rounded-full border border-border/50 hover:border-primary/20 bg-white/50 backdrop-blur-sm shadow-sm">
                 Experten sprechen
               </Link>
             </div>
