@@ -20,12 +20,21 @@ import {
   Mountain,
   Calendar,
   Plane,
-  FileText
+  FileText,
+  Heart,
+  ChevronLeft
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { 
+  Carousel, 
+  CarouselContent, 
+  CarouselItem, 
+  CarouselNext, 
+  CarouselPrevious 
+} from "@/components/ui/carousel";
 import { cn } from '@/lib/utils';
 import { ContactSection } from '@/components/shared/ContactSection';
 import { AiCTA } from '@/components/sections/AiCTA';
@@ -35,6 +44,24 @@ const navItems = [
   { id: 'itinerary', label: 'Reiseverlauf' },
   { id: 'hotels', label: 'Unterkünfte' },
   { id: 'inquiry', label: 'Anfrage' }
+];
+
+const highlights = [
+  {
+    title: "Serengeti-Safari",
+    desc: "Erleben Sie die große Tierwanderung und beobachten Sie die Big Five in ihrer natürlichen Umgebung",
+    icon: Compass
+  },
+  {
+    title: "Ngorongoro-Krater",
+    desc: "Entdecken Sie das achte Weltwunder und seine einzigartige Konzentration an Wildtieren",
+    icon: Mountain
+  },
+  {
+    title: "Luxus-Lodges",
+    desc: "Übernachten Sie in handverlesenen Boutique-Lodges mit atemberaubenden Ausblicken",
+    icon: Heart
+  }
 ];
 
 interface PackageDetailClientProps {
@@ -124,7 +151,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         </div>
       </section>
 
-      {/* 02 STICKY NAVIGATION MANIFESTO - Moved immediately after Hero */}
+      {/* 02 STICKY NAVIGATION MANIFESTO */}
       <div className="sticky top-0 z-[40] bg-white/95 backdrop-blur-xl border-b shadow-sm">
         <div className="container mx-auto px-4 flex items-center justify-between h-14 md:h-20 max-w-7xl">
           <div className="flex gap-4 md:gap-12 h-full overflow-x-auto no-scrollbar">
@@ -180,7 +207,6 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
             
-            {/* Left Column: Storytelling */}
             <div className="lg:col-span-7 space-y-10">
               <div className="space-y-6">
                 <div className="inline-block bg-[#C9A876] text-white px-5 py-2 rounded-lg text-[11px] font-black uppercase tracking-[0.2em] shadow-lg">
@@ -204,9 +230,6 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                 <p>
                   Eine außergewöhnliche Reise durch die endlose Serengeti, den majestätischen Ngorongoro-Krater und die paradiesischen Strände Sansibars. Erleben Sie Afrikas wilde Schönheit in exklusiven Lodges und unvergesslichen Momenten.
                 </p>
-                <p>
-                  Diese handverlesene Safari verbindet die atemberaubende Tierwelt der Serengeti mit der Romantik Sansibars. In exklusiven Boutique-Lodges erleben Sie afrikanische Gastfreundschaft auf höchstem Niveau. Jeder Tag ist individuell gestaltet – für Paare, die das Besondere suchen, und für alle, die Afrika mit allen Sinnen erleben möchten.
-                </p>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -221,7 +244,6 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
               </div>
             </div>
 
-            {/* Right Column: Master Card */}
             <div className="lg:col-span-5 relative">
               <div className="sticky top-32">
                 <Card className="rounded-[2rem] border-none bg-[#FDF7F2] p-10 shadow-2xl relative overflow-hidden">
@@ -246,14 +268,10 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                         <p className="text-secondary font-black text-sm uppercase">Exklusive Gruppen:</p>
                         <p className="text-muted-foreground text-xs font-bold uppercase tracking-widest">Maximal 6 Teilnehmer pro Termin</p>
                       </div>
-                      <div className="space-y-1">
-                        <p className="text-secondary font-black text-sm uppercase">Reisezeit:</p>
-                        <p className="text-muted-foreground text-xs font-bold uppercase tracking-widest">2026-2027</p>
-                      </div>
                     </div>
 
                     <div className="flex flex-wrap gap-2">
-                      {["Geführte Erlebnisreisen", "Kombinierbar", "Ideal für Kleingruppen", "Begrenzte Plätze verfügbar", "Garantierte Durchführung"].map((tag, i) => (
+                      {["Geführte Erlebnisreisen", "Ideal für Kleingruppen", "Garantierte Durchführung"].map((tag, i) => (
                         <Badge key={i} variant="outline" className="bg-white/50 border-border/40 text-muted-foreground/80 font-bold text-[8px] uppercase px-3 py-1">
                           {tag}
                         </Badge>
@@ -268,14 +286,9 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                         </div>
                         <p className="text-[9px] font-bold text-muted-foreground/60 uppercase">pro Person</p>
                       </div>
-                      <div className="space-y-3 w-full md:w-auto">
-                        <Button onClick={() => scrollTo('inquiry')} className="w-full rounded-lg h-12 px-8 bg-[#C9A876] text-white hover:bg-secondary font-black text-[10px] uppercase tracking-widest border-none shadow-xl">
-                          JETZT ANFRAGEN
-                        </Button>
-                        <Button variant="outline" className="w-full rounded-lg h-12 px-8 bg-white border-secondary text-secondary font-black text-[10px] uppercase tracking-widest flex items-center justify-center gap-2">
-                          <FileText className="w-4 h-4" /> Reiseplan als PDF
-                        </Button>
-                      </div>
+                      <Button onClick={() => scrollTo('inquiry')} className="w-full md:w-auto rounded-lg h-12 px-8 bg-[#C9A876] text-white hover:bg-secondary font-black text-[10px] uppercase tracking-widest border-none shadow-xl">
+                        ANFRAGEN
+                      </Button>
                     </div>
                   </div>
                 </Card>
@@ -286,8 +299,53 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         </div>
       </section>
 
-      {/* 05 CONTENT REGIONS */}
-      <div className="container mx-auto px-4 max-w-7xl pb-32">
+      {/* 05 DIE HÖHEPUNKTE IHRER REISE (HIGHLIGHTS SLIDER) */}
+      <section className="py-16 md:py-24 bg-[#FDF7F2] border-y border-border/40">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tighter">
+              Die Höhepunkte Ihrer Reise
+            </h2>
+          </div>
+
+          <div className="relative">
+            <Carousel opts={{ align: "start", loop: true }} className="w-full">
+              <CarouselContent className="-ml-4 md:-ml-6">
+                {highlights.map((h, i) => (
+                  <CarouselItem key={i} className="pl-4 md:pl-6 basis-full md:basis-1/3">
+                    <Card className="h-full border-none shadow-sm bg-white rounded-[1.5rem] md:rounded-[2rem] overflow-hidden group hover:shadow-xl transition-all duration-500">
+                      <CardContent className="p-8 md:p-12 flex flex-col items-center text-center space-y-6">
+                        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#FDF7F2] border border-[#F0EBE0]/50 flex items-center justify-center shrink-0 shadow-inner group-hover:bg-[#C9A876] transition-colors duration-500">
+                          <h.icon className="w-8 h-8 md:w-10 md:h-10 text-[#C9A876] group-hover:text-white transition-colors" />
+                        </div>
+                        <div className="space-y-3">
+                          <h4 className="font-headline text-xl md:text-2xl font-bold text-secondary uppercase tracking-tight leading-tight">
+                            {h.title}
+                          </h4>
+                          <p className="text-[10px] md:text-sm text-muted-foreground font-bold uppercase tracking-widest leading-relaxed opacity-80">
+                            {h.desc}
+                          </p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="flex justify-center items-center gap-4 mt-10 md:mt-12">
+                <CarouselPrevious className="static translate-y-0 h-12 w-12 rounded-full border-border bg-white text-secondary hover:bg-[#C9A876] hover:text-white transition-all shadow-md">
+                  <ChevronLeft className="w-6 h-6" />
+                </CarouselPrevious>
+                <CarouselNext className="static translate-y-0 h-12 w-12 rounded-full border-border bg-white text-secondary hover:bg-[#C9A876] hover:text-white transition-all shadow-md">
+                  <ChevronRight className="w-6 h-6" />
+                </CarouselNext>
+              </div>
+            </Carousel>
+          </div>
+        </div>
+      </section>
+
+      {/* 06 CONTENT REGIONS */}
+      <div className="container mx-auto px-4 max-w-7xl pb-32 pt-16 md:pt-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
           
           <main className="lg:col-span-8 space-y-24 md:space-y-40">
@@ -333,10 +391,6 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                             <p className="text-sm md:text-lg text-secondary font-bold leading-relaxed uppercase tracking-tight">
                               {day.desc}
                             </p>
-                            <div className="pt-6 flex gap-4">
-                              <Badge variant="outline" className="rounded-lg border-muted px-3 py-1 font-black text-[8px] uppercase text-muted-foreground">Premium Protocol</Badge>
-                              <Badge variant="outline" className="rounded-lg border-muted px-3 py-1 font-black text-[8px] uppercase text-muted-foreground">Private Expert</Badge>
-                            </div>
                           </div>
                           <div className="md:col-span-5 relative aspect-video md:aspect-auto min-h-[300px] bg-muted">
                             {day.img && <Image src={day.img} alt={day.title} fill className="object-cover" />}
