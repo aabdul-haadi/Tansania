@@ -31,7 +31,7 @@ const steps = [
 
 export function ProcessSection() {
   return (
-    <section className="py-12 md:py-24 bg-[#FDF7F2] overflow-hidden">
+    <section className="pt-6 pb-12 md:pt-12 md:pb-24 bg-[#FDF7F2] overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
         {/* Standardized Header Registry - Center Aligned */}
         <div className="text-center mb-10 md:mb-16 space-y-2">
@@ -50,7 +50,7 @@ export function ProcessSection() {
             transition={{ delay: 0.1 }}
             className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tighter leading-none"
           >
-            So einfach <br className="hidden md:block" /> geht&apos;s
+            So einfach geht&apos;s
           </motion.h2>
         </div>
 
