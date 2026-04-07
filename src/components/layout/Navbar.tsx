@@ -80,10 +80,7 @@ export function Navbar() {
     <header 
       className={cn(
         "top-0 w-full z-[100] transition-all duration-500",
-        // POSITIONING: Fixed on mobile (for sticky behavior), Absolute on desktop (to scroll away)
         "fixed md:absolute",
-        // RESPONSIVE STICKY HANDLING: 
-        // Mobile hides/shows via translate-y. Desktop stays in place (md:translate-y-0).
         (!isVisible && !isOpen) ? "-translate-y-full md:translate-y-0" : "translate-y-0",
         isScrolled ? "py-3" : "py-6 md:py-8"
       )}
@@ -108,11 +105,11 @@ export function Navbar() {
             />
             {/* Brand Name Text: Visible on phone, but hidden below 330px width */}
             <div className="hidden min-[330px]:flex items-baseline gap-1 md:gap-1.5">
-              <span className="font-headline font-black uppercase tracking-tighter whitespace-nowrap text-sm sm:text-lg md:text-2xl">
+              <span className="font-headline font-black uppercase tracking-tighter whitespace-nowrap text-xs sm:text-base md:text-xl lg:text-2xl">
                 Tansania
               </span>
               <span className={cn(
-                "font-headline font-black uppercase tracking-tighter whitespace-nowrap text-sm sm:text-lg md:text-2xl transition-colors duration-500",
+                "font-headline font-black uppercase tracking-tighter whitespace-nowrap text-xs sm:text-base md:text-xl lg:text-2xl transition-colors duration-500",
                 isScrolled ? "text-primary" : "text-white"
               )}>
                 Reiseabenteuer
