@@ -79,11 +79,8 @@ export function ContactSection() {
           <div className="w-full lg:w-[35%] bg-[#FDF7F2] p-8 md:p-12 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-border/40">
             <div className="space-y-12">
               <div className="space-y-4">
-                <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center shadow-sm border border-[#F0EBE0]">
-                  <Sparkles className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-xl md:text-2xl font-headline font-bold text-secondary uppercase tracking-tight">
-                  Premium <br />Beratung
+                <h3 className="text-xl md:text-2xl font-headline font-bold text-secondary uppercase tracking-tight whitespace-nowrap">
+                  Premium Beratung
                 </h3>
                 <p className="text-[11px] font-bold text-muted-foreground uppercase tracking-widest leading-relaxed">
                   Berlin Head Office • Safari Ops
