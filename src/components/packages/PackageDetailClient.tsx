@@ -1,9 +1,10 @@
+
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Clock, 
   MapPin, 
@@ -24,7 +25,8 @@ import {
   ChevronLeft,
   Waves,
   Camera,
-  Bird
+  Bird,
+  ChevronDown
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -115,6 +117,13 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
   };
 
   if (!mounted) return null;
+
+  // Chunk days into groups of 5 for the new itinerary protocol
+  const itineraryDays = pkg.itineraryDays || [];
+  const dayGroups = [];
+  for (let i = 0; i < itineraryDays.length; i += 5) {
+    dayGroups.push(itineraryDays.slice(i, i + 5));
+  }
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-bold">
@@ -243,7 +252,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                 />
               </div>
 
-              <div className="space-y-8 text-muted-foreground font-bold leading-relaxed text-sm md:text-lg uppercase tracking-widest opacity-80">
+              <div className="space-y-8 text-muted-foreground font-bold leading-relaxed text-sm md:text-lg uppercase tracking-widest opacity-80 border-l-4 border-primary/20 pl-8">
                 <p>
                   Eine außergewöhnliche Reise durch die endlose Serengeti, den majestätischen Ngorongoro-Krater und die paradiesischen Strände Sansibars. Erleben Sie Afrikas wilde Schönheit in exklusiven Lodges und unvergesslichen Momenten.
                 </p>
@@ -266,7 +275,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                 <Card className="rounded-[2rem] border-none bg-[#FDF7F2] p-10 shadow-2xl relative overflow-hidden">
                   <div className="space-y-10 relative z-10">
                     <div className="space-y-6">
-                      <p className="text-[#C9A876] font-black uppercase tracking-[0.3em] text-[10px]">Tansania</p>
+                      <p className="text-[#C9A876] font-black uppercase tracking-[0.3em] text-[10px]">Master Registry</p>
                       <h3 className="font-headline text-2xl md:text-4xl font-normal text-secondary uppercase leading-none tracking-tighter">
                         {pkg.title}
                       </h3>
@@ -279,16 +288,16 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                       </div>
                       <div className="space-y-1">
                         <p className="text-secondary font-black text-sm uppercase">Unterkünfte:</p>
-                        <p className="text-muted-foreground text-xs font-bold uppercase tracking-widest">Mittelklassehotels, Tented Lodges mit Vollpension</p>
+                        <p className="text-muted-foreground text-xs font-bold uppercase tracking-widest">Handverlesene Tented Lodges & Boutique Hotels</p>
                       </div>
                       <div className="space-y-1">
                         <p className="text-secondary font-black text-sm uppercase">Exklusive Gruppen:</p>
-                        <p className="text-muted-foreground text-xs font-bold uppercase tracking-widest">Maximal 6 Teilnehmer pro Termin</p>
+                        <p className="text-muted-foreground text-xs font-bold uppercase tracking-widest">Privat-Safari mit eigenem Guide & Jeep</p>
                       </div>
                     </div>
 
                     <div className="flex flex-wrap gap-2">
-                      {["Geführte Erlebnisreisen", "Ideal für Kleingruppen", "Garantierte Durchführung"].map((tag, i) => (
+                      {["Signature Series", "Privat geführt", "Sicher Reisen"].map((tag, i) => (
                         <Badge key={i} variant="outline" className="bg-white/50 border-border/40 text-muted-foreground/80 font-bold text-[8px] uppercase px-3 py-1">
                           {tag}
                         </Badge>
@@ -316,7 +325,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         </div>
       </section>
 
-      {/* 05 DIE HÖHEPUNKTE IHRER REISE (HIGHLIGHTS SLIDER) */}
+      {/* 05 HIGHLIGHTS CAROUSEL */}
       <section className="py-8 md:py-16 bg-[#FDF7F2] border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-8 md:mb-12">
@@ -325,7 +334,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
             </h2>
           </div>
 
-          <div className="relative px-12 md:px-16">
+          <div className="relative px-4 md:px-12">
             <Carousel opts={{ align: "start", loop: true }} className="w-full">
               <CarouselContent className="-ml-4 md:-ml-6">
                 {highlights.map((h, i) => (
@@ -348,110 +357,149 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              
-              {/* Increased Arrow Sizes */}
-              <CarouselPrevious className="absolute -left-2 md:-left-4 h-14 w-14 md:h-16 md:w-16 rounded-full border-border bg-white text-secondary hover:bg-[#C9A876] hover:text-white transition-all shadow-md z-30">
-                <ChevronLeft className="w-8 h-8 md:w-10 md:h-10" />
-              </CarouselPrevious>
-              <CarouselNext className="absolute -right-2 md:-right-4 h-14 w-14 md:h-16 md:w-16 rounded-full border-border bg-white text-secondary hover:bg-[#C9A876] hover:text-white transition-all shadow-md z-30">
-                <ChevronRight className="w-8 h-8 md:w-10 md:h-10" />
-              </CarouselNext>
+              <CarouselPrevious className="hidden md:flex absolute -left-4 h-14 w-14 rounded-full border-border bg-white text-secondary hover:bg-[#C9A876] hover:text-white transition-all shadow-md z-30" />
+              <CarouselNext className="hidden md:flex absolute -right-4 h-14 w-14 rounded-full border-border bg-white text-secondary hover:bg-[#C9A876] hover:text-white transition-all shadow-md z-30" />
             </Carousel>
           </div>
         </div>
       </section>
 
-      {/* 06 CONTENT REGIONS */}
-      <div className="container mx-auto px-4 max-w-7xl pb-32 pt-16 md:pt-24">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
-          
-          <main className="lg:col-span-8 space-y-24 md:space-y-40">
-            {/* Detailed Itinerary */}
-            <section ref={itineraryRef} className="space-y-16 scroll-mt-32">
-              <div className="text-center space-y-4">
-                <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary uppercase tracking-tighter leading-none">Ihr Reiseverlauf</h2>
-                <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
-              </div>
-              
-              <div className="space-y-6">
-                <Accordion type="single" collapsible className="w-full space-y-4">
-                  {(pkg.itineraryDays || []).map((day: any, idx: number) => (
-                    <AccordionItem 
-                      key={idx} 
-                      value={`item-${idx}`}
-                      className="border-none bg-white rounded-[2rem] md:rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden"
-                    >
-                      <AccordionTrigger className="p-0 hover:no-underline [&>svg]:hidden group">
-                        <div className="flex flex-col md:flex-row w-full text-left">
-                          <div className="md:w-32 bg-secondary p-6 md:p-10 flex flex-col items-center justify-center text-white shrink-0 group-hover:bg-[#C9A876] transition-colors duration-500">
-                            <span className="text-[10px] font-black uppercase tracking-widest opacity-40 mb-1">Tag</span>
-                            <span className="text-4xl md:text-5xl font-black font-headline leading-none">{day.day || idx + 1}</span>
-                          </div>
-                          <div className="p-6 md:p-10 flex-grow flex items-center justify-between gap-6">
-                            <div className="space-y-2">
-                              <div className="flex items-center gap-2 text-primary font-black text-[8px] md:text-[9px] uppercase tracking-widest">
-                                <MapPin className="w-3.5 h-3.5" /> {day.location}
-                              </div>
-                              <h4 className="font-headline text-lg md:text-2xl font-bold text-secondary uppercase tracking-tight group-hover:text-primary transition-colors">
-                                {day.title}
-                              </h4>
-                            </div>
-                            <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center shrink-0 group-data-[state=open]:rotate-90 transition-transform">
-                              <ChevronRight className="w-5 h-5 text-muted-foreground" />
-                            </div>
-                          </div>
-                        </div>
-                      </AccordionTrigger>
-                      <AccordionContent className="p-0 border-t border-border/50">
-                        <div className="grid grid-cols-1 md:grid-cols-12">
-                          <div className="md:col-span-7 p-8 md:p-12 space-y-6">
-                            <p className="text-sm md:text-lg text-secondary font-bold leading-relaxed uppercase tracking-tight">
-                              {day.desc}
-                            </p>
-                          </div>
-                          <div className="md:col-span-5 relative aspect-video md:aspect-auto min-h-[300px] bg-muted">
-                            {day.img && <Image src={day.img} alt={day.title} fill className="object-cover" />}
-                          </div>
-                        </div>
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              </div>
-            </section>
+      {/* 06 TIMELINE ITINERARY PROTOCOL */}
+      <section ref={itineraryRef} className="py-16 md:py-32 bg-white scroll-mt-20">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="text-center mb-12 md:mb-20 space-y-4">
+            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary uppercase tracking-tighter">Ihr Reiseverlauf</h2>
+            <p className="text-muted-foreground font-normal text-xs md:text-sm uppercase tracking-widest max-w-xl mx-auto opacity-80">
+              Eine sorgfältig kuratierte Route durch die schönsten Regionen Tansanias
+            </p>
+          </div>
 
-            {/* Accommodations */}
-            <section ref={hotelsRef} className="space-y-12 scroll-mt-32">
-              <div className="flex flex-col md:flex-row justify-between items-end gap-6">
-                <div>
-                  <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] block mb-2">Prestige Standard</span>
-                  <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary uppercase leading-[0.9] tracking-tighter">DIE <br /><span className="text-primary">UNTERKÜNFTE</span></h2>
+          <Accordion type="multiple" defaultValue={["group-0"]} className="space-y-8">
+            {dayGroups.map((group, gIdx) => {
+              const startDay = gIdx * 5 + 1;
+              const endDay = startDay + group.length - 1;
+              
+              return (
+                <AccordionItem key={gIdx} value={`group-${gIdx}`} className="border-none">
+                  <AccordionTrigger className="p-0 hover:no-underline [&>svg]:hidden group">
+                    <div className="relative w-full aspect-[21/6] md:aspect-[21/3] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden bg-secondary flex items-center px-6 md:px-12 group-hover:shadow-2xl transition-all duration-500">
+                      <Image 
+                        src={`https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200`}
+                        alt="Expedition Section"
+                        fill
+                        className="object-cover opacity-20 brightness-50"
+                      />
+                      <div className="relative z-10 flex items-center justify-between w-full text-white">
+                        <div className="text-left">
+                          <h3 className="font-headline text-xl md:text-3xl font-normal uppercase tracking-tighter">
+                            SAFARI ABENTEUER • <span className="text-primary font-black">Tag {startDay}-{endDay}</span>
+                          </h3>
+                          <p className="text-[9px] md:text-xs font-bold uppercase tracking-[0.3em] opacity-60">Wildnis & Naturwunder</p>
+                        </div>
+                        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 flex items-center justify-center group-data-[state=open]:rotate-180 transition-transform bg-white/5">
+                          <ChevronDown className="w-5 h-5 text-white" />
+                        </div>
+                      </div>
+                    </div>
+                  </AccordionTrigger>
+                  
+                  <AccordionContent className="pt-12 pb-4 px-4 md:px-8 space-y-12 relative overflow-visible">
+                    {/* Vertical Connector Line */}
+                    <div className="absolute left-[35px] md:left-[51px] top-12 bottom-12 w-px bg-border/60 z-0" />
+                    
+                    {group.map((day, dIdx) => (
+                      <div key={dIdx} className="relative z-10 flex gap-5 md:gap-10">
+                        {/* Day Circle Indicator */}
+                        <div className="shrink-0">
+                          <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-[#FDF7F2] border border-[#F0EBE0] flex items-center justify-center shadow-sm relative z-10">
+                            <span className="text-xs md:text-lg font-black text-[#C9A876]">{startDay + dIdx}</span>
+                          </div>
+                        </div>
+
+                        {/* Day Content Card */}
+                        <div className="flex-1 bg-white rounded-[1.5rem] md:rounded-[2.5rem] border border-border/40 p-6 md:p-10 shadow-sm hover:shadow-xl transition-all duration-500 group/card">
+                          <div className="flex flex-col lg:flex-row justify-between gap-6 md:gap-10">
+                            <div className="flex-1 space-y-4 md:space-y-6">
+                              <div className="flex flex-wrap items-center gap-3">
+                                <h4 className="font-headline text-xl md:text-3xl font-normal text-secondary uppercase tracking-tight leading-none group-hover/card:text-primary transition-colors">
+                                  {day.title}
+                                </h4>
+                                <Badge className="bg-[#C9A876]/10 text-[#C9A876] border-none text-[8px] md:text-[10px] font-black uppercase px-2.5 py-1">
+                                  {day.location}
+                                </Badge>
+                              </div>
+                              <p className="text-muted-foreground font-bold text-xs md:text-sm leading-relaxed uppercase tracking-widest opacity-70">
+                                {day.desc}
+                              </p>
+                              <div className="pt-2 flex items-center gap-2 text-[9px] md:text-[10px] font-black text-secondary uppercase tracking-[0.2em] group-hover/card:text-primary transition-colors cursor-pointer">
+                                DETAILS ANZEIGEN <ChevronRight className="w-3 h-3 rotate-90 text-primary" />
+                              </div>
+                            </div>
+                            
+                            {/* Visual Preview */}
+                            <div className="shrink-0 w-full lg:w-56 aspect-[16/9] lg:aspect-square relative rounded-[1rem] md:rounded-[1.5rem] overflow-hidden shadow-xl border border-border/20">
+                              <Image 
+                                src={day.img || `https://picsum.photos/seed/day-${startDay + dIdx}/600/600`} 
+                                alt={day.title} 
+                                fill 
+                                className="object-cover transition-transform duration-1000 group-hover/card:scale-110"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </AccordionContent>
+                </AccordionItem>
+              );
+            })}
+          </Accordion>
+        </div>
+      </section>
+
+      {/* 07 ACCOMMODATIONS */}
+      <section ref={hotelsRef} className="py-16 md:py-32 bg-[#FDF7F2] scroll-mt-20 border-y border-border/40">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-16">
+            <div>
+              <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] block mb-2">Signature Lodging</span>
+              <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary uppercase leading-[0.9] tracking-tighter">DIE <br /><span className="text-primary">UNTERKÜNFTE</span></h2>
+            </div>
+            <p className="text-[10px] text-muted-foreground font-black uppercase tracking-widest max-w-[200px] border-l-2 border-primary/20 pl-4 hidden md:block">
+              Exklusive Camps & Boutique Hotels mit höchstem Standard.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            {[1, 2].map(i => (
+              <div key={i} className="group relative aspect-[4/5] rounded-[2.5rem] md:rounded-[3rem] overflow-hidden shadow-2xl bg-muted border border-border/50">
+                <img 
+                  src={`https://picsum.photos/seed/lodge-${i}/800/1000`} 
+                  alt="Lodge Preview" 
+                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/20 to-transparent" />
+                <div className="absolute bottom-10 left-10 right-10 text-white space-y-3">
+                  <p className="text-primary font-black text-[10px] uppercase tracking-[0.4em]">Signature Collection</p>
+                  <h4 className="text-2xl md:text-4xl font-headline font-normal uppercase leading-tight tracking-tight">Luxury Savannah Sanctuary</h4>
+                  <div className="flex items-center gap-2 pt-2">
+                    <Star className="w-3 h-3 text-primary fill-primary" />
+                    <Star className="w-3 h-3 text-primary fill-primary" />
+                    <Star className="w-3 h-3 text-primary fill-primary" />
+                    <Star className="w-3 h-3 text-primary fill-primary" />
+                    <Star className="w-3 h-3 text-primary fill-primary" />
+                  </div>
                 </div>
               </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {[1, 2].map(i => (
-                  <div key={i} className="group relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-xl bg-muted">
-                    <img 
-                      src={`https://picsum.photos/seed/hotel-${i}/800/1000`} 
-                      alt="Lodge" 
-                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
-                    <div className="absolute bottom-8 left-8 right-8 text-white">
-                      <p className="text-primary font-bold text-[9px] uppercase tracking-widest mb-2">Signature Lodge</p>
-                      <h4 className="text-2xl font-headline font-bold uppercase">Handverlesene Auswahl</h4>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-          </main>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
 
+      {/* 08 CONVERSION HUB */}
       <AiCTA />
 
+      {/* 09 OFFICIAL REGISTRY INQUIRY */}
       <section ref={inquiryRef} className="scroll-mt-20">
         <ContactSection />
       </section>
