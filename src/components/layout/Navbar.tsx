@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -105,7 +106,8 @@ export function Navbar() {
                 !isScrolled && "brightness-110"
               )} 
             />
-            <div className="hidden sm:flex items-baseline gap-1 md:gap-1.5">
+            {/* Brand Name Text: Visible on phone, but hidden below 330px width */}
+            <div className="hidden min-[330px]:flex items-baseline gap-1 md:gap-1.5">
               <span className="font-headline font-black uppercase tracking-tighter whitespace-nowrap text-sm sm:text-lg md:text-2xl">
                 Tansania
               </span>

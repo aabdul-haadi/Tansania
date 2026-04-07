@@ -91,8 +91,8 @@ export default function SafarisPage() {
         </div>
       </section>
 
-      {/* Filter Stripe */}
-      <div className="bg-white border-b border-border/50 sticky top-14 md:top-20 z-40 shadow-sm">
+      {/* Filter Stripe - NON STICKY Protocol */}
+      <div className="bg-white border-b border-border/50">
         <div className="container mx-auto px-4 max-w-7xl h-14 md:h-16 flex items-center gap-4 overflow-x-auto no-scrollbar">
           {categories.map((cat) => (
             <button
