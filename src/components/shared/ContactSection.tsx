@@ -41,7 +41,7 @@ export function ContactSection() {
   ];
 
   return (
-    <section id="inquiry" className="py-16 md:py-24 bg-[#fdfcfb] relative overflow-hidden">
+    <section id="inquiry" className="py-12 md:py-24 bg-[#fdfcfb] relative overflow-hidden">
       {/* Dynamic Background Ornament */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none">
         <svg width="100%" height="100%" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
@@ -73,11 +73,11 @@ export function ContactSection() {
         </div>
 
         {/* Modern Compact Manifest Frame */}
-        <div className="bg-white rounded-[2.5rem] md:rounded-[3rem] shadow-sm border border-border/40 overflow-hidden flex flex-col lg:flex-row min-h-[600px] relative transition-all duration-500 hover:shadow-xl">
+        <div className="bg-white rounded-[2.5rem] md:rounded-[3rem] shadow-sm border border-border/40 overflow-hidden flex flex-col lg:flex-row min-h-[550px] md:min-h-[600px] relative transition-all duration-500 hover:shadow-xl">
           
           {/* Info Protocol Column - MODERN LIGHT THEME */}
           <div className="w-full lg:w-[35%] bg-[#FDF7F2] p-8 md:p-12 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-border/40">
-            <div className="space-y-12">
+            <div className="space-y-10 md:space-y-12">
               <div className="space-y-4">
                 <h3 className="text-xl md:text-2xl font-headline font-bold text-secondary uppercase tracking-tight whitespace-nowrap">
                   Premium Beratung
@@ -88,7 +88,7 @@ export function ContactSection() {
               </div>
 
               {/* Step Flow Protocol */}
-              <div className="space-y-8">
+              <div className="space-y-6 md:space-y-8">
                 {steps.map((step, i) => (
                   <div key={i} className="flex items-center gap-5 group">
                     <div className="w-10 h-10 rounded-xl bg-white border border-[#F0EBE0] flex items-center justify-center shrink-0 shadow-sm group-hover:border-primary transition-all duration-500">
@@ -103,7 +103,7 @@ export function ContactSection() {
               </div>
             </div>
 
-            <div className="pt-12 space-y-6">
+            <div className="pt-10 md:pt-12 space-y-6">
               <div className="flex items-center gap-4 group cursor-pointer">
                 <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center border border-[#F0EBE0] group-hover:bg-primary group-hover:border-primary transition-all shadow-sm">
                   <Phone className="w-4 h-4 text-primary group-hover:text-white transition-colors" />
@@ -127,7 +127,7 @@ export function ContactSection() {
 
           {/* Form Integration Frame */}
           <div className="flex-1 bg-white flex flex-col">
-            <div className="p-6 md:p-8 border-b border-border/40 flex items-center justify-between bg-white/50 backdrop-blur-sm sticky top-0 z-20">
+            <div className="p-5 md:p-8 border-b border-border/40 flex items-center justify-between bg-white/50 backdrop-blur-sm sticky top-0 z-20">
               <div className="flex items-center gap-3">
                 <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                 <span className="text-[10px] font-bold uppercase tracking-widest text-secondary">Registry Active</span>
@@ -158,15 +158,15 @@ export function ContactSection() {
               )}
             </div>
 
-            {/* Light Professional Trust Bar */}
-            <div className="p-6 bg-[#fdfcfb] border-t border-border/40 flex flex-wrap justify-center gap-8 md:gap-16">
+            {/* Optimized Trust Bar - Single Line Desktop / High Density Mobile */}
+            <div className="p-4 md:p-6 bg-[#fdfcfb] border-t border-border/40 flex flex-row items-center justify-center gap-3 md:gap-12 lg:gap-16">
               {[
                 { icon: CheckCircle2, label: "DSGVO KONFORM" },
                 { icon: ShieldCheck, label: "SSL VERSCHLÜSSELT" },
                 { icon: Globe, label: "OFFIZIELLE REGISTRY" }
               ].map((item, idx) => (
-                <div key={idx} className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-widest text-muted-foreground/60">
-                  <item.icon className="w-3.5 h-3.5 text-primary/40" />
+                <div key={idx} className="flex items-center gap-1.5 md:gap-2 text-[7px] md:text-[9px] font-bold uppercase tracking-widest text-muted-foreground/60 whitespace-nowrap">
+                  <item.icon className="w-3 h-3 md:w-3.5 md:h-3.5 text-primary/40 shrink-0" />
                   {item.label}
                 </div>
               ))}
