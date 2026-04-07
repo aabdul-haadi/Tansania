@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -34,11 +33,11 @@ export function ProcessSection() {
   return (
     <section className="py-12 md:py-24 bg-[#FDF7F2] overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
-        {/* Standardized Header Registry */}
-        <div className="text-left mb-10 md:mb-16 space-y-2">
+        {/* Standardized Header Registry - Center Aligned */}
+        <div className="text-center mb-10 md:mb-16 space-y-2">
           <motion.p 
-            initial={{ opacity: 0, x: -10 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.4em] text-muted-foreground"
           >
@@ -48,6 +47,7 @@ export function ProcessSection() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
             className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tighter leading-none"
           >
             So einfach <br className="hidden md:block" /> geht&apos;s
