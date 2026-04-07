@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -22,7 +21,10 @@ import {
   Plane,
   FileText,
   Heart,
-  ChevronLeft
+  ChevronLeft,
+  Waves,
+  Camera,
+  Bird
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -58,9 +60,24 @@ const highlights = [
     icon: Mountain
   },
   {
-    title: "Luxus-Lodges",
-    desc: "Übernachten Sie in handverlesenen Boutique-Lodges mit atemberaubenden Ausblicken",
-    icon: Heart
+    title: "Sansibar Strände",
+    desc: "Entspannen Sie an den kristallklaren Gewässern und weißen Sandstränden des Indischen Ozeans",
+    icon: Waves
+  },
+  {
+    title: "Maasai Kultur",
+    desc: "Tauchen Sie ein in die faszinierenden Traditionen und Lebensweisen des Maasai-Volkes",
+    icon: Users
+  },
+  {
+    title: "Ballon-Safari",
+    desc: "Schweben Sie bei Sonnenaufgang über die Savanne für einen unvergleichlichen Ausblick",
+    icon: Camera
+  },
+  {
+    title: "Vogelvielfalt",
+    desc: "Beobachten Sie hunderte exotische Vogelarten in den vielfältigen Ökosystemen",
+    icon: Bird
   }
 ];
 
@@ -300,15 +317,15 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
       </section>
 
       {/* 05 DIE HÖHEPUNKTE IHRER REISE (HIGHLIGHTS SLIDER) */}
-      <section className="py-16 md:py-24 bg-[#FDF7F2] border-y border-border/40">
+      <section className="py-8 md:py-16 bg-[#FDF7F2] border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="text-center mb-12 md:mb-16">
+          <div className="text-center mb-8 md:mb-12">
             <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tighter">
               Die Höhepunkte Ihrer Reise
             </h2>
           </div>
 
-          <div className="relative">
+          <div className="relative px-12 md:px-16">
             <Carousel opts={{ align: "start", loop: true }} className="w-full">
               <CarouselContent className="-ml-4 md:-ml-6">
                 {highlights.map((h, i) => (
@@ -331,14 +348,14 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <div className="flex justify-center items-center gap-4 mt-10 md:mt-12">
-                <CarouselPrevious className="static translate-y-0 h-12 w-12 rounded-full border-border bg-white text-secondary hover:bg-[#C9A876] hover:text-white transition-all shadow-md">
-                  <ChevronLeft className="w-6 h-6" />
-                </CarouselPrevious>
-                <CarouselNext className="static translate-y-0 h-12 w-12 rounded-full border-border bg-white text-secondary hover:bg-[#C9A876] hover:text-white transition-all shadow-md">
-                  <ChevronRight className="w-6 h-6" />
-                </CarouselNext>
-              </div>
+              
+              {/* Increased Arrow Sizes */}
+              <CarouselPrevious className="absolute -left-2 md:-left-4 h-14 w-14 md:h-16 md:w-16 rounded-full border-border bg-white text-secondary hover:bg-[#C9A876] hover:text-white transition-all shadow-md z-30">
+                <ChevronLeft className="w-8 h-8 md:w-10 md:h-10" />
+              </CarouselPrevious>
+              <CarouselNext className="absolute -right-2 md:-right-4 h-14 w-14 md:h-16 md:w-16 rounded-full border-border bg-white text-secondary hover:bg-[#C9A876] hover:text-white transition-all shadow-md z-30">
+                <ChevronRight className="w-8 h-8 md:w-10 md:h-10" />
+              </CarouselNext>
             </Carousel>
           </div>
         </div>
@@ -375,7 +392,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                               <div className="flex items-center gap-2 text-primary font-black text-[8px] md:text-[9px] uppercase tracking-widest">
                                 <MapPin className="w-3.5 h-3.5" /> {day.location}
                               </div>
-                              <h4 className="font-headline text-lg md:text-2xl font-bold text-secondary uppercase leading-tight tracking-tight group-hover:text-primary transition-colors">
+                              <h4 className="font-headline text-lg md:text-2xl font-bold text-secondary uppercase tracking-tight group-hover:text-primary transition-colors">
                                 {day.title}
                               </h4>
                             </div>
