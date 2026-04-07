@@ -24,6 +24,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
+import { AiCTA } from '@/components/sections/AiCTA';
 
 const benefits = [
   { 
@@ -79,7 +80,7 @@ export default function CareersPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen">
       {/* COMPACT DARK HERO */}
-      <header className="relative h-[45vh] md:h-[60vh] w-full overflow-hidden flex items-center justify-center bg-secondary">
+      <header className="relative pt-24 md:pt-32 pb-16 md:pb-24 bg-secondary border-b border-white/5 overflow-hidden flex items-center justify-center">
         <Image
           src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920"
           alt="Tansania Safari Karriere"
@@ -97,14 +98,11 @@ export default function CareersPage() {
             transition={{ duration: 0.8 }}
             className="space-y-4 md:space-y-6"
           >
-            <Badge className="bg-primary text-white border-none px-4 py-1.5 text-[8px] md:text-[10px] font-bold uppercase tracking-[0.4em] shadow-xl">
-              Werde Teil des Teams
-            </Badge>
-            <h1 className="text-white uppercase">
+            <h1 className="text-white uppercase leading-none tracking-tighter text-3xl md:text-6xl">
               Karriere bei <br />
               <span className="text-primary">Tansania Reiseabenteuer</span>
             </h1>
-            <p className="max-w-2xl mx-auto text-[9px] md:text-sm text-white/60 font-bold uppercase tracking-widest leading-relaxed">
+            <p className="max-w-2xl mx-auto text-[10px] md:text-sm text-white/60 font-bold uppercase tracking-widest leading-relaxed">
               Arbeiten mit Sinn. Reisen gestalten. Afrika erleben.
             </p>
           </motion.div>
@@ -114,9 +112,8 @@ export default function CareersPage() {
       {/* Benefits Grid */}
       <section className="py-12 md:py-24 container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12 md:mb-20">
-          <span className="text-primary font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px] mb-3 block">Deine Vorteile</span>
-          <h2 className="text-secondary uppercase">
-            Was wir dir bieten – <br /><span className="text-primary">Deine Vorteile auf einen Blick</span>
+          <h2 className="text-secondary uppercase text-3xl md:text-5xl tracking-tighter">
+            Was wir dir bieten – <br /><span className="text-primary">Deine Vorteile</span>
           </h2>
         </div>
 
@@ -153,8 +150,7 @@ export default function CareersPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <div>
-                <span className="text-primary font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px] mb-3 block">Match Check</span>
-                <h2 className="text-secondary uppercase">
+                <h2 className="text-secondary uppercase text-3xl md:text-5xl tracking-tighter">
                   Für wen ist das <br /><span className="text-primary">der richtige Ort?</span>
                 </h2>
               </div>
@@ -182,8 +178,7 @@ export default function CareersPage() {
       {/* Board */}
       <section className="py-16 md:py-24 container mx-auto px-4 max-w-5xl">
         <div className="text-center mb-12 md:mb-16">
-          <span className="text-primary font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px] mb-2 block">Offene Positionen</span>
-          <h2 className="text-secondary uppercase">Aktuelle <br /><span className="text-primary">Stellenangebote</span></h2>
+          <h2 className="text-secondary uppercase text-3xl md:text-5xl tracking-tighter">Aktuelle <br /><span className="text-primary">Stellenangebote</span></h2>
         </div>
 
         <div className="space-y-4">
@@ -216,7 +211,7 @@ export default function CareersPage() {
             <Mail className="w-48 h-48 text-secondary" />
           </div>
           <div className="max-w-2xl mx-auto space-y-6">
-            <h3 className="text-secondary uppercase">Nichts Passendes dabei?</h3>
+            <h3 className="text-secondary uppercase text-2xl md:text-4xl tracking-tighter">Nichts Passendes dabei?</h3>
             <p className="text-[10px] md:text-sm text-muted-foreground font-bold uppercase tracking-widest leading-relaxed opacity-80">
               Gerne kannst du auch eine Initiativbewerbung an uns schicken. Wir sind immer auf der Suche nach leidenschaftlichen Talenten.
             </p>
@@ -228,6 +223,8 @@ export default function CareersPage() {
           </div>
         </div>
       </section>
+
+      <AiCTA />
     </div>
   );
 }

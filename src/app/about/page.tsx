@@ -37,7 +37,7 @@ export default function AboutPage() {
   return (
     <div className="bg-background min-h-screen">
       {/* COMPACT DARK HERO */}
-      <header className="relative h-[45vh] md:h-[60vh] w-full overflow-hidden flex items-center justify-center bg-secondary">
+      <header className="relative pt-24 md:pt-32 pb-16 md:pb-24 w-full overflow-hidden flex items-center justify-center bg-secondary border-b border-white/5">
         <Image
           src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920"
           alt="Afrikanische Savanne"
@@ -55,11 +55,11 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             className="space-y-4 md:space-y-6"
           >
-            <h1 className="text-white mb-2">
+            <h1 className="text-white mb-2 leading-none tracking-tighter text-3xl md:text-6xl">
               Ihr Schlüssel zum <br />
               <span className="text-primary">Herzen Afrikas</span>
             </h1>
-            <p className="max-w-2xl mx-auto text-white/60 font-bold uppercase tracking-widest px-4 text-[10px] md:text-xs">
+            <p className="max-w-2xl mx-auto text-[10px] md:text-sm text-white/60 font-bold uppercase tracking-widest leading-relaxed">
               Wir verbinden den Nil mit der Savanne – durch Abenteuer, die weit über das Gewöhnliche hinausgehen.
             </p>
           </motion.div>
@@ -76,12 +76,11 @@ export default function AboutPage() {
             className="space-y-6"
           >
             <div>
-              <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-2 block">Unsere Vision</span>
-              <h2 className="text-secondary uppercase">
+              <h2 className="text-secondary uppercase text-2xl md:text-4xl tracking-tighter leading-none">
                 Mehr als nur ein <br /><span className="text-primary">Urlaub</span>
               </h2>
             </div>
-            <div className="space-y-6 text-muted-foreground font-medium leading-relaxed uppercase tracking-widest text-xs md:text-sm">
+            <div className="space-y-6 text-muted-foreground font-medium leading-relaxed text-xs md:text-sm uppercase tracking-widest">
               <p>
                 Träumen Sie von einer Reise, die tiefer geht? Eine Reise, die Sie in die Seele eines Kontinents eintauchen lässt, reich an unberührter Natur, pulsierenden Kulturen und atemberaubenden Abenteuern?
               </p>
@@ -144,8 +143,7 @@ export default function AboutPage() {
             </div>
             <div className="lg:col-span-7 space-y-6 md:space-y-10">
               <div>
-                <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-3 block">Der Visionär</span>
-                <h2 className="text-secondary uppercase">
+                <h2 className="text-secondary uppercase text-2xl md:text-4xl tracking-tighter leading-none">
                   Maßgeschneidert von <br /><span className="text-primary">Samson Kyashama</span>
                 </h2>
               </div>
@@ -182,8 +180,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col md:flex-row items-end justify-between mb-12 md:mb-16 gap-6">
             <div>
-              <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-2 block">Hinter den Kulissen</span>
-              <h2 className="text-secondary uppercase">Unser <span className="text-primary">Team</span></h2>
+              <h2 className="text-secondary uppercase text-3xl md:text-5xl tracking-tighter">Unser <span className="text-primary">Team</span></h2>
             </div>
             <p className="text-muted-foreground text-[10px] font-bold uppercase tracking-widest max-w-xs border-l-2 border-primary/20 pl-6 hidden md:block">
               Die Spezialisten in Berlin, die Ihre Träume in detaillierte Pläne verwandeln.
@@ -218,8 +215,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col md:flex-row items-end justify-between mb-12 md:mb-16 gap-6">
             <div>
-              <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-2 block">Die Experten im Busch</span>
-              <h2 className="text-secondary uppercase">Unsere <span className="text-primary">Safari Guides</span></h2>
+              <h2 className="text-secondary uppercase text-3xl md:text-5xl tracking-tighter">Unsere <span className="text-primary">Safari Guides</span></h2>
             </div>
             <p className="text-muted-foreground text-[10px] font-bold uppercase tracking-widest max-w-xs border-l-2 border-primary/20 pl-6 hidden md:block">
               Staatlich geprüfte Guides mit jahrelanger Erfahrung in der Wildnis Tansanias.
@@ -236,7 +232,7 @@ export default function AboutPage() {
                 transition={{ delay: i * 0.05 }}
                 className="group flex flex-col items-center text-center p-4 md:p-6 bg-white rounded-[1.5rem] md:rounded-[2rem] border border-border/50 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-500"
               >
-                <div className="relative w-16 h-16 md:w-24 md:h-24 rounded-full overflow-hidden mb-4 md:mb-6 border-2 border-muted group-hover:border-primary/20 transition-colors shadow-inner">
+                <div className="relative w-16 h-16 md:w-24 md:h-24 rounded-full overflow-hidden mb-4 md:mb-6 border-2 border-muted transition-colors shadow-inner">
                   <Image src={guide.img} alt={guide.name} fill className="object-cover" />
                 </div>
                 <h4 className="text-xs md:text-sm text-secondary uppercase leading-tight mb-1">{guide.name}</h4>
@@ -259,8 +255,7 @@ export default function AboutPage() {
             className="max-w-4xl mx-auto space-y-8 md:space-y-12"
           >
             <div className="space-y-4">
-              <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px]">Bereit für das Abenteuer?</span>
-              <h2 className="text-secondary uppercase leading-none">
+              <h2 className="text-secondary uppercase text-3xl md:text-6xl tracking-tighter leading-none">
                 Willkommen im <br /><span className="text-primary">Herzen Afrikas</span>
               </h2>
               <p className="text-secondary/60 text-xs md:text-sm font-bold uppercase tracking-widest max-w-2xl mx-auto">
@@ -268,7 +263,7 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <a href="https://youtu.be/uVilAKUc8zE?si=7BCNh94EgfEfQtMc" target="_blank" rel="noopener noreferrer" className="block w-full max-w-3xl mx-auto group">
+            <a href="https://youtu.be/uVilAKUc8zE" target="_blank" rel="noopener noreferrer" className="block w-full max-w-3xl mx-auto group">
               <div className="relative aspect-video w-full rounded-[1.5rem] md:rounded-[3.5rem] overflow-hidden bg-muted border border-border shadow-2xl cursor-pointer">
                 <Image 
                   src="https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1200" 
@@ -288,11 +283,11 @@ export default function AboutPage() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link href="/trip-planner" className="w-full sm:w-auto">
-                <Button size="lg" className="w-full rounded-xl px-12 h-11 md:h-14 font-bold text-[10px] uppercase tracking-[0.3em] shadow-2xl group border-none">
+                <Button size="lg" className="w-full rounded-xl px-12 h-11 md:h-14 font-black text-[10px] uppercase tracking-[0.3em] shadow-2xl group border-none">
                   Reise Planen <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
-              <Link href="/contact" className="text-[10px] font-bold uppercase tracking-[0.4em] text-secondary/60 hover:text-primary transition-colors py-4">
+              <Link href="/contact" className="text-[10px] font-black uppercase tracking-[0.4em] text-secondary/60 hover:text-primary transition-colors py-4">
                 Experten sprechen
               </Link>
             </div>

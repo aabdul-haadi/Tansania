@@ -24,6 +24,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
+import { AiCTA } from '@/components/sections/AiCTA';
 
 const requirements = [
   "Freude an Recherche und Interesse an Reisethemen",
@@ -93,7 +94,7 @@ export default function PartnerPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen">
       {/* COMPACT DARK HERO */}
-      <header className="relative h-[45vh] md:h-[60vh] w-full overflow-hidden flex items-center justify-center bg-secondary">
+      <header className="relative pt-24 md:pt-32 pb-16 md:pb-24 bg-secondary border-b border-white/5 overflow-hidden flex items-center justify-center">
         <Image
           src="https://images.unsplash.com/photo-1640109229792-a26a0ee366ff?q=80&w=1920"
           alt="Travel Advisor Career"
@@ -111,14 +112,11 @@ export default function PartnerPage() {
             transition={{ duration: 0.8 }}
             className="space-y-4 md:space-y-6"
           >
-            <Badge className="bg-primary text-white border-none px-4 py-1.5 text-[8px] font-bold uppercase tracking-[0.4em] shadow-xl">
-              Starten Sie Ihre Karriere
-            </Badge>
-            <h1 className="text-white uppercase">
+            <h1 className="text-white uppercase leading-none tracking-tighter text-3xl md:text-6xl">
               Werden Sie <br />
               <span className="text-primary">Reiseberater:in</span>
             </h1>
-            <p className="max-w-2xl mx-auto text-[9px] md:text-sm text-white/60 font-bold uppercase tracking-widest leading-relaxed">
+            <p className="max-w-2xl mx-auto text-[10px] md:text-sm text-white/60 font-bold uppercase tracking-widest leading-relaxed">
               Flexibel, unabhängig und mit Leidenschaft fürs Reisen!
             </p>
           </motion.div>
@@ -126,7 +124,7 @@ export default function PartnerPage() {
       </header>
 
       {/* Narrative Section */}
-      <section className="py-12 md:py-24 container mx-auto px-4 max-get-5xl">
+      <section className="py-12 md:py-24 container mx-auto px-4 max-w-5xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
@@ -135,8 +133,7 @@ export default function PartnerPage() {
             className="space-y-6 md:space-y-8"
           >
             <div>
-              <span className="text-primary font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px] block">Ihre Reise</span>
-              <h2 className="text-secondary uppercase">
+              <h2 className="text-secondary uppercase text-2xl md:text-4xl tracking-tighter leading-none">
                 Zu einer <br /><span className="text-primary">erfüllenden Karriere</span>
               </h2>
             </div>
@@ -170,8 +167,7 @@ export default function PartnerPage() {
       <section className="py-16 md:py-24 bg-white border-y border-border/50">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12 md:mb-20">
-            <span className="text-primary font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px] mb-3 block">Unser Support</span>
-            <h2 className="text-secondary uppercase">
+            <h2 className="text-secondary uppercase text-3xl md:text-5xl tracking-tighter">
               Ihre Vorteile <br /><span className="text-primary">bei uns</span>
             </h2>
           </div>
@@ -211,8 +207,7 @@ export default function PartnerPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <div>
-                <span className="text-primary font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px] mb-3 block">Transparenz</span>
-                <h2 className="text-secondary uppercase">
+                <h2 className="text-secondary uppercase text-3xl md:text-5xl tracking-tighter">
                   Das sollten <br /><span className="text-primary">Sie wissen</span>
                 </h2>
               </div>
@@ -240,24 +235,7 @@ export default function PartnerPage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-32 container mx-auto px-4 max-w-4xl text-center">
-        <div className="space-y-8">
-          <div className="w-16 h-16 rounded-[1.5rem] bg-muted mx-auto flex items-center justify-center border border-border shadow-inner">
-            <Compass className="w-8 h-8 text-primary" />
-          </div>
-          <h2 className="text-secondary uppercase">
-            Bereit für den <br /><span className="text-primary">nächsten Schritt?</span>
-          </h2>
-          <p className="text-muted-foreground font-black text-xs md:text-sm uppercase tracking-widest leading-relaxed max-w-2xl mx-auto opacity-80">
-            Werden Sie Teil unseres Teams und gestalten Sie unvergessliche Reiseerlebnisse in Afrika. Wir freuen uns auf Sie!
-          </p>
-          <div className="pt-10">
-            <Button className="rounded-xl px-12 h-11 md:h-14 font-black text-[10px] md:text-xs uppercase tracking-[0.3em] shadow-2xl hover:scale-105 transition-transform border-none">
-              Kontaktieren Sie uns <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </div>
-        </div>
-      </section>
+      <AiCTA />
     </div>
   );
 }

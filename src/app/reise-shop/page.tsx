@@ -56,7 +56,7 @@ export default function ReiseShopPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen">
       {/* COMPACT DARK HERO */}
-      <section className="relative h-[45vh] md:h-[60vh] w-full flex items-center justify-center overflow-hidden bg-secondary">
+      <section className="relative pt-24 md:pt-32 pb-16 md:pb-24 w-full flex items-center justify-center overflow-hidden bg-secondary border-b border-white/5">
         <Image 
           src="https://images.unsplash.com/photo-1640109229792-a26a0ee366ff?q=80&w=1920"
           alt="Safari Shop Lifestyle"
@@ -69,13 +69,10 @@ export default function ReiseShopPage() {
         
         <div className="container relative z-10 mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="space-y-4 md:space-y-6">
-            <Badge className="bg-primary text-white border-none px-4 py-1.5 text-[8px] font-bold uppercase tracking-[0.4em] mb-4 shadow-2xl">
-              Curated Expedition Supplies
-            </Badge>
-            <h1 className="text-white uppercase">
+            <h1 className="text-white uppercase text-3xl md:text-6xl tracking-tighter leading-none">
               TANSANIA <br /><span className="text-primary">REISE-STORE</span>
             </h1>
-            <p className="max-w-2xl mx-auto text-[9px] md:text-sm text-white/60 font-bold uppercase tracking-widest leading-relaxed">
+            <p className="max-w-2xl mx-auto text-[10px] md:text-sm text-white/60 font-bold uppercase tracking-widest leading-relaxed">
               Reisebezogene Produkte & Dienstleistungen für Ihr nahtloses Abenteuer.
             </p>
           </motion.div>
@@ -92,8 +89,7 @@ export default function ReiseShopPage() {
             className="space-y-6"
           >
             <div className="space-y-2">
-              <span className="text-primary font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px] block">Unsere Partnerschaften</span>
-              <h2 className="text-secondary uppercase">
+              <h2 className="text-secondary uppercase text-2xl md:text-4xl tracking-tighter leading-none">
                 Qualität ohne <br /><span className="text-primary">Kompromisse</span>
               </h2>
             </div>
@@ -138,8 +134,7 @@ export default function ReiseShopPage() {
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
             <div className="lg:col-span-5">
-              <span className="text-primary font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px] mb-3 block">Der Reiseausrüster</span>
-              <h2 className="text-secondary uppercase mb-8">
+              <h2 className="text-secondary uppercase text-3xl md:text-5xl tracking-tighter mb-8">
                 Speziell für Ihr <br /><span className="text-primary">Zielgebiet</span>
               </h2>
               <p className="text-muted-foreground font-bold leading-relaxed text-xs md:text-sm uppercase tracking-widest mb-10 opacity-80">
@@ -169,11 +164,11 @@ export default function ReiseShopPage() {
         </div>
       </section>
 
-      {/* Categories & CTA follow established protocol */}
+      {/* Categories & CTA */}
       <section className="py-16 md:py-32 bg-[#fdfcfb]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12 md:mb-24">
-            <h2 className="text-secondary uppercase">
+            <h2 className="text-secondary uppercase text-3xl md:text-5xl tracking-tighter">
               Shop nach <span className="text-primary">Kategorie</span>
             </h2>
           </div>
@@ -205,7 +200,7 @@ export default function ReiseShopPage() {
           <Compass className="w-8 h-8 text-primary" />
         </div>
         <div className="space-y-6">
-          <h2 className="text-secondary uppercase">
+          <h2 className="text-secondary uppercase text-3xl md:text-5xl tracking-tighter">
             Machen Sie das Beste <br />aus Ihrem <span className="text-primary">Abenteuer</span>
           </h2>
           <p className="text-muted-foreground font-black text-[10px] md:text-base uppercase tracking-widest leading-relaxed max-w-2xl mx-auto opacity-80">
