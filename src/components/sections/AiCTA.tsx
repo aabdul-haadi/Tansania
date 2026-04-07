@@ -22,7 +22,7 @@ export function AiCTA() {
       <div className="grid grid-cols-1 md:grid-cols-2">
         
         {/* Tile 1: AI HUB (Top Left) */}
-        <div className="bg-white text-secondary p-6 sm:p-10 md:p-16 lg:p-24 flex flex-col justify-center items-center text-center space-y-6 md:space-y-10 min-h-[400px] md:min-h-[500px] order-1 border-b md:border-b-0 border-border/40">
+        <div className="bg-white text-secondary p-8 sm:p-10 md:p-16 lg:p-24 flex flex-col justify-center items-center text-center space-y-6 md:space-y-10 min-h-[400px] md:min-h-[500px] order-1 border-b md:border-b-0 border-border/40">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -47,7 +47,7 @@ export function AiCTA() {
         </div>
 
         {/* Tile 2: Guide Image (Top Right) */}
-        <div className="relative aspect-video md:aspect-auto min-h-[300px] md:min-h-full overflow-hidden order-2">
+        <div className="relative aspect-square md:aspect-auto min-h-[350px] md:min-h-full overflow-hidden order-2">
           <Image 
             src="https://images.unsplash.com/photo-1731355775887-e6b2484f494c?q=80&w=1200"
             alt="Safari Expert Guide"
@@ -65,9 +65,9 @@ export function AiCTA() {
         </div>
 
         {/* Tile 3: DIRECT HUMAN CONTACT (Mobile Order 3 / Desktop Order 4) */}
-        <div className="bg-[#FDF7F2] p-6 sm:p-10 md:p-16 lg:p-24 flex flex-col justify-center items-center text-center space-y-8 md:space-y-10 min-h-[400px] md:min-h-[500px] order-3 md:order-4 border-t md:border-t-0 border-border/40">
+        <div className="bg-[#FDF7F2] p-8 sm:p-10 md:p-16 lg:p-24 flex flex-col justify-center items-center text-center space-y-8 md:space-y-10 min-h-[400px] md:min-h-[500px] order-3 md:order-4 border-t md:border-t-0 border-border/40">
           <div className="space-y-6">
-            <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 mx-auto">
+            <div className="relative w-24 h-24 sm:w-24 sm:h-24 md:w-32 md:h-32 mx-auto">
               <div className="absolute inset-0 bg-[#C9A876]/20 rounded-full transform rotate-6 scale-110" />
               <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white shadow-2xl">
                 <img src="https://picsum.photos/seed/expert-maria/200/200" alt="Travel Specialist" className="w-full h-full object-cover" />
@@ -95,7 +95,7 @@ export function AiCTA() {
         </div>
 
         {/* Tile 4: Atmospheric Image (Mobile Order 4 / Desktop Order 3) */}
-        <div className="relative aspect-video md:aspect-auto min-h-[300px] md:min-h-full overflow-hidden order-4 md:order-3 border-t border-border/40">
+        <div className="relative aspect-square md:aspect-auto min-h-[350px] md:min-h-full overflow-hidden order-4 md:order-3 border-t border-border/40">
           <Image 
             src={elephantsSunset?.imageUrl || "https://images.unsplash.com/photo-1539760397268-33f5146dd9e2?q=80&w=1200"}
             alt="Elephants at Sunset"
@@ -104,9 +104,9 @@ export function AiCTA() {
             data-ai-hint={elephantsSunset?.imageHint || "elephants sunset"}
           />
           <div className="absolute inset-0 bg-black/10" />
-          <div className="absolute inset-0 flex items-center justify-center p-6 md:p-10 text-center">
-            <div className="p-5 sm:p-8 md:p-10 bg-white/5 backdrop-blur-sm border border-white/10 rounded-[2rem] md:rounded-[2.5rem] max-w-[280px] md:max-w-xs shadow-2xl">
-              <p className="text-white font-headline text-lg sm:text-xl md:text-2xl uppercase tracking-tight leading-tight">
+          <div className="absolute inset-0 flex items-center justify-center p-4 sm:p-6 md:p-10 text-center">
+            <div className="p-6 sm:p-8 md:p-10 bg-white/5 backdrop-blur-sm border border-white/10 rounded-[2.5rem] w-[85%] max-w-[320px] shadow-2xl">
+              <p className="text-white font-headline text-base sm:text-xl md:text-2xl uppercase tracking-tight leading-tight">
                 "Persönlichkeit ist durch nichts zu ersetzen."
               </p>
             </div>
