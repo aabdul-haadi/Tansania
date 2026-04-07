@@ -124,7 +124,34 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         </div>
       </section>
 
-      {/* 02 TECHNICAL ICON STRIP */}
+      {/* 02 STICKY NAVIGATION MANIFESTO - Moved immediately after Hero */}
+      <div className="sticky top-0 z-[40] bg-white/95 backdrop-blur-xl border-b shadow-sm">
+        <div className="container mx-auto px-4 flex items-center justify-between h-14 md:h-20 max-w-7xl">
+          <div className="flex gap-4 md:gap-12 h-full overflow-x-auto no-scrollbar">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollTo(item.id)}
+                className={cn(
+                  "h-full px-1 text-[9px] md:text-[10px] font-black uppercase tracking-widest transition-all border-b-2 whitespace-nowrap",
+                  activeSection === item.id ? "border-primary text-primary" : "border-transparent text-muted-foreground hover:text-foreground"
+                )}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+          <div className="hidden lg:flex items-center gap-6">
+            <div className="text-right">
+              <p className="text-[8px] font-black uppercase text-muted-foreground leading-none mb-1">Preise ab</p>
+              <p className="text-xs font-black text-secondary">€{pkg.startingPrice?.toLocaleString('de-DE') || '5.399'}</p>
+            </div>
+            <Button onClick={() => scrollTo('inquiry')} className="rounded-xl h-11 px-8 text-[10px] font-black uppercase tracking-widest shadow-xl border-none">ANFRAGE SENDEN</Button>
+          </div>
+        </div>
+      </div>
+
+      {/* 03 TECHNICAL ICON STRIP */}
       <section className="bg-white border-b border-border/40 py-8 md:py-12">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-12">
@@ -148,7 +175,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         </div>
       </section>
 
-      {/* 03 NARRATIVE MANIFEST SECTION */}
+      {/* 04 NARRATIVE MANIFEST SECTION */}
       <section ref={overviewRef} className="py-16 md:py-24 bg-white scroll-mt-20">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
@@ -169,7 +196,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                   src={pkg.imageUrl || 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200'} 
                   alt="Safari Moment" 
                   fill 
-                  className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                  className="object-cover transition-transform duration-1000 group-hover:scale-110"
                 />
               </div>
 
@@ -235,9 +262,9 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
 
                     <div className="pt-8 border-t border-border/40 flex flex-col md:flex-row items-end justify-between gap-6">
                       <div className="flex flex-col">
-                        <span className="text-[11px] font-black text-muted-foreground/40 line-through">€{(pkg.startingPrice + 600).toLocaleString()}</span>
+                        <span className="text-[11px] font-black text-muted-foreground/40 line-through">€{(pkg.startingPrice + 600).toLocaleString('de-DE')}</span>
                         <div className="flex items-baseline gap-2">
-                          <span className="text-3xl font-black text-secondary tracking-tighter uppercase">ab {pkg.startingPrice?.toLocaleString()} €</span>
+                          <span className="text-3xl font-black text-secondary tracking-tighter uppercase">ab {pkg.startingPrice?.toLocaleString('de-DE') || '5.399'} €</span>
                         </div>
                         <p className="text-[9px] font-bold text-muted-foreground/60 uppercase">pro Person</p>
                       </div>
@@ -259,34 +286,8 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         </div>
       </section>
 
-      {/* Sticky Navigation manifesto */}
-      <div className="sticky top-0 z-[40] bg-white/95 backdrop-blur-xl border-b shadow-sm">
-        <div className="container mx-auto px-4 flex items-center justify-between h-14 md:h-20">
-          <div className="flex gap-4 md:gap-12 h-full overflow-x-auto no-scrollbar">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollTo(item.id)}
-                className={cn(
-                  "h-full px-1 text-[9px] md:text-[10px] font-black uppercase tracking-widest transition-all border-b-2 whitespace-nowrap",
-                  activeSection === item.id ? "border-primary text-primary" : "border-transparent text-muted-foreground hover:text-foreground"
-                )}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-          <div className="hidden lg:flex items-center gap-6">
-            <div className="text-right">
-              <p className="text-[8px] font-black uppercase text-muted-foreground leading-none mb-1">Preise ab</p>
-              <p className="text-xs font-black text-secondary">€{pkg.startingPrice?.toLocaleString()}</p>
-            </div>
-            <Button onClick={() => scrollTo('inquiry')} className="rounded-xl h-11 px-8 text-[10px] font-black uppercase tracking-widest shadow-xl border-none">ANFRAGE SENDEN</Button>
-          </div>
-        </div>
-      </div>
-
-      <div className="container mx-auto px-4 max-w-7xl pt-12 md:pt-24 pb-32">
+      {/* 05 CONTENT REGIONS */}
+      <div className="container mx-auto px-4 max-w-7xl pb-32">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
           
           <main className="lg:col-span-8 space-y-24 md:space-y-40">
