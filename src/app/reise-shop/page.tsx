@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -54,27 +55,27 @@ const products = [
 export default function ReiseShopPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen">
-      {/* Cinematic Light Hero */}
-      <section className="relative h-[50vh] md:h-[65vh] w-full flex items-center justify-center overflow-hidden bg-[#FDF7F2]">
+      {/* COMPACT DARK HERO */}
+      <section className="relative h-[45vh] md:h-[60vh] w-full flex items-center justify-center overflow-hidden bg-secondary">
         <Image 
           src="https://images.unsplash.com/photo-1640109229792-a26a0ee366ff?q=80&w=1920"
           alt="Safari Shop Lifestyle"
           fill
           priority
-          className="object-cover brightness-110 opacity-40"
+          className="object-cover brightness-50 opacity-40 scale-105"
           data-ai-hint="luxury lounge"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-transparent to-[#fdfcfb]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-secondary/20" />
         
         <div className="container relative z-10 mx-auto px-4 text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="space-y-4">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="space-y-4 md:space-y-6">
             <Badge className="bg-primary text-white border-none px-4 py-1.5 text-[8px] font-bold uppercase tracking-[0.4em] mb-4 shadow-2xl">
               Curated Expedition Supplies
             </Badge>
-            <h1 className="font-headline text-4xl md:text-7xl font-normal text-secondary leading-none tracking-tighter uppercase">
+            <h1 className="text-white uppercase">
               TANSANIA <br /><span className="text-primary">REISE-STORE</span>
             </h1>
-            <p className="max-w-2xl mx-auto text-[9px] md:text-lg text-secondary/60 font-bold uppercase tracking-widest leading-relaxed">
+            <p className="max-w-2xl mx-auto text-[9px] md:text-sm text-white/60 font-bold uppercase tracking-widest leading-relaxed">
               Reisebezogene Produkte & Dienstleistungen für Ihr nahtloses Abenteuer.
             </p>
           </motion.div>
@@ -92,11 +93,11 @@ export default function ReiseShopPage() {
           >
             <div className="space-y-2">
               <span className="text-primary font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px] block">Unsere Partnerschaften</span>
-              <h2 className="font-headline text-3xl md:text-5xl font-normal leading-tight text-secondary uppercase tracking-tight">
+              <h2 className="text-secondary uppercase">
                 Qualität ohne <br /><span className="text-primary">Kompromisse</span>
               </h2>
             </div>
-            <p className="text-muted-foreground font-bold leading-relaxed text-sm md:text-lg uppercase tracking-widest opacity-80">
+            <p className="text-muted-foreground font-bold leading-relaxed text-sm md:text-base uppercase tracking-widest opacity-80">
               Tansania Reiseabenteuer hat sich mit den besten verfügbaren Unternehmen zusammengeschlossen, um Dienstleistungen und Produkte anzubieten, die sicherstellen, dass Ihr Urlaub nahtlos verläuft.
             </p>
             <div className="p-6 bg-white rounded-3xl border border-border/50 shadow-sm space-y-4">
@@ -132,16 +133,16 @@ export default function ReiseShopPage() {
         </div>
       </section>
 
-      {/* The Outfitter Section - Light Version */}
+      {/* Grid Sections follow... */}
       <section className="py-16 md:py-32 bg-white relative overflow-hidden border-y border-border">
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
             <div className="lg:col-span-5">
               <span className="text-primary font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px] mb-3 block">Der Reiseausrüster</span>
-              <h2 className="font-headline text-3xl md:text-6xl font-normal leading-tight uppercase tracking-tighter mb-8 text-secondary">
+              <h2 className="text-secondary uppercase mb-8">
                 Speziell für Ihr <br /><span className="text-primary">Zielgebiet</span>
               </h2>
-              <p className="text-muted-foreground font-bold leading-relaxed text-sm md:text-xl uppercase tracking-widest mb-10">
+              <p className="text-muted-foreground font-bold leading-relaxed text-xs md:text-sm uppercase tracking-widest mb-10 opacity-80">
                 Egal, ob Sie auf Safari gehen, Schnorcheln oder Wildwasser-Rafting betreiben – wir bieten Top-Marken, die leicht zu packen, sonnenschützend und wasserdicht sind.
               </p>
               <div className="flex flex-wrap gap-3">
@@ -168,11 +169,11 @@ export default function ReiseShopPage() {
         </div>
       </section>
 
-      {/* Categories Grid */}
+      {/* Categories & CTA follow established protocol */}
       <section className="py-16 md:py-32 bg-[#fdfcfb]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12 md:mb-24">
-            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary uppercase tracking-tighter leading-none">
+            <h2 className="text-secondary uppercase">
               Shop nach <span className="text-primary">Kategorie</span>
             </h2>
           </div>
@@ -184,10 +185,10 @@ export default function ReiseShopPage() {
                 whileHover={{ y: -10 }}
                 className="p-10 md:p-16 bg-white rounded-[2.5rem] md:rounded-[3.5rem] border border-border/50 shadow-sm hover:shadow-2xl transition-all duration-500 group"
               >
-                <div className="w-16 h-16 rounded-[1.5rem] bg-muted flex items-center justify-center mb-10 group-hover:bg-primary transition-colors duration-500">
+                <div className="w-16 h-16 rounded-[1.5rem] bg-muted flex items-center justify-center mb-10 group-hover:bg-primary transition-colors duration-500 shadow-inner">
                   <cat.icon className="w-8 h-8 text-muted-foreground group-hover:text-white" />
                 </div>
-                <h4 className="font-headline text-xl md:text-3xl font-normal text-secondary uppercase leading-tight mb-6">{cat.label}</h4>
+                <h4 className="text-xl md:text-3xl font-normal text-secondary uppercase leading-tight mb-6">{cat.label}</h4>
                 <div className="pt-6 border-t border-muted/50">
                   <Button variant="link" className="p-0 h-auto font-black text-[10px] uppercase tracking-[0.2em] group-hover:text-primary transition-colors">
                     Kollektion ansehen <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -199,21 +200,20 @@ export default function ReiseShopPage() {
         </div>
       </section>
 
-      {/* Final CTA */}
       <section className="py-16 md:py-32 bg-white container mx-auto px-4 max-w-4xl text-center space-y-10">
         <div className="w-16 h-16 rounded-[1.5rem] bg-white border border-border shadow-xl mx-auto flex items-center justify-center">
           <Compass className="w-8 h-8 text-primary" />
         </div>
         <div className="space-y-6">
-          <h2 className="font-headline text-2xl md:text-5xl font-normal text-secondary uppercase tracking-tight leading-tight">
+          <h2 className="text-secondary uppercase">
             Machen Sie das Beste <br />aus Ihrem <span className="text-primary">Abenteuer</span>
           </h2>
-          <p className="text-muted-foreground font-black text-[10px] md:text-xl uppercase tracking-widest leading-relaxed max-w-2xl mx-auto">
+          <p className="text-muted-foreground font-black text-[10px] md:text-base uppercase tracking-widest leading-relaxed max-w-2xl mx-auto opacity-80">
             Erhalten Sie eine Kollektion von Bekleidung und Ausrüstung, die speziell auf Ihr TANSANIA REISEABENTEUER SDL GMBH Reiseziel abgestimmt ist.
           </p>
         </div>
         <div className="pt-10">
-          <Button className="rounded-xl px-12 h-11 md:h-14 font-black text-[10px] md:text-xs uppercase tracking-[0.3em] shadow-2xl hover:scale-105 transition-transform border-none">
+          <Button className="rounded-xl px-12 h-11 md:h-14 font-black text-[10px] uppercase tracking-[0.3em] shadow-2xl hover:scale-105 transition-transform border-none">
             ZUR PARTNER-SHOP AUSWAHL <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </div>

@@ -39,32 +39,33 @@ const guides = [
 export default function AboutPage() {
   return (
     <div className="bg-background min-h-screen">
-      {/* Immersive Cinematic Hero - Lightened Overlay */}
-      <header className="relative h-[60vh] md:h-[80vh] w-full overflow-hidden flex items-center justify-center bg-white border-b border-border">
+      {/* COMPACT DARK HERO */}
+      <header className="relative h-[45vh] md:h-[60vh] w-full overflow-hidden flex items-center justify-center bg-secondary">
         <Image
           src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920"
           alt="Afrikanische Savanne"
           fill
           priority
-          className="object-cover opacity-40 brightness-110"
+          className="object-cover opacity-30 brightness-50 scale-105"
           data-ai-hint="serengeti savannah"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-transparent to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-secondary/20" />
         
         <div className="container relative z-10 mx-auto px-4 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="space-y-4 md:space-y-6"
           >
-            <Badge className="bg-primary text-white border-none px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.4em] mb-6 shadow-xl">
+            <Badge className="bg-primary text-white border-none px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.4em] shadow-xl">
               Authentisch. Unvergesslich. Exklusiv.
             </Badge>
-            <h1 className="text-secondary mb-6 drop-shadow-sm text-4xl md:text-7xl">
+            <h1 className="text-white mb-2">
               Ihr Schlüssel zum <br />
               <span className="text-primary">Herzen Afrikas</span>
             </h1>
-            <p className="max-w-2xl mx-auto text-secondary/60 font-bold uppercase tracking-widest px-4">
+            <p className="max-w-2xl mx-auto text-white/60 font-bold uppercase tracking-widest px-4 text-[10px] md:text-xs">
               Wir verbinden den Nil mit der Savanne – durch Abenteuer, die weit über das Gewöhnliche hinausgehen.
             </p>
           </motion.div>
@@ -82,11 +83,11 @@ export default function AboutPage() {
           >
             <div>
               <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-2 block">Unsere Vision</span>
-              <h2 className="text-secondary uppercase text-3xl md:text-5xl">
+              <h2 className="text-secondary uppercase">
                 Mehr als nur ein <br /><span className="text-primary">Urlaub</span>
               </h2>
             </div>
-            <div className="space-y-6 text-muted-foreground font-medium leading-relaxed">
+            <div className="space-y-6 text-muted-foreground font-medium leading-relaxed uppercase tracking-widest text-xs md:text-sm">
               <p>
                 Träumen Sie von einer Reise, die tiefer geht? Eine Reise, die Sie in die Seele eines Kontinents eintauchen lässt, reich an unberührter Natur, pulsierenden Kulturen und atemberaubenden Abenteuern?
               </p>
@@ -129,7 +130,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Founder Spotlight - Updated to Lighter Color Palette */}
+      {/* Founder Spotlight */}
       <section className="py-16 md:py-24 bg-[#FDF7F2] text-secondary relative overflow-hidden border-y border-border">
         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
@@ -150,11 +151,11 @@ export default function AboutPage() {
             <div className="lg:col-span-7 space-y-6 md:space-y-10">
               <div>
                 <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-3 block">Der Visionär</span>
-                <h2 className="text-secondary uppercase text-3xl md:text-5xl">
+                <h2 className="text-secondary uppercase">
                   Maßgeschneidert von <br /><span className="text-primary">Samson Kyashama</span>
                 </h2>
               </div>
-              <p className="text-secondary/80 font-medium leading-relaxed text-sm md:text-lg">
+              <p className="text-secondary/80 font-medium leading-relaxed text-xs md:text-sm uppercase tracking-widest">
                 Unter der Führung von Samson Kyashama, einem gebürtigen Tansanier und erfahrenen Safari-Experten, entwerfen wir Reisen, die Ihre kühnsten Träume übertreffen. Jede Safari, jede Besteigung und jedes kulturelle Erlebnis wird persönlich abgestimmt.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 pt-4">
@@ -182,56 +183,13 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Core Values / Why Us */}
-      <section className="py-16 md:py-32 bg-background">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="text-center mb-12 md:mb-20">
-            <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-3 block">Unser Versprechen</span>
-            <h2 className="text-secondary uppercase text-3xl md:text-5xl">Warum Tansania <br /><span className="text-primary">Reiseabenteuer?</span></h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-            {[
-              { 
-                icon: Globe, 
-                title: "Persönliche Erfahrung", 
-                desc: "Unser Team besteht aus leidenschaftlichen Afrika-Kennern und in Tansania geborenen Experten." 
-              },
-              { 
-                icon: Compass, 
-                title: "Maßgeschneidert", 
-                desc: "Von luxuriösen Safaris bis zu Selbstfahrertouren – wir gestalten ihre Traumreise nach Maß." 
-              },
-              { 
-                icon: Users, 
-                title: "Authentizität", 
-                desc: "Erleben Sie echte Begegnungen weit entfernt vom Massentourismus." 
-              },
-              { 
-                icon: Leaf, 
-                title: "Nachhaltigkeit", 
-                desc: "Reisen Sie verantwortungsbewusst und unterstützen Sie lokale Gemeinschaften." 
-              }
-            ].map((value, i) => (
-              <div key={i} className="p-8 md:p-10 bg-white rounded-[2rem] shadow-sm border border-border/50 hover:border-primary/20 hover:shadow-xl transition-all duration-500 group">
-                <div className="w-12 h-12 rounded-2xl bg-muted flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
-                  <value.icon className="w-6 h-6 text-muted-foreground group-hover:text-white" />
-                </div>
-                <h4 className="text-secondary mb-4 uppercase leading-tight">{value.title}</h4>
-                <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest leading-relaxed">{value.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Team Section */}
       <section className="py-16 md:py-24 bg-white border-y border-border/50">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col md:flex-row items-end justify-between mb-12 md:mb-16 gap-6">
             <div>
               <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-2 block">Hinter den Kulissen</span>
-              <h2 className="text-secondary uppercase text-3xl md:text-5xl">Unser <span className="text-primary">Team</span></h2>
+              <h2 className="text-secondary uppercase">Unser <span className="text-primary">Team</span></h2>
             </div>
             <p className="text-muted-foreground text-[10px] font-bold uppercase tracking-widest max-w-xs border-l-2 border-primary/20 pl-6 hidden md:block">
               Die Spezialisten in Berlin, die Ihre Träume in detaillierte Pläne verwandeln.
@@ -267,7 +225,7 @@ export default function AboutPage() {
           <div className="flex flex-col md:flex-row items-end justify-between mb-12 md:mb-16 gap-6">
             <div>
               <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-2 block">Die Experten im Busch</span>
-              <h2 className="text-secondary uppercase text-3xl md:text-5xl">Unsere <span className="text-primary">Safari Guides</span></h2>
+              <h2 className="text-secondary uppercase">Unsere <span className="text-primary">Safari Guides</span></h2>
             </div>
             <p className="text-muted-foreground text-[10px] font-bold uppercase tracking-widest max-w-xs border-l-2 border-primary/20 pl-6 hidden md:block">
               Staatlich geprüfte Guides mit jahrelanger Erfahrung in der Wildnis Tansanias.
@@ -296,7 +254,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Video / Final CTA - Lightened Color Protocol */}
+      {/* FINAL LIGHT CTA */}
       <section className="py-16 md:py-32 bg-[#FDF7F2] relative overflow-hidden mx-4 md:mx-10 rounded-[2rem] md:rounded-[5rem] mb-12 shadow-2xl border border-border/50">
         <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         <div className="container relative z-10 mx-auto px-4 text-center">
@@ -308,10 +266,10 @@ export default function AboutPage() {
           >
             <div className="space-y-4">
               <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px]">Bereit für das Abenteuer?</span>
-              <h2 className="text-secondary uppercase leading-none text-3xl md:text-5xl">
+              <h2 className="text-secondary uppercase leading-none">
                 Willkommen im <br /><span className="text-primary">Herzen Afrikas</span>
               </h2>
-              <p className="text-secondary/60 text-sm md:text-lg font-medium uppercase tracking-widest max-w-2xl mx-auto">
+              <p className="text-secondary/60 text-xs md:text-sm font-bold uppercase tracking-widest max-w-2xl mx-auto">
                 Dort, wo die Savanne niemals schläft und Ihre Träume Wirklichkeit werden.
               </p>
             </div>

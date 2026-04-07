@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -91,40 +92,41 @@ const importantInfo = [
 export default function PartnerPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen">
-      {/* Light Cinematic Hero */}
-      <header className="relative h-[50vh] md:h-[70vh] w-full overflow-hidden flex items-center justify-center bg-[#FDF7F2]">
+      {/* COMPACT DARK HERO */}
+      <header className="relative h-[45vh] md:h-[60vh] w-full overflow-hidden flex items-center justify-center bg-secondary">
         <Image
           src="https://images.unsplash.com/photo-1640109229792-a26a0ee366ff?q=80&w=1920"
           alt="Travel Advisor Career"
           fill
           priority
-          className="object-cover opacity-30 brightness-110"
+          className="object-cover opacity-30 brightness-50 scale-105"
           data-ai-hint="luxury lounge"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-transparent to-[#fdfcfb]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-secondary/20" />
         
         <div className="container relative z-10 mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="space-y-4 md:space-y-6"
           >
-            <Badge className="bg-primary text-white border-none px-4 py-1.5 text-[8px] md:text-[10px] font-bold uppercase tracking-[0.4em] mb-6 shadow-xl">
+            <Badge className="bg-primary text-white border-none px-4 py-1.5 text-[8px] font-bold uppercase tracking-[0.4em] shadow-xl">
               Starten Sie Ihre Karriere
             </Badge>
-            <h1 className="font-headline text-4xl md:text-7xl font-normal text-secondary leading-none tracking-tighter uppercase">
+            <h1 className="text-white uppercase">
               Werden Sie <br />
               <span className="text-primary">Reiseberater:in</span>
             </h1>
-            <p className="max-w-2xl mx-auto text-[10px] md:text-xl text-secondary/60 font-bold uppercase tracking-widest leading-relaxed">
+            <p className="max-w-2xl mx-auto text-[9px] md:text-sm text-white/60 font-bold uppercase tracking-widest leading-relaxed">
               Flexibel, unabhängig und mit Leidenschaft fürs Reisen!
             </p>
           </motion.div>
         </div>
       </header>
 
-      {/* Intro Narrative */}
-      <section className="py-12 md:py-24 container mx-auto px-4 max-w-5xl">
+      {/* Narrative Section */}
+      <section className="py-12 md:py-24 container mx-auto px-4 max-get-5xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
@@ -134,11 +136,11 @@ export default function PartnerPage() {
           >
             <div>
               <span className="text-primary font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px] block">Ihre Reise</span>
-              <h2 className="font-headline text-3xl md:text-5xl font-normal leading-tight text-secondary uppercase tracking-tight">
+              <h2 className="text-secondary uppercase">
                 Zu einer <br /><span className="text-primary">erfüllenden Karriere</span>
               </h2>
             </div>
-            <p className="text-muted-foreground font-bold leading-relaxed text-sm md:text-lg uppercase tracking-widest">
+            <p className="text-muted-foreground font-bold leading-relaxed text-xs md:text-sm uppercase tracking-widest opacity-80">
               Lieben Sie es, zu reisen und anderen zu ihrem Traumurlaub zu verhelfen? Werden Sie selbstständige:r Reiseberater:in bei Tansania Reiseabenteuer und gestalten Sie unvergessliche Erlebnisse.
             </p>
             <Button asChild className="rounded-xl px-10 h-11 md:h-14 font-black text-[10px] uppercase tracking-widest shadow-xl border-none">
@@ -164,12 +166,12 @@ export default function PartnerPage() {
         </div>
       </section>
 
-      {/* Benefits Grid */}
+      {/* Grid follows... */}
       <section className="py-16 md:py-24 bg-white border-y border-border/50">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12 md:mb-20">
             <span className="text-primary font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px] mb-3 block">Unser Support</span>
-            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tighter">
+            <h2 className="text-secondary uppercase">
               Ihre Vorteile <br /><span className="text-primary">bei uns</span>
             </h2>
           </div>
@@ -185,13 +187,13 @@ export default function PartnerPage() {
               >
                 <Card className="h-full border-none shadow-sm bg-[#fdfcfb] rounded-2xl md:rounded-[2.5rem] hover:shadow-xl transition-all duration-500 group">
                   <CardContent className="p-6 md:p-8 flex flex-col items-center text-center space-y-4">
-                    <div className="w-12 h-12 rounded-2xl bg-muted flex items-center justify-center group-hover:bg-primary transition-colors">
+                    <div className="w-12 h-12 rounded-2xl bg-muted flex items-center justify-center group-hover:bg-primary transition-colors shadow-inner">
                       <item.icon className="w-6 h-6 text-muted-foreground group-hover:text-white transition-colors" />
                     </div>
                     <div className="space-y-2">
-                      <h4 className="font-headline text-xs md:text-lg font-bold text-secondary uppercase leading-tight">{item.title}</h4>
+                      <h4 className="text-xs md:text-lg font-bold text-secondary uppercase leading-tight tracking-tight">{item.title}</h4>
                       <p className="text-[8px] md:text-[10px] font-black text-primary uppercase tracking-widest mb-1">{item.sub}</p>
-                      <p className="text-[7px] md:text-xs text-muted-foreground font-black uppercase tracking-widest leading-tight">
+                      <p className="text-[7px] md:text-xs text-muted-foreground font-black uppercase tracking-widest leading-tight opacity-60">
                         {item.desc}
                       </p>
                     </div>
@@ -203,28 +205,20 @@ export default function PartnerPage() {
         </div>
       </section>
 
-      {/* Commercial Model Section - Clean Light Version */}
+      {/* Model Section */}
       <section className="py-16 md:py-32 bg-[#FDF7F2] relative overflow-hidden">
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <div>
                 <span className="text-primary font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px] mb-3 block">Transparenz</span>
-                <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary uppercase tracking-tighter leading-none">
+                <h2 className="text-secondary uppercase">
                   Das sollten <br /><span className="text-primary">Sie wissen</span>
                 </h2>
               </div>
-              <p className="text-secondary/80 font-bold text-sm md:text-lg leading-relaxed uppercase tracking-widest">
+              <p className="text-secondary/80 font-bold text-xs md:text-sm leading-relaxed uppercase tracking-widest">
                 Wir setzen auf ein faires, erfolgsbasiertes Modell für maximale Freiheit.
               </p>
-              <div className="pt-4 hidden lg:block">
-                <div className="p-8 bg-white rounded-[2.5rem] border border-border shadow-sm flex items-start gap-6">
-                  <Zap className="w-10 h-10 text-primary shrink-0" />
-                  <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest leading-relaxed">
-                    Unser Modell ermöglicht es Ihnen, Ihr eigener Chef zu sein, während Sie die Infrastruktur eines etablierten Experten-Teams nutzen.
-                  </p>
-                </div>
-              </div>
             </div>
 
             <div className="space-y-3">
@@ -246,20 +240,19 @@ export default function PartnerPage() {
         </div>
       </section>
 
-      {/* Final CTA */}
       <section className="py-16 md:py-32 container mx-auto px-4 max-w-4xl text-center">
         <div className="space-y-8">
-          <div className="w-16 h-16 rounded-[1.5rem] bg-muted mx-auto flex items-center justify-center">
+          <div className="w-16 h-16 rounded-[1.5rem] bg-muted mx-auto flex items-center justify-center border border-border shadow-inner">
             <Compass className="w-8 h-8 text-primary" />
           </div>
-          <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary uppercase tracking-tighter">
+          <h2 className="text-secondary uppercase">
             Bereit für den <br /><span className="text-primary">nächsten Schritt?</span>
           </h2>
-          <p className="text-muted-foreground font-black text-sm md:text-xl uppercase tracking-widest leading-relaxed max-w-2xl mx-auto">
+          <p className="text-muted-foreground font-black text-xs md:text-sm uppercase tracking-widest leading-relaxed max-w-2xl mx-auto opacity-80">
             Werden Sie Teil unseres Teams und gestalten Sie unvergessliche Reiseerlebnisse in Afrika. Wir freuen uns auf Sie!
           </p>
-          <div className="pt-10 flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="rounded-xl px-12 h-11 md:h-14 font-black text-[10px] md:text-xs uppercase tracking-[0.3em] shadow-2xl group border-none">
+          <div className="pt-10">
+            <Button className="rounded-xl px-12 h-11 md:h-14 font-black text-[10px] md:text-xs uppercase tracking-[0.3em] shadow-2xl hover:scale-105 transition-transform border-none">
               Kontaktieren Sie uns <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>

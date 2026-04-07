@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -60,9 +61,10 @@ const insurancePackages = [
 export default function GuestProtectionPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen">
-      <header className="relative pt-32 pb-12 bg-white border-b border-border overflow-hidden">
+      {/* COMPACT DARK HERO */}
+      <header className="relative pt-32 pb-16 md:pb-24 bg-secondary border-b border-white/5 overflow-hidden">
         <div className="absolute top-0 right-0 p-8 opacity-[0.03] pointer-events-none">
-          <ShieldCheck className="w-48 h-48 text-secondary" />
+          <ShieldCheck className="w-48 h-48 text-primary" />
         </div>
         
         <div className="container relative z-10 mx-auto px-4">
@@ -73,11 +75,11 @@ export default function GuestProtectionPage() {
             className="max-w-4xl space-y-4"
           >
             <Badge className="bg-primary text-white border-none px-4 py-1.5 text-[8px] font-bold uppercase tracking-[0.4em] shadow-lg">Schutz-Strategie</Badge>
-            <h1 className="font-headline text-4xl md:text-7xl font-normal text-secondary leading-none tracking-tighter uppercase">
+            <h1 className="text-white uppercase">
               Reise-<br />
               <span className="text-primary">Versicherung</span>
             </h1>
-            <p className="max-w-xl text-[10px] md:text-sm text-muted-foreground font-bold uppercase tracking-widest leading-relaxed">
+            <p className="max-w-xl text-[10px] md:text-sm text-white/60 font-bold uppercase tracking-widest leading-relaxed">
               Professionelles Risiko-Management für Ihr Tansania-Abenteuer. Wir sichern Ihre Träume ab.
             </p>
           </motion.div>
@@ -90,7 +92,7 @@ export default function GuestProtectionPage() {
           <div className="lg:col-span-4 space-y-8">
             <div className="space-y-6">
               <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] block">Risiko-Audit</span>
-              <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase leading-none tracking-tighter">
+              <h2 className="text-secondary uppercase">
                 Prävention <br /><span className="text-primary">Statt Risiko</span>
               </h2>
               <div className="space-y-6 text-muted-foreground font-bold leading-relaxed text-xs md:text-sm uppercase tracking-widest">
@@ -162,7 +164,7 @@ export default function GuestProtectionPage() {
                       <p className="text-[10px] font-bold text-muted-foreground leading-relaxed uppercase tracking-widest max-w-[280px]">
                         {pkg.desc}
                       </p>
-                      <Button className="w-full sm:w-auto h-11 md:h-14 px-10 rounded-xl bg-secondary text-white font-bold text-[10px] uppercase tracking-widest shadow-xl group-hover:bg-primary transition-all">
+                      <Button className="w-full sm:w-auto h-11 md:h-14 px-10 rounded-xl bg-secondary text-white font-bold text-[10px] uppercase tracking-widest shadow-xl group-hover:bg-primary transition-all border-none">
                         {pkg.cta} <ChevronRight className="w-4 h-4 ml-1" />
                       </Button>
                     </div>
@@ -181,7 +183,7 @@ export default function GuestProtectionPage() {
             <ShieldAlert className="w-8 h-8 text-primary" />
           </div>
           <div className="space-y-4">
-            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tighter leading-none">
+            <h2 className="text-secondary uppercase">
               Individuelle <br /><span className="text-primary">Beratung</span>
             </h2>
             <p className="text-muted-foreground font-bold text-[10px] md:text-base uppercase tracking-[0.2em] leading-relaxed max-w-2xl mx-auto">
@@ -190,7 +192,7 @@ export default function GuestProtectionPage() {
           </div>
           <div className="pt-6">
             <Link href="/contact" className="w-full sm:w-auto">
-              <Button className="rounded-xl px-12 h-11 md:h-14 font-bold text-[10px] uppercase tracking-[0.3em] shadow-2xl hover:scale-[1.05] transition-transform">
+              <Button className="rounded-xl px-12 h-11 md:h-14 font-bold text-[10px] uppercase tracking-[0.3em] shadow-2xl hover:scale-[1.05] transition-transform border-none">
                 Experten Sprechen <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>

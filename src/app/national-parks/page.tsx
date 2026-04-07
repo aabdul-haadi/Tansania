@@ -27,7 +27,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { ContactSection } from '@/components/sections/ContactSection';
+import { ContactSection } from '@/components/shared/ContactSection';
 import { cn } from '@/lib/utils';
 
 const parksData = [
@@ -90,8 +90,8 @@ export default function NationalParksPage() {
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal" ref={containerRef}>
-      {/* Compact Dark Hero Section */}
-      <section className="relative h-[50vh] md:h-[65vh] w-full flex items-center justify-center overflow-hidden bg-secondary">
+      {/* COMPACT DARK HERO */}
+      <section className="relative h-[45vh] md:h-[60vh] w-full flex items-center justify-center overflow-hidden bg-secondary">
         <motion.div 
           style={{ opacity: heroOpacity, scale: heroScale }}
           className="absolute inset-0"
@@ -101,7 +101,7 @@ export default function NationalParksPage() {
             alt="Tansania Safari Nationalparks"
             fill
             priority
-            className="object-cover brightness-[0.3]"
+            className="object-cover brightness-[0.3] scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-secondary/20" />
         </motion.div>
@@ -116,11 +116,11 @@ export default function NationalParksPage() {
             <Badge className="bg-primary text-white border-none px-4 py-1.5 md:px-6 md:py-2 text-[8px] md:text-[10px] font-bold uppercase tracking-[0.4em] shadow-2xl">
               National-Registry
             </Badge>
-            <h1 className="text-white leading-none uppercase tracking-tighter">
+            <h1 className="text-white uppercase">
               Die Seele <br />
               <span className="text-primary">Tansanias</span>
             </h1>
-            <p className="max-w-xl mx-auto text-[9px] md:text-lg text-white/60 font-bold leading-relaxed px-4 uppercase tracking-widest">
+            <p className="max-w-xl mx-auto text-[9px] md:text-sm text-white/60 font-bold uppercase tracking-widest leading-relaxed">
               Entdecken Sie die Nationalparks, wo die Natur noch ihre eigenen Gesetze schreibt.
             </p>
           </motion.div>

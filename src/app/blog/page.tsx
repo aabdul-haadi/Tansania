@@ -53,7 +53,7 @@ export default function BlogListing() {
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
-      {/* Compact Dark Hero Section */}
+      {/* COMPACT DARK HERO */}
       <section className="bg-secondary pt-32 pb-16 relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
@@ -70,7 +70,7 @@ export default function BlogListing() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="text-white uppercase tracking-tighter leading-none"
+                className="text-white uppercase"
               >
                 Vom Nil zur <br /><span className="text-primary">Savanne</span>
               </motion.h1>
@@ -114,7 +114,7 @@ export default function BlogListing() {
             {filteredPosts.length === 0 ? (
               <div className="py-40 text-center border-2 border-dashed rounded-[3rem] bg-muted/20">
                 <LayoutGrid className="w-12 h-12 mx-auto mb-4 opacity-10" />
-                <h3 className="text-secondary uppercase tracking-tight leading-none">Registry Empty</h3>
+                <h3 className="text-secondary uppercase">Registry Empty</h3>
                 <p className="text-[10px] font-bold uppercase text-muted-foreground mt-2 tracking-widest">Keine Berichte gefunden.</p>
               </div>
             ) : (
