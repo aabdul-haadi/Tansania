@@ -134,28 +134,25 @@ export default function SafarisPage() {
       <section className="bg-white border-t border-border/40 overflow-hidden">
         <div className="grid grid-cols-1 md:grid-cols-2">
           
-          {/* Tile 1: AI CO-WORKER HUB (Top Left) */}
-          <div className="bg-[#141414] text-white p-8 md:p-16 lg:p-24 flex flex-col justify-center items-center text-center space-y-8 md:space-y-10 min-h-[450px] order-1">
+          {/* Tile 1: AI CO-WORKER HUB (Top Left) - Bright Version */}
+          <div className="bg-white text-secondary p-8 md:p-16 lg:p-24 flex flex-col justify-center items-center text-center space-y-8 md:space-y-10 min-h-[450px] order-1 border-b md:border-b-0 border-border/40">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="space-y-4"
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 text-primary text-[8px] font-black uppercase tracking-[0.4em] mb-2">
-                <Sparkles className="w-3.5 h-3.5" /> AI REISEBEGLEITER
-              </div>
               <h2 className="font-headline text-3xl md:text-5xl lg:text-6xl font-bold uppercase tracking-tighter leading-tight">
                 Intelligente <br /> <span className="text-primary">Planungshilfe</span>
               </h2>
-              <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] text-white/60 max-w-sm mx-auto">
+              <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] text-muted-foreground max-w-sm mx-auto">
                 Nutzen Sie unseren KI-Concierge für sofortige Antworten und maßgeschneiderte Routenvorschläge rund um die Uhr.
               </p>
             </motion.div>
             
             <div className="flex flex-col gap-4 w-full max-w-xs">
               <Link href="/trip-advisor">
-                <Button className="w-full h-12 md:h-14 rounded-xl bg-primary text-white hover:bg-white hover:text-secondary font-black text-[10px] uppercase tracking-widest border-none transition-all shadow-2xl">
+                <Button className="w-full h-12 md:h-14 rounded-xl bg-primary text-white hover:bg-secondary font-black text-[10px] uppercase tracking-widest border-none transition-all shadow-2xl">
                   KI-BERATER JETZT FRAGEN <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
@@ -193,7 +190,7 @@ export default function SafarisPage() {
               <div className="space-y-2">
                 <span className="text-primary font-bold uppercase tracking-[0.4em] text-[8px] md:text-[9px] mb-2 block">MENSCHLICHE EXPERTISE</span>
                 <h3 className="font-headline text-2xl md:text-4xl font-bold text-secondary uppercase tracking-tighter">Direkter Kontakt</h3>
-                <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-muted-foreground leading-relaxed max-w-xs mx-auto">
+                <p className="text-[9px] md:text-10px font-bold uppercase tracking-widest text-muted-foreground leading-relaxed max-w-xs mx-auto">
                   Unsere Spezialisten in Berlin entwerfen Ihre Route von Grund auf neu – mit Herz und Verstand.
                 </p>
               </div>
