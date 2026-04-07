@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -135,7 +134,7 @@ export default function SafarisPage() {
       <section className="bg-white border-t border-border/40 overflow-hidden">
         <div className="grid grid-cols-1 md:grid-cols-2">
           
-          {/* Tile 1: Strategy Hub (Top Left) */}
+          {/* Tile 1: AI CO-WORKER HUB (Top Left) */}
           <div className="bg-[#141414] text-white p-8 md:p-16 lg:p-24 flex flex-col justify-center items-center text-center space-y-8 md:space-y-10 min-h-[450px] order-1">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -143,23 +142,21 @@ export default function SafarisPage() {
               viewport={{ once: true }}
               className="space-y-4"
             >
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 text-primary text-[8px] font-black uppercase tracking-[0.4em] mb-2">
+                <Sparkles className="w-3.5 h-3.5" /> AI REISEBEGLEITER
+              </div>
               <h2 className="font-headline text-3xl md:text-5xl lg:text-6xl font-bold uppercase tracking-tighter leading-tight">
-                Individuelle <br /> <span className="text-primary">Expedition</span>
+                Intelligente <br /> <span className="text-primary">Planungshilfe</span>
               </h2>
               <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] text-white/60 max-w-sm mx-auto">
-                Sie finden nicht das passende Paket? Unsere Experten entwerfen Ihre Route von Grund auf neu.
+                Nutzen Sie unseren KI-Concierge für sofortige Antworten und maßgeschneiderte Routenvorschläge rund um die Uhr.
               </p>
             </motion.div>
             
             <div className="flex flex-col gap-4 w-full max-w-xs">
-              <Link href="/trip-planner">
-                <Button className="w-full h-12 md:h-14 rounded-xl bg-primary text-white hover:bg-white hover:text-secondary font-black text-[10px] uppercase tracking-widest border-none transition-all shadow-2xl">
-                  IHRE ROUTE PLANEN
-                </Button>
-              </Link>
               <Link href="/trip-advisor">
-                <Button variant="outline" className="w-full h-12 md:h-14 rounded-xl border-white/20 bg-white/5 text-white hover:bg-white/10 font-black text-[10px] uppercase tracking-widest transition-all">
-                  AI CONCIERGE FRAGEN <Sparkles className="w-3.5 h-3.5 ml-2 text-primary" />
+                <Button className="w-full h-12 md:h-14 rounded-xl bg-primary text-white hover:bg-white hover:text-secondary font-black text-[10px] uppercase tracking-widest border-none transition-all shadow-2xl">
+                  KI-BERATER JETZT FRAGEN <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
             </div>
@@ -177,14 +174,14 @@ export default function SafarisPage() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
             <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white shadow-xl">
-                <Headphones className="w-5 h-5" />
+                <Compass className="w-5 h-5" />
               </div>
-              <span className="text-white text-[10px] font-black uppercase tracking-widest">Expert Care Registry</span>
+              <span className="text-white text-[10px] font-black uppercase tracking-widest">Expert Field Registry</span>
             </div>
           </div>
 
-          {/* Tile 3: Expert Contact Hub (Bottom Left / Stacks after Balloon on Desktop) */}
-          <div className="bg-[#FDF7F2] p-8 md:p-16 lg:p-24 flex flex-col justify-center items-center text-center space-y-10 min-h-[450px] order-4 md:order-3 border-t border-border/40">
+          {/* Tile 3: DIRECT HUMAN CONTACT (Bottom Right on Desktop, Order-3 on Mobile) */}
+          <div className="bg-[#FDF7F2] p-8 md:p-16 lg:p-24 flex flex-col justify-center items-center text-center space-y-10 min-h-[450px] order-3 md:order-4 border-t md:border-t-0 border-border/40">
             <div className="space-y-6">
               <div className="relative w-24 h-24 md:w-32 md:h-32 mx-auto">
                 <div className="absolute inset-0 bg-[#C9A876]/20 rounded-full transform rotate-6 scale-110" />
@@ -194,30 +191,28 @@ export default function SafarisPage() {
                 <div className="absolute -bottom-2 -right-2 bg-green-500 w-6 h-6 rounded-full border-4 border-white shadow-lg" title="Expert Online" />
               </div>
               <div className="space-y-2">
-                <h3 className="font-headline text-2xl md:text-4xl font-bold text-secondary uppercase tracking-tighter">Persönlicher Kontakt</h3>
-                <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Unsere Spezialisten sind jetzt für Sie da</p>
+                <span className="text-primary font-bold uppercase tracking-[0.4em] text-[8px] md:text-[9px] mb-2 block">MENSCHLICHE EXPERTISE</span>
+                <h3 className="font-headline text-2xl md:text-4xl font-bold text-secondary uppercase tracking-tighter">Direkter Kontakt</h3>
+                <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-muted-foreground leading-relaxed max-w-xs mx-auto">
+                  Unsere Spezialisten in Berlin entwerfen Ihre Route von Grund auf neu – mit Herz und Verstand.
+                </p>
               </div>
             </div>
 
-            <div className="space-y-3 w-full max-w-xs">
-              <a href="tel:+493022608080" className="flex items-center gap-4 p-4 bg-secondary text-white rounded-xl shadow-xl hover:bg-primary transition-all group overflow-hidden relative">
-                <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center shrink-0 relative z-10">
-                  <Phone className="w-4 h-4 text-primary" />
-                </div>
-                <div className="text-left relative z-10">
-                  <p className="text-[7px] font-black uppercase opacity-60">DIREKTVERBINDUNG BERLIN</p>
-                  <p className="text-xs font-black tracking-tight">+49 30 22608080</p>
-                </div>
-              </a>
-              <Link href="/contact" className="block text-[9px] font-black uppercase tracking-widest text-secondary/40 hover:text-primary transition-colors py-2">
-                KONTAKTWEGE ANSEHEN
+            <div className="flex flex-col gap-3 w-full max-w-xs">
+              <Link href="/trip-planner">
+                <Button className="w-full h-12 md:h-14 rounded-xl bg-secondary text-white hover:bg-primary font-black text-[10px] uppercase tracking-widest border-none transition-all shadow-xl">
+                  KONTAKT JETZT AUFNEHMEN
+                </Button>
               </Link>
+              <a href="tel:+493022608080" className="flex items-center justify-center gap-3 text-[10px] font-black uppercase tracking-widest text-secondary/60 hover:text-primary transition-colors py-2">
+                <Phone className="w-3.5 h-3.5" /> +49 30 22608080
+              </a>
             </div>
           </div>
 
-          {/* Tile 4: Balloon Image (Bottom Right / Stacks before Contact on Desktop) */}
-          <div className="relative aspect-video md:aspect-auto min-h-[350px] md:min-h-full overflow-hidden order-3 md:order-4 border-t border-border/40">
+          {/* Tile 4: Atmospheric Image (Bottom Left on Desktop, Order-4 on Mobile) */}
+          <div className="relative aspect-video md:aspect-auto min-h-[350px] md:min-h-full overflow-hidden order-4 md:order-3 border-t border-border/40">
             <Image 
               src="https://images.unsplash.com/photo-1539760397268-33f5146dd9e2?q=80&w=1200"
               alt="Safari Balloon Over Serengeti"
@@ -229,7 +224,7 @@ export default function SafarisPage() {
             <div className="absolute inset-0 flex items-center justify-center p-10 text-center">
               <div className="p-6 md:p-10 bg-white/10 backdrop-blur-xl border border-white/20 rounded-[2.5rem] max-w-xs shadow-2xl">
                 <p className="text-white font-headline text-lg md:text-2xl uppercase tracking-tight leading-tight">
-                  "Der Traum beginnt dort, wo die Planung endet."
+                  "Persönlichkeit ist durch nichts zu ersetzen."
                 </p>
               </div>
             </div>
