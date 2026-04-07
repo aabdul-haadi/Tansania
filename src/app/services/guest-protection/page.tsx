@@ -14,6 +14,8 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
+import { AiCTA } from '@/components/sections/AiCTA';
+import { ContactSection } from '@/components/shared/ContactSection';
 
 const insurancePackages = [
   {
@@ -61,8 +63,8 @@ const insurancePackages = [
 export default function GuestProtectionPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen">
-      {/* COMPACT DARK HERO */}
-      <header className="relative pt-32 pb-16 md:pb-24 bg-secondary border-b border-white/5 overflow-hidden">
+      {/* COMPACT DARK HERO - Standardized Padding & Typography */}
+      <header className="relative pt-24 md:pt-32 pb-16 md:pb-24 bg-secondary border-b border-white/5 overflow-hidden">
         <div className="absolute top-0 right-0 p-8 opacity-[0.03] pointer-events-none">
           <ShieldCheck className="w-48 h-48 text-primary" />
         </div>
@@ -72,12 +74,10 @@ export default function GuestProtectionPage() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-4xl space-y-4"
+            className="max-w-4xl space-y-6"
           >
-            <Badge className="bg-primary text-white border-none px-4 py-1.5 text-[8px] font-bold uppercase tracking-[0.4em] shadow-lg">Schutz-Strategie</Badge>
-            <h1 className="text-white uppercase">
-              Reise-<br />
-              <span className="text-primary">Versicherung</span>
+            <h1 className="text-white uppercase leading-none tracking-tighter text-3xl md:text-6xl lg:text-7xl">
+              Reise-Versicherung
             </h1>
             <p className="max-w-xl text-[10px] md:text-sm text-white/60 font-bold uppercase tracking-widest leading-relaxed">
               Professionelles Risiko-Management für Ihr Tansania-Abenteuer. Wir sichern Ihre Träume ab.
@@ -177,27 +177,12 @@ export default function GuestProtectionPage() {
         </div>
       </section>
 
-      <section className="py-12 md:py-24 bg-white border-y border-border">
-        <div className="container mx-auto px-4 max-w-4xl text-center space-y-10">
-          <div className="w-16 h-16 rounded-[1.5rem] bg-muted/50 mx-auto flex items-center justify-center border border-border">
-            <ShieldAlert className="w-8 h-8 text-primary" />
-          </div>
-          <div className="space-y-4">
-            <h2 className="text-secondary uppercase">
-              Individuelle <br /><span className="text-primary">Beratung</span>
-            </h2>
-            <p className="text-muted-foreground font-bold text-[10px] md:text-base uppercase tracking-[0.2em] leading-relaxed max-w-2xl mx-auto">
-              Unser Expertenteam analysiert Ihren persönlichen Bedarf für die Tansania-Expedition. Wir finden die passende Strategie für Ihre Sicherheit.
-            </p>
-          </div>
-          <div className="pt-6">
-            <Link href="/contact" className="w-full sm:w-auto">
-              <Button className="rounded-xl px-12 h-11 md:h-14 font-bold text-[10px] uppercase tracking-[0.3em] shadow-2xl hover:scale-[1.05] transition-transform border-none">
-                Experten Sprechen <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </Link>
-          </div>
-        </div>
+      {/* REUSABLE AICTA COMPONENT */}
+      <AiCTA />
+
+      {/* SUPPORT REGISTRY */}
+      <section className="bg-white">
+        <ContactSection />
       </section>
     </div>
   );
