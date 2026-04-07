@@ -9,7 +9,8 @@ import {
   Instagram,
   Facebook,
   Globe,
-  ChevronDown
+  ChevronDown,
+  X
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -32,13 +33,17 @@ export function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+      
+      // Determine if page has been scrolled for visual transitions
       setIsScrolled(currentScrollY > 50);
       
+      // Intelligent Mobile Sticky Handling: Hide on scroll down, show on scroll up
       if (currentScrollY > lastScrollY && currentScrollY > 200 && !isOpen) {
         setIsVisible(false);
       } else {
         setIsVisible(true);
       }
+      
       setLastScrollY(currentScrollY);
     };
 
@@ -73,8 +78,12 @@ export function Navbar() {
   return (
     <header 
       className={cn(
-        "fixed top-0 w-full z-[100] transition-all duration-500",
-        (!isVisible && !isOpen) ? "-translate-y-full" : "translate-y-0",
+        "top-0 w-full z-[100] transition-all duration-500",
+        // POSITIONING: Fixed on mobile (for sticky behavior), Absolute on desktop (to scroll away)
+        "fixed md:absolute",
+        // RESPONSIVE STICKY HANDLING: 
+        // Mobile hides/shows via translate-y. Desktop stays in place (md:translate-y-0).
+        (!isVisible && !isOpen) ? "-translate-y-full md:translate-y-0" : "translate-y-0",
         isScrolled ? "py-3" : "py-6 md:py-8"
       )}
     >
@@ -86,7 +95,7 @@ export function Navbar() {
             : "bg-transparent text-white border border-transparent",
           isOpen ? "opacity-0 pointer-events-none" : "opacity-100"
         )}>
-          {/* Brand Logo - Official Icon Asset */}
+          {/* Brand Logo - Official Registry Protocol */}
           <Link href="/" className="flex items-center gap-2 md:gap-3 group shrink-0">
             <img 
               src="/iconlogo.jpg" 
@@ -124,7 +133,7 @@ export function Navbar() {
               </button>
             </SheetTrigger>
             
-            <SheetContent side="right" className="w-[85vw] sm:max-w-[400px] p-0 bg-white text-secondary border-none flex flex-col shadow-2xl font-bold">
+            <SheetContent side="right" className="w-[85vw] sm:max-w-[400px] p-0 bg-white text-secondary border-none flex flex-col shadow-2xl">
               {/* Menu Header Registry */}
               <div className="px-6 py-6 md:py-8 flex items-center border-b border-border/50 shrink-0">
                 <Link href="/" className="flex items-center gap-3">
@@ -154,7 +163,7 @@ export function Navbar() {
                               <Link 
                                 key={country.name} 
                                 href={country.href}
-                                className="text-xs md:text-sm font-black text-secondary/60 hover:text-primary uppercase tracking-widest transition-colors"
+                                className="text-xs md:text-sm font-bold text-secondary/60 hover:text-primary uppercase tracking-widest transition-colors"
                               >
                                 {country.name}
                               </Link>
@@ -179,7 +188,7 @@ export function Navbar() {
 
                   <div className="flex flex-col gap-6">
                     <div className="space-y-4">
-                      <p className="text-[9px] font-black uppercase tracking-[0.4em] text-primary/60 flex items-center gap-2">
+                      <p className="text-[9px] font-bold uppercase tracking-[0.4em] text-primary/60 flex items-center gap-2">
                         <Globe className="w-3" /> Explore Catalog
                       </p>
                       <Link 
