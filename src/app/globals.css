@@ -6,7 +6,7 @@
   :root {
     /* COLORS: Professional Registry Palette */
     --background: 0 0% 98%;
-    --foreground: 20 6% 35%; /* Darkened for significantly better readability */
+    --foreground: 20 6% 35%; 
     --card: 0 0% 100%;
     --card-foreground: 20 6% 22%;
     --popover: 0 0% 100%;
@@ -30,7 +30,7 @@
     --border: 0 0% 90%;
     --input: 0 0% 90%;
     --ring: 19 89% 47%;
-    --radius: 1.5rem;
+    --radius: 1rem;
 
     /* BALANCED PRESTIGE SCALE */
     --text-xs: 0.75rem;
@@ -53,6 +53,10 @@
     @apply border-border;
   }
   
+  html {
+    @apply font-sans;
+  }
+
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', sans-serif;
@@ -62,21 +66,46 @@
     background-attachment: fixed;
   }
 
-  /* Titles Registry - Standardized to Cormorant Garamond 400 */
+  /* HEADLINE REGISTRY: Strict Cormorant Garamond Protocol */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-headline font-normal leading-tight;
-    color: #3A3634;
-    font-style: normal;
+    @apply font-headline font-normal leading-tight text-secondary uppercase tracking-tighter;
+    font-style: normal !important;
   }
 
-  /* Paragraph standard */
+  h1 {
+    @apply text-4xl md:text-7xl lg:text-8xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-5xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-4xl;
+  }
+
+  h4 {
+    @apply text-xl md:text-2xl;
+  }
+
+  /* BODY REGISTRY: Strict Inter Protocol */
+  p, span, li, div {
+    @apply font-sans font-normal;
+    font-style: normal !important;
+  }
+
   p {
-    @apply text-foreground font-normal;
+    @apply text-sm md:text-base leading-relaxed;
   }
 
-  /* Technical Constraint: Force No Italics */
+  /* Technical Constraint: Force No Italics globally */
   i, em, .italic, .font-italic {
     font-style: normal !important;
+  }
+
+  /* Global Selection Highlight */
+  ::selection {
+    @apply bg-primary/20 text-secondary;
   }
 }
 
