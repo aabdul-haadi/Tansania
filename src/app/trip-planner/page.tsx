@@ -135,10 +135,10 @@ export default function TripPlanner() {
             </div>
 
             <div className="flex flex-col gap-3 max-w-sm mx-auto">
-              <Button onClick={handleReset} variant="outline" className="w-full rounded-xl h-14 gap-3 border-primary/20 text-primary hover:bg-primary/5 font-black text-[10px] uppercase tracking-widest">
+              <Button onClick={handleReset} variant="outline" className="w-full rounded-xl h-12 md:h-14 gap-3 border-primary/20 text-primary hover:bg-primary/5 font-black text-[10px] uppercase tracking-widest">
                 <RefreshCw className="w-4 h-4" /> Seite neu laden
               </Button>
-              <Button asChild className="w-full rounded-xl h-14 gap-3 shadow-lg shadow-primary/20 font-black text-[10px] uppercase tracking-widest border-none">
+              <Button asChild className="w-full rounded-xl h-12 md:h-14 gap-3 shadow-lg shadow-primary/20 font-black text-[10px] uppercase tracking-widest border-none">
                 <Link href="/"><Home className="w-4 h-4" /> Zur Startseite</Link>
               </Button>
             </div>
@@ -250,7 +250,7 @@ export default function TripPlanner() {
                           type="button" 
                           onClick={() => setStep(2)} 
                           disabled={selectedDestinations.length === 0} 
-                          className="w-full h-16 rounded-2xl font-black uppercase text-[11px] tracking-[0.2em] shadow-xl border-none"
+                          className="w-full h-13 md:h-16 rounded-2xl font-black uppercase text-[11px] tracking-[0.2em] shadow-xl border-none"
                         >
                           Nächster Schritt: Details <ChevronRight className="w-4 h-4 ml-2" />
                         </Button>
@@ -306,8 +306,8 @@ export default function TripPlanner() {
                           </div>
                         </div>
                         <div className="flex gap-4">
-                          <Button type="button" variant="ghost" onClick={() => setStep(1)} className="flex-1 font-black uppercase text-[10px] tracking-widest h-14">Zurück</Button>
-                          <Button type="button" onClick={() => setStep(3)} className="flex-[2] h-16 rounded-2xl font-black uppercase text-[11px] tracking-[0.2em] shadow-xl border-none">Fast Fertig <ChevronRight className="w-4 h-4 ml-2" /></Button>
+                          <Button type="button" variant="ghost" onClick={() => setStep(1)} className="flex-1 font-black uppercase text-[10px] tracking-widest h-13 md:h-14">Zurück</Button>
+                          <Button type="button" onClick={() => setStep(3)} className="flex-[2] h-13 md:h-16 rounded-2xl font-black uppercase text-[11px] tracking-[0.2em] shadow-xl border-none">Fast Fertig <ChevronRight className="w-4 h-4 ml-2" /></Button>
                         </div>
                       </motion.div>
                     )}
@@ -340,8 +340,8 @@ export default function TripPlanner() {
                           </div>
                         </div>
                         <div className="flex gap-4">
-                          <Button type="button" variant="ghost" onClick={() => setStep(2)} className="flex-1 font-black uppercase text-[10px] tracking-widest h-14">Zurück</Button>
-                          <Button type="submit" className="flex-[3] h-16 rounded-2xl font-black uppercase text-[12px] tracking-[0.3em] shadow-2xl border-none">
+                          <Button type="button" variant="ghost" onClick={() => setStep(2)} className="flex-1 font-black uppercase text-[10px] tracking-widest h-13 md:h-14">Zurück</Button>
+                          <Button type="submit" className="flex-[3] h-13 md:h-16 rounded-2xl font-black uppercase text-[12px] tracking-[0.3em] shadow-2xl border-none">
                             Expedition Anfragen <Send className="w-4 h-4 ml-3" />
                           </Button>
                         </div>

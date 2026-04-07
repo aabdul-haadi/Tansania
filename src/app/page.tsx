@@ -89,12 +89,12 @@ export default function Home() {
               className="flex flex-col sm:flex-row gap-4 pt-4 md:pt-0 pb-4 md:pb-0"
             >
               <Link href="/trip-planner">
-                <Button className="w-full sm:w-auto h-14 px-10 rounded-lg bg-white text-secondary hover:bg-primary hover:text-white transition-all duration-500 font-bold text-[11px] uppercase tracking-widest border-none group shadow-2xl">
+                <Button className="w-full sm:w-auto h-11 md:h-14 px-6 md:px-10 rounded-lg bg-white text-secondary hover:bg-primary hover:text-white transition-all duration-500 font-bold text-[11px] uppercase tracking-widest border-none group shadow-2xl">
                   Reiseberatung anfragen <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
               <Link href="/safaris">
-                <Button variant="outline" className="w-full sm:w-auto h-14 px-10 rounded-lg bg-transparent text-white border-white/40 hover:bg-white/10 hover:border-white font-bold text-[11px] uppercase tracking-widest transition-all duration-500">
+                <Button variant="outline" className="w-full sm:w-auto h-11 md:h-14 px-6 md:px-10 rounded-lg bg-transparent text-white border-white/40 hover:bg-white/10 hover:border-white font-bold text-[11px] uppercase tracking-widest transition-all duration-500">
                   Unsere Reisen entdecken
                 </Button>
               </Link>

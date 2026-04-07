@@ -50,7 +50,7 @@ export function ProcessSection() {
             transition={{ delay: 0.1 }}
             className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tighter leading-none"
           >
-            So einfach geht&apos;s
+            So einfach geht's
           </motion.h2>
         </div>
 
@@ -99,7 +99,7 @@ export function ProcessSection() {
         {/* Final Execution Trigger */}
         <div className="mt-12 md:mt-20 flex justify-center">
           <Link href="/trip-planner">
-            <Button size="lg" className="rounded-xl px-10 h-12 md:h-14 bg-secondary text-white hover:bg-primary font-bold text-[10px] md:text-[11px] uppercase tracking-[0.3em] shadow-2xl border-none group">
+            <Button size="lg" className="rounded-xl px-6 md:px-10 h-11 md:h-14 bg-secondary text-white hover:bg-primary font-bold text-[10px] md:text-[11px] uppercase tracking-[0.3em] shadow-2xl border-none group">
               Jetzt Beratung starten <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </Link>
