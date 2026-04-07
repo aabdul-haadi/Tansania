@@ -53,28 +53,28 @@ const products = [
 
 export default function ReiseShopPage() {
   return (
-    <div className="bg-[#fdfcfb] min-h-screen font-bold">
-      {/* Cinematic Hero */}
-      <section className="relative h-[50vh] md:h-[65vh] w-full flex items-center justify-center overflow-hidden bg-secondary">
+    <div className="bg-[#fdfcfb] min-h-screen">
+      {/* Cinematic Light Hero */}
+      <section className="relative h-[50vh] md:h-[65vh] w-full flex items-center justify-center overflow-hidden bg-[#FDF7F2]">
         <Image 
           src="https://images.unsplash.com/photo-1640109229792-a26a0ee366ff?q=80&w=1920"
           alt="Safari Shop Lifestyle"
           fill
           priority
-          className="object-cover brightness-50"
+          className="object-cover brightness-110 opacity-40"
           data-ai-hint="luxury lounge"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#fdfcfb]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-transparent to-[#fdfcfb]" />
         
         <div className="container relative z-10 mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="space-y-4">
-            <Badge className="bg-primary text-white border-none px-4 py-1.5 text-[8px] md:text-[10px] font-black uppercase tracking-[0.4em] mb-4 shadow-2xl">
+            <Badge className="bg-primary text-white border-none px-4 py-1.5 text-[8px] font-bold uppercase tracking-[0.4em] mb-4 shadow-2xl">
               Curated Expedition Supplies
             </Badge>
-            <h1 className="font-headline text-3xl md:text-7xl font-bold text-white leading-none tracking-tighter uppercase">
+            <h1 className="font-headline text-4xl md:text-7xl font-normal text-secondary leading-none tracking-tighter uppercase">
               TANSANIA <br /><span className="text-primary">REISE-STORE</span>
             </h1>
-            <p className="max-w-2xl mx-auto text-[9px] md:text-lg text-white/80 font-black uppercase tracking-widest leading-relaxed">
+            <p className="max-w-2xl mx-auto text-[9px] md:text-lg text-secondary/60 font-bold uppercase tracking-widest leading-relaxed">
               Reisebezogene Produkte & Dienstleistungen für Ihr nahtloses Abenteuer.
             </p>
           </motion.div>
@@ -92,7 +92,7 @@ export default function ReiseShopPage() {
           >
             <div className="space-y-2">
               <span className="text-primary font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px] block">Unsere Partnerschaften</span>
-              <h2 className="font-headline text-2xl md:text-5xl font-bold leading-tight text-secondary uppercase tracking-tight">
+              <h2 className="font-headline text-3xl md:text-5xl font-normal leading-tight text-secondary uppercase tracking-tight">
                 Qualität ohne <br /><span className="text-primary">Kompromisse</span>
               </h2>
             </div>
@@ -132,30 +132,29 @@ export default function ReiseShopPage() {
         </div>
       </section>
 
-      {/* The Outfitter Section */}
-      <section className="py-16 md:py-32 bg-secondary text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+      {/* The Outfitter Section - Light Version */}
+      <section className="py-16 md:py-32 bg-white relative overflow-hidden border-y border-border">
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
             <div className="lg:col-span-5">
               <span className="text-primary font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px] mb-3 block">Der Reiseausrüster</span>
-              <h2 className="font-headline text-3xl md:text-6xl font-bold leading-tight uppercase tracking-tighter mb-8">
+              <h2 className="font-headline text-3xl md:text-6xl font-normal leading-tight uppercase tracking-tighter mb-8 text-secondary">
                 Speziell für Ihr <br /><span className="text-primary">Zielgebiet</span>
               </h2>
-              <p className="text-white/60 font-bold leading-relaxed text-sm md:text-xl uppercase tracking-widest mb-10">
+              <p className="text-muted-foreground font-bold leading-relaxed text-sm md:text-xl uppercase tracking-widest mb-10">
                 Egal, ob Sie auf Safari gehen, Schnorcheln oder Wildwasser-Rafting betreiben – wir bieten Top-Marken, die leicht zu packen, sonnenschützend und wasserdicht sind.
               </p>
               <div className="flex flex-wrap gap-3">
                 {['UV-Schutz', 'Atmungsaktiv', 'Wasserdicht', 'Leichtbau'].map(tag => (
-                  <Badge key={tag} variant="outline" className="px-4 py-2 border-white/10 text-white/40 text-[8px] font-black uppercase tracking-widest">{tag}</Badge>
+                  <Badge key={tag} variant="outline" className="px-4 py-2 border-border text-muted-foreground text-[8px] font-bold uppercase tracking-widest">{tag}</Badge>
                 ))}
               </div>
             </div>
 
             <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6">
               {products.slice(0, 2).map((p, i) => (
-                <div key={i} className="group relative aspect-[4/5] rounded-[2.5rem] overflow-hidden bg-white/5 border border-white/10 shadow-2xl transition-all hover:border-primary/40">
-                  <Image src={p.img} alt={p.name} fill className="object-cover group-hover:scale-105 transition-transform duration-1000 opacity-80" data-ai-hint={p.hint} />
+                <div key={i} className="group relative aspect-[4/5] rounded-[2.5rem] overflow-hidden bg-white border border-border shadow-sm transition-all hover:shadow-xl hover:border-primary/40">
+                  <Image src={p.img} alt={p.name} fill className="object-cover group-hover:scale-105 transition-transform duration-1000" data-ai-hint={p.hint} />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
                   <div className="absolute bottom-8 left-8 right-8 space-y-2">
                     <p className="text-primary font-black text-[8px] uppercase tracking-widest">{p.cat}</p>
@@ -170,10 +169,10 @@ export default function ReiseShopPage() {
       </section>
 
       {/* Categories Grid */}
-      <section className="py-16 md:py-32 bg-white">
+      <section className="py-16 md:py-32 bg-[#fdfcfb]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12 md:mb-24">
-            <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary uppercase tracking-tighter leading-none">
+            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary uppercase tracking-tighter leading-none">
               Shop nach <span className="text-primary">Kategorie</span>
             </h2>
           </div>
@@ -183,12 +182,12 @@ export default function ReiseShopPage() {
               <motion.div 
                 key={i}
                 whileHover={{ y: -10 }}
-                className="p-10 md:p-16 bg-[#fdfcfb] rounded-[2.5rem] md:rounded-[3.5rem] border border-border/50 shadow-sm hover:shadow-2xl transition-all duration-500 group"
+                className="p-10 md:p-16 bg-white rounded-[2.5rem] md:rounded-[3.5rem] border border-border/50 shadow-sm hover:shadow-2xl transition-all duration-500 group"
               >
                 <div className="w-16 h-16 rounded-[1.5rem] bg-muted flex items-center justify-center mb-10 group-hover:bg-primary transition-colors duration-500">
                   <cat.icon className="w-8 h-8 text-muted-foreground group-hover:text-white" />
                 </div>
-                <h4 className="font-headline text-xl md:text-3xl font-bold text-secondary uppercase leading-tight mb-6">{cat.label}</h4>
+                <h4 className="font-headline text-xl md:text-3xl font-normal text-secondary uppercase leading-tight mb-6">{cat.label}</h4>
                 <div className="pt-6 border-t border-muted/50">
                   <Button variant="link" className="p-0 h-auto font-black text-[10px] uppercase tracking-[0.2em] group-hover:text-primary transition-colors">
                     Kollektion ansehen <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -200,13 +199,13 @@ export default function ReiseShopPage() {
         </div>
       </section>
 
-      {/* Expert Quote / Final CTA */}
-      <section className="py-16 md:py-32 bg-[#fdfcfb] container mx-auto px-4 max-w-4xl text-center space-y-10">
+      {/* Final CTA */}
+      <section className="py-16 md:py-32 bg-white container mx-auto px-4 max-w-4xl text-center space-y-10">
         <div className="w-16 h-16 rounded-[1.5rem] bg-white border border-border shadow-xl mx-auto flex items-center justify-center">
           <Compass className="w-8 h-8 text-primary" />
         </div>
         <div className="space-y-6">
-          <h2 className="font-headline text-2xl md:text-5xl font-bold text-secondary uppercase tracking-tight leading-tight">
+          <h2 className="font-headline text-2xl md:text-5xl font-normal text-secondary uppercase tracking-tight leading-tight">
             Machen Sie das Beste <br />aus Ihrem <span className="text-primary">Abenteuer</span>
           </h2>
           <p className="text-muted-foreground font-black text-[10px] md:text-xl uppercase tracking-widest leading-relaxed max-w-2xl mx-auto">
@@ -214,7 +213,7 @@ export default function ReiseShopPage() {
           </p>
         </div>
         <div className="pt-10">
-          <Button size="lg" className="rounded-full px-12 h-16 md:h-20 font-black text-[10px] md:text-xs uppercase tracking-[0.3em] shadow-2xl hover:scale-105 transition-transform border-none">
+          <Button className="rounded-xl px-12 h-11 md:h-14 font-black text-[10px] md:text-xs uppercase tracking-[0.3em] shadow-2xl hover:scale-105 transition-transform border-none">
             ZUR PARTNER-SHOP AUSWAHL <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </div>

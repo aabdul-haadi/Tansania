@@ -76,18 +76,18 @@ const targetAudience = [
 
 export default function CareersPage() {
   return (
-    <div className="bg-[#fdfcfb] min-h-screen font-body">
-      {/* Cinematic Hero */}
-      <header className="relative h-[50vh] md:h-[70vh] w-full overflow-hidden flex items-center justify-center bg-secondary">
+    <div className="bg-[#fdfcfb] min-h-screen">
+      {/* Light Cinematic Hero */}
+      <header className="relative h-[50vh] md:h-[70vh] w-full overflow-hidden flex items-center justify-center bg-white border-b border-border">
         <Image
           src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920"
           alt="Tansania Safari Karriere"
           fill
           priority
-          className="object-cover opacity-40 brightness-75"
+          className="object-cover opacity-20 brightness-110"
           data-ai-hint="safari office"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#fdfcfb]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-transparent to-[#fdfcfb]" />
         
         <div className="container relative z-10 mx-auto px-4 text-center">
           <motion.div
@@ -98,11 +98,11 @@ export default function CareersPage() {
             <Badge className="bg-primary text-white border-none px-4 py-1.5 text-[8px] md:text-[10px] font-black uppercase tracking-[0.4em] mb-6 shadow-xl">
               Werde Teil des Teams
             </Badge>
-            <h1 className="font-headline text-3xl md:text-7xl font-bold text-white mb-6 leading-none uppercase tracking-tighter">
+            <h1 className="font-headline text-4xl md:text-7xl font-normal text-secondary mb-6 leading-none uppercase tracking-tighter">
               Karriere bei <br />
               <span className="text-primary">Tansania Reiseabenteuer</span>
             </h1>
-            <p className="max-w-2xl mx-auto text-[10px] md:text-xl text-white/90 font-black uppercase tracking-widest leading-relaxed">
+            <p className="max-w-2xl mx-auto text-[10px] md:text-xl text-secondary/60 font-bold uppercase tracking-widest leading-relaxed">
               Arbeiten mit Sinn. Reisen gestalten. Afrika erleben.
             </p>
           </motion.div>
@@ -113,7 +113,7 @@ export default function CareersPage() {
       <section className="py-12 md:py-24 container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12 md:mb-20">
           <span className="text-primary font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px] mb-3 block">Deine Vorteile</span>
-          <h2 className="font-headline text-2xl md:text-5xl font-bold text-secondary uppercase tracking-tighter">
+          <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tighter leading-none">
             Was wir dir bieten – <br /><span className="text-primary">Deine Vorteile auf einen Blick</span>
           </h2>
         </div>
@@ -129,11 +129,11 @@ export default function CareersPage() {
             >
               <Card className="h-full border-none shadow-sm bg-white rounded-2xl md:rounded-[2.5rem] hover:shadow-xl hover:border-primary/20 transition-all duration-500 group overflow-hidden">
                 <CardContent className="p-5 md:p-10 flex flex-col items-center text-center space-y-4">
-                  <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-muted flex items-center justify-center group-hover:bg-primary transition-colors duration-500">
+                  <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-muted flex items-center justify-center group-hover:bg-primary transition-colors duration-500 shadow-sm">
                     <benefit.icon className="w-5 h-5 md:w-7 md:h-7 text-muted-foreground group-hover:text-white transition-colors" />
                   </div>
                   <div className="space-y-2">
-                    <h4 className="font-headline text-xs md:text-lg font-bold text-secondary uppercase leading-tight">{benefit.title}</h4>
+                    <h4 className="font-headline text-xs md:text-lg font-bold text-secondary uppercase leading-tight tracking-tight">{benefit.title}</h4>
                     <p className="text-[8px] md:text-sm text-muted-foreground font-bold uppercase tracking-widest leading-relaxed line-clamp-3">
                       {benefit.desc}
                     </p>
@@ -145,30 +145,29 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* Target Audience / Cultural Match - FIXING VISIBILITY */}
-      <section className="py-16 md:py-32 bg-secondary text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+      {/* Target Audience Section - Light Prestige Version */}
+      <section className="py-16 md:py-32 bg-[#FDF7F2] relative overflow-hidden border-y border-border">
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <div>
                 <span className="text-primary font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px] mb-3 block">Match Check</span>
-                <h2 className="font-headline text-3xl md:text-6xl font-bold text-white uppercase tracking-tighter leading-none">
+                <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary uppercase tracking-tighter leading-none">
                   Für wen ist das <br /><span className="text-primary">der richtige Ort?</span>
                 </h2>
               </div>
-              <p className="text-white/80 font-bold text-sm md:text-lg leading-relaxed uppercase tracking-widest">
+              <p className="text-secondary/80 font-bold text-sm md:text-lg leading-relaxed uppercase tracking-widest">
                 Wir suchen Menschen, die nicht nur einen Job, sondern eine Berufung finden wollen.
               </p>
             </div>
 
             <div className="space-y-4">
               {targetAudience.map((text, i) => (
-                <div key={i} className="flex gap-5 p-5 md:p-8 bg-white/5 rounded-2xl md:rounded-[2rem] border border-white/10 group hover:bg-white/10 transition-all">
-                  <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary font-black text-xs md:text-xl shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
+                <div key={i} className="flex gap-5 p-5 md:p-8 bg-white rounded-2xl md:rounded-[2rem] border border-border group hover:border-primary transition-all shadow-sm">
+                  <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-black text-xs md:text-xl shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
                     {i + 1}
                   </div>
-                  <p className="text-[10px] md:text-base font-bold text-white uppercase tracking-widest leading-relaxed">
+                  <p className="text-[10px] md:text-base font-bold text-secondary uppercase tracking-widest leading-relaxed">
                     {text}
                   </p>
                 </div>
@@ -182,11 +181,11 @@ export default function CareersPage() {
       <section className="py-16 md:py-24 container mx-auto px-4 max-w-5xl">
         <div className="text-center mb-12 md:mb-16">
           <span className="text-primary font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px] mb-2 block">Offene Positionen</span>
-          <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary uppercase tracking-tighter">Aktuelle <br /><span className="text-primary">Stellenangebote</span></h2>
+          <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tighter leading-none">Aktuelle <br /><span className="text-primary">Stellenangebote</span></h2>
         </div>
 
         <div className="space-y-4">
-          <Card className="border-none shadow-lg rounded-[2rem] md:rounded-[3rem] overflow-hidden bg-white hover:shadow-2xl transition-all duration-500 border border-border/50 group">
+          <Card className="border-none shadow-sm rounded-[2rem] md:rounded-[3rem] overflow-hidden bg-white hover:shadow-xl transition-all duration-500 border border-border group">
             <CardContent className="p-8 md:p-12">
               <div className="flex flex-col md:flex-row items-center justify-between gap-8">
                 <div className="flex items-center gap-6">
@@ -194,7 +193,7 @@ export default function CareersPage() {
                     <Briefcase className="w-8 h-8 md:w-10 md:h-10 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-headline text-xl md:text-3xl font-bold text-secondary uppercase leading-none mb-2 group-hover:text-primary transition-colors">Kundenberater/in für Afrika-Reisen (m/w/d)</h3>
+                    <h3 className="font-headline text-xl md:text-3xl font-normal text-secondary uppercase leading-none mb-2 group-hover:text-primary transition-colors tracking-tight">Kundenberater/in für Afrika-Reisen (m/w/d)</h3>
                     <div className="flex flex-wrap items-center gap-4 text-[8px] md:text-[10px] font-black text-muted-foreground uppercase tracking-widest">
                       <span className="flex items-center gap-1.5"><Clock className="w-3 h-3" /> Vollzeit</span>
                       <span className="flex items-center gap-1.5"><Sparkles className="w-3 h-3" /> Fokus: Tansania & Sansibar</span>
@@ -202,7 +201,7 @@ export default function CareersPage() {
                     </div>
                   </div>
                 </div>
-                <Button className="w-full md:w-auto rounded-full px-10 h-14 font-black text-[10px] uppercase tracking-[0.3em] shadow-xl group">
+                <Button className="w-full md:w-auto rounded-xl px-10 h-11 md:h-14 font-black text-[10px] uppercase tracking-[0.3em] shadow-xl group border-none">
                   Stelle ansehen <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </div>
@@ -211,12 +210,12 @@ export default function CareersPage() {
         </div>
 
         {/* Spontaneous Application CTA */}
-        <div className="mt-16 md:mt-24 p-8 md:p-16 bg-muted/20 rounded-[3rem] md:rounded-[5rem] text-center border-2 border-dashed border-muted relative overflow-hidden">
+        <div className="mt-16 md:mt-24 p-8 md:p-16 bg-white rounded-[3rem] text-center border-2 border-dashed border-border relative overflow-hidden">
           <div className="absolute top-0 right-0 p-10 opacity-[0.03] pointer-events-none">
             <Mail className="w-48 h-48 text-secondary" />
           </div>
           <div className="max-w-2xl mx-auto space-y-6">
-            <h3 className="font-headline text-2xl md:text-4xl font-bold text-secondary uppercase tracking-tight">Nichts Passendes dabei?</h3>
+            <h3 className="font-headline text-2xl md:text-4xl font-normal text-secondary uppercase tracking-tight leading-none">Nichts Passendes dabei?</h3>
             <p className="text-[10px] md:text-lg text-muted-foreground font-bold uppercase tracking-widest leading-relaxed">
               Gerne kannst du auch eine Initiativbewerbung an uns schicken. Wir sind immer auf der Suche nach leidenschaftlichen Talenten.
             </p>

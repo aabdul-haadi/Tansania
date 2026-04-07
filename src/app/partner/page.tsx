@@ -90,18 +90,18 @@ const importantInfo = [
 
 export default function PartnerPage() {
   return (
-    <div className="bg-[#fdfcfb] min-h-screen font-body">
-      {/* Hero Section */}
-      <header className="relative h-[50vh] md:h-[70vh] w-full overflow-hidden flex items-center justify-center bg-secondary">
+    <div className="bg-[#fdfcfb] min-h-screen">
+      {/* Light Cinematic Hero */}
+      <header className="relative h-[50vh] md:h-[70vh] w-full overflow-hidden flex items-center justify-center bg-[#FDF7F2]">
         <Image
           src="https://images.unsplash.com/photo-1640109229792-a26a0ee366ff?q=80&w=1920"
           alt="Travel Advisor Career"
           fill
           priority
-          className="object-cover opacity-40 brightness-75"
+          className="object-cover opacity-30 brightness-110"
           data-ai-hint="luxury lounge"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#fdfcfb]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-transparent to-[#fdfcfb]" />
         
         <div className="container relative z-10 mx-auto px-4 text-center">
           <motion.div
@@ -109,14 +109,14 @@ export default function PartnerPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <Badge className="bg-primary text-white border-none px-4 py-1.5 text-[8px] md:text-[10px] font-black uppercase tracking-[0.4em] mb-6 shadow-xl">
+            <Badge className="bg-primary text-white border-none px-4 py-1.5 text-[8px] md:text-[10px] font-bold uppercase tracking-[0.4em] mb-6 shadow-xl">
               Starten Sie Ihre Karriere
             </Badge>
-            <h1 className="font-headline text-3xl md:text-7xl font-bold text-white mb-6 leading-none uppercase tracking-tighter">
+            <h1 className="font-headline text-4xl md:text-7xl font-normal text-secondary leading-none tracking-tighter uppercase">
               Werden Sie <br />
               <span className="text-primary">Reiseberater:in</span>
             </h1>
-            <p className="max-w-2xl mx-auto text-[10px] md:text-xl text-white/90 font-black uppercase tracking-widest leading-relaxed">
+            <p className="max-w-2xl mx-auto text-[10px] md:text-xl text-secondary/60 font-bold uppercase tracking-widest leading-relaxed">
               Flexibel, unabhängig und mit Leidenschaft fürs Reisen!
             </p>
           </motion.div>
@@ -133,21 +133,21 @@ export default function PartnerPage() {
             className="space-y-6 md:space-y-8"
           >
             <div>
-              <span className="text-primary font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px] mb-2 block">Ihre Reise</span>
-              <h2 className="font-headline text-2xl md:text-5xl font-bold leading-tight text-secondary uppercase tracking-tight">
+              <span className="text-primary font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px] block">Ihre Reise</span>
+              <h2 className="font-headline text-3xl md:text-5xl font-normal leading-tight text-secondary uppercase tracking-tight">
                 Zu einer <br /><span className="text-primary">erfüllenden Karriere</span>
               </h2>
             </div>
-            <p className="text-muted-foreground font-black leading-relaxed text-sm md:text-lg uppercase tracking-widest">
+            <p className="text-muted-foreground font-bold leading-relaxed text-sm md:text-lg uppercase tracking-widest">
               Lieben Sie es, zu reisen und anderen zu ihrem Traumurlaub zu verhelfen? Werden Sie selbstständige:r Reiseberater:in bei Tansania Reiseabenteuer und gestalten Sie unvergessliche Erlebnisse.
             </p>
-            <Button asChild className="rounded-full px-10 h-14 font-black text-[10px] uppercase tracking-widest shadow-xl">
+            <Button asChild className="rounded-xl px-10 h-11 md:h-14 font-black text-[10px] uppercase tracking-widest shadow-xl border-none">
               <Link href="/contact">Jetzt Bewerben</Link>
             </Button>
           </motion.div>
 
           <div className="space-y-4">
-            <h3 className="font-headline text-xl font-bold text-secondary uppercase mb-6">Was Sie mitbringen sollten</h3>
+            <h3 className="font-headline text-2xl font-bold text-secondary uppercase mb-6 tracking-tight">Was Sie mitbringen sollten</h3>
             <div className="space-y-3">
               {requirements.map((text, i) => (
                 <div key={i} className="flex gap-4 p-4 bg-white rounded-2xl border border-border/50 shadow-sm group hover:border-primary/20 transition-all">
@@ -169,7 +169,7 @@ export default function PartnerPage() {
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12 md:mb-20">
             <span className="text-primary font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px] mb-3 block">Unser Support</span>
-            <h2 className="font-headline text-2xl md:text-5xl font-bold text-secondary uppercase tracking-tighter">
+            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tighter">
               Ihre Vorteile <br /><span className="text-primary">bei uns</span>
             </h2>
           </div>
@@ -203,25 +203,24 @@ export default function PartnerPage() {
         </div>
       </section>
 
-      {/* Commercial Model / Transparency - FIXING VISIBILITY */}
-      <section className="py-16 md:py-32 bg-secondary text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+      {/* Commercial Model Section - Clean Light Version */}
+      <section className="py-16 md:py-32 bg-[#FDF7F2] relative overflow-hidden">
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <div>
                 <span className="text-primary font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px] mb-3 block">Transparenz</span>
-                <h2 className="font-headline text-3xl md:text-6xl font-bold text-white uppercase tracking-tighter leading-none">
+                <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary uppercase tracking-tighter leading-none">
                   Das sollten <br /><span className="text-primary">Sie wissen</span>
                 </h2>
               </div>
-              <p className="text-white/80 font-bold text-sm md:text-lg leading-relaxed uppercase tracking-widest">
+              <p className="text-secondary/80 font-bold text-sm md:text-lg leading-relaxed uppercase tracking-widest">
                 Wir setzen auf ein faires, erfolgsbasiertes Modell für maximale Freiheit.
               </p>
               <div className="pt-4 hidden lg:block">
-                <div className="p-8 bg-white/5 rounded-[2.5rem] border border-white/10 flex items-start gap-6">
+                <div className="p-8 bg-white rounded-[2.5rem] border border-border shadow-sm flex items-start gap-6">
                   <Zap className="w-10 h-10 text-primary shrink-0" />
-                  <p className="text-xs font-bold text-white/60 uppercase tracking-widest leading-relaxed">
+                  <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest leading-relaxed">
                     Unser Modell ermöglicht es Ihnen, Ihr eigener Chef zu sein, während Sie die Infrastruktur eines etablierten Experten-Teams nutzen.
                   </p>
                 </div>
@@ -230,15 +229,15 @@ export default function PartnerPage() {
 
             <div className="space-y-3">
               {importantInfo.map((text, i) => (
-                <div key={i} className="flex items-center gap-5 p-5 md:p-6 bg-white/5 rounded-2xl border border-white/10 group hover:bg-white/10 transition-all">
+                <div key={i} className="flex items-center gap-5 p-5 md:p-6 bg-white rounded-2xl border border-border group hover:border-primary transition-all">
                   <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
-                  <p className="text-[9px] md:text-sm font-bold text-white uppercase tracking-widest leading-tight">
+                  <p className="text-[9px] md:text-sm font-bold text-secondary uppercase tracking-widest leading-tight">
                     {text}
                   </p>
                 </div>
               ))}
               <div className="pt-6">
-                <Link href="/fam-trip" className="inline-flex items-center gap-3 text-[9px] font-bold text-primary hover:text-white transition-colors uppercase tracking-widest border-b border-primary/20 pb-1">
+                <Link href="/fam-trip" className="inline-flex items-center gap-3 text-[9px] font-bold text-primary hover:text-secondary transition-colors uppercase tracking-widest border-b border-primary/20 pb-1">
                   Details zum FAM-Trip <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
@@ -253,14 +252,14 @@ export default function PartnerPage() {
           <div className="w-16 h-16 rounded-[1.5rem] bg-muted mx-auto flex items-center justify-center">
             <Compass className="w-8 h-8 text-primary" />
           </div>
-          <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary uppercase tracking-tighter">
+          <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary uppercase tracking-tighter">
             Bereit für den <br /><span className="text-primary">nächsten Schritt?</span>
           </h2>
           <p className="text-muted-foreground font-black text-sm md:text-xl uppercase tracking-widest leading-relaxed max-w-2xl mx-auto">
             Werden Sie Teil unseres Teams und gestalten Sie unvergessliche Reiseerlebnisse in Afrika. Wir freuen uns auf Sie!
           </p>
           <div className="pt-10 flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="rounded-full px-12 h-16 font-black text-[10px] md:text-xs uppercase tracking-[0.3em] shadow-2xl group">
+            <Button className="rounded-xl px-12 h-11 md:h-14 font-black text-[10px] md:text-xs uppercase tracking-[0.3em] shadow-2xl group border-none">
               Kontaktieren Sie uns <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
