@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -37,7 +38,7 @@ const guides = [
 
 export default function AboutPage() {
   return (
-    <div className="bg-[#fdfcfb] min-h-screen font-body">
+    <div className="bg-background min-h-screen">
       {/* Immersive Cinematic Hero */}
       <header className="relative h-[60vh] md:h-[80vh] w-full overflow-hidden flex items-center justify-center">
         <Image
@@ -48,7 +49,7 @@ export default function AboutPage() {
           className="object-cover"
           data-ai-hint="serengeti savannah"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-[#fdfcfb]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-background" />
         
         <div className="container relative z-10 mx-auto px-4 text-center">
           <motion.div
@@ -56,14 +57,14 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <Badge className="bg-primary text-white border-none px-4 py-1.5 text-[8px] md:text-[10px] font-black uppercase tracking-[0.4em] mb-6 shadow-xl">
+            <Badge className="bg-primary text-white border-none px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.4em] mb-6 shadow-xl">
               Authentisch. Unvergesslich. Exklusiv.
             </Badge>
-            <h1 className="font-headline text-3xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight drop-shadow-2xl uppercase tracking-tighter">
+            <h1 className="text-white mb-6 drop-shadow-2xl">
               Ihr Schlüssel zum <br />
               <span className="text-primary">Herzen Afrikas</span>
             </h1>
-            <p className="max-w-2xl mx-auto text-[10px] md:text-xl text-white/80 font-black uppercase tracking-widest leading-relaxed px-4">
+            <p className="max-w-2xl mx-auto text-white/80 font-bold uppercase tracking-widest px-4">
               Wir verbinden den Nil mit der Savanne – durch Abenteuer, die weit über das Gewöhnliche hinausgehen.
             </p>
           </motion.div>
@@ -77,19 +78,19 @@ export default function AboutPage() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-6 md:space-y-8"
+            className="space-y-6"
           >
             <div>
-              <span className="text-primary font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px] mb-2 block">Unsere Vision</span>
-              <h2 className="font-headline text-2xl md:text-5xl font-bold leading-tight text-foreground uppercase tracking-tight">
+              <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-2 block">Unsere Vision</span>
+              <h2 className="text-secondary uppercase">
                 Mehr als nur ein <br /><span className="text-primary">Urlaub</span>
               </h2>
             </div>
-            <div className="space-y-6 text-muted-foreground font-bold leading-relaxed text-sm md:text-lg">
+            <div className="space-y-6 text-muted-foreground font-medium leading-relaxed">
               <p>
                 Träumen Sie von einer Reise, die tiefer geht? Eine Reise, die Sie in die Seele eines Kontinents eintauchen lässt, reich an unberührter Natur, pulsierenden Kulturen und atemberaubenden Abenteuern?
               </p>
-              <p className="text-foreground">
+              <p className="text-secondary font-bold">
                 Dann sind Sie bei Tansania Reiseabenteuer genau richtig! Wir sind nicht einfach nur ein Reiseveranstalter; wir sind Ihre Brücke zu authentischen Erlebnissen in Tansania, Kenia, Ruanda, Botswana, Namibia, Südafrika und an den Victoriafällen.
               </p>
             </div>
@@ -97,7 +98,7 @@ export default function AboutPage() {
               {["Tansania", "Kenia", "Ruanda", "Botswana", "Namibia", "Südafrika"].map((dest, i) => (
                 <div key={i} className="px-4 py-2 bg-white rounded-full border border-border shadow-sm flex items-center gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  <span className="text-[8px] md:text-[10px] font-black uppercase tracking-widest">{dest}</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest">{dest}</span>
                 </div>
               ))}
             </div>
@@ -121,7 +122,7 @@ export default function AboutPage() {
             </div>
             <div className="absolute -bottom-6 -left-6 bg-primary p-6 md:p-10 rounded-[1.5rem] md:rounded-[2.5rem] shadow-2xl hidden md:block max-w-xs">
               <Quote className="w-8 h-8 text-white/20 mb-4" />
-              <p className="text-white font-black text-sm md:text-lg leading-tight mb-4 uppercase tracking-tight">"Unser Herz schlägt für Afrika – mit uns erleben Sie den Kontinent hautnah."</p>
+              <p className="text-white font-bold text-sm md:text-lg leading-tight mb-4 uppercase tracking-tight">"Unser Herz schlägt für Afrika – mit uns erleben Sie den Kontinent hautnah."</p>
               <div className="h-px w-12 bg-white/20" />
             </div>
           </motion.div>
@@ -148,12 +149,12 @@ export default function AboutPage() {
             </div>
             <div className="lg:col-span-7 space-y-6 md:space-y-10">
               <div>
-                <span className="text-primary font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px] mb-3 block">Der Visionär</span>
-                <h2 className="font-headline text-3xl md:text-6xl font-bold leading-none text-white uppercase tracking-tighter">
+                <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-3 block">Der Visionär</span>
+                <h2 className="text-white uppercase">
                   Maßgeschneidert von <br /><span className="text-primary">Samson Kyashama</span>
                 </h2>
               </div>
-              <p className="text-white font-bold leading-relaxed text-sm md:text-xl opacity-90">
+              <p className="text-white font-medium leading-relaxed text-sm md:text-lg opacity-90">
                 Unter der Führung von Samson Kyashama, einem gebürtigen Tansanier und erfahrenen Safari-Experten, entwerfen wir Reisen, die Ihre kühnsten Träume übertreffen. Jede Safari, jede Besteigung und jedes kulturelle Erlebnis wird persönlich abgestimmt.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 pt-4">
@@ -162,8 +163,8 @@ export default function AboutPage() {
                     <Award className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <p className="font-black text-[10px] md:text-xs text-white uppercase tracking-widest">Lokale Expertise</p>
-                    <p className="text-[10px] md:text-sm text-white/60 font-bold uppercase mt-1">Tief verwurzelt in Tansania.</p>
+                    <p className="font-bold text-[10px] text-white uppercase tracking-widest">Lokale Expertise</p>
+                    <p className="text-[10px] text-white/60 font-medium uppercase mt-1">Tief verwurzelt in Tansania.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
@@ -171,8 +172,8 @@ export default function AboutPage() {
                     <Sparkles className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <p className="font-black text-[10px] md:text-xs text-white uppercase tracking-widest">Einzigartige Erlebnisse</p>
-                    <p className="text-[10px] md:text-sm text-white/60 font-bold uppercase mt-1">Abenteuer so individuell wie Sie.</p>
+                    <p className="font-bold text-[10px] text-white uppercase tracking-widest">Einzigartige Erlebnisse</p>
+                    <p className="text-[10px] text-white/60 font-medium uppercase mt-1">Abenteuer so individuell wie Sie.</p>
                   </div>
                 </div>
               </div>
@@ -182,11 +183,11 @@ export default function AboutPage() {
       </section>
 
       {/* Core Values / Why Us */}
-      <section className="py-16 md:py-32 bg-[#fdfcfb]">
+      <section className="py-16 md:py-32 bg-background">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-12 md:mb-20">
-            <span className="text-primary font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px] mb-3 block">Unser Versprechen</span>
-            <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary uppercase tracking-tighter">Warum Tansania <br /><span className="text-primary">Reiseabenteuer?</span></h2>
+            <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-3 block">Unser Versprechen</span>
+            <h2 className="text-secondary uppercase">Warum Tansania <br /><span className="text-primary">Reiseabenteuer?</span></h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
@@ -216,8 +217,8 @@ export default function AboutPage() {
                 <div className="w-12 h-12 rounded-2xl bg-muted flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
                   <value.icon className="w-6 h-6 text-muted-foreground group-hover:text-white" />
                 </div>
-                <h4 className="font-headline text-lg md:text-xl font-bold text-secondary mb-4 uppercase leading-tight">{value.title}</h4>
-                <p className="text-[10px] md:text-xs text-muted-foreground font-black uppercase tracking-widest leading-relaxed">{value.desc}</p>
+                <h4 className="text-secondary mb-4 uppercase leading-tight">{value.title}</h4>
+                <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest leading-relaxed">{value.desc}</p>
               </div>
             ))}
           </div>
@@ -229,10 +230,10 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col md:flex-row items-end justify-between mb-12 md:mb-16 gap-6">
             <div>
-              <span className="text-primary font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px] mb-2 block">Hinter den Kulissen</span>
-              <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary uppercase tracking-tighter">Unser <span className="text-primary">Team</span></h2>
+              <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-2 block">Hinter den Kulissen</span>
+              <h2 className="text-secondary uppercase">Unser <span className="text-primary">Team</span></h2>
             </div>
-            <p className="text-muted-foreground text-[10px] md:text-sm font-black uppercase tracking-widest max-w-xs border-l-2 border-primary/20 pl-6 hidden md:block">
+            <p className="text-muted-foreground text-[10px] font-bold uppercase tracking-widest max-w-xs border-l-2 border-primary/20 pl-6 hidden md:block">
               Die Spezialisten in Berlin, die Ihre Träume in detaillierte Pläne verwandeln.
             </p>
           </div>
@@ -251,9 +252,9 @@ export default function AboutPage() {
                   <Image src={member.img} alt={member.name} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
                   <div className="absolute inset-0 bg-black/20 group-hover:opacity-0 transition-opacity" />
                 </div>
-                <h4 className="font-headline text-sm md:text-xl font-bold text-secondary uppercase leading-none mb-1 md:mb-2">{member.name}</h4>
-                <p className="text-[7px] md:text-9px font-black text-primary uppercase tracking-widest mb-3 md:mb-4">{member.role}</p>
-                <Button variant="link" className="h-auto p-0 text-[8px] md:text-[10px] font-black uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors">Mehr erfahren</Button>
+                <h4 className="text-secondary uppercase leading-none mb-1 md:mb-2">{member.name}</h4>
+                <p className="text-[9px] font-bold text-primary uppercase tracking-widest mb-3 md:mb-4">{member.role}</p>
+                <Button variant="link" className="h-auto p-0 text-[10px] font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors">Mehr erfahren</Button>
               </motion.div>
             ))}
           </div>
@@ -261,14 +262,14 @@ export default function AboutPage() {
       </section>
 
       {/* Guides Section */}
-      <section className="py-16 md:py-24 bg-[#fdfcfb]">
+      <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col md:flex-row items-end justify-between mb-12 md:mb-16 gap-6">
             <div>
-              <span className="text-primary font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px] mb-2 block">Die Experten im Busch</span>
-              <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary uppercase tracking-tighter">Unsere <span className="text-primary">Safari Guides</span></h2>
+              <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-2 block">Die Experten im Busch</span>
+              <h2 className="text-secondary uppercase">Unsere <span className="text-primary">Safari Guides</span></h2>
             </div>
-            <p className="text-muted-foreground text-[10px] md:text-sm font-black uppercase tracking-widest max-w-xs border-l-2 border-primary/20 pl-6 hidden md:block">
+            <p className="text-muted-foreground text-[10px] font-bold uppercase tracking-widest max-w-xs border-l-2 border-primary/20 pl-6 hidden md:block">
               Staatlich geprüfte Guides mit jahrelanger Erfahrung in der Wildnis Tansanias.
             </p>
           </div>
@@ -286,9 +287,9 @@ export default function AboutPage() {
                 <div className="relative w-16 h-16 md:w-24 md:h-24 rounded-full overflow-hidden mb-4 md:mb-6 border-2 border-muted group-hover:border-primary/20 transition-colors shadow-inner">
                   <Image src={guide.img} alt={guide.name} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
                 </div>
-                <h4 className="font-headline text-xs md:text-sm font-bold text-secondary uppercase leading-tight mb-1">{guide.name}</h4>
-                <p className="text-[6px] md:text-[8px] font-black text-muted-foreground uppercase tracking-[0.2em] mb-3">{guide.role}</p>
-                <Button variant="ghost" className="h-6 md:h-8 px-3 rounded-full text-[6px] md:text-[8px] font-black uppercase tracking-widest group-hover:bg-primary group-hover:text-white transition-all">Details</Button>
+                <h4 className="text-xs md:text-sm text-secondary uppercase leading-tight mb-1">{guide.name}</h4>
+                <p className="text-[8px] font-bold text-muted-foreground uppercase tracking-[0.2em] mb-3">{guide.role}</p>
+                <Button variant="ghost" size="sm" className="rounded-full text-[8px] font-bold uppercase tracking-widest group-hover:bg-primary group-hover:text-white transition-all">Details</Button>
               </motion.div>
             ))}
           </div>
@@ -306,16 +307,15 @@ export default function AboutPage() {
             className="max-w-4xl mx-auto space-y-8 md:space-y-12"
           >
             <div className="space-y-4">
-              <span className="text-primary font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px]">Bereit für das Abenteuer?</span>
-              <h2 className="font-headline text-3xl md:text-7xl font-bold text-white uppercase leading-none tracking-tighter">
+              <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px]">Bereit für das Abenteuer?</span>
+              <h2 className="text-white uppercase leading-none">
                 Willkommen im <br /><span className="text-primary">Herzen Afrikas</span>
               </h2>
-              <p className="text-white/80 text-[10px] md:text-xl font-black uppercase tracking-widest max-w-2xl mx-auto">
+              <p className="text-white/80 text-sm md:text-lg font-medium uppercase tracking-widest max-w-2xl mx-auto">
                 Dort, wo die Savanne niemals schläft und Ihre Träume Wirklichkeit werden.
               </p>
             </div>
 
-            {/* Video Placeholder Style Card */}
             <div className="relative aspect-video w-full rounded-[1.5rem] md:rounded-[3.5rem] overflow-hidden bg-black/40 border border-white/10 shadow-2xl group cursor-pointer">
               <Image 
                 src="https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1200" 
@@ -328,17 +328,17 @@ export default function AboutPage() {
                 <div className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-primary flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
                   <Camera className="w-8 h-8 md:w-12 md:h-12 text-white fill-current" />
                 </div>
-                <p className="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-white">Kilimandscharo Video</p>
+                <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-white">Kilimandscharo Video</p>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link href="/trip-planner" className="w-full sm:w-auto">
-                <Button size="lg" className="w-full rounded-full px-12 h-14 md:h-16 font-black text-[10px] md:text-xs uppercase tracking-[0.3em] shadow-2xl group">
+                <Button size="lg" className="w-full rounded-xl px-12 h-11 md:h-14 font-bold text-[10px] uppercase tracking-[0.3em] shadow-2xl group">
                   Reise Planen <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
-              <Link href="/contact" className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.4em] text-white/80 hover:text-primary transition-colors py-4">
+              <Link href="/contact" className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/80 hover:text-primary transition-colors py-4">
                 Experten sprechen
               </Link>
             </div>
