@@ -5,7 +5,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Compass, Phone, ArrowRight } from 'lucide-react';
+import { Compass, Phone, ArrowRight, Brain, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
@@ -22,25 +22,46 @@ export function AiCTA() {
       <div className="grid grid-cols-1 md:grid-cols-2">
         
         {/* Tile 1: AI HUB (Top Left) */}
-        <div className="bg-white text-secondary p-8 sm:p-10 md:p-16 lg:p-24 flex flex-col justify-center items-center text-center space-y-6 md:space-y-10 min-h-[400px] md:min-h-[500px] order-1 border-b md:border-b-0 border-border/40">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-4"
-          >
-            <h2 className="font-headline text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold uppercase tracking-tighter leading-tight">
-              Intelligente <br /> <span className="text-primary">Planungshilfe</span>
-            </h2>
-            <p className="text-[9px] sm:text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] text-muted-foreground max-w-sm mx-auto leading-relaxed">
-              Nutzen Sie unseren KI-Concierge für sofortige Antworten und maßgeschneiderte Routenvorschläge rund um die Uhr.
-            </p>
-          </motion.div>
+        <div className="bg-white text-secondary p-8 sm:p-10 md:p-16 lg:p-24 flex flex-col justify-center items-center text-center space-y-8 md:space-y-10 min-h-[450px] md:min-h-[550px] order-1 border-b md:border-b-0 border-border/40">
+          <div className="space-y-6 flex flex-col items-center">
+            {/* AI Coworker Icon Registry */}
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-secondary flex items-center justify-center shadow-xl border border-white/5 relative"
+            >
+              <Brain className="w-8 h-8 md:w-10 md:h-10 text-primary" />
+              <div className="absolute -top-1.5 -right-1.5">
+                <span className="relative flex h-3.5 w-3.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-primary border-2 border-white"></span>
+                </span>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="space-y-4"
+            >
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[8px] md:text-[9px] font-black uppercase tracking-[0.3em] border border-primary/20">
+                <Sparkles className="w-3 h-3" /> Ihr KI-Kollege
+              </div>
+              <h2 className="font-headline text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold uppercase tracking-tighter leading-tight">
+                Intelligente <br /> <span className="text-primary">Planungshilfe</span>
+              </h2>
+              <p className="text-[9px] sm:text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] text-muted-foreground max-w-sm mx-auto leading-relaxed">
+                Nutzen Sie unseren KI-Concierge für sofortige Antworten und maßgeschneiderte Routenvorschläge rund um die Uhr.
+              </p>
+            </motion.div>
+          </div>
           
           <div className="flex flex-col gap-4 w-full max-w-xs px-4 sm:px-0">
             <Link href="/trip-advisor">
-              <Button className="w-full h-11 md:h-14 rounded-xl bg-primary text-white hover:bg-secondary font-black text-[9px] sm:text-[10px] uppercase tracking-widest border-none transition-all shadow-2xl">
-                KI-BERATER JETZT FRAGEN <ArrowRight className="w-3.5 h-3.5 ml-2" />
+              <Button className="w-full h-11 md:h-14 rounded-xl bg-secondary text-white hover:bg-primary font-black text-[9px] sm:text-[10px] uppercase tracking-widest border-none transition-all shadow-2xl group">
+                KI-BERATER JETZT FRAGEN <ArrowRight className="w-3.5 h-3.5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
           </div>
@@ -65,7 +86,7 @@ export function AiCTA() {
         </div>
 
         {/* Tile 3: DIRECT HUMAN CONTACT (Mobile Order 3 / Desktop Order 4) */}
-        <div className="bg-[#FDF7F2] p-8 sm:p-10 md:p-16 lg:p-24 flex flex-col justify-center items-center text-center space-y-8 md:space-y-10 min-h-[400px] md:min-h-[500px] order-3 md:order-4 border-t md:border-t-0 border-border/40">
+        <div className="bg-[#FDF7F2] p-8 sm:p-10 md:p-16 lg:p-24 flex flex-col justify-center items-center text-center space-y-8 md:space-y-10 min-h-[400px] md:min-h-[550px] order-3 md:order-4 border-t md:border-t-0 border-border/40">
           <div className="space-y-6">
             <div className="relative w-24 h-24 sm:w-24 sm:h-24 md:w-32 md:h-32 mx-auto">
               <div className="absolute inset-0 bg-[#C9A876]/20 rounded-full transform rotate-6 scale-110" />
@@ -84,7 +105,7 @@ export function AiCTA() {
 
           <div className="flex flex-col gap-3 w-full max-w-xs px-4 sm:px-0">
             <Link href="/trip-planner">
-              <Button className="w-full h-11 md:h-14 rounded-xl bg-secondary text-white hover:bg-primary font-black text-[9px] sm:text-[10px] uppercase tracking-widest border-none transition-all shadow-xl">
+              <Button className="w-full h-11 md:h-14 rounded-xl bg-secondary text-white hover:bg-primary font-black text-[9px] sm:text-[10px] uppercase tracking-widest border-none transition-all shadow-2xl">
                 JETZT BERATUNG ANFRAGEN
               </Button>
             </Link>
