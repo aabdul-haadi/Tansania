@@ -40,6 +40,12 @@ export function ContactSection() {
     { icon: Zap, label: "Ihr Abenteuer", sub: "Safari starten" }
   ];
 
+  const trustBadges = [
+    { icon: CheckCircle2, full: "DSGVO Konform", short: "DSGVO" },
+    { icon: ShieldCheck, full: "SSL Verschlüsselt", short: "SSL" },
+    { icon: Globe, full: "Offizielle Registry", short: "Registry" }
+  ];
+
   return (
     <section id="inquiry" className="py-12 md:py-24 bg-[#fdfcfb] relative overflow-hidden">
       {/* Dynamic Background Ornament */}
@@ -57,7 +63,7 @@ export function ContactSection() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tighter"
+            className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter"
           >
             Ihre Expedition beginnt hier
           </motion.h2>
@@ -158,16 +164,13 @@ export function ContactSection() {
               )}
             </div>
 
-            {/* Optimized Trust Bar - Single Line Desktop / High Density Mobile */}
-            <div className="p-4 md:p-6 bg-[#fdfcfb] border-t border-border/40 flex flex-row items-center justify-center gap-3 md:gap-12 lg:gap-16">
-              {[
-                { icon: CheckCircle2, label: "DSGVO KONFORM" },
-                { icon: ShieldCheck, label: "SSL VERSCHLÜSSELT" },
-                { icon: Globe, label: "OFFIZIELLE REGISTRY" }
-              ].map((item, idx) => (
+            {/* Optimized Trust Bar - Single Line Desktop / Shortened Mobile */}
+            <div className="p-4 md:p-6 bg-[#fdfcfb] border-t border-border/40 flex flex-row items-center justify-center gap-4 md:gap-12 lg:gap-16">
+              {trustBadges.map((item, idx) => (
                 <div key={idx} className="flex items-center gap-1.5 md:gap-2 text-[7px] md:text-[9px] font-bold uppercase tracking-widest text-muted-foreground/60 whitespace-nowrap">
                   <item.icon className="w-3 h-3 md:w-3.5 md:h-3.5 text-primary/40 shrink-0" />
-                  {item.label}
+                  <span className="hidden sm:inline">{item.full}</span>
+                  <span className="sm:hidden">{item.short}</span>
                 </div>
               ))}
             </div>
