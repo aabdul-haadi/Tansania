@@ -26,7 +26,17 @@ import {
   Camera,
   Bird,
   ChevronDown,
-  CheckCircle2
+  CheckCircle2,
+  Car,
+  Ticket,
+  Utensils,
+  UserCheck,
+  PhoneCall,
+  Plus,
+  Globe,
+  Sprout,
+  GlassWater,
+  Palmtree
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -70,7 +80,33 @@ const highlights = [
     title: "Maasai Kultur",
     desc: "Tauchen Sie ein in die faszinierenden Traditionen und Lebensweisen des Maasai-Volkes",
     icon: Users
+  },
+  {
+    title: "Luxus-Lodges",
+    desc: "Übernachten Sie in handverlesenen Boutique-Lodges mit höchstem Komfort und Service",
+    icon: Home
   }
+];
+
+const inclusions = [
+  { icon: Home, title: "14 Übernachtungen", desc: "In handverlesenen Luxus-Lodges & Tented Camps" },
+  { icon: Car, title: "Privater 4x4", desc: "Alle Transfers und Pirschfahrten im privaten Geländewagen" },
+  { icon: Ticket, title: "Nationalparkgebühren", desc: "Sämtliche Konzessions- und Parkeintrittsgelder" },
+  { icon: Camera, title: "Pirschfahrten", desc: "Unbegrenzte Fahrten zur Wildtierbeobachtung" },
+  { icon: Utensils, title: "Verpflegung", desc: "Vollpension auf Safari, Halbpension auf Sansibar" },
+  { icon: UserCheck, title: "Deutschsprachiger Guide", desc: "Erfahrene Ranger mit exzellenten Gebietskenntnissen" },
+  { icon: Plane, title: "Inlandsflug", desc: "Inklusive Gepäcktransfer zwischen den Parks" },
+  { icon: PhoneCall, title: "24/7 Notfall-Hotline", desc: "Persönlicher Ansprechpartner rund um die Uhr" },
+];
+
+const extras = [
+  { icon: Globe, label: "Internationale Flüge", status: "AUF ANFRAGE" },
+  { icon: ShieldCheck, label: "Reiseversicherung", status: "OPTIONAL" },
+  { icon: Wind, label: "Heißluftballon-Safari", status: "ab €550 p.P." },
+  { icon: Users, label: "Kulturelle Touren", status: "ZUBUCHBAR" },
+  { icon: Sprout, label: "Spa-Behandlungen", status: "VOR ORT" },
+  { icon: GlassWater, label: "Private Dinner im Busch", status: "Inkludiert*" },
+  { icon: Palmtree, label: "Sansibar Verlängerung", status: "INDIVIDUELL" },
 ];
 
 interface PackageDetailClientProps {
@@ -533,10 +569,83 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         </div>
       </section>
 
-      {/* 08 CONVERSION HUB */}
+      {/* 08 INCLUSIONS & EXTRAS SECTION */}
+      <section className="py-16 md:py-24 bg-[#fdfcfb]">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center mb-12 md:mb-20 space-y-4">
+            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary uppercase tracking-tighter">
+              In Ihrer Reise enthalten
+            </h2>
+            <p className="text-muted-foreground font-bold text-[10px] md:text-sm uppercase tracking-widest max-w-xl mx-auto opacity-60">
+              Rundum-Sorglos-Paket für Ihr perfektes Safari-Erlebnis
+            </p>
+          </div>
+
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
+            {/* Inclusions Grid */}
+            <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+              {inclusions.map((item, idx) => (
+                <div key={idx} className="flex gap-5 group">
+                  <div className="w-12 h-12 rounded-full bg-[#C9A876]/10 border border-[#C9A876]/20 flex items-center justify-center shrink-0 shadow-sm transition-all duration-500 group-hover:bg-[#C9A876] group-hover:shadow-lg">
+                    <item.icon className="w-5 h-5 text-[#C9A876] group-hover:text-white transition-colors" />
+                  </div>
+                  <div className="space-y-1">
+                    <h4 className="font-headline text-lg md:text-xl font-bold text-secondary uppercase tracking-tight leading-none group-hover:text-primary transition-colors">
+                      {item.title}
+                    </h4>
+                    <p className="text-[9px] md:text-xs text-muted-foreground font-bold uppercase tracking-widest leading-relaxed opacity-70">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Extras & Optionen Card */}
+            <div className="w-full lg:w-[400px] shrink-0">
+              <Card className="rounded-[2.5rem] border-none shadow-2xl bg-white p-8 md:p-10 relative overflow-hidden group">
+                <div className="absolute top-6 right-6 w-10 h-10 rounded-full border-2 border-[#FDF7F2] flex items-center justify-center bg-white shadow-lg text-[#C9A876]">
+                  <Plus className="w-5 h-5" />
+                </div>
+                
+                <div className="space-y-10 relative z-10">
+                  <h3 className="font-headline text-2xl md:text-3xl font-normal text-secondary uppercase tracking-tight">
+                    Extras & Optionen
+                  </h3>
+
+                  <div className="space-y-6">
+                    {extras.map((ex, i) => (
+                      <div key={i} className="flex items-center justify-between gap-4 group/item">
+                        <div className="flex items-center gap-4">
+                          <ex.icon className="w-4 h-4 text-[#C9A876]/60 group-hover/item:text-[#C9A876] transition-colors" />
+                          <span className="text-[10px] md:text-[11px] font-bold text-secondary uppercase tracking-widest">{ex.label}</span>
+                        </div>
+                        <span className={cn(
+                          "text-[8px] md:text-[9px] font-black uppercase tracking-[0.2em] whitespace-nowrap px-2 py-0.5 rounded",
+                          ex.status === 'Inkludiert*' ? "bg-[#C9A876]/10 text-[#C9A876]" : "text-muted-foreground/40"
+                        )}>
+                          {ex.status}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="pt-6 border-t border-border/40">
+                    <Button onClick={() => scrollTo('inquiry')} className="w-full h-14 rounded-xl bg-secondary text-white hover:bg-primary font-black text-[10px] uppercase tracking-[0.2em] shadow-xl border-none transition-all">
+                      JETZT ANFRAGEN
+                    </Button>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 09 CONVERSION HUB */}
       <AiCTA />
 
-      {/* 09 OFFICIAL REGISTRY INQUIRY */}
+      {/* 10 OFFICIAL REGISTRY INQUIRY */}
       <section ref={inquiryRef} className="scroll-mt-20">
         <ContactSection />
       </section>
