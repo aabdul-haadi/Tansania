@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -26,7 +25,8 @@ import {
   Waves,
   Camera,
   Bird,
-  ChevronDown
+  ChevronDown,
+  CheckCircle2
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -70,16 +70,6 @@ const highlights = [
     title: "Maasai Kultur",
     desc: "Tauchen Sie ein in die faszinierenden Traditionen und Lebensweisen des Maasai-Volkes",
     icon: Users
-  },
-  {
-    title: "Ballon-Safari",
-    desc: "Schweben Sie bei Sonnenaufgang über die Savanne für einen unvergleichlichen Ausblick",
-    icon: Camera
-  },
-  {
-    title: "Vogelvielfalt",
-    desc: "Beobachten Sie hunderte exotische Vogelarten in den vielfältigen Ökosystemen",
-    icon: Bird
   }
 ];
 
@@ -118,7 +108,6 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
 
   if (!mounted) return null;
 
-  // Chunk days into groups of 5 for the new itinerary protocol
   const itineraryDays = pkg.itineraryDays || [];
   const dayGroups = [];
   for (let i = 0; i < itineraryDays.length; i += 5) {
@@ -229,9 +218,9 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
       </section>
 
       {/* 04 NARRATIVE MANIFEST SECTION */}
-      <section ref={overviewRef} className="py-16 md:py-24 bg-white scroll-mt-20">
+      <section ref={overviewRef} className="py-12 md:py-24 bg-white scroll-mt-20">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-20">
             
             <div className="lg:col-span-7 space-y-10">
               <div className="space-y-6">
@@ -272,47 +261,56 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
 
             <div className="lg:col-span-5 relative">
               <div className="sticky top-32">
-                <Card className="rounded-[2rem] border-none bg-[#FDF7F2] p-10 shadow-2xl relative overflow-hidden">
-                  <div className="space-y-10 relative z-10">
-                    <div className="space-y-6">
+                <Card className="rounded-[2rem] border-none bg-[#FDF7F2] p-6 md:p-10 shadow-2xl relative overflow-hidden">
+                  <div className="space-y-8 md:space-y-10 relative z-10">
+                    <div className="space-y-4 md:space-y-6">
                       <p className="text-[#C9A876] font-black uppercase tracking-[0.3em] text-[10px]">Master Registry</p>
-                      <h3 className="font-headline text-2xl md:text-4xl font-normal text-secondary uppercase leading-none tracking-tighter">
+                      <h3 className="font-headline text-xl md:text-4xl font-normal text-secondary uppercase leading-none tracking-tighter">
                         {pkg.title}
                       </h3>
                     </div>
 
-                    <div className="space-y-6">
+                    <div className="space-y-5 md:space-y-6">
                       <div className="space-y-1">
-                        <p className="text-secondary font-black text-sm uppercase">Reisedauer:</p>
-                        <p className="text-muted-foreground text-xs font-bold uppercase tracking-widest">{pkg.durationDays}-tägig, Flüge inklusive</p>
+                        <p className="text-secondary font-black text-[11px] md:text-sm uppercase">Reisedauer:</p>
+                        <p className="text-muted-foreground text-[10px] md:text-xs font-bold uppercase tracking-widest leading-relaxed">
+                          {pkg.durationDays}-tägig, Flüge inklusive
+                        </p>
                       </div>
                       <div className="space-y-1">
-                        <p className="text-secondary font-black text-sm uppercase">Unterkünfte:</p>
-                        <p className="text-muted-foreground text-xs font-bold uppercase tracking-widest">Handverlesene Tented Lodges & Boutique Hotels</p>
+                        <p className="text-secondary font-black text-[11px] md:text-sm uppercase">Unterkünfte:</p>
+                        <p className="text-muted-foreground text-[10px] md:text-xs font-bold uppercase tracking-widest leading-relaxed">
+                          Handverlesene Tented Lodges & Boutique Hotels
+                        </p>
                       </div>
                       <div className="space-y-1">
-                        <p className="text-secondary font-black text-sm uppercase">Exklusive Gruppen:</p>
-                        <p className="text-muted-foreground text-xs font-bold uppercase tracking-widest">Privat-Safari mit eigenem Guide & Jeep</p>
+                        <p className="text-secondary font-black text-[11px] md:text-sm uppercase">Exklusive Gruppen:</p>
+                        <p className="text-muted-foreground text-[10px] md:text-xs font-bold uppercase tracking-widest leading-relaxed">
+                          Privat-Safari mit eigenem Guide & Jeep
+                        </p>
                       </div>
                     </div>
 
                     <div className="flex flex-wrap gap-2">
                       {["Signature Series", "Privat geführt", "Sicher Reisen"].map((tag, i) => (
-                        <Badge key={i} variant="outline" className="bg-white/50 border-border/40 text-muted-foreground/80 font-bold text-[8px] uppercase px-3 py-1">
+                        <Badge key={i} variant="outline" className="bg-white/50 border-border/40 text-muted-foreground/80 font-bold text-[7px] md:text-[8px] uppercase px-3 py-1">
                           {tag}
                         </Badge>
                       ))}
                     </div>
 
-                    <div className="pt-8 border-t border-border/40 flex flex-col md:flex-row items-end justify-between gap-6">
-                      <div className="flex flex-col">
-                        <span className="text-[11px] font-black text-muted-foreground/40 line-through">€{(pkg.startingPrice + 600).toLocaleString('de-DE')}</span>
-                        <div className="flex items-baseline gap-2">
-                          <span className="text-3xl font-black text-secondary tracking-tighter uppercase">ab {pkg.startingPrice?.toLocaleString('de-DE') || '5.399'} €</span>
+                    <div className="pt-6 md:pt-8 border-t border-border/40 flex flex-col sm:flex-row items-center justify-between gap-6">
+                      <div className="flex flex-col items-center sm:items-start">
+                        <span className="text-[10px] md:text-[11px] font-black text-muted-foreground/40 line-through">€{(pkg.startingPrice + 600).toLocaleString('de-DE')}</span>
+                        <div className="flex items-baseline gap-1">
+                          <span className="text-[10px] font-black text-secondary uppercase mr-1">ab</span>
+                          <span className="text-2xl md:text-3xl font-black text-secondary tracking-tighter uppercase">
+                            {pkg.startingPrice?.toLocaleString('de-DE') || '5.399'} €
+                          </span>
                         </div>
-                        <p className="text-[9px] font-bold text-muted-foreground/60 uppercase">pro Person</p>
+                        <p className="text-[8px] md:text-[9px] font-bold text-muted-foreground/60 uppercase">pro Person</p>
                       </div>
-                      <Button onClick={() => scrollTo('inquiry')} className="w-full md:w-auto rounded-lg h-12 px-8 bg-[#C9A876] text-white hover:bg-secondary font-black text-[10px] uppercase tracking-widest border-none shadow-xl">
+                      <Button onClick={() => scrollTo('inquiry')} className="w-full sm:w-auto rounded-lg h-12 px-8 bg-[#C9A876] text-white hover:bg-secondary font-black text-[10px] uppercase tracking-widest border-none shadow-xl">
                         ANFRAGEN
                       </Button>
                     </div>
@@ -326,7 +324,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
       </section>
 
       {/* 05 HIGHLIGHTS CAROUSEL */}
-      <section className="py-8 md:py-16 bg-[#FDF7F2] border-y border-border/40">
+      <section className="py-12 md:py-16 bg-[#FDF7F2] border-y border-border/40 scroll-mt-20">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-8 md:mb-12">
             <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tighter">
@@ -334,11 +332,11 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
             </h2>
           </div>
 
-          <div className="relative px-4 md:px-12">
+          <div className="relative px-0 md:px-12">
             <Carousel opts={{ align: "start", loop: true }} className="w-full">
-              <CarouselContent className="-ml-4 md:-ml-6">
+              <CarouselContent className="-ml-4">
                 {highlights.map((h, i) => (
-                  <CarouselItem key={i} className="pl-4 md:pl-6 basis-full md:basis-1/3">
+                  <CarouselItem key={i} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3">
                     <Card className="h-full border-none shadow-sm bg-white rounded-[1.5rem] md:rounded-[2rem] overflow-hidden group hover:shadow-xl transition-all duration-500">
                       <CardContent className="p-8 md:p-12 flex flex-col items-center text-center space-y-6">
                         <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#FDF7F2] border border-[#F0EBE0]/50 flex items-center justify-center shrink-0 shadow-inner group-hover:bg-[#C9A876] transition-colors duration-500">
@@ -382,19 +380,19 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
               return (
                 <AccordionItem key={gIdx} value={`group-${gIdx}`} className="border-none">
                   <AccordionTrigger className="p-0 hover:no-underline [&>svg]:hidden group">
-                    <div className="relative w-full aspect-[21/6] md:aspect-[21/3] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden bg-secondary flex items-center px-6 md:px-12 group-hover:shadow-2xl transition-all duration-500">
+                    <div className="relative w-full min-h-[100px] md:aspect-[21/3] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden bg-secondary flex items-center px-6 md:px-12 group-hover:shadow-2xl transition-all duration-500">
                       <Image 
                         src={`https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200`}
                         alt="Expedition Section"
                         fill
                         className="object-cover opacity-20 brightness-50"
                       />
-                      <div className="relative z-10 flex items-center justify-between w-full text-white">
+                      <div className="relative z-10 flex items-center justify-between w-full text-white py-6">
                         <div className="text-left">
-                          <h3 className="font-headline text-xl md:text-3xl font-normal uppercase tracking-tighter">
+                          <h3 className="font-headline text-lg md:text-3xl font-normal uppercase tracking-tighter">
                             SAFARI ABENTEUER • <span className="text-primary font-black">Tag {startDay}-{endDay}</span>
                           </h3>
-                          <p className="text-[9px] md:text-xs font-bold uppercase tracking-[0.3em] opacity-60">Wildnis & Naturwunder</p>
+                          <p className="text-[8px] md:text-xs font-bold uppercase tracking-[0.3em] opacity-60">Wildnis & Naturwunder</p>
                         </div>
                         <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 flex items-center justify-center group-data-[state=open]:rotate-180 transition-transform bg-white/5">
                           <ChevronDown className="w-5 h-5 text-white" />
@@ -403,12 +401,12 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                     </div>
                   </AccordionTrigger>
                   
-                  <AccordionContent className="pt-12 pb-4 px-4 md:px-8 space-y-12 relative overflow-visible">
-                    {/* Vertical Connector Line */}
-                    <div className="absolute left-[35px] md:left-[51px] top-12 bottom-12 w-px bg-border/60 z-0" />
+                  <AccordionContent className="pt-12 pb-4 px-2 md:px-8 space-y-12 relative overflow-visible">
+                    {/* Vertical Connector Line - Responsive Position */}
+                    <div className="absolute left-[36px] md:left-[60px] top-12 bottom-12 w-px bg-border/60 z-0" />
                     
                     {group.map((day, dIdx) => (
-                      <div key={dIdx} className="relative z-10 flex gap-5 md:gap-10">
+                      <div key={dIdx} className="relative z-10 flex gap-4 md:gap-10">
                         {/* Day Circle Indicator */}
                         <div className="shrink-0">
                           <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-[#FDF7F2] border border-[#F0EBE0] flex items-center justify-center shadow-sm relative z-10">
@@ -417,21 +415,21 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                         </div>
 
                         {/* Day Content Card */}
-                        <div className="flex-1 bg-white rounded-[1.5rem] md:rounded-[2.5rem] border border-border/40 p-6 md:p-10 shadow-sm hover:shadow-xl transition-all duration-500 group/card">
+                        <div className="flex-1 bg-white rounded-[1.5rem] md:rounded-[2.5rem] border border-border/40 p-5 md:p-10 shadow-sm hover:shadow-xl transition-all duration-500 group/card">
                           <div className="flex flex-col lg:flex-row justify-between gap-6 md:gap-10">
                             <div className="flex-1 space-y-4 md:space-y-6">
                               <div className="flex flex-wrap items-center gap-3">
-                                <h4 className="font-headline text-xl md:text-3xl font-normal text-secondary uppercase tracking-tight leading-none group-hover/card:text-primary transition-colors">
+                                <h4 className="font-headline text-lg md:text-3xl font-normal text-secondary uppercase tracking-tight leading-tight group-hover/card:text-primary transition-colors">
                                   {day.title}
                                 </h4>
-                                <Badge className="bg-[#C9A876]/10 text-[#C9A876] border-none text-[8px] md:text-[10px] font-black uppercase px-2.5 py-1">
+                                <Badge className="bg-[#C9A876]/10 text-[#C9A876] border-none text-[7px] md:text-[10px] font-black uppercase px-2.5 py-1">
                                   {day.location}
                                 </Badge>
                               </div>
-                              <p className="text-muted-foreground font-bold text-xs md:text-sm leading-relaxed uppercase tracking-widest opacity-70">
+                              <p className="text-muted-foreground font-bold text-[10px] md:text-sm leading-relaxed uppercase tracking-widest opacity-70">
                                 {day.desc}
                               </p>
-                              <div className="pt-2 flex items-center gap-2 text-[9px] md:text-[10px] font-black text-secondary uppercase tracking-[0.2em] group-hover/card:text-primary transition-colors cursor-pointer">
+                              <div className="pt-2 flex items-center gap-2 text-[8px] md:text-[10px] font-black text-secondary uppercase tracking-[0.2em] group-hover/card:text-primary transition-colors cursor-pointer">
                                 DETAILS ANZEIGEN <ChevronRight className="w-3 h-3 rotate-90 text-primary" />
                               </div>
                             </div>
