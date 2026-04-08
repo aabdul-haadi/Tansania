@@ -1,11 +1,10 @@
-
 "use client";
 
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Compass, Phone, ArrowRight, Brain, Sparkles } from 'lucide-react';
+import { Compass, Phone, ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
@@ -21,44 +20,52 @@ export function AiCTA() {
     <section className="bg-white border-t border-border/40 overflow-hidden">
       <div className="grid grid-cols-1 md:grid-cols-2">
         
-        {/* Tile 1: AI HUB (Top Left) */}
-        <div className="bg-white text-secondary p-8 sm:p-10 md:p-16 lg:p-24 flex flex-col justify-center items-center text-center space-y-8 md:space-y-10 min-h-[450px] md:min-h-[550px] order-1 border-b md:border-b-0 border-border/40">
+        {/* Tile 1: AI HUB (Top Left) - RECALIBRATED: Compact & Image-Led */}
+        <div className="bg-white text-secondary p-8 sm:p-10 md:p-16 lg:p-24 flex flex-col justify-center items-center text-center space-y-6 md:space-y-8 min-h-[450px] md:min-h-[550px] order-1 border-b md:border-b-0 border-border/40">
           <div className="space-y-6 flex flex-col items-center">
-            {/* AI Coworker Icon Registry */}
+            {/* AI Coworker Visual Registry: Profile Image Protocol */}
             <motion.div 
               initial={{ scale: 0.9, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
-              className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-secondary flex items-center justify-center shadow-xl border border-white/5 relative"
+              className="relative w-20 h-20 md:w-24 md:h-24"
             >
-              <Brain className="w-8 h-8 md:w-10 md:h-10 text-primary" />
-              <div className="absolute -top-1.5 -right-1.5">
-                <span className="relative flex h-3.5 w-3.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-primary border-2 border-white"></span>
+              <div className="absolute inset-0 bg-primary/10 rounded-full rotate-6 scale-110" />
+              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white shadow-2xl bg-muted">
+                <img 
+                  src="https://picsum.photos/seed/ai-specialist/200/200" 
+                  alt="Ihr KI-Kollege" 
+                  className="w-full h-full object-cover" 
+                />
+              </div>
+              {/* Live Intelligence Indicator */}
+              <div className="absolute -bottom-1 -right-1 md:bottom-0 md:right-0">
+                <span className="relative flex h-4 w-4">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-4 w-4 bg-green-500 border-2 border-white shadow-sm"></span>
                 </span>
               </div>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="space-y-4"
+              className="space-y-3"
             >
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[8px] md:text-[9px] font-black uppercase tracking-[0.3em] border border-primary/20">
                 <Sparkles className="w-3 h-3" /> Ihr KI-Kollege
               </div>
-              <h2 className="font-headline text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold uppercase tracking-tighter leading-tight">
+              <h2 className="font-headline text-xl sm:text-2xl md:text-4xl font-bold uppercase tracking-tighter leading-tight">
                 Intelligente <br /> <span className="text-primary">Planungshilfe</span>
               </h2>
-              <p className="text-[9px] sm:text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] text-muted-foreground max-w-sm mx-auto leading-relaxed">
+              <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground max-w-[280px] mx-auto leading-relaxed">
                 Nutzen Sie unseren KI-Concierge für sofortige Antworten und maßgeschneiderte Routenvorschläge rund um die Uhr.
               </p>
             </motion.div>
           </div>
           
-          <div className="flex flex-col gap-4 w-full max-w-xs px-4 sm:px-0">
+          <div className="w-full max-w-xs px-4 sm:px-0">
             <Link href="/trip-advisor">
               <Button className="w-full h-11 md:h-14 rounded-xl bg-secondary text-white hover:bg-primary font-black text-[9px] sm:text-[10px] uppercase tracking-widest border-none transition-all shadow-2xl group">
                 KI-BERATER JETZT FRAGEN <ArrowRight className="w-3.5 h-3.5 ml-2 group-hover:translate-x-1 transition-transform" />
