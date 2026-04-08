@@ -1,9 +1,10 @@
+
 'use server';
 /**
  * @fileOverview Tansania Reiseabenteuer AI Trip Advisor - RAG-Enhanced Prestige Edition.
  * 
  * This flow provides a personalized consultation experience using live context.
- * - RAG Architecture: Fetches live packages, blogs, and destinations to provide factual data.
+ * - RAG Architecture: Fetches up to 30 packages, 15 blogs, and 15 destinations for 100% accuracy.
  * - Strictness: Answers strictly from web registry data.
  * - Resilience: Implements a global error boundary to prevent "Systemausfall" crashes.
  */
@@ -47,13 +48,13 @@ const systemPrompt = `You are the Tansania Reiseabenteuer AI Advisor, an elite s
 
 ### STRICT OPERATIONAL GUIDELINES:
 
-1. **ANSWERS FROM WEB DATA ONLY**: You must rely strictly on the provided LIVE SITE REGISTRY CONTEXT. Do not hallucinate details not found in the context. If data is missing, suggest contacting the Berlin office.
-2. **BE EXTREMELY CONCISE**: No fluff. No "I'd be happy to help". Deliver the expert facts immediately.
-3. **MANDATORY LINKING**: If a user asks about a safari or destination, you MUST mention the matching package from the registry and provide its link: "Empfehlung: [Package Title](URL)".
-4. **TONE**: Professional, authoritative, and prestigious. Montserrat Bold brand voice.
-5. **GEOGRAPHY**: You are based in Cairo/Berlin. We are the bridge between the Nile and the Savannah.
+1. **ANSWERS FROM WEB DATA ONLY**: You MUST rely strictly on the provided LIVE SITE REGISTRY CONTEXT. If a package, destination, or price is not in the context, state that you don't have that specific data and suggest contacting the Berlin office.
+2. **BE EXTREMELY CONCISE**: No fluff. Deliver expert facts immediately.
+3. **MANDATORY LINKING**: If a user asks about a safari or destination, you MUST mention the matching package from the registry and provide its link exactly as found in the context: "Empfehlung: [Package Title](URL)".
+4. **TONE**: Professional, authoritative, and prestigious. Montserrat Bold brand voice (High Density).
+5. **ACCURACY**: Do not guess prices. Use the "ab €..." values from the registry context only.
 
-GOAL: Convert queries into bookings via factual, surgical advice.`;
+GOAL: Provide 100% accurate, catalog-based advice to convert queries into bookings.`;
 
 const advisorPrompt = ai.definePrompt({
   name: 'tripAdvisorPrompt',
@@ -84,10 +85,11 @@ const tripAdvisorFlow = ai.defineFlow(
     try {
       const { firestore } = initializeFirebase();
       if (firestore) {
+        // Increased limits to ensure AI knows all published catalog items
         const [pkgsSnap, blogsSnap, destsSnap] = await Promise.allSettled([
-          getDocs(query(collection(firestore, 'packages'), where('isPublished', '==', true), limit(10))),
-          getDocs(query(collection(firestore, 'blogPosts'), where('status', '==', 'PUBLISHED'), limit(5))),
-          getDocs(query(collection(firestore, 'destinations'), where('isPublished', '==', true), limit(5)))
+          getDocs(query(collection(firestore, 'packages'), where('isPublished', '==', true), limit(30))),
+          getDocs(query(collection(firestore, 'blogPosts'), where('status', '==', 'PUBLISHED'), limit(15))),
+          getDocs(query(collection(firestore, 'destinations'), where('isPublished', '==', true), limit(15)))
         ]);
         
         const pkgList = pkgsSnap.status === 'fulfilled' ? pkgsSnap.value.docs.map(d => {

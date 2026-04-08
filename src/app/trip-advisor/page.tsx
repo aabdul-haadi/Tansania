@@ -90,8 +90,8 @@ export default function TripAdvisorPage() {
 
   return (
     <div className="min-h-screen bg-[#fdfcfb] flex flex-col font-bold">
-      {/* 01 COMPACT PRESTIGE HERO */}
-      <section className="relative h-[40vh] md:h-[50vh] w-full shrink-0 overflow-hidden bg-secondary">
+      {/* 01 COMPACT PRESTIGE HERO - Recalibrated for Phone Overlap Fix */}
+      <section className="relative min-h-[45vh] md:h-[50vh] w-full shrink-0 overflow-hidden bg-secondary">
         <Image 
           src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
           alt="Tansania Savannah" 
@@ -101,7 +101,7 @@ export default function TripAdvisorPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent" />
         
-        <div className="container relative z-10 mx-auto px-6 md:px-10 h-full flex flex-col justify-end pb-12 md:pb-16">
+        <div className="container relative z-10 mx-auto px-6 md:px-10 h-full flex flex-col justify-end pt-24 md:pt-32 pb-12 md:pb-16">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -118,20 +118,20 @@ export default function TripAdvisorPage() {
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-2 px-3 h-7 bg-green-500/10 border border-green-500/20 rounded-full">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-[7px] font-black uppercase text-green-500 tracking-widest">Live Sync</span>
+                <span className="text-[7px] font-black uppercase text-green-500 tracking-widest">Registry Sync</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 02 SMART CONCIERGE INTERFACE */}
-      <div className="flex-grow flex flex-col bg-white shadow-2xl rounded-t-[2.5rem] md:rounded-t-[3.5rem] -mt-8 relative z-20 overflow-hidden">
+      {/* 02 SMART CONCIERGE INTERFACE - Increased mobile top padding */}
+      <div className="flex-grow flex flex-col bg-white shadow-2xl rounded-t-[2.5rem] md:rounded-t-[3.5rem] mt-0 md:-mt-8 relative z-20 overflow-hidden">
         <div className="container mx-auto px-4 max-w-7xl h-full flex flex-col py-6 md:py-10 gap-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 flex-grow">
             
             {/* MAIN CHAT CONSOLE */}
-            <div className="lg:col-span-8 flex flex-col bg-[#fdfcfb] rounded-[2rem] md:rounded-[2.5rem] border border-border/50 overflow-hidden shadow-sm relative min-h-[450px] md:min-h-[550px]">
+            <div className="lg:col-span-8 flex flex-col bg-[#fdfcfb] rounded-[2rem] md:rounded-[2.5rem] border border-border/50 overflow-hidden shadow-sm relative min-h-[500px] md:min-h-[600px]">
               {!mounted ? (
                 <div className="flex-grow flex items-center justify-center p-12">
                   <Loader2 className="w-8 h-8 animate-spin text-primary opacity-20" />
@@ -139,26 +139,26 @@ export default function TripAdvisorPage() {
               ) : (
                 <>
                   <ScrollArea className="flex-grow">
-                    <div className="p-5 md:p-10 space-y-8">
+                    <div className="p-4 md:p-10 space-y-6 md:space-y-8">
                       {messages.map((m, idx) => (
                         <motion.div
                           key={idx}
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           className={cn(
-                            "flex gap-4 max-w-[95%] md:max-w-[85%]",
+                            "flex gap-3 md:gap-4 max-w-[98%] md:max-w-[85%]",
                             m.role === 'user' ? "ml-auto flex-row-reverse" : ""
                           )}
                         >
                           <div className={cn(
-                            "w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-md border",
+                            "w-8 h-8 md:w-10 md:h-10 rounded-xl flex items-center justify-center shrink-0 shadow-md border",
                             m.role === 'user' ? "bg-primary text-white border-primary/20" : m.role === 'error' ? "bg-destructive text-white" : "bg-secondary text-white border-white/5"
                           )}>
-                            {m.role === 'user' ? <User className="w-5 h-5" /> : <Compass className="w-5 h-5" />}
+                            {m.role === 'user' ? <User className="w-4 h-4 md:w-5 md:h-5" /> : <Compass className="w-4 h-4 md:w-5 md:h-5" />}
                           </div>
-                          <div className="flex flex-col gap-3">
+                          <div className="flex flex-col gap-2 md:gap-3">
                             <div className={cn(
-                              "p-5 md:p-6 rounded-[1.5rem] text-[13px] md:text-base leading-relaxed font-medium shadow-sm whitespace-pre-wrap uppercase tracking-tight",
+                              "p-4 md:p-6 rounded-[1.25rem] md:rounded-[1.5rem] text-xs md:text-sm lg:text-base leading-relaxed font-medium shadow-sm whitespace-pre-wrap uppercase tracking-tight",
                               m.role === 'user' 
                                 ? "bg-primary text-white rounded-tr-none" 
                                 : m.role === 'error'
@@ -168,9 +168,9 @@ export default function TripAdvisorPage() {
                               {m.content}
                             </div>
                             {m.action && m.route && (
-                              <Button asChild size="sm" variant="outline" className="rounded-full h-9 px-5 text-[8px] font-black uppercase tracking-widest shadow-sm transition-all hover:bg-secondary hover:text-white">
+                              <Button asChild size="sm" variant="outline" className="rounded-full h-8 md:h-9 px-4 md:px-5 text-[7px] md:text-[8px] font-black uppercase tracking-widest shadow-sm transition-all hover:bg-secondary hover:text-white w-fit">
                                 <Link href={m.route}>
-                                  {m.action} <ArrowRight className="w-3.5 h-3.5 ml-2" />
+                                  {m.action} <ArrowRight className="w-3 h-3 md:w-3.5 md:h-3.5 ml-2" />
                                 </Link>
                               </Button>
                             )}
@@ -178,14 +178,14 @@ export default function TripAdvisorPage() {
                         </motion.div>
                       ))}
                       {loading && (
-                        <div className="flex gap-4">
-                          <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center shrink-0 shadow-md">
-                            <Loader2 className="w-5 h-5 text-white animate-spin" />
+                        <div className="flex gap-3 md:gap-4">
+                          <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-secondary flex items-center justify-center shrink-0 shadow-md">
+                            <Loader2 className="w-4 h-4 md:w-5 md:h-5 text-white animate-spin" />
                           </div>
-                          <div className="p-5 bg-white rounded-[1.5rem] rounded-tl-none border border-border/50 flex items-center gap-2 shadow-sm">
-                            <span className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce" />
-                            <span className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce [animation-delay:0.2s]" />
-                            <span className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce [animation-delay:0.4s]" />
+                          <div className="p-4 md:p-5 bg-white rounded-[1.25rem] rounded-tl-none border border-border/50 flex items-center gap-1.5 shadow-sm">
+                            <span className="w-1 h-1 md:w-1.5 md:h-1.5 bg-primary rounded-full animate-bounce" />
+                            <span className="w-1 h-1 md:w-1.5 md:h-1.5 bg-primary rounded-full animate-bounce [animation-delay:0.2s]" />
+                            <span className="w-1 h-1 md:w-1.5 md:h-1.5 bg-primary rounded-full animate-bounce [animation-delay:0.4s]" />
                           </div>
                         </div>
                       )}
@@ -194,35 +194,35 @@ export default function TripAdvisorPage() {
                   </ScrollArea>
 
                   {/* ACTION AREA */}
-                  <div className="p-5 md:p-8 bg-white border-t border-border/50 shrink-0">
-                    <div className="flex gap-2 mb-6 overflow-x-auto no-scrollbar pb-1">
+                  <div className="p-4 md:p-8 bg-white border-t border-border/50 shrink-0">
+                    <div className="flex gap-2 mb-4 md:mb-6 overflow-x-auto no-scrollbar pb-1">
                       {suggestions.map((s, idx) => (
                         <button
                           key={idx}
                           onClick={() => handleSend(s.text)}
-                          className="px-4 py-2 rounded-full bg-muted/30 border border-border hover:border-secondary hover:bg-secondary hover:text-white transition-all text-[8px] font-black uppercase tracking-widest flex items-center gap-2 whitespace-nowrap"
+                          className="px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-muted/30 border border-border hover:border-secondary hover:bg-secondary hover:text-white transition-all text-[7px] md:text-[8px] font-black uppercase tracking-widest flex items-center gap-2 whitespace-nowrap"
                         >
-                          <s.icon className="w-3.5 h-3.5 text-primary" />
+                          <s.icon className="w-3 h-3 md:w-3.5 md:h-3.5 text-primary" />
                           {s.text}
                         </button>
                       ))}
                     </div>
                     <form 
                       onSubmit={(e) => { e.preventDefault(); handleSend(); }}
-                      className="flex items-center gap-3"
+                      className="flex items-center gap-2 md:gap-3"
                     >
                       <Input
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         placeholder="Fragen Sie nach einer Safari..."
-                        className="h-14 md:h-16 pl-8 rounded-2xl border-none bg-muted/20 shadow-inner focus:ring-2 focus:ring-primary/20 text-sm md:text-base font-bold uppercase tracking-tight"
+                        className="h-12 md:h-16 pl-6 md:pl-8 rounded-xl md:rounded-2xl border-none bg-muted/20 shadow-inner focus:ring-2 focus:ring-primary/20 text-xs md:text-base font-bold uppercase tracking-tight"
                       />
                       <Button 
                         type="submit" 
                         disabled={!input.trim() || loading}
-                        className="h-14 md:h-16 px-8 md:px-12 rounded-2xl shadow-xl shadow-primary/20 group transition-all hover:scale-[1.02] border-none shrink-0"
+                        className="h-12 md:h-16 px-6 md:px-12 rounded-xl md:rounded-2xl shadow-xl shadow-primary/20 group transition-all hover:scale-[1.02] border-none shrink-0"
                       >
-                        <Send className="w-5 h-5 md:mr-3 group-hover:translate-x-1 transition-transform" />
+                        <Send className="w-4 h-4 md:w-5 md:h-5 md:mr-3 group-hover:translate-x-1 transition-transform" />
                         <span className="hidden md:inline text-[10px] font-black uppercase tracking-[0.2em]">Senden</span>
                       </Button>
                     </form>
