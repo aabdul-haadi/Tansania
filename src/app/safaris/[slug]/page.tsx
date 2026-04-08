@@ -46,9 +46,15 @@ export default async function PackageDetailPage({ params }: any) {
     notFound();
   }
 
+  const data = snap.data();
+  
+  // CRITICAL: Ensure object is plain and serializable for client component transition.
+  // Firestore Timestamps must be converted to strings.
   const pkg = {
-    ...snap.data(),
-    id: snap.id
+    ...data,
+    id: snap.id,
+    updatedAt: data.updatedAt?.toDate ? data.updatedAt.toDate().toISOString() : data.updatedAt,
+    createdAt: data.createdAt?.toDate ? data.createdAt.toDate().toISOString() : data.createdAt,
   };
 
   return (
