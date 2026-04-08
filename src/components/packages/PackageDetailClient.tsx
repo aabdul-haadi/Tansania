@@ -279,7 +279,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                 />
               </div>
 
-              <div className="space-y-8 text-muted-foreground font-bold leading-relaxed text-sm md:text-lg uppercase tracking-widest opacity-80 border-l-4 border-primary/20 pl-8">
+              <div className="space-y-8 text-muted-foreground font-bold leading-relaxed text-sm md:text-lg uppercase tracking-widest opacity-80 border-l-4 border-primary/20 pl-8 py-2">
                 <p>
                   Eine außergewöhnliche Reise durch die endlose Serengeti, den majestätischen Ngorongoro-Krater und die paradiesischen Strände Sansibars. Erleben Sie Afrikas wilde Schönheit in exklusiven Lodges und unvergesslichen Momenten.
                 </p>
@@ -329,9 +329,9 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                       </div>
                     </div>
 
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 pt-2">
                       {["Signature Series", "Privat geführt", "Sicher Reisen"].map((tag, i) => (
-                        <Badge key={i} variant="outline" className="bg-white/50 border-border/40 text-muted-foreground/80 font-bold text-[7px] md:text-[8px] uppercase px-3 py-1">
+                        <Badge key={i} variant="outline" className="bg-white/50 border-border/40 text-muted-foreground/80 font-bold text-[8px] md:text-[10px] uppercase px-3.5 py-1.5 shadow-sm">
                           {tag}
                         </Badge>
                       ))}
@@ -339,16 +339,16 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
 
                     <div className="pt-6 md:pt-8 border-t border-border/40 flex flex-col items-center sm:items-stretch gap-6">
                       <div className="flex flex-col items-center sm:items-start">
-                        <span className="text-[10px] md:text-[11px] font-black text-muted-foreground/40 line-through">€{(pkg.startingPrice + 600).toLocaleString('de-DE')}</span>
-                        <div className="flex items-baseline gap-1">
-                          <span className="text-[10px] font-black text-secondary uppercase mr-1">ab</span>
-                          <span className="text-2xl md:text-3xl font-black text-secondary tracking-tighter uppercase">
+                        <span className="text-sm md:text-base font-black text-muted-foreground/40 line-through mb-1">€{(pkg.startingPrice + 600).toLocaleString('de-DE')}</span>
+                        <div className="flex items-baseline gap-1.5">
+                          <span className="text-xs font-black text-secondary uppercase">ab</span>
+                          <span className="text-3xl md:text-4xl font-black text-secondary tracking-tighter uppercase">
                             {pkg.startingPrice?.toLocaleString('de-DE') || '5.399'} €
                           </span>
                         </div>
-                        <p className="text-[8px] md:text-[9px] font-bold text-muted-foreground/60 uppercase">pro Person</p>
+                        <p className="text-[10px] md:text-xs font-black text-muted-foreground/60 uppercase mt-1">pro Person</p>
                       </div>
-                      <Button onClick={() => scrollTo('inquiry')} className="w-full rounded-lg h-12 px-8 bg-[#C9A876] text-white hover:bg-secondary font-black text-[10px] uppercase tracking-widest border-none shadow-xl">
+                      <Button onClick={() => scrollTo('inquiry')} className="w-full rounded-lg h-14 px-8 bg-[#C9A876] text-white hover:bg-secondary font-black text-[11px] uppercase tracking-widest border-none shadow-xl">
                         ANFRAGEN
                       </Button>
                     </div>
@@ -405,7 +405,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center mb-12 md:mb-20 space-y-4">
             <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary uppercase tracking-tighter">Ihr Reiseverlauf</h2>
-            <p className="text-muted-foreground font-normal text-xs md:text-sm uppercase tracking-widest max-w-xl mx-auto opacity-80">
+            <p className="text-muted-foreground font-bold text-[10px] md:text-sm uppercase tracking-widest max-w-xl mx-auto opacity-80">
               Eine sorgfältig kuratierte Route durch die schönsten Regionen Tansanias
             </p>
           </div>
@@ -493,13 +493,12 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
             <h2 className="font-headline text-3xl md:text-5xl lg:text-6xl font-normal text-secondary uppercase tracking-tighter">
               Handverlesene Unterkünfte
             </h2>
-            <p className="text-muted-foreground text-[10px] md:text-sm font-bold uppercase tracking-widest max-w-2xl mx-auto opacity-60">
+            <p className="text-muted-foreground font-bold text-[10px] md:text-sm uppercase tracking-widest max-w-2xl mx-auto opacity-60">
               Wir wählen jede Lodge persönlich nach Lage, Stil und Service aus
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16">
-            {/* Boutique Safari-Lodges */}
             <div className="bg-white rounded-[2rem] md:rounded-[3.5rem] overflow-hidden shadow-sm border border-border/40 flex flex-col h-full group hover:shadow-xl transition-all duration-500">
               <div className="relative aspect-[16/10] overflow-hidden">
                 <Image 
@@ -532,7 +531,6 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
               </div>
             </div>
 
-            {/* Sansibar Beach Retreat */}
             <div className="bg-white rounded-[2rem] md:rounded-[3.5rem] overflow-hidden shadow-sm border border-border/40 flex flex-col h-full group hover:shadow-xl transition-all duration-500">
               <div className="relative aspect-[16/10] overflow-hidden">
                 <Image 
@@ -581,7 +579,6 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
           </div>
 
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
-            {/* Inclusions Grid */}
             <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
               {inclusions.map((item, idx) => (
                 <div key={idx} className="flex gap-5 group">
@@ -600,7 +597,6 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
               ))}
             </div>
 
-            {/* Extras & Optionen Card */}
             <div className="w-full lg:w-[400px] shrink-0">
               <Card className="rounded-[2.5rem] border-none shadow-2xl bg-white p-8 md:p-10 relative overflow-hidden group">
                 <div className="absolute top-6 right-6 w-10 h-10 rounded-full border-2 border-[#FDF7F2] flex items-center justify-center bg-white shadow-lg text-[#C9A876]">
