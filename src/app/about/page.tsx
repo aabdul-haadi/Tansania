@@ -12,10 +12,15 @@ import {
   Sparkles,
   ArrowRight,
   Camera,
-  Play
+  Play,
+  Globe,
+  ShieldCheck,
+  Zap,
+  MapPin
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Card, CardContent } from '@/components/ui/card';
 
 const team = [
   { name: "Manuela Jungas", role: "Team Mitglied", img: "https://picsum.photos/seed/manuela/400/400" },
@@ -211,7 +216,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Safari Guides Section - Refined UI/UX */}
+      {/* Safari Guides Section */}
       <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col md:flex-row items-end justify-between mb-12 md:mb-16 gap-6">
@@ -245,56 +250,132 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* FINAL CINEMATIC CTA - YouTube Embed Integration */}
-      <section className="py-16 md:py-32 bg-[#FDF7F2] relative overflow-hidden mx-4 md:mx-10 rounded-[2.5rem] md:rounded-[5rem] mb-12 shadow-2xl border border-border/50">
-        <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-        <div className="container relative z-10 mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="max-w-5xl mx-auto space-y-12 md:space-y-16"
-          >
-            <div className="space-y-4">
-              <h2 className="text-secondary uppercase text-3xl md:text-6xl tracking-tighter leading-none">
-                Willkommen im <br /><span className="text-primary">Herzen Afrikas</span>
-              </h2>
-              <p className="text-secondary/60 text-[10px] md:text-sm font-bold uppercase tracking-[0.4em] max-w-2xl mx-auto">
-                Dort, wo die Savanne niemals schläft und Ihre Träume Wirklichkeit werden.
-              </p>
-            </div>
+      {/* RE-VAMPED FINAL SECTION: Immersive Registry Hub */}
+      <section className="py-24 md:py-40 bg-white relative overflow-hidden border-t border-border/50">
+        {/* Abstract Background Protocol */}
+        <div className="absolute inset-0 opacity-[0.02] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none" />
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-[120px]" />
+        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-secondary/5 rounded-full blur-[120px]" />
 
-            {/* Embedded High-Prestige Video Asset */}
-            <div className="w-full max-w-4xl mx-auto">
-              <div className="relative aspect-video w-full rounded-[2rem] md:rounded-[3.5rem] overflow-hidden bg-secondary shadow-[0_30px_100px_rgba(0,0,0,0.2)] border-8 border-white group">
-                <iframe
-                  src="https://www.youtube.com/embed/uVilAKUc8zE?autoplay=0&rel=0&modestbranding=1"
-                  title="Kilimandscharo Expedition"
-                  className="absolute inset-0 w-full h-full border-none"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-                {/* Floating Video Badge */}
-                <div className="absolute top-6 left-6 pointer-events-none">
-                  <div className="flex items-center gap-2 px-4 py-2 bg-black/40 backdrop-blur-md rounded-full border border-white/10">
-                    <Play className="w-3 h-3 text-primary fill-primary" />
-                    <span className="text-[8px] font-black text-white uppercase tracking-[0.2em]">Live Expedition Registry</span>
-                  </div>
+        <div className="container relative z-10 mx-auto px-4 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
+            
+            {/* Left Column: Narrative Hub */}
+            <div className="lg:col-span-5 space-y-10 md:space-y-12">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="space-y-6"
+              >
+                <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[9px] font-black uppercase tracking-[0.4em]">
+                  <Zap className="w-3 h-3 fill-current" /> Official Registry
                 </div>
+                <h2 className="font-headline text-4xl md:text-7xl font-bold text-secondary leading-[0.85] tracking-tighter uppercase">
+                  Willkommen im <br />
+                  <span className="text-primary">Herzen Afrikas</span>
+                </h2>
+                <p className="text-muted-foreground font-medium text-[10px] md:text-sm uppercase tracking-[0.3em] leading-relaxed max-w-md opacity-80">
+                  Dort, wo die Savanne niemals schläft und Ihre Träume durch unsere Präzision zur Wirklichkeit werden.
+                </p>
+              </motion.div>
+
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="grid grid-cols-1 gap-4"
+              >
+                {[
+                  { icon: ShieldCheck, title: "Sicherheit", sub: "Vollständiger DRSF-Schutz" },
+                  { icon: Globe, title: "Präsenz", sub: "Office in Berlin & Kairo" },
+                  { icon: Compass, title: "Expertise", sub: "Staatlich geprüfte Guides" }
+                ].map((feat, i) => (
+                  <div key={i} className="flex items-center gap-5 p-5 bg-muted/20 rounded-2xl border border-border/50 group hover:border-primary/20 transition-all duration-500">
+                    <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-sm group-hover:bg-primary transition-colors">
+                      <feat.icon className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
+                    </div>
+                    <div>
+                      <p className="text-[11px] font-black text-secondary uppercase tracking-tight leading-none">{feat.title}</p>
+                      <p className="text-[8px] font-bold text-muted-foreground uppercase tracking-widest mt-1.5">{feat.sub}</p>
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <Link href="/trip-planner" className="w-full sm:w-auto">
+                  <Button size="lg" className="w-full rounded-xl px-10 h-14 font-black text-[10px] uppercase tracking-[0.3em] shadow-2xl border-none">
+                    Reise Planen <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </Link>
+                <Link href="/contact" className="w-full sm:w-auto">
+                  <Button variant="outline" size="lg" className="w-full rounded-xl px-10 h-14 font-black text-[10px] uppercase tracking-[0.3em] border-muted text-muted-foreground hover:border-primary/20 hover:text-primary transition-all">
+                    Experten sprechen
+                  </Button>
+                </Link>
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <Link href="/trip-planner" className="w-full sm:w-auto">
-                <Button size="lg" className="w-full rounded-xl px-12 h-12 md:h-16 font-black text-[10px] uppercase tracking-[0.3em] shadow-2xl group border-none">
-                  Reise Planen <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
-              <Link href="/contact" className="text-[10px] font-black uppercase tracking-[0.4em] text-secondary/60 hover:text-primary transition-colors py-4 px-6 rounded-full border border-border/50 hover:border-primary/20 bg-white/50 backdrop-blur-sm shadow-sm">
-                Experten sprechen
-              </Link>
+            {/* Right Column: Dynamic Media Architecture */}
+            <div className="lg:col-span-7 relative">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, ease: "easeOut" }}
+                className="relative z-10"
+              >
+                {/* Floating Tech Badge */}
+                <div className="absolute -top-6 -left-6 z-20 hidden md:block">
+                  <div className="px-6 py-4 bg-secondary text-white rounded-2xl shadow-2xl border border-white/10 backdrop-blur-xl">
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                      <span className="text-[9px] font-black uppercase tracking-[0.3em]">Field Operations Active</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Video Frame */}
+                <div className="relative aspect-video w-full rounded-[2.5rem] md:rounded-[4rem] overflow-hidden bg-black shadow-[0_50px_100px_rgba(0,0,0,0.15)] border-[12px] border-white group">
+                  <iframe
+                    src="https://www.youtube.com/embed/uVilAKUc8zE?autoplay=0&rel=0&modestbranding=1"
+                    title="Expedition Registry"
+                    className="absolute inset-0 w-full h-full border-none opacity-90 group-hover:opacity-100 transition-opacity duration-700"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                  
+                  {/* Glass Overlay on Idle */}
+                  <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+                </div>
+
+                {/* Bottom Stats Card */}
+                <div className="absolute -bottom-10 -right-6 z-20 hidden md:block max-w-[280px]">
+                  <div className="p-8 bg-white rounded-[2.5rem] shadow-2xl border border-border/50 space-y-4">
+                    <div className="flex items-center gap-3">
+                      <Sparkles className="w-5 h-5 text-primary" />
+                      <span className="text-[10px] font-black uppercase text-secondary">Registry Data</span>
+                    </div>
+                    <p className="text-[9px] font-bold text-muted-foreground uppercase leading-relaxed tracking-widest">
+                      Exklusive Einblicke in unsere Feldexpeditionen und Logistik-Handshakes.
+                    </p>
+                    <div className="h-px bg-muted w-full" />
+                    <div className="flex items-center justify-between">
+                      <span className="text-[8px] font-black uppercase text-primary tracking-widest">Live Status</span>
+                      <span className="text-[8px] font-black uppercase text-secondary tracking-widest">Verified</span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Decorative Geometric Registry Elements */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-primary/10 rounded-full scale-125 -z-0" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-secondary/5 rounded-full scale-150 -z-0" />
             </div>
-          </motion.div>
+
+          </div>
         </div>
       </section>
     </div>
