@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useRef, useEffect } from 'react';
@@ -90,7 +91,7 @@ export default function TripAdvisorPage() {
   return (
     <div className="min-h-screen bg-[#fdfcfb] flex flex-col font-bold">
       {/* Cinematic Prestige Hero */}
-      <section className="relative h-[60vh] md:h-[70vh] w-full shrink-0 overflow-hidden bg-secondary">
+      <section className="relative h-[50vh] md:h-[65vh] w-full shrink-0 overflow-hidden bg-secondary">
         <Image 
           src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
           alt="Tansania Savannah" 
@@ -98,7 +99,7 @@ export default function TripAdvisorPage() {
           priority
           className="object-cover brightness-[0.4] scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent" />
         
         <div className="container relative z-10 mx-auto px-6 md:px-10 h-full flex flex-col justify-end pb-16 md:pb-20">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
@@ -108,13 +109,13 @@ export default function TripAdvisorPage() {
               className="space-y-6"
             >
               <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/20 backdrop-blur-md rounded-full border border-primary/30 text-white text-[9px] font-black uppercase tracking-[0.4em]">
-                <Sparkles className="w-3.5 h-3.5 text-primary" /> Intelligent Concierge
+                <Sparkles className="w-3.5 h-3.5 text-primary" /> Intelligenter Concierge
               </div>
               <h1 className="font-headline text-4xl md:text-8xl font-black text-white leading-none tracking-tighter uppercase">
-                AI Trip <br /><span className="text-primary">Advisor</span>
+                KI REISE <br /><span className="text-primary">BERATER</span>
               </h1>
               <p className="text-white/60 text-[10px] md:text-sm font-bold uppercase tracking-widest leading-relaxed max-w-xl">
-                Exklusive Beratung synchronisiert mit unserer 500+ Seiten Safari-Registry.
+                Exklusive Beratung synchronisiert mit unserer 500+ Seiten Safari-Registry. Offizielles Protokoll 2026/27.
               </p>
             </motion.div>
             <div className="flex items-center gap-4">
@@ -160,7 +161,7 @@ export default function TripAdvisorPage() {
                           </div>
                           <div className="flex flex-col gap-4">
                             <div className={cn(
-                              "p-6 md:p-8 rounded-[2rem] text-sm md:text-lg leading-relaxed font-bold shadow-sm whitespace-pre-wrap",
+                              "p-6 md:p-8 rounded-[2rem] text-sm md:text-lg leading-relaxed font-bold shadow-sm whitespace-pre-wrap uppercase tracking-tight",
                               m.role === 'user' 
                                 ? "bg-primary text-white rounded-tr-none" 
                                 : m.role === 'error'
@@ -170,9 +171,9 @@ export default function TripAdvisorPage() {
                               {m.content}
                             </div>
                             {m.action && m.route && (
-                              <Button asChild variant="outline" className="rounded-full h-11 px-6 text-[10px] font-black uppercase tracking-widest border-primary/30 text-primary hover:bg-primary/5 group w-fit shadow-md">
+                              <Button asChild className="rounded-full h-11 px-6 text-[10px] font-black uppercase tracking-widest shadow-md transition-all hover:bg-secondary hover:text-white">
                                 <Link href={m.route}>
-                                  {m.action} <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                                  {m.action} <ArrowRight className="w-4 h-4 ml-2" />
                                 </Link>
                               </Button>
                             )}
@@ -201,7 +202,7 @@ export default function TripAdvisorPage() {
                         <button
                           key={idx}
                           onClick={() => handleSend(s.text)}
-                          className="px-6 py-3 rounded-full bg-muted/30 border border-border hover:border-primary hover:bg-primary/5 transition-all text-[10px] font-black uppercase tracking-widest flex items-center gap-3 whitespace-nowrap shadow-sm"
+                          className="px-6 py-3 rounded-full bg-muted/30 border border-border hover:border-secondary hover:bg-secondary hover:text-white transition-all text-[10px] font-black uppercase tracking-widest flex items-center gap-3 whitespace-nowrap shadow-sm"
                         >
                           <s.icon className="w-4 h-4 text-primary" />
                           {s.text}
@@ -239,7 +240,7 @@ export default function TripAdvisorPage() {
                     <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
                       <CloudSun className="w-6 h-6 text-primary" />
                     </div>
-                    <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-secondary">Registry Pulse</h3>
+                    <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-secondary">REGISTRY-STATUS</h3>
                   </div>
                   <div className="space-y-5">
                     <div className="p-6 bg-white rounded-2xl border border-border/50 flex items-center justify-between shadow-sm">
@@ -254,16 +255,20 @@ export default function TripAdvisorPage() {
                 </CardContent>
               </Card>
 
-              <div className="bg-secondary text-white p-12 rounded-[3.5rem] shadow-2xl relative overflow-hidden flex-grow flex flex-col justify-center">
+              <div className="bg-[#FDF7F2] text-secondary p-12 rounded-[3.5rem] shadow-sm border border-border/40 relative overflow-hidden flex-grow flex flex-col justify-center">
                 <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
                 <div className="relative z-10 space-y-10">
-                  <h3 className="font-headline text-4xl font-black uppercase leading-none tracking-tighter">Bespoke <br />Planning</h3>
-                  <p className="text-xs md:text-sm text-white/40 font-bold uppercase tracking-widest leading-relaxed">
+                  <h3 className="font-headline text-4xl font-black uppercase leading-none tracking-tighter text-secondary">
+                    Maßgeschneiderte <br /><span className="text-primary">Planung</span>
+                  </h3>
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground leading-relaxed">
                     Sprechen Sie direkt mit unseren Experten in Berlin, um Ihre Reise zu finalisieren.
                   </p>
                   <div className="pt-6">
-                    <Button asChild className="w-full h-16 rounded-2xl bg-primary text-white font-black text-[12px] uppercase tracking-[0.3em] shadow-xl border-none hover:scale-[1.02] transition-transform">
-                      <Link href="/contact">Anfrage Senden <ArrowRight className="w-5 h-5 ml-3" /></Link>
+                    <Button asChild className="w-full h-16 rounded-2xl bg-secondary text-white hover:bg-primary font-black text-[12px] uppercase tracking-[0.3em] shadow-xl border-none hover:scale-[1.02] transition-all">
+                      <Link href="/contact" className="flex items-center justify-center gap-3">
+                        ANFRAGE SENDEN <ArrowRight className="w-5 h-5" />
+                      </Link>
                     </Button>
                   </div>
                 </div>
