@@ -36,6 +36,7 @@ import { collection, serverTimestamp } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
+import { AiCTA } from '@/components/sections/AiCTA';
 import { ContactSection } from '@/components/shared/ContactSection';
 
 const formSchema = z.object({
@@ -128,15 +129,15 @@ export default function TripPlanner() {
             </div>
             
             <div className="space-y-4 mb-12">
-              <h2 className="font-headline text-3xl md:text-5xl font-bold mb-4 uppercase tracking-tighter text-secondary leading-none text-center">Systemausfall</h2>
+              <h2 className="font-headline text-3xl md:text-5xl font-bold mb-4 uppercase tracking-tighter text-secondary leading-none text-center">Anfrage Abgeschlossen</h2>
               <p className="text-muted-foreground text-xs md:text-sm font-bold uppercase tracking-[0.2em] leading-relaxed max-w-md mx-auto text-center">
-                In der Savanne gab es ein technisches Gewitter. Wir versuchen, die Verbindung wiederherzustellen.
+                Vielen Dank! Ihre Expeditions-Parameter wurden in unserem System registriert. Ein Spezialist wird sich in Kürze bei Ihnen melden.
               </p>
             </div>
 
             <div className="flex flex-col gap-3 max-w-sm mx-auto">
               <Button onClick={handleReset} variant="outline" className="w-full rounded-xl h-12 md:h-14 gap-3 border-primary/20 text-primary hover:bg-primary/5 font-black text-[10px] uppercase tracking-widest">
-                <RefreshCw className="w-4 h-4" /> Seite neu laden
+                <RefreshCw className="w-4 h-4" /> Neue Planung starten
               </Button>
               <Button asChild className="w-full rounded-xl h-12 md:h-14 gap-3 shadow-lg shadow-primary/20 font-black text-[10px] uppercase tracking-widest border-none">
                 <Link href="/"><Home className="w-4 h-4" /> Zur Startseite</Link>
@@ -168,9 +169,6 @@ export default function TripPlanner() {
             animate={{ opacity: 1, y: 0 }}
             className="space-y-6"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/20 backdrop-blur-md rounded-full border border-primary/30 text-white text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em]">
-              <Sparkles className="w-3.5 h-3.5 text-primary" /> AI Expedition Architect
-            </div>
             <h1 className="font-headline text-4xl md:text-7xl lg:text-8xl font-black text-white leading-none tracking-tighter uppercase">
               DESIGN YOUR <br /><span className="text-primary">SAFARI</span>
             </h1>
@@ -398,6 +396,9 @@ export default function TripPlanner() {
           </aside>
 
         </div>
+
+        {/* AI Conversion Hub */}
+        <AiCTA />
 
         {/* Support Section Registry */}
         <ContactSection />
