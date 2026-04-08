@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -439,36 +440,33 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                   </AccordionTrigger>
                   
                   <AccordionContent className="pt-12 pb-4 px-2 md:px-8 space-y-12 relative overflow-visible">
-                    <div className="absolute left-[36px] md:left-[60px] top-12 bottom-12 w-px bg-border/60 z-0" />
+                    <div className="absolute left-[28px] md:left-[60px] top-12 bottom-12 w-px bg-border/60 z-0" />
                     
                     {group.map((day, dIdx) => (
-                      <div key={dIdx} className="relative z-10 flex gap-4 md:gap-10">
+                      <div key={dIdx} className="relative z-10 flex gap-3 md:gap-10">
                         <div className="shrink-0">
-                          <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-[#FDF7F2] border border-[#F0EBE0] flex items-center justify-center shadow-sm relative z-10">
-                            <span className="text-xs md:text-lg font-black text-[#C9A876]">{startDay + dIdx}</span>
+                          <div className="w-8 h-8 md:w-14 md:h-14 rounded-full bg-[#FDF7F2] border border-[#F0EBE0] flex items-center justify-center shadow-sm relative z-10">
+                            <span className="text-[10px] md:text-lg font-black text-[#C9A876]">{startDay + dIdx}</span>
                           </div>
                         </div>
 
                         <div className="flex-1 bg-white rounded-[1.5rem] md:rounded-[2.5rem] border border-border/40 p-5 md:p-10 shadow-sm hover:shadow-xl transition-all duration-500 group/card">
-                          <div className="flex flex-col lg:flex-row justify-between gap-6 md:gap-10">
-                            <div className="flex-1 space-y-4 md:space-y-6">
+                          <div className="flex flex-col gap-6 md:gap-10">
+                            <div className="space-y-4 md:space-y-6">
                               <div className="flex flex-wrap items-center gap-3">
-                                <h4 className="font-headline text-lg md:text-3xl font-normal text-secondary uppercase tracking-tight leading-tight group-hover/card:text-primary transition-colors">
+                                <h4 className="font-headline text-base md:text-3xl font-normal text-secondary uppercase tracking-tight leading-tight group-hover/card:text-primary transition-colors">
                                   {day.title}
                                 </h4>
                                 <Badge className="bg-[#C9A876]/10 text-[#C9A876] border-none text-[7px] md:text-[10px] font-black uppercase px-2.5 py-1">
                                   {day.location}
                                 </Badge>
                               </div>
-                              <p className="text-muted-foreground font-bold text-[10px] md:text-sm leading-relaxed uppercase tracking-widest opacity-70">
+                              <p className="text-muted-foreground font-bold text-[9px] md:text-sm leading-relaxed uppercase tracking-widest opacity-70">
                                 {day.desc}
                               </p>
-                              <div className="pt-2 flex items-center gap-2 text-[8px] md:text-[10px] font-black text-secondary uppercase tracking-[0.2em] group-hover/card:text-primary transition-colors cursor-pointer">
-                                DETAILS ANZEIGEN <ChevronRight className="w-3 h-3 rotate-90 text-primary" />
-                              </div>
                             </div>
                             
-                            <div className="shrink-0 w-full lg:w-56 aspect-[16/9] lg:aspect-square relative rounded-[1rem] md:rounded-[1.5rem] overflow-hidden shadow-xl border border-border/20">
+                            <div className="shrink-0 w-full md:w-auto relative aspect-[16/9] md:aspect-[21/9] rounded-[1rem] md:rounded-[1.5rem] overflow-hidden shadow-xl border border-border/20">
                               <Image 
                                 src={day.img || `https://picsum.photos/seed/day-${startDay + dIdx}/600/600`} 
                                 alt={day.title} 
