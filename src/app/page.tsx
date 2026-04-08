@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -38,39 +39,38 @@ export default function Home() {
         </Link>
       </div>
 
-      {/* HERO SECTION - RECALIBRATED: Removed bottom shadow for cleaner visual transition */}
+      {/* HERO SECTION - RECALIBRATED: 72px Cormorant Garamond Master */}
       <section className="relative min-h-[85vh] md:h-screen flex items-center overflow-hidden bg-secondary">
         {/* Background Visual Asset */}
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/assets/images/home/home-banner-1.webp" 
+            src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
             alt="Tansania Reiseabenteuer Signature Visual" 
             fill 
             priority 
             className="object-cover object-bottom brightness-[0.55]"
             data-ai-hint="elephant forest"
           />
-          {/* Refined Overlay: Removed 'to-black/50' to eliminate bottom shadow */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent" />
         </div>
 
         {/* Main Content Container */}
         <div className="container relative z-20 mx-auto px-6 md:px-10 max-w-7xl h-full flex flex-col justify-center pt-20 md:pt-0">
-          <div className="max-w-3xl space-y-6 md:space-y-8">
+          <div className="max-w-4xl space-y-6 md:space-y-10">
             <motion.div 
               initial={{ opacity: 0, x: -30 }} 
               animate={{ opacity: 1, x: 0 }} 
               transition={{ duration: 0.8 }}
-              className="space-y-4 md:space-y-6"
+              className="space-y-6 md:space-y-8"
             >
-              {/* Main Architectural Headline - Calibrated Scale & Weight */}
-              <h1 className="font-medium text-white text-2xl sm:text-3xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tighter font-serif">
+              {/* Main Architectural Headline - Master Design Spec: 72px/90px Cormorant Garamond */}
+              <h1 className="font-headline font-normal text-white text-3xl sm:text-4xl md:text-6xl lg:text-[72px] lg:leading-[90px] tracking-tight">
                 Ihre maßgeschneiderte <br />
                 Luxusreise durch Tansania
               </h1>
 
               {/* Narrative Description - Improved Legibility */}
-              <p className="max-w-xl text-white font-medium text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed tracking-wide">
+              <p className="max-w-xl text-white font-medium text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed tracking-wide opacity-90">
                 Erleben Sie exklusive Safaris, handverlesene Lodges und unvergessliche Momente. Persönlich geplant, individuell gestaltet.
               </p>
 
