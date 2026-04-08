@@ -30,7 +30,7 @@ interface PackageCardProps {
 /**
  * Optimized Signature Card.
  * Compacted for better responsiveness and vertical density.
- * Ensures Image, Title, Price, and Button are all linked to the destination.
+ * Applied global 24px/32px heading and 14px/20px paragraph specifications.
  */
 export function PackageCard({ pkg, className }: PackageCardProps) {
   const packageLink = `/safaris/${pkg.slug}`;
@@ -51,26 +51,26 @@ export function PackageCard({ pkg, className }: PackageCardProps) {
       {/* Content Protocol */}
       <div className="p-5 md:p-7 flex flex-col flex-grow">
         <div className="space-y-3 flex-grow">
-          {/* Headline - Linked - Cormorant Garamond 500 */}
+          {/* Headline Spec: 24px / 32px / Weight 500 */}
           <Link href={packageLink} className="block group/title">
-            <h3 className="font-headline text-xl md:text-2xl font-medium text-[#3A3634] leading-tight tracking-tight group-hover/title:text-primary transition-colors">
+            <h3 className="font-headline text-[24px] leading-[32px] font-medium text-secondary tracking-tight group-hover/title:text-primary transition-colors">
               {pkg.title}
             </h3>
           </Link>
           
-          {/* Narrative - Inter - Compacted for high density */}
-          <p className="text-xs md:text-sm text-[#4A4543] font-normal leading-relaxed line-clamp-2 opacity-80 tracking-widest">
+          {/* Narrative Spec: 14px / 20px / Weight 400 */}
+          <p className="text-[14px] leading-[20px] text-muted-foreground font-normal line-clamp-2 tracking-wide">
             {pkg.excerpt}
           </p>
 
           {/* Technical Metadata Row */}
           <div className="flex items-center gap-4 pt-1">
-            <div className="flex items-center gap-1.5 text-[9px] font-bold text-[#8A8581] tracking-widest">
-              <Clock className="w-3 h-3 text-[#C9A876]" /> 
+            <div className="flex items-center gap-1.5 text-[11px] font-bold text-muted-foreground tracking-widest">
+              <Clock className="w-3 h-3 text-primary" /> 
               {pkg.durationDays} Tage
             </div>
-            <div className="flex items-center gap-1.5 text-[9px] font-bold text-[#8A8581] tracking-widest">
-              <Users className="w-3 h-3 text-[#C9A876]" /> 
+            <div className="flex items-center gap-1.5 text-[11px] font-bold text-muted-foreground tracking-widest">
+              <Users className="w-3 h-3 text-primary" /> 
               {pkg.groupSize || 'Privat'}
             </div>
           </div>
@@ -78,7 +78,7 @@ export function PackageCard({ pkg, className }: PackageCardProps) {
           {/* Tag Cloud Registry */}
           <div className="flex flex-wrap gap-1.5 pt-1">
             {(pkg.highlights || []).slice(0, 3).map((h, i) => (
-              <span key={i} className="text-[8px] font-bold tracking-widest text-[#C9A876] px-2.5 py-1 rounded-md bg-[#C9A876]/5 border border-[#C9A876]/10">
+              <span key={i} className="text-[9px] font-bold tracking-widest text-primary px-2.5 py-1 rounded-md bg-primary/5 border border-primary/10">
                 {h}
               </span>
             ))}
@@ -88,14 +88,14 @@ export function PackageCard({ pkg, className }: PackageCardProps) {
         {/* Conversion Footer - Compact Protocol */}
         <div className="mt-6 pt-4 border-t border-border/40 flex items-center justify-between gap-4">
           <Link href={packageLink} className="flex flex-col group/price">
-            <span className="text-[8px] font-bold text-[#8A8581] tracking-[0.2em] leading-none mb-1">Ab Preis</span>
-            <span className="text-base md:text-xl font-bold text-[#3A3634] leading-none tracking-tighter group-hover/price:text-primary transition-colors">
+            <span className="text-[9px] font-bold text-muted-foreground tracking-widest leading-none mb-1">Ab Preis</span>
+            <span className="text-xl md:text-2xl font-bold text-secondary leading-none tracking-tighter group-hover/price:text-primary transition-colors">
               €{pkg.startingPrice?.toLocaleString('de-DE')}
             </span>
           </Link>
           
           <Link href={packageLink}>
-            <Button variant="outline" size="sm" className="h-9 px-4 rounded-lg text-[9px] font-bold border-border/60 hover:border-primary/40 hover:text-primary transition-all flex items-center gap-2">
+            <Button variant="outline" size="sm" className="h-10 px-5 rounded-lg text-[11px] font-bold border-border/60 hover:border-primary/40 transition-all flex items-center gap-2">
               Details <ArrowRight className="w-3 h-3" />
             </Button>
           </Link>

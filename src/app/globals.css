@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -36,8 +35,8 @@
 
     /* BALANCED PRESTIGE SCALE */
     --text-xs: 0.75rem;
-    --text-sm: 0.875rem;
-    --text-base: 1rem;
+    --text-sm: 0.875rem; /* 14px */
+    --text-base: 1rem; /* 16px */
     --text-lg: 1.125rem;
     --text-xl: 1.25rem;
     --text-2xl: 1.5rem;
@@ -91,14 +90,15 @@
     @apply text-xl md:text-2xl;
   }
 
-  /* BODY REGISTRY: Strict Inter Protocol */
+  /* BODY REGISTRY: Strict Inter Protocol - Baseline 14px / 20px */
   p, span, li, div {
     @apply font-sans font-normal;
     font-style: normal !important;
   }
 
   p {
-    @apply text-sm md:text-base leading-relaxed;
+    @apply text-[14px] leading-[20px];
+    font-weight: 400;
   }
 
   /* Technical Constraint: Force No Italics globally */

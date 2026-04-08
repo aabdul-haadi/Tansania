@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -67,7 +66,7 @@ export function TanzaniaDestinations() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-2xl md:text-4xl font-normal text-secondary uppercase tracking-tighter"
+            className="font-headline text-2xl md:text-4xl font-normal text-secondary tracking-tighter"
           >
             Entdecken Sie Tansania
           </motion.h2>
@@ -76,7 +75,7 @@ export function TanzaniaDestinations() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground font-normal text-[10px] md:text-xs uppercase tracking-widest max-w-xl mx-auto opacity-80"
+            className="text-muted-foreground font-normal text-[10px] md:text-xs tracking-widest max-w-xl mx-auto opacity-80"
           >
             Die schönsten Destinationen für Ihre individuelle Reise
           </motion.p>
@@ -122,14 +121,16 @@ function DestinationCard({ dest }: { dest: any }) {
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
       
       <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end">
-        <h3 className="text-white font-headline text-xl md:text-3xl font-normal uppercase tracking-tighter mb-2">
+        {/* Applied 24px/32px Cormorant Garamond 500 Spec */}
+        <h3 className="text-white font-headline text-[24px] leading-[32px] font-medium tracking-tighter mb-2">
           {dest.name}
         </h3>
-        <p className="text-white/70 text-[9px] md:text-[10px] font-normal leading-relaxed mb-6 uppercase tracking-widest line-clamp-2">
+        {/* Applied 14px/20px Inter 400 Spec */}
+        <p className="text-white/90 text-[14px] leading-[20px] font-normal tracking-wide mb-6 line-clamp-2">
           {dest.desc}
         </p>
         
-        <Link href={`/destinations/${dest.slug}`} className="inline-flex items-center gap-2 text-white font-bold text-[8px] md:text-[9px] uppercase tracking-[0.2em] group/link">
+        <Link href={`/destinations/${dest.slug}`} className="inline-flex items-center gap-2 text-white font-bold text-[11px] tracking-widest group/link">
           Mehr erfahren <ArrowRight className="w-3 h-3 text-primary transition-transform group/link:translate-x-1" />
         </Link>
       </div>
