@@ -47,13 +47,12 @@ export function WhyUs() {
     <section className="pt-8 pb-12 md:pt-12 md:pb-24 bg-white overflow-hidden border-t border-border/40">
       <div className="container mx-auto px-4 max-w-7xl">
         
-        {/* Standardized Header Protocol */}
         <div className="text-center mb-10 md:mb-16 space-y-2">
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tighter"
+            className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter"
           >
             Warum mit uns reisen?
           </motion.h2>
@@ -62,16 +61,13 @@ export function WhyUs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground font-normal text-[10px] md:text-xs uppercase tracking-widest max-w-2xl mx-auto opacity-80"
+            className="text-muted-foreground font-normal text-[14px] leading-[20px] tracking-widest max-w-2xl mx-auto opacity-80"
           >
             Ihre Träume in den Händen von Experten – persönlich, sicher und exklusiv.
           </motion.p>
         </div>
 
-        {/* Compact Modular Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-4 auto-rows-fr">
-          
-          {/* Tile 01: The Cinematic Hero Tile */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -89,17 +85,16 @@ export function WhyUs() {
             
             <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
               <div className="max-w-2xl space-y-3">
-                <h3 className="font-headline text-xl md:text-3xl text-white uppercase tracking-tight leading-tight">
+                <h3 className="font-headline text-xl md:text-[24px] leading-[32px] text-white tracking-tight">
                   {features[0].title}
                 </h3>
-                <p className="text-white/80 font-normal text-[10px] md:text-sm leading-relaxed max-w-lg uppercase tracking-widest">
+                <p className="text-white/80 font-normal text-[14px] leading-[20px] max-w-lg tracking-wide">
                   {features[0].desc}
                 </p>
               </div>
             </div>
           </motion.div>
 
-          {/* Tile 02: High Contrast Accent Tile */}
           <motion.div 
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -115,19 +110,15 @@ export function WhyUs() {
               <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/20">
                 <Compass className="w-5 h-5 text-white" />
               </div>
-              <h3 className="font-headline text-xl md:text-2xl text-white uppercase tracking-tight leading-tight">
+              <h3 className="font-headline text-xl md:text-[24px] leading-[32px] text-white tracking-tight">
                 {features[1].title}
               </h3>
-              <p className="text-white/90 font-normal text-[9px] md:text-xs leading-relaxed uppercase tracking-widest">
+              <p className="text-white/90 font-normal text-[14px] leading-[20px] tracking-wide">
                 {features[1].desc}
               </p>
             </div>
-            <div className="relative z-10 pt-6 mt-auto border-t border-white/20">
-              <span className="text-[8px] font-bold text-white uppercase tracking-[0.3em]">Privacy Protocol</span>
-            </div>
           </motion.div>
 
-          {/* Tile 03: Minimalist Trust Tile */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -139,16 +130,15 @@ export function WhyUs() {
               <Users className="w-6 h-6 text-secondary group-hover:text-white transition-colors" />
             </div>
             <div className="space-y-2">
-              <h3 className="font-headline text-lg md:text-2xl text-secondary uppercase tracking-tight">
+              <h3 className="font-headline text-lg md:text-[24px] leading-[32px] text-secondary tracking-tight">
                 {features[2].title}
               </h3>
-              <p className="text-muted-foreground font-normal text-[10px] md:text-sm leading-relaxed uppercase tracking-widest opacity-80">
+              <p className="text-muted-foreground font-normal text-[14px] leading-[20px] tracking-wide opacity-80">
                 {features[2].desc}
               </p>
             </div>
           </motion.div>
 
-          {/* Tile 04: Accredited Safety Tile */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -160,15 +150,14 @@ export function WhyUs() {
               <ShieldCheck className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
             </div>
             <div className="space-y-2">
-              <h3 className="font-headline text-lg md:text-2xl text-secondary uppercase tracking-tight">
+              <h3 className="font-headline text-lg md:text-[24px] leading-[32px] text-secondary tracking-tight">
                 {features[3].title}
               </h3>
-              <p className="text-muted-foreground font-normal text-[10px] md:text-sm leading-relaxed uppercase tracking-widest opacity-80">
+              <p className="text-muted-foreground font-normal text-[14px] leading-[20px] tracking-wide opacity-80">
                 {features[3].desc}
               </p>
             </div>
           </motion.div>
-
         </div>
       </div>
     </section>

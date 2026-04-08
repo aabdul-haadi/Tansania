@@ -67,7 +67,7 @@
     background-attachment: fixed;
   }
 
-  /* HEADLINE REGISTRY: Strict Cormorant Garamond Protocol - No forced uppercase */
+  /* HEADLINE REGISTRY: Strict Cormorant Garamond Protocol - Natural Casing */
   h1, h2, h3, h4, h5, h6 {
     @apply font-headline font-normal leading-tight text-secondary tracking-tighter;
     font-style: normal !important;
@@ -75,7 +75,7 @@
   }
 
   h1 {
-    @apply text-4xl md:text-7xl lg:text-8xl;
+    @apply text-4xl md:text-7xl lg:text-[72px] lg:leading-[90px];
   }
 
   h2 {
@@ -94,6 +94,7 @@
   p, span, li, div {
     @apply font-sans font-normal;
     font-style: normal !important;
+    text-transform: none !important;
   }
 
   p {

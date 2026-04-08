@@ -69,7 +69,7 @@ export function TravelCategories() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground font-medium text-xs md:text-sm tracking-widest max-w-xl mx-auto opacity-80"
+            className="text-muted-foreground font-normal text-[14px] leading-[20px] tracking-widest max-w-xl mx-auto opacity-80"
           >
             Entdecken Sie unsere sorgfältig kuratierten Reisekategorien
           </motion.p>
@@ -96,11 +96,9 @@ export function TravelCategories() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
               
               <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end">
-                {/* Applied 24px/32px Cormorant Garamond 500 Spec */}
                 <h3 className="font-headline font-medium text-[24px] leading-[32px] text-white tracking-tight mb-2">
                   {cat.title}
                 </h3>
-                {/* Applied 14px/20px Inter 400 Spec */}
                 <p className="text-white/90 text-[14px] leading-[20px] font-normal tracking-wide mb-6 line-clamp-2">
                   {cat.desc}
                 </p>
