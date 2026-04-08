@@ -39,7 +39,7 @@ export default function Home() {
         </Link>
       </div>
 
-      {/* HERO SECTION - RECALIBRATED: 72px Cormorant Garamond Master */}
+      {/* HERO SECTION - RECALIBRATED: 72px Headline & 24px Narrative Protocol */}
       <section className="relative min-h-[85vh] md:h-screen flex items-center overflow-hidden bg-secondary">
         {/* Background Visual Asset */}
         <div className="absolute inset-0 z-0">
@@ -69,8 +69,8 @@ export default function Home() {
                 Luxusreise durch Tansania
               </h1>
 
-              {/* Narrative Description - Improved Legibility */}
-              <p className="max-w-xl text-white font-medium text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed tracking-wide opacity-90">
+              {/* Narrative Description - Master Design Spec: 24px/39px Inter 300 */}
+              <p className="max-w-2xl text-white font-light text-base sm:text-lg md:text-xl lg:text-[24px] lg:leading-[39px] tracking-wide">
                 Erleben Sie exklusive Safaris, handverlesene Lodges und unvergessliche Momente. Persönlich geplant, individuell gestaltet.
               </p>
 
