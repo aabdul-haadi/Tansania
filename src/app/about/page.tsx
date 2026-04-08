@@ -234,7 +234,7 @@ export default function AboutPage() {
                 <div className="inline-flex items-center gap-2 text-primary text-[9px] font-black uppercase tracking-[0.4em]">
                   <Zap className="w-3 h-3 fill-current" /> Official Registry
                 </div>
-                <h2 className="font-headline text-2xl md:text-5xl font-bold text-secondary leading-[0.85] tracking-tighter uppercase">
+                <h2 className="font-headline text-xl md:text-4xl font-bold text-secondary leading-[0.85] tracking-tighter uppercase">
                   WILLKOMMEN IM <br />
                   <span className="text-primary">HERZEN AFRIKAS</span>
                 </h2>
