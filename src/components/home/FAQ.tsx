@@ -51,12 +51,12 @@ export function FAQ() {
     <section className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4 max-w-4xl">
         {/* Header Protocol */}
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-12 md:mb-16 space-y-2">
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-3xl md:text-5xl font-normal text-[#3A3634] mb-4"
+            className="font-headline text-3xl md:text-5xl font-normal text-secondary mb-4 tracking-tighter"
           >
             Häufig gestellte Fragen
           </motion.h2>
@@ -65,7 +65,7 @@ export function FAQ() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-[#8A8581] font-normal text-[13px] md:text-[15px]"
+            className="text-muted-foreground font-normal text-[14px] leading-[20px] tracking-wide"
           >
             Alles, was Sie über Ihre Tansania-Reise wissen müssen
           </motion.p>
@@ -85,10 +85,10 @@ export function FAQ() {
                 value={`item-${index}`}
                 className="bg-white border border-border/60 rounded-lg md:rounded-xl shadow-sm overflow-hidden"
               >
-                <AccordionTrigger className="font-normal text-base md:text-xl py-5 px-6 md:px-8 hover:no-underline text-left text-[#3A3634] transition-colors">
+                <AccordionTrigger className="font-normal text-base md:text-xl py-5 px-6 md:px-8 hover:no-underline text-left text-secondary transition-colors tracking-tight">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-[#8A8581] text-[13px] md:text-[14px] leading-relaxed px-6 md:px-8 pb-6 font-normal">
+                <AccordionContent className="text-muted-foreground text-[14px] leading-[20px] px-6 md:px-8 pb-6 font-normal">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
@@ -104,11 +104,11 @@ export function FAQ() {
           transition={{ delay: 0.3 }}
           className="mt-16 text-center space-y-6"
         >
-          <p className="text-[#8A8581] text-[13px] md:text-[15px] font-normal">
+          <p className="text-muted-foreground text-[14px] leading-[20px] font-normal">
             Weitere Fragen? Wir sind für Sie da.
           </p>
           <Link href="/contact" className="inline-block">
-            <Button className="rounded-lg px-8 h-14 bg-[#3A3634] text-white hover:bg-primary transition-all duration-500 font-bold text-[11px] uppercase tracking-widest border-none shadow-lg">
+            <Button className="rounded-lg px-8 h-14 bg-secondary text-white hover:bg-primary transition-all duration-500 font-bold text-[11px] uppercase tracking-widest border-none shadow-lg">
               Jetzt Kontakt aufnehmen
             </Button>
           </Link>

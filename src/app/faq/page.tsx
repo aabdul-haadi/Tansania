@@ -49,7 +49,7 @@ export default function FAQPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="font-headline text-4xl md:text-7xl font-bold mb-6 leading-tight text-white"
+            className="font-headline text-4xl md:text-7xl font-normal mb-6 leading-tight text-white tracking-tighter"
           >
             Fragen & <span className="text-primary">Antworten</span>
           </motion.h1>
@@ -70,7 +70,7 @@ export default function FAQPage() {
           <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground transition-colors group-focus-within:text-primary" />
           <Input 
             placeholder="Suchen Sie nach einem Thema..." 
-            className="h-16 pl-16 pr-8 rounded-2xl border-none shadow-2xl bg-white focus:ring-2 focus:ring-primary/20 text-lg"
+            className="h-16 pl-16 pr-8 rounded-2xl border-none shadow-2xl bg-white focus:ring-2 focus:ring-primary/20 text-lg font-normal"
           />
         </div>
 
@@ -79,7 +79,7 @@ export default function FAQPage() {
           {faqCategories.map((category, catIdx) => (
             <section key={catIdx} className="space-y-8">
               <div className="flex items-center gap-4">
-                <h2 className="font-headline text-2xl md:text-3xl font-bold text-secondary">{category.title}</h2>
+                <h2 className="font-headline text-2xl md:text-3xl font-normal text-secondary tracking-tight">{category.title}</h2>
                 <div className="h-px flex-grow bg-muted" />
               </div>
               
@@ -90,10 +90,10 @@ export default function FAQPage() {
                     value={`cat-${catIdx}-q-${qIdx}`}
                     className="border-none bg-white rounded-2xl px-6 md:px-10 shadow-sm hover:shadow-md transition-all group"
                   >
-                    <AccordionTrigger className="text-left font-bold text-base md:text-lg py-6 hover:no-underline hover:text-primary transition-colors">
+                    <AccordionTrigger className="text-left font-normal text-base md:text-lg py-6 hover:no-underline hover:text-primary transition-colors tracking-tight">
                       {faq.q}
                     </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground text-sm md:text-base leading-relaxed font-light pb-8 pr-4">
+                    <AccordionContent className="text-muted-foreground text-[14px] leading-[20px] font-normal pb-8 pr-4">
                       {faq.a}
                     </AccordionContent>
                   </AccordionItem>

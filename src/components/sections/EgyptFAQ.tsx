@@ -28,7 +28,7 @@ export function EgyptFAQ() {
     <section className="py-16 md:py-32 bg-[#fdfcfb]">
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-12 md:mb-20">
-          <h2 className="font-headline text-2xl md:text-4xl font-bold text-secondary uppercase tracking-tighter">
+          <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary uppercase tracking-tighter">
             Häufig gestellte Fragen (FAQ)
           </h2>
         </div>
@@ -40,13 +40,13 @@ export function EgyptFAQ() {
               value={`item-${idx}`}
               className="border-none bg-[#f8f8f8] rounded-xl px-6 md:px-8 transition-all hover:bg-white hover:shadow-sm border border-transparent hover:border-border group"
             >
-              <AccordionTrigger className="font-bold text-xs md:text-sm py-5 hover:no-underline text-left text-secondary transition-colors [&>svg]:hidden">
+              <AccordionTrigger className="font-normal text-[14px] leading-[20px] md:text-base py-5 hover:no-underline text-left text-secondary transition-colors tracking-tight [&>svg]:hidden">
                 <div className="flex items-center justify-between w-full gap-4">
-                  <span className="uppercase tracking-tight leading-snug">{faq.q}</span>
+                  <span className="leading-snug">{faq.q}</span>
                   <Plus className="w-4 h-4 text-primary shrink-0 transition-transform group-data-[state=open]:rotate-45" />
                 </div>
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground text-[10px] md:text-xs leading-relaxed font-bold pb-6 uppercase tracking-widest">
+              <AccordionContent className="text-muted-foreground text-[14px] leading-[20px] font-normal pb-6">
                 {faq.a}
               </AccordionContent>
             </AccordionItem>
