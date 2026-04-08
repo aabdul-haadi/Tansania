@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -5,6 +6,17 @@ import { motion } from 'framer-motion';
 import { PackageCard } from '@/components/shared/PackageCard';
 
 const SIGNATURE_REISEN = [
+  {
+    id: 'safari-honeymoon',
+    title: 'Safari & Sansibar Honeymoon',
+    slug: 'safari-sansibar-honeymoon',
+    startingPrice: 8900,
+    durationDays: 14,
+    groupSize: '2 Personen',
+    highlights: ['Flitterwochen-Special', 'Boutique-Lodges', 'Private Insel'],
+    excerpt: 'Die perfekte Kombination aus aufregender Wildlife-Safari und romantischem Strandurlaub auf Sansibar',
+    imageUrl: 'https://images.unsplash.com/photo-1577971132997-c10be9372519?q=80&w=1200'
+  },
   {
     id: 'kili-safari-kombi',
     title: '12 Tage Kilimandscharo & Safari Kombi',
@@ -17,17 +29,6 @@ const SIGNATURE_REISEN = [
     imageUrl: 'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1200'
   },
   {
-    id: 'safari-honeymoon',
-    title: 'Safari & Sansibar Honeymoon',
-    slug: 'safari-sansibar-honeymoon',
-    startingPrice: 8900,
-    durationDays: 14,
-    groupSize: '2 Personen',
-    highlights: ['Flitterwochen-Special', 'Boutique-Lodges', 'Private Insel'],
-    excerpt: 'Die perfekte Kombination aus aufregender Wildlife-Safari und romantischem Strandurlaub auf Sansibar',
-    imageUrl: '/assets/images/home/pkg-2.webp'
-  },
-  {
     id: 'exclusive-luxury',
     title: 'Exklusive Luxury Safari',
     slug: 'exklusive-luxury-safari',
@@ -36,7 +37,7 @@ const SIGNATURE_REISEN = [
     groupSize: '2-6 Personen',
     highlights: ['Ultra-Luxury', 'Heißluftballon', 'Private Safaris'],
     excerpt: 'Tansanias schönste Wildparks in den luxuriösesten Unterkünften mit höchstem Service-Standard',
-    imageUrl: '/assets/images/home/pkg-3.webp'
+    imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200'
   },
   {
     id: 'familien-safari',
@@ -47,7 +48,7 @@ const SIGNATURE_REISEN = [
     groupSize: '4-6 Personen',
     highlights: ['Familienfreundlich', 'Kulturelle Begegnungen', 'Flexible Planung'],
     excerpt: 'Kinderfreundliche Lodges, spannende Tierbegegnungen und unvergessliche Abenteuer für alle Generationen',
-    imageUrl: '/assets/images/home/pkg-4.webp'
+    imageUrl: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=1200'
   }
 ];
 
