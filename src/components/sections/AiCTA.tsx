@@ -20,10 +20,10 @@ export function AiCTA() {
     <section className="bg-white border-t border-border/40 overflow-hidden">
       <div className="grid grid-cols-1 md:grid-cols-2">
         
-        {/* Tile 1: AI HUB (Top Left) - RECALIBRATED: Compact & Image-Led */}
+        {/* Tile 1: AI HUB (Top Left) - RECALIBRATED: AI Trip Advisor Branding */}
         <div className="bg-white text-secondary p-8 sm:p-10 md:p-16 lg:p-24 flex flex-col justify-center items-center text-center space-y-6 md:space-y-8 min-h-[450px] md:min-h-[550px] order-1 border-b md:border-b-0 border-border/40">
           <div className="space-y-6 flex flex-col items-center">
-            {/* AI Coworker Visual Registry: Profile Image Protocol */}
+            {/* AI Advisor Visual Registry */}
             <motion.div 
               initial={{ scale: 0.9, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
@@ -33,8 +33,8 @@ export function AiCTA() {
               <div className="absolute inset-0 bg-primary/10 rounded-full rotate-6 scale-110" />
               <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white shadow-2xl bg-muted">
                 <img 
-                  src="https://picsum.photos/seed/ai-specialist/200/200" 
-                  alt="Ihr KI-Kollege" 
+                  src="https://picsum.photos/seed/ai-advisor/200/200" 
+                  alt="AI Trip Advisor" 
                   className="w-full h-full object-cover" 
                 />
               </div>
@@ -54,7 +54,7 @@ export function AiCTA() {
               className="space-y-3"
             >
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[8px] md:text-[9px] font-black uppercase tracking-[0.3em] border border-primary/20">
-                <Sparkles className="w-3 h-3" /> Ihr KI-Kollege
+                <Sparkles className="w-3 h-3" /> AI TRIP ADVISOR
               </div>
               <h2 className="font-headline text-xl sm:text-2xl md:text-4xl font-bold uppercase tracking-tighter leading-tight">
                 Intelligente <br /> <span className="text-primary">Planungshilfe</span>
@@ -122,7 +122,7 @@ export function AiCTA() {
           </div>
         </div>
 
-        {/* Tile 4: Atmospheric Image (Mobile Order 4 / Desktop Order 3) */}
+        {/* Tile 4: Atmospheric Image (Mobile Order 4 / Desktop Order 3) - RECALIBRATED: Center Align Quote */}
         <div className="relative aspect-square md:aspect-auto min-h-[350px] md:min-h-full overflow-hidden order-4 md:order-3 border-t border-border/40">
           <Image 
             src={elephantsSunset?.imageUrl || "https://images.unsplash.com/photo-1539760397268-33f5146dd9e2?q=80&w=1200"}
@@ -133,7 +133,7 @@ export function AiCTA() {
           />
           <div className="absolute inset-0 bg-black/10" />
           <div className="absolute inset-0 flex items-center justify-center p-4 sm:p-6 md:p-10 text-center">
-            <div className="p-6 sm:p-8 md:p-10 bg-white/5 backdrop-blur-sm border border-white/10 rounded-[2.5rem] w-[85%] max-w-[320px] shadow-2xl text-center">
+            <div className="p-6 sm:p-8 md:p-10 bg-white/5 backdrop-blur-sm border border-white/10 rounded-[2.5rem] w-[85%] max-w-[320px] shadow-2xl flex flex-col items-center justify-center text-center">
               <p className="text-white font-headline text-base sm:text-xl md:text-2xl uppercase tracking-tight leading-tight text-center">
                 "Persönlichkeit ist durch nichts zu ersetzen."
               </p>
