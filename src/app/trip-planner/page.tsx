@@ -170,10 +170,10 @@ export default function TripPlanner() {
             className="space-y-6"
           >
             <h1 className="font-headline text-4xl md:text-7xl lg:text-8xl font-black text-white leading-none tracking-tighter uppercase">
-              DESIGN YOUR <br /><span className="text-primary">SAFARI</span>
+              DESIGNEN SIE IHRE <br /><span className="text-primary">SAFARI</span>
             </h1>
             <p className="text-white/60 text-[10px] md:text-sm font-bold uppercase tracking-widest leading-relaxed max-w-xl mx-auto">
-              Personalized Inquiry Protocol • Official Registry 2026/27
+              Personalisiertes Anfrage-Protokoll • Offizielles Register 2026/27
             </p>
           </motion.div>
         </div>
@@ -209,7 +209,7 @@ export default function TripPlanner() {
                       <motion.div 
                         key="s1" 
                         initial={{ opacity: 0, x: 20 }} 
-                        animate={{ opacity: 1, x: 0 }} 
+                        animate={{ opacity: 1, y: 0 }} 
                         exit={{ opacity: 0, x: -20 }} 
                         className="space-y-10"
                       >
@@ -259,7 +259,7 @@ export default function TripPlanner() {
                       <motion.div 
                         key="s2" 
                         initial={{ opacity: 0, x: 20 }} 
-                        animate={{ opacity: 1, x: 0 }} 
+                        animate={{ opacity: 1, y: 0 }} 
                         exit={{ opacity: 0, x: -20 }} 
                         className="space-y-10"
                       >
@@ -314,7 +314,7 @@ export default function TripPlanner() {
                       <motion.div 
                         key="s3" 
                         initial={{ opacity: 0, x: 20 }} 
-                        animate={{ opacity: 1, x: 0 }} 
+                        animate={{ opacity: 1, y: 0 }} 
                         exit={{ opacity: 0, x: -20 }} 
                         className="space-y-10"
                       >
