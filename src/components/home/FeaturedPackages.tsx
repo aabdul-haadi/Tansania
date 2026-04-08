@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -7,15 +6,15 @@ import { PackageCard } from '@/components/shared/PackageCard';
 
 const SIGNATURE_REISEN = [
   {
-    id: 'klassisch-tansania',
-    title: 'Klassische Tansania Safari',
-    slug: 'klassische-tansania-safari',
-    startingPrice: 6500,
-    durationDays: 10,
-    groupSize: '2-4 Personen',
-    highlights: ['Big Five', 'Luxuslodges', 'Privatguide'],
-    excerpt: 'Serengeti, Ngorongoro und Tarangire – die zeitlose Route durch Tansanias berühmteste Nationalparks',
-    imageUrl: '/assets/images/home/pkg-1.webp'
+    id: 'kili-safari-kombi',
+    title: '12 Tage Kilimandscharo & Safari Kombi',
+    slug: 'kilimanjaro-safari-kombi',
+    startingPrice: 4850,
+    durationDays: 12,
+    groupSize: 'Privat-Expedition',
+    highlights: ['Gipfelsturm', 'Big Five', 'Exklusive Lodges'],
+    excerpt: 'Die ultimative Herausforderung am Berg kombiniert mit den spektakulärsten Wildlife-Hotspots im Norden Tansanias',
+    imageUrl: 'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1200'
   },
   {
     id: 'safari-honeymoon',
