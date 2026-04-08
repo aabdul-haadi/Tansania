@@ -39,7 +39,7 @@ export default function Home() {
         </Link>
       </div>
 
-      {/* HERO SECTION - RECALIBRATED: 72px Headline & 24px Narrative Protocol */}
+      {/* HERO SECTION - RECALIBRATED: High Gap pt-32/40 & Compacted Mobile Scales */}
       <section className="relative min-h-[85vh] md:h-screen flex items-center overflow-hidden bg-secondary">
         {/* Background Visual Asset */}
         <div className="absolute inset-0 z-0">
@@ -54,8 +54,8 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent" />
         </div>
 
-        {/* Main Content Container */}
-        <div className="container relative z-20 mx-auto px-6 md:px-10 max-w-7xl h-full flex flex-col justify-center pt-20 md:pt-0">
+        {/* Main Content Container - pt-32/40 clears the navbar registry */}
+        <div className="container relative z-20 mx-auto px-6 md:px-10 max-w-7xl h-full flex flex-col justify-center pt-32 md:pt-40">
           <div className="max-w-4xl space-y-6 md:space-y-10">
             <motion.div 
               initial={{ opacity: 0, x: -30 }} 
@@ -63,20 +63,20 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="space-y-6 md:space-y-8"
             >
-              {/* Main Architectural Headline - Master Design Spec: 72px/90px Cormorant Garamond */}
-              <h1 className="font-headline font-normal text-white text-3xl sm:text-4xl md:text-6xl lg:text-[72px] lg:leading-[90px] tracking-tight">
+              {/* Main Architectural Headline - Compacted scaling for phone */}
+              <h1 className="font-headline font-normal text-white text-2xl sm:text-4xl md:text-6xl lg:text-[72px] lg:leading-[90px] tracking-tight leading-tight">
                 Ihre maßgeschneiderte <br />
                 Luxusreise durch Tansania
               </h1>
 
-              {/* Narrative Description - Master Design Spec: 24px/39px Inter 300 */}
-              <p className="max-w-2xl text-white font-light text-base sm:text-lg md:text-xl lg:text-[24px] lg:leading-[39px] tracking-wide">
+              {/* Narrative Description - Compacted scaling for phone */}
+              <p className="max-w-2xl text-white font-light text-sm sm:text-base md:text-lg lg:text-[24px] lg:leading-[39px] tracking-wide leading-relaxed">
                 Erleben Sie exklusive Safaris, handverlesene Lodges und unvergessliche Momente. Persönlich geplant, individuell gestaltet.
               </p>
 
               {/* Technical Registry Small Footer */}
               <div className="pt-4 border-t border-white/20">
-                <p className="text-[9px] sm:text-[10px] md:text-[11px] font-bold text-white/80 tracking-[0.2em]">
+                <p className="text-[8px] sm:text-[9px] md:text-[11px] font-bold text-white/80 tracking-[0.2em] leading-relaxed">
                   Über 15 Jahre Expertise · Deutschsprachige Betreuung · Premium-Reisen ab €5.000
                 </p>
               </div>
@@ -87,15 +87,15 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }} 
               animate={{ opacity: 1, y: 0 }} 
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 pt-4 md:pt-0 pb-4 md:pb-0"
+              className="flex flex-col sm:flex-row gap-4 pt-2 md:pt-0 pb-8 md:pb-0"
             >
               <Link href="/trip-planner">
-                <Button className="w-full sm:w-auto h-11 md:h-14 px-6 md:px-10 rounded-lg bg-white text-secondary hover:bg-primary hover:text-white transition-all duration-500 font-bold text-[11px] tracking-widest border-none group shadow-2xl">
+                <Button className="w-full sm:w-auto h-11 md:h-14 px-6 md:px-10 rounded-lg bg-white text-secondary hover:bg-primary hover:text-white transition-all duration-500 font-bold text-[10px] md:text-[11px] tracking-widest border-none group shadow-2xl">
                   Reiseberatung anfragen <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
               <Link href="/safaris">
-                <Button variant="outline" className="w-full sm:w-auto h-11 md:h-14 px-6 md:px-10 rounded-lg bg-transparent text-white border-white/40 hover:bg-white/10 hover:border-white font-bold text-[11px] tracking-widest transition-all duration-500">
+                <Button variant="outline" className="w-full sm:w-auto h-11 md:h-14 px-6 md:px-10 rounded-lg bg-transparent text-white border-white/40 hover:bg-white/10 hover:border-white font-bold text-[10px] md:text-[11px] tracking-widest transition-all duration-500">
                   Unsere Reisen entdecken
                 </Button>
               </Link>
