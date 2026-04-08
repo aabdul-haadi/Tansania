@@ -19,12 +19,9 @@ import {
   Mountain,
   Calendar,
   Plane,
-  FileText,
   Heart,
-  ChevronLeft,
   Waves,
   Camera,
-  Bird,
   ChevronDown,
   CheckCircle2,
   Car,
@@ -151,7 +148,8 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
     dayGroups.push(itineraryDays.slice(i, i + 5));
   }
 
-  const prestigeParaClass = "font-bold text-[10px] md:text-sm uppercase tracking-widest leading-relaxed text-muted-foreground opacity-80";
+  // RECALIBRATED: font-medium weight for a more architectural, refined narrative.
+  const prestigeParaClass = "font-medium text-[10px] md:text-sm uppercase tracking-widest leading-relaxed text-muted-foreground opacity-80";
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-bold">
@@ -668,5 +666,5 @@ function Ticket(props: any) {
       <path d="M13 17v2" />
       <path d="M13 11v2" />
     </svg>
-  )
+  );
 }
