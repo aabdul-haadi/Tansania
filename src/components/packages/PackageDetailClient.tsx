@@ -89,7 +89,6 @@ const highlights = [
 const inclusions = [
   { icon: Home, title: "14 ÜBERNACHTUNGEN", desc: "IN HANDVERLESENEN LUXUS-LODGES & TENTED CAMPS" },
   { icon: Car, title: "PRIVATER 4X4", desc: "ALLE TRANSFERS UND PIRSCHFAHRTEN IM PRIVATEN GELÄNDEWAGEN" },
-  { icon: Ticket, title: "NATIONALPARKGEBÜHREN", desc: "SÄMTLICHE KONZESSIONS- UND PARKEINTRITTSGELDER" },
   { icon: Camera, title: "PIRSCHFAHRTEN", desc: "UNBEGRENZTE FAHRTEN ZUR WILDTIERBEOBACHTUNG" },
   { icon: Utensils, title: "VERPFLEGUNG", desc: "VOLLPENSION AUF SAFARI, HALBPENSION AUF SANSIBAR" },
   { icon: UserCheck, title: "DEUTSCHSPRACHIGER GUIDE", desc: "ERFAHRENE RANGER MIT EXZELLENTEN GEBIETSKENNTNISSEN" },
@@ -148,7 +147,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
     dayGroups.push(itineraryDays.slice(i, i + 5));
   }
 
-  // RECALIBRATED: font-medium weight for a more architectural, refined narrative.
+  // STANDARD PRESTIGE TYPOGRAPHY PROTOCOL
   const prestigeParaClass = "font-medium text-[10px] md:text-sm uppercase tracking-widest leading-relaxed text-muted-foreground opacity-80";
 
   return (
@@ -417,15 +416,16 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
               return (
                 <AccordionItem key={gIdx} value={`group-${gIdx}`} className="border-none">
                   <AccordionTrigger className="p-0 hover:no-underline [&>svg]:hidden group">
-                    <div className="relative w-full min-h-[100px] md:aspect-[21/3] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden bg-secondary flex items-center px-6 md:px-12 group-hover:shadow-2xl transition-all duration-500">
+                    <div className="relative w-full min-h-[100px] md:aspect-[21/3] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden bg-secondary flex items-center group-hover:shadow-2xl transition-all duration-500">
                       <Image 
                         src={`https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200`}
                         alt="Expedition Section"
                         fill
                         className="object-cover opacity-20 brightness-50"
                       />
-                      <div className="relative z-10 flex items-center justify-between w-full text-white py-6">
-                        <div className="text-left">
+                      <div className="relative z-10 flex items-center justify-between w-full text-white py-6 pr-6 md:pr-12">
+                        {/* ALIGNMENT PROTOCOL: Syncing trigger headline with card start */}
+                        <div className="text-left pl-[44px] md:pl-[96px]">
                           <h3 className="font-headline text-lg md:text-3xl font-normal uppercase tracking-tighter">
                             SAFARI ABENTEUER • <span className="text-primary font-black">TAG {startDay}-{endDay}</span>
                           </h3>
@@ -453,7 +453,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                           <div className="flex flex-col gap-6 md:gap-10">
                             <div className="space-y-4 md:space-y-6">
                               <div className="flex flex-wrap items-center gap-3">
-                                <h4 className="font-headline text-base md:text-3xl font-normal text-secondary uppercase tracking-tight leading-tight group-hover/card:text-primary transition-colors">
+                                <h4 className="font-headline text-base md:text-3xl font-normal text-secondary uppercase tracking-tight leading-tight group/card:text-primary transition-colors">
                                   {day.title}
                                 </h4>
                                 <Badge className="bg-[#C9A876]/10 text-[#C9A876] border-none text-[7px] md:text-[10px] font-black uppercase px-2.5 py-1">
