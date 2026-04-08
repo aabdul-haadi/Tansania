@@ -152,6 +152,8 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
     dayGroups.push(itineraryDays.slice(i, i + 5));
   }
 
+  const prestigeParaClass = "text-muted-foreground font-bold text-[10px] md:text-sm uppercase tracking-widest leading-relaxed opacity-80";
+
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-bold">
       {/* 01 IMMERSIVE CINEMA HERO */}
@@ -279,8 +281,8 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                 />
               </div>
 
-              <div className="space-y-8 text-muted-foreground font-bold leading-relaxed text-sm md:text-lg uppercase tracking-widest opacity-80 border-l-4 border-primary/20 pl-8 py-2">
-                <p>
+              <div className="space-y-8 border-l-4 border-primary/20 pl-8 py-2">
+                <p className={prestigeParaClass}>
                   Eine außergewöhnliche Reise durch die endlose Serengeti, den majestätischen Ngorongoro-Krater und die paradiesischen Strände Sansibars. Erleben Sie Afrikas wilde Schönheit in exklusiven Lodges und unvergesslichen Momenten.
                 </p>
               </div>
@@ -311,19 +313,19 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                     <div className="space-y-5 md:space-y-6">
                       <div className="space-y-1">
                         <p className="text-secondary font-black text-[11px] md:text-sm uppercase">Reisedauer:</p>
-                        <p className="text-muted-foreground text-[10px] md:text-xs font-bold uppercase tracking-widest leading-relaxed">
+                        <p className={cn(prestigeParaClass, "opacity-70")}>
                           {pkg.durationDays}-tägig, Flüge inklusive
                         </p>
                       </div>
                       <div className="space-y-1">
                         <p className="text-secondary font-black text-[11px] md:text-sm uppercase">Unterkünfte:</p>
-                        <p className="text-muted-foreground text-[10px] md:text-xs font-bold uppercase tracking-widest leading-relaxed">
+                        <p className={cn(prestigeParaClass, "opacity-70")}>
                           Handverlesene Tented Lodges & Boutique Hotels
                         </p>
                       </div>
                       <div className="space-y-1">
                         <p className="text-secondary font-black text-[11px] md:text-sm uppercase">Exklusive Gruppen:</p>
-                        <p className="text-muted-foreground text-[10px] md:text-xs font-bold uppercase tracking-widest leading-relaxed">
+                        <p className={cn(prestigeParaClass, "opacity-70")}>
                           Privat-Safari mit eigenem Guide & Jeep
                         </p>
                       </div>
@@ -339,14 +341,14 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
 
                     <div className="pt-6 md:pt-8 border-t border-border/40 flex flex-col items-center sm:items-stretch gap-6">
                       <div className="flex flex-col items-center sm:items-start">
-                        <span className="text-sm md:text-base font-black text-muted-foreground/40 line-through mb-1">€{(pkg.startingPrice + 600).toLocaleString('de-DE')}</span>
+                        <span className="text-lg md:text-xl font-black text-muted-foreground/40 line-through mb-1">€{(pkg.startingPrice + 600).toLocaleString('de-DE')}</span>
                         <div className="flex items-baseline gap-1.5">
-                          <span className="text-xs font-black text-secondary uppercase">ab</span>
-                          <span className="text-3xl md:text-4xl font-black text-secondary tracking-tighter uppercase">
+                          <span className="text-xs md:text-sm font-black text-secondary uppercase">ab</span>
+                          <span className="text-4xl md:text-5xl font-black text-secondary tracking-tighter uppercase">
                             {pkg.startingPrice?.toLocaleString('de-DE') || '5.399'} €
                           </span>
                         </div>
-                        <p className="text-[10px] md:text-xs font-black text-muted-foreground/60 uppercase mt-1">pro Person</p>
+                        <p className="text-xs md:text-sm font-black text-muted-foreground/60 uppercase mt-1">pro Person</p>
                       </div>
                       <Button onClick={() => scrollTo('inquiry')} className="w-full rounded-lg h-14 px-8 bg-[#C9A876] text-white hover:bg-secondary font-black text-[11px] uppercase tracking-widest border-none shadow-xl">
                         ANFRAGEN
@@ -384,7 +386,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                           <h4 className="font-headline text-xl md:text-2xl font-bold text-secondary uppercase tracking-tight leading-tight">
                             {h.title}
                           </h4>
-                          <p className="text-[10px] md:text-sm text-muted-foreground font-bold uppercase tracking-widest leading-relaxed opacity-80">
+                          <p className={prestigeParaClass}>
                             {h.desc}
                           </p>
                         </div>
@@ -440,7 +442,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                   </AccordionTrigger>
                   
                   <AccordionContent className="pt-12 pb-4 px-2 md:px-8 space-y-12 relative overflow-visible">
-                    <div className="absolute left-[28px] md:left-[60px] top-12 bottom-12 w-px bg-border/60 z-0" />
+                    <div className="absolute left-[36px] md:left-[60px] top-12 bottom-12 w-px bg-border/60 z-0" />
                     
                     {group.map((day, dIdx) => (
                       <div key={dIdx} className="relative z-10 flex gap-3 md:gap-10">
@@ -461,7 +463,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                                   {day.location}
                                 </Badge>
                               </div>
-                              <p className="text-muted-foreground font-bold text-[9px] md:text-sm leading-relaxed uppercase tracking-widest opacity-70">
+                              <p className={prestigeParaClass}>
                                 {day.desc}
                               </p>
                             </div>
@@ -513,7 +515,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                 <h3 className="font-headline text-2xl md:text-4xl font-normal text-secondary uppercase tracking-tight">
                   Boutique Safari-Lodges
                 </h3>
-                <p className="text-muted-foreground font-bold text-[10px] md:text-sm leading-relaxed uppercase tracking-widest opacity-70">
+                <p className={cn(prestigeParaClass, "opacity-70")}>
                   Luxuriöse Zeltcamps und Lodges mitten in der Wildnis. Jede Unterkunft verbindet authentisches Safari-Feeling mit höchstem Komfort: private Terrassen mit Blick auf die Savanne, elegante Einrichtung und erstklassiger Service.
                 </p>
                 <ul className="space-y-4 pt-2">
@@ -545,7 +547,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                 <h3 className="font-headline text-2xl md:text-4xl font-normal text-secondary uppercase tracking-tight">
                   Sansibar Beach Retreat
                 </h3>
-                <p className="text-muted-foreground font-bold text-[10px] md:text-sm leading-relaxed uppercase tracking-widest opacity-70">
+                <p className={cn(prestigeParaClass, "opacity-70")}>
                   Ihr privates Strandparadies auf Sansibar. Exklusives Boutique-Resort direkt am schneeweißen Sandstrand, umgeben von Palmen und dem türkisfarbenen Indischen Ozean. Perfekter Ort für Romantik und Erholung.
                 </p>
                 <ul className="space-y-4 pt-2">
@@ -589,7 +591,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                     <h4 className="font-headline text-lg md:text-xl font-bold text-secondary uppercase tracking-tight leading-none group-hover:text-primary transition-colors">
                       {item.title}
                     </h4>
-                    <p className="text-[9px] md:text-xs text-muted-foreground font-bold uppercase tracking-widest leading-relaxed opacity-70">
+                    <p className={cn(prestigeParaClass, "opacity-70")}>
                       {item.desc}
                     </p>
                   </div>
@@ -646,4 +648,26 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
       </section>
     </div>
   );
+}
+
+function Ticket(props: any) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" />
+      <path d="M13 5v2" />
+      <path d="M13 17v2" />
+      <path d="M13 11v2" />
+    </svg>
+  )
 }
