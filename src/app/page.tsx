@@ -38,7 +38,7 @@ export default function Home() {
         </Link>
       </div>
 
-      {/* HERO SECTION - RECALIBRATED FOR MAXIMUM LEGIBILITY */}
+      {/* HERO SECTION - RECALIBRATED: Removed bottom shadow for cleaner visual transition */}
       <section className="relative min-h-[85vh] md:h-screen flex items-center overflow-hidden bg-secondary">
         {/* Background Visual Asset */}
         <div className="absolute inset-0 z-0">
@@ -50,7 +50,8 @@ export default function Home() {
             className="object-cover object-bottom brightness-[0.55]"
             data-ai-hint="elephant forest"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50" />
+          {/* Refined Overlay: Removed 'to-black/50' to eliminate bottom shadow */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent" />
         </div>
 
         {/* Main Content Container */}
