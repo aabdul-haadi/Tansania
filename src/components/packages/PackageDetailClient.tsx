@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -29,7 +28,6 @@ import {
   ChevronDown,
   CheckCircle2,
   Car,
-  Ticket,
   Utensils,
   UserCheck,
   PhoneCall,
@@ -38,7 +36,8 @@ import {
   Sprout,
   GlassWater,
   Palmtree,
-  Wind
+  Wind,
+  Zap
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -65,50 +64,50 @@ const navItems = [
 const highlights = [
   {
     title: "Serengeti-Safari",
-    desc: "Erleben Sie die große Tierwanderung und beobachten Sie die Big Five in ihrer natürlichen Umgebung",
+    desc: "ERLEBEN SIE DIE GROSSE TIERWANDERUNG UND BEOBACHTEN SIE DIE BIG FIVE IN IHRER NATÜRLICHEN UMGEBUNG",
     icon: Compass
   },
   {
     title: "Ngorongoro-Krater",
-    desc: "Entdecken Sie das achte Weltwunder und seine einzigartige Konzentration an Wildtieren",
+    desc: "ENTDECKEN SIE DAS ACHTE WELTWUNDER UND SEINE EINZIGARTIGE KONZENTRATION AN WILDTIEREN",
     icon: Mountain
   },
   {
     title: "Sansibar Strände",
-    desc: "Entspannen Sie an den kristallklaren Gewässern und weißen Sandstränden des Indischen Ozeans",
+    desc: "ENTSPANNEN SIE AN DEN KRISTALLKLAREN GEWÄSSERN UND WEISSEN SANDSTRÄNDEN DES INDISCHEN OZEANS",
     icon: Waves
   },
   {
     title: "Maasai Kultur",
-    desc: "Tauchen Sie ein in die faszinierenden Traditionen und Lebensweisen des Maasai-Volkes",
+    desc: "TAUCHEN SIE EIN IN DIE FASZINIERENDEN TRADITIONEN UND LEBENSWEISEN DES MAASAI-VOLKES",
     icon: Users
   },
   {
     title: "Luxus-Lodges",
-    desc: "Übernachten Sie in handverlesenen Boutique-Lodges mit höchstem Komfort und Service",
+    desc: "ÜBERNACHTEN SIE IN HANDVERLESENEN BOUTIQUE-LODGES MIT HÖCHSTEM KOMFORT UND SERVICE",
     icon: Home
   }
 ];
 
 const inclusions = [
-  { icon: Home, title: "14 Übernachtungen", desc: "In handverlesenen Luxus-Lodges & Tented Camps" },
-  { icon: Car, title: "Privater 4x4", desc: "Alle Transfers und Pirschfahrten im privaten Geländewagen" },
-  { icon: Ticket, title: "Nationalparkgebühren", desc: "Sämtliche Konzessions- und Parkeintrittsgelder" },
-  { icon: Camera, title: "Pirschfahrten", desc: "Unbegrenzte Fahrten zur Wildtierbeobachtung" },
-  { icon: Utensils, title: "Verpflegung", desc: "Vollpension auf Safari, Halbpension auf Sansibar" },
-  { icon: UserCheck, title: "Deutschsprachiger Guide", desc: "Erfahrene Ranger mit exzellenten Gebietskenntnissen" },
-  { icon: Plane, title: "Inlandsflug", desc: "Inklusive Gepäcktransfer zwischen den Parks" },
-  { icon: PhoneCall, title: "24/7 Notfall-Hotline", desc: "Persönlicher Ansprechpartner rund um die Uhr" },
+  { icon: Home, title: "14 ÜBERNACHTUNGEN", desc: "IN HANDVERLESENEN LUXUS-LODGES & TENTED CAMPS" },
+  { icon: Car, title: "PRIVATER 4X4", desc: "ALLE TRANSFERS UND PIRSCHFAHRTEN IM PRIVATEN GELÄNDEWAGEN" },
+  { icon: Ticket, title: "NATIONALPARKGEBÜHREN", desc: "SÄMTLICHE KONZESSIONS- UND PARKEINTRITTSGELDER" },
+  { icon: Camera, title: "PIRSCHFAHRTEN", desc: "UNBEGRENZTE FAHRTEN ZUR WILDTIERBEOBACHTUNG" },
+  { icon: Utensils, title: "VERPFLEGUNG", desc: "VOLLPENSION AUF SAFARI, HALBPENSION AUF SANSIBAR" },
+  { icon: UserCheck, title: "DEUTSCHSPRACHIGER GUIDE", desc: "ERFAHRENE RANGER MIT EXZELLENTEN GEBIETSKENNTNISSEN" },
+  { icon: Plane, title: "INLANDSFLUG", desc: "INKLUSIVE GEPÄCKTRANSFER ZWISCHEN DEN PARKS" },
+  { icon: PhoneCall, title: "24/7 NOTFALL-HOTLINE", desc: "PERSÖNLICHER ANSPRECHPARTNER RUND UM DIE UHR" },
 ];
 
 const extras = [
-  { icon: Globe, label: "Internationale Flüge", status: "AUF ANFRAGE" },
-  { icon: ShieldCheck, label: "Reiseversicherung", status: "OPTIONAL" },
-  { icon: Wind, label: "Heißluftballon-Safari", status: "ab €550 p.P." },
-  { icon: Users, label: "Kulturelle Touren", status: "ZUBUCHBAR" },
-  { icon: Sprout, label: "Spa-Behandlungen", status: "VOR ORT" },
-  { icon: GlassWater, label: "Private Dinner im Busch", status: "Inkludiert*" },
-  { icon: Palmtree, label: "Sansibar Verlängerung", status: "INDIVIDUELL" },
+  { icon: Globe, label: "INTERNATIONALE FLÜGE", status: "AUF ANFRAGE" },
+  { icon: ShieldCheck, label: "REISEVERSICHERUNG", status: "OPTIONAL" },
+  { icon: Wind, label: "HEISSLUFTBALLON-SAFARI", status: "AB €550 P.P." },
+  { icon: Users, label: "KULTURELLE TOUREN", status: "ZUBUCHBAR" },
+  { icon: Sprout, label: "SPA-BEHANDLUNGEN", status: "VOR ORT" },
+  { icon: GlassWater, label: "PRIVATE DINNER IM BUSCH", status: "INKLUDIERT*" },
+  { icon: Palmtree, label: "SANSIBAR VERLÄNGERUNG", status: "INDIVIDUELL" },
 ];
 
 interface PackageDetailClientProps {
@@ -152,7 +151,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
     dayGroups.push(itineraryDays.slice(i, i + 5));
   }
 
-  const prestigeParaClass = "text-muted-foreground font-bold text-[10px] md:text-sm uppercase tracking-widest leading-relaxed opacity-80";
+  const prestigeParaClass = "font-bold text-[10px] md:text-sm uppercase tracking-widest leading-relaxed text-muted-foreground opacity-80";
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-bold">
@@ -268,7 +267,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                   {pkg.durationDays} TAGE {pkg.category || 'SAFARI & SANSIBAR'}
                 </div>
                 <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary uppercase leading-[0.9] tracking-tighter">
-                  Eine Reise, <br /><span className="text-[#C9A876]">die berührt</span>
+                  EINE REISE, <br /><span className="text-[#C9A876]">DIE BERÜHRT</span>
                 </h2>
               </div>
 
@@ -283,28 +282,28 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
 
               <div className="space-y-8 border-l-4 border-primary/20 pl-8 py-2">
                 <p className={prestigeParaClass}>
-                  Eine außergewöhnliche Reise durch die endlose Serengeti, den majestätischen Ngorongoro-Krater und die paradiesischen Strände Sansibars. Erleben Sie Afrikas wilde Schönheit in exklusiven Lodges und unvergesslichen Momenten.
+                  EINE AUSSERGEWÖHNLICHE REISE DURCH DIE ENDLOSE SERENGETI, DEN MAJESTÄTISCHEN NGORONGORO-KRATER UND DIE PARADIESISCHEN STRÄNDE SANSIBARS. ERLEBEN SIE AFRIKAS WILDE SCHÖNHEIT IN EXKLUSIVEN LODGES UND UNVERGESSLICHEN MOMENTEN.
                 </p>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Link href="/trip-planner">
                   <Button className="w-full sm:w-auto h-12 md:h-14 px-8 rounded-xl bg-[#C9A876] text-white hover:bg-secondary font-black text-[10px] uppercase tracking-widest border-none transition-all shadow-xl">
-                    Reiseberatung anfragen
+                    REISEBERATUNG ANFRAGEN
                   </Button>
                 </Link>
                 <Button onClick={() => scrollTo('inquiry')} variant="outline" className="w-full sm:w-auto h-12 md:h-14 px-8 rounded-xl border-secondary text-secondary font-black text-[10px] uppercase tracking-widest transition-all">
-                  Diese Reise anfragen
+                  DIESE REISE ANFRAGEN
                 </Button>
               </div>
             </div>
 
             <div className="lg:col-span-5 relative">
               <div className="sticky top-32">
-                <Card className="rounded-[2rem] border-none bg-[#FDF7F2] p-6 md:p-8 lg:p-10 shadow-2xl relative overflow-hidden">
+                <Card className="rounded-[2rem] border-none bg-[#FDF7F2] p-6 md:p-10 shadow-2xl relative overflow-hidden">
                   <div className="space-y-8 md:space-y-10 relative z-10">
                     <div className="space-y-4 md:space-y-6">
-                      <p className="text-[#C9A876] font-black uppercase tracking-[0.3em] text-[10px]">Master Registry</p>
+                      <p className="text-[#C9A876] font-black uppercase tracking-[0.3em] text-[10px]">MASTER REGISTRY</p>
                       <h3 className="font-headline text-xl md:text-4xl font-normal text-secondary uppercase leading-none tracking-tighter">
                         {pkg.title}
                       </h3>
@@ -312,28 +311,28 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
 
                     <div className="space-y-5 md:space-y-6">
                       <div className="space-y-1">
-                        <p className="text-secondary font-black text-[11px] md:text-sm uppercase">Reisedauer:</p>
+                        <p className="text-secondary font-black text-[11px] md:text-sm uppercase">REISEDAUER:</p>
                         <p className={cn(prestigeParaClass, "opacity-70")}>
-                          {pkg.durationDays}-tägig, Flüge inklusive
+                          {pkg.durationDays}-TÄGIG, FLÜGE INKLUSIVE
                         </p>
                       </div>
                       <div className="space-y-1">
-                        <p className="text-secondary font-black text-[11px] md:text-sm uppercase">Unterkünfte:</p>
+                        <p className="text-secondary font-black text-[11px] md:text-sm uppercase">UNTERKÜNFTE:</p>
                         <p className={cn(prestigeParaClass, "opacity-70")}>
-                          Handverlesene Tented Lodges & Boutique Hotels
+                          HANDVERLESENE TENTED LODGES & BOUTIQUE HOTELS
                         </p>
                       </div>
                       <div className="space-y-1">
-                        <p className="text-secondary font-black text-[11px] md:text-sm uppercase">Exklusive Gruppen:</p>
+                        <p className="text-secondary font-black text-[11px] md:text-sm uppercase">EXKLUSIVE GRUPPEN:</p>
                         <p className={cn(prestigeParaClass, "opacity-70")}>
-                          Privat-Safari mit eigenem Guide & Jeep
+                          PRIVAT-SAFARI MIT EIGENEM GUIDE & JEEP
                         </p>
                       </div>
                     </div>
 
                     <div className="flex flex-wrap gap-2 pt-2">
-                      {["Signature Series", "Privat geführt", "Sicher Reisen"].map((tag, i) => (
-                        <Badge key={i} variant="outline" className="bg-white/50 border-border/40 text-muted-foreground/80 font-bold text-[8px] md:text-[10px] uppercase px-3.5 py-1.5 shadow-sm">
+                      {["SIGNATURE SERIES", "PRIVAT GEFÜHRT", "SICHER REISEN"].map((tag, i) => (
+                        <Badge key={i} variant="outline" className="bg-white/50 border-border/40 text-muted-foreground/80 font-bold text-[8px] md:text-[9px] uppercase px-3.5 py-1.5 shadow-sm">
                           {tag}
                         </Badge>
                       ))}
@@ -348,7 +347,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                             {pkg.startingPrice?.toLocaleString('de-DE') || '5.399'} €
                           </span>
                         </div>
-                        <p className="text-xs md:text-sm font-black text-muted-foreground/60 uppercase mt-1">pro Person</p>
+                        <p className="text-xs md:text-sm font-black text-muted-foreground/60 uppercase mt-1">PRO PERSON</p>
                       </div>
                       <Button onClick={() => scrollTo('inquiry')} className="w-full rounded-lg h-14 px-8 bg-[#C9A876] text-white hover:bg-secondary font-black text-[11px] uppercase tracking-widest border-none shadow-xl">
                         ANFRAGEN
@@ -364,11 +363,11 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
       </section>
 
       {/* 05 HIGHLIGHTS CAROUSEL */}
-      <section className="py-8 md:py-16 bg-[#FDF7F2] border-y border-border/40 scroll-mt-20">
+      <section className="py-8 md:py-12 bg-[#FDF7F2] border-y border-border/40 scroll-mt-20">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-8 md:mb-12">
             <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tighter">
-              Die Höhepunkte Ihrer Reise
+              DIE HÖHEPUNKTE IHRER REISE
             </h2>
           </div>
 
@@ -377,7 +376,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
               <CarouselContent className="-ml-4">
                 {highlights.map((h, i) => (
                   <CarouselItem key={i} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3">
-                    <Card className="h-full border-none shadow-sm bg-white rounded-[1.5rem] md:rounded-[2rem] overflow-hidden group hover:shadow-xl transition-all duration-500">
+                    <Card className="h-full border-none shadow-sm bg-white rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden group hover:shadow-xl transition-all duration-500">
                       <CardContent className="p-8 md:p-12 flex flex-col items-center text-center space-y-6">
                         <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#FDF7F2] border border-[#F0EBE0]/50 flex items-center justify-center shrink-0 shadow-inner group-hover:bg-[#C9A876] transition-colors duration-500">
                           <h.icon className="w-8 h-8 md:w-10 md:h-10 text-[#C9A876] group-hover:text-white transition-colors" />
@@ -406,9 +405,9 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
       <section ref={itineraryRef} className="py-16 md:py-32 bg-white scroll-mt-20">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center mb-12 md:mb-20 space-y-4">
-            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary uppercase tracking-tighter">Ihr Reiseverlauf</h2>
+            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary uppercase tracking-tighter">IHR REISEVERLAUF</h2>
             <p className="text-muted-foreground font-bold text-[10px] md:text-sm uppercase tracking-widest max-w-xl mx-auto opacity-80">
-              Eine sorgfältig kuratierte Route durch die schönsten Regionen Tansanias
+              EINE SORGFÄLTIG KURATIERTE ROUTE DURCH DIE SCHÖNSTEN REGIONEN TANSANIAS
             </p>
           </div>
 
@@ -430,9 +429,9 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                       <div className="relative z-10 flex items-center justify-between w-full text-white py-6">
                         <div className="text-left">
                           <h3 className="font-headline text-lg md:text-3xl font-normal uppercase tracking-tighter">
-                            SAFARI ABENTEUER • <span className="text-primary font-black">Tag {startDay}-{endDay}</span>
+                            SAFARI ABENTEUER • <span className="text-primary font-black">TAG {startDay}-{endDay}</span>
                           </h3>
-                          <p className="text-[8px] md:text-xs font-bold uppercase tracking-[0.3em] opacity-60">Wildnis & Naturwunder</p>
+                          <p className="text-[8px] md:text-xs font-bold uppercase tracking-[0.3em] opacity-60">WILDNIS & NATURWUNDER</p>
                         </div>
                         <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 flex items-center justify-center group-data-[state=open]:rotate-180 transition-transform bg-white/5">
                           <ChevronDown className="w-5 h-5 text-white" />
@@ -493,10 +492,10 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-16 md:mb-24 space-y-4">
             <h2 className="font-headline text-3xl md:text-5xl lg:text-6xl font-normal text-secondary uppercase tracking-tighter">
-              Handverlesene Unterkünfte
+              HANDVERLESENE UNTERKÜNFTE
             </h2>
             <p className="text-muted-foreground font-bold text-[10px] md:text-sm uppercase tracking-widest max-w-2xl mx-auto opacity-60">
-              Wir wählen jede Lodge persönlich nach Lage, Stil und Service aus
+              WIR WÄHLEN JEDE LODGE PERSÖNLICH NACH LAGE, STIL UND SERVICE AUS
             </p>
           </div>
 
@@ -513,16 +512,16 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
               </div>
               <div className="p-8 md:p-12 lg:p-16 flex flex-col flex-grow space-y-6 md:space-y-8">
                 <h3 className="font-headline text-2xl md:text-4xl font-normal text-secondary uppercase tracking-tight">
-                  Boutique Safari-Lodges
+                  BOUTIQUE SAFARI-LODGES
                 </h3>
                 <p className={cn(prestigeParaClass, "opacity-70")}>
-                  Luxuriöse Zeltcamps und Lodges mitten in der Wildnis. Jede Unterkunft verbindet authentisches Safari-Feeling mit höchstem Komfort: private Terrassen mit Blick auf die Savanne, elegante Einrichtung und erstklassiger Service.
+                  LUXURIÖSE ZELTCAMPS UND LODGES MITTEN IN DER WILDNIS. JEDE UNTERKUNFT VERBINDET AUTHENTISCHES SAFARI-FEELING MIT HÖCHSTEM KOMFORT: PRIVATE TERRASSEN MIT BLICK AUF DIE SAVANNE, ELEGANTE EINRICHTUNG UND ERSTKLASSIGER SERVICE.
                 </p>
                 <ul className="space-y-4 pt-2">
                   {[
-                    "Private Decks mit Wildtierblick",
-                    "Exquisite Küche und privates Dining",
-                    "Persönlicher Butler-Service"
+                    "PRIVATE DECKS MIT WILDTIERBLICK",
+                    "EXQUISITE KÜCHE UND PRIVATES DINING",
+                    "PERSÖNLICHER BUTLER-SERVICE"
                   ].map((feat, idx) => (
                     <li key={idx} className="flex items-center gap-4 text-[9px] md:text-[11px] font-black uppercase tracking-widest text-secondary">
                       <CheckCircle2 className="w-4 h-4 text-[#C9A876] shrink-0" />
@@ -545,16 +544,16 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
               </div>
               <div className="p-8 md:p-12 lg:p-16 flex flex-col flex-grow space-y-6 md:space-y-8">
                 <h3 className="font-headline text-2xl md:text-4xl font-normal text-secondary uppercase tracking-tight">
-                  Sansibar Beach Retreat
+                  SANSIBAR BEACH RETREAT
                 </h3>
                 <p className={cn(prestigeParaClass, "opacity-70")}>
-                  Ihr privates Strandparadies auf Sansibar. Exklusives Boutique-Resort direkt am schneeweißen Sandstrand, umgeben von Palmen und dem türkisfarbenen Indischen Ozean. Perfekter Ort für Romantik und Erholung.
+                  IHR PRIVATES STRANDPARADIES AUF SANSIBAR. EXKLUSIVES BOUTIQUE-RESORT DIREKT AM SCHNEEWEISSEN SANDSTRAND, UMGEBEN VON PALMEN UND DEM TÜRKISFARBENEN INDISCHEN OZEAN. PERFEKTER ORT FÜR ROMANTIK UND ERHOLUNG.
                 </p>
                 <ul className="space-y-4 pt-2">
                   {[
-                    "Direkter Strandzugang",
-                    "Infinity-Pool und Spa",
-                    "Meerblick-Suiten mit privatem Balkon"
+                    "DIREKTER STRANDZUGANG",
+                    "INFINITY-POOL UND SPA",
+                    "MEERBLICK-SUITEN MIT PRIVATEM BALKON"
                   ].map((feat, idx) => (
                     <li key={idx} className="flex items-center gap-4 text-[9px] md:text-[11px] font-black uppercase tracking-widest text-secondary">
                       <CheckCircle2 className="w-4 h-4 text-[#C9A876] shrink-0" />
@@ -573,10 +572,10 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12 md:mb-20 space-y-4">
             <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary uppercase tracking-tighter">
-              In Ihrer Reise enthalten
+              IN IHRER REISE ENTHALTEN
             </h2>
             <p className="text-muted-foreground font-bold text-[10px] md:text-sm uppercase tracking-widest max-w-xl mx-auto opacity-60">
-              Rundum-Sorglos-Paket für Ihr perfektes Safari-Erlebnis
+              RUNDUM-SORGLOS-PAKET FÜR IHR PERFEKTES SAFARI-ERLEBNIS
             </p>
           </div>
 
@@ -607,7 +606,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                 
                 <div className="space-y-10 relative z-10">
                   <h3 className="font-headline text-2xl md:text-3xl font-normal text-secondary uppercase tracking-tight">
-                    Extras & Optionen
+                    EXTRAS & OPTIONEN
                   </h3>
 
                   <div className="space-y-6">
@@ -619,7 +618,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                         </div>
                         <span className={cn(
                           "text-[8px] md:text-[9px] font-black uppercase tracking-[0.2em] whitespace-nowrap px-2 py-0.5 rounded",
-                          ex.status === 'Inkludiert*' ? "bg-[#C9A876]/10 text-[#C9A876]" : "text-muted-foreground/40"
+                          ex.status === 'INKLUDIERT*' ? "bg-[#C9A876]/10 text-[#C9A876]" : "text-muted-foreground/40"
                         )}>
                           {ex.status}
                         </span>
