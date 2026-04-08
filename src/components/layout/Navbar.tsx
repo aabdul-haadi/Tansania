@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -105,11 +104,11 @@ export function Navbar() {
             />
             {/* Brand Name Text: Visible on phone, but hidden below 330px width */}
             <div className="hidden min-[330px]:flex items-baseline gap-1 md:gap-1.5">
-              <span className="font-headline font-black uppercase tracking-tighter whitespace-nowrap text-xs sm:text-base md:text-xl lg:text-2xl">
+              <span className="font-headline font-black tracking-tighter whitespace-nowrap text-xs sm:text-base md:text-xl lg:text-2xl">
                 Tansania
               </span>
               <span className={cn(
-                "font-headline font-black uppercase tracking-tighter whitespace-nowrap text-xs sm:text-base md:text-xl lg:text-2xl transition-colors duration-500",
+                "font-headline font-black tracking-tighter whitespace-nowrap text-xs sm:text-base md:text-xl lg:text-2xl transition-colors duration-500",
                 isScrolled ? "text-primary" : "text-white"
               )}>
                 Reiseabenteuer
@@ -138,8 +137,8 @@ export function Navbar() {
                 <Link href="/" className="flex items-center gap-3">
                   <img src="/iconlogo.jpg" alt="SDL" className="h-8 w-auto" />
                   <div className="flex items-baseline gap-1">
-                    <span className="font-headline font-black uppercase tracking-tighter text-sm md:text-lg">Tansania</span>
-                    <span className="font-headline font-black uppercase tracking-tighter text-sm md:text-lg text-primary">Reiseabenteuer</span>
+                    <span className="font-headline font-black tracking-tighter text-sm md:text-lg">Tansania</span>
+                    <span className="font-headline font-black tracking-tighter text-sm md:text-lg text-primary">Reiseabenteuer</span>
                   </div>
                 </Link>
               </div>
@@ -150,7 +149,7 @@ export function Navbar() {
                     {/* Destinations Dropdown Protocol */}
                     <Accordion type="single" collapsible className="w-full">
                       <AccordionItem value="destinations" className="border-none">
-                        <AccordionTrigger className="text-lg md:text-xl font-headline font-black uppercase tracking-tighter hover:text-primary transition-colors leading-none py-0 hover:no-underline [&>svg]:hidden">
+                        <AccordionTrigger className="text-lg md:text-xl font-headline font-black tracking-tighter hover:text-primary transition-colors leading-none py-0 hover:no-underline [&>svg]:hidden">
                           <div className="flex items-center justify-between w-full">
                             <span>REISEZIELE</span>
                             <ChevronDown className="w-4 h-4 text-primary" />
@@ -162,7 +161,7 @@ export function Navbar() {
                               <Link 
                                 key={country.name} 
                                 href={country.href}
-                                className="text-xs md:text-sm font-bold text-secondary/60 hover:text-primary uppercase tracking-widest transition-colors"
+                                className="text-xs md:text-sm font-bold text-secondary/60 hover:text-primary tracking-widest transition-colors"
                               >
                                 {country.name}
                               </Link>
@@ -176,7 +175,7 @@ export function Navbar() {
                       <Link 
                         key={link.name} 
                         href={link.href} 
-                        className="text-lg md:text-xl font-headline font-black uppercase tracking-tighter hover:text-primary transition-colors leading-none"
+                        className="text-lg md:text-xl font-headline font-black tracking-tighter hover:text-primary transition-colors leading-none"
                       >
                         {link.name}
                       </Link>
@@ -187,12 +186,12 @@ export function Navbar() {
 
                   <div className="flex flex-col gap-6">
                     <div className="space-y-4">
-                      <p className="text-[9px] font-bold uppercase tracking-[0.4em] text-primary/60 flex items-center gap-2">
+                      <p className="text-[9px] font-bold tracking-[0.4em] text-primary/60 flex items-center gap-2">
                         <Globe className="w-3" /> Explore Catalog
                       </p>
                       <Link 
                         href="/safaris" 
-                        className="text-[11px] font-black text-secondary/70 hover:text-primary uppercase tracking-widest transition-colors"
+                        className="text-[11px] font-black text-secondary/70 hover:text-primary tracking-widest transition-colors"
                       >
                         Safari-Kollektion
                       </Link>
@@ -212,13 +211,13 @@ export function Navbar() {
                   </a>
                 </div>
                 
-                <Button asChild className="w-full h-14 rounded-2xl bg-secondary text-white font-black text-[10px] uppercase tracking-[0.2em] shadow-xl hover:bg-primary transition-all border-none">
+                <Button asChild className="w-full h-14 rounded-2xl bg-secondary text-white font-black text-[10px] tracking-[0.2em] shadow-xl hover:bg-primary transition-all border-none">
                   <Link href="/trip-planner" className="flex items-center justify-center gap-3">
                     JETZT ANFRAGEN <ArrowRight className="w-4 h-4" />
                   </Link>
                 </Button>
                 
-                <p className="text-[7px] font-black uppercase tracking-[0.4em] text-muted-foreground/40">
+                <p className="text-[7px] font-black tracking-[0.4em] text-muted-foreground/40">
                   Registry 2026 • Established 2014
                 </p>
               </div>

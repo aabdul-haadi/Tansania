@@ -31,7 +31,7 @@ export default function Home() {
             className="bg-primary text-white p-4 rounded-l-2xl shadow-2xl flex flex-col items-center gap-3 cursor-pointer border-y border-l border-white/20 backdrop-blur-md"
           >
             <Zap className="w-5 h-5 fill-white" />
-            <span className="text-[9px] font-bold uppercase tracking-[0.3em] [writing-mode:vertical-lr] rotate-180 py-2">
+            <span className="text-[9px] font-bold tracking-[0.3em] [writing-mode:vertical-lr] rotate-180 py-2">
               Express Inquiry
             </span>
           </motion.div>
@@ -64,7 +64,7 @@ export default function Home() {
               className="space-y-4 md:space-y-6"
             >
               {/* Main Architectural Headline - Calibrated Scale & Weight */}
-              <h1 className="font-medium text-white text-2xl sm:text-3xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tighter font-serif uppercase">
+              <h1 className="font-medium text-white text-2xl sm:text-3xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tighter font-serif">
                 Ihre maßgeschneiderte <br />
                 Luxusreise durch Tansania
               </h1>
@@ -76,7 +76,7 @@ export default function Home() {
 
               {/* Technical Registry Small Footer */}
               <div className="pt-4 border-t border-white/20">
-                <p className="text-[9px] sm:text-[10px] md:text-[11px] font-bold text-white/80 uppercase tracking-[0.2em]">
+                <p className="text-[9px] sm:text-[10px] md:text-[11px] font-bold text-white/80 tracking-[0.2em]">
                   Über 15 Jahre Expertise · Deutschsprachige Betreuung · Premium-Reisen ab €5.000
                 </p>
               </div>
@@ -90,12 +90,12 @@ export default function Home() {
               className="flex flex-col sm:flex-row gap-4 pt-4 md:pt-0 pb-4 md:pb-0"
             >
               <Link href="/trip-planner">
-                <Button className="w-full sm:w-auto h-11 md:h-14 px-6 md:px-10 rounded-lg bg-white text-secondary hover:bg-primary hover:text-white transition-all duration-500 font-bold text-[11px] uppercase tracking-widest border-none group shadow-2xl">
+                <Button className="w-full sm:w-auto h-11 md:h-14 px-6 md:px-10 rounded-lg bg-white text-secondary hover:bg-primary hover:text-white transition-all duration-500 font-bold text-[11px] tracking-widest border-none group shadow-2xl">
                   Reiseberatung anfragen <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
               <Link href="/safaris">
-                <Button variant="outline" className="w-full sm:w-auto h-11 md:h-14 px-6 md:px-10 rounded-lg bg-transparent text-white border-white/40 hover:bg-white/10 hover:border-white font-bold text-[11px] uppercase tracking-widest transition-all duration-500">
+                <Button variant="outline" className="w-full sm:w-auto h-11 md:h-14 px-6 md:px-10 rounded-lg bg-transparent text-white border-white/40 hover:bg-white/10 hover:border-white font-bold text-[11px] tracking-widest transition-all duration-500">
                   Unsere Reisen entdecken
                 </Button>
               </Link>
