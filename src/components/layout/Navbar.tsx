@@ -8,6 +8,7 @@ import {
   ArrowRight,
   Instagram,
   Facebook,
+  Youtube,
   Globe,
   ChevronDown,
   X
@@ -22,6 +23,22 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+
+const TikTokIcon = ({ className }: { className?: string }) => (
+  <svg 
+    width="20" 
+    height="20" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className={className}
+  >
+    <path d="M9 12a4 4 0 1 0 4 4V2a5 5 0 0 0 5 5"/>
+  </svg>
+);
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -98,17 +115,17 @@ export function Navbar() {
               src="/iconlogo.jpg" 
               alt="Tansania Reiseabenteuer" 
               className={cn(
-                "h-8 md:h-10 w-auto transition-all duration-500 shrink-0",
+                "h-8 md:h-12 w-auto transition-all duration-500 shrink-0",
                 !isScrolled && "brightness-110"
               )} 
             />
             {/* Brand Name Text: Visible on phone, but hidden below 330px width */}
             <div className="hidden min-[330px]:flex items-baseline gap-1 md:gap-1.5">
-              <span className="font-headline font-black tracking-tighter whitespace-nowrap text-xs sm:text-base md:text-xl lg:text-2xl">
+              <span className="font-headline font-black tracking-tighter whitespace-nowrap text-sm sm:text-base md:text-2xl lg:text-3xl">
                 Tansania
               </span>
               <span className={cn(
-                "font-headline font-black tracking-tighter whitespace-nowrap text-xs sm:text-base md:text-xl lg:text-2xl transition-colors duration-500",
+                "font-headline font-black tracking-tighter whitespace-nowrap text-sm sm:text-base md:text-2xl lg:text-3xl transition-colors duration-500",
                 isScrolled ? "text-primary" : "text-white"
               )}>
                 Reiseabenteuer
@@ -135,10 +152,10 @@ export function Navbar() {
               {/* Menu Header Registry */}
               <div className="px-6 py-6 md:py-8 flex items-center border-b border-border/50 shrink-0">
                 <Link href="/" className="flex items-center gap-3">
-                  <img src="/iconlogo.jpg" alt="SDL" className="h-8 w-auto" />
+                  <img src="/iconlogo.jpg" alt="SDL" className="h-10 w-auto" />
                   <div className="flex items-baseline gap-1">
-                    <span className="font-headline font-black tracking-tighter text-sm md:text-lg">Tansania</span>
-                    <span className="font-headline font-black tracking-tighter text-sm md:text-lg text-primary">Reiseabenteuer</span>
+                    <span className="font-headline font-black tracking-tighter text-lg md:text-2xl">Tansania</span>
+                    <span className="font-headline font-black tracking-tighter text-lg md:text-2xl text-primary">Reiseabenteuer</span>
                   </div>
                 </Link>
               </div>
@@ -202,13 +219,17 @@ export function Navbar() {
 
               {/* Menu Footer Status */}
               <div className="p-8 border-t border-border bg-[#fdfcfb] flex flex-col gap-6 md:gap-8 items-center shrink-0">
-                <div className="flex gap-6">
-                  <a href="#" className="w-10 h-10 rounded-xl border border-border flex items-center justify-center hover:bg-primary hover:border-primary transition-all group">
-                    <Facebook className="w-4 h-4 text-secondary group-hover:text-white" />
-                  </a>
-                  <a href="#" className="w-10 h-10 rounded-xl border border-border flex items-center justify-center hover:bg-primary hover:border-primary transition-all group">
-                    <Instagram className="w-4 h-4 text-secondary group-hover:text-white" />
-                  </a>
+                <div className="flex gap-4">
+                  {[
+                    { icon: Facebook, href: "#" },
+                    { icon: Instagram, href: "#" },
+                    { icon: Youtube, href: "#" },
+                    { icon: TikTokIcon, href: "#" }
+                  ].map((social, i) => (
+                    <a key={i} href={social.href} className="w-10 h-10 rounded-xl border border-border flex items-center justify-center hover:bg-primary hover:border-primary transition-all group">
+                      <social.icon className="w-4 h-4 text-secondary group-hover:text-white" />
+                    </a>
+                  ))}
                 </div>
                 
                 <Button asChild className="w-full h-14 rounded-2xl bg-secondary text-white font-black text-[10px] tracking-[0.2em] shadow-xl hover:bg-primary transition-all border-none">

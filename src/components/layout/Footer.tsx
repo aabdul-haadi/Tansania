@@ -2,12 +2,28 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook, Instagram, Youtube } from 'lucide-react';
 import { cn } from '@/lib/utils';
+
+const TikTokIcon = ({ className }: { className?: string }) => (
+  <svg 
+    width="20" 
+    height="20" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className={className}
+  >
+    <path d="M9 12a4 4 0 1 0 4 4V2a5 5 0 0 0 5 5"/>
+  </svg>
+);
 
 export function Footer() {
   const linkClass = "font-sans text-[14px] leading-[20px] font-normal text-[#FDFCFB]/80 hover:text-white transition-colors duration-300";
-  const labelClass = "font-headline text-[18px] font-medium text-white mb-6 block tracking-tight";
+  const labelClass = "font-headline text-[20px] font-medium text-white mb-6 block tracking-tight";
 
   return (
     <footer className="relative bg-[#3A3634] text-white pt-20 pb-12 overflow-hidden border-t border-white/5">
@@ -15,17 +31,37 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
           
           {/* Brand Column */}
-          <div className="flex flex-col gap-6">
-            <Link href="/" className="flex items-center gap-3 group w-fit">
-              <img src="/iconlogo.jpg" alt="Tansania Reiseabenteuer" className="h-10 w-auto rounded-lg shadow-xl" />
-              <div className="flex flex-col">
-                <span className="font-headline font-bold text-sm leading-none tracking-tighter">Tansania</span>
-                <span className="font-headline font-bold text-sm text-primary leading-none tracking-tighter">Reiseabenteuer</span>
-              </div>
-            </Link>
-            <p className="font-sans text-[14px] leading-[22.75px] font-normal text-[#FDFCFB]/80 max-w-xs">
-              Ihr Spezialist für maßgeschneiderte Premium-Safaris und individuelle Luxusreisen nach Tansania und Sansibar.
-            </p>
+          <div className="flex flex-col gap-8">
+            <div className="space-y-6">
+              <Link href="/" className="flex items-center gap-4 group w-fit">
+                <img src="/iconlogo.jpg" alt="Tansania Reiseabenteuer" className="h-12 w-auto rounded-xl shadow-2xl transition-transform duration-500 group-hover:scale-105" />
+                <div className="flex flex-col">
+                  <span className="font-headline font-bold text-xl md:text-2xl leading-none tracking-tighter">Tansania</span>
+                  <span className="font-headline font-bold text-xl md:text-2xl text-primary leading-none tracking-tighter">Reiseabenteuer</span>
+                </div>
+              </Link>
+              <p className="font-sans text-[14px] leading-[22.75px] font-normal text-[#FDFCFB]/80 max-w-xs">
+                Ihr Spezialist für maßgeschneiderte Premium-Safaris und individuelle Luxusreisen nach Tansania und Sansibar.
+              </p>
+            </div>
+
+            {/* Social Registry */}
+            <div className="flex items-center gap-4">
+              {[
+                { icon: Facebook, href: "#" },
+                { icon: Instagram, href: "#" },
+                { icon: Youtube, href: "#" },
+                { icon: TikTokIcon, href: "#" }
+              ].map((social, idx) => (
+                <a 
+                  key={idx} 
+                  href={social.href}
+                  className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#FDFCFB]/60 hover:text-primary hover:bg-white/10 hover:border-primary/30 transition-all duration-300 group"
+                >
+                  <social.icon className="w-5 h-5 transition-transform group-hover:scale-110" />
+                </a>
+              ))}
+            </div>
           </div>
           
           {/* Company Column */}
