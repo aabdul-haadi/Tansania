@@ -12,7 +12,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 20 6% 22%;
     
-    --primary: 19 89% 47%;
+    /* SYNCED: Prestige Sand (#C9A876) */
+    --primary: 36 43% 63%;
     --primary-foreground: 0 0% 100%;
     
     --secondary: 20 6% 22%; /* #3A3634 equivalent */
@@ -29,7 +30,7 @@
     
     --border: 0 0% 90%;
     --input: 0 0% 90%;
-    --ring: 19 89% 47%;
+    --ring: 36 43% 63%;
     --radius: 1rem;
 
     /* BALANCED PRESTIGE SCALE */
