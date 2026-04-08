@@ -20,9 +20,9 @@ export function AiCTA() {
     <section className="bg-white border-t border-border/40 overflow-hidden">
       <div className="grid grid-cols-1 md:grid-cols-2">
         
-        {/* Tile 1: AI HUB (Top Left) - RECALIBRATED: AI Trip Advisor Branding */}
-        <div className="bg-white text-secondary p-8 sm:p-10 md:p-16 lg:p-24 flex flex-col justify-center items-center text-center space-y-6 md:space-y-8 min-h-[450px] md:min-h-[550px] order-1 border-b md:border-b-0 border-border/40">
-          <div className="space-y-6 flex flex-col items-center">
+        {/* Tile 1: AI HUB (Top Left) - RECALIBRATED: Single Line AI Advisor */}
+        <div className="bg-white text-secondary p-8 sm:p-10 md:p-16 lg:p-24 flex flex-col justify-center items-center text-center space-y-8 md:space-y-10 min-h-[450px] md:min-h-[550px] order-1 border-b md:border-b-0 border-border/40">
+          <div className="space-y-8 flex flex-col items-center">
             {/* AI Advisor Visual Registry */}
             <motion.div 
               initial={{ scale: 0.9, opacity: 0 }}
@@ -51,16 +51,13 @@ export function AiCTA() {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="space-y-3"
+              className="space-y-4"
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[8px] md:text-[9px] font-black uppercase tracking-[0.3em] border border-primary/20">
-                <Sparkles className="w-3 h-3" /> AI TRIP ADVISOR
-              </div>
-              <h2 className="font-headline text-xl sm:text-2xl md:text-4xl font-bold uppercase tracking-tighter leading-tight">
-                Intelligente <br /> <span className="text-primary">Planungshilfe</span>
+              <h2 className="font-headline text-2xl sm:text-3xl md:text-5xl font-bold uppercase tracking-tighter leading-none text-secondary whitespace-nowrap">
+                AI TRIP ADVISOR
               </h2>
-              <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground max-w-[280px] mx-auto leading-relaxed">
-                Nutzen Sie unseren KI-Concierge für sofortige Antworten und maßgeschneiderte Routenvorschläge rund um die Uhr.
+              <p className="text-[9px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground max-w-[300px] mx-auto leading-relaxed">
+                Nutzen Sie Ihren persönlichen <span className="text-secondary">KI-KOLLEGEN</span> für sofortige Antworten und maßgeschneiderte Routenvorschläge rund um die Uhr.
               </p>
             </motion.div>
           </div>
@@ -122,7 +119,7 @@ export function AiCTA() {
           </div>
         </div>
 
-        {/* Tile 4: Atmospheric Image (Mobile Order 4 / Desktop Order 3) - RECALIBRATED: Center Align Quote */}
+        {/* Tile 4: Atmospheric Image (Mobile Order 4 / Desktop Order 3) */}
         <div className="relative aspect-square md:aspect-auto min-h-[350px] md:min-h-full overflow-hidden order-4 md:order-3 border-t border-border/40">
           <Image 
             src={elephantsSunset?.imageUrl || "https://images.unsplash.com/photo-1539760397268-33f5146dd9e2?q=80&w=1200"}
