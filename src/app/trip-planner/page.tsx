@@ -355,7 +355,7 @@ export default function TripPlanner() {
 
           {/* Expert Sidebar Protocol */}
           <aside className="lg:col-span-4 space-y-8">
-            <div className="p-10 bg-secondary text-white rounded-[3rem] shadow-2xl relative overflow-hidden">
+            <div className="p-10 bg-[#FDF7F2] text-secondary rounded-[3rem] shadow-sm border border-border/40 relative overflow-hidden">
               <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
               <div className="relative z-10 space-y-8">
                 <div className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center rotate-3 shadow-xl shadow-primary/20">
@@ -363,11 +363,11 @@ export default function TripPlanner() {
                 </div>
                 <div>
                   <h4 className="font-headline text-2xl font-black uppercase leading-none mb-4">Sicher <br /><span className="text-primary">Planen</span></h4>
-                  <p className="text-[10px] text-white/40 font-black uppercase tracking-widest leading-relaxed">
+                  <p className="text-[10px] text-muted-foreground font-black uppercase tracking-widest leading-relaxed">
                     Ihre Anfrage ist unverbindlich. Jede Reise ist durch den Deutschen Reisesicherungsfonds (DRSF) vollumfänglich abgesichert.
                   </p>
                 </div>
-                <div className="space-y-4 pt-4 border-t border-white/10">
+                <div className="space-y-4 pt-4 border-t border-border/40">
                   <div className="flex items-center gap-4">
                     <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                     <span className="text-[9px] font-black uppercase tracking-[0.2em]">Berlin Office Active</span>
