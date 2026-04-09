@@ -22,7 +22,8 @@ const TikTokIcon = ({ className }: { className?: string }) => (
 );
 
 export function Footer() {
-  const linkClass = "font-sans text-[14px] leading-[20px] font-normal text-[#FDFCFB]/80 hover:text-white transition-colors duration-300";
+  const textColor = "text-[rgba(253,252,250,0.80)]";
+  const linkClass = cn("font-sans text-[14px] leading-[20px] font-normal hover:text-white transition-colors duration-300", textColor);
   const labelClass = "font-headline text-[20px] font-medium text-white mb-6 block tracking-tight";
 
   return (
@@ -36,11 +37,11 @@ export function Footer() {
               <Link href="/" className="flex items-center gap-4 group w-fit">
                 <img src="/iconlogo.jpg" alt="Tansania Reiseabenteuer" className="h-12 w-auto rounded-xl shadow-2xl transition-transform duration-500 group-hover:scale-105" />
                 <div className="flex flex-col">
-                  <span className="font-headline font-bold text-xl md:text-2xl leading-none tracking-tighter">Tansania</span>
-                  <span className="font-headline font-bold text-xl md:text-2xl text-primary leading-none tracking-tighter">Reiseabenteuer</span>
+                  <span className="font-headline font-bold text-2xl leading-none tracking-tighter">Tansania</span>
+                  <span className="font-headline font-bold text-2xl text-primary leading-none tracking-tighter">Reiseabenteuer</span>
                 </div>
               </Link>
-              <p className="font-sans text-[14px] leading-[22.75px] font-normal text-[#FDFCFB]/80 max-w-xs">
+              <p className={cn("font-sans text-[14px] leading-[22.75px] font-normal max-w-xs", textColor)}>
                 Ihr Spezialist für maßgeschneiderte Premium-Safaris und individuelle Luxusreisen nach Tansania und Sansibar.
               </p>
             </div>
@@ -96,7 +97,7 @@ export function Footer() {
             <ul className="flex flex-col gap-5">
               <li className="flex items-start gap-4">
                 <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                <span className="font-sans text-[14px] leading-[20px] font-normal text-[#FDFCFB]/80">Bayerischer Platz 7, 10779 Berlin, Germany</span>
+                <span className={cn("font-sans text-[14px] leading-[20px] font-normal", textColor)}>Bayerischer Platz 7, 10779 Berlin, Germany</span>
               </li>
               <li className="flex items-center gap-4">
                 <Phone className="w-5 h-5 text-primary shrink-0" />

@@ -30,7 +30,7 @@ interface PackageCardProps {
 /**
  * Optimized Signature Card.
  * Compacted for better responsiveness and vertical density.
- * Applied global 24px/32px heading and 14px/20px paragraph specifications.
+ * Uses global H3 and P tags for strict design consistency.
  */
 export function PackageCard({ pkg, className }: PackageCardProps) {
   const packageLink = `/safaris/${pkg.slug}`;
@@ -51,15 +51,15 @@ export function PackageCard({ pkg, className }: PackageCardProps) {
       {/* Content Protocol */}
       <div className="p-5 md:p-7 flex flex-col flex-grow">
         <div className="space-y-3 flex-grow">
-          {/* Headline Spec: 24px / 32px / Weight 500 */}
+          {/* Headline Spec: Uses global H3 registry */}
           <Link href={packageLink} className="block group/title">
-            <h3 className="font-headline text-[24px] leading-[32px] font-medium text-secondary tracking-tight group-hover/title:text-primary transition-colors">
+            <h3 className="group-hover/title:text-primary transition-colors">
               {pkg.title}
             </h3>
           </Link>
           
-          {/* Narrative Spec: 14px / 20px / Weight 400 */}
-          <p className="text-[14px] leading-[20px] text-muted-foreground font-normal line-clamp-2 tracking-wide">
+          {/* Narrative Spec: Uses global P registry */}
+          <p className="line-clamp-2">
             {pkg.excerpt}
           </p>
 

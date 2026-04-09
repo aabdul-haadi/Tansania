@@ -60,7 +60,6 @@ export function TravelCategories() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-2xl md:text-4xl lg:text-5xl font-normal text-secondary tracking-tighter"
           >
             Welche Reise passt zu Ihnen?
           </motion.h2>
@@ -69,7 +68,6 @@ export function TravelCategories() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground font-normal text-[14px] leading-[20px] tracking-widest max-w-xl mx-auto opacity-80"
           >
             Entdecken Sie unsere sorgfältig kuratierten Reisekategorien
           </motion.p>
@@ -96,12 +94,10 @@ export function TravelCategories() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
               
               <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end">
-                {/* Fixed Specification: Cormorant Garamond 24px/32px Weight 500 */}
-                <h3 className="font-headline font-medium text-[24px] leading-[32px] text-white tracking-tight mb-2">
+                <h3 className="text-white mb-2">
                   {cat.title}
                 </h3>
-                {/* Fixed Specification: Inter 14px/20px Weight 400 */}
-                <p className="text-white/90 text-[14px] leading-[20px] font-normal tracking-wide mb-6 line-clamp-2">
+                <p className="text-white/90 mb-6 line-clamp-2">
                   {cat.desc}
                 </p>
                 
