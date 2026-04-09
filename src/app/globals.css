@@ -19,7 +19,7 @@
     --secondary: 20 6% 22%; /* #3A3634 equivalent */
     --secondary-foreground: 0 0% 100%;
     
-    --muted: 0 0% 94%;
+    --muted: 30 4% 52%; /* #8A8581 equivalent */
     --muted-foreground: 30 4% 52%;
     
     --accent: 30 53% 64%;
@@ -69,25 +69,31 @@
 
   /* HEADLINE REGISTRY: Strict Cormorant Garamond Protocol - Natural Casing */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-headline font-normal leading-tight text-secondary tracking-tighter;
+    @apply font-headline font-normal leading-tight text-secondary tracking-tight;
     font-style: normal !important;
     text-transform: none !important;
   }
 
+  /* Hero Headline Specification: 72px / 90px / Weight 400 */
   h1 {
-    @apply text-4xl md:text-7xl lg:text-[72px] lg:leading-[90px];
+    @apply text-3xl sm:text-5xl md:text-6xl lg:text-[72px] lg:leading-[90px];
+    font-weight: 400;
   }
 
+  /* Section Title Specification: 48px / 1.2 */
   h2 {
-    @apply text-3xl md:text-5xl;
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-[48px] lg:leading-[1.2];
+    font-weight: 400;
   }
 
+  /* Card/Title Specification: 24px / 32px / Weight 500 */
   h3 {
-    @apply text-2xl md:text-4xl;
+    @apply text-xl md:text-[24px] md:leading-[32px];
+    font-weight: 500;
   }
 
   h4 {
-    @apply text-xl md:text-2xl;
+    @apply text-lg md:text-2xl;
   }
 
   /* BODY REGISTRY: Strict Inter Protocol - Baseline 14px / 20px */
@@ -97,8 +103,9 @@
     text-transform: none !important;
   }
 
+  /* Narrative Specification: 14px / 20px / Weight 400 */
   p {
-    @apply text-[14px] leading-[20px];
+    @apply text-[14px] leading-[20px] tracking-wide;
     font-weight: 400;
   }
 

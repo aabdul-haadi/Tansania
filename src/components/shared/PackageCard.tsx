@@ -66,11 +66,11 @@ export function PackageCard({ pkg, className }: PackageCardProps) {
           {/* Technical Metadata Row */}
           <div className="flex items-center gap-4 pt-1">
             <div className="flex items-center gap-1.5 text-[11px] font-bold text-muted-foreground tracking-widest">
-              <Clock className="w-3 h-3 text-primary" /> 
+              <Clock className="w-3 text-primary" /> 
               {pkg.durationDays} Tage
             </div>
             <div className="flex items-center gap-1.5 text-[11px] font-bold text-muted-foreground tracking-widest">
-              <Users className="w-3 h-3 text-primary" /> 
+              <Users className="w-3 text-primary" /> 
               {pkg.groupSize || 'Privat'}
             </div>
           </div>
@@ -96,7 +96,7 @@ export function PackageCard({ pkg, className }: PackageCardProps) {
           
           <Link href={packageLink}>
             <Button variant="outline" size="sm" className="h-10 px-5 rounded-lg text-[11px] font-bold border-border/60 hover:border-primary/40 transition-all flex items-center gap-2">
-              Details <ArrowRight className="w-3 h-3" />
+              Details <ArrowRight className="w-3" />
             </Button>
           </Link>
         </div>
