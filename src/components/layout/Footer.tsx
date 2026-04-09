@@ -35,8 +35,8 @@ export function Footer() {
           <div className="flex flex-col gap-8">
             <div className="space-y-6">
               <Link href="/" className="flex items-center gap-4 group w-fit">
-                <img src="/iconlogo.jpg" alt="Tansania Reiseabenteuer" className="h-12 w-auto rounded-xl shadow-2xl transition-transform duration-500 group-hover:scale-105" />
-                <div className="flex items-baseline gap-1.5">
+                <img src="/iconlogo.jpg" alt="Tansania Reiseabenteuer" className="h-14 w-auto rounded-xl shadow-2xl transition-transform duration-500 group-hover:scale-105" />
+                <div className="flex flex-col -space-y-1">
                   <span className="font-headline font-black text-2xl leading-none tracking-[0.15em] uppercase">Tansania</span>
                   <span className="font-headline font-black text-2xl text-primary leading-none tracking-[0.15em] uppercase">Reiseabenteuer</span>
                 </div>
