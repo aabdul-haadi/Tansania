@@ -56,7 +56,7 @@ export function FAQ() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-3xl md:text-5xl font-normal text-secondary mb-4 tracking-tighter"
+            className="font-headline text-3xl md:text-5xl font-normal text-secondary mb-4"
           >
             Häufig gestellte Fragen
           </motion.h2>

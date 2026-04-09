@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -54,7 +53,7 @@ export function Testimonials() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-2xl md:text-4xl font-normal text-[#3A3634] uppercase tracking-tighter"
+            className="font-headline text-2xl md:text-4xl font-normal text-[#3A3634]"
           >
             Was unsere Gäste sagen
           </motion.h2>

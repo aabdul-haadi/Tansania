@@ -52,7 +52,7 @@ export function WhyUs() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter"
+            className="font-headline text-3xl md:text-5xl font-normal text-secondary"
           >
             Warum mit uns reisen?
           </motion.h2>
@@ -85,7 +85,7 @@ export function WhyUs() {
             
             <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
               <div className="max-w-2xl space-y-3">
-                <h3 className="font-headline text-xl md:text-[24px] leading-[32px] text-white tracking-tight">
+                <h3 className="font-headline text-xl md:text-[24px] leading-[32px] text-white tracking-wide">
                   {features[0].title}
                 </h3>
                 <p className="text-white/80 font-normal text-[14px] leading-[20px] max-w-lg tracking-wide">
@@ -97,7 +97,7 @@ export function WhyUs() {
 
           <motion.div 
             initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             className={cn(
@@ -110,7 +110,7 @@ export function WhyUs() {
               <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/20">
                 <Compass className="w-5 h-5 text-white" />
               </div>
-              <h3 className="font-headline text-xl md:text-[24px] leading-[32px] text-white tracking-tight">
+              <h3 className="font-headline text-xl md:text-[24px] leading-[32px] text-white tracking-wide">
                 {features[1].title}
               </h3>
               <p className="text-white/90 font-normal text-[14px] leading-[20px] tracking-wide">
@@ -130,7 +130,7 @@ export function WhyUs() {
               <Users className="w-6 h-6 text-secondary group-hover:text-white transition-colors" />
             </div>
             <div className="space-y-2">
-              <h3 className="font-headline text-lg md:text-[24px] leading-[32px] text-secondary tracking-tight">
+              <h3 className="font-headline text-lg md:text-[24px] leading-[32px] text-secondary tracking-wide">
                 {features[2].title}
               </h3>
               <p className="text-muted-foreground font-normal text-[14px] leading-[20px] tracking-wide opacity-80">
@@ -150,7 +150,7 @@ export function WhyUs() {
               <ShieldCheck className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
             </div>
             <div className="space-y-2">
-              <h3 className="font-headline text-lg md:text-[24px] leading-[32px] text-secondary tracking-tight">
+              <h3 className="font-headline text-lg md:text-[24px] leading-[32px] text-secondary tracking-wide">
                 {features[3].title}
               </h3>
               <p className="text-muted-foreground font-normal text-[14px] leading-[20px] tracking-wide opacity-80">

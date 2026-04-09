@@ -53,7 +53,7 @@ export function AiCTA() {
               viewport={{ once: true }}
               className="space-y-4"
             >
-              <h2 className="font-headline text-2xl sm:text-3xl md:text-5xl font-bold uppercase tracking-tighter leading-none text-secondary whitespace-nowrap">
+              <h2 className="font-headline text-2xl sm:text-3xl md:text-5xl font-bold uppercase leading-none text-secondary whitespace-nowrap">
                 AI TRIP ADVISOR
               </h2>
               <p className="text-[9px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground max-w-[300px] mx-auto leading-relaxed">
@@ -100,7 +100,7 @@ export function AiCTA() {
               <div className="absolute -bottom-1 -right-1 md:-bottom-2 md:-right-2 bg-green-500 w-5 h-5 md:w-6 md:h-6 rounded-full border-4 border-white shadow-lg" title="Expert Online" />
             </div>
             <div className="space-y-2">
-              <h3 className="font-headline text-xl sm:text-2xl md:text-4xl font-bold text-secondary uppercase tracking-tighter">Direkter Kontakt</h3>
+              <h3 className="font-headline text-xl sm:text-2xl md:text-4xl font-bold text-secondary uppercase tracking-tight">Direkter Kontakt</h3>
               <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-muted-foreground leading-relaxed max-w-[280px] mx-auto">
                 Unsere Spezialisten in Berlin entwerfen Ihre Route von Grund auf neu – mit Herz und Verstand.
               </p>
