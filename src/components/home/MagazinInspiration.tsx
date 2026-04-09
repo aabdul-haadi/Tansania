@@ -36,7 +36,7 @@ const magazinePosts = [
     category: "Reisetipps",
     date: "1. März 2026",
     excerpt: "Von der richtigen Kleidung bis zur Kameraausrüstung – alles, was Sie für Ihre perfekte Safari wissen müssen.",
-    img: "/assets/images/home/Magazi-3.webp",
+    img: "/assets/images/home/Magazin-3.webp",
     hint: "safari gear"
   }
 ];
@@ -52,7 +52,7 @@ export function MagazinInspiration() {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="font-headline text-3xl md:text-5xl font-normal text-[#3A3634] uppercase tracking-tighter"
+              className="font-headline text-3xl md:text-5xl font-normal text-[#3A3634]"
             >
               Magazin & Inspiration
             </motion.h2>
@@ -135,7 +135,7 @@ function MagazineCard({ post }: { post: any }) {
         </div>
 
         <div className="space-y-4 flex-grow">
-          <h3 className="font-headline text-xl md:text-3xl font-medium text-[#3A3634] leading-tight uppercase tracking-tight group-hover:text-[#C9A876] transition-colors">
+          <h3 className="font-headline text-xl md:text-[24px] leading-[32px] font-medium text-[#3A3634] leading-tight group-hover:text-[#C9A876] transition-colors">
             {post.title}
           </h3>
           <p className="text-sm md:text-base text-[#4A4543] font-normal leading-relaxed line-clamp-3">

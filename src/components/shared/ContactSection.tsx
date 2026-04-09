@@ -63,7 +63,7 @@ export function ContactSection() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter"
+            className="font-headline text-3xl md:text-5xl font-normal text-secondary"
           >
             Ihre Expedition beginnt hier
           </motion.h2>

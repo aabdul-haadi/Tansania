@@ -121,11 +121,11 @@ export function Navbar() {
             />
             {/* Brand Name Text: Visible on phone, but hidden below 330px width */}
             <div className="hidden min-[330px]:flex items-baseline gap-1.5 md:gap-2">
-              <span className="font-headline font-black tracking-[0.15em] whitespace-nowrap text-sm sm:text-base md:text-2xl lg:text-3xl">
+              <span className="font-headline font-black tracking-[0.15em] whitespace-nowrap text-sm sm:text-base md:text-2xl lg:text-3xl uppercase">
                 Tansania
               </span>
               <span className={cn(
-                "font-headline font-black tracking-[0.15em] whitespace-nowrap text-sm sm:text-base md:text-2xl lg:text-3xl transition-colors duration-500",
+                "font-headline font-black tracking-[0.15em] whitespace-nowrap text-sm sm:text-base md:text-2xl lg:text-3xl transition-colors duration-500 uppercase",
                 isScrolled ? "text-primary" : "text-white"
               )}>
                 Reiseabenteuer
@@ -154,8 +154,8 @@ export function Navbar() {
                 <Link href="/" className="flex items-center gap-3">
                   <img src="/iconlogo.jpg" alt="SDL" className="h-10 w-auto" />
                   <div className="flex items-baseline gap-1.5">
-                    <span className="font-headline font-black tracking-[0.15em] text-lg md:text-2xl">Tansania</span>
-                    <span className="font-headline font-black tracking-[0.15em] text-lg md:text-2xl text-primary">Reiseabenteuer</span>
+                    <span className="font-headline font-black tracking-[0.15em] text-lg md:text-2xl uppercase">Tansania</span>
+                    <span className="font-headline font-black tracking-[0.15em] text-lg md:text-2xl text-primary uppercase">Reiseabenteuer</span>
                   </div>
                 </Link>
               </div>
