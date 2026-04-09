@@ -48,6 +48,7 @@ import {
   CarouselNext, 
   CarouselPrevious 
 } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 import { cn } from '@/lib/utils';
 import { ContactSection } from '@/components/shared/ContactSection';
 import { AiCTA } from '@/components/sections/AiCTA';
@@ -107,7 +108,16 @@ const extrasData = [
   { icon: Palmtree, label: "Sansibar Verlängerung", status: "individuell" },
 ];
 
+const featureIcons = [
+  { icon: PawPrint, label: "Tierbeobachtungen" },
+  { icon: Home, label: "Exklusive Lodge" },
+  { icon: Mountain, label: "Abenteuer & Erholung" },
+  { icon: Calendar, label: "Gut organisiert" },
+  { icon: Plane, label: "Inkl. Flug" }
+];
+
 interface PackageDetailClientProps {
+  post: any;
   pkg: any;
 }
 
@@ -121,6 +131,10 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
   const hotelsRef = useRef<HTMLDivElement>(null);
   const inquiryRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
+
+  const plugin = React.useRef(
+    Autoplay({ delay: 3000, stopOnInteraction: false })
+  );
 
   useEffect(() => {
     setMounted(true);
@@ -150,6 +164,9 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
   for (let i = 0; i < itineraryDays.length; i += 5) {
     dayGroups.push(itineraryDays.slice(i, i + 5));
   }
+
+  // Calculate a "Real Price" for demonstration of original vs discount
+  const originalPrice = Math.round(pkg.startingPrice * 1.15 / 10) * 10;
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
@@ -235,26 +252,43 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         </div>
       </div>
 
-      {/* 03 ICON STRIP */}
+      {/* 03 ICON STRIP - MOBILE AUTO SLIDER */}
       <section className="bg-white border-b border-border/40 py-8 md:py-12">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-12">
-            {[
-              { icon: PawPrint, label: "Tierbeobachtungen" },
-              { icon: Home, label: "Exklusive Lodge" },
-              { icon: Mountain, label: "Abenteuer & Erholung" },
-              { icon: Calendar, label: "Gut organisiert" },
-              { icon: Plane, label: "Inkl. Flug" }
-            ].map((item, i) => (
+          {/* Desktop Display */}
+          <div className="hidden md:grid grid-cols-5 gap-12">
+            {featureIcons.map((item, i) => (
               <div key={i} className="flex flex-col items-center text-center gap-3 group">
-                <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-[#FDF7F2] flex items-center justify-center border border-[#F0EBE0]/30 shadow-sm transition-transform duration-500 group-hover:scale-105">
+                <div className="w-14 h-14 rounded-2xl bg-[#FDF7F2] flex items-center justify-center border border-[#F0EBE0]/30 shadow-sm transition-transform duration-500 group-hover:scale-105">
                   <item.icon className="w-6 h-6 text-[#C9A876]" />
                 </div>
-                <span className="text-[10px] md:text-[11px] font-bold text-secondary tracking-widest">
+                <span className="text-[11px] font-bold text-secondary tracking-widest">
                   {item.label}
                 </span>
               </div>
             ))}
+          </div>
+
+          {/* Mobile Auto Slider */}
+          <div className="md:hidden">
+            <Carousel
+              plugins={[plugin.current]}
+              opts={{ loop: true, align: "center" }}
+              className="w-full"
+            >
+              <CarouselContent>
+                {featureIcons.map((item, i) => (
+                  <CarouselItem key={i} className="basis-1/2 flex flex-col items-center text-center gap-2">
+                    <div className="w-12 h-12 rounded-xl bg-[#FDF7F2] flex items-center justify-center border border-[#F0EBE0]/30 shadow-sm">
+                      <item.icon className="w-5 h-5 text-[#C9A876]" />
+                    </div>
+                    <span className="text-[9px] font-bold text-secondary tracking-widest leading-tight">
+                      {item.label}
+                    </span>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
           </div>
         </div>
       </section>
@@ -268,8 +302,8 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-[0.3em] border border-primary/20">
                   {pkg.durationDays} Tage {pkg.category}
                 </div>
-                <h2 className="font-headline text-3xl md:text-5xl lg:text-[48px] lg:leading-[1.2] font-normal text-secondary tracking-tighter">
-                  Eine Reise, <br /><span className="text-primary">die berührt</span>
+                <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary tracking-tighter">
+                  Eine Reise, die berührt
                 </h2>
               </div>
 
@@ -334,6 +368,10 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
 
                     <div className="pt-8 border-t border-border/40 space-y-6">
                       <div className="flex flex-col">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-sm text-muted-foreground/40 line-through">{originalPrice.toLocaleString('de-DE')} €</span>
+                          <Badge className="bg-primary/10 text-primary border-none text-[8px] font-bold px-2 py-0.5">ANGEBOT</Badge>
+                        </div>
                         <div className="flex items-baseline gap-2">
                           <span className="text-xs font-bold text-secondary uppercase tracking-widest">ab</span>
                           <span className="text-4xl md:text-5xl font-bold text-secondary tracking-tighter">
