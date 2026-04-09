@@ -120,12 +120,12 @@ export function Navbar() {
               )} 
             />
             {/* Brand Name Text: Visible on phone, but hidden below 330px width */}
-            <div className="hidden min-[330px]:flex items-baseline gap-1 md:gap-1.5">
-              <span className="font-headline font-black tracking-tighter whitespace-nowrap text-sm sm:text-base md:text-2xl lg:text-3xl">
+            <div className="hidden min-[330px]:flex items-baseline gap-1.5 md:gap-2">
+              <span className="font-headline font-black tracking-[0.15em] whitespace-nowrap text-sm sm:text-base md:text-2xl lg:text-3xl">
                 Tansania
               </span>
               <span className={cn(
-                "font-headline font-black tracking-tighter whitespace-nowrap text-sm sm:text-base md:text-2xl lg:text-3xl transition-colors duration-500",
+                "font-headline font-black tracking-[0.15em] whitespace-nowrap text-sm sm:text-base md:text-2xl lg:text-3xl transition-colors duration-500",
                 isScrolled ? "text-primary" : "text-white"
               )}>
                 Reiseabenteuer
@@ -153,9 +153,9 @@ export function Navbar() {
               <div className="px-6 py-6 md:py-8 flex items-center border-b border-border/50 shrink-0">
                 <Link href="/" className="flex items-center gap-3">
                   <img src="/iconlogo.jpg" alt="SDL" className="h-10 w-auto" />
-                  <div className="flex items-baseline gap-1">
-                    <span className="font-headline font-black tracking-tighter text-lg md:text-2xl">Tansania</span>
-                    <span className="font-headline font-black tracking-tighter text-lg md:text-2xl text-primary">Reiseabenteuer</span>
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="font-headline font-black tracking-[0.1em] text-lg md:text-2xl">Tansania</span>
+                    <span className="font-headline font-black tracking-[0.1em] text-lg md:text-2xl text-primary">Reiseabenteuer</span>
                   </div>
                 </Link>
               </div>
@@ -166,7 +166,7 @@ export function Navbar() {
                     {/* Destinations Dropdown Protocol */}
                     <Accordion type="single" collapsible className="w-full">
                       <AccordionItem value="destinations" className="border-none">
-                        <AccordionTrigger className="text-lg md:text-xl font-headline font-black tracking-tighter hover:text-primary transition-colors leading-none py-0 hover:no-underline [&>svg]:hidden">
+                        <AccordionTrigger className="text-lg md:text-xl font-headline font-black tracking-wide hover:text-primary transition-colors leading-none py-0 hover:no-underline [&>svg]:hidden">
                           <div className="flex items-center justify-between w-full">
                             <span>REISEZIELE</span>
                             <ChevronDown className="w-4 h-4 text-primary" />
@@ -192,7 +192,7 @@ export function Navbar() {
                       <Link 
                         key={link.name} 
                         href={link.href} 
-                        className="text-lg md:text-xl font-headline font-black tracking-tighter hover:text-primary transition-colors leading-none"
+                        className="text-lg md:text-xl font-headline font-black tracking-wide hover:text-primary transition-colors leading-none"
                       >
                         {link.name}
                       </Link>

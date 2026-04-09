@@ -24,7 +24,7 @@ const TikTokIcon = ({ className }: { className?: string }) => (
 export function Footer() {
   const textColor = "text-[rgba(253,252,250,0.80)]";
   const linkClass = cn("font-sans text-[14px] leading-[20px] font-normal hover:text-white transition-colors duration-300", textColor);
-  const labelClass = "font-headline text-[20px] font-medium text-white mb-6 block tracking-tight";
+  const labelClass = "font-headline text-[20px] font-medium text-white mb-6 block tracking-wide";
 
   return (
     <footer className="relative bg-[#3A3634] text-white pt-20 pb-12 overflow-hidden border-t border-white/5">
@@ -36,9 +36,9 @@ export function Footer() {
             <div className="space-y-6">
               <Link href="/" className="flex items-center gap-4 group w-fit">
                 <img src="/iconlogo.jpg" alt="Tansania Reiseabenteuer" className="h-12 w-auto rounded-xl shadow-2xl transition-transform duration-500 group-hover:scale-105" />
-                <div className="flex flex-col">
-                  <span className="font-headline font-bold text-2xl leading-none tracking-tighter">Tansania</span>
-                  <span className="font-headline font-bold text-2xl text-primary leading-none tracking-tighter">Reiseabenteuer</span>
+                <div className="flex items-baseline gap-1.5">
+                  <span className="font-headline font-black text-2xl leading-none tracking-[0.1em]">Tansania</span>
+                  <span className="font-headline font-black text-2xl text-primary leading-none tracking-[0.1em]">Reiseabenteuer</span>
                 </div>
               </Link>
               <p className={cn("font-sans text-[14px] leading-[22.75px] font-normal max-w-xs", textColor)}>

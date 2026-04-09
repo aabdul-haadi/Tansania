@@ -43,7 +43,7 @@ export function ProcessSection() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter"
+            className="font-headline text-3xl md:text-5xl font-normal text-secondary"
           >
             So einfach geht's
           </motion.h2>
@@ -87,7 +87,7 @@ export function ProcessSection() {
 
                 {/* Narrative Information */}
                 <div className="space-y-4">
-                  <h3 className="font-headline text-[24px] leading-[32px] font-medium text-secondary tracking-tight">
+                  <h3 className="font-headline text-[24px] leading-[32px] font-medium text-secondary">
                     {step.title}
                   </h3>
                   <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide max-w-[240px] mx-auto">

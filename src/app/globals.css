@@ -69,31 +69,30 @@
 
   /* HEADLINE REGISTRY: Strict Cormorant Garamond Protocol - Natural Casing & Open Spacing */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-headline font-normal leading-tight text-secondary tracking-normal;
+    @apply font-headline font-normal leading-tight text-secondary tracking-wide;
     font-style: normal !important;
     text-transform: none !important;
   }
 
-  /* Hero Headline Specification: 72px / 90px / Weight 400 / Normal Tracking */
+  /* Hero Headline Specification: 72px / 90px / Weight 400 / Open Tracking */
   h1 {
-    @apply text-3xl sm:text-5xl md:text-6xl lg:text-[72px] lg:leading-[90px] tracking-normal;
+    @apply text-3xl sm:text-5xl md:text-6xl lg:text-[72px] lg:leading-[90px] tracking-wide;
     font-weight: 400;
   }
 
   /* Section Title Specification: 48px / 1.2 */
   h2 {
-    @apply text-2xl md:text-4xl lg:text-[48px] lg:leading-[1.2] tracking-normal;
+    @apply text-2xl md:text-4xl lg:text-[48px] lg:leading-[1.2] tracking-wide;
     font-weight: 400;
   }
 
   /* Card/Title Specification: 24px / 32px / Weight 500 */
   h3 {
-    @apply text-xl md:text-[24px] md:leading-[32px] tracking-normal;
-    font-weight: 500;
+    @apply text-xl md:text-[24px] md:leading-[32px] font-medium tracking-wide;
   }
 
   h4 {
-    @apply text-lg md:text-2xl tracking-normal;
+    @apply text-lg md:text-2xl tracking-wide;
   }
 
   /* BODY REGISTRY: Strict Inter Protocol - Baseline 14px / 20px */
