@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import { 
   Clock, 
   MapPin, 
@@ -11,7 +11,7 @@ import {
   ChevronRight, 
   Users,
   Compass,
-  Star,
+  Star, 
   ShieldCheck,
   Map as MapIcon,
   PawPrint,
@@ -19,7 +19,6 @@ import {
   Mountain,
   Calendar,
   Plane,
-  Heart,
   Waves,
   Camera,
   ChevronDown,
@@ -34,7 +33,9 @@ import {
   GlassWater,
   Palmtree,
   Wind,
-  Zap
+  Zap,
+  Ticket,
+  ArrowLeft
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -86,7 +87,7 @@ const highlights = [
   }
 ];
 
-const inclusions = [
+const inclusionsData = [
   { icon: Home, title: "14 Übernachtungen", desc: "In handverlesenen Luxus-Lodges & Tented Camps" },
   { icon: Car, title: "Privater 4x4", desc: "Alle Transfers und Pirschfahrten im privaten Geländewagen" },
   { icon: Camera, title: "Pirschfahrten", desc: "Unbegrenzte Fahrten zur Wildtierbeobachtung" },
@@ -96,7 +97,7 @@ const inclusions = [
   { icon: PhoneCall, title: "24/7 Notfall-Hotline", desc: "Persönlicher Ansprechpartner rund um die Uhr" },
 ];
 
-const extras = [
+const extrasData = [
   { icon: Globe, label: "Internationale Flüge", status: "auf Anfrage" },
   { icon: ShieldCheck, label: "Reiseversicherung", status: "optional" },
   { icon: Wind, label: "Heißluftballon-Safari", status: "ab €550 p.P." },
@@ -111,6 +112,9 @@ interface PackageDetailClientProps {
 }
 
 export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
+  
   const [activeSection, setActiveSection] = useState('overview');
   const itineraryRef = useRef<HTMLDivElement>(null);
   const overviewRef = useRef<HTMLDivElement>(null);
@@ -121,7 +125,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
   useEffect(() => {
     setMounted(true);
     const handleScroll = () => {
-      const scrollPos = window.scrollY + 100;
+      const scrollPos = window.scrollY + 150;
       if (inquiryRef.current && scrollPos >= inquiryRef.current.offsetTop) setActiveSection('inquiry');
       else if (hotelsRef.current && scrollPos >= hotelsRef.current.offsetTop) setActiveSection('hotels');
       else if (itineraryRef.current && scrollPos >= itineraryRef.current.offsetTop) setActiveSection('itinerary');
@@ -142,14 +146,16 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
   if (!mounted) return null;
 
   const itineraryDays = pkg.itineraryDays || [];
-  const dayGroups = [];
+  const dayGroups: any[] = [];
   for (let i = 0; i < itineraryDays.length; i += 5) {
     dayGroups.push(itineraryDays.slice(i, i + 5));
   }
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
-      {/* 01 IMMERSIVE CINEMA HERO - SYNCED WITH 72PX/90PX PROTOCOL */}
+      <motion.div className="fixed top-0 left-0 right-0 h-1 bg-primary z-[110] origin-left" style={{ scaleX }} />
+
+      {/* 01 IMMERSIVE CINEMA HERO */}
       <section className="relative h-[80vh] md:h-[90vh] w-full overflow-hidden bg-secondary">
         <div className="absolute inset-0 z-0">
           <Image 
@@ -174,7 +180,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                 {pkg.category || 'Tansania · Sansibar'}
               </p>
               <h1 className="font-headline font-normal text-white text-3xl md:text-6xl lg:text-[72px] lg:leading-[90px] tracking-tight leading-tight">
-                {pkg.title || 'Traumabenteuer in Afrika'}
+                {pkg.title}
               </h1>
               <p className="text-white font-light text-sm md:text-xl lg:text-[24px] lg:leading-[39px] tracking-wide leading-relaxed max-w-3xl">
                 Erleben Sie eine privat geführte Expedition durch die spektakulärsten Nationalparks und entspannen Sie an den Traumstränden Sansibars.
@@ -202,7 +208,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         </div>
       </section>
 
-      {/* 02 STICKY NAVIGATION MANIFESTO */}
+      {/* 02 STICKY NAVIGATION */}
       <div className="sticky top-0 z-[40] bg-white/95 backdrop-blur-xl border-b shadow-sm">
         <div className="container mx-auto px-4 flex items-center justify-between h-14 md:h-20 max-w-7xl">
           <div className="flex gap-4 md:gap-12 h-full overflow-x-auto no-scrollbar">
@@ -222,14 +228,14 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
           <div className="hidden lg:flex items-center gap-6">
             <div className="text-right">
               <p className="text-[8px] font-bold uppercase text-muted-foreground leading-none mb-1 tracking-widest">Preise ab</p>
-              <p className="text-xs font-bold text-secondary">€{pkg.startingPrice?.toLocaleString('de-DE') || '5.399'}</p>
+              <p className="text-xs font-bold text-secondary">€{pkg.startingPrice?.toLocaleString('de-DE')}</p>
             </div>
             <Button onClick={() => scrollTo('inquiry')} size="sm" className="rounded-xl h-11 px-8 text-[10px] font-bold tracking-widest shadow-xl border-none">Anfrage senden</Button>
           </div>
         </div>
       </div>
 
-      {/* 03 TECHNICAL ICON STRIP */}
+      {/* 03 ICON STRIP */}
       <section className="bg-white border-b border-border/40 py-8 md:py-12">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-12">
@@ -253,15 +259,14 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         </div>
       </section>
 
-      {/* 04 NARRATIVE MANIFEST SECTION - SYNCED WITH 14PX/20PX PROTOCOL */}
+      {/* 04 NARRATIVE SECTION */}
       <section ref={overviewRef} className="py-12 md:py-24 bg-white scroll-mt-20">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-20">
-            
             <div className="lg:col-span-7 space-y-10">
               <div className="space-y-6">
                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-[0.3em] border border-primary/20">
-                  {pkg.durationDays} Tage {pkg.category || 'Safari & Sansibar'}
+                  {pkg.durationDays} Tage {pkg.category}
                 </div>
                 <h2 className="font-headline text-3xl md:text-5xl lg:text-[48px] lg:leading-[1.2] font-normal text-secondary tracking-tighter">
                   Eine Reise, <br /><span className="text-primary">die berührt</span>
@@ -329,11 +334,10 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
 
                     <div className="pt-8 border-t border-border/40 space-y-6">
                       <div className="flex flex-col">
-                        <span className="text-xs font-bold text-muted-foreground/40 line-through mb-1">€{(pkg.startingPrice + 600).toLocaleString('de-DE')}</span>
                         <div className="flex items-baseline gap-2">
                           <span className="text-xs font-bold text-secondary uppercase tracking-widest">ab</span>
                           <span className="text-4xl md:text-5xl font-bold text-secondary tracking-tighter">
-                            {pkg.startingPrice?.toLocaleString('de-DE') || '5.399'} €
+                            {pkg.startingPrice?.toLocaleString('de-DE')} €
                           </span>
                         </div>
                         <p className="text-[10px] font-bold text-muted-foreground/60 uppercase tracking-widest mt-1">pro Person im Doppelzimmer</p>
@@ -343,15 +347,14 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                       </Button>
                     </div>
                   </div>
-                </div>
+                </Card>
               </div>
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* 05 HIGHLIGHTS REGISTRY */}
+      {/* 05 HIGHLIGHTS */}
       <section className="py-12 md:py-24 bg-[#FDF7F2] border-y border-border/40 scroll-mt-20">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12 md:mb-20">
@@ -390,7 +393,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         </div>
       </section>
 
-      {/* 06 TIMELINE ITINERARY - SYNCED TYPOGRAPHY */}
+      {/* 06 ITINERARY */}
       <section ref={itineraryRef} className="py-16 md:py-32 bg-white scroll-mt-20">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center mb-16 md:mb-24 space-y-4">
@@ -432,7 +435,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                   <AccordionContent className="pt-12 pb-4 px-2 md:px-8 space-y-12 relative overflow-visible">
                     <div className="absolute left-[36px] md:left-[60px] top-12 bottom-12 w-px bg-border/60 z-0" />
                     
-                    {group.map((day, dIdx) => (
+                    {group.map((day: any, dIdx: number) => (
                       <div key={dIdx} className="relative z-10 flex gap-4 md:gap-12">
                         <div className="shrink-0">
                           <div className="w-10 h-10 md:w-16 md:h-16 rounded-full bg-[#FDF7F2] border border-[#F0EBE0] flex items-center justify-center shadow-sm relative z-10">
@@ -476,7 +479,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         </div>
       </section>
 
-      {/* 07 HAND-SELECTED ACCOMMODATIONS Registry */}
+      {/* 07 HOTELS */}
       <section ref={hotelsRef} className="py-16 md:py-32 bg-white scroll-mt-20 border-t border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-16 md:mb-24 space-y-4">
@@ -554,7 +557,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         </div>
       </section>
 
-      {/* 08 INCLUSIONS Registry */}
+      {/* 08 INCLUSIONS */}
       <section className="py-16 md:py-32 bg-[#fdfcfb]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-16 md:mb-24 space-y-4">
@@ -568,7 +571,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
 
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-start">
             <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
-              {inclusions.map((item, idx) => (
+              {inclusionsData.map((item, idx) => (
                 <div key={idx} className="flex gap-6 group">
                   <div className="w-12 h-12 rounded-2xl bg-[#C9A876]/10 border border-[#C9A876]/20 flex items-center justify-center shrink-0 shadow-sm transition-all duration-500 group-hover:bg-primary group-hover:shadow-lg">
                     <item.icon className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
@@ -597,7 +600,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                   </h3>
 
                   <div className="space-y-6">
-                    {extras.map((ex, i) => (
+                    {extrasData.map((ex, i) => (
                       <div key={i} className="flex items-center justify-between gap-4 group/item">
                         <div className="flex items-center gap-4">
                           <ex.icon className="w-4 h-4 text-primary/60 group-hover/item:text-primary transition-colors" />
@@ -628,7 +631,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
       {/* 09 CONVERSION HUB */}
       <AiCTA />
 
-      {/* 10 OFFICIAL REGISTRY INQUIRY */}
+      {/* 10 INQUIRY */}
       <section ref={inquiryRef} className="scroll-mt-20">
         <ContactSection />
       </section>
