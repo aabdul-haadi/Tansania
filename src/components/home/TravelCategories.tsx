@@ -60,6 +60,7 @@ export function TravelCategories() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-normal"
           >
             Welche Reise passt zu Ihnen?
           </motion.h2>
@@ -68,6 +69,7 @@ export function TravelCategories() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
+            className="text-muted-foreground font-normal text-[14px] leading-[20px] tracking-normal opacity-80"
           >
             Entdecken Sie unsere sorgfältig kuratierten Reisekategorien
           </motion.p>
@@ -94,10 +96,10 @@ export function TravelCategories() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
               
               <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end">
-                <h3 className="text-white mb-2">
+                <h3 className="text-white mb-2 font-headline text-[24px] leading-[32px] font-medium tracking-normal">
                   {cat.title}
                 </h3>
-                <p className="text-white/90 mb-6 line-clamp-2">
+                <p className="text-white/90 mb-6 line-clamp-2 text-[14px] leading-[20px] font-normal tracking-normal">
                   {cat.desc}
                 </p>
                 

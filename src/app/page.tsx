@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -64,13 +63,13 @@ export default function Home() {
               className="space-y-6 md:space-y-8"
             >
               {/* Main Architectural Headline - Compacted scaling for phone */}
-              <h1 className="font-headline font-normal text-white text-2xl sm:text-4xl md:text-6xl lg:text-[72px] lg:leading-[90px] tracking-tight leading-tight">
+              <h1 className="font-headline font-normal text-white text-2xl sm:text-4xl md:text-6xl lg:text-[72px] lg:leading-[90px] tracking-normal leading-tight">
                 Ihre maßgeschneiderte <br />
                 Luxusreise durch Tansania
               </h1>
 
               {/* Narrative Description - Compacted scaling for phone */}
-              <p className="max-w-2xl text-white font-light text-sm sm:text-base md:text-lg lg:text-[24px] lg:leading-[39px] tracking-wide leading-relaxed">
+              <p className="max-w-2xl text-white font-light text-sm sm:text-base md:text-lg lg:text-[24px] lg:leading-[39px] tracking-normal leading-relaxed">
                 Erleben Sie exklusive Safaris, handverlesene Lodges und unvergessliche Momente. Persönlich geplant, individuell gestaltet.
               </p>
 
