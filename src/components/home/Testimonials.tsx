@@ -45,7 +45,7 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="py-12 md:py-24 bg-white overflow-hidden">
+    <section className="pt-8 md:pt-12 pb-12 md:pb-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
         {/* Section Header */}
         <div className="text-center mb-10 md:mb-16 space-y-2">
@@ -53,7 +53,7 @@ export function Testimonials() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-2xl md:text-4xl font-normal text-[#3A3634]"
+            className="font-headline font-normal text-secondary tracking-wide"
           >
             Was unsere Gäste sagen
           </motion.h2>
@@ -62,7 +62,7 @@ export function Testimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-[#8A8581] font-normal text-[10px] md:text-xs uppercase tracking-widest opacity-80"
+            className="text-muted-foreground font-normal text-[11px] md:text-sm tracking-widest opacity-80"
           >
             Authentische Erfahrungen von zufriedenen Reisenden
           </motion.p>
@@ -106,13 +106,13 @@ function TestimonialCard({ item }: { item: any }) {
       {/* Gold Stars Protocol */}
       <div className="flex gap-1 mb-5">
         {[...Array(5)].map((_, i) => (
-          <Star key={i} className="w-3.5 h-3.5 fill-[#C9A876] text-[#C9A876]" />
+          <Star key={i} className="w-3.5 h-3.5 fill-primary text-primary" />
         ))}
       </div>
 
-      {/* Narrative Body */}
+      {/* Narrative Body - Strictly 14px/20px Inter, No Italics */}
       <div className="flex-grow mb-6">
-        <p className="text-[13px] md:text-[14px] leading-[1.6] text-[#8A8581] font-normal italic">
+        <p className="text-[14px] leading-[20px] text-muted-foreground font-normal">
           "{item.quote}"
         </p>
       </div>
@@ -121,10 +121,10 @@ function TestimonialCard({ item }: { item: any }) {
 
       {/* Sign-off Registry */}
       <div className="space-y-1">
-        <p className="text-[13px] font-bold text-[#3A3634] uppercase tracking-tight">
+        <p className="text-[13px] font-bold text-secondary tracking-tight">
           {item.author}
         </p>
-        <p className="text-[10px] font-normal text-[#8A8581] uppercase tracking-widest opacity-70">
+        <p className="text-[10px] font-normal text-muted-foreground tracking-widest opacity-70">
           {item.category}
         </p>
       </div>
