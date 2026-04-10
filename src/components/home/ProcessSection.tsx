@@ -35,7 +35,7 @@ const steps = [
 
 export function ProcessSection() {
   return (
-    <section className="py-16 md:py-32 bg-[#FDFCFB] overflow-hidden">
+    <section className="pt-8 pb-16 md:pt-12 md:pb-32 bg-[#FDFCFB] overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
         {/* Header Protocol */}
         <div className="text-center mb-16 md:mb-24 space-y-4">
