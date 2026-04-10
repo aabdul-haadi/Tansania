@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -20,7 +20,10 @@ import {
   ChevronRight,
   Clock,
   Heart,
-  Users
+  Users,
+  ShieldAlert,
+  MapPin,
+  Calendar
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -33,33 +36,77 @@ import { Button } from '@/components/ui/button';
 
 const routes = [
   { 
+    id: "01",
     name: 'Machame Route', 
     title: 'Die Malerische',
-    desc: 'Bekannt als die "Whiskey-Route", bietet sie spektakuläre Aussichten und eine exzellente Akklimatisierung durch das "hoch wandern, tief schlafen" Prinzip.', 
+    desc: 'Bekannt als die "Whiskey-Route", bietet sie spektakuläre Aussichten und eine exzellente Akklimatisierung durch das "hoch wandern, tief schlafen" Prinzip. Ideal für Fotografen.', 
     days: '6-7 Tage',
     level: 'Herausfordernd',
     highlight: 'Barranco Wall'
   },
   { 
+    id: "02",
     name: 'Lemosho Route', 
     title: 'Die Exklusive',
-    desc: 'Eine der schönsten Routen, die im Westen startet und durch unberührte Regenwälder führt. Ideal für Ruhe und hohe Erfolgschancen.', 
+    desc: 'Eine der schönsten Routen, die im Westen startet und durch unberührte Regenwälder führt. Ideal für Ruhe und höchste Erfolgschancen durch längere Gehzeit.', 
     days: '7-8 Tage',
     level: 'Moderat bis Schwer',
     highlight: 'Shira Plateau'
   },
   { 
+    id: "03",
     name: 'Marangu Route', 
     title: 'Die Klassische',
-    desc: 'Die "Coca-Cola-Route" ist der einzige Pfad mit festen Hüttenübernachtungen. Ein direkter, aber steilerer Aufstieg zum Gipfel.', 
+    desc: 'Die "Coca-Cola-Route" ist der einzige Pfad mit festen Hüttenübernachtungen. Ein direkter, aber steilerer Aufstieg zum Gipfel für Liebhaber fester Unterkünfte.', 
     days: '5-6 Tage',
     level: 'Moderat',
     highlight: 'Hütten-Komfort'
   }
 ];
 
+const faqs = [
+  {
+    question: "Wie läuft der Planungsprozess ab?",
+    answer: "Unser Prozess beginnt mit einem persönlichen Gespräch, in dem wir Ihre Wünsche aufnehmen. Daraufhin erstellen wir einen individuellen Erstentwurf, den wir gemeinsam mit Ihnen so lange verfeinern, bis er perfekt zu Ihren Vorstellungen passt."
+  },
+  {
+    question: "Kann ich online buchen und bezahlen?",
+    answer: "Ja, nach der Finalisierung Ihres Reiseplans erhalten Sie Zugang zu unserem sicheren Buchungsportal. Wir bieten verschiedene gesicherte Zahlungsmethoden an, die alle durch den Deutschen Reisesicherungsfonds abgesichert sind."
+  },
+  {
+    question: "Wie individuell können Sie meine Reise gestalten?",
+    answer: "Da wir uns auf private Safaris spezialisiert haben, sind wir zu 100% flexibel. Von der Wahl der Lodges über die tägliche Route bis hin zu speziellen kulinarischen Wünschen gestalten wir jedes Detail nach Ihren Vorgaben."
+  },
+  {
+    question: "Wie schnell erhalte ich eine Antwort auf meine Anfrage?",
+    answer: "In der Regel erhalten Sie innerhalb von 24 Stunden eine erste Rückmeldung von unseren Spezialisten in Berlin. Ein detailliertes Angebot liegt Ihnen meist nach 48 Stunden vor."
+  },
+  {
+    question: "Was kostet eine Safari-Reise nach Tansania?",
+    answer: "Die Kosten hängen stark von der Reisezeit und dem gewünschten Komfortlevel ab. Als Richtwert für eine hochwertige, private Safari inkl. Lodges sollten Sie mit einem Budget ab ca. 5.000 € pro Person planen."
+  },
+  {
+    question: "Sprechen die Guides vor Ort Deutsch?",
+    answer: "Wir verfügen über einen Pool an exzellenten, staatlich geprüften Guides, die fließend Deutsch sprechen. Bitte geben Sie uns bei der Planung Bescheid, damit wir Ihren Wunschguide frühzeitig reservieren können."
+  },
+  {
+    question: "Welche Reisezeit ist die beste für eine Safari?",
+    answer: "Tansania ist ein Ganzjahresziel. Die Trockenzeiten von Juni bis Oktober sind ideal für Tierbeobachtungen, während die Monate Januar bis März perfekt für die Kalbungszeit im Süden der Serengeti sind."
+  },
+  {
+    question: "Sind die Reisen auch für Familien mit Kindern geeignet?",
+    answer: "Absolut. Wir planen spezielle Familiensafaris mit kürzeren Fahrtzeiten und familienfreundlichen Lodges, die über Pools und spezielle Aktivitäten für Kinder verfügen."
+  }
+];
+
 export default function KilimanjaroPage() {
   const firestore = useFirestore();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const pkgQuery = useMemoFirebase(() => {
     if (!firestore) return null;
     return query(collection(firestore, 'packages'), where('isPublished', '==', true));
@@ -71,54 +118,20 @@ export default function KilimanjaroPage() {
     ['KILIMANDSCHARO KOMBI', 'KILIMANDSCHARO', 'MOUNT MERU', 'EXPEDITION'].includes(p.category?.toUpperCase())
   ) || [];
 
-  const faqs = [
-    {
-      question: "Wie läuft der Planungsprozess ab?",
-      answer: "Unser Prozess beginnt mit einem persönlichen Gespräch, in dem wir Ihre Wünsche aufnehmen. Daraufhin erstellen wir einen individuellen Erstentwurf, den wir gemeinsam mit Ihnen so lange verfeinern, bis er perfekt zu Ihren Vorstellungen passt."
-    },
-    {
-      question: "Kann ich online buchen und bezahlen?",
-      answer: "Ja, nach der Finalisierung Ihres Reiseplans erhalten Sie Zugang zu unserem sicheren Buchungsportal. Wir bieten verschiedene gesicherte Zahlungsmethoden an, die alle durch den Deutschen Reisesicherungsfonds abgesichert sind."
-    },
-    {
-      question: "Wie individuell können Sie meine Reise gestalten?",
-      answer: "Da wir uns auf private Safaris spezialisiert haben, sind wir zu 100% flexibel. Von der Wahl der Lodges über die tägliche Route bis hin zu speziellen kulinarischen Wünschen gestalten wir jedes Detail nach Ihren Vorgaben."
-    },
-    {
-      question: "Wie schnell erhalte ich eine Antwort auf meine Anfrage?",
-      answer: "In der Regel erhalten Sie innerhalb von 24 Stunden eine erste Rückmeldung von unseren Spezialisten in Berlin. Ein detailliertes Angebot liegt Ihnen meist nach 48 Stunden vor."
-    },
-    {
-      question: "Was kostet eine Safari-Reise nach Tansania?",
-      answer: "Die Kosten hängen stark von der Reisezeit und dem gewünschten Komfortlevel ab. Als Richtwert für eine hochwertige, private Safari inkl. Lodges sollten Sie mit einem Budget ab ca. 5.000 € pro Person planen."
-    },
-    {
-      question: "Sprechen die Guides vor Ort Deutsch?",
-      answer: "Wir verfügen über einen Pool an exzellenten, staatlich geprüften Guides, die fließend Deutsch sprechen. Bitte geben Sie uns bei der Planung Bescheid, damit wir Ihren Wunschguide frühzeitig reservieren können."
-    },
-    {
-      question: "Welche Reisezeit ist die beste für eine Safari?",
-      answer: "Tansania ist ein Ganzjahresziel. Die Trockenzeiten von Juni bis Oktober sind ideal für Tierbeobachtungen, während die Monate Januar bis März perfekt für die Kalbungszeit im Süden der Serengeti sind."
-    },
-    {
-      question: "Sind die Reisen auch für Familien mit Kindern geeignet?",
-      answer: "Absolut. Wir planen spezielle Familiensafaris mit kürzeren Fahrtzeiten und familienfreundlichen Lodges, die über Pools und spezielle Aktivitäten für Kinder verfügen."
-    }
-  ];
+  if (!mounted) return null;
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen">
-      {/* 01 STREAMLINED HERO - SINGLE LINE PRESTIGE */}
-      <section className="relative h-[65vh] md:h-[85vh] flex items-center justify-center overflow-hidden bg-secondary">
+      {/* 01 COMPACT PRESTIGE HERO */}
+      <section className="relative h-[65vh] md:h-[80vh] flex items-center justify-center overflow-hidden bg-secondary">
         <Image 
           src="https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1920" 
           alt="Kilimandscharo Besteigung" 
           fill 
-          className="object-cover"
           priority
+          className="object-cover brightness-[0.65]"
           data-ai-hint="mount kilimanjaro"
         />
-        {/* Visibility Overlay */}
         <div className="absolute inset-0 bg-black/40 z-10" />
         
         <div className="container relative z-20 mx-auto px-4 text-center">
@@ -126,19 +139,19 @@ export default function KilimanjaroPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="space-y-6 md:space-y-8"
+            className="space-y-6"
           >
-            <h1 className="font-headline text-white leading-tight whitespace-nowrap text-xl sm:text-3xl md:text-5xl lg:text-7xl uppercase tracking-widest">
+            <h1 className="font-headline text-white leading-none whitespace-nowrap text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl tracking-tighter">
               Kilimandscharo Besteigung
             </h1>
-            <p className="max-w-2xl mx-auto text-white/90 font-bold text-[9px] md:text-sm uppercase tracking-[0.4em] leading-relaxed">
+            <p className="max-w-2xl mx-auto text-white/90 font-bold text-[10px] md:text-sm uppercase tracking-[0.4em] leading-relaxed">
               Finden Sie Ihre perfekte Route zum Uhuru Peak. <br /> Erleben Sie eine Expedition, die über den Wolken beginnt.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* 02 INTRO NARRATIVE - EXPERT MANIFEST */}
+      {/* 02 EXPERT MANIFEST */}
       <section className="py-12 md:py-16 container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-20 items-center">
           <motion.div 
@@ -151,17 +164,17 @@ export default function KilimanjaroPage() {
               <div className="inline-flex items-center gap-2 text-primary font-bold text-[10px] uppercase tracking-[0.4em]">
                 <Mountain className="w-4 h-4" /> Expeditions-Registry
               </div>
-              <h2 className="font-headline text-secondary tracking-wide uppercase text-2xl md:text-4xl">
-                Was macht den Berg <span className="text-primary">so legendär?</span>
+              <h2 className="font-headline text-secondary text-2xl md:text-4xl lg:text-5xl font-normal leading-tight tracking-tighter">
+                Was macht den Berg <span className="text-primary font-bold">so legendär?</span>
               </h2>
             </div>
             
-            <div className="space-y-6 text-muted-foreground font-normal leading-[20px] text-[14px] tracking-normal border-l-4 border-primary/20 pl-8">
-              <p>
-                Der Kilimandscharo vereint atemberaubende Landschaften, eine echte körperliche Herausforderung und den Nervenkitzel, den höchsten Gipfel Afrikas zu erklimmen — ganz ohne technische Kletterkenntnisse.
+            <div className="space-y-6 text-muted-foreground font-normal leading-relaxed text-[14px] md:text-base border-l-4 border-primary/20 pl-8">
+              <p className="uppercase tracking-tight">
+                Der Kilimandscharo vereint atemberaubende Landschaften, eine echte körperliche Herausforderung und den Nervenkitzel, den höchsten Gipfel Afrikas zu erklimmen.
               </p>
-              <p>
-                Unsere spezialisierten Besteigungs-Protokolle führen Sie durch fünf verschiedene Klimazonen – von üppigen Regenwäldern bis hin zu den ewigen Gletschern am Kraterrand. Wir in Berlin planen Ihre Sicherheit mit, während unsere lokalen Guides Ihren Erfolg garantieren.
+              <p className="uppercase tracking-tight">
+                Unsere spezialisierten Besteigungs-Protokolle führen Sie durch fünf verschiedene Klimazonen. Wir in Berlin planen Ihre Sicherheit mit, während unsere lokalen Guides Ihren Erfolg garantieren.
               </p>
             </div>
 
@@ -187,65 +200,106 @@ export default function KilimanjaroPage() {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="lg:col-span-5 relative aspect-square md:aspect-[16/10] lg:aspect-square rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl group border border-border/50"
+            className="lg:col-span-5 relative aspect-square md:aspect-[16/10] lg:aspect-square rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border border-border/50"
           >
             <Image 
               src="https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=1000" 
               alt="Kili Trekking Team" 
               fill 
-              className="object-cover transition-transform duration-1000 group-hover:scale-110" 
+              className="object-cover transition-transform duration-1000 hover:scale-110" 
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
           </motion.div>
         </div>
       </section>
 
-      {/* 03 ROUTE NAVIGATOR REGISTRY */}
-      <section className="py-12 md:py-16 bg-[#f8f8f8] border-y border-border/40">
-        <div className="container mx-auto px-4 max-w-7xl">
-          <div className="text-center mb-12 md:mb-16 space-y-4">
-            <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px]">Wählen Sie Ihren Pfad</span>
-            <h2 className="font-headline text-3xl md:text-5xl font-bold text-secondary uppercase tracking-tighter">Die legendären Routen</h2>
+      {/* 03 UNIQUE ASYMMETRICAL ROUTE BLUEPRINT */}
+      <section className="py-12 md:py-24 bg-[#f8f8f8] relative overflow-hidden">
+        <div className="absolute top-0 right-0 p-24 opacity-[0.02] pointer-events-none">
+          <Compass className="w-[500px] h-[500px]" />
+        </div>
+
+        <div className="container relative z-10 mx-auto px-4 max-w-7xl">
+          <div className="flex flex-col md:flex-row items-end justify-between mb-16 md:mb-24 gap-8">
+            <div className="space-y-4">
+              <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px]">Registry Protocol</span>
+              <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary uppercase tracking-tighter">
+                Die legendären <span className="text-primary font-bold">Routen</span>
+              </h2>
+            </div>
+            <p className="text-muted-foreground font-bold text-[10px] md:text-sm uppercase tracking-widest max-w-xs border-l-2 border-primary/20 pl-6 leading-relaxed">
+              Jeder Pfad erzählt eine eigene Geschichte. Wählen Sie die Route, die zu Ihrer Kondition und Ihren Erwartungen passt.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10">
             {routes.map((route, idx) => (
               <motion.div 
                 key={idx}
-                whileHover={{ y: -5 }}
-                className="bg-white p-8 rounded-[2rem] border border-border shadow-sm flex flex-col justify-between group hover:shadow-xl transition-all duration-500"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className={cn(
+                  "relative group md:col-span-6 lg:col-span-4 flex flex-col h-full",
+                  idx === 1 ? "md:translate-y-12" : ""
+                )}
               >
-                <div className="space-y-6">
-                  <div className="flex justify-between items-start">
-                    <div className="space-y-1">
-                      <p className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">{route.name}</p>
-                      <h3 className="font-headline text-2xl font-bold text-secondary uppercase leading-none">{route.title}</h3>
+                <div className="bg-white rounded-[2rem] md:rounded-[3rem] p-8 md:p-12 shadow-sm border border-border/50 hover:shadow-2xl transition-all duration-700 flex flex-col justify-between h-full relative overflow-hidden">
+                  {/* Floating Registry ID */}
+                  <div className="absolute -top-4 -right-4 font-headline font-black text-8xl text-muted/5 select-none transition-colors group-hover:text-primary/5">
+                    {route.id}
+                  </div>
+
+                  <div className="space-y-8 relative z-10">
+                    <div className="flex items-center justify-between">
+                      <div className="w-12 h-12 rounded-2xl bg-secondary flex items-center justify-center shadow-lg group-hover:bg-primary transition-colors">
+                        <Compass className="w-6 h-6 text-white" />
+                      </div>
+                      <Badge variant="outline" className="rounded-lg border-primary/20 text-primary px-3 py-1 font-black text-[8px] uppercase tracking-widest">
+                        Official Path
+                      </Badge>
                     </div>
-                    <div className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center group-hover:bg-primary transition-colors">
-                      <Compass className="w-5 h-5 text-secondary group-hover:text-white" />
+
+                    <div className="space-y-3">
+                      <h3 className="font-headline text-2xl md:text-4xl font-normal text-secondary uppercase tracking-tight group-hover:text-primary transition-colors">
+                        {route.name}
+                      </h3>
+                      <p className="text-[14px] leading-[22px] text-muted-foreground font-normal tracking-wide uppercase opacity-80">
+                        {route.desc}
+                      </p>
+                    </div>
+
+                    {/* Technical Sub-Grid */}
+                    <div className="grid grid-cols-2 gap-4 py-6 border-y border-border/40">
+                      <div className="space-y-1">
+                        <p className="text-[8px] font-black text-muted-foreground uppercase tracking-widest flex items-center gap-1.5">
+                          <Timer className="w-3 h-3 text-primary" /> Dauer
+                        </p>
+                        <p className="text-xs font-bold text-secondary uppercase">{route.days}</p>
+                      </div>
+                      <div className="space-y-1">
+                        <p className="text-[8px] font-black text-muted-foreground uppercase tracking-widest flex items-center gap-1.5">
+                          <Zap className="w-3 h-3 text-primary" /> Level
+                        </p>
+                        <p className="text-xs font-bold text-secondary uppercase">{route.level}</p>
+                      </div>
+                      <div className="col-span-2 space-y-1 pt-2">
+                        <p className="text-[8px] font-black text-muted-foreground uppercase tracking-widest flex items-center gap-1.5">
+                          <Star className="w-3 h-3 text-primary" /> Highlight
+                        </p>
+                        <p className="text-xs font-bold text-secondary uppercase">{route.highlight}</p>
+                      </div>
                     </div>
                   </div>
-                  
-                  <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide">
-                    {route.desc}
-                  </p>
 
-                  <div className="grid grid-cols-2 gap-4 pt-4 border-t border-border/50">
-                    <div className="space-y-1">
-                      <p className="text-[8px] font-black text-muted-foreground uppercase tracking-widest flex items-center gap-1.5"><Clock className="w-3 h-3" /> Dauer</p>
-                      <p className="text-xs font-bold text-secondary uppercase">{route.days}</p>
-                    </div>
-                    <div className="space-y-1">
-                      <p className="text-[8px] font-black text-muted-foreground uppercase tracking-widest flex items-center gap-1.5"><Zap className="w-3 h-3" /> Level</p>
-                      <p className="text-xs font-bold text-secondary uppercase">{route.level}</p>
-                    </div>
+                  <div className="pt-10">
+                    <Link href="/contact" className="block">
+                      <Button variant="outline" className="w-full rounded-xl h-12 text-[9px] font-black uppercase tracking-widest group-hover:bg-secondary group-hover:text-white transition-all border-muted shadow-sm">
+                        ROUTE ANALYSIEREN <ArrowRight className="w-3.5 h-3.5 ml-2" />
+                      </Button>
+                    </Link>
                   </div>
-                </div>
-
-                <div className="pt-8">
-                  <Button variant="outline" className="w-full rounded-xl h-11 text-[9px] font-bold uppercase tracking-widest group-hover:bg-secondary group-hover:text-white transition-all">
-                    Route Details <ArrowRight className="w-3.5 h-3.5 ml-2" />
-                  </Button>
                 </div>
               </motion.div>
             ))}
@@ -253,8 +307,8 @@ export default function KilimanjaroPage() {
         </div>
       </section>
 
-      {/* 04 QUICK FACTS WITH STICKY BG */}
-      <section className="relative py-12 md:py-16 overflow-hidden">
+      {/* 04 STICKY QUICK FACTS */}
+      <section className="relative py-12 md:py-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image 
             src="https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1920" 
@@ -267,12 +321,12 @@ export default function KilimanjaroPage() {
         </div>
 
         <div className="container relative z-10 mx-auto px-4 max-w-7xl">
-          <div className="text-center mb-12 md:mb-16 space-y-4">
-            <h2 className="font-headline text-secondary tracking-wide uppercase text-2xl md:text-4xl">Kilimandscharo Quick Facts</h2>
+          <div className="text-center mb-12 md:mb-20 space-y-4">
+            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary uppercase tracking-tighter leading-none">Quick Facts</h2>
             <div className="w-20 h-1 bg-primary mx-auto rounded-full opacity-40" />
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-8">
             {[
               { icon: TrendingUp, label: "Höhe", val: "5.895 Meter", sub: "Uhuru Peak" },
               { icon: Map, label: "Routen", val: "7 Pfade", sub: "Offiziell" },
@@ -289,7 +343,7 @@ export default function KilimanjaroPage() {
                   <fact.icon className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase font-bold text-primary tracking-widest mb-1">{fact.label}</p>
+                  <p className="text-[9px] uppercase font-bold text-primary tracking-widest mb-1">{fact.label}</p>
                   <p className="font-bold text-lg md:text-xl text-secondary tracking-tight uppercase leading-none">{fact.val}</p>
                   <p className="text-[9px] text-muted-foreground uppercase font-bold tracking-widest mt-1">{fact.sub}</p>
                 </div>
@@ -300,21 +354,21 @@ export default function KilimanjaroPage() {
       </section>
 
       {/* 05 SHARED PACKAGE CATALOG */}
-      <section className="py-12 md:py-16 container mx-auto px-4 max-w-7xl">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 gap-6">
+      <section className="py-12 md:py-24 container mx-auto px-4 max-w-7xl scroll-mt-20">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-20 gap-6">
           <div className="max-w-2xl">
-            <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-2 block">Aktuelle Expeditionen</span>
-            <h2 className="font-headline text-secondary leading-tight tracking-wide uppercase text-2xl md:text-4xl">Wählen Sie Ihre <span className="text-primary">Gipfeltour</span></h2>
+            <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-2 block">Expeditions Portfolio</span>
+            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary uppercase tracking-tighter">Wählen Sie Ihre <span className="text-primary font-bold">Gipfeltour</span></h2>
           </div>
         </div>
 
         {isLoading ? (
           <div className="py-20 text-center space-y-4">
             <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto" />
-            <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground animate-pulse">Syncing Gipfelstürmer...</p>
+            <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground animate-pulse">Syncing Catalog...</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 md:gap-y-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 md:gap-y-20">
             {kiliPackages.map((pkg) => (
               <PackageCard key={pkg.id} pkg={pkg} />
             ))}
@@ -323,24 +377,26 @@ export default function KilimanjaroPage() {
       </section>
 
       {/* 06 SYNCED FAQ */}
-      <section className="py-12 md:py-24 container mx-auto px-4 max-w-4xl">
-        <div className="text-center mb-12 md:mb-16 space-y-4">
-          <h2 className="font-headline text-secondary tracking-wide uppercase text-2xl md:text-4xl">Häufig gestellte Fragen</h2>
-          <p className="text-muted-foreground uppercase tracking-widest font-bold text-[10px]">Wissenswertes zur Besteigung</p>
-        </div>
+      <section className="py-12 md:py-24 bg-[#FDF7F2] border-y border-border/40 scroll-mt-20">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="text-center mb-12 md:mb-20 space-y-4">
+            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary uppercase tracking-tighter">Häufig gestellte Fragen</h2>
+            <p className="text-muted-foreground uppercase tracking-widest font-bold text-[10px]">Wissenswertes zur Expedition</p>
+          </div>
 
-        <Accordion type="single" collapsible className="space-y-3">
-          {faqs.map((faq, i) => (
-            <AccordionItem key={i} value={`item-${i}`} className="border-none bg-white rounded-xl px-6 md:px-10 shadow-sm border border-transparent hover:border-border transition-all">
-              <AccordionTrigger className="font-normal text-[14px] leading-[20px] md:text-base py-5 hover:no-underline text-left text-secondary transition-colors uppercase tracking-widest">
-                {faq.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground text-[14px] leading-[20px] font-normal pb-6">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+          <Accordion type="single" collapsible className="space-y-4">
+            {faqs.map((faq, i) => (
+              <AccordionItem key={i} value={`item-${i}`} className="border-none bg-white rounded-2xl px-6 md:px-10 shadow-sm border border-transparent hover:border-border transition-all">
+                <AccordionTrigger className="font-normal text-base md:text-xl py-6 hover:no-underline text-left text-secondary transition-colors uppercase tracking-widest">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-[14px] leading-relaxed font-normal pb-8 uppercase tracking-widest opacity-80">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
       </section>
 
       <ContactSection />
