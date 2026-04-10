@@ -25,7 +25,8 @@ import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
 import { PackageCard } from '@/components/packages/PackageCard';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { ContactSection } from '@/components/sections/ContactSection';
+import { cn } from '@/lib/utils';
+import { ContactSection } from '@/components/shared/ContactSection';
 
 const youtubeVideos = [
   { id: "DuwK6uDjHAA", title: "Kilimanjaro Summit Expedition" },
@@ -42,122 +43,142 @@ export default function KilimanjaroPage() {
 
   const { data: packages, isLoading } = useCollection(pkgQuery);
 
+  // Filter for climbing specific packages
   const kiliPackages = packages?.filter(p => 
-    ['KILIMANDSCHARO KOMBI', 'KILIMANDSCHARO', 'MOUNT MERU'].includes(p.category)
+    ['KILIMANDSCHARO KOMBI', 'KILIMANDSCHARO', 'MOUNT MERU', 'Expedition'].includes(p.category?.toUpperCase())
   ) || [];
 
   return (
-    <div className="bg-[#fdfcfb] min-h-screen pb-20">
-      {/* Immersive Header */}
-      <section className="relative h-[65vh] md:h-[85vh] flex items-center justify-center overflow-hidden">
+    <div className="bg-[#fdfcfb] min-h-screen">
+      {/* 01 IMMERSIVE HERO: The Roof of Africa */}
+      <section className="relative h-[65vh] md:h-[85vh] flex items-center justify-center overflow-hidden bg-secondary">
         <Image 
           src="https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1920" 
-          alt="Kilimanjaro Summit" 
+          alt="Kilimandscharo Besteigung" 
           fill 
-          className="object-cover"
+          className="object-cover brightness-[0.6] scale-105"
           priority
           data-ai-hint="mount kilimanjaro"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-[#fdfcfb]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-[#fdfcfb]" />
+        
         <div className="container relative z-10 mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="space-y-6 md:space-y-8"
           >
-            <Badge className="bg-primary text-white border-none px-5 py-2 text-[10px] font-bold uppercase tracking-[0.3em] mb-6 shadow-2xl">
+            <Badge className="bg-primary text-white border-none px-6 py-2 text-[10px] font-bold uppercase tracking-[0.4em] shadow-2xl">
               Das Dach Afrikas
             </Badge>
-            <h1 className="font-headline text-4xl md:text-7xl lg:text-8xl font-normal text-white mb-6 leading-tight drop-shadow-2xl tracking-tighter">
-              Besteigen Sie das <br />
-              <span className="text-primary">Dach Afrikas</span>
+            <h1 className="font-headline text-white leading-tight">
+              Kilimandscharo <br />
+              <span className="text-primary">Besteigung</span>
             </h1>
-            <p className="max-w-2xl mx-auto text-sm md:text-xl text-white/90 font-light leading-relaxed px-4">
-              Finde deine perfekte Kilimandscharo-Route & Traumreise. Wähle aus einzigartigen Wegen zum Uhuru Peak.
+            <p className="max-w-2xl mx-auto text-white/90 font-light text-sm md:text-xl lg:text-[24px] lg:leading-[39px] tracking-wide">
+              Finden Sie Ihre perfekte Route zum Uhuru Peak. Erleben Sie eine Expedition, die über den Wolken beginnt.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Intro Section */}
-      <section className="py-20 container mx-auto px-4 max-w-5xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      {/* 02 INTRO NARRATIVE */}
+      <section className="py-12 md:py-16 container mx-auto px-4 max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            className="space-y-8"
           >
-            <div className="inline-flex items-center gap-2 text-primary font-bold text-[10px] uppercase tracking-[0.4em]">
-              <Mountain className="w-4 h-4" /> Kilimandscharo Abenteuer
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-2 text-primary font-bold text-[10px] uppercase tracking-[0.4em]">
+                <Mountain className="w-4 h-4" /> Expeditions-Registry
+              </div>
+              <h2 className="font-headline text-secondary">
+                Was macht den Berg <br /><span className="text-primary">so legendär?</span>
+              </h2>
             </div>
-            <h2 className="font-headline text-3xl md:text-5xl font-normal leading-tight text-secondary uppercase tracking-tighter">
-              Was macht den Kilimandscharo <br /><span className="text-primary">zum ultimativen Ziel?</span>
-            </h2>
-            <p className="text-muted-foreground font-normal leading-[20px] text-[14px]">
-              Der Kilimandscharo vereint atemberaubende Landschaften, eine echte körperliche und mentale Herausforderung und den Nervenkitzel, den höchsten Gipfel Afrikas zu erklimmen — und das ganz ohne technische Kletterkenntnisse.
-            </p>
-            <p className="text-muted-foreground font-normal leading-[20px] text-[14px]">
-              Seine einzigartigen Routen führen dich durch üppige Regenwälder, alpine Wüsten und eisige Gletscher und bieten dir auf einer einzigen Reise fünf verschiedene Klimazonen.
-            </p>
+            
+            <div className="space-y-6 text-muted-foreground font-normal leading-[20px] text-[14px] tracking-normal border-l-4 border-primary/20 pl-8">
+              <p>
+                Der Kilimandscharo vereint atemberaubende Landschaften, eine echte körperliche Herausforderung und den Nervenkitzel, den höchsten Gipfel Afrikas zu erklimmen — ganz ohne technische Kletterkenntnisse.
+              </p>
+              <p>
+                Unsere spezialisierten Besteigungs-Protokolle führen Sie durch fünf verschiedene Klimazonen – von üppigen Regenwäldern bis hin zu den ewigen Gletschern am Kraterrand.
+              </p>
+            </div>
           </motion.div>
+
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="relative aspect-square rounded-[3rem] overflow-hidden shadow-2xl"
+            className="relative aspect-square md:aspect-[16/10] lg:aspect-square rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl group border border-border/50"
           >
-            <Image src="https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=1000" alt="Kili Trekking" fill className="object-cover" />
+            <Image 
+              src="https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=1000" 
+              alt="Kili Trekking Team" 
+              fill 
+              className="object-cover transition-transform duration-1000 group-hover:scale-105" 
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
           </motion.div>
         </div>
       </section>
 
-      {/* Quick Facts */}
-      <section className="py-20 bg-secondary text-white relative overflow-hidden">
+      {/* 03 QUICK FACTS REGISTRY */}
+      <section className="py-12 md:py-16 bg-secondary text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-        <div className="container mx-auto px-4 max-w-6xl relative z-10 text-center">
-          <div className="mb-16">
-            <h3 className="font-headline text-3xl md:text-5xl font-normal mb-4 tracking-tighter">Kilimandscharo Quick Facts</h3>
-            <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
+        <div className="container mx-auto px-4 max-w-7xl relative z-10">
+          <div className="text-center mb-12 md:mb-16 space-y-4">
+            <h2 className="font-headline text-white">Kilimandscharo Quick Facts</h2>
+            <div className="w-20 h-1 bg-primary mx-auto rounded-full opacity-40" />
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+          
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-12">
             {[
-              { icon: TrendingUp, label: "Höhe", val: "5.895 Meter", sub: "Höchster Berg Afrikas" },
-              { icon: Map, label: "Routen", val: "7 Aufstiegsrouten", sub: "Offizielle Pfade" },
-              { icon: Timer, label: "Dauer", val: "5-10 Tage", sub: "Je nach Route" },
-              { icon: Wind, label: "Klimazonen", val: "5 Zonen", sub: "Auf einem Berg" },
-              { icon: Award, label: "Erfolgsquote", val: "Bis zu 90%", sub: "Mit Akklimatisierung" }
+              { icon: TrendingUp, label: "Höhe", val: "5.895 Meter", sub: "Uhuru Peak" },
+              { icon: Map, label: "Routen", val: "7 Pfade", sub: "Offiziell" },
+              { icon: Timer, label: "Dauer", val: "5-10 Tage", sub: "Akklimatisierung" },
+              { icon: Wind, label: "Klimazonen", val: "5 Zonen", sub: "Vielfalt" },
+              { icon: Award, label: "Erfolg", val: "90%", sub: "Mit SDL-Profi" }
             ].map((fact, i) => (
-              <div key={i} className="space-y-3">
-                <div className="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center mx-auto mb-4">
+              <div key={i} className="space-y-4 text-center group">
+                <div className="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center mx-auto transition-transform duration-500 group-hover:scale-110 border border-primary/10">
                   <fact.icon className="w-6 h-6 text-primary" />
                 </div>
-                <p className="text-[10px] uppercase font-bold text-primary tracking-widest">{fact.label}</p>
-                <p className="font-bold text-xl text-white">{fact.val}</p>
-                <p className="text-[10px] text-white/40 uppercase font-bold tracking-widest">{fact.sub}</p>
+                <div>
+                  <p className="text-[10px] uppercase font-bold text-primary tracking-widest mb-1">{fact.label}</p>
+                  <p className="font-bold text-xl text-white tracking-tight">{fact.val}</p>
+                  <p className="text-[9px] text-white/40 uppercase font-bold tracking-widest mt-1">{fact.sub}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Dynamic Package Catalog */}
-      <section className="py-24 container mx-auto px-4 max-w-7xl">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+      {/* 04 DYNAMIC PACKAGE CATALOG */}
+      <section className="py-12 md:py-16 container mx-auto px-4 max-w-7xl">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 gap-6">
           <div className="max-w-2xl">
-            <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] mb-2 block">Expeditions-Registry</span>
-            <h2 className="font-headline text-3xl md:text-6xl font-normal leading-tight text-secondary tracking-tighter uppercase">Wählen Sie Ihre <br /><span className="text-primary">Gipfeltour</span></h2>
+            <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-2 block">Aktuelle Expeditionen</span>
+            <h2 className="font-headline text-secondary leading-tight">Wählen Sie Ihre <br /><span className="text-primary">Gipfeltour</span></h2>
           </div>
-          <p className="text-[14px] leading-[20px] text-muted-foreground font-normal max-w-[200px] border-l-2 border-primary/20 pl-4 lg:mb-2">
-            Ob gemütlich, spektakulär oder herausfordernd – hier beginnt deine Reise zum Dach Afrikas.
+          <p className="text-[14px] leading-[20px] text-muted-foreground font-normal max-w-[240px] border-l-2 border-primary/20 pl-6 hidden md:block">
+            Ob klassisch oder spektakulär – hier beginnt Ihr Weg zum Dach Afrikas.
           </p>
         </div>
 
         {isLoading ? (
-          <div className="py-20 text-center text-muted-foreground font-bold text-xs uppercase tracking-widest animate-pulse">Syncing Gipfelstürmer...</div>
+          <div className="py-20 text-center space-y-4">
+            <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto" />
+            <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground animate-pulse">Syncing Gipfelstürmer...</p>
+          </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 md:gap-y-16">
             {kiliPackages.map((pkg) => (
               <PackageCard key={pkg.id} pkg={pkg} />
             ))}
@@ -165,52 +186,54 @@ export default function KilimanjaroPage() {
         )}
       </section>
 
-      {/* Route Finder Guide */}
-      <section className="py-24 container mx-auto px-4 max-w-6xl">
-        <div className="text-center mb-20">
-          <h2 className="font-headline text-3xl md:text-6xl font-normal mb-4 text-secondary tracking-tighter uppercase">Welche Route passt <span className="text-primary">zu dir?</span></h2>
-          <p className="text-muted-foreground uppercase tracking-widest font-bold text-[10px]">Jede der Hauptrouten bietet eine einzigartige Kombination.</p>
-        </div>
+      {/* 05 ROUTE FINDER GUIDE */}
+      <section className="py-12 md:py-16 bg-[#FDF7F2] border-y border-border/40">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center mb-12 md:mb-20 space-y-4">
+            <h2 className="font-headline text-secondary">Welche Route passt zu Ihnen?</h2>
+            <p className="text-muted-foreground uppercase tracking-widest font-bold text-[10px]">Strategische Auswahl für maximalen Erfolg</p>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            { q: "Beste für Anfänger?", r: "Marangu- oder Machame-Route", d: "Leicht zu folgen, gute Infrastruktur und angenehmes Tempo." },
-            { q: "Schönste Landschaft?", r: "Lemosho- oder Machame-Route", d: "Dramatische Panoramen und vielfältige Ökosysteme." },
-            { q: "Kleines Budget?", r: "Marangu-Route", d: "Kürzeste Dauer, Hüttenübernachtungen und geringere Gesamtkosten." },
-            { q: "Moderate Wanderer?", r: "Machame- oder Lemosho-Route", d: "Gute Balance aus Herausforderung und Akklimatisierung." },
-            { q: "Erfahrene Bergsteiger?", r: "Umbwe-Route", d: "Steil, direkt und körperlich anspruchsvoll." },
-            { q: "Höchste Erfolgsquote?", r: "8 Tage Lemosho-Route", d: "Optimale Akklimatisierung durch längere Aufstiegszeit." }
-          ].map((item, idx) => (
-            <div key={idx} className="p-10 bg-white rounded-[3rem] shadow-sm border border-border/50 hover:border-primary/20 hover:shadow-xl transition-all group">
-              <h4 className="text-primary font-bold text-[10px] uppercase tracking-widest mb-2">{item.q}</h4>
-              <p className="font-headline text-xl font-normal mb-4 text-secondary tracking-tight">{item.r}</p>
-              <p className="text-[14px] leading-[20px] text-muted-foreground font-normal">{item.d}</p>
-            </div>
-          ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {[
+              { q: "Beste für Einsteiger?", r: "Marangu- oder Machame-Route", d: "Leicht zu folgen, gute Infrastruktur und angenehmes Tempo." },
+              { q: "Schönste Landschaften?", r: "Lemosho- oder Machame-Route", d: "Dramatische Panoramen und vielfältige Ökosysteme auf dem Weg." },
+              { q: "Kleines Budget?", r: "Marangu-Route", d: "Kürzeste Dauer, Hüttenübernachtungen und geringere Logistikkosten." },
+              { q: "Moderate Wanderer?", r: "Machame- oder Lemosho-Route", d: "Gute Balance aus Herausforderung und Höhen-Akklimatisierung." },
+              { q: "Erfahrene Bergsteiger?", r: "Umbwe-Route", d: "Steil, direkt und körperlich extrem anspruchsvoll. Der direkte Weg." },
+              { q: "Höchste Erfolgsquote?", r: "8 Tage Lemosho-Route", d: "Optimale Akklimatisierung durch eine längere Aufstiegszeit." }
+            ].map((item, idx) => (
+              <div key={idx} className="p-8 md:p-10 bg-white rounded-[2rem] shadow-sm border border-border/50 hover:border-primary/20 hover:shadow-xl transition-all duration-500 group">
+                <h4 className="text-primary font-bold text-[9px] uppercase tracking-[0.2em] mb-3">{item.q}</h4>
+                <p className="font-headline text-xl md:text-2xl font-medium text-secondary mb-4 tracking-tight leading-tight">{item.r}</p>
+                <p className="text-[14px] leading-[20px] text-muted-foreground font-normal">{item.d}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="py-24 container mx-auto px-4 max-w-4xl">
-        <div className="text-center mb-16">
-          <h2 className="font-headline text-3xl md:text-5xl font-normal mb-4 text-secondary tracking-tighter uppercase">Kilimandscharo <span className="text-primary">FAQ</span></h2>
+      {/* 06 EXPEDITION FAQ */}
+      <section className="py-12 md:py-24 container mx-auto px-4 max-w-4xl">
+        <div className="text-center mb-12 md:mb-16 space-y-4">
+          <h2 className="font-headline text-secondary">Häufig gestellte Fragen</h2>
           <p className="text-muted-foreground uppercase tracking-widest font-bold text-[10px]">Wissenswertes zur Besteigung</p>
         </div>
 
-        <Accordion type="single" collapsible className="space-y-4">
+        <Accordion type="single" collapsible className="space-y-3">
           {[
-            { q: "Wie hoch ist der Kilimandscharo?", a: "Der Kilimandscharo ist mit 5.895 Metern der höchste Berg Afrikas." },
-            { q: "Brauche ich spezielle Ausrüstung?", a: "Ja, Sie benötigen professionelle Wanderschuhe, Schlafsack, Thermokleidung und Regenbekleidung." },
-            { q: "Wie viel kostet eine Besteigung?", a: "Kosten variieren je nach Route und Dauer, meist zwischen 2.500 € und 4.500 €." },
-            { q: "Gibt es Altersbeschränkungen?", a: "Offiziell ab 10 Jahren. Wir empfehlen eine Besteigung ab 12-14 Jahren." },
-            { q: "Wie ist die Verpflegung?", a: "Wir bieten Vollpension mit täglich frisch zubereiteten heißen Mahlzeiten." },
-            { q: "Wie sicher ist die Besteigung?", a: "Sicherheit steht an erster Stelle. Unsere Guides führen tägliche Gesundheitschecks durch." }
+            { q: "Wie hoch ist der Kilimandscharo?", a: "Der Kilimandscharo ist mit 5.895 Metern (Uhuru Peak) der höchste Berg Afrikas und der höchste freistehende Berg der Welt." },
+            { q: "Brauche ich spezielle Ausrüstung?", a: "Ja, eine professionelle Trekking-Ausrüstung ist essenziell. Dazu gehören eingelaufene Wanderschuhe, Thermokleidung, ein Schlafsack bis -15°C und Regenbekleidung. Wir stellen Ihnen eine detaillierte Packliste zur Verfügung." },
+            { q: "Wie viel kostet eine Besteigung?", a: "Die Kosten variieren je nach Route und Dauer. In der Regel liegen hochwertige Besteigungen mit erstklassiger Betreuung zwischen 2.800 € und 4.500 € pro Person." },
+            { q: "Gibt es Altersbeschränkungen?", a: "Das offizielle Mindestalter liegt bei 10 Jahren. Wir empfehlen eine Besteigung jedoch erst ab einem Alter von 12-14 Jahren und nach Rücksprache mit einem Arzt." },
+            { q: "Wie ist die Verpflegung am Berg?", a: "Unsere Teams bereiten täglich drei frische, warme und energiereiche Mahlzeiten zu. Wir achten auf hohe Qualität und können auch vegetarische oder vegane Wünsche berücksichtigen." },
+            { q: "Wie sicher ist die Kilimandscharo Besteigung?", a: "Sicherheit ist unsere oberste Priorität. Unsere Guides führen tägliche Gesundheitschecks durch, haben Sauerstoff für Notfälle dabei und sind in Höhenrettung geschult." }
           ].map((faq, i) => (
-            <AccordionItem key={i} value={`item-${i}`} className="border-none bg-white rounded-2xl px-8 shadow-sm hover:shadow-md transition-all group">
-              <AccordionTrigger className="font-normal text-lg py-6 hover:no-underline hover:text-primary text-left text-secondary transition-colors tracking-tight">
+            <AccordionItem key={i} value={`item-${i}`} className="border-none bg-white rounded-xl px-6 md:px-10 shadow-sm border border-transparent hover:border-border transition-all">
+              <AccordionTrigger className="font-normal text-[14px] leading-[20px] md:text-base py-5 hover:no-underline text-left text-secondary transition-colors tracking-tight">
                 {faq.q}
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground text-[14px] leading-[20px] font-normal pb-8">
+              <AccordionContent className="text-muted-foreground text-[14px] leading-[20px] font-normal pb-6">
                 {faq.a}
               </AccordionContent>
             </AccordionItem>
@@ -218,7 +241,7 @@ export default function KilimanjaroPage() {
         </Accordion>
       </section>
 
-      {/* Contact Section */}
+      {/* 07 FINAL CALL TO ACTION */}
       <ContactSection />
     </div>
   );
