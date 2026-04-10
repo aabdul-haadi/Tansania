@@ -69,43 +69,49 @@
 
   /* HEADLINE REGISTRY: Strict Cormorant Garamond Protocol - Natural Casing & Open Spacing */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-headline font-normal leading-tight text-secondary tracking-wide;
+    @apply font-headline font-normal leading-tight text-secondary;
+    letter-spacing: 0.05em; /* ARCHITECTURAL AIRINESS */
     font-style: normal !important;
     text-transform: none !important;
   }
 
-  /* Hero Headline Specification: 72px / 90px / Weight 400 / Open Tracking */
+  /* Hero Headline Specification */
   h1 {
-    @apply text-3xl sm:text-5xl md:text-6xl lg:text-[72px] lg:leading-[90px] tracking-wide;
+    @apply text-3xl sm:text-5xl md:text-6xl lg:text-[72px] lg:leading-[90px];
     font-weight: 400;
   }
 
-  /* Section Title Specification: 48px / 1.2 */
+  /* Section Title Specification */
   h2 {
-    @apply text-2xl md:text-4xl lg:text-[48px] lg:leading-[1.2] tracking-wide;
+    @apply text-2xl md:text-4xl lg:text-[48px] lg:leading-[1.2];
     font-weight: 400;
   }
 
-  /* Card/Title Specification: 24px / 32px / Weight 500 */
+  /* Card/Title Specification */
   h3 {
-    @apply text-xl md:text-[24px] md:leading-[32px] font-medium tracking-wide;
+    @apply text-xl md:text-[24px] md:leading-[32px] font-medium;
   }
 
   h4 {
-    @apply text-lg md:text-2xl tracking-wide;
+    @apply text-lg md:text-2xl;
   }
 
-  /* BODY REGISTRY: Strict Inter Protocol - Baseline 14px / 20px */
+  /* BODY REGISTRY: Strict Inter Protocol */
   p, span, li, div {
     @apply font-sans font-normal;
     font-style: normal !important;
     text-transform: none !important;
   }
 
-  /* Narrative Specification: 14px / 20px / Weight 400 / Normal Tracking */
+  /* Narrative Specification */
   p {
-    @apply text-[14px] leading-[20px] tracking-normal text-muted-foreground;
+    @apply text-[14px] leading-[20px] tracking-wide text-muted-foreground;
     font-weight: 400;
+  }
+
+  /* GLOBAL PRESTIGE SPACING FOR UPPERCASE TEXT */
+  .uppercase {
+    letter-spacing: 0.1em !important;
   }
 
   /* Technical Constraint: Force No Italics globally */

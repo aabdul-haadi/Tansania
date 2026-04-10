@@ -71,13 +71,13 @@ export default function KilimanjaroPage() {
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen">
-      {/* 01 STREAMLINED HERO - COMPACTED SINGLE LINE PROTOCOL */}
+      {/* 01 STREAMLINED HERO - SINGLE LINE PRESTIGE */}
       <section className="relative h-[65vh] md:h-[85vh] flex items-center justify-center overflow-hidden bg-secondary">
         <Image 
           src="https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1920" 
           alt="Kilimandscharo Besteigung" 
           fill 
-          className="object-cover brightness-[0.6]"
+          className="object-cover"
           priority
           data-ai-hint="mount kilimanjaro"
         />
@@ -90,7 +90,7 @@ export default function KilimanjaroPage() {
             className="space-y-6 md:space-y-8"
           >
             <h1 className="font-headline text-white leading-tight whitespace-nowrap text-2xl sm:text-4xl md:text-6xl lg:text-7xl uppercase tracking-wide">
-              Kilimandscharo <span className="text-primary">Besteigung</span>
+              Kilimandscharo Besteigung
             </h1>
             <p className="max-w-2xl mx-auto text-white/90 font-light text-sm md:text-xl tracking-wide leading-relaxed uppercase">
               Finden Sie Ihre perfekte Route zum Uhuru Peak. Erleben Sie eine Expedition, die über den Wolken beginnt.
@@ -137,7 +137,7 @@ export default function KilimanjaroPage() {
               src="https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=1000" 
               alt="Kili Trekking Team" 
               fill 
-              className="object-cover transition-transform duration-1000 group-hover:scale-105" 
+              className="object-cover transition-transform duration-1000 group-hover:scale-110" 
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
           </motion.div>
@@ -223,7 +223,7 @@ export default function KilimanjaroPage() {
         <Accordion type="single" collapsible className="space-y-3">
           {faqs.map((faq, i) => (
             <AccordionItem key={i} value={`item-${i}`} className="border-none bg-white rounded-xl px-6 md:px-10 shadow-sm border border-transparent hover:border-border transition-all">
-              <AccordionTrigger className="font-normal text-[14px] leading-[20px] md:text-base py-5 hover:no-underline text-left text-secondary transition-colors tracking-tight uppercase">
+              <AccordionTrigger className="font-normal text-[14px] leading-[20px] md:text-base py-5 hover:no-underline text-left text-secondary transition-colors uppercase tracking-widest">
                 {faq.question}
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground text-[14px] leading-[20px] font-normal pb-6">

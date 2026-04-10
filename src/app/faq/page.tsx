@@ -101,7 +101,7 @@ export default function FAQPage() {
                   value={`q-${idx}`}
                   className="border-none bg-white rounded-2xl px-6 md:px-10 shadow-sm hover:shadow-md transition-all group"
                 >
-                  <AccordionTrigger className="text-left font-normal text-base md:text-lg py-6 hover:no-underline hover:text-primary transition-colors tracking-tight uppercase">
+                  <AccordionTrigger className="text-left font-normal text-base md:text-lg py-6 hover:no-underline hover:text-primary transition-colors tracking-widest uppercase">
                     {faq.question}
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground text-[14px] leading-[20px] font-normal pb-8 pr-4 uppercase tracking-widest">
