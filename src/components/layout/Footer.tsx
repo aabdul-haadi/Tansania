@@ -88,6 +88,7 @@ export function Footer() {
               <li><Link href="/legal/imprint" className={linkClass}>Impressum</Link></li>
               <li><Link href="/legal/terms" className={linkClass}>AGB</Link></li>
               <li><Link href="/legal/privacy" className={linkClass}>Datenschutz</Link></li>
+              <li><Link href="/legal/directive" className={linkClass}>EU-Richtlinie</Link></li>
             </ul>
           </div>
 
