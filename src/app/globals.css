@@ -70,7 +70,7 @@
   /* HEADLINE REGISTRY: Strict Cormorant Garamond Protocol - Natural Casing & Open Spacing */
   h1, h2, h3, h4, h5, h6 {
     @apply font-headline font-normal leading-tight text-secondary;
-    letter-spacing: 0.05em; /* ARCHITECTURAL AIRINESS */
+    letter-spacing: 0.05em !important; /* ARCHITECTURAL AIRINESS */
     font-style: normal !important;
     text-transform: none !important;
   }

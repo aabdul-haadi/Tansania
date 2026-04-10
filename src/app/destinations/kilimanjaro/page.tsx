@@ -81,6 +81,8 @@ export default function KilimanjaroPage() {
           priority
           data-ai-hint="mount kilimanjaro"
         />
+        {/* Visibility Overlay */}
+        <div className="absolute inset-0 bg-black/40 z-0" />
         
         <div className="container relative z-10 mx-auto px-4 text-center">
           <motion.div
@@ -89,10 +91,10 @@ export default function KilimanjaroPage() {
             transition={{ duration: 0.8 }}
             className="space-y-6 md:space-y-8"
           >
-            <h1 className="font-headline text-white leading-tight whitespace-nowrap text-2xl sm:text-4xl md:text-6xl lg:text-7xl uppercase tracking-wide">
+            <h1 className="font-headline text-white leading-tight whitespace-nowrap text-xl sm:text-3xl md:text-5xl lg:text-7xl uppercase tracking-widest">
               Kilimandscharo Besteigung
             </h1>
-            <p className="max-w-2xl mx-auto text-white/90 font-light text-sm md:text-xl tracking-wide leading-relaxed uppercase">
+            <p className="max-w-2xl mx-auto text-white/90 font-light text-sm md:text-xl tracking-widest leading-relaxed uppercase">
               Finden Sie Ihre perfekte Route zum Uhuru Peak. Erleben Sie eine Expedition, die über den Wolken beginnt.
             </p>
           </motion.div>
