@@ -156,7 +156,7 @@ export default function DirectivePage() {
                   <div className="p-6 md:p-10 bg-secondary text-white rounded-[2rem] space-y-6 relative overflow-hidden">
                     <div className="absolute top-0 right-0 p-8 opacity-10"><LifeBuoy className="w-20 h-20 rotate-12" /></div>
                     <div className="relative z-10 space-y-4">
-                      <h4 className="font-headline text-xl md:text-2xl font-bold uppercase">Individuelle Prüfung</h4>
+                      <h4 className="font-headline text-xl md:text-2xl font-bold uppercase text-primary">Individuelle Prüfung</h4>
                       <p className="text-[11px] md:text-sm text-white/60 font-bold uppercase tracking-widest leading-relaxed">
                         Je nach Umfang Ihrer Einschränkung prüfen wir gern vorab für Sie, ob eine Teilnahme möglich ist. In Begleitung einer Person, die Sie unterstützt, sind einzelne Reisen durchaus realisierbar.
                       </p>
@@ -181,7 +181,7 @@ export default function DirectivePage() {
                   <div className="space-y-4">
                     <h3 className="text-secondary leading-none tracking-tighter text-2xl md:text-3xl uppercase">Reiseplanung <br /><span className="text-primary font-bold">nach Maß</span></h3>
                     <p className="text-muted-foreground text-[10px] font-bold uppercase tracking-widest leading-relaxed">
-                      Sprechen Sie uns vor der Buchung an, welche Reisen sich besonders gut für Sie eignen.
+                      Sprechen Sie vor der Buchung mit unseren Experten, welche Reisen sich besonders gut für Sie eignen.
                     </p>
                   </div>
                   <Link href="/contact" className="block">
