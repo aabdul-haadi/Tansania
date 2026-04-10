@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -42,7 +43,7 @@ const faqs = [
   },
   {
     question: "Sind die Reisen auch für Familien mit Kindern geeignet?",
-    answer: "Absolut. Wir planen spezielle Familiensafaris mit kürzeren Fahrtzeiten und familienfreundlichen Lodges, die über Pools and spezielle Aktivitäten für Kinder verfügen."
+    answer: "Absolut. Wir planen spezielle Familiensafaris mit kürzeren Fahrtzeiten und familienfreundlichen Lodges, die über Pools und spezielle Aktivitäten für Kinder verfügen."
   }
 ];
 

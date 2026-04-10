@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -45,7 +46,7 @@ const faqs = [
   },
   {
     question: "Sind die Reisen auch für Familien mit Kindern geeignet?",
-    answer: "Absolut. Wir planen spezielle Familiensafaris mit kürzeren Fahrtzeiten und familienfreundlichen Lodges, die über Pools and spezielle Aktivitäten für Kinder verfügen."
+    answer: "Absolut. Wir planen spezielle Familiensafaris mit kürzeren Fahrtzeiten und familienfreundlichen Lodges, die über Pools und spezielle Aktivitäten für Kinder verfügen."
   }
 ];
 
@@ -54,7 +55,7 @@ export default function FAQPage() {
     <div className="bg-[#fdfcfb] min-h-screen">
       {/* Top Header Section */}
       <section className="bg-secondary pt-32 pb-24 text-center border-none">
-        <div className="container mx-auto px-4 max-w-5xl">
+        <div className="container mx-auto px-4 max-get-5xl">
           <motion.span 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}

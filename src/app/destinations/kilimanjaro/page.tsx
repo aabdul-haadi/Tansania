@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -11,7 +12,15 @@ import {
   TrendingUp,
   Wind,
   Timer,
-  Award
+  Award,
+  ShieldCheck,
+  CheckCircle2,
+  Compass,
+  Zap,
+  ArrowRight,
+  ChevronRight,
+  Clock,
+  Heart
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -20,6 +29,33 @@ import { collection, query, where } from 'firebase/firestore';
 import { PackageCard } from '@/components/shared/PackageCard';
 import { ContactSection } from '@/components/shared/ContactSection';
 import { cn } from '@/lib/utils';
+
+const routes = [
+  { 
+    name: 'Machame Route', 
+    title: 'Die Malerische',
+    desc: 'Bekannt als die "Whiskey-Route", bietet sie spektakuläre Aussichten und eine exzellente Akklimatisierung durch das "hoch wandern, tief schlafen" Prinzip.', 
+    days: '6-7 Tage',
+    level: 'Herausfordernd',
+    highlight: 'Barranco Wall'
+  },
+  { 
+    name: 'Lemosho Route', 
+    title: 'Die Exklusive',
+    desc: 'Eine der schönsten Routen, die im Westen startet und durch unberührte Regenwälder führt. Ideal für Ruhe und hohe Erfolgschancen.', 
+    days: '7-8 Tage',
+    level: 'Moderat bis Schwer',
+    highlight: 'Shira Plateau'
+  },
+  { 
+    name: 'Marangu Route', 
+    title: 'Die Klassische',
+    desc: 'Die "Coca-Cola-Route" ist der einzige Pfad mit festen Hüttenübernachtungen. Ein direkter, aber steilerer Aufstieg zum Gipfel.', 
+    days: '5-6 Tage',
+    level: 'Moderat',
+    highlight: 'Hütten-Komfort'
+  }
+];
 
 export default function KilimanjaroPage() {
   const firestore = useFirestore();
@@ -94,21 +130,21 @@ export default function KilimanjaroPage() {
             <h1 className="font-headline text-white leading-tight whitespace-nowrap text-xl sm:text-3xl md:text-5xl lg:text-7xl uppercase tracking-widest">
               Kilimandscharo Besteigung
             </h1>
-            <p className="max-w-2xl mx-auto text-white/90 font-light text-sm md:text-xl tracking-widest leading-relaxed uppercase">
-              Finden Sie Ihre perfekte Route zum Uhuru Peak. Erleben Sie eine Expedition, die über den Wolken beginnt.
+            <p className="max-w-2xl mx-auto text-white/90 font-bold text-[9px] md:text-sm uppercase tracking-[0.4em] leading-relaxed">
+              Finden Sie Ihre perfekte Route zum Uhuru Peak. <br /> Erleben Sie eine Expedition, die über den Wolken beginnt.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* 02 INTRO NARRATIVE */}
+      {/* 02 INTRO NARRATIVE - EXPERT MANIFEST */}
       <section className="py-12 md:py-16 container mx-auto px-4 max-w-7xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-20 items-center">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            className="lg:col-span-7 space-y-8"
           >
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 text-primary font-bold text-[10px] uppercase tracking-[0.4em]">
@@ -124,8 +160,25 @@ export default function KilimanjaroPage() {
                 Der Kilimandscharo vereint atemberaubende Landschaften, eine echte körperliche Herausforderung und den Nervenkitzel, den höchsten Gipfel Afrikas zu erklimmen — ganz ohne technische Kletterkenntnisse.
               </p>
               <p>
-                Unsere spezialisierten Besteigungs-Protokolle führen Sie durch fünf verschiedene Klimazonen – von üppigen Regenwäldern bis hin zu den ewigen Gletschern am Kraterrand.
+                Unsere spezialisierten Besteigungs-Protokolle führen Sie durch fünf verschiedene Klimazonen – von üppigen Regenwäldern bis hin zu den ewigen Gletschern am Kraterrand. Wir in Berlin planen Ihre Sicherheit mit, während unsere lokalen Guides Ihren Erfolg garantieren.
               </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+              <div className="flex items-start gap-4 p-6 bg-white rounded-2xl border border-border shadow-sm group hover:border-primary transition-all">
+                <ShieldCheck className="w-6 h-6 text-primary shrink-0" />
+                <div className="space-y-1">
+                  <h4 className="font-bold text-xs text-secondary uppercase tracking-tight">Sicherheits-Fokus</h4>
+                  <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest leading-relaxed">Tägliche Gesundheitschecks & modernste Ausrüstung.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4 p-6 bg-white rounded-2xl border border-border shadow-sm group hover:border-primary transition-all">
+                <Users className="w-6 h-6 text-primary shrink-0" />
+                <div className="space-y-1">
+                  <h4 className="font-bold text-xs text-secondary uppercase tracking-tight">Profi-Guides</h4>
+                  <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest leading-relaxed">Staatlich geprüft mit über 100 Gipfelstürmen.</p>
+                </div>
+              </div>
             </div>
           </motion.div>
 
@@ -133,7 +186,7 @@ export default function KilimanjaroPage() {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="relative aspect-square md:aspect-[16/10] lg:aspect-square rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl group border border-border/50"
+            className="lg:col-span-5 relative aspect-square md:aspect-[16/10] lg:aspect-square rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl group border border-border/50"
           >
             <Image 
               src="https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=1000" 
@@ -146,7 +199,60 @@ export default function KilimanjaroPage() {
         </div>
       </section>
 
-      {/* 03 QUICK FACTS WITH STICKY BG */}
+      {/* 03 ROUTE NAVIGATOR REGISTRY */}
+      <section className="py-12 md:py-16 bg-[#f8f8f8] border-y border-border/40">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center mb-12 md:mb-16 space-y-4">
+            <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px]">Wählen Sie Ihren Pfad</span>
+            <h2 className="font-headline text-3xl md:text-5xl font-bold text-secondary uppercase tracking-tighter">Die legendären Routen</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            {routes.map((route, idx) => (
+              <motion.div 
+                key={idx}
+                whileHover={{ y: -5 }}
+                className="bg-white p-8 rounded-[2rem] border border-border shadow-sm flex flex-col justify-between group hover:shadow-xl transition-all duration-500"
+              >
+                <div className="space-y-6">
+                  <div className="flex justify-between items-start">
+                    <div className="space-y-1">
+                      <p className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">{route.name}</p>
+                      <h3 className="font-headline text-2xl font-bold text-secondary uppercase leading-none">{route.title}</h3>
+                    </div>
+                    <div className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center group-hover:bg-primary transition-colors">
+                      <Compass className="w-5 h-5 text-secondary group-hover:text-white" />
+                    </div>
+                  </div>
+                  
+                  <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide">
+                    {route.desc}
+                  </p>
+
+                  <div className="grid grid-cols-2 gap-4 pt-4 border-t border-border/50">
+                    <div className="space-y-1">
+                      <p className="text-[8px] font-black text-muted-foreground uppercase tracking-widest flex items-center gap-1.5"><Clock className="w-3 h-3" /> Dauer</p>
+                      <p className="text-xs font-bold text-secondary uppercase">{route.days}</p>
+                    </div>
+                    <div className="space-y-1">
+                      <p className="text-[8px] font-black text-muted-foreground uppercase tracking-widest flex items-center gap-1.5"><Zap className="w-3 h-3" /> Level</p>
+                      <p className="text-xs font-bold text-secondary uppercase">{route.level}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-8">
+                  <Button variant="outline" className="w-full rounded-xl h-11 text-[9px] font-bold uppercase tracking-widest group-hover:bg-secondary group-hover:text-white transition-all">
+                    Route Details <ArrowRight className="w-3.5 h-3.5 ml-2" />
+                  </Button>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 04 QUICK FACTS WITH STICKY BG */}
       <section className="relative py-12 md:py-16 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image 
@@ -183,7 +289,7 @@ export default function KilimanjaroPage() {
                 </div>
                 <div>
                   <p className="text-[10px] uppercase font-bold text-primary tracking-widest mb-1">{fact.label}</p>
-                  <p className="font-bold text-lg md:text-xl text-secondary tracking-tight uppercase">{fact.val}</p>
+                  <p className="font-bold text-lg md:text-xl text-secondary tracking-tight uppercase leading-none">{fact.val}</p>
                   <p className="text-[9px] text-muted-foreground uppercase font-bold tracking-widest mt-1">{fact.sub}</p>
                 </div>
               </motion.div>
@@ -192,7 +298,7 @@ export default function KilimanjaroPage() {
         </div>
       </section>
 
-      {/* 04 SHARED PACKAGE CATALOG */}
+      {/* 05 SHARED PACKAGE CATALOG */}
       <section className="py-12 md:py-16 container mx-auto px-4 max-w-7xl">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 gap-6">
           <div className="max-get-2xl">
@@ -215,7 +321,7 @@ export default function KilimanjaroPage() {
         )}
       </section>
 
-      {/* 05 SYNCED FAQ */}
+      {/* 06 SYNCED FAQ */}
       <section className="py-12 md:py-24 container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-12 md:mb-16 space-y-4">
           <h2 className="font-headline text-secondary tracking-wide uppercase text-2xl md:text-4xl">Häufig gestellte Fragen</h2>
