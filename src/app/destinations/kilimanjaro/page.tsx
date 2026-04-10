@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -20,7 +19,8 @@ import {
   ArrowRight,
   ChevronRight,
   Clock,
-  Heart
+  Heart,
+  Users
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -29,6 +29,7 @@ import { collection, query, where } from 'firebase/firestore';
 import { PackageCard } from '@/components/shared/PackageCard';
 import { ContactSection } from '@/components/shared/ContactSection';
 import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
 
 const routes = [
   { 
@@ -118,9 +119,9 @@ export default function KilimanjaroPage() {
           data-ai-hint="mount kilimanjaro"
         />
         {/* Visibility Overlay */}
-        <div className="absolute inset-0 bg-black/40 z-0" />
+        <div className="absolute inset-0 bg-black/40 z-10" />
         
-        <div className="container relative z-10 mx-auto px-4 text-center">
+        <div className="container relative z-20 mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -301,7 +302,7 @@ export default function KilimanjaroPage() {
       {/* 05 SHARED PACKAGE CATALOG */}
       <section className="py-12 md:py-16 container mx-auto px-4 max-w-7xl">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 gap-6">
-          <div className="max-get-2xl">
+          <div className="max-w-2xl">
             <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-2 block">Aktuelle Expeditionen</span>
             <h2 className="font-headline text-secondary leading-tight tracking-wide uppercase text-2xl md:text-4xl">Wählen Sie Ihre <span className="text-primary">Gipfeltour</span></h2>
           </div>
