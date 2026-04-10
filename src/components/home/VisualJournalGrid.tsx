@@ -35,10 +35,10 @@ export function VisualJournalGrid() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
             <div className="absolute bottom-10 left-10 right-10 space-y-3">
-              <h3 className="font-headline text-2xl md:text-4xl text-white uppercase leading-tight tracking-tighter">
+              <h3 className="font-headline text-2xl md:text-4xl text-white leading-tight tracking-wide">
                 Luxus inmitten der Wildnis
               </h3>
-              <p className="text-[10px] md:text-xs font-normal text-white/70 uppercase tracking-widest leading-relaxed max-w-md">
+              <p className="text-[14px] leading-[20px] font-normal text-white/70 tracking-normal max-w-md">
                 Exklusive Lodges, die höchsten Komfort mit authentischen Safari-Erlebnissen verbinden.
               </p>
             </div>
@@ -63,10 +63,10 @@ export function VisualJournalGrid() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
               <div className="absolute bottom-10 left-10 right-10 space-y-2">
-                <h3 className="font-headline text-xl md:text-3xl text-white uppercase leading-tight tracking-tighter">
+                <h3 className="font-headline text-xl md:text-3xl text-white leading-tight tracking-wide">
                   Paradiesische Strände
                 </h3>
-                <p className="text-[9px] md:text-[10px] font-normal text-white/70 uppercase tracking-widest">
+                <p className="text-[14px] leading-[20px] font-normal text-white/70 tracking-normal">
                   Entspannen Sie nach Ihrer Safari auf Sansibar.
                 </p>
               </div>
@@ -89,10 +89,10 @@ export function VisualJournalGrid() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
               <div className="absolute bottom-10 left-10 right-10 space-y-2">
-                <h3 className="font-headline text-xl md:text-3xl text-white uppercase leading-tight tracking-tighter">
+                <h3 className="font-headline text-xl md:text-3xl text-white leading-tight tracking-wide">
                   Wildlife hautnah
                 </h3>
-                <p className="text-[9px] md:text-[10px] font-normal text-white/70 uppercase tracking-widest">
+                <p className="text-[14px] leading-[20px] font-normal text-white/70 tracking-normal">
                   Begegnungen, die Sie nie vergessen werden.
                 </p>
               </div>
