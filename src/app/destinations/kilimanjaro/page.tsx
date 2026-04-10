@@ -129,22 +129,23 @@ export default function KilimanjaroPage() {
       </section>
 
       {/* 03 QUICK FACTS WITH STICKY BACKGROUND */}
-      <section className="relative py-12 md:py-16 bg-secondary text-white overflow-hidden">
-        {/* Sticky Background Protocol */}
+      <section className="relative py-12 md:py-16 overflow-hidden">
+        {/* Sticky Background Protocol - Focused on Image only */}
         <div className="absolute inset-0 z-0">
           <Image 
             src="https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1920" 
             alt="Kilimanjaro Facts Background" 
             fill 
-            className="object-cover opacity-20 grayscale brightness-50"
+            className="object-cover"
             data-ai-hint="mount kilimanjaro"
           />
-          <div className="absolute inset-0 bg-secondary/60 backdrop-blur-[2px]" />
+          {/* Transparent light overlay for technical readability against the image */}
+          <div className="absolute inset-0 bg-white/30 backdrop-blur-[1px]" />
         </div>
 
         <div className="container relative z-10 mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12 md:mb-16 space-y-4">
-            <h2 className="font-headline text-white tracking-wide">Kilimandscharo Quick Facts</h2>
+            <h2 className="font-headline text-secondary tracking-wide">Kilimandscharo Quick Facts</h2>
             <div className="w-20 h-1 bg-primary mx-auto rounded-full opacity-40" />
           </div>
           
@@ -159,15 +160,15 @@ export default function KilimanjaroPage() {
               <motion.div 
                 key={i} 
                 whileHover={{ y: -5 }}
-                className="p-6 md:p-8 rounded-[2rem] bg-white/5 backdrop-blur-xl border border-white/10 text-center space-y-4 transition-all group"
+                className="p-6 md:p-8 rounded-[2rem] bg-white shadow-xl border border-border/50 text-center space-y-4 transition-all group"
               >
-                <div className="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center mx-auto transition-transform duration-500 group-hover:scale-110 border border-primary/10">
+                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto transition-transform duration-500 group-hover:scale-110 border border-primary/10">
                   <fact.icon className="w-6 h-6 text-primary" />
                 </div>
                 <div>
                   <p className="text-[10px] uppercase font-bold text-primary tracking-widest mb-1">{fact.label}</p>
-                  <p className="font-bold text-lg md:text-xl text-white tracking-tight">{fact.val}</p>
-                  <p className="text-[9px] text-white/40 uppercase font-bold tracking-widest mt-1">{fact.sub}</p>
+                  <p className="font-bold text-lg md:text-xl text-secondary tracking-tight">{fact.val}</p>
+                  <p className="text-[9px] text-muted-foreground uppercase font-bold tracking-widest mt-1">{fact.sub}</p>
                 </div>
               </motion.div>
             ))}
