@@ -11,7 +11,8 @@ import {
   ArrowRight,
   BookOpen,
   Scale,
-  CheckCircle2
+  CheckCircle2,
+  Compass
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
@@ -43,8 +44,8 @@ const termsSections = [
 
 export default function AGBPage() {
   return (
-    <div className="bg-background min-h-screen font-normal">
-      {/* Compact Cinematic Hero */}
+    <div className="bg-[#fdfcfb] min-h-screen font-normal">
+      {/* 01 Cinematic Hero: Registry Header */}
       <section className="bg-secondary pt-32 pb-16 relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
@@ -57,24 +58,24 @@ export default function AGBPage() {
               Vertragsgrundlagen
             </span>
             <h1 className="text-white tracking-tighter leading-none">
-              Allgemeine Geschäftsbedingungen
+              AGB
             </h1>
             <div className="flex flex-wrap gap-4 pt-4">
               <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full backdrop-blur-md">
                 <Clock className="w-3.5 h-3.5 text-primary" />
-                <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest">Stand: Dezember 2022</span>
+                <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest">Stand: Dez 2022</span>
               </div>
               <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full backdrop-blur-md">
                 <ShieldCheck className="w-3.5 h-3.5 text-primary" />
-                <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest">Rechtlich Geprüft</span>
+                <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest">Geprüft</span>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
 
+      {/* 02 Policy Registry: Natural Architecture */}
       <div className="container mx-auto px-4 max-w-5xl py-12 md:py-16">
-        {/* Intro Message Card */}
         <Card className="bg-white rounded-[2rem] md:rounded-[3rem] border-none shadow-sm mb-12 overflow-hidden border border-border/40">
           <CardContent className="p-8 md:p-16 space-y-8">
             <div className="flex items-start gap-6">
@@ -82,14 +83,14 @@ export default function AGBPage() {
                 <HelpCircle className="w-6 h-6 text-primary" />
               </div>
               <div className="space-y-4">
-                <h2 className="text-secondary uppercase tracking-tight leading-none text-2xl md:text-3xl">Wichtige Informationen</h2>
+                <h2 className="text-secondary tracking-tight leading-none text-2xl md:text-4xl">Wichtige Informationen</h2>
                 <p className="text-muted-foreground font-normal text-[14px] leading-[20px] uppercase tracking-widest opacity-80">
                   Vor Abschluss Ihres Pauschalreisevertrages unterrichten wir Sie hiermit über die wesentlichen Details Ihrer Reise sowie Ihre Rechte nach der EU-Richtlinie 2015/2302. Die folgenden Bestimmungen werden Inhalt Ihres Vertrages mit der Tansania Reiseabenteuer SDL GmbH.
                 </p>
               </div>
             </div>
             
-            <div className="p-6 bg-muted/20 rounded-[1.5rem] border border-border/50 flex gap-4 items-start">
+            <div className="p-6 bg-[#FDF7F2] rounded-[1.5rem] border border-[#F0EBE0] flex gap-4 items-start">
               <Info className="w-5 h-5 text-primary shrink-0 mt-1" />
               <p className="text-[10px] font-bold text-secondary uppercase tracking-widest leading-relaxed">
                 Wir empfehlen dringend den Abschluss einer Reiserücktrittskosten- und Reisekrankenversicherung. Wir beraten Sie hierzu gerne persönlich.
@@ -98,8 +99,7 @@ export default function AGBPage() {
           </CardContent>
         </Card>
 
-        {/* Detailed Clauses Registry */}
-        <main className="space-y-12">
+        <main className="space-y-12 pb-16">
           {termsSections.map((section) => (
             <section key={section.id} className="space-y-6">
               <div className="flex items-center gap-4">
@@ -109,35 +109,36 @@ export default function AGBPage() {
                 <h3 className="text-secondary uppercase tracking-tight leading-none text-xl md:text-2xl">{section.title}</h3>
               </div>
               <div className="bg-white rounded-[1.5rem] md:rounded-[2rem] border border-border/40 p-8 md:p-10 shadow-sm">
-                <p className="text-muted-foreground font-normal text-[14px] leading-[22px] uppercase tracking-widest opacity-80">
+                <p className="text-muted-foreground font-normal text-[14px] leading-[22px] uppercase tracking-widest opacity-80 text-justify">
                   {section.content}
                 </p>
               </div>
             </section>
           ))}
 
-          {/* Insolvency Protection High-Density Box */}
           <section className="pt-8">
-            <Card className="bg-secondary text-white p-8 md:p-16 rounded-[2.5rem] md:rounded-[3.5rem] space-y-8 relative overflow-hidden border-none shadow-2xl">
-              <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+            <Card className="bg-white p-8 md:p-16 rounded-[2.5rem] md:rounded-[3.5rem] space-y-8 relative overflow-hidden border border-border/40 shadow-sm group">
+              <div className="absolute top-0 right-0 p-16 opacity-[0.02] pointer-events-none group-hover:scale-110 transition-transform duration-1000">
+                <ShieldCheck className="w-64 h-64 text-secondary" />
+              </div>
               <div className="relative z-10 space-y-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-primary/20 border border-primary/20 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center">
                     <ShieldCheck className="w-7 h-7 text-primary" />
                   </div>
-                  <h3 className="text-white uppercase leading-none tracking-tight text-2xl md:text-3xl">Insolvenzabsicherung</h3>
+                  <h3 className="text-secondary tracking-tight text-2xl md:text-4xl">Insolvenzabsicherung</h3>
                 </div>
-                <p className="text-white/60 text-[11px] md:text-sm font-bold uppercase tracking-widest leading-relaxed max-w-3xl">
+                <p className="text-muted-foreground text-[11px] md:text-sm font-bold uppercase tracking-widest leading-relaxed max-w-3xl">
                   Tansania Reiseabenteuer SDL GmbH ist durch den Deutschen Reisesicherungsfonds (DRSF) abgesichert. Gemeinsam mit Ihrer Reisebestätigung erhalten Sie den gesetzlich vorgeschriebenen Sicherungsschein, der Ihre Zahlungen zu 100% garantiert.
                 </p>
-                <div className="pt-6 border-t border-white/10 flex flex-col md:flex-row gap-8">
+                <div className="pt-6 border-t border-border/40 flex flex-col md:flex-row gap-8">
                   <div className="space-y-1">
                     <p className="text-[8px] font-bold text-primary uppercase tracking-[0.3em]">Registry Status</p>
-                    <p className="text-[10px] font-black uppercase">Aktiv & Zertifiziert 2026</p>
+                    <p className="text-[10px] font-black uppercase text-secondary">Aktiv & Zertifiziert 2026</p>
                   </div>
                   <div className="space-y-1">
                     <p className="text-[8px] font-bold text-primary uppercase tracking-[0.3em]">Versicherungstyp</p>
-                    <p className="text-[10px] font-black uppercase">Pauschalreiseschutz § 651r BGB</p>
+                    <p className="text-[10px] font-black uppercase text-secondary">Pauschalreiseschutz § 651r BGB</p>
                   </div>
                 </div>
               </div>
@@ -145,13 +146,12 @@ export default function AGBPage() {
           </section>
         </main>
 
-        {/* Corporate Sign-off */}
         <section className="pt-16 mt-20 border-t border-border/40 text-center space-y-8">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-3xl bg-white border border-border shadow-xl mb-4">
             <BookOpen className="w-8 h-8 text-primary" />
           </div>
           <div className="space-y-2">
-            <h3 className="text-secondary uppercase tracking-tight leading-none text-xl">Tansania Reiseabenteuer SDL GmbH</h3>
+            <h3 className="text-secondary uppercase tracking-tight leading-none text-xl md:text-2xl">Tansania Reiseabenteuer SDL GmbH</h3>
             <p className="text-muted-foreground text-[10px] font-bold uppercase tracking-widest leading-relaxed max-w-md mx-auto opacity-60">
               Amtsgericht Oranienburg, HRB NR. 12250 NP<br />
               Geschäftsführer: Samson Kyashama<br />

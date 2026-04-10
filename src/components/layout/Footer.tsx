@@ -114,7 +114,7 @@ export function Footer() {
         {/* Footer Bottom */}
         <div className="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="font-sans text-[12px] font-normal text-[#FDFCFB]/40">
-            © {new Date().getFullYear()} Tansania Reiseabenteuer SDL GmbH. Alle Rechte vorbehalten.
+            © 2026 Tansania Reiseabenteuer SDL GmbH. Alle Rechte vorbehalten.
           </p>
           <div className="flex items-center gap-6">
             <span className="font-headline text-[12px] font-normal text-[#FDFCFB]/40 tracking-widest">Est. 2014</span>

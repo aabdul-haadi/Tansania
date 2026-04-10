@@ -12,7 +12,6 @@ import {
   ArrowRight,
   Info,
   ExternalLink,
-  ChevronRight,
   Compass
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -20,8 +19,8 @@ import { Card, CardContent } from '@/components/ui/card';
 
 export default function ImpressumPage() {
   return (
-    <div className="bg-background min-h-screen font-normal">
-      {/* Compact Cinematic Hero */}
+    <div className="bg-[#fdfcfb] min-h-screen font-normal">
+      {/* 01 Cinematic Hero: Registry Entry */}
       <section className="bg-secondary pt-32 pb-16 relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
@@ -43,6 +42,7 @@ export default function ImpressumPage() {
         </div>
       </section>
 
+      {/* 02 Content Registry: Natural Theme */}
       <div className="container mx-auto px-4 max-w-7xl py-12 md:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
           
@@ -53,10 +53,10 @@ export default function ImpressumPage() {
                 {/* Corporate Data */}
                 <div className="space-y-8">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-[#FDF7F2] border border-[#F0EBE0] flex items-center justify-center">
                       <Scale className="w-6 h-6 text-primary" />
                     </div>
-                    <h2 className="text-secondary uppercase tracking-tight leading-none text-2xl md:text-3xl">Unternehmensangaben</h2>
+                    <h2 className="text-secondary tracking-tight leading-none text-2xl md:text-4xl">Unternehmensangaben</h2>
                   </div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -85,10 +85,10 @@ export default function ImpressumPage() {
                 {/* Contact Registry */}
                 <div className="space-y-8">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-[#FDF7F2] border border-[#F0EBE0] flex items-center justify-center">
                       <Phone className="w-6 h-6 text-primary" />
                     </div>
-                    <h2 className="text-secondary uppercase tracking-tight leading-none text-2xl md:text-3xl">Direktkontakt</h2>
+                    <h2 className="text-secondary tracking-tight leading-none text-2xl md:text-4xl">Direktkontakt</h2>
                   </div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -112,10 +112,10 @@ export default function ImpressumPage() {
                 {/* Registration Info */}
                 <div className="space-y-8">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-[#FDF7F2] border border-[#F0EBE0] flex items-center justify-center">
                       <FileText className="w-6 h-6 text-primary" />
                     </div>
-                    <h2 className="text-secondary uppercase tracking-tight leading-none text-2xl md:text-3xl">Register & Steuern</h2>
+                    <h2 className="text-secondary tracking-tight leading-none text-2xl md:text-4xl">Register & Steuern</h2>
                   </div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -142,10 +142,10 @@ export default function ImpressumPage() {
             <Card className="border-none shadow-sm rounded-[2rem] md:rounded-[2.5rem] bg-white border border-border/40 overflow-hidden">
               <CardContent className="p-8 md:p-12 space-y-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-xl bg-[#FDF7F2] border border-[#F0EBE0] flex items-center justify-center">
                     <Info className="w-5 h-5 text-primary" />
                   </div>
-                  <h3 className="text-secondary uppercase tracking-tight leading-none text-xl">Online-Streitbeilegung</h3>
+                  <h3 className="text-secondary tracking-tight leading-none text-xl md:text-2xl">Online-Streitbeilegung</h3>
                 </div>
                 <div className="space-y-6">
                   <p className="text-muted-foreground font-normal text-[14px] leading-[20px] uppercase tracking-widest opacity-80">
@@ -165,23 +165,25 @@ export default function ImpressumPage() {
             </Card>
           </main>
 
-          {/* Sidebar Protocol */}
+          {/* Sidebar Architecture */}
           <aside className="lg:col-span-4 space-y-8">
             <div className="sticky top-24 space-y-8">
-              <Card className="bg-secondary text-white p-10 rounded-[2.5rem] md:rounded-[3rem] shadow-2xl relative overflow-hidden border-none">
-                <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+              <Card className="bg-white p-10 rounded-[2.5rem] md:rounded-[3rem] shadow-sm border border-border/40 relative overflow-hidden group">
+                <div className="absolute top-0 right-0 p-10 opacity-[0.03] pointer-events-none group-hover:scale-110 transition-transform duration-1000">
+                  <Compass className="w-48 h-48 text-secondary" />
+                </div>
                 <div className="relative z-10 space-y-8">
-                  <div className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center shadow-xl">
-                    <Compass className="w-7 h-7 text-white" />
+                  <div className="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center shadow-inner">
+                    <Compass className="w-7 h-7 text-primary" />
                   </div>
                   <div className="space-y-4">
-                    <h3 className="text-white uppercase leading-none tracking-tighter text-2xl md:text-3xl">Ihre Reise <br /><span className="text-primary font-bold">nach Maß</span></h3>
-                    <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest leading-relaxed">
+                    <h3 className="text-secondary leading-none tracking-tighter text-2xl md:text-3xl">Ihre Reise <br /><span className="text-primary font-bold">nach Maß</span></h3>
+                    <p className="text-muted-foreground text-[10px] font-bold uppercase tracking-widest leading-relaxed">
                       Lassen Sie sich von unseren Experten in Berlin persönlich zu Ihrem Afrika-Abenteuer beraten.
                     </p>
                   </div>
                   <Link href="/trip-planner" className="block">
-                    <Button className="w-full h-12 md:h-14 rounded-xl font-bold uppercase tracking-widest text-[9px] bg-primary text-white border-none shadow-xl transition-all group">
+                    <Button className="w-full h-12 md:h-14 rounded-xl font-bold uppercase tracking-widest text-[9px] bg-secondary text-white border-none shadow-xl transition-all group">
                       ANFRAGE STARTEN <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </Link>
