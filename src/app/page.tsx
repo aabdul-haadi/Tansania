@@ -72,13 +72,6 @@ export default function Home() {
               <p className="max-w-2xl text-white font-light text-sm sm:text-base md:text-lg lg:text-[24px] lg:leading-[39px] tracking-normal leading-relaxed">
                 Erleben Sie exklusive Safaris, handverlesene Lodges und unvergessliche Momente. Persönlich geplant, individuell gestaltet.
               </p>
-
-              {/* Technical Registry Small Footer */}
-              <div className="pt-4 border-t border-white/20">
-                <p className="text-[8px] sm:text-[9px] md:text-[11px] font-bold text-white/80 tracking-[0.2em] leading-relaxed">
-                  Über 15 Jahre Expertise · Deutschsprachige Betreuung · Premium-Reisen ab €5.000
-                </p>
-              </div>
             </motion.div>
 
             {/* Interaction Protocol Triggers */}
