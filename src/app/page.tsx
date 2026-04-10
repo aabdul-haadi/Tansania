@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -17,6 +18,9 @@ import { FAQ } from '@/components/home/FAQ';
 import { FinalCTA } from '@/components/home/FinalCTA';
 import { TrustStrip } from '@/components/home/TrustStrip';
 import { MagazinInspiration } from '@/components/home/MagazinInspiration';
+import { SafariMap } from '@/components/sections/SafariMap';
+import { AiCTA } from '@/components/sections/AiCTA';
+import { SunriseCTA } from '@/components/sections/SunriseCTA';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 
@@ -106,13 +110,16 @@ export default function Home() {
         <FeaturedPackages />
         <WhyUs />
         <ProcessSection />
+        <SafariMap />
         <CinematicQuote />
         <TanzaniaDestinations />
         <VisualJournalGrid />
+        <AiCTA />
         <Testimonials />
         <ContactSection />
         <FAQ />
         <MagazinInspiration />
+        <SunriseCTA />
         <FinalCTA />
       </div>
     </div>
