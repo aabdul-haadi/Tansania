@@ -58,12 +58,20 @@ export default function KilimanjaroPage() {
     {
       question: "Sprechen die Guides vor Ort Deutsch?",
       answer: "Wir verfügen über einen Pool an exzellenten, staatlich geprüften Guides, die fließend Deutsch sprechen. Bitte geben Sie uns bei der Planung Bescheid, damit wir Ihren Wunschguide frühzeitig reservieren können."
+    },
+    {
+      question: "Welche Reisezeit ist die beste für eine Safari?",
+      answer: "Tansania ist ein Ganzjahresziel. Die Trockenzeiten von Juni bis Oktober sind ideal für Tierbeobachtungen, während die Monate Januar bis März perfekt für die Kalbungszeit im Süden der Serengeti sind."
+    },
+    {
+      question: "Sind die Reisen auch für Familien mit Kindern geeignet?",
+      answer: "Absolut. Wir planen spezielle Familiensafaris mit kürzeren Fahrtzeiten und familienfreundlichen Lodges, die über Pools und spezielle Aktivitäten für Kinder verfügen."
     }
   ];
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen">
-      {/* 01 STREAMLINED HERO */}
+      {/* 01 STREAMLINED HERO - COMPACTED SINGLE LINE PROTOCOL */}
       <section className="relative h-[65vh] md:h-[85vh] flex items-center justify-center overflow-hidden bg-secondary">
         <Image 
           src="https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1920" 
@@ -185,7 +193,7 @@ export default function KilimanjaroPage() {
       {/* 04 SHARED PACKAGE CATALOG */}
       <section className="py-12 md:py-16 container mx-auto px-4 max-w-7xl">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 gap-6">
-          <div className="max-w-2xl">
+          <div className="max-get-2xl">
             <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-2 block">Aktuelle Expeditionen</span>
             <h2 className="font-headline text-secondary leading-tight tracking-wide uppercase text-2xl md:text-4xl">Wählen Sie Ihre <span className="text-primary">Gipfeltour</span></h2>
           </div>
