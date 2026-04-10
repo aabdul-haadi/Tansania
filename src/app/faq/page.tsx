@@ -14,29 +14,46 @@ import {
 } from "@/components/ui/accordion";
 import { Input } from '@/components/ui/input';
 
-const faqCategories = [
+const faqs = [
   {
-    title: "Reisevorbereitung für Tansania",
-    questions: [
-      { q: "Wie reise ich am besten nach Tansania?", a: "Die bequemste Anreise erfolgt per Direktflug über Drehkreuze wie Frankfurt, Amsterdam oder Doha nach Dar es Salaam, Kilimanjaro oder Sansibar. Tickets können Sie online über Fluggesellschaften oder bei uns als Teil Ihres Reisepakets buchen." },
-      { q: "Brauche ich ein Visum für Tansania?", a: "Ja, ein Visum ist für die Einreise erforderlich. Beantragen Sie ein eVisa über die offizielle Website oder nutzen Sie das Visa-on-Arrival." },
-      { q: "Welche Impfungen sind notwendig?", a: "Keine Impfungen sind verpflichtend, außer Gelbfieber bei Einreise aus einem Risikogebiet. Wir empfehlen eine Beratung durch einen Tropenmediziner." }
-    ]
+    question: "Wie läuft der Planungsprozess ab?",
+    answer: "Unser Prozess beginnt mit einem persönlichen Gespräch, in dem wir Ihre Wünsche aufnehmen. Daraufhin erstellen wir einen individuellen Erstentwurf, den wir gemeinsam mit Ihnen so lange verfeinern, bis er perfekt zu Ihren Vorstellungen passt."
   },
   {
-    title: "Safari-Abenteuer",
-    questions: [
-      { q: "Wie kann ich eine Safari buchen?", a: "Buchen Sie direkt auf unserer Website oder lassen Sie sich ein individuelles Angebot von unseren Experten erstellen." },
-      { q: "Wann ist die beste Safari-Zeit?", a: "Die Trockenzeiten von Juni bis Oktober und Dezember bis Februar sind ideal für spektakuläre Tierbeobachtungen." }
-    ]
+    question: "Kann ich online buchen und bezahlen?",
+    answer: "Ja, nach der Finalisierung Ihres Reiseplans erhalten Sie Zugang zu unserem sicheren Buchungsportal. Wir bieten verschiedene gesicherte Zahlungsmethoden an, die alle durch den Deutschen Reisesicherungsfonds abgesichert sind."
+  },
+  {
+    question: "Wie individuell können Sie meine Reise gestalten?",
+    answer: "Da wir uns auf private Safaris spezialisiert haben, sind wir zu 100% flexibel. Von der Wahl der Lodges über die tägliche Route bis hin zu speziellen kulinarischen Wünschen gestalten wir jedes Detail nach Ihren Vorgaben."
+  },
+  {
+    question: "Wie schnell erhalte ich eine Antwort auf meine Anfrage?",
+    answer: "In der Regel erhalten Sie innerhalb von 24 Stunden eine erste Rückmeldung von unseren Spezialisten in Berlin. Ein detailliertes Angebot liegt Ihnen meist nach 48 Stunden vor."
+  },
+  {
+    question: "Was kostet eine Safari-Reise nach Tansania?",
+    answer: "Die Kosten hängen stark von der Reisezeit und dem gewünschten Komfortlevel ab. Als Richtwert für eine hochwertige, private Safari inkl. Lodges sollten Sie mit einem Budget ab ca. 5.000 € pro Person planen."
+  },
+  {
+    question: "Sprechen die Guides vor Ort Deutsch?",
+    answer: "Wir verfügen über einen Pool an exzellenten, staatlich geprüften Guides, die fließend Deutsch sprechen. Bitte geben Sie uns bei der Planung Bescheid, damit wir Ihren Wunschguide frühzeitig reservieren können."
+  },
+  {
+    question: "Welche Reisezeit ist die beste für eine Safari?",
+    answer: "Tansania ist ein Ganzjahresziel. Die Trockenzeiten von Juni bis Oktober sind ideal für Tierbeobachtungen, während die Monate Januar bis März perfekt für die Kalbungszeit im Süden der Serengeti sind."
+  },
+  {
+    question: "Sind die Reisen auch für Familien mit Kindern geeignet?",
+    answer: "Absolut. Wir planen spezielle Familiensafaris mit kürzeren Fahrtzeiten und familienfreundlichen Lodges, die über Pools und spezielle Aktivitäten für Kinder verfügen."
   }
 ];
 
 export default function FAQPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen">
-      {/* Top Header Section - Dark Background to work with transparent navbar */}
-      <section className="bg-[#0a0a0a] pt-32 pb-24 text-center border-none">
+      {/* Top Header Section */}
+      <section className="bg-secondary pt-32 pb-24 text-center border-none">
         <div className="container mx-auto px-4 max-w-5xl">
           <motion.span 
             initial={{ opacity: 0, y: 10 }}
@@ -49,7 +66,7 @@ export default function FAQPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="font-headline text-4xl md:text-7xl font-normal mb-6 leading-tight text-white tracking-tighter"
+            className="font-headline text-4xl md:text-7xl font-normal mb-6 leading-tight text-white tracking-tighter uppercase"
           >
             Fragen & <span className="text-primary">Antworten</span>
           </motion.h1>
@@ -57,7 +74,7 @@ export default function FAQPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-white/60 text-lg font-light max-w-2xl mx-auto"
+            className="text-white/60 text-lg font-light max-w-2xl mx-auto uppercase tracking-widest"
           >
             Alles, was Sie wissen müssen, bevor Sie in Ihr persönliches Abenteuer Afrika starten.
           </motion.p>
@@ -70,37 +87,30 @@ export default function FAQPage() {
           <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground transition-colors group-focus-within:text-primary" />
           <Input 
             placeholder="Suchen Sie nach einem Thema..." 
-            className="h-16 pl-16 pr-8 rounded-2xl border-none shadow-2xl bg-white focus:ring-2 focus:ring-primary/20 text-lg font-normal"
+            className="h-16 pl-16 pr-8 rounded-2xl border-none shadow-2xl bg-white focus:ring-2 focus:ring-primary/20 text-lg font-normal uppercase"
           />
         </div>
 
         {/* FAQ Content */}
         <div className="space-y-16">
-          {faqCategories.map((category, catIdx) => (
-            <section key={catIdx} className="space-y-8">
-              <div className="flex items-center gap-4">
-                <h2 className="font-headline text-2xl md:text-3xl font-normal text-secondary tracking-tight">{category.title}</h2>
-                <div className="h-px flex-grow bg-muted" />
-              </div>
-              
-              <Accordion type="single" collapsible className="space-y-4">
-                {category.questions.map((faq, qIdx) => (
-                  <AccordionItem 
-                    key={qIdx} 
-                    value={`cat-${catIdx}-q-${qIdx}`}
-                    className="border-none bg-white rounded-2xl px-6 md:px-10 shadow-sm hover:shadow-md transition-all group"
-                  >
-                    <AccordionTrigger className="text-left font-normal text-base md:text-lg py-6 hover:no-underline hover:text-primary transition-colors tracking-tight">
-                      {faq.q}
-                    </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground text-[14px] leading-[20px] font-normal pb-8 pr-4">
-                      {faq.a}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </section>
-          ))}
+          <section className="space-y-8">
+            <Accordion type="single" collapsible className="space-y-4">
+              {faqs.map((faq, idx) => (
+                <AccordionItem 
+                  key={idx} 
+                  value={`q-${idx}`}
+                  className="border-none bg-white rounded-2xl px-6 md:px-10 shadow-sm hover:shadow-md transition-all group"
+                >
+                  <AccordionTrigger className="text-left font-normal text-base md:text-lg py-6 hover:no-underline hover:text-primary transition-colors tracking-tight uppercase">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground text-[14px] leading-[20px] font-normal pb-8 pr-4 uppercase tracking-widest">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </section>
         </div>
       </div>
     </div>

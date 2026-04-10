@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -18,7 +17,6 @@ import { FAQ } from '@/components/home/FAQ';
 import { FinalCTA } from '@/components/home/FinalCTA';
 import { TrustStrip } from '@/components/home/TrustStrip';
 import { MagazinInspiration } from '@/components/home/MagazinInspiration';
-import { SafariMap } from '@/components/sections/SafariMap';
 import { AiCTA } from '@/components/sections/AiCTA';
 import { SunriseCTA } from '@/components/sections/SunriseCTA';
 import Image from 'next/image';
@@ -42,9 +40,8 @@ export default function Home() {
         </Link>
       </div>
 
-      {/* HERO SECTION - RECALIBRATED: High Gap pt-32/40 & Compacted Mobile Scales */}
+      {/* HERO SECTION */}
       <section className="relative min-h-[85vh] md:h-screen flex items-center overflow-hidden bg-secondary">
-        {/* Background Visual Asset */}
         <div className="absolute inset-0 z-0">
           <Image 
             src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
@@ -57,7 +54,6 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent" />
         </div>
 
-        {/* Main Content Container - pt-32/40 clears the navbar registry */}
         <div className="container relative z-20 mx-auto px-6 md:px-10 max-w-7xl h-full flex flex-col justify-center pt-32 md:pt-40">
           <div className="max-w-4xl space-y-6 md:space-y-10">
             <motion.div 
@@ -66,19 +62,16 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="space-y-6 md:space-y-8"
             >
-              {/* Main Architectural Headline - Compacted scaling for phone */}
               <h1 className="font-headline font-normal text-white text-2xl sm:text-4xl md:text-6xl lg:text-[72px] lg:leading-[90px] tracking-normal leading-tight">
                 Ihre maßgeschneiderte <br />
                 Luxusreise durch Tansania
               </h1>
 
-              {/* Narrative Description - Compacted scaling for phone */}
               <p className="max-w-2xl text-white font-light text-sm sm:text-base md:text-lg lg:text-[24px] lg:leading-[39px] tracking-normal leading-relaxed">
                 Erleben Sie exklusive Safaris, handverlesene Lodges und unvergessliche Momente. Persönlich geplant, individuell gestaltet.
               </p>
             </motion.div>
 
-            {/* Interaction Protocol Triggers */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }} 
               animate={{ opacity: 1, y: 0 }} 
@@ -99,7 +92,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Global Registry Noise Texture */}
         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none" />
       </section>
 
@@ -110,7 +102,6 @@ export default function Home() {
         <FeaturedPackages />
         <WhyUs />
         <ProcessSection />
-        <SafariMap />
         <CinematicQuote />
         <TanzaniaDestinations />
         <VisualJournalGrid />

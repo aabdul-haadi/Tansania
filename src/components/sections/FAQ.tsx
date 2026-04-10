@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import React from 'react';
 import { motion } from 'framer-motion';
@@ -11,27 +11,35 @@ import {
 
 const faqs = [
   {
-    question: "Warum bei einer Berliner Agentur buchen?",
-    answer: "Lokale Expertise gepaart mit deutscher Sicherheit. Wir bieten persönliche Beratung in Berlin."
+    question: "Wie läuft der Planungsprozess ab?",
+    answer: "Unser Prozess beginnt mit einem persönlichen Gespräch, in dem wir Ihre Wünsche aufnehmen. Daraufhin erstellen wir einen individuellen Erstentwurf, den wir gemeinsam mit Ihnen so lange verfeinern, bis er perfekt zu Ihren Vorstellungen passt."
   },
   {
-    question: "Wann findet die Große Tierwanderung statt?",
-    answer: "Das ganze Jahr über. Von Juli bis Oktober für die Flussüberquerungen."
+    question: "Kann ich online buchen und bezahlen?",
+    answer: "Ja, nach der Finalisierung Ihres Reiseplans erhalten Sie Zugang zu unserem sicheren Buchungsportal. Wir bieten verschiedene gesicherte Zahlungsmethoden an, die alle durch den Deutschen Reisesicherungsfonds abgesichert sind."
   },
   {
-    question: "Kann ich Safari mit Strandurlaub kombinieren?",
-    answer: "Absolut. Unsere 'Bush & Beach' Pakete verbinden Serengeti und Sansibar."
+    question: "Wie individuell können Sie meine Reise gestalten?",
+    answer: "Da wir uns auf private Safaris spezialisiert haben, sind wir zu 100% flexibel. Von der Wahl der Lodges über die tägliche Route bis hin zu speziellen kulinarischen Wünschen gestalten wir jedes Detail nach Ihren Vorgaben."
   },
   {
-    question: "Sind die Touren privat oder in Gruppen?",
-    answer: "Wir spezialisieren uns auf private, maßgeschneiderte Expeditionen."
+    question: "Wie schnell erhalte ich eine Antwort auf meine Anfrage?",
+    answer: "In der Regel erhalten Sie innerhalb von 24 Stunden eine erste Rückmeldung von unseren Spezialisten in Berlin. Ein detailliertes Angebot liegt Ihnen meist nach 48 Stunden vor."
+  },
+  {
+    question: "Was kostet eine Safari-Reise nach Tansania?",
+    answer: "Die Kosten hängen stark von der Reisezeit und dem gewünschten Komfortlevel ab. Als Richtwert für eine hochwertige, private Safari inkl. Lodges sollten Sie mit einem Budget ab ca. 5.000 € pro Person planen."
+  },
+  {
+    question: "Sprechen die Guides vor Ort Deutsch?",
+    answer: "Wir verfügen über einen Pool an exzellenten, staatlich geprüften Guides, die fließend Deutsch sprechen. Bitte geben Sie uns bei der Planung Bescheid, damit wir Ihren Wunschguide frühzeitig reservieren können."
   }
 ];
 
 export function FAQ() {
   return (
     <section className="py-10 md:py-16 bg-muted/30">
-      <div className="container mx-auto px-4 max-w-xl">
+      <div className="container mx-auto px-4 max-w-2xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
