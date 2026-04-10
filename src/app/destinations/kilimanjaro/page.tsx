@@ -45,12 +45,12 @@ export default function KilimanjaroPage() {
 
   // Filter for climbing specific packages
   const kiliPackages = packages?.filter(p => 
-    ['KILIMANDSCHARO KOMBI', 'KILIMANDSCHARO', 'MOUNT MERU', 'Expedition'].includes(p.category?.toUpperCase())
+    ['KILIMANDSCHARO KOMBI', 'KILIMANDSCHARO', 'MOUNT MERU', 'EXPEDITION'].includes(p.category?.toUpperCase())
   ) || [];
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen">
-      {/* 01 IMMERSIVE HERO: The Roof of Africa */}
+      {/* 01 IMMERSIVE HERO */}
       <section className="relative h-[65vh] md:h-[85vh] flex items-center justify-center overflow-hidden bg-secondary">
         <Image 
           src="https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1920" 
@@ -96,7 +96,7 @@ export default function KilimanjaroPage() {
               <div className="inline-flex items-center gap-2 text-primary font-bold text-[10px] uppercase tracking-[0.4em]">
                 <Mountain className="w-4 h-4" /> Expeditions-Registry
               </div>
-              <h2 className="font-headline text-secondary">
+              <h2 className="font-headline text-secondary tracking-wide">
                 Was macht den Berg <br /><span className="text-primary">so legendär?</span>
               </h2>
             </div>
@@ -128,16 +128,27 @@ export default function KilimanjaroPage() {
         </div>
       </section>
 
-      {/* 03 QUICK FACTS REGISTRY */}
-      <section className="py-12 md:py-16 bg-secondary text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-        <div className="container mx-auto px-4 max-w-7xl relative z-10">
+      {/* 03 QUICK FACTS WITH STICKY BACKGROUND */}
+      <section className="relative py-12 md:py-16 bg-secondary text-white overflow-hidden">
+        {/* Sticky Background Protocol */}
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1920" 
+            alt="Kilimanjaro Facts Background" 
+            fill 
+            className="object-cover opacity-20 grayscale brightness-50"
+            data-ai-hint="mount kilimanjaro"
+          />
+          <div className="absolute inset-0 bg-secondary/60 backdrop-blur-[2px]" />
+        </div>
+
+        <div className="container relative z-10 mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12 md:mb-16 space-y-4">
-            <h2 className="font-headline text-white">Kilimandscharo Quick Facts</h2>
+            <h2 className="font-headline text-white tracking-wide">Kilimandscharo Quick Facts</h2>
             <div className="w-20 h-1 bg-primary mx-auto rounded-full opacity-40" />
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-12">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-8">
             {[
               { icon: TrendingUp, label: "Höhe", val: "5.895 Meter", sub: "Uhuru Peak" },
               { icon: Map, label: "Routen", val: "7 Pfade", sub: "Offiziell" },
@@ -145,16 +156,20 @@ export default function KilimanjaroPage() {
               { icon: Wind, label: "Klimazonen", val: "5 Zonen", sub: "Vielfalt" },
               { icon: Award, label: "Erfolg", val: "90%", sub: "Mit SDL-Profi" }
             ].map((fact, i) => (
-              <div key={i} className="space-y-4 text-center group">
+              <motion.div 
+                key={i} 
+                whileHover={{ y: -5 }}
+                className="p-6 md:p-8 rounded-[2rem] bg-white/5 backdrop-blur-xl border border-white/10 text-center space-y-4 transition-all group"
+              >
                 <div className="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center mx-auto transition-transform duration-500 group-hover:scale-110 border border-primary/10">
                   <fact.icon className="w-6 h-6 text-primary" />
                 </div>
                 <div>
                   <p className="text-[10px] uppercase font-bold text-primary tracking-widest mb-1">{fact.label}</p>
-                  <p className="font-bold text-xl text-white tracking-tight">{fact.val}</p>
+                  <p className="font-bold text-lg md:text-xl text-white tracking-tight">{fact.val}</p>
                   <p className="text-[9px] text-white/40 uppercase font-bold tracking-widest mt-1">{fact.sub}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -165,7 +180,7 @@ export default function KilimanjaroPage() {
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 gap-6">
           <div className="max-w-2xl">
             <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mb-2 block">Aktuelle Expeditionen</span>
-            <h2 className="font-headline text-secondary leading-tight">Wählen Sie Ihre <br /><span className="text-primary">Gipfeltour</span></h2>
+            <h2 className="font-headline text-secondary leading-tight tracking-wide">Wählen Sie Ihre <br /><span className="text-primary">Gipfeltour</span></h2>
           </div>
           <p className="text-[14px] leading-[20px] text-muted-foreground font-normal max-w-[240px] border-l-2 border-primary/20 pl-6 hidden md:block">
             Ob klassisch oder spektakulär – hier beginnt Ihr Weg zum Dach Afrikas.
@@ -190,7 +205,7 @@ export default function KilimanjaroPage() {
       <section className="py-12 md:py-16 bg-[#FDF7F2] border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12 md:mb-20 space-y-4">
-            <h2 className="font-headline text-secondary">Welche Route passt zu Ihnen?</h2>
+            <h2 className="font-headline text-secondary tracking-wide">Welche Route passt zu Ihnen?</h2>
             <p className="text-muted-foreground uppercase tracking-widest font-bold text-[10px]">Strategische Auswahl für maximalen Erfolg</p>
           </div>
 
@@ -214,9 +229,9 @@ export default function KilimanjaroPage() {
       </section>
 
       {/* 06 EXPEDITION FAQ */}
-      <section className="py-12 md:py-24 container mx-auto px-4 max-w-4xl">
+      <section className="py-12 md:py-24 container mx-auto px-4 max-get-4xl">
         <div className="text-center mb-12 md:mb-16 space-y-4">
-          <h2 className="font-headline text-secondary">Häufig gestellte Fragen</h2>
+          <h2 className="font-headline text-secondary tracking-wide">Häufig gestellte Fragen</h2>
           <p className="text-muted-foreground uppercase tracking-widest font-bold text-[10px]">Wissenswertes zur Besteigung</p>
         </div>
 
