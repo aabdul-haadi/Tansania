@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -51,7 +50,6 @@ export function FAQ() {
   return (
     <section className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4 max-w-4xl">
-        {/* Header Protocol */}
         <div className="text-center mb-12 md:mb-16 space-y-2">
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
@@ -66,13 +64,12 @@ export function FAQ() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground font-normal text-[14px] leading-[20px] tracking-wide"
+            className="text-muted-foreground font-normal text-sm md:text-base"
           >
             Alles, was Sie über Ihre Tansania-Reise wissen müssen
           </motion.p>
         </div>
 
-        {/* Accordion Registry */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -86,10 +83,10 @@ export function FAQ() {
                 value={`item-${index}`}
                 className="bg-white border border-border/60 rounded-lg md:rounded-xl shadow-sm overflow-hidden"
               >
-                <AccordionTrigger className="font-normal text-base md:text-xl py-5 px-6 md:px-8 hover:no-underline text-left text-secondary transition-colors tracking-widest uppercase">
+                <AccordionTrigger className="font-normal text-base md:text-xl py-5 px-6 md:px-8 hover:no-underline text-left text-secondary transition-colors uppercase">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground text-[14px] leading-[20px] px-6 md:px-8 pb-6 font-normal">
+                <AccordionContent className="text-muted-foreground text-sm md:text-base leading-relaxed px-6 md:px-8 pb-6 font-normal text-left">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
@@ -97,7 +94,6 @@ export function FAQ() {
           </Accordion>
         </motion.div>
 
-        {/* Bottom CTA Protocol */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -105,11 +101,11 @@ export function FAQ() {
           transition={{ delay: 0.3 }}
           className="mt-16 text-center space-y-6"
         >
-          <p className="text-muted-foreground text-[14px] leading-[20px] font-normal">
+          <p className="text-muted-foreground text-sm md:text-base font-normal">
             Weitere Fragen? Wir sind für Sie da.
           </p>
           <Link href="/contact" className="inline-block">
-            <Button className="rounded-lg px-8 h-14 bg-secondary text-white hover:bg-primary transition-all duration-500 font-bold text-[11px] uppercase tracking-widest border-none shadow-lg">
+            <Button className="rounded-lg px-8 h-14 bg-secondary text-white hover:bg-primary transition-all duration-500 font-bold text-[11px] tracking-widest border-none shadow-lg">
               Jetzt Kontakt aufnehmen
             </Button>
           </Link>

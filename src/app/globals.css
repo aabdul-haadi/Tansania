@@ -67,12 +67,11 @@
     background-attachment: fixed;
   }
 
-  /* HEADLINE REGISTRY: Strict Cormorant Garamond Protocol - Natural Casing & Open Spacing */
+  /* HEADLINE REGISTRY: Standard natural spacing reset */
   h1, h2, h3, h4, h5, h6 {
     @apply font-headline font-normal leading-tight text-secondary;
-    letter-spacing: 0.05em !important; /* ARCHITECTURAL AIRINESS */
-    font-style: normal !important;
-    text-transform: none !important;
+    font-style: normal;
+    text-transform: none;
   }
 
   /* Hero Headline Specification */
@@ -99,24 +98,14 @@
   /* BODY REGISTRY: Strict Inter Protocol */
   p, span, li, div {
     @apply font-sans font-normal;
-    font-style: normal !important;
-    text-transform: none !important;
+    font-style: normal;
+    text-transform: none;
   }
 
   /* Narrative Specification */
   p {
-    @apply text-[14px] leading-[20px] tracking-wide text-muted-foreground;
+    @apply text-[14px] leading-[20px] text-muted-foreground;
     font-weight: 400;
-  }
-
-  /* GLOBAL PRESTIGE SPACING FOR UPPERCASE TEXT */
-  .uppercase {
-    letter-spacing: 0.1em !important;
-  }
-
-  /* Technical Constraint: Force No Italics globally */
-  i, em, .italic, .font-italic {
-    font-style: normal !important;
   }
 
   /* Global Selection Highlight */
@@ -134,6 +123,6 @@
 }
 
 .text-registry {
-  @apply text-[11px] font-bold tracking-[0.3em] text-primary;
-  text-transform: none !important;
+  @apply text-[11px] font-bold text-primary;
+  text-transform: none;
 }

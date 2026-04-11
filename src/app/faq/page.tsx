@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -75,7 +74,7 @@ export default function FAQPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-white/60 text-lg font-light max-w-2xl mx-auto uppercase tracking-widest"
+            className="text-white/60 text-lg font-light max-w-2xl mx-auto uppercase"
           >
             Alles, was Sie wissen müssen, bevor Sie in Ihr persönliches Abenteuer Afrika starten.
           </motion.p>
@@ -102,10 +101,10 @@ export default function FAQPage() {
                   value={`q-${idx}`}
                   className="border-none bg-white rounded-2xl px-6 md:px-10 shadow-sm hover:shadow-md transition-all group"
                 >
-                  <AccordionTrigger className="text-left font-normal text-base md:text-lg py-6 hover:no-underline hover:text-primary transition-colors tracking-widest uppercase">
+                  <AccordionTrigger className="text-left font-normal text-base md:text-lg py-6 hover:no-underline hover:text-primary transition-colors uppercase">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground text-[14px] leading-[20px] font-normal pb-8 pr-4 uppercase tracking-widest">
+                  <AccordionContent className="text-muted-foreground text-sm md:text-base leading-relaxed pb-8 pr-4 text-left">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>

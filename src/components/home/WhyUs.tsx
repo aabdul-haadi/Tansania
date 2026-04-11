@@ -44,7 +44,7 @@ const features = [
 
 export function WhyUs() {
   return (
-    <section className="pt-8 pb-12 md:pt-12 md:pb-24 bg-white overflow-hidden border-t border-border/40">
+    <section className="py-12 md:py-24 bg-white overflow-hidden border-t border-border/40">
       <div className="container mx-auto px-4 max-w-7xl">
         
         <div className="text-center mb-10 md:mb-16 space-y-2">
@@ -61,18 +61,18 @@ export function WhyUs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground font-normal text-[14px] leading-[20px] tracking-widest max-w-2xl mx-auto opacity-80"
+            className="text-muted-foreground font-normal text-sm md:text-base max-w-2xl mx-auto opacity-80"
           >
             Ihre Träume in den Händen von Experten – persönlich, sicher und exklusiv.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-4 auto-rows-fr">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 auto-rows-fr">
           <motion.div 
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="md:col-span-8 relative rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden group shadow-xl bg-muted h-full min-h-[300px]"
+            className="md:col-span-8 relative rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden group shadow-xl bg-muted h-full min-h-[350px]"
           >
             <Image 
               src={features[0].bg} 
@@ -85,10 +85,10 @@ export function WhyUs() {
             
             <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
               <div className="max-w-2xl space-y-3">
-                <h3 className="font-headline text-xl md:text-[24px] leading-[32px] text-white tracking-wide">
+                <h3 className="font-headline text-xl md:text-3xl text-white">
                   {features[0].title}
                 </h3>
-                <p className="text-white/80 font-normal text-[14px] leading-[20px] max-w-lg tracking-wide">
+                <p className="text-white/80 font-normal text-sm md:text-base max-w-lg">
                   {features[0].desc}
                 </p>
               </div>
@@ -110,10 +110,10 @@ export function WhyUs() {
               <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/20">
                 <Compass className="w-5 h-5 text-white" />
               </div>
-              <h3 className="font-headline text-xl md:text-[24px] leading-[32px] text-white tracking-wide">
+              <h3 className="font-headline text-xl md:text-2xl text-white">
                 {features[1].title}
               </h3>
-              <p className="text-white/90 font-normal text-[14px] leading-[20px] tracking-wide">
+              <p className="text-white/90 font-normal text-sm md:text-base">
                 {features[1].desc}
               </p>
             </div>
@@ -124,16 +124,16 @@ export function WhyUs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="md:col-span-6 rounded-[1.5rem] md:rounded-[2.5rem] bg-white border border-border/50 p-6 md:p-10 flex flex-col md:flex-row gap-6 items-center shadow-sm hover:shadow-md transition-all group"
+            className="md:col-span-6 rounded-[1.5rem] md:rounded-[2.5rem] bg-white border border-border/50 p-6 md:p-10 flex flex-col sm:flex-row gap-6 items-start sm:items-center shadow-sm hover:shadow-md transition-all group"
           >
-            <div className="w-16 h-16 rounded-2xl bg-muted flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors duration-500 shadow-inner">
+            <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-muted flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors duration-500 shadow-inner">
               <Users className="w-6 h-6 text-secondary group-hover:text-white transition-colors" />
             </div>
             <div className="space-y-2">
-              <h3 className="font-headline text-lg md:text-[24px] leading-[32px] text-secondary tracking-wide">
+              <h3 className="font-headline text-lg md:text-2xl text-secondary">
                 {features[2].title}
               </h3>
-              <p className="text-muted-foreground font-normal text-[14px] leading-[20px] tracking-wide opacity-80">
+              <p className="text-muted-foreground font-normal text-sm md:text-base opacity-80">
                 {features[2].desc}
               </p>
             </div>
@@ -144,16 +144,16 @@ export function WhyUs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="md:col-span-6 rounded-[1.5rem] md:rounded-[2.5rem] bg-[#FDF7F2] border border-[#F0EBE0] p-6 md:p-10 flex flex-col md:flex-row gap-6 items-center shadow-sm hover:shadow-md transition-all group"
+            className="md:col-span-6 rounded-[1.5rem] md:rounded-[2.5rem] bg-[#FDF7F2] border border-[#F0EBE0] p-6 md:p-10 flex flex-col sm:flex-row gap-6 items-start sm:items-center shadow-sm hover:shadow-md transition-all group"
           >
-            <div className="w-16 h-16 rounded-2xl bg-white border border-[#F0EBE0] flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors duration-500 shadow-sm">
+            <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white border border-[#F0EBE0] flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors duration-500 shadow-sm">
               <ShieldCheck className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
             </div>
             <div className="space-y-2">
-              <h3 className="font-headline text-lg md:text-[24px] leading-[32px] text-secondary tracking-wide">
+              <h3 className="font-headline text-lg md:text-2xl text-secondary">
                 {features[3].title}
               </h3>
-              <p className="text-muted-foreground font-normal text-[14px] leading-[20px] tracking-wide opacity-80">
+              <p className="text-muted-foreground font-normal text-sm md:text-base opacity-80">
                 {features[3].desc}
               </p>
             </div>
