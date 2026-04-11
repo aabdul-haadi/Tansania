@@ -30,12 +30,12 @@ export function VisualJournalGrid() {
               src="/assets/images/home/gal-1.webp" 
               alt="Luxus Safari Erlebnis" 
               fill 
-              className="object-cover transition-transform duration-1000 group-hover:scale-105" 
+              className="object-cover transition-transform duration-1000 group-hover:scale-105 brightness-[0.9]" 
               data-ai-hint="safari relaxation"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-            <div className="absolute bottom-10 left-10 right-10 space-y-3">
-              <h3 className="font-headline text-2xl md:text-4xl text-white leading-tight tracking-wide">
+            <div className="absolute bottom-10 left-10 right-10 space-y-3 text-left">
+              <h3 className="font-headline text-2xl md:text-4xl text-white leading-tight tracking-normal">
                 Luxus inmitten der Wildnis
               </h3>
               <p className="text-[14px] leading-[20px] font-normal text-white/70 tracking-normal max-w-md">
@@ -58,12 +58,12 @@ export function VisualJournalGrid() {
                 src="/assets/images/home/gal-2.webp" 
                 alt="Sansibar Strand" 
                 fill 
-                className="object-cover transition-transform duration-1000 group-hover:scale-105" 
+                className="object-cover transition-transform duration-1000 group-hover:scale-105 brightness-[0.9]" 
                 data-ai-hint="zanzibar beach"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-              <div className="absolute bottom-10 left-10 right-10 space-y-2">
-                <h3 className="font-headline text-xl md:text-3xl text-white leading-tight tracking-wide">
+              <div className="absolute bottom-10 left-10 right-10 space-y-2 text-left">
+                <h3 className="font-headline text-xl md:text-3xl text-white leading-tight tracking-normal">
                   Paradiesische Strände
                 </h3>
                 <p className="text-[14px] leading-[20px] font-normal text-white/70 tracking-normal">
@@ -84,12 +84,12 @@ export function VisualJournalGrid() {
                 src="/assets/images/home/gal-3.webp" 
                 alt="Wildlife Tansania" 
                 fill 
-                className="object-cover transition-transform duration-1000 group-hover:scale-105" 
+                className="object-cover transition-transform duration-1000 group-hover:scale-105 brightness-[0.9]" 
                 data-ai-hint="safari wildlife"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-              <div className="absolute bottom-10 left-10 right-10 space-y-2">
-                <h3 className="font-headline text-xl md:text-3xl text-white leading-tight tracking-wide">
+              <div className="absolute bottom-10 left-10 right-10 space-y-2 text-left">
+                <h3 className="font-headline text-xl md:text-3xl text-white leading-tight tracking-normal">
                   Wildlife hautnah
                 </h3>
                 <p className="text-[14px] leading-[20px] font-normal text-white/70 tracking-normal">

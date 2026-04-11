@@ -54,13 +54,13 @@ const categories = [
 export function TravelCategories() {
   return (
     <section className="pt-8 pb-12 md:pt-12 md:pb-24 bg-white">
-      <div className="container mx-auto px-4 max-w-7xl">
+      <div className="container mx-auto px-4 max-get-7xl">
         <div className="text-center mb-10 md:mb-16 space-y-2">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-3xl md:text-5xl font-normal text-secondary"
+            className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-normal"
           >
             Welche Reise passt zu Ihnen?
           </motion.h2>
@@ -89,21 +89,20 @@ export function TravelCategories() {
                 src={cat.img} 
                 alt={cat.title} 
                 fill 
-                className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                className="object-cover transition-transform duration-1000 group-hover:scale-110 brightness-[0.9]"
                 data-ai-hint={cat.hint}
               />
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-500" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
               
-              <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end">
-                <h3 className="text-white mb-2 font-headline text-[24px] leading-[32px] font-medium">
+              <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end text-left">
+                <h3 className="text-white mb-2 font-headline text-[24px] leading-[32px] font-medium tracking-normal">
                   {cat.title}
                 </h3>
-                <p className="text-white/90 mb-6 line-clamp-2 text-[14px] leading-[20px] font-normal">
+                <p className="text-white/90 mb-6 line-clamp-2 text-[14px] leading-[20px] font-normal tracking-normal">
                   {cat.desc}
                 </p>
                 
-                <Link href={cat.href} className="inline-flex items-center gap-2 text-white font-bold text-[11px] tracking-widest group/link">
+                <Link href={cat.href} className="inline-flex items-center gap-2 text-white font-bold text-[11px] tracking-normal group/link">
                   Mehr erfahren <ArrowRight className="w-3.5 h-3.5 text-primary transition-transform group/link:translate-x-1" />
                 </Link>
               </div>

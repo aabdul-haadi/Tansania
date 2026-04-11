@@ -46,10 +46,10 @@ export default function Home() {
             alt="Tansania Reiseabenteuer Signature Visual" 
             fill 
             priority 
-            className="object-cover object-bottom brightness-[0.55]"
+            className="object-cover object-bottom brightness-[0.85]"
             data-ai-hint="elephant forest"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
         </div>
 
         <div className="container relative z-20 mx-auto px-6 md:px-10 max-w-7xl h-full flex flex-col justify-center pt-32 md:pt-40">
@@ -77,12 +77,12 @@ export default function Home() {
               className="flex flex-col sm:flex-row gap-4 pt-2 md:pt-0 pb-8 md:pb-0"
             >
               <Link href="/trip-planner">
-                <Button className="w-full sm:w-auto h-11 md:h-14 px-6 md:px-10 rounded-lg bg-white text-secondary hover:bg-primary hover:text-white transition-all duration-500 font-bold text-[10px] md:text-[11px] tracking-widest border-none group shadow-2xl">
+                <Button className="w-full sm:w-auto h-11 md:h-14 px-6 md:px-10 rounded-lg bg-white text-secondary hover:bg-primary hover:text-white transition-all duration-500 font-bold text-[10px] md:text-[11px] tracking-normal border-none group shadow-2xl">
                   Reiseberatung anfragen <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
               <Link href="/safaris">
-                <Button variant="outline" className="w-full sm:w-auto h-11 md:h-14 px-6 md:px-10 rounded-lg bg-transparent text-white border-white/40 hover:bg-white/10 hover:border-white font-bold text-[10px] md:text-[11px] tracking-widest transition-all duration-500">
+                <Button variant="outline" className="w-full sm:w-auto h-11 md:h-14 px-6 md:px-10 rounded-lg bg-transparent text-white border-white/40 hover:bg-white/10 hover:border-white font-bold text-[10px] md:text-[11px] tracking-normal transition-all duration-500">
                   Unsere Reisen entdecken
                 </Button>
               </Link>

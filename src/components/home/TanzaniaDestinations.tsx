@@ -66,7 +66,7 @@ export function TanzaniaDestinations() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-2xl md:text-4xl font-normal text-secondary tracking-wide"
+            className="font-headline text-2xl md:text-4xl font-normal text-secondary tracking-normal"
           >
             Entdecken Sie Tansania
           </motion.h2>
@@ -115,20 +115,20 @@ function DestinationCard({ dest }: { dest: any }) {
         src={dest.img} 
         alt={dest.name} 
         fill 
-        className="object-cover transition-transform duration-1000 group-hover:scale-110"
+        className="object-cover transition-transform duration-1000 group-hover:scale-110 brightness-[0.9]"
         data-ai-hint={dest.hint}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
       
-      <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end">
-        <h3 className="text-white font-headline text-[24px] leading-[32px] font-medium tracking-wide mb-2">
+      <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end text-left">
+        <h3 className="text-white font-headline text-[24px] leading-[32px] font-medium tracking-normal mb-2">
           {dest.name}
         </h3>
         <p className="text-white/90 text-[14px] leading-[20px] font-normal tracking-normal mb-6 line-clamp-2">
           {dest.desc}
         </p>
         
-        <Link href={`/destinations/${dest.slug}`} className="inline-flex items-center gap-2 text-white font-bold text-[11px] tracking-widest group/link">
+        <Link href={`/destinations/${dest.slug}`} className="inline-flex items-center gap-2 text-white font-bold text-[11px] tracking-normal group/link">
           Mehr erfahren <ArrowRight className="w-3 h-3 text-primary transition-transform group/link:translate-x-1" />
         </Link>
       </div>
