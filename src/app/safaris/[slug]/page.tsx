@@ -1,7 +1,7 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
 import { initializeFirebase } from '@/firebase/setup';
-import { doc, getDoc } from 'firebase/firestore';
+import { collection, query, where, limit, getDocs } from 'firebase/firestore';
 import { getCanonicalUrl, siteConfig } from '@/lib/seo-config';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { PackageDetailClient } from '@/components/packages/PackageDetailClient';
@@ -12,9 +12,9 @@ export async function generateMetadata({ params }: any) {
   
   if (!firestore) return { title: 'Registry Offline' };
 
-  const docRef = doc(firestore, 'packages', slug);
-  const snap = await getDoc(docRef);
-  const pkg = snap.data();
+  const q = query(collection(firestore, 'packages'), where('slug', '==', slug), limit(1));
+  const snap = await getDocs(q);
+  const pkg = snap.docs[0]?.data();
 
   if (!pkg) return { title: 'Package Not Found' };
 
@@ -39,20 +39,21 @@ export default async function PackageDetailPage({ params }: any) {
   
   if (!firestore) return <div className="p-20 text-center uppercase font-bold">Connecting to Safari Catalog...</div>;
 
-  const docRef = doc(firestore, 'packages', slug);
-  const snap = await getDoc(docRef);
+  // Corrected query to use the 'slug' field instead of document ID
+  const q = query(collection(firestore, 'packages'), where('slug', '==', slug), limit(1));
+  const snap = await getDocs(q);
   
-  if (!snap.exists()) {
+  if (snap.empty) {
     notFound();
   }
 
-  const data = snap.data();
+  const docSnap = snap.docs[0];
+  const data = docSnap.data();
   
   // CRITICAL: Ensure object is plain and serializable for client component transition.
-  // Firestore Timestamps must be converted to strings.
   const pkg = {
     ...data,
-    id: snap.id,
+    id: docSnap.id,
     updatedAt: data.updatedAt?.toDate ? data.updatedAt.toDate().toISOString() : data.updatedAt,
     createdAt: data.createdAt?.toDate ? data.createdAt.toDate().toISOString() : data.createdAt,
   };

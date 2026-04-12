@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -35,7 +34,9 @@ export function VisualJournalGrid() {
               className="object-cover transition-transform duration-1000 group-hover:scale-105" 
               data-ai-hint="safari relaxation"
             />
+            {/* Protective Bottom Shady Overlay Protocol */}
             <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
+            
             <div className="absolute bottom-10 left-10 right-10 space-y-3 text-left">
               <h3 className="font-headline text-2xl md:text-4xl text-white leading-tight tracking-normal uppercase">
                 Luxus inmitten der Wildnis

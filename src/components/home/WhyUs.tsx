@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -56,7 +55,7 @@ export function WhyUs() {
           </div>
 
           <div className="lg:col-span-7 space-y-10 md:space-y-16 order-1 lg:order-2">
-            <div className="space-y-6">
+            <div className="space-y-6 text-left">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -68,12 +67,12 @@ export function WhyUs() {
                   <span className="text-primary font-bold">unterscheidet</span>
                 </h2>
               </motion.div>
-              <p className="text-muted-foreground font-normal text-[14px] leading-[20px] max-w-xl opacity-80 tracking-wide">
+              <p className="text-muted-foreground font-normal text-[14px] leading-[20px] max-w-xl opacity-80 tracking-wide uppercase tracking-widest">
                 Wir planen keine Reisen von der Stange. Wir gestalten individuelle Expeditionen für Menschen, die das Echte suchen – mit maximaler Sicherheit.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10 md:gap-y-14">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10 md:gap-y-14 text-left">
               {features.map((feature, idx) => (
                 <motion.div
                   key={idx}
@@ -94,7 +93,7 @@ export function WhyUs() {
                     <h3 className="font-headline text-xl md:text-2xl font-bold text-secondary tracking-tight group-hover:text-primary transition-colors uppercase">
                       {feature.title}
                     </h3>
-                    <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide opacity-70">
+                    <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide opacity-70 uppercase tracking-widest">
                       {feature.desc}
                     </p>
                   </div>

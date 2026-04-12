@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useEffect, useRef, useState } from 'react';
@@ -61,7 +60,7 @@ export function ContactSection() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-normal"
+            className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-normal uppercase"
           >
             Ihre Expedition beginnt hier
           </motion.h2>
@@ -70,7 +69,7 @@ export function ContactSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground font-normal text-xs md:text-sm tracking-normal max-w-xl mx-auto opacity-80"
+            className="text-muted-foreground font-normal text-xs md:text-sm tracking-normal max-w-xl mx-auto opacity-80 uppercase tracking-widest"
           >
             Vom ersten Gedanken bis zum ersten Schritt in der Savanne – unsere Spezialisten begleiten Sie persönlich.
           </motion.p>
@@ -78,13 +77,13 @@ export function ContactSection() {
 
         <div className="bg-white rounded-[2.5rem] md:rounded-[3rem] shadow-sm border border-border/40 overflow-hidden flex flex-col lg:flex-row min-h-[550px] md:min-h-[600px] relative transition-all duration-500 hover:shadow-xl">
           
-          <div className="w-full lg:w-[35%] bg-[#FDF7F2] p-8 md:p-12 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-border/40">
+          <div className="w-full lg:w-[35%] bg-[#FDF7F2] p-8 md:p-12 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-border/40 text-left">
             <div className="space-y-10 md:space-y-12">
               <div className="space-y-4">
-                <h3 className="text-xl md:text-2xl font-headline font-bold text-secondary tracking-tight whitespace-nowrap">
+                <h3 className="text-xl md:text-2xl font-headline font-bold text-secondary tracking-tight whitespace-nowrap uppercase">
                   Premium Beratung
                 </h3>
-                <p className="text-[11px] font-bold text-muted-foreground tracking-widest leading-relaxed">
+                <p className="text-[11px] font-bold text-muted-foreground tracking-widest leading-relaxed uppercase">
                   Berlin Head Office • Safari Ops
                 </p>
               </div>
@@ -96,8 +95,8 @@ export function ContactSection() {
                       <step.icon className="w-4 h-4 text-primary" />
                     </div>
                     <div className="space-y-0.5">
-                      <p className="text-[11px] font-black tracking-widest text-secondary">{step.label}</p>
-                      <p className="text-[9px] font-bold tracking-widest text-muted-foreground/60">{step.sub}</p>
+                      <p className="text-[11px] font-black tracking-widest text-secondary uppercase">{step.label}</p>
+                      <p className="text-[9px] font-bold tracking-widest text-muted-foreground/60 uppercase">{step.sub}</p>
                     </div>
                   </div>
                 ))}
@@ -110,7 +109,7 @@ export function ContactSection() {
                   <Phone className="w-4 h-4 text-primary group-hover:text-white transition-colors" />
                 </div>
                 <div>
-                  <p className="text-[8px] font-bold text-muted-foreground tracking-widest">Hotline</p>
+                  <p className="text-[8px] font-bold text-muted-foreground tracking-widest uppercase">Hotline</p>
                   <p className="text-sm font-black text-secondary tracking-tight">+49 30 22608080</p>
                 </div>
               </div>
@@ -119,7 +118,7 @@ export function ContactSection() {
                   <ShieldCheck className="w-4 h-4 text-primary" />
                   <span className="text-[9px] font-bold text-secondary tracking-widest uppercase">DRSF Schutz</span>
                 </div>
-                <p className="text-[9px] font-medium text-muted-foreground tracking-wider leading-relaxed">
+                <p className="text-[9px] font-medium text-muted-foreground tracking-wider leading-relaxed uppercase">
                   Ihre Reise ist durch den Deutschen Reisesicherungsfonds abgesichert.
                 </p>
               </div>

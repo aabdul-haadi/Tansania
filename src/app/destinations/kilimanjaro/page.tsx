@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -44,7 +43,7 @@ const routes = [
     id: "02",
     name: 'Lemosho Route', 
     title: 'Die Exklusive',
-    desc: 'Eine der schönsten Routen, die im Westen startet und durch unberührter Regenwälder führt. Ideal für Ruhe und höchste Erfolgschancen.', 
+    desc: 'Eine der schönsten Routen, die im Westen startet und durch unberührte Regenwälder führt. Ideal für Ruhe und höchste Erfolgschancen.', 
     days: '7-8 Tage',
     level: 'Moderat bis Schwer',
     highlight: 'Shira Plateau'
@@ -110,7 +109,7 @@ export default function KilimanjaroPage() {
             alt="Kilimandscharo Besteigung" 
             fill 
             priority
-            className="object-cover brightness-75"
+            className="object-cover brightness-[0.6]"
             data-ai-hint="mount kilimanjaro"
           />
           <div className="absolute inset-0 bg-black/20 z-10" />
@@ -123,7 +122,7 @@ export default function KilimanjaroPage() {
             transition={{ duration: 0.8 }}
             className="flex flex-col items-center"
           >
-            <h1 className="font-headline text-white leading-none whitespace-nowrap text-2xl sm:text-4xl md:text-6xl lg:text-7xl tracking-normal uppercase">
+            <h1 className="font-headline text-white leading-none whitespace-nowrap text-3xl sm:text-4xl md:text-6xl lg:text-7xl tracking-normal uppercase">
               Kilimandscharo Besteigung
             </h1>
             <p className="max-w-2xl mx-auto text-white/90 font-normal text-xs md:text-lg tracking-wide mt-6 leading-relaxed uppercase">
@@ -151,7 +150,7 @@ export default function KilimanjaroPage() {
               </h2>
             </div>
             
-            <div className="space-y-6 text-muted-foreground font-normal leading-relaxed text-sm md:text-base border-l-4 border-primary/20 pl-8 tracking-wide opacity-80">
+            <div className="space-y-6 text-muted-foreground font-normal leading-relaxed text-sm md:text-base border-l-4 border-primary/20 pl-8 tracking-wide opacity-80 uppercase tracking-widest">
               <p>
                 Der Kilimandscharo vereint atemberaubende Landschaften, eine echte körperliche Herausforderung und den Nervenkitzel, den höchsten Gipfel Afrikas zu erklimmen.
               </p>
@@ -246,7 +245,7 @@ export default function KilimanjaroPage() {
                       <h3 className="font-headline text-2xl md:text-4xl font-normal text-secondary tracking-tight uppercase group-hover:text-primary transition-colors">
                         {route.name}
                       </h3>
-                      <p className="text-sm leading-relaxed text-muted-foreground font-normal tracking-wide opacity-70">
+                      <p className="text-sm leading-relaxed text-muted-foreground font-normal tracking-wide opacity-70 uppercase tracking-widest">
                         {route.desc}
                       </p>
                     </div>
@@ -290,7 +289,7 @@ export default function KilimanjaroPage() {
       {/* 04 WICHTIGE FAKTEN */}
       <section className="py-12 md:py-24 bg-[#fdfcfb]">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="text-center mb-10 md:mb-16 space-y-4">
+          <div className="text-center mb-10 md:mb-12 space-y-4">
             <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tight leading-none uppercase">Wichtige Fakten</h2>
             <div className="w-20 h-1 bg-primary mx-auto rounded-full opacity-40" />
           </div>
@@ -361,10 +360,10 @@ export default function KilimanjaroPage() {
       </section>
 
       {/* 06 SYNCED FAQ */}
-      <section className="py-8 md:py-16 bg-[#FDF7F2] border-y border-border/40 scroll-mt-20 text-left">
+      <section className="py-8 md:py-12 bg-[#FDF7F2] border-y border-border/40 scroll-mt-20 text-left">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-6 md:mb-8">
-            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tight uppercase">Häufig gestellte Fragen</h2>
+            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tight uppercase">Häufig gestellte Fragen</h2>
           </div>
 
           <Accordion type="single" collapsible className="space-y-4">
@@ -376,7 +375,7 @@ export default function KilimanjaroPage() {
                     <Plus className="w-4 h-4 text-primary shrink-0 transition-transform group-data-[state=open]:rotate-45" />
                   </div>
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground text-sm md:text-base leading-relaxed font-normal pb-8 opacity-80 text-left tracking-normal">
+                <AccordionContent className="text-muted-foreground text-sm md:text-base leading-relaxed font-normal pb-8 opacity-80 text-left tracking-normal uppercase tracking-widest">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>

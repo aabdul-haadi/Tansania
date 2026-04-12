@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -47,7 +46,7 @@ export function MagazinInspiration() {
     <section className="py-16 md:py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4 max-get-7xl">
         <div className="flex items-end justify-between mb-12 md:mb-16">
-          <div className="space-y-2">
+          <div className="space-y-2 text-left">
             <motion.h2 
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -119,7 +118,7 @@ function MagazineCard({ post }: { post: any }) {
         />
       </div>
 
-      <div className="p-6 md:p-8 flex flex-col flex-grow">
+      <div className="p-6 md:p-8 flex flex-col flex-grow text-left">
         <div className="flex items-center gap-4 mb-5">
           <span className="text-[10px] font-bold uppercase tracking-widest text-[#C9A876] px-3 py-1.5 rounded-full bg-[#C9A876]/10">
             {post.category}
@@ -131,16 +130,16 @@ function MagazineCard({ post }: { post: any }) {
         </div>
 
         <div className="space-y-4 flex-grow">
-          <h3 className="font-headline text-xl md:text-[24px] leading-[32px] font-medium text-[#3A3634] leading-tight group-hover:text-[#C9A876] transition-colors">
+          <h3 className="font-headline text-xl md:text-[24px] leading-[32px] font-medium text-[#3A3634] leading-tight group-hover:text-[#C9A876] transition-colors uppercase">
             {post.title}
           </h3>
-          <p className="text-sm md:text-base text-[#4A4543] font-normal leading-relaxed line-clamp-3">
+          <p className="text-sm md:text-base text-[#4A4543] font-normal leading-relaxed line-clamp-3 uppercase tracking-widest opacity-70">
             {post.excerpt}
           </p>
         </div>
 
         <div className="mt-8 pt-6 border-t border-border/50">
-          <Link href={`/blog`} className="inline-flex items-center gap-2 text-[11px] font-bold text-[#3A3634] hover:text-[#C9A876] transition-colors group/link">
+          <Link href={`/blog`} className="inline-flex items-center gap-2 text-[11px] font-bold text-[#3A3634] hover:text-[#C9A876] transition-colors group/link uppercase">
             Weiterlesen <ArrowRight className="w-3 h-3 transition-transform group/link:translate-x-1" />
           </Link>
         </div>

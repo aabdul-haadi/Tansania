@@ -117,7 +117,6 @@ const featureIcons = [
 ];
 
 interface PackageDetailClientProps {
-  post: any;
   pkg: any;
 }
 
@@ -166,7 +165,8 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
   }
 
   // Calculate a "Real Price" for demonstration of original vs discount
-  const originalPrice = Math.round(pkg.startingPrice * 1.15 / 10) * 10;
+  const basePrice = pkg.startingPrice || 0;
+  const originalPrice = Math.round(basePrice * 1.15 / 10) * 10;
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
@@ -180,7 +180,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
             alt={pkg.title} 
             fill 
             priority
-            className="object-cover scale-105 brightness-[0.7]"
+            className="object-cover scale-105 brightness-[0.6]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
         </div>
@@ -196,10 +196,10 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
               <p className="text-white font-bold text-[10px] md:text-xs uppercase tracking-[0.5em] opacity-90">
                 {pkg.category || 'Tansania · Sansibar'}
               </p>
-              <h1 className="font-headline font-normal text-white text-3xl md:text-6xl lg:text-[72px] lg:leading-[90px] tracking-tight leading-tight">
+              <h1 className="font-headline font-normal text-white text-3xl md:text-6xl lg:text-[72px] lg:leading-[90px] tracking-tight leading-tight uppercase">
                 {pkg.title}
               </h1>
-              <p className="text-white font-light text-sm md:text-xl lg:text-[24px] lg:leading-[39px] tracking-wide leading-relaxed max-w-3xl">
+              <p className="text-white font-light text-sm md:text-xl lg:text-[24px] lg:leading-[39px] tracking-wide leading-relaxed max-w-3xl uppercase tracking-widest">
                 Erleben Sie eine privat geführte Expedition durch die spektakulärsten Nationalparks und entspannen Sie an den Traumstränden Sansibars.
               </p>
             </div>
@@ -208,7 +208,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                <Button 
                  onClick={() => scrollTo('inquiry')}
                  size="lg"
-                 className="w-full sm:w-auto rounded-lg h-12 md:h-14 px-10 font-bold text-[11px] tracking-widest shadow-2xl border-none"
+                 className="w-full sm:w-auto rounded-lg h-12 md:h-14 px-10 font-bold text-[11px] tracking-widest shadow-2xl border-none uppercase"
                >
                  Jetzt Anfragen
                </Button>
@@ -216,7 +216,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                  onClick={() => scrollTo('itinerary')}
                  variant="glass"
                  size="lg"
-                 className="w-full sm:w-auto rounded-lg h-12 md:h-14 px-10 font-bold text-[11px] tracking-widest transition-all"
+                 className="w-full sm:w-auto rounded-lg h-12 md:h-14 px-10 font-bold text-[11px] tracking-widest transition-all uppercase"
                >
                  <MapIcon className="w-4 h-4 mr-2" /> Reiseroute ansehen
                </Button>
@@ -245,31 +245,29 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
           <div className="hidden lg:flex items-center gap-6">
             <div className="text-right">
               <p className="text-[8px] font-bold uppercase text-muted-foreground leading-none mb-1 tracking-widest">Preise ab</p>
-              <p className="text-xs font-bold text-secondary">€{pkg.startingPrice?.toLocaleString('de-DE')}</p>
+              <p className="text-xs font-bold text-secondary">€{basePrice.toLocaleString('de-DE')}</p>
             </div>
-            <Button onClick={() => scrollTo('inquiry')} size="sm" className="rounded-xl h-11 px-8 text-[10px] font-bold tracking-widest shadow-xl border-none">Anfrage senden</Button>
+            <Button onClick={() => scrollTo('inquiry')} size="sm" className="rounded-xl h-11 px-8 text-[10px] font-bold tracking-widest shadow-xl border-none uppercase">Anfrage senden</Button>
           </div>
         </div>
       </div>
 
-      {/* 03 ICON STRIP - MOBILE AUTO SLIDER */}
+      {/* 03 ICON STRIP */}
       <section className="bg-white border-b border-border/40 py-8 md:py-12">
         <div className="container mx-auto px-4 max-w-7xl">
-          {/* Desktop Display */}
           <div className="hidden md:grid grid-cols-5 gap-12">
             {featureIcons.map((item, i) => (
               <div key={i} className="flex flex-col items-center text-center gap-3 group">
                 <div className="w-14 h-14 rounded-2xl bg-[#FDF7F2] flex items-center justify-center border border-[#F0EBE0]/30 shadow-sm transition-transform duration-500 group-hover:scale-105">
                   <item.icon className="w-6 h-6 text-[#C9A876]" />
                 </div>
-                <span className="text-[11px] font-bold text-secondary tracking-widest">
+                <span className="text-[11px] font-bold text-secondary tracking-widest uppercase">
                   {item.label}
                 </span>
               </div>
             ))}
           </div>
 
-          {/* Mobile Auto Slider */}
           <div className="md:hidden">
             <Carousel
               plugins={[plugin.current]}
@@ -282,7 +280,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                     <div className="w-12 h-12 rounded-xl bg-[#FDF7F2] flex items-center justify-center border border-[#F0EBE0]/30 shadow-sm">
                       <item.icon className="w-5 h-5 text-[#C9A876]" />
                     </div>
-                    <span className="text-[9px] font-bold text-secondary tracking-widest leading-tight">
+                    <span className="text-[9px] font-bold text-secondary tracking-widest leading-tight uppercase">
                       {item.label}
                     </span>
                   </CarouselItem>
@@ -302,7 +300,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-[0.3em] border border-primary/20">
                   {pkg.durationDays} Tage {pkg.category}
                 </div>
-                <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary tracking-tighter">
+                <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary tracking-tighter uppercase">
                   Eine Reise, die berührt
                 </h2>
               </div>
@@ -317,18 +315,18 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
               </div>
 
               <div className="space-y-8 border-l-4 border-primary/20 pl-8 py-2">
-                <p className="text-[14px] leading-[20px] font-normal text-muted-foreground tracking-wide">
+                <p className="text-[14px] leading-[20px] font-normal text-muted-foreground tracking-wide uppercase tracking-widest opacity-80">
                   Erleben Sie die pure Magie Ostafrikas. Von den goldenen Savannen der Serengeti bis zum türkisblauen Indischen Ozean auf Sansibar. Diese Reise wurde konzipiert, um Ihnen nicht nur die Big Five zu zeigen, sondern Ihnen die Seele Tansanias näherzubringen – exklusiv, privat und mit höchstem Komfort.
                 </p>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Link href="/trip-planner">
-                  <Button className="w-full sm:w-auto h-12 md:h-14 px-10 rounded-xl font-bold text-[11px] tracking-widest border-none transition-all shadow-xl">
+                  <Button className="w-full sm:w-auto h-12 md:h-14 px-10 rounded-xl font-bold text-[11px] tracking-widest border-none transition-all shadow-xl uppercase">
                     Reiseberatung anfragen
                   </Button>
                 </Link>
-                <Button onClick={() => scrollTo('inquiry')} variant="outline" className="w-full sm:w-auto h-12 md:h-14 px-10 rounded-xl font-bold text-[11px] tracking-widest transition-all">
+                <Button onClick={() => scrollTo('inquiry')} variant="outline" className="w-full sm:w-auto h-12 md:h-14 px-10 rounded-xl font-bold text-[11px] tracking-widest transition-all uppercase">
                   Diese Reise anfragen
                 </Button>
               </div>
@@ -340,7 +338,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                   <div className="space-y-10 relative z-10">
                     <div className="space-y-4">
                       <p className="text-primary font-bold uppercase tracking-[0.3em] text-[10px]">Master Registry</p>
-                      <h3 className="font-headline text-[24px] leading-[32px] font-medium text-secondary tracking-tight">
+                      <h3 className="font-headline text-[24px] leading-[32px] font-medium text-secondary tracking-tight uppercase">
                         {pkg.title}
                       </h3>
                     </div>
@@ -348,19 +346,19 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                     <div className="space-y-6">
                       <div className="space-y-1">
                         <p className="text-secondary font-bold text-[11px] tracking-widest uppercase">Reisedauer</p>
-                        <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide">
+                        <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide uppercase tracking-widest opacity-70">
                           {pkg.durationDays}-tägig, Flüge inklusive
                         </p>
                       </div>
                       <div className="space-y-1">
                         <p className="text-secondary font-bold text-[11px] tracking-widest uppercase">Unterkünfte</p>
-                        <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide">
+                        <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide uppercase tracking-widest opacity-70">
                           Handverlesene Tented Lodges & Boutique Hotels
                         </p>
                       </div>
                       <div className="space-y-1">
                         <p className="text-secondary font-bold text-[11px] tracking-widest uppercase">Exklusivität</p>
-                        <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide">
+                        <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide uppercase tracking-widest opacity-70">
                           Privat-Safari mit eigenem Guide & Jeep
                         </p>
                       </div>
@@ -375,12 +373,12 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                         <div className="flex items-baseline gap-2">
                           <span className="text-xs font-bold text-secondary uppercase tracking-widest">ab</span>
                           <span className="text-4xl md:text-5xl font-bold text-secondary tracking-tighter">
-                            {pkg.startingPrice?.toLocaleString('de-DE')} €
+                            {basePrice.toLocaleString('de-DE')} €
                           </span>
                         </div>
                         <p className="text-[10px] font-bold text-muted-foreground/60 uppercase tracking-widest mt-1">pro Person im Doppelzimmer</p>
                       </div>
-                      <Button onClick={() => scrollTo('inquiry')} className="w-full rounded-lg h-14 px-8 font-bold text-[11px] tracking-widest border-none shadow-xl">
+                      <Button onClick={() => scrollTo('inquiry')} className="w-full rounded-lg h-14 px-8 font-bold text-[11px] tracking-widest border-none shadow-xl uppercase">
                         Verfügbarkeit prüfen
                       </Button>
                     </div>
@@ -396,7 +394,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
       <section className="py-12 md:py-24 bg-[#FDF7F2] border-y border-border/40 scroll-mt-20">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12 md:mb-20">
-            <h2 className="font-headline text-3xl md:text-5xl lg:text-[48px] lg:leading-[1.2] font-normal text-secondary tracking-tighter">
+            <h2 className="font-headline text-3xl md:text-5xl lg:text-[48px] lg:leading-[1.2] font-normal text-secondary tracking-tighter uppercase">
               Die Höhepunkte Ihrer Reise
             </h2>
           </div>
@@ -412,10 +410,10 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                           <h.icon className="w-8 h-8 md:w-10 md:h-10 text-primary group-hover:text-white transition-colors" />
                         </div>
                         <div className="space-y-3">
-                          <h4 className="font-headline text-[24px] leading-[32px] font-medium text-secondary tracking-tight">
+                          <h4 className="font-headline text-[24px] leading-[32px] font-medium text-secondary tracking-tight uppercase">
                             {h.title}
                           </h4>
-                          <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide">
+                          <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide uppercase tracking-widest opacity-70">
                             {h.desc}
                           </p>
                         </div>
@@ -435,8 +433,8 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
       <section ref={itineraryRef} className="py-16 md:py-32 bg-white scroll-mt-20">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center mb-16 md:mb-24 space-y-4">
-            <h2 className="font-headline text-3xl md:text-6xl lg:text-[48px] lg:leading-[1.2] font-normal text-secondary tracking-tighter">Ihr Reiseverlauf</h2>
-            <p className="text-muted-foreground font-normal text-[14px] leading-[20px] max-w-xl mx-auto tracking-widest opacity-80">
+            <h2 className="font-headline text-3xl md:text-6xl lg:text-[48px] lg:leading-[1.2] font-normal text-secondary tracking-tighter uppercase">Ihr Reiseverlauf</h2>
+            <p className="text-muted-foreground font-normal text-[14px] leading-[20px] max-xl mx-auto tracking-widest opacity-80 uppercase">
               Eine sorgfältig kuratierte Route durch die schönsten Regionen Tansanias
             </p>
           </div>
@@ -458,7 +456,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                       />
                       <div className="relative z-10 flex items-center justify-between w-full text-white py-6 pr-6 md:pr-12">
                         <div className="text-left pl-8 md:pl-16">
-                          <h3 className="font-headline text-lg md:text-3xl font-normal tracking-tighter">
+                          <h3 className="font-headline text-lg md:text-3xl font-normal tracking-tighter uppercase">
                             Safari Abenteuer • <span className="text-primary font-bold">Tag {startDay}-{endDay}</span>
                           </h3>
                           <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] opacity-60">Wildnis & Naturwunder</p>
@@ -483,16 +481,16 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
 
                         <div className="flex-1 bg-white rounded-[1.5rem] md:rounded-[3rem] border border-border/40 p-6 md:p-12 shadow-sm hover:shadow-xl transition-all duration-500 group/card">
                           <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
-                            <div className="flex-1 space-y-6">
+                            <div className="flex-1 space-y-6 text-left">
                               <div className="space-y-2">
                                 <Badge className="bg-primary/10 text-primary border-none text-[8px] font-bold tracking-widest px-3 py-1 uppercase">
                                   {day.location}
                                 </Badge>
-                                <h4 className="font-headline text-2xl md:text-4xl font-normal text-secondary tracking-tight group-hover/card:text-primary transition-colors">
+                                <h4 className="font-headline text-2xl md:text-4xl font-normal text-secondary tracking-tight group-hover/card:text-primary transition-colors uppercase">
                                   {day.title}
                                 </h4>
                               </div>
-                              <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide">
+                              <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide uppercase tracking-widest opacity-70">
                                 {day.desc}
                               </p>
                             </div>
@@ -521,10 +519,10 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
       <section ref={hotelsRef} className="py-16 md:py-32 bg-white scroll-mt-20 border-t border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-16 md:mb-24 space-y-4">
-            <h2 className="font-headline text-3xl md:text-5xl lg:text-[48px] lg:leading-[1.2] font-normal text-secondary tracking-tighter">
+            <h2 className="font-headline text-3xl md:text-5xl lg:text-[48px] lg:leading-[1.2] font-normal text-secondary tracking-tighter uppercase">
               Handverlesene Unterkünfte
             </h2>
-            <p className="text-muted-foreground font-normal text-[14px] leading-[20px] max-w-2xl mx-auto tracking-widest opacity-60">
+            <p className="text-muted-foreground font-normal text-[14px] leading-[20px] max-w-2xl mx-auto tracking-widest opacity-60 uppercase">
               Wir wählen jede Lodge persönlich nach Lage, Stil und Service aus
             </p>
           </div>
@@ -539,11 +537,11 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                   className="object-cover transition-transform duration-1000 group-hover:scale-105"
                 />
               </div>
-              <div className="p-8 md:p-16 flex flex-col flex-grow space-y-8">
-                <h3 className="font-headline text-[24px] leading-[32px] font-medium text-secondary tracking-tight">
+              <div className="p-8 md:p-16 flex flex-col flex-grow space-y-8 text-left">
+                <h3 className="font-headline text-[24px] leading-[32px] font-medium text-secondary tracking-tight uppercase">
                   Boutique Safari-Lodges
                 </h3>
-                <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide">
+                <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide uppercase tracking-widest opacity-70">
                   Luxuriöse Zeltcamps und Lodges mitten in der Wildnis. Jede Unterkunft verbindet authentisches Safari-Feeling mit höchstem Komfort: private Terrassen mit Blick auf die Savanne und erstklassiger Service.
                 </p>
                 <div className="pt-4 border-t border-border/40 space-y-4">
@@ -552,7 +550,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                     "Exquisite Küche und privates Dining",
                     "Persönlicher Butler-Service"
                   ].map((feat, idx) => (
-                    <div key={idx} className="flex items-center gap-4 text-[11px] font-bold text-secondary tracking-widest">
+                    <div key={idx} className="flex items-center gap-4 text-[11px] font-bold text-secondary tracking-widest uppercase">
                       <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
                       {feat}
                     </div>
@@ -570,11 +568,11 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                   className="object-cover transition-transform duration-1000 group-hover:scale-105"
                 />
               </div>
-              <div className="p-8 md:p-16 flex flex-col flex-grow space-y-8">
-                <h3 className="font-headline text-[24px] leading-[32px] font-medium text-secondary tracking-tight">
+              <div className="p-8 md:p-16 flex flex-col flex-grow space-y-8 text-left">
+                <h3 className="font-headline text-[24px] leading-[32px] font-medium text-secondary tracking-tight uppercase">
                   Sansibar Beach Retreat
                 </h3>
-                <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide">
+                <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide uppercase tracking-widest opacity-70">
                   Ihr privates Strandparadies auf Sansibar. Exklusives Boutique-Resort direkt am schneeweißen Sandstrand, umgeben von Palmen und dem türkisfarbenen Indischen Ozean.
                 </p>
                 <div className="pt-4 border-t border-border/40 space-y-4">
@@ -583,7 +581,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                     "Infinity-Pool und Spa",
                     "Meerblick-Suiten mit privatem Balkon"
                   ].map((feat, idx) => (
-                    <div key={idx} className="flex items-center gap-4 text-[11px] font-bold text-secondary tracking-widest">
+                    <div key={idx} className="flex items-center gap-4 text-[11px] font-bold text-secondary tracking-widest uppercase">
                       <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
                       {feat}
                     </div>
@@ -599,26 +597,26 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
       <section className="py-16 md:py-32 bg-[#fdfcfb]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-16 md:mb-24 space-y-4">
-            <h2 className="font-headline text-3xl md:text-6xl lg:text-[48px] lg:leading-[1.2] font-normal text-secondary tracking-tighter">
+            <h2 className="font-headline text-3xl md:text-6xl lg:text-[48px] lg:leading-[1.2] font-normal text-secondary tracking-tighter uppercase">
               In Ihrer Reise enthalten
             </h2>
-            <p className="text-muted-foreground font-normal text-[14px] leading-[20px] max-w-xl mx-auto tracking-widest opacity-60">
+            <p className="text-muted-foreground font-normal text-[14px] leading-[20px] max-w-xl mx-auto tracking-widest opacity-60 uppercase">
               Rundum-Sorglos-Paket für Ihr perfektes Safari-Erlebnis
             </p>
           </div>
 
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-start">
-            <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+            <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12 text-left">
               {inclusionsData.map((item, idx) => (
                 <div key={idx} className="flex gap-6 group">
                   <div className="w-12 h-12 rounded-2xl bg-[#C9A876]/10 border border-[#C9A876]/20 flex items-center justify-center shrink-0 shadow-sm transition-all duration-500 group-hover:bg-primary group-hover:shadow-lg">
                     <item.icon className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
                   </div>
                   <div className="space-y-2">
-                    <h4 className="font-headline text-[24px] leading-[32px] font-medium text-secondary tracking-tight transition-colors">
+                    <h4 className="font-headline text-[24px] leading-[32px] font-medium text-secondary tracking-tight transition-colors uppercase">
                       {item.title}
                     </h4>
-                    <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide">
+                    <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide uppercase tracking-widest opacity-70">
                       {item.desc}
                     </p>
                   </div>
@@ -632,8 +630,8 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                   <Plus className="w-5 h-5" />
                 </div>
                 
-                <div className="space-y-10 relative z-10">
-                  <h3 className="font-headline text-[24px] leading-[32px] font-medium text-secondary tracking-tight">
+                <div className="space-y-10 relative z-10 text-left">
+                  <h3 className="font-headline text-[24px] leading-[32px] font-medium text-secondary tracking-tight uppercase">
                     Extras & Optionen
                   </h3>
 
@@ -655,7 +653,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                   </div>
 
                   <div className="pt-8 border-t border-border/40">
-                    <Button onClick={() => scrollTo('inquiry')} className="w-full rounded-lg h-14 px-8 font-bold text-[11px] tracking-widest border-none shadow-xl">
+                    <Button onClick={() => scrollTo('inquiry')} className="w-full rounded-lg h-14 px-8 font-bold text-[11px] tracking-widest border-none shadow-xl uppercase">
                       JETZT ANFRAGEN
                     </Button>
                   </div>
@@ -666,10 +664,8 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         </div>
       </section>
 
-      {/* 09 CONVERSION HUB */}
       <AiCTA />
 
-      {/* 10 INQUIRY */}
       <section ref={inquiryRef} className="scroll-mt-20">
         <ContactSection />
       </section>
