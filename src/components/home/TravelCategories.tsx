@@ -89,10 +89,11 @@ export function TravelCategories() {
                 src={cat.img} 
                 alt={cat.title} 
                 fill 
-                className="object-cover transition-transform duration-1000 group-hover:scale-110 brightness-[0.9]"
+                className="object-cover transition-transform duration-1000 group-hover:scale-110"
                 data-ai-hint={cat.hint}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+              {/* Targeted Bottom Shady Overlay Protocol: No full image darkening */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
               
               <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end text-left">
                 <h3 className="text-white mb-2 font-headline text-[24px] leading-[32px] font-medium tracking-normal">

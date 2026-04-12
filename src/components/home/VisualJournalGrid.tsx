@@ -30,10 +30,11 @@ export function VisualJournalGrid() {
               src="/assets/images/home/gal-1.webp" 
               alt="Luxus Safari Erlebnis" 
               fill 
-              className="object-cover transition-transform duration-1000 group-hover:scale-105 brightness-[0.9]" 
+              className="object-cover transition-transform duration-1000 group-hover:scale-105" 
               data-ai-hint="safari relaxation"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+            {/* Targeted Bottom Shady Overlay Protocol: No full image darkening */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
             <div className="absolute bottom-10 left-10 right-10 space-y-3 text-left">
               <h3 className="font-headline text-2xl md:text-4xl text-white leading-tight tracking-normal">
                 Luxus inmitten der Wildnis
@@ -58,10 +59,11 @@ export function VisualJournalGrid() {
                 src="/assets/images/home/gal-2.webp" 
                 alt="Sansibar Strand" 
                 fill 
-                className="object-cover transition-transform duration-1000 group-hover:scale-105 brightness-[0.9]" 
+                className="object-cover transition-transform duration-1000 group-hover:scale-105" 
                 data-ai-hint="zanzibar beach"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+              {/* Targeted Bottom Shady Overlay Protocol: No full image darkening */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
               <div className="absolute bottom-10 left-10 right-10 space-y-2 text-left">
                 <h3 className="font-headline text-xl md:text-3xl text-white leading-tight tracking-normal">
                   Paradiesische Strände
@@ -84,10 +86,11 @@ export function VisualJournalGrid() {
                 src="/assets/images/home/gal-3.webp" 
                 alt="Wildlife Tansania" 
                 fill 
-                className="object-cover transition-transform duration-1000 group-hover:scale-105 brightness-[0.9]" 
+                className="object-cover transition-transform duration-1000 group-hover:scale-105" 
                 data-ai-hint="safari wildlife"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+              {/* Targeted Bottom Shady Overlay Protocol: No full image darkening */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
               <div className="absolute bottom-10 left-10 right-10 space-y-2 text-left">
                 <h3 className="font-headline text-xl md:text-3xl text-white leading-tight tracking-normal">
                   Wildlife hautnah
