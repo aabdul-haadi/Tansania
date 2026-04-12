@@ -80,22 +80,6 @@ const faqs = [
   {
     question: "Wie schnell erhalte ich eine Antwort auf meine Anfrage?",
     answer: "In der Regel erhalten Sie innerhalb von 24 Stunden eine erste Rückmeldung von unseren Spezialisten in Berlin. Ein detailliertes Angebot liegt Ihnen meist nach 48 Stunden vor."
-  },
-  {
-    question: "Was kostet eine Safari-Reise nach Tansania?",
-    answer: "Die Kosten hängen stark von der Reisezeit und dem gewünschten Komfortlevel ab. Als Richtwert für eine hochwertige, private Safari inkl. Lodges sollten Sie mit einem Budget ab ca. 5.000 € pro Person planen."
-  },
-  {
-    question: "Sprechen die Guides vor Ort Deutsch?",
-    answer: "Wir verfügen über einen Pool an exzellenten, staatlich geprüften Guides, die fließend Deutsch sprechen. Bitte geben Sie uns bei der Planung Bescheid, damit wir Ihren Wunschguide frühzeitig reservieren können."
-  },
-  {
-    question: "Welche Reisezeit ist die beste für eine Safari?",
-    answer: "Tansania ist ein Ganzjahresziel. Die Trockenzeiten von Juni bis Oktober sind ideal für Tierbeobachtungen, während die Monate Januar bis März perfekt für die Kalbungszeit im Süden der Serengeti sind."
-  },
-  {
-    question: "Sind die Reisen auch für Familien mit Kindern geeignet?",
-    answer: "Absolut. Wir planen spezielle Familiensafaris mit kürzeren Fahrtzeiten und familienfreundlichen Lodges, die über Pools und spezielle Aktivitäten für Kinder verfügen."
   }
 ];
 
@@ -122,7 +106,7 @@ export default function KilimanjaroPage() {
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen">
-      {/* 01 COMPACT PRESTIGE HERO */}
+      {/* 01 COMPACT PRESTIGE HERO - RECALIBRATED WITH PROTECTIVE OVERLAY */}
       <section className="relative h-[65vh] md:h-[80vh] flex items-center justify-center overflow-hidden bg-secondary">
         <div className="absolute inset-0">
           <Image 
@@ -133,7 +117,7 @@ export default function KilimanjaroPage() {
             className="object-cover"
             data-ai-hint="mount kilimanjaro"
           />
-          {/* Refined Protective Overlay Protocol */}
+          {/* Layered Protective Overlay Registry */}
           <div className="absolute inset-0 bg-black/20 z-10" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent z-20" />
         </div>
@@ -389,8 +373,11 @@ export default function KilimanjaroPage() {
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, i) => (
               <AccordionItem key={i} value={`item-${i}`} className="border-none bg-white rounded-2xl px-6 md:px-10 shadow-sm border border-transparent hover:border-border transition-all">
-                <AccordionTrigger className="font-normal text-base md:text-xl py-6 hover:no-underline text-left text-secondary transition-colors tracking-normal">
-                  {faq.question}
+                <AccordionTrigger className="font-normal text-base md:text-xl py-6 hover:no-underline text-left text-secondary transition-colors tracking-normal [&>svg]:hidden">
+                  <div className="flex items-center justify-between w-full">
+                    <span>{faq.question}</span>
+                    <Plus className="w-4 h-4 text-primary shrink-0 transition-transform group-data-[state=open]:rotate-45" />
+                  </div>
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-sm md:text-base leading-relaxed font-normal pb-8 uppercase opacity-80 text-left tracking-normal">
                   {faq.answer}

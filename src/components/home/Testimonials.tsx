@@ -25,21 +25,6 @@ const testimonials = [
     quote: "Als anspruchsvolle Reisende waren wir von der Qualität und dem Service absolut begeistert. Jedes Detail stimmte, die Lodges waren erstklassig und die persönliche Betreuung vor Ort außergewöhnlich.",
     author: "Dr. Petra Müller",
     category: "Exklusive Luxury Safari"
-  },
-  {
-    quote: "Die professionelle Beratung und die transparente Planung haben uns sofort überzeugt. Die Reise selbst übertraf all unsere Erwartungen – ein echtes Highlight war der Ngorongoro Krater. Wir kommen wieder!",
-    author: "Andreas & Sarah K.",
-    category: "Klassische Tansania Safari"
-  },
-  {
-    quote: "Hervorragend organisierte Kilimandscharo-Tour mit exzellentem Guide-Team. Die Vorbereitung war detailliert und vor Ort lief alles reibungslos. Eine Erfahrung fürs Leben!",
-    author: "Michael Wagner",
-    category: "Kilimandscharo Besteigung"
-  },
-  {
-    quote: "Vom ersten Kontakt an spürten wir, dass wir hier in guten Händen sind. Die Reise war perfekt durchdacht, alle Transfers klappten reibungslos und die Unterkünfte waren handverlesen. Absolute Empfehlung!",
-    author: "Familie Hofmann",
-    category: "Safari & Sansibar"
   }
 ];
 
@@ -48,11 +33,12 @@ export function Testimonials() {
     <section className="pt-4 md:pt-8 pb-12 md:pb-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-10 md:mb-16 space-y-2">
+          {/* TITLE: RESET TO STRICT GLOBAL CSS METRICS */}
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-3xl md:text-5xl font-normal text-secondary"
+            className="font-headline text-3xl md:text-5xl font-normal text-secondary mb-4"
           >
             Was unsere Gäste sagen
           </motion.h2>
