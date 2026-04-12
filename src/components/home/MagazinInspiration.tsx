@@ -36,7 +36,7 @@ const magazinePosts = [
     category: "Reisetipps",
     date: "1. März 2026",
     excerpt: "Von der richtigen Kleidung bis zur Kameraausrüstung – alles, was Sie für Ihre perfekte Safari wissen müssen.",
-    img: "/assets/images/home/Magazin-3.webp",
+    img: "/assets/images/home/magzine-3.png",
     hint: "safari gear"
   }
 ];

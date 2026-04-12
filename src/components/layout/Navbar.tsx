@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import {
   Accordion,
@@ -141,6 +141,12 @@ export function Navbar() {
             </SheetTrigger>
             
             <SheetContent side="right" className="w-[85vw] sm:max-w-[400px] p-0 bg-white text-secondary border-none flex flex-col shadow-2xl">
+              {/* Visually hidden for accessibility requirements */}
+              <div className="sr-only">
+                <SheetTitle>Menü</SheetTitle>
+                <SheetDescription>Hauptnavigation der Tansania Reiseabenteuer Website</SheetDescription>
+              </div>
+
               <div className="px-6 py-6 flex items-center border-b border-border/50 shrink-0">
                 <Link href="/" className="flex items-center gap-3">
                   <img src="/iconlogo.jpg" alt="SDL" className="h-8 md:h-10 w-auto" />
