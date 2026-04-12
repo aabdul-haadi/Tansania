@@ -13,7 +13,7 @@ const features = [
     desc: "Wir sind kein anonymes Buchungsportal. Wir sind ein engagiertes Team in Berlin, das Tansania aus jahrelanger Erfahrung kennt und liebt.",
     icon: Star,
     size: "large",
-    bg: "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200",
+    bg: "/assets/images/home/why-travel-01.png",
     hint: "safari guide"
   },
   {
@@ -22,7 +22,7 @@ const features = [
     desc: "Kein geteilter Bus, keine Kompromisse. Ihr eigener Jeep und Ihr privater Guide garantieren ein exklusives Abenteuer in Ihrem eigenen Tempo.",
     icon: Compass,
     size: "mid",
-    bg: "bg-primary text-white"
+    bg: "bg-secondary text-white"
   },
   {
     id: "03",
@@ -44,15 +44,15 @@ const features = [
 
 export function WhyUs() {
   return (
-    <section className="py-12 md:py-24 bg-white overflow-hidden border-t border-border/40">
+    <section className="py-16 md:py-32 bg-white overflow-hidden border-t border-border/40">
       <div className="container mx-auto px-4 max-w-7xl">
         
-        <div className="text-center mb-10 md:mb-16 space-y-2">
+        <div className="text-center mb-16 md:mb-24 space-y-4">
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-3xl md:text-5xl font-normal text-secondary"
+            className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tight"
           >
             Warum mit uns reisen?
           </motion.h2>
@@ -61,79 +61,90 @@ export function WhyUs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground font-normal text-sm md:text-base max-w-2xl mx-auto opacity-80"
+            className="text-muted-foreground font-normal text-sm md:text-base max-w-2xl mx-auto tracking-widest opacity-80"
           >
             Ihre Träume in den Händen von Experten – persönlich, sicher und exklusiv.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 auto-rows-fr">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 auto-rows-fr">
+          {/* Main Visual Feature */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="md:col-span-8 relative rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden group shadow-xl bg-muted h-full min-h-[350px]"
+            className="md:col-span-8 relative rounded-[2rem] md:rounded-[3rem] overflow-hidden group shadow-2xl bg-muted h-full min-h-[400px]"
           >
             <Image 
               src={features[0].bg} 
               alt={features[0].title} 
               fill 
               className="object-cover transition-transform duration-1000 group-hover:scale-105"
-              data-ai-hint={features[0].hint}
+              data-ai-hint={features[0].hint || "safari guide"}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90" />
             
-            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
-              <div className="max-w-2xl space-y-3">
-                <h3 className="font-headline text-xl md:text-3xl text-white">
+            <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+              <div className="max-w-2xl space-y-4">
+                <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center shadow-xl mb-4">
+                  {React.createElement(features[0].icon, { className: "w-6 h-6 text-white" })}
+                </div>
+                <h3 className="font-headline text-2xl md:text-4xl text-white uppercase tracking-tighter">
                   {features[0].title}
                 </h3>
-                <p className="text-white/80 font-normal text-sm md:text-base max-w-lg">
+                <p className="text-white/80 font-normal text-sm md:text-lg max-w-lg leading-relaxed">
                   {features[0].desc}
                 </p>
               </div>
             </div>
           </motion.div>
 
+          {/* Secondary Highlight */}
           <motion.div 
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             className={cn(
-              "md:col-span-4 rounded-[1.5rem] md:rounded-[2.5rem] p-6 md:p-10 flex flex-col justify-between shadow-xl relative overflow-hidden",
+              "md:col-span-4 rounded-[2rem] md:rounded-[3rem] p-8 md:p-12 flex flex-col justify-between shadow-xl relative overflow-hidden group transition-all duration-500 hover:shadow-2xl",
               features[1].bg
             )}
           >
-            <div className="absolute top-0 right-0 p-6 opacity-10"><Compass className="w-20 h-20 rotate-12 text-white" /></div>
-            <div className="relative z-10 space-y-4">
-              <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/20">
-                <Compass className="w-5 h-5 text-white" />
+            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
+              {React.createElement(features[1].icon, { className: "w-32 h-32 rotate-12 text-white" })}
+            </div>
+            <div className="relative z-10 space-y-6">
+              <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20">
+                {React.createElement(features[1].icon, { className: "w-6 h-6 text-white" })}
               </div>
-              <h3 className="font-headline text-xl md:text-2xl text-white">
+              <h3 className="font-headline text-2xl md:text-3xl text-white uppercase tracking-tighter leading-tight">
                 {features[1].title}
               </h3>
-              <p className="text-white/90 font-normal text-sm md:text-base">
+              <p className="text-white/80 font-normal text-sm md:text-base leading-relaxed">
                 {features[1].desc}
               </p>
             </div>
+            <div className="mt-8 pt-6 border-t border-white/10">
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary">Signature Series</span>
+            </div>
           </motion.div>
 
+          {/* Bottom Row Tertiary Features */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="md:col-span-6 rounded-[1.5rem] md:rounded-[2.5rem] bg-white border border-border/50 p-6 md:p-10 flex flex-col sm:flex-row gap-6 items-start sm:items-center shadow-sm hover:shadow-md transition-all group"
+            className="md:col-span-6 rounded-[2rem] md:rounded-[3rem] bg-white border border-border/50 p-8 md:p-12 flex flex-col sm:flex-row gap-8 items-start sm:items-center shadow-sm hover:shadow-xl transition-all duration-500 group"
           >
-            <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-muted flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors duration-500 shadow-inner">
-              <Users className="w-6 h-6 text-secondary group-hover:text-white transition-colors" />
+            <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-[#FDF7F2] border border-[#F0EBE0] flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:border-primary transition-all duration-500 shadow-sm">
+              {React.createElement(features[2].icon, { className: "w-8 h-8 text-primary group-hover:text-white transition-colors" })}
             </div>
-            <div className="space-y-2">
-              <h3 className="font-headline text-lg md:text-2xl text-secondary">
+            <div className="space-y-3">
+              <h3 className="font-headline text-xl md:text-3xl text-secondary uppercase tracking-tight">
                 {features[2].title}
               </h3>
-              <p className="text-muted-foreground font-normal text-sm md:text-base opacity-80">
+              <p className="text-muted-foreground font-normal text-sm md:text-base opacity-80 leading-relaxed">
                 {features[2].desc}
               </p>
             </div>
@@ -144,16 +155,16 @@ export function WhyUs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="md:col-span-6 rounded-[1.5rem] md:rounded-[2.5rem] bg-[#FDF7F2] border border-[#F0EBE0] p-6 md:p-10 flex flex-col sm:flex-row gap-6 items-start sm:items-center shadow-sm hover:shadow-md transition-all group"
+            className="md:col-span-6 rounded-[2rem] md:rounded-[3rem] bg-[#FDF7F2] border border-[#F0EBE0] p-8 md:p-12 flex flex-col sm:flex-row gap-8 items-start sm:items-center shadow-sm hover:shadow-xl transition-all duration-500 group"
           >
-            <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white border border-[#F0EBE0] flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors duration-500 shadow-sm">
-              <ShieldCheck className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
+            <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-white border border-[#F0EBE0] flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:border-primary transition-all duration-500 shadow-sm">
+              {React.createElement(features[3].icon, { className: "w-8 h-8 text-primary group-hover:text-white transition-colors" })}
             </div>
-            <div className="space-y-2">
-              <h3 className="font-headline text-lg md:text-2xl text-secondary">
+            <div className="space-y-3">
+              <h3 className="font-headline text-xl md:text-3xl text-secondary uppercase tracking-tight">
                 {features[3].title}
               </h3>
-              <p className="text-muted-foreground font-normal text-sm md:text-base opacity-80">
+              <p className="text-muted-foreground font-normal text-sm md:text-base opacity-80 leading-relaxed">
                 {features[3].desc}
               </p>
             </div>

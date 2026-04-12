@@ -69,7 +69,7 @@ const SIGNATURE_REISEN = [
       'Alles gut organisiert'
     ],
     excerpt: 'Speziell für Familien konzipiert: Unvergessliche Abenteuer und kindgerechte Lodges in Tansanias Wildnis.',
-    imageUrl: '/assets/images/home/pkg-04.webp'
+    imageUrl: '/assets/images/home/pkg-04.png'
   }
 ];
 
