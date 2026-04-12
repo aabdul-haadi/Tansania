@@ -70,7 +70,7 @@ export function WhyUs() {
                   <span className="text-primary font-bold">unterscheidet</span>
                 </h2>
               </motion.div>
-              <p className="text-muted-foreground font-normal text-[14px] leading-[20px] max-w-xl opacity-80 tracking-wide uppercase">
+              <p className="text-muted-foreground font-normal text-[14px] leading-[20px] max-w-xl opacity-80 tracking-wide">
                 Wir planen keine Reisen von der Stange. Wir gestalten individuelle Expeditionen für Menschen, die das Echte suchen – mit maximaler Sicherheit.
               </p>
             </div>
@@ -96,7 +96,7 @@ export function WhyUs() {
                     <h3 className="font-headline text-xl md:text-2xl font-bold text-secondary tracking-tight group-hover:text-primary transition-colors uppercase">
                       {feature.title}
                     </h3>
-                    <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide uppercase opacity-70">
+                    <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide opacity-70">
                       {feature.desc}
                     </p>
                   </div>

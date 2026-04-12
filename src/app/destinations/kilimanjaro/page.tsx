@@ -43,7 +43,7 @@ const routes = [
     id: "02",
     name: 'Lemosho Route', 
     title: 'Die Exklusive',
-    desc: 'Eine der schönsten Routen, die im Westen startet und durch unberührte Regenwälder führt. Ideal für Ruhe und höchste Erfolgschancen.', 
+    desc: 'Eine der schönsten Routen, die im Westen startet und durch unberührter Regenwälder führt. Ideal für Ruhe und höchste Erfolgschancen.', 
     days: '7-8 Tage',
     level: 'Moderat bis Schwer',
     highlight: 'Shira Plateau'
@@ -150,7 +150,7 @@ export default function KilimanjaroPage() {
               </h2>
             </div>
             
-            <div className="space-y-6 text-muted-foreground font-normal leading-relaxed text-sm md:text-base border-l-4 border-primary/20 pl-8 uppercase tracking-widest opacity-80">
+            <div className="space-y-6 text-muted-foreground font-normal leading-relaxed text-sm md:text-base border-l-4 border-primary/20 pl-8 tracking-wide opacity-80">
               <p>
                 Der Kilimandscharo vereint atemberaubende Landschaften, eine echte körperliche Herausforderung und den Nervenkitzel, den höchsten Gipfel Afrikas zu erklimmen.
               </p>
@@ -245,7 +245,7 @@ export default function KilimanjaroPage() {
                       <h3 className="font-headline text-2xl md:text-4xl font-normal text-secondary tracking-tight uppercase group-hover:text-primary transition-colors">
                         {route.name}
                       </h3>
-                      <p className="text-sm leading-relaxed text-muted-foreground font-normal tracking-widest uppercase opacity-70">
+                      <p className="text-sm leading-relaxed text-muted-foreground font-normal tracking-wide opacity-70">
                         {route.desc}
                       </p>
                     </div>
@@ -375,7 +375,7 @@ export default function KilimanjaroPage() {
                     <Plus className="w-4 h-4 text-primary shrink-0 transition-transform group-data-[state=open]:rotate-45" />
                   </div>
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground text-sm md:text-base leading-relaxed font-normal pb-8 uppercase opacity-80 text-left tracking-normal">
+                <AccordionContent className="text-muted-foreground text-sm md:text-base leading-relaxed font-normal pb-8 opacity-80 text-left tracking-normal">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>

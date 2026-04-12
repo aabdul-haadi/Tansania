@@ -59,7 +59,7 @@ export function PackageCard({ pkg, className }: PackageCardProps) {
             </h3>
           </Link>
           
-          <p className="line-clamp-2 tracking-normal text-[14px] leading-[20px] text-muted-foreground font-normal uppercase opacity-70">
+          <p className="line-clamp-2 tracking-normal text-[14px] leading-[20px] text-muted-foreground font-normal opacity-70">
             {pkg.excerpt}
           </p>
 

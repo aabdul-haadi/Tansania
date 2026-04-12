@@ -45,7 +45,7 @@ export function VisualJournalGrid() {
               <h3 className="font-headline text-2xl md:text-4xl text-white leading-tight tracking-normal uppercase">
                 Luxus inmitten der Wildnis
               </h3>
-              <p className="text-[14px] leading-[20px] font-normal text-white/70 tracking-normal max-w-md uppercase opacity-80">
+              <p className="text-[14px] leading-[20px] font-normal text-white/70 tracking-normal uppercase opacity-80 max-w-md">
                 Exklusive Lodges, die höchsten Komfort mit authentischen Erlebnissen verbinden.
               </p>
             </div>
@@ -93,7 +93,7 @@ export function VisualJournalGrid() {
                 alt="Wildlife Tansania" 
                 fill 
                 unoptimized
-                className="object-cover transition-transform duration-1000 group-hover:scale-105" 
+                className="object-cover transition-transform duration-1000 group-hover:scale-110" 
                 data-ai-hint="safari wildlife"
               />
               <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />

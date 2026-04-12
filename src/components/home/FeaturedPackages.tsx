@@ -90,7 +90,7 @@ export function FeaturedPackages() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground font-normal text-[14px] leading-[20px] max-w-2xl mx-auto tracking-widest opacity-80"
+            className="text-muted-foreground font-normal text-[14px] leading-[20px] max-w-2xl mx-auto tracking-normal opacity-80"
           >
             Sorgfältig komponierte Reiserouten – als Inspiration oder Ausgangspunkt für Ihre individuelle Planung
           </motion.p>
