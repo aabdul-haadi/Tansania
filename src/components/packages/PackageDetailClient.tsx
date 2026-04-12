@@ -31,7 +31,8 @@ import {
   GlassWater,
   Palmtree,
   Wind,
-  FileText
+  FileText,
+  HelpCircle
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -52,6 +53,7 @@ const navItems = [
   { id: 'overview', label: 'Übersicht' },
   { id: 'itinerary', label: 'Reiseverlauf' },
   { id: 'hotels', label: 'Unterkünfte' },
+  { id: 'faq', label: 'FAQ' },
   { id: 'inquiry', label: 'Anfrage' }
 ];
 
@@ -83,24 +85,23 @@ const highlights = [
   }
 ];
 
-const inclusionsData = [
-  { icon: Home, title: "Übernachtungen", desc: "In handverlesenen Luxus-Lodges & Tented Camps" },
-  { icon: Car, title: "Privater 4x4", desc: "Alle Transfers und Pirschfahrten im privaten Geländewagen" },
-  { icon: Camera, title: "Pirschfahrten", desc: "Unbegrenzte Fahrten zur Wildtierbeobachtung" },
-  { icon: Utensils, title: "Verpflegung", desc: "Vollpension auf Safari, Halbpension auf Sansibar" },
-  { icon: UserCheck, title: "Deutschsprachiger Guide", desc: "Erfahrene Ranger mit exzellenten Gebietskenntnissen" },
-  { icon: Plane, title: "Inlandsflug", desc: "Inklusive Gepäcktransfer zwischen den Parks" },
-  { icon: PhoneCall, title: "24/7 Notfall-Hotline", desc: "Persönlicher Ansprechpartner rund um die Uhr" },
-];
-
-const extrasData = [
-  { icon: Globe, label: "Internationale Flüge", status: "auf Anfrage" },
-  { icon: ShieldCheck, label: "Reiseversicherung", status: "optional" },
-  { icon: Wind, label: "Heißluftballon-Safari", status: "ab €550 p.P." },
-  { icon: Users, label: "Kulturelle Touren", status: "zubuchbar" },
-  { icon: Sprout, label: "Spa-Behandlungen", status: "vor Ort" },
-  { icon: GlassWater, label: "Private Dinner im Busch", status: "inkludiert*" },
-  { icon: Palmtree, label: "Sansibar Verlängerung", status: "individuell" },
+const faqData = [
+  {
+    q: "Benötige ich ein Visum für Tansania?",
+    a: "Ja, für deutsche Staatsangehörige ist ein Visum erforderlich. Dies kann bequem vorab als E-Visum oder bei der Ankunft am Flughafen erworben werden."
+  },
+  {
+    q: "Welche Impfungen werden empfohlen?",
+    a: "Standardimpfungen sowie Schutz gegen Hepatitis A und Typhus werden empfohlen. Eine Gelbfieberimpfung ist bei Einreise aus Endemiegebieten Pflicht."
+  },
+  {
+    q: "Ist die Safari für Kinder geeignet?",
+    a: "Absolut. Wir wählen kinderfreundliche Lodges und passen die Fahrtzeiten an, um ein entspanntes Erlebnis für die ganze Familie zu gewährleisten."
+  },
+  {
+    q: "Was ist in der Packliste unverzichtbar?",
+    a: "Leichte, helle Kleidung (Khaki/Beige), Sonnenschutz, ein gutes Fernglas und eine Kamera mit Zoomobjektiv sind essenziell."
+  }
 ];
 
 interface PackageDetailClientProps {
@@ -115,6 +116,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
   const itineraryRef = useRef<HTMLDivElement>(null);
   const overviewRef = useRef<HTMLDivElement>(null);
   const hotelsRef = useRef<HTMLDivElement>(null);
+  const faqRef = useRef<HTMLDivElement>(null);
   const inquiryRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
 
@@ -123,6 +125,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
     const handleScroll = () => {
       const scrollPos = window.scrollY + 150;
       if (inquiryRef.current && scrollPos >= inquiryRef.current.offsetTop) setActiveSection('inquiry');
+      else if (faqRef.current && scrollPos >= faqRef.current.offsetTop) setActiveSection('faq');
       else if (hotelsRef.current && scrollPos >= hotelsRef.current.offsetTop) setActiveSection('hotels');
       else if (itineraryRef.current && scrollPos >= itineraryRef.current.offsetTop) setActiveSection('itinerary');
       else setActiveSection('overview');
@@ -132,7 +135,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
   }, []);
 
   const scrollTo = (id: string) => {
-    const refMap: any = { overview: overviewRef, itinerary: itineraryRef, hotels: hotelsRef, inquiry: inquiryRef };
+    const refMap: any = { overview: overviewRef, itinerary: itineraryRef, hotels: hotelsRef, faq: faqRef, inquiry: inquiryRef };
     const ref = refMap[id];
     if (ref && ref.current) {
       window.scrollTo({ top: ref.current.offsetTop - 80, behavior: 'smooth' });
@@ -153,7 +156,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
       <motion.div className="fixed top-0 left-0 right-0 h-1 bg-primary z-[110] origin-left" style={{ scaleX }} />
 
-      {/* 01 IMMERSIVE CINEMA HERO - Bottom Centered Protocol */}
+      {/* 01 IMMERSIVE CINEMA HERO */}
       <section className="relative h-[80vh] md:h-[90vh] w-full overflow-hidden bg-secondary">
         <div className="absolute inset-0 z-0">
           <Image 
@@ -166,33 +169,33 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
         </div>
         
-        <div className="container relative z-10 mx-auto px-6 h-full flex flex-col justify-end items-center pb-12 md:pb-20 max-w-7xl">
+        <div className="container relative z-10 mx-auto px-6 h-full flex flex-col justify-end items-center pb-12 md:pb-24 max-w-7xl">
           <motion.div 
             initial={{ opacity: 0, y: 30 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ duration: 1, ease: "easeOut" }}
             className="max-w-4xl space-y-6 md:space-y-8 text-center flex flex-col items-center"
           >
-            <div className="space-y-3 md:space-y-4 w-full">
-              <h1 className="font-headline font-normal text-white text-3xl md:text-5xl lg:text-6xl tracking-tight leading-tight">
+            <div className="space-y-4 w-full">
+              <h1 className="font-headline font-normal text-white text-3xl md:text-5xl lg:text-6xl leading-tight">
                 {pkg.title}
               </h1>
-              <p className="text-white/90 font-light text-sm md:text-base lg:text-lg tracking-wide leading-relaxed max-w-2xl mx-auto">
+              <p className="text-white/90 font-light text-sm md:text-base lg:text-lg leading-relaxed max-w-2xl mx-auto">
                 Ihre private Safari-Expedition durch Tansania und exklusive Erholung auf Sansibar.
               </p>
             </div>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2 w-full">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full">
                <Button 
                  onClick={() => scrollTo('inquiry')}
-                 className="w-full sm:w-auto rounded-lg px-10 h-12 font-bold text-sm tracking-wide shadow-2xl border-none"
+                 className="w-full sm:w-auto rounded-lg px-10 h-12 font-bold text-sm shadow-2xl border-none"
                >
                  Jetzt anfragen
                </Button>
                <Button 
                  onClick={() => scrollTo('itinerary')}
                  variant="glass"
-                 className="w-full sm:w-auto rounded-lg px-10 h-12 font-bold text-sm tracking-wide transition-all"
+                 className="w-full sm:w-auto rounded-lg px-10 h-12 font-bold text-sm transition-all"
                >
                  <MapIcon className="w-4 h-4 mr-2" /> Reiseroute ansehen
                </Button>
@@ -229,20 +232,20 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
       </div>
 
       {/* 03 NARRATIVE & MASTER CARD SECTION */}
-      <section ref={overviewRef} className="py-6 md:py-10 bg-white scroll-mt-20">
+      <section ref={overviewRef} className="py-8 md:py-12 bg-white scroll-mt-20">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
-            <div className="lg:col-span-7 space-y-6 md:space-y-8">
-              <div className="space-y-3 text-left">
+            <div className="lg:col-span-7 space-y-6 md:space-y-10">
+              <div className="space-y-4 text-left">
                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold border border-primary/20">
                   {pkg.durationDays} Tage {pkg.category}
                 </div>
-                <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter">
+                <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary">
                   Eine Reise, die berührt
                 </h2>
               </div>
 
-              <div className="relative aspect-[16/10] md:aspect-[21/9] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-xl border border-border/50 bg-muted">
+              <div className="relative aspect-[16/10] md:aspect-[21/9] rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden shadow-xl border border-border/50 bg-muted">
                 <Image 
                   src={pkg.imageUrl || 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200'} 
                   alt="Safari Moment" 
@@ -264,12 +267,12 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                   <div className="space-y-6 relative z-10 text-left">
                     <div className="space-y-2">
                       <p className="text-[#C9A876] font-bold text-[10px] tracking-widest uppercase">Tansania</p>
-                      <h3 className="font-headline text-[26px] md:text-[32px] leading-tight font-medium text-[#3A3634] tracking-tight">
+                      <h3 className="font-headline text-[26px] md:text-[32px] leading-tight font-medium text-[#3A3634]">
                         {pkg.title}
                       </h3>
                     </div>
 
-                    <div className="space-y-3.5">
+                    <div className="space-y-4">
                       <div className="flex flex-col gap-0.5">
                         <p className="text-[#3A3634] font-bold text-sm">Reisedauer:</p>
                         <p className="text-sm text-[#8A8581] font-normal leading-tight">15-tägig, Flüge inklusive</p>
@@ -300,7 +303,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                       <div className="flex flex-col">
                         <span className="text-sm text-[#C9A876] font-bold line-through mb-0.5 opacity-60">6.210 €</span>
                         <div className="flex items-baseline gap-1.5">
-                          <span className="text-2xl md:text-3xl font-black text-[#141414] tracking-tighter">ab 5.399 €</span>
+                          <span className="text-2xl md:text-3xl font-black text-[#141414] tracking-tight">ab 5.399 €</span>
                         </div>
                         <p className="text-[10px] font-bold text-[#C9A876] mt-0.5">pro Person im DZ</p>
                       </div>
@@ -322,11 +325,11 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         </div>
       </section>
 
-      {/* 04 HIGHLIGHTS - Clean Aesthetic */}
+      {/* 04 HIGHLIGHTS */}
       <section className="py-10 md:py-16 bg-[#FDF7F2] border-y border-border/40 scroll-mt-20">
         <div className="container mx-auto px-4 max-w-7xl text-center">
           <div className="mb-10">
-            <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary tracking-tighter">
+            <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary">
               Die Höhepunkte Ihrer Reise
             </h2>
           </div>
@@ -342,7 +345,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                           <h.icon className="w-7 h-7 text-primary" />
                         </div>
                         <div className="space-y-2.5">
-                          <h4 className="font-headline text-xl font-medium text-secondary tracking-tight">
+                          <h4 className="font-headline text-xl font-medium text-secondary">
                             {h.title}
                           </h4>
                           <p className="text-xs md:text-sm text-muted-foreground font-normal leading-relaxed opacity-70">
@@ -361,11 +364,11 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         </div>
       </section>
 
-      {/* 05 ITINERARY - White Titles */}
+      {/* 05 ITINERARY */}
       <section ref={itineraryRef} className="py-10 md:py-16 bg-white scroll-mt-20">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center mb-10 md:mb-16 space-y-3">
-            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter">Ihr Reiseverlauf</h2>
+            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary">Ihr Reiseverlauf</h2>
             <p className="text-muted-foreground font-normal text-sm md:text-base max-w-xl mx-auto opacity-80">
               Eine sorgfältig kuratierte Route durch die schönsten Regionen Tansanias
             </p>
@@ -388,7 +391,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                       />
                       <div className="relative z-10 flex items-center justify-between w-full text-white px-6 md:px-12">
                         <div className="text-left">
-                          <h3 className="font-headline text-lg md:text-2xl font-normal tracking-tighter text-white">
+                          <h3 className="font-headline text-lg md:text-2xl font-normal text-white">
                             Safari Abenteuer • <span className="text-white font-bold">Tag {startDay}-{endDay}</span>
                           </h3>
                           <p className="text-[10px] font-bold opacity-60 text-white/80 uppercase tracking-widest">Wildnis & Naturwunder</p>
@@ -418,7 +421,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                                 <Badge className="bg-primary/10 text-primary border-none text-[9px] font-bold px-3">
                                   {day.location}
                                 </Badge>
-                                <h4 className="font-headline text-xl md:text-3xl font-normal text-secondary tracking-tight group-hover/card:text-primary transition-colors">
+                                <h4 className="font-headline text-xl md:text-3xl font-normal text-secondary group-hover/card:text-primary transition-colors">
                                   {day.title}
                                 </h4>
                               </div>
@@ -451,7 +454,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
       <section ref={hotelsRef} className="py-10 md:py-16 bg-white scroll-mt-20 border-t border-border/40 text-center">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="mb-10 space-y-3">
-            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter">
+            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary">
               Handverlesene Unterkünfte
             </h2>
             <p className="text-muted-foreground font-normal text-sm md:text-base max-w-2xl mx-auto opacity-60">
@@ -470,7 +473,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                 />
               </div>
               <div className="p-8 md:p-10 flex flex-col flex-grow space-y-5 text-left">
-                <h3 className="font-headline text-xl md:text-3xl font-medium text-secondary tracking-tight">
+                <h3 className="font-headline text-xl md:text-3xl font-medium text-secondary">
                   Boutique Safari-Lodges
                 </h3>
                 <p className="text-sm md:text-base text-muted-foreground font-normal leading-relaxed opacity-70">
@@ -501,7 +504,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                 />
               </div>
               <div className="p-8 md:p-10 flex flex-col flex-grow space-y-5 text-left">
-                <h3 className="font-headline text-xl md:text-3xl font-medium text-secondary tracking-tight">
+                <h3 className="font-headline text-xl md:text-3xl font-medium text-secondary">
                   Sansibar Beach Retreat
                 </h3>
                 <p className="text-sm md:text-base text-muted-foreground font-normal leading-relaxed opacity-70">
@@ -522,6 +525,40 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* 07 FAQ SECTION */}
+      <section ref={faqRef} className="py-10 md:py-16 bg-[#FDF7F2] border-y border-border/40 scroll-mt-20">
+        <div className="container mx-auto px-4 max-w-4xl text-center">
+          <div className="mb-10 space-y-3">
+            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary">
+              Häufig gestellte Fragen
+            </h2>
+            <p className="text-muted-foreground font-normal text-sm md:text-base opacity-60">
+              Alles Wissenswerte für Ihre perfekte Planung
+            </p>
+          </div>
+
+          <Accordion type="single" collapsible className="space-y-4">
+            {faqData.map((faq, i) => (
+              <AccordionItem 
+                key={i} 
+                value={`faq-${i}`} 
+                className="border-none bg-white rounded-2xl px-6 md:px-10 shadow-sm transition-all hover:shadow-md"
+              >
+                <AccordionTrigger className="font-bold text-base md:text-lg py-6 hover:no-underline text-left text-secondary transition-colors [&>svg]:hidden">
+                  <div className="flex items-center justify-between w-full">
+                    <span>{faq.q}</span>
+                    <Plus className="w-4 h-4 text-primary shrink-0 transition-transform group-data-[state=open]:rotate-45" />
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-sm md:text-base leading-relaxed text-left pb-8 opacity-80">
+                  {faq.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </section>
 
