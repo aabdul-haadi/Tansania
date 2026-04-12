@@ -8,7 +8,7 @@ const SIGNATURE_REISEN = [
   {
     id: 'safari-tansania-sansibar-15',
     title: '15 Tage Safari in Tansania und Sansibar',
-    slug: 'safari-tansania-sansibar-15-tage',
+    slug: '15-day-safari-zanzibar',
     startingPrice: 5399,
     durationDays: 15,
     category: 'Erlebnisreise',

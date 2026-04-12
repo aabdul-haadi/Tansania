@@ -287,7 +287,7 @@ export default function KilimanjaroPage() {
 
       {/* 04 WICHTIGE FAKTEN */}
       <section className="py-12 md:py-24 bg-[#fdfcfb]">
-        <div className="container mx-auto px-4 max-w-7xl">
+        <div className="container mx-auto px-4 max-get-7xl">
           <div className="text-center mb-10 md:mb-12 space-y-4">
             <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tight leading-none uppercase">Wichtige Fakten</h2>
             <div className="w-20 h-1 bg-primary mx-auto rounded-full opacity-40" />
