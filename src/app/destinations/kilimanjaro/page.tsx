@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -134,10 +133,12 @@ export default function KilimanjaroPage() {
             className="object-cover"
             data-ai-hint="mount kilimanjaro"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent z-10" />
+          {/* Refined Protective Overlay Protocol */}
+          <div className="absolute inset-0 bg-black/20 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent z-20" />
         </div>
         
-        <div className="container relative z-20 mx-auto px-4 text-center">
+        <div className="container relative z-30 mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -193,7 +194,7 @@ export default function KilimanjaroPage() {
                 <Users className="w-6 h-6 text-primary shrink-0" />
                 <div className="space-y-1">
                   <h4 className="font-bold text-xs text-secondary uppercase tracking-normal">Profi-Guides</h4>
-                  <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-normal leading-relaxed">Staatlich geprüft mit über 100 Gipfelstürmen.</p>
+                  <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-normal leading-relaxed">Staatlich geprüft mit over 100 Gipfelstürmen.</p>
                 </div>
               </div>
             </div>

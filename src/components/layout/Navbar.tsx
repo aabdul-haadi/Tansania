@@ -112,12 +112,12 @@ export function Navbar() {
                 !isScrolled && "brightness-110"
               )} 
             />
-            <div className="flex flex-col justify-center">
-              <span className="font-headline font-black whitespace-nowrap text-xs sm:text-sm md:text-xl lg:text-2xl uppercase tracking-normal leading-[1.1]">
+            <div className="flex items-center gap-2 md:gap-3">
+              <span className="font-headline font-black whitespace-nowrap text-xs sm:text-sm md:text-xl lg:text-2xl uppercase tracking-normal leading-none">
                 Tansania
               </span>
               <span className={cn(
-                "font-headline font-black whitespace-nowrap text-xs sm:text-sm md:text-xl lg:text-2xl transition-colors duration-500 uppercase tracking-normal leading-[1.1]",
+                "font-headline font-black whitespace-nowrap text-xs sm:text-sm md:text-xl lg:text-2xl transition-colors duration-500 uppercase tracking-normal leading-none",
                 isScrolled ? "text-primary" : "text-white"
               )}>
                 Reiseabenteuer
@@ -153,7 +153,6 @@ export function Navbar() {
               <ScrollArea className="flex-grow">
                 <div className="px-8 py-6 md:py-10 flex flex-col gap-8 md:gap-10">
                   <nav className="flex flex-col gap-5 md:gap-6 text-left">
-                    {/* Direct Highlight Links */}
                     <div className="flex flex-col gap-4 mb-4">
                       <Link href="/safaris" className="text-xl md:text-2xl font-headline font-black text-secondary hover:text-primary transition-colors leading-none uppercase">
                         SAFARIS

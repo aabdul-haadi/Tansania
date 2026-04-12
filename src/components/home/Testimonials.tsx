@@ -47,13 +47,12 @@ export function Testimonials() {
   return (
     <section className="pt-4 md:pt-8 pb-12 md:pb-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
-        {/* Section Header */}
         <div className="text-center mb-10 md:mb-16 space-y-2">
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline font-normal text-secondary tracking-wide"
+            className="font-headline text-3xl md:text-5xl font-normal text-secondary"
           >
             Was unsere Gäste sagen
           </motion.h2>
@@ -68,7 +67,6 @@ export function Testimonials() {
           </motion.p>
         </div>
 
-        {/* Desktop Grid Layout */}
         <div className="hidden md:grid grid-cols-3 gap-6 lg:gap-8">
           {testimonials.map((item, idx) => (
             <motion.div
@@ -83,7 +81,6 @@ export function Testimonials() {
           ))}
         </div>
 
-        {/* Mobile Slider Layout */}
         <div className="md:hidden -mx-4">
           <Carousel opts={{ align: "start", loop: true }} className="w-full">
             <CarouselContent className="-ml-4">
@@ -103,14 +100,12 @@ export function Testimonials() {
 function TestimonialCard({ item }: { item: any }) {
   return (
     <div className="bg-white rounded-xl p-6 md:p-8 shadow-sm border border-border/40 h-full flex flex-col transition-all duration-500 hover:shadow-md">
-      {/* Gold Stars Protocol */}
       <div className="flex gap-1 mb-5">
         {[...Array(5)].map((_, i) => (
           <Star key={i} className="w-3.5 h-3.5 fill-primary text-primary" />
         ))}
       </div>
 
-      {/* Narrative Body - Strictly 14px/20px Inter, No Italics */}
       <div className="flex-grow mb-6">
         <p className="text-[14px] leading-[20px] text-muted-foreground font-normal">
           "{item.quote}"
@@ -119,8 +114,7 @@ function TestimonialCard({ item }: { item: any }) {
 
       <Separator className="bg-border/40 mb-5" />
 
-      {/* Sign-off Registry */}
-      <div className="space-y-1">
+      <div className="space-y-1 text-left">
         <p className="text-[13px] font-bold text-secondary tracking-tight">
           {item.author}
         </p>

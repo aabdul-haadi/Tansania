@@ -41,7 +41,7 @@ export default function Home() {
       {/* HERO SECTION */}
       <section className="relative min-h-[85vh] md:h-screen flex items-center overflow-hidden bg-secondary">
         <div className="absolute inset-0 z-0">
-        <video
+          <video
             autoPlay
             muted
             loop
@@ -51,10 +51,12 @@ export default function Home() {
           >
             <source src="assets/images/home/home-page-banner.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+          {/* Refined Protective Overlay Protocol */}
+          <div className="absolute inset-0 bg-black/20 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-20" />
         </div>
 
-        <div className="container relative z-20 mx-auto px-6 md:px-10 max-w-7xl h-full flex flex-col justify-center pt-32 md:pt-40">
+        <div className="container relative z-30 mx-auto px-6 md:px-10 max-w-7xl h-full flex flex-col justify-center pt-32 md:pt-40">
           <div className="max-w-4xl space-y-6 md:space-y-10">
             <motion.div 
               initial={{ opacity: 0, x: -30 }} 
@@ -92,7 +94,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none" />
+        <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none z-40" />
       </section>
 
       <TrustStrip />
