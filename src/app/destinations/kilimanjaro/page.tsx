@@ -18,12 +18,6 @@ import {
   Zap,
   ArrowRight,
   ChevronRight,
-  Clock,
-  Heart,
-  Users,
-  ShieldAlert,
-  MapPin,
-  Calendar,
   Plus
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -40,7 +34,7 @@ const routes = [
     id: "01",
     name: 'Machame Route', 
     title: 'Die Malerische',
-    desc: 'Bekannt als die "Whiskey-Route", bietet sie spektakuläre Aussichten und eine exzellente Akklimatisierung durch das "hoch wandern, tief schlafen" Prinzip. Ideal für Fotografen.', 
+    desc: 'Bekannt als die "Whiskey-Route", bietet sie spektakuläre Aussichten und eine exzellente Akklimatisierung durch das "hoch wandern, tief schlafen" Prinzip.', 
     days: '6-7 Tage',
     level: 'Herausfordernd',
     highlight: 'Barranco Wall'
@@ -49,7 +43,7 @@ const routes = [
     id: "02",
     name: 'Lemosho Route', 
     title: 'Die Exklusive',
-    desc: 'Eine der schönsten Roten, die im Westen startet und durch unberührte Regenwälder führt. Ideal für Ruhe und höchste Erfolgschancen durch längere Gehzeit.', 
+    desc: 'Eine der schönsten Routen, die im Westen startet und durch unberührte Regenwälder führt. Ideal für Ruhe und höchste Erfolgschancen.', 
     days: '7-8 Tage',
     level: 'Moderat bis Schwer',
     highlight: 'Shira Plateau'
@@ -58,7 +52,7 @@ const routes = [
     id: "03",
     name: 'Marangu Route', 
     title: 'Die Klassische',
-    desc: 'Die "Coca-Cola-Route" ist der einzige Pfad mit festen Hüttenübernachtungen. Ein direkter, aber steilerer Aufstieg zum Gipfel für Liebhaber fester Unterkünfte.', 
+    desc: 'Die "Coca-Cola-Route" ist der einzige Pfad mit festen Hüttenübernachtungen. Ein direkter, aber steilerer Aufstieg zum Gipfel.', 
     days: '5-6 Tage',
     level: 'Moderat',
     highlight: 'Hütten-Komfort'
@@ -292,7 +286,7 @@ export default function KilimanjaroPage() {
         </div>
       </section>
 
-      {/* 04 QUICK FACTS */}
+      {/* 04 WICHTIGE FAKTEN */}
       <section className="py-12 md:py-24 bg-[#fdfcfb]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-10 md:mb-16 space-y-4">
@@ -366,9 +360,9 @@ export default function KilimanjaroPage() {
       </section>
 
       {/* 06 SYNCED FAQ */}
-      <section className="py-12 md:py-24 bg-[#FDF7F2] border-y border-border/40 scroll-mt-20 text-left">
+      <section className="py-8 md:py-16 bg-[#FDF7F2] border-y border-border/40 scroll-mt-20 text-left">
         <div className="container mx-auto px-4 max-w-4xl">
-          <div className="text-center mb-8 md:mb-12">
+          <div className="text-center mb-6 md:mb-8">
             <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tight uppercase">Häufig gestellte Fragen</h2>
           </div>
 

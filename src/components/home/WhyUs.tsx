@@ -4,29 +4,24 @@ import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Sparkles, ShieldCheck, Users, Compass, Star } from 'lucide-react';
-import { cn } from '@/lib/utils';
 
 const features = [
   {
-    id: "01",
     title: "Ihr persönlicher Afrika-Experte",
     desc: "Wir sind kein anonymes Buchungsportal. Wir sind ein engagiertes Team in Berlin, das Tansania aus jahrelanger Erfahrung kennt und liebt.",
     icon: Star,
   },
   {
-    id: "02",
     title: "100% Private Expeditionen",
     desc: "Kein geteilter Bus, keine Kompromisse. Ihr eigener Jeep und Ihr privater Guide garantieren ein exklusives Abenteuer in Ihrem eigenen Tempo.",
     icon: Compass,
   },
   {
-    id: "03",
     title: "Echte lokale Wurzeln",
     desc: "Unsere Partner in Arusha sind Freunde, denen wir unsere eigene Familie anvertrauen würden. Authentizität ist bei uns kein Marketing – es ist unsere Basis.",
     icon: Users,
   },
   {
-    id: "04",
     title: "Geprüfte Sicherheit",
     desc: "TATO-Mitglied & DRSF-abgesichert. Wir übernehmen die volle Verantwortung für Ihre Reise – von der Planung in Berlin bis zur Umsetzung vor Ort.",
     icon: ShieldCheck,
@@ -39,7 +34,7 @@ export function WhyUs() {
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
           
-          {/* Left Column: Visual Manifest */}
+          {/* Left Column: Cinematic Visual Anchor */}
           <div className="lg:col-span-5 relative order-2 lg:order-1">
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
@@ -70,7 +65,6 @@ export function WhyUs() {
                 viewport={{ once: true }}
                 className="space-y-4"
               >
-                <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] block">Unsere DNA</span>
                 <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary leading-[0.9] tracking-tighter uppercase">
                   Was uns von anderen <br />
                   <span className="text-primary font-bold">unterscheidet</span>
@@ -97,9 +91,6 @@ export function WhyUs() {
                         className: "w-5 h-5 text-primary group-hover:text-white transition-colors" 
                       })}
                     </div>
-                    <span className="font-headline text-3xl font-bold text-muted/10 select-none group-hover:text-primary/10 transition-colors">
-                      {feature.id}
-                    </span>
                   </div>
                   <div className="space-y-2">
                     <h3 className="font-headline text-xl md:text-2xl font-bold text-secondary tracking-tight group-hover:text-primary transition-colors uppercase">

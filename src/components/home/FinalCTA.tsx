@@ -7,9 +7,14 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
+/**
+ * Recalibrated Final CTA section.
+ * Highly compact for mobile devices with responsive button labels.
+ * Normalized narrative casing for architectural prestige.
+ */
 export function FinalCTA() {
   return (
-    <section className="relative min-h-[35vh] md:min-h-[50vh] flex items-center justify-center overflow-hidden bg-secondary py-10 md:py-20">
+    <section className="relative min-h-[30vh] md:min-h-[50vh] flex items-center justify-center overflow-hidden bg-secondary py-8 md:py-20">
       {/* High-Fidelity Background Visual */}
       <div className="absolute inset-0 z-0">
         <Image 
@@ -32,15 +37,15 @@ export function FinalCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="space-y-6 md:space-y-10"
+          className="space-y-4 md:space-y-10"
         >
           {/* Headline Protocol */}
-          <div className="space-y-3">
-            <h2 className="font-headline text-2xl md:text-6xl font-normal text-white tracking-tighter leading-tight">
+          <div className="space-y-2">
+            <h2 className="font-headline text-2xl md:text-6xl font-normal text-white tracking-tighter leading-tight uppercase">
               Bereit für Ihr Tansania-Abenteuer?
             </h2>
             
-            {/* Narrative Protocol - Natural Casing */}
+            {/* Narrative Protocol - Natural Casing for Prestige */}
             <p className="text-white/90 font-normal text-xs md:text-lg leading-relaxed max-w-2xl mx-auto tracking-wide">
               Lassen Sie uns gemeinsam Ihre individuelle Traumreise gestalten. <br className="hidden md:block" />
               Persönlich, professionell und mit Leidenschaft für Afrika.

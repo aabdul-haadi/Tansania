@@ -6,7 +6,8 @@ import Link from 'next/link';
 import { 
   Clock, 
   Users,
-  ArrowRight
+  ArrowRight,
+  CheckCircle2
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -29,6 +30,7 @@ interface PackageCardProps {
 
 /**
  * Optimized Signature Card with targeted Bottom Shady Overlay Protocol.
+ * Normalized casing for highlights to meet high-prestige typographic standards.
  */
 export function PackageCard({ pkg, className }: PackageCardProps) {
   const packageLink = `/safaris/${pkg.slug}`;
@@ -74,9 +76,10 @@ export function PackageCard({ pkg, className }: PackageCardProps) {
 
           <div className="flex flex-wrap gap-1.5 pt-1">
             {(pkg.highlights || []).slice(0, 3).map((h, i) => (
-              <span key={i} className="text-[9px] font-bold tracking-widest text-primary px-2.5 py-1 rounded-md bg-primary/5 border border-primary/10 uppercase">
-                {h}
-              </span>
+              <div key={i} className="flex items-center gap-1.5 text-[10px] font-bold text-secondary bg-primary/5 border border-primary/10 px-2 py-0.5 rounded-md">
+                <CheckCircle2 className="w-3 h-3 text-primary" />
+                <span className="tracking-tight">{h}</span>
+              </div>
             ))}
           </div>
         </div>

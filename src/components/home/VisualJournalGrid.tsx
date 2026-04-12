@@ -5,6 +5,11 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
+/**
+ * High-Density Visual Grid.
+ * Optimized asset delivery using unoptimized prop for local deployment images.
+ * Refined bottom-weighted overlay protocol.
+ */
 export function VisualJournalGrid() {
   return (
     <section className="pb-16 md:pb-32 pt-4 md:pt-8 bg-white overflow-hidden">
@@ -18,7 +23,7 @@ export function VisualJournalGrid() {
           }}
           className="grid grid-cols-1 md:grid-cols-2 gap-6 h-auto md:h-[900px]"
         >
-          {/* Item 1: Large Vertical Left */}
+          {/* Item 1: Large Vertical Left Anchor */}
           <motion.div
             variants={{
               hidden: { opacity: 0, y: 20 },
@@ -34,7 +39,7 @@ export function VisualJournalGrid() {
               className="object-cover transition-transform duration-1000 group-hover:scale-105" 
               data-ai-hint="safari relaxation"
             />
-            {/* Targeted Bottom Shady Overlay Protocol */}
+            {/* Targeted Bottom Shady Overlay Protocol: Clear top, protected text bottom */}
             <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
             <div className="absolute bottom-10 left-10 right-10 space-y-3 text-left">
               <h3 className="font-headline text-2xl md:text-4xl text-white leading-tight tracking-normal uppercase">

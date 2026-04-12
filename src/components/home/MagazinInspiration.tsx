@@ -52,7 +52,7 @@ export function MagazinInspiration() {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="font-headline text-3xl md:text-5xl font-normal text-[#3A3634]"
+              className="font-headline text-3xl md:text-5xl font-normal text-[#3A3634] uppercase"
             >
               Magazin & Inspiration
             </motion.h2>
