@@ -63,7 +63,7 @@ export function ContactSection() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-3xl md:text-5xl font-normal text-secondary"
+            className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-normal"
           >
             Ihre Expedition beginnt hier
           </motion.h2>
@@ -72,7 +72,7 @@ export function ContactSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground font-normal text-xs md:text-sm uppercase tracking-widest max-w-xl mx-auto opacity-80"
+            className="text-muted-foreground font-normal text-xs md:text-sm tracking-normal max-w-xl mx-auto opacity-80"
           >
             Vom ersten Gedanken bis zum ersten Schritt in der Savanne – unsere Spezialisten begleiten Sie persönlich.
           </motion.p>
@@ -85,10 +85,10 @@ export function ContactSection() {
           <div className="w-full lg:w-[35%] bg-[#FDF7F2] p-8 md:p-12 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-border/40">
             <div className="space-y-10 md:space-y-12">
               <div className="space-y-4">
-                <h3 className="text-xl md:text-2xl font-headline font-bold text-secondary uppercase tracking-tight whitespace-nowrap">
+                <h3 className="text-xl md:text-2xl font-headline font-bold text-secondary tracking-tight whitespace-nowrap">
                   Premium Beratung
                 </h3>
-                <p className="text-[11px] font-bold text-muted-foreground uppercase tracking-widest leading-relaxed">
+                <p className="text-[11px] font-bold text-muted-foreground tracking-widest leading-relaxed">
                   Berlin Head Office • Safari Ops
                 </p>
               </div>
@@ -101,8 +101,8 @@ export function ContactSection() {
                       <step.icon className="w-4 h-4 text-primary" />
                     </div>
                     <div className="space-y-0.5">
-                      <p className="text-[11px] font-black uppercase tracking-widest text-secondary">{step.label}</p>
-                      <p className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground/60">{step.sub}</p>
+                      <p className="text-[11px] font-black tracking-widest text-secondary">{step.label}</p>
+                      <p className="text-[9px] font-bold tracking-widest text-muted-foreground/60">{step.sub}</p>
                     </div>
                   </div>
                 ))}
@@ -115,16 +115,16 @@ export function ContactSection() {
                   <Phone className="w-4 h-4 text-primary group-hover:text-white transition-colors" />
                 </div>
                 <div>
-                  <p className="text-[8px] font-bold uppercase text-muted-foreground tracking-widest">Hotline</p>
+                  <p className="text-[8px] font-bold text-muted-foreground tracking-widest">Hotline</p>
                   <p className="text-sm font-black text-secondary tracking-tight">+49 30 22608080</p>
                 </div>
               </div>
               <div className="p-5 bg-white rounded-2xl border border-[#F0EBE0] shadow-sm">
                 <div className="flex items-center gap-3 mb-2">
                   <ShieldCheck className="w-4 h-4 text-primary" />
-                  <span className="text-[9px] font-bold uppercase text-secondary tracking-widest">DRSF Schutz</span>
+                  <span className="text-[9px] font-bold text-secondary tracking-widest">DRSF Schutz</span>
                 </div>
-                <p className="text-[9px] font-medium text-muted-foreground uppercase tracking-wider leading-relaxed">
+                <p className="text-[9px] font-medium text-muted-foreground tracking-wider leading-relaxed">
                   Ihre Reise ist durch den Deutschen Reisesicherungsfonds abgesichert.
                 </p>
               </div>
@@ -136,11 +136,11 @@ export function ContactSection() {
             <div className="p-5 md:p-8 border-b border-border/40 flex items-center justify-between bg-white/50 backdrop-blur-sm sticky top-0 z-20">
               <div className="flex items-center gap-3">
                 <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-[10px] font-bold uppercase tracking-widest text-secondary">Registry Active</span>
+                <span className="text-[10px] font-bold tracking-widest text-secondary">Registry Active</span>
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="w-3.5 h-3.5 text-primary" />
-                <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Response in 24h</span>
+                <span className="text-[10px] font-bold tracking-widest text-muted-foreground">Response in 24h</span>
               </div>
             </div>
 
@@ -159,7 +159,7 @@ export function ContactSection() {
                 />
               ) : (
                 <div className="h-full flex items-center justify-center bg-muted/5 animate-pulse">
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Initializing Manifest...</p>
+                  <p className="text-[10px] font-bold tracking-widest text-muted-foreground">Initializing Manifest...</p>
                 </div>
               )}
             </div>
@@ -167,7 +167,7 @@ export function ContactSection() {
             {/* Optimized Trust Bar - Single Line Desktop / Shortened Mobile */}
             <div className="p-4 md:p-6 bg-[#fdfcfb] border-t border-border/40 flex flex-row items-center justify-center gap-4 md:gap-12 lg:gap-16">
               {trustBadges.map((item, idx) => (
-                <div key={idx} className="flex items-center gap-1.5 md:gap-2 text-[7px] md:text-[9px] font-bold uppercase tracking-widest text-muted-foreground/60 whitespace-nowrap">
+                <div key={idx} className="flex items-center gap-1.5 md:gap-2 text-[7px] md:text-[9px] font-bold tracking-widest text-muted-foreground/60 whitespace-nowrap">
                   <item.icon className="w-3 h-3 md:w-3.5 md:h-3.5 text-primary/40 shrink-0" />
                   <span className="hidden sm:inline">{item.full}</span>
                   <span className="sm:hidden">{item.short}</span>
