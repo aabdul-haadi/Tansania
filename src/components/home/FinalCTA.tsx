@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button';
 
 export function FinalCTA() {
   return (
-    <section className="relative min-h-[50vh] md:min-h-[60vh] flex items-center justify-center overflow-hidden bg-secondary">
+    <section className="relative min-h-[40vh] md:min-h-[60vh] flex items-center justify-center overflow-hidden bg-secondary py-12 md:py-24">
       {/* High-Fidelity Background Visual - Updated to production asset */}
       <div className="absolute inset-0 z-0">
         <Image 
@@ -32,29 +32,29 @@ export function FinalCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="space-y-8 md:space-y-10"
+          className="space-y-6 md:space-y-10"
         >
           {/* Headline Protocol - Cormorant Garamond 400 */}
-          <div className="space-y-4">
-            <h2 className="font-headline text-3xl md:text-6xl font-normal text-white tracking-tighter leading-tight">
+          <div className="space-y-3 md:space-y-4">
+            <h2 className="font-headline text-2xl md:text-6xl font-normal text-white tracking-tighter leading-tight">
               Bereit für Ihr Tansania-Abenteuer?
             </h2>
             
             {/* Narrative Protocol - Inter */}
-            <p className="text-white/90 font-normal text-xs md:text-lg leading-relaxed max-w-2xl mx-auto uppercase tracking-widest">
+            <p className="text-white/90 font-normal text-[10px] md:text-lg leading-relaxed max-w-2xl mx-auto uppercase tracking-widest">
               Lassen Sie uns gemeinsam Ihre individuelle Traumreise gestalten. <br className="hidden md:block" />
               Persönlich, professionell und mit Leidenschaft für Afrika.
             </p>
           </div>
 
           {/* Interaction Hub */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 pt-2">
             <Link href="/trip-planner" className="w-full sm:w-auto">
               <Button 
                 size="lg" 
-                className="w-full sm:w-auto rounded-lg px-6 md:px-10 h-14 bg-white text-secondary hover:bg-primary hover:text-white transition-all duration-500 font-bold text-[10px] md:text-[11px] uppercase tracking-widest border-none group shadow-2xl"
+                className="w-full sm:w-auto rounded-lg px-6 md:px-10 h-12 md:h-14 bg-white text-secondary hover:bg-primary hover:text-white transition-all duration-500 font-bold text-[9px] md:text-[11px] uppercase tracking-widest border-none group shadow-2xl"
               >
-                <span className="hidden sm:inline">Kostenlose </span>Beratung anfragen <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                <span className="hidden sm:inline">Kostenlose </span>Beratung anfragen <ArrowRight className="w-3.5 h-3.5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
             
@@ -62,7 +62,7 @@ export function FinalCTA() {
               <Button 
                 variant="outline"
                 size="lg" 
-                className="w-full sm:w-auto rounded-lg px-6 md:px-10 h-14 bg-transparent text-white border-white hover:bg-white/10 transition-all duration-500 font-bold text-[10px] md:text-[11px] uppercase tracking-widest"
+                className="w-full sm:w-auto rounded-lg px-6 md:px-10 h-12 md:h-14 bg-transparent text-white border-white hover:bg-white/10 transition-all duration-500 font-bold text-[9px] md:text-[11px] uppercase tracking-widest"
               >
                 <span className="hidden sm:inline">Jetzt </span>anrufen
               </Button>
