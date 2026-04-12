@@ -83,7 +83,6 @@ export function Navbar() {
     { name: 'Reisetipps', href: '/blog?category=Tipps' },
     { name: 'Unser Magazin', href: '/blog' },
     { name: 'FAQ', href: '/faq' },
-    { name: 'Reiseblog', href: '/blog' },
     { name: 'Kontakt', href: '/contact' },
   ];
 
@@ -141,12 +140,12 @@ export function Navbar() {
             </SheetTrigger>
             
             <SheetContent side="right" className="w-[85vw] sm:max-w-[400px] p-0 bg-white text-secondary border-none flex flex-col shadow-2xl">
-              <div className="px-6 py-6 md:py-8 flex items-center border-b border-border/50 shrink-0">
+              <div className="px-6 py-6 flex items-center border-b border-border/50 shrink-0">
                 <Link href="/" className="flex items-center gap-3">
-                  <img src="/iconlogo.jpg" alt="SDL" className="h-10 w-auto" />
-                  <div className="flex items-baseline gap-1.5">
-                    <span className="font-headline font-black text-lg md:text-2xl uppercase tracking-normal">Tansania</span>
-                    <span className="font-headline font-black text-lg md:text-2xl text-primary uppercase tracking-normal">Reiseabenteuer</span>
+                  <img src="/iconlogo.jpg" alt="SDL" className="h-8 md:h-10 w-auto" />
+                  <div className="flex flex-col md:flex-row md:items-baseline gap-0.5 md:gap-1.5">
+                    <span className="font-headline font-black text-sm md:text-xl uppercase tracking-normal leading-none">Tansania</span>
+                    <span className="font-headline font-black text-sm md:text-xl text-primary uppercase tracking-normal leading-none">Reiseabenteuer</span>
                   </div>
                 </Link>
               </div>
@@ -154,10 +153,25 @@ export function Navbar() {
               <ScrollArea className="flex-grow">
                 <div className="px-8 py-6 md:py-10 flex flex-col gap-8 md:gap-10">
                   <nav className="flex flex-col gap-5 md:gap-6 text-left">
+                    {/* Direct Highlight Links */}
+                    <div className="flex flex-col gap-4 mb-4">
+                      <Link href="/safaris" className="text-xl md:text-2xl font-headline font-black text-secondary hover:text-primary transition-colors leading-none uppercase">
+                        SAFARIS
+                      </Link>
+                      <Link href="/destinations/kilimanjaro" className="text-xl md:text-2xl font-headline font-black text-secondary hover:text-primary transition-colors leading-none uppercase">
+                        KILIMANDSCHARO
+                      </Link>
+                      <Link href="/destinations/zanzibar" className="text-xl md:text-2xl font-headline font-black text-secondary hover:text-primary transition-colors leading-none uppercase">
+                        SANSIBAR
+                      </Link>
+                    </div>
+
+                    <div className="w-full h-px bg-border/50" />
+
                     <Accordion type="single" collapsible className="w-full">
                       <AccordionItem value="destinations" className="border-none">
                         <AccordionTrigger className="text-lg md:text-xl font-headline font-black tracking-normal hover:text-primary transition-colors leading-none py-0 hover:no-underline [&>svg]:hidden justify-start gap-4">
-                          <span>REISEZIELE</span>
+                          <span>ALLE REISEZIELE</span>
                           <ChevronDown className="w-4 h-4 text-primary" />
                         </AccordionTrigger>
                         <AccordionContent className="pt-4 pb-2 pl-4">
@@ -198,7 +212,7 @@ export function Navbar() {
                         href="/safaris" 
                         className="text-[11px] font-black text-secondary/70 hover:text-primary tracking-normal transition-colors uppercase"
                       >
-                        Safari-Kollektion
+                        Vollständige Kollektion
                       </Link>
                     </div>
                   </div>
