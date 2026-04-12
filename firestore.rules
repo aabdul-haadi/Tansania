@@ -8,7 +8,6 @@ service cloud.firestore {
     }
 
     // Roles Admin: Specifically allows reading own role and full access for admins.
-    // Writable by any authenticated user for initial development promotion.
     match /roles_admin/{userId} {
       allow read: if request.auth != null && (request.auth.uid == userId || isAdmin());
       allow write: if request.auth != null;
@@ -22,26 +21,31 @@ service cloud.firestore {
     // Destinations and Packages: Publicly readable if published. Admins have full access.
     match /destinations/{destinationId} {
       allow read: if resource.data.isPublished == true || isAdmin();
+      allow list: if resource.data.isPublished == true || isAdmin();
       allow write: if isAdmin();
     }
     match /packages/{packageId} {
       allow read: if resource.data.isPublished == true || isAdmin();
+      allow list: if resource.data.isPublished == true || isAdmin();
       allow write: if isAdmin();
     }
 
     // Bookings and Inquiries: Owners can read/write their own. Admins have full access.
     match /bookings/{bookingId} {
       allow read, write: if request.auth != null && (resource.data.userId == request.auth.uid || isAdmin());
+      allow list: if request.auth != null && (resource.data.userId == request.auth.uid || isAdmin());
       allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
     }
     match /inquiries/{inquiryId} {
       allow read, write: if (request.auth != null && resource.data.userId == request.auth.uid) || isAdmin();
+      allow list: if (request.auth != null && resource.data.userId == request.auth.uid) || isAdmin();
       allow create: if true; // Allow public inquiries
     }
 
     // Reviews: Publicly readable if published. Admins have full access.
     match /reviews/{reviewId} {
       allow read: if resource.data.isPublished == true || isAdmin();
+      allow list: if resource.data.isPublished == true || isAdmin();
       allow write: if isAdmin() || (request.auth != null && request.resource.data.userId == request.auth.uid);
     }
 

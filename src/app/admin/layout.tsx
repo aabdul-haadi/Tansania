@@ -71,7 +71,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
       // Registry Handshake: Wait 5 seconds for the server-side rules engine to synchronize 
       // the new admin record before rendering children that trigger protected collection fetches.
-      // This prevents "Missing or insufficient permissions" errors during the initial transition.
       setTimeout(() => {
         setIsPromoting(false);
       }, 5000);
@@ -115,7 +114,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   }
 
   // Guard 3: Authenticated but waiting for Role Verification or Promotion Handshake
-  // This prevents Dashboard queries from running before the Admin status is active in rules.
   if (isAdminRoleLoading || !adminRole || isPromoting) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-white gap-4">

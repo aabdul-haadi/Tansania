@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -35,14 +34,14 @@ export function VisualJournalGrid() {
               className="object-cover transition-transform duration-1000 group-hover:scale-105" 
               data-ai-hint="safari relaxation"
             />
-            {/* Targeted Bottom Shady Overlay Protocol: No full image darkening */}
+            {/* Targeted Bottom Shady Overlay Protocol */}
             <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
             <div className="absolute bottom-10 left-10 right-10 space-y-3 text-left">
-              <h3 className="font-headline text-2xl md:text-4xl text-white leading-tight tracking-normal">
+              <h3 className="font-headline text-2xl md:text-4xl text-white leading-tight tracking-normal uppercase">
                 Luxus inmitten der Wildnis
               </h3>
-              <p className="text-[14px] leading-[20px] font-normal text-white/70 tracking-normal max-w-md">
-                Exklusive Lodges, die höchsten Komfort mit authentischen Safari-Erlebnissen verbinden.
+              <p className="text-[14px] leading-[20px] font-normal text-white/70 tracking-normal max-w-md uppercase opacity-80">
+                Exklusive Lodges, die höchsten Komfort mit authentischen Erlebnissen verbinden.
               </p>
             </div>
           </motion.div>
@@ -65,13 +64,12 @@ export function VisualJournalGrid() {
                 className="object-cover transition-transform duration-1000 group-hover:scale-105" 
                 data-ai-hint="zanzibar beach"
               />
-              {/* Targeted Bottom Shady Overlay Protocol */}
               <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
               <div className="absolute bottom-10 left-10 right-10 space-y-2 text-left">
-                <h3 className="font-headline text-xl md:text-3xl text-white leading-tight tracking-normal">
+                <h3 className="font-headline text-xl md:text-3xl text-white leading-tight tracking-normal uppercase">
                   Paradiesische Strände
                 </h3>
-                <p className="text-[14px] leading-[20px] font-normal text-white/70 tracking-normal">
+                <p className="text-[14px] leading-[20px] font-normal text-white/70 tracking-normal uppercase opacity-80">
                   Entspannen Sie nach Ihrer Safari auf Sansibar.
                 </p>
               </div>
@@ -93,13 +91,12 @@ export function VisualJournalGrid() {
                 className="object-cover transition-transform duration-1000 group-hover:scale-105" 
                 data-ai-hint="safari wildlife"
               />
-              {/* Targeted Bottom Shady Overlay Protocol */}
               <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
               <div className="absolute bottom-10 left-10 right-10 space-y-2 text-left">
-                <h3 className="font-headline text-xl md:text-3xl text-white leading-tight tracking-normal">
+                <h3 className="font-headline text-xl md:text-3xl text-white leading-tight tracking-normal uppercase">
                   Wildlife hautnah
                 </h3>
-                <p className="text-[14px] leading-[20px] font-normal text-white/70 tracking-normal">
+                <p className="text-[14px] leading-[20px] font-normal text-white/70 tracking-normal uppercase opacity-80">
                   Begegnungen, die Sie nie vergessen werden.
                 </p>
               </div>

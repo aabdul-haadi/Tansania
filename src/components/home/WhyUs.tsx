@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -48,7 +47,6 @@ export function WhyUs() {
               viewport={{ once: true }}
               className="relative"
             >
-              {/* High aspect ratio for dominant visual presence */}
               <div className="aspect-[3/4] rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden shadow-2xl border border-border/50 relative z-10 bg-muted">
                 <Image 
                   src="/assets/images/home/why-travel-01.png" 
@@ -72,14 +70,14 @@ export function WhyUs() {
                 viewport={{ once: true }}
                 className="space-y-4"
               >
-                <span className="text-primary font-black uppercase tracking-[0.4em] text-[10px] block">Unsere DNA</span>
-                <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary leading-[0.9] tracking-tighter">
+                <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] block">Unsere DNA</span>
+                <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary leading-[0.9] tracking-tighter uppercase">
                   Was uns von anderen <br />
                   <span className="text-primary font-bold">unterscheidet</span>
                 </h2>
               </motion.div>
-              <p className="text-muted-foreground font-normal text-[14px] leading-[20px] max-w-xl opacity-80 tracking-normal">
-                Wir planen keine Reisen von der Stange. Wir gestalten individuelle Expeditionen für Menschen, die das Echte suchen – mit maximaler Sicherheit und persönlicher Note.
+              <p className="text-muted-foreground font-normal text-[14px] leading-[20px] max-w-xl opacity-80 tracking-wide uppercase">
+                Wir planen keine Reisen von der Stange. Wir gestalten individuelle Expeditionen für Menschen, die das Echte suchen – mit maximaler Sicherheit.
               </p>
             </div>
 
@@ -104,10 +102,10 @@ export function WhyUs() {
                     </span>
                   </div>
                   <div className="space-y-2">
-                    <h3 className="font-headline text-xl md:text-2xl font-bold text-secondary tracking-tight group-hover:text-primary transition-colors">
+                    <h3 className="font-headline text-xl md:text-2xl font-bold text-secondary tracking-tight group-hover:text-primary transition-colors uppercase">
                       {feature.title}
                     </h3>
-                    <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide">
+                    <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide uppercase opacity-70">
                       {feature.desc}
                     </p>
                   </div>
