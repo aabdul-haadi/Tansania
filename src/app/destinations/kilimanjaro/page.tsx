@@ -107,7 +107,7 @@ export default function KilimanjaroPage() {
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen">
-      {/* 01 COMPACT PRESTIGE HERO - RECALIBRATED WITH PROTECTIVE OVERLAY */}
+      {/* 01 COMPACT PRESTIGE HERO */}
       <section className="relative h-[65vh] md:h-[80vh] flex items-center justify-center overflow-hidden bg-secondary">
         <div className="absolute inset-0">
           <Image 
@@ -118,7 +118,6 @@ export default function KilimanjaroPage() {
             className="object-cover"
             data-ai-hint="mount kilimanjaro"
           />
-          {/* Layered Protective Overlay Registry */}
           <div className="absolute inset-0 bg-black/20 z-10" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent z-20" />
         </div>
@@ -294,48 +293,52 @@ export default function KilimanjaroPage() {
         </div>
       </section>
 
-      {/* 04 STICKY QUICK FACTS */}
-      <section className="relative py-12 md:py-24 overflow-hidden text-center">
-        <div className="absolute inset-0 z-0">
-          <Image 
-            src="https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1920" 
-            alt="Kilimanjaro Facts Background" 
-            fill 
-            className="object-cover"
-            data-ai-hint="mount kilimanjaro"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent" />
-        </div>
-
-        <div className="container relative z-10 mx-auto px-4">
+      {/* 04 QUICK FACTS */}
+      <section className="py-12 md:py-24 bg-[#fdfcfb]">
+        <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12 md:mb-20 space-y-4">
-            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-normal leading-none">Quick Facts</h2>
+            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-normal leading-none uppercase">Wichtige Fakten</h2>
             <div className="w-20 h-1 bg-primary mx-auto rounded-full opacity-40" />
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-8">
-            {[
-              { icon: TrendingUp, label: "Höhe", val: "5.895 Meter", sub: "Uhuru Peak" },
-              { icon: Map, label: "Routen", val: "7 Pfade", sub: "Offiziell" },
-              { icon: Timer, label: "Dauer", val: "5-10 Tage", sub: "Akklimatisierung" },
-              { icon: Wind, label: "Klimazonen", val: "5 Zonen", sub: "Vielfalt" },
-              { icon: Award, label: "Erfolg", val: "90%", sub: "Mit SDL-Profi" }
-            ].map((fact, i) => (
-              <motion.div 
-                key={i} 
-                whileHover={{ y: -5 }}
-                className="p-6 md:p-8 rounded-[2rem] bg-white shadow-xl border border-border/50 text-center space-y-4 transition-all group"
-              >
-                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto transition-transform duration-500 group-hover:scale-110">
-                  <fact.icon className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <p className="text-[9px] uppercase font-bold text-primary mb-1 tracking-normal">{fact.label}</p>
-                  <p className="font-bold text-lg md:text-xl text-secondary uppercase leading-none tracking-normal">{fact.val}</p>
-                  <p className="text-[9px] text-muted-foreground uppercase font-bold mt-1 tracking-normal">{fact.sub}</p>
-                </div>
-              </motion.div>
-            ))}
+          <div className="relative py-12 md:py-24 rounded-[2.5rem] md:rounded-[4rem] overflow-hidden shadow-2xl">
+            <div className="absolute inset-0 z-0">
+              <Image 
+                src="https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1920" 
+                alt="Kilimanjaro Facts Background" 
+                fill 
+                className="object-cover"
+                data-ai-hint="mount kilimanjaro"
+              />
+              <div className="absolute inset-0 bg-black/20 z-10" />
+            </div>
+
+            <div className="container relative z-30 mx-auto px-4">
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-8">
+                {[
+                  { icon: TrendingUp, label: "Höhe", val: "5.895 Meter", sub: "Uhuru Peak" },
+                  { icon: Map, label: "Routen", val: "7 Pfade", sub: "Offiziell" },
+                  { icon: Timer, label: "Dauer", val: "5-10 Tage", sub: "Akklimatisierung" },
+                  { icon: Wind, label: "Klimazonen", val: "5 Zonen", sub: "Vielfalt" },
+                  { icon: Award, label: "Erfolg", val: "90%", sub: "Mit SDL-Profi" }
+                ].map((fact, i) => (
+                  <motion.div 
+                    key={i} 
+                    whileHover={{ y: -5 }}
+                    className="p-6 md:p-8 rounded-[2rem] bg-white shadow-xl border border-border/50 text-center space-y-4 transition-all group"
+                  >
+                    <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto transition-transform duration-500 group-hover:scale-110">
+                      <fact.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-[9px] uppercase font-bold text-primary mb-1 tracking-normal">{fact.label}</p>
+                      <p className="font-bold text-lg md:text-xl text-secondary uppercase leading-none tracking-normal">{fact.val}</p>
+                      <p className="text-[9px] text-muted-foreground uppercase font-bold mt-1 tracking-normal">{fact.sub}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
