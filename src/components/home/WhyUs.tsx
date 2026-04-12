@@ -39,7 +39,7 @@ export function WhyUs() {
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
           
-          {/* Left Column: Visual Manifest (Increased Height) */}
+          {/* Left Column: Visual Manifest */}
           <div className="lg:col-span-5 relative order-2 lg:order-1">
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
@@ -58,27 +58,6 @@ export function WhyUs() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               </div>
-              
-              {/* Floating Registry Card (Compacted & Light Theme) */}
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-                className="absolute -bottom-6 -right-2 md:-bottom-10 md:-right-8 z-20 bg-white p-6 md:p-8 rounded-[2rem] shadow-2xl max-w-[200px] md:max-w-[260px] border border-border"
-              >
-                <div className="space-y-3">
-                  <p className="text-primary font-bold text-[8px] md:text-[9px] uppercase tracking-[0.3em]">Est. 2014</p>
-                  <h4 className="text-secondary font-headline text-xl md:text-3xl font-normal leading-none tracking-tighter">
-                    Expertise <br />
-                    <span className="text-primary font-bold">Registry</span>
-                  </h4>
-                  <div className="h-px w-8 bg-primary/20" />
-                  <p className="text-muted-foreground text-[8px] font-bold uppercase tracking-widest leading-relaxed">
-                    Berlin Head Office • Official SDL Operations Active 2026
-                  </p>
-                </div>
-              </motion.div>
             </motion.div>
           </div>
 
