@@ -32,7 +32,8 @@ import {
   Sprout,
   GlassWater,
   Palmtree,
-  Wind
+  Wind,
+  FileText
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -161,8 +162,8 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
     dayGroups.push(itineraryDays.slice(i, i + 5));
   }
 
-  const basePrice = pkg.startingPrice || 0;
-  const originalPrice = Math.round(basePrice * 1.15 / 10) * 10;
+  const basePrice = pkg.startingPrice || 5399;
+  const originalPrice = 5999;
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
@@ -201,7 +202,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                <Button 
                  onClick={() => scrollTo('inquiry')}
                  size="default"
-                 className="w-full sm:w-auto rounded-lg px-10 font-bold text-[11px] tracking-widest shadow-2xl border-none"
+                 className="w-full sm:w-auto rounded-lg px-10 font-bold text-sm tracking-wide shadow-2xl border-none"
                >
                  Jetzt anfragen
                </Button>
@@ -209,7 +210,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                  onClick={() => scrollTo('itinerary')}
                  variant="glass"
                  size="default"
-                 className="w-full sm:w-auto rounded-lg px-10 font-bold text-[11px] tracking-widest transition-all"
+                 className="w-full sm:w-auto rounded-lg px-10 font-bold text-sm tracking-wide transition-all"
                >
                  <MapIcon className="w-4 h-4 mr-2" /> Reiseroute ansehen
                </Button>
@@ -227,7 +228,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                 key={item.id}
                 onClick={() => scrollTo(item.id)}
                 className={cn(
-                  "h-full px-1 text-[9px] md:text-[10px] font-bold tracking-widest transition-all border-b-2 whitespace-nowrap",
+                  "h-full px-1 text-[11px] font-bold transition-all border-b-2 whitespace-nowrap",
                   activeSection === item.id ? "border-primary text-primary" : "border-transparent text-muted-foreground hover:text-foreground"
                 )}
               >
@@ -237,63 +238,25 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
           </div>
           <div className="hidden lg:flex items-center gap-6">
             <div className="text-right">
-              <p className="text-[8px] font-bold text-muted-foreground leading-none mb-1 tracking-widest">Preise ab</p>
-              <p className="text-xs font-bold text-secondary">€{basePrice.toLocaleString('de-DE')}</p>
+              <p className="text-[10px] font-bold text-muted-foreground leading-none mb-1">Preise ab</p>
+              <p className="text-sm font-bold text-secondary">€{basePrice.toLocaleString('de-DE')}</p>
             </div>
-            <Button onClick={() => scrollTo('inquiry')} size="sm" className="rounded-xl h-11 px-8 text-[10px] font-bold tracking-widest shadow-xl border-none">Anfrage senden</Button>
+            <Button onClick={() => scrollTo('inquiry')} size="sm" className="rounded-xl h-11 px-8 text-xs font-bold shadow-xl border-none">Anfrage senden</Button>
           </div>
         </div>
       </div>
 
-      {/* 03 ICON STRIP */}
-      <section className="bg-white border-b border-border/40 py-6 md:py-8">
-        <div className="container mx-auto px-4 max-w-7xl">
-          <div className="hidden md:grid grid-cols-5 gap-12">
-            {featureIcons.map((item, i) => (
-              <div key={i} className="flex flex-col items-center text-center gap-3 group">
-                <div className="w-14 h-14 rounded-2xl bg-[#FDF7F2] flex items-center justify-center border border-[#F0EBE0]/30 shadow-sm transition-transform duration-500 group-hover:scale-105">
-                  <item.icon className="w-6 h-6 text-[#C9A876]" />
-                </div>
-                <span className="text-[11px] font-bold text-secondary tracking-widest">
-                  {item.label}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          <div className="md:hidden">
-            <Carousel
-              plugins={[plugin.current]}
-              opts={{ loop: true, align: "center" }}
-              className="w-full"
-            >
-              <CarouselContent>
-                {featureIcons.map((item, i) => (
-                  <CarouselItem key={i} className="basis-1/2 flex flex-col items-center text-center gap-2">
-                    <div className="w-12 h-12 rounded-xl bg-[#FDF7F2] flex items-center justify-center border border-[#F0EBE0]/30 shadow-sm">
-                      <item.icon className="w-5 h-5 text-[#C9A876]" />
-                    </div>
-                    <span className="text-[9px] font-bold text-secondary tracking-widest leading-tight">
-                      {item.label}
-                    </span>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-            </Carousel>
-          </div>
-        </div>
-      </section>
-
-      {/* 04 NARRATIVE SECTION */}
+      {/* 03 NARRATIVE & MASTER CARD SECTION */}
       <section ref={overviewRef} className="py-8 md:py-16 bg-white scroll-mt-20">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-20">
+            {/* Left Narrative */}
             <div className="lg:col-span-7 space-y-8">
               <div className="space-y-4 text-left">
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold tracking-[0.3em] border border-primary/20">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold border border-primary/20">
                   {pkg.durationDays} Tage {pkg.category}
                 </div>
-                <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary tracking-tighter">
+                <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter">
                   Eine Reise, die berührt
                 </h2>
               </div>
@@ -308,72 +271,85 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
               </div>
 
               <div className="space-y-6 border-l-4 border-primary/20 pl-8 py-2 text-left">
-                <p className="text-[14px] leading-[20px] font-normal text-muted-foreground tracking-wide tracking-widest opacity-80">
+                <p className="text-base leading-relaxed font-normal text-muted-foreground opacity-80">
                   Erleben Sie die pure Magie Ostafrikas. Von den goldenen Savannen der Serengeti bis zum türkisblauen Indischen Ozean auf Sansibar. Diese Reise wurde konzipiert, um Ihnen nicht nur die Big Five zu zeigen, sondern Ihnen die Seele Tansanias näherzubringen – exklusiv, privat und mit höchstem Komfort.
                 </p>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
                 <Link href="/trip-planner">
-                  <Button className="w-full sm:w-auto h-12 md:h-14 px-10 rounded-xl font-bold text-[11px] tracking-widest border-none transition-all shadow-xl">
+                  <Button className="w-full sm:w-auto h-12 md:h-14 px-10 rounded-xl font-bold text-xs border-none transition-all shadow-xl">
                     Reiseberatung anfragen
                   </Button>
                 </Link>
-                <Button onClick={() => scrollTo('inquiry')} variant="outline" className="w-full sm:w-auto h-12 md:h-14 px-10 rounded-xl font-bold text-[11px] tracking-widest transition-all">
+                <Button onClick={() => scrollTo('inquiry')} variant="outline" className="w-full sm:w-auto h-12 md:h-14 px-10 rounded-xl font-bold text-xs transition-all">
                   Diese Reise anfragen
                 </Button>
               </div>
             </div>
 
+            {/* Right Master Card Clone */}
             <div className="lg:col-span-5 relative">
               <div className="sticky top-32">
-                <Card className="rounded-[2.5rem] border-none bg-[#FDF7F2] p-8 md:p-12 shadow-2xl relative overflow-hidden">
-                  <div className="space-y-10 relative z-10 text-left">
+                <Card className="rounded-[1.5rem] border border-border/20 bg-[#FDFCFB] p-8 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.08)] relative overflow-hidden group">
+                  <div className="space-y-8 relative z-10 text-left">
                     <div className="space-y-4">
-                      <p className="text-primary font-bold tracking-[0.3em] text-[10px]">Master-Registry</p>
-                      <h3 className="font-headline text-[24px] leading-[32px] font-medium text-secondary tracking-tight">
-                        {pkg.title}
+                      <p className="text-[#C9A876] font-bold text-xs tracking-[0.2em] uppercase">Tansania</p>
+                      <h3 className="font-headline text-[32px] md:text-[40px] leading-[1.1] font-medium text-[#3A3634] tracking-tight">
+                        15 Tage Safari & Sansibar
                       </h3>
                     </div>
 
                     <div className="space-y-6">
                       <div className="space-y-1">
-                        <p className="text-secondary font-bold text-[11px] tracking-widest">Reisedauer</p>
-                        <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide tracking-widest opacity-70">
-                          {pkg.durationDays}-tägig, Flüge inklusive
-                        </p>
+                        <p className="text-[#3A3634] font-bold text-lg">Reisedauer:</p>
+                        <p className="text-lg text-[#8A8581] font-normal leading-tight">15-tägig, Flüge inklusive</p>
                       </div>
                       <div className="space-y-1">
-                        <p className="text-secondary font-bold text-[11px] tracking-widest">Unterkünfte</p>
-                        <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide tracking-widest opacity-70">
-                          Handverlesene Tented Lodges & Boutique Hotels
-                        </p>
+                        <p className="text-[#3A3634] font-bold text-lg">Unterkünfte:</p>
+                        <p className="text-lg text-[#8A8581] font-normal leading-tight">Mittelklassehotels, Tented Lodges mit Vollpension</p>
                       </div>
                       <div className="space-y-1">
-                        <p className="text-secondary font-bold text-[11px] tracking-widest">Exklusivität</p>
-                        <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide tracking-widest opacity-70">
-                          Privat-Safari mit eigenem Guide & Jeep
-                        </p>
+                        <p className="text-[#3A3634] font-bold text-lg">Exklusive Gruppen:</p>
+                        <p className="text-lg text-[#8A8581] font-normal leading-tight">Maximal 6 Teilnehmer pro Termin</p>
+                      </div>
+                      <div className="space-y-1">
+                        <p className="text-[#3A3634] font-bold text-lg">Reisezeit:</p>
+                        <p className="text-lg text-[#8A8581] font-normal leading-tight">2026-2027</p>
                       </div>
                     </div>
 
-                    <div className="pt-8 border-t border-border/40 space-y-6">
+                    <div className="flex flex-wrap gap-2.5">
+                      {[
+                        "Geführte Erlebnisreisen",
+                        "Kombinierbar",
+                        "Ideal für Kleingruppen",
+                        "Begrenzte Plätze verfügbar",
+                        "Garantierte Durchführung"
+                      ].map((tag, i) => (
+                        <span key={i} className="px-4 py-2 rounded-full border border-border/60 bg-white text-[#8A8581] text-[11px] font-medium tracking-tight">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="pt-8 border-t border-border/40 flex flex-col md:flex-row items-end justify-between gap-6">
                       <div className="flex flex-col">
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className="text-sm text-muted-foreground/40 line-through">{originalPrice.toLocaleString('de-DE')} €</span>
-                          <Badge className="bg-primary/10 text-primary border-none text-[8px] font-bold px-2 py-0.5">Angebot</Badge>
-                        </div>
+                        <span className="text-lg text-[#C9A876] font-medium line-through mb-1">5.999 €</span>
                         <div className="flex items-baseline gap-2">
-                          <span className="text-xs font-bold text-secondary tracking-widest">ab</span>
-                          <span className="text-4xl md:text-5xl font-bold text-secondary tracking-tighter">
-                            {basePrice.toLocaleString('de-DE')} €
-                          </span>
+                          <span className="text-4xl md:text-5xl font-black text-[#141414] tracking-tighter">ab 5.399 €</span>
                         </div>
-                        <p className="text-[10px] font-bold text-muted-foreground/60 tracking-widest mt-1">pro Person im Doppelzimmer</p>
+                        <p className="text-sm font-medium text-[#C9A876] mt-1">pro Person</p>
                       </div>
-                      <Button onClick={() => scrollTo('inquiry')} className="w-full rounded-lg h-14 px-8 font-bold text-[11px] tracking-widest border-none shadow-xl">
-                        Verfügbarkeit prüfen
-                      </Button>
+                      
+                      <div className="flex flex-col gap-3 w-full md:w-auto">
+                        <Button onClick={() => scrollTo('inquiry')} className="w-full md:w-48 h-14 rounded-lg bg-[#C9A876] text-white hover:bg-[#B89765] font-bold text-sm tracking-widest transition-all shadow-lg uppercase border-none">
+                          Jetzt anfragen
+                        </Button>
+                        <Button variant="outline" className="w-full md:w-48 h-12 rounded-lg bg-white border-2 border-[#3A3634] text-[#3A3634] hover:bg-[#3A3634] hover:text-white font-bold text-[11px] tracking-widest transition-all flex items-center justify-center gap-2">
+                          <FileText className="w-4 h-4" /> Reiseplan als PDF
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </Card>
@@ -383,11 +359,11 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         </div>
       </section>
 
-      {/* 05 HIGHLIGHTS */}
-      <section className="py-8 md:py-16 bg-[#FDF7F2] border-y border-border/40 scroll-mt-20">
+      {/* 04 HIGHLIGHTS (Recalibrated Padding & Shadow) */}
+      <section className="py-12 md:py-20 bg-[#FDF7F2] border-y border-border/40 scroll-mt-20">
         <div className="container mx-auto px-4 max-w-7xl text-center">
           <div className="mb-10 md:mb-12">
-            <h2 className="font-headline text-3xl md:text-5xl lg:text-[48px] lg:leading-[1.2] font-normal text-secondary tracking-tighter">
+            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter">
               Die Höhepunkte Ihrer Reise
             </h2>
           </div>
@@ -403,10 +379,10 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                           <h.icon className="w-8 h-8 md:w-10 md:h-10 text-primary group-hover:text-white transition-colors" />
                         </div>
                         <div className="space-y-3">
-                          <h4 className="font-headline text-[24px] leading-[32px] font-medium text-secondary tracking-tight">
+                          <h4 className="font-headline text-2xl font-medium text-secondary tracking-tight">
                             {h.title}
                           </h4>
-                          <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide tracking-widest opacity-70">
+                          <p className="text-sm text-muted-foreground font-normal leading-relaxed opacity-70">
                             {h.desc}
                           </p>
                         </div>
@@ -422,12 +398,12 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         </div>
       </section>
 
-      {/* 06 ITINERARY */}
-      <section ref={itineraryRef} className="py-8 md:py-16 bg-white scroll-mt-20">
+      {/* 05 ITINERARY (Bright Headlines) */}
+      <section ref={itineraryRef} className="py-12 md:py-20 bg-white scroll-mt-20">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center mb-10 md:mb-16 space-y-4">
-            <h2 className="font-headline text-3xl md:text-6xl lg:text-[48px] lg:leading-[1.2] font-normal text-secondary tracking-tighter">Ihr Reiseverlauf</h2>
-            <p className="text-muted-foreground font-normal text-[14px] leading-[20px] max-xl mx-auto tracking-widest opacity-80">
+            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter">Ihr Reiseverlauf</h2>
+            <p className="text-muted-foreground font-normal text-base max-xl mx-auto opacity-80">
               Eine sorgfältig kuratierte Route durch die schönsten Regionen Tansanias
             </p>
           </div>
@@ -450,9 +426,9 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                       <div className="relative z-10 flex items-center justify-between w-full text-white py-6 pr-6 md:pr-12">
                         <div className="text-left pl-8 md:pl-16">
                           <h3 className="font-headline text-lg md:text-3xl font-normal tracking-tighter text-white">
-                            Safari Abenteuer • <span className="text-primary font-bold">Tag {startDay}-{endDay}</span>
+                            Safari Abenteuer • <span className="text-white font-bold">Tag {startDay}-{endDay}</span>
                           </h3>
-                          <p className="text-[10px] md:text-xs font-bold tracking-[0.3em] opacity-60 text-white/80">Wildnis & Naturwunder</p>
+                          <p className="text-xs font-bold opacity-60 text-white/80">Wildnis & Naturwunder</p>
                         </div>
                         <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 flex items-center justify-center group-data-[state=open]:rotate-180 transition-transform bg-white/5 shadow-xl">
                           <ChevronDown className="w-5 h-5 text-white" />
@@ -476,14 +452,14 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                           <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
                             <div className="flex-1 space-y-6 text-left">
                               <div className="space-y-2">
-                                <Badge className="bg-primary/10 text-primary border-none text-[8px] font-bold tracking-widest px-3 py-1">
+                                <Badge className="bg-primary/10 text-primary border-none text-[10px] font-bold px-3 py-1">
                                   {day.location}
                                 </Badge>
                                 <h4 className="font-headline text-2xl md:text-4xl font-normal text-secondary tracking-tight group-hover/card:text-primary transition-colors">
                                   {day.title}
                                 </h4>
                               </div>
-                              <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide tracking-widest opacity-70">
+                              <p className="text-base text-muted-foreground font-normal leading-relaxed opacity-70">
                                 {day.desc}
                               </p>
                             </div>
@@ -508,14 +484,14 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         </div>
       </section>
 
-      {/* 07 HOTELS */}
-      <section ref={hotelsRef} className="py-8 md:py-16 bg-white scroll-mt-20 border-t border-border/40 text-center">
+      {/* 06 HOTELS */}
+      <section ref={hotelsRef} className="py-12 md:py-20 bg-white scroll-mt-20 border-t border-border/40 text-center">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="mb-10 md:mb-12 space-y-4">
-            <h2 className="font-headline text-3xl md:text-5xl lg:text-[48px] lg:leading-[1.2] font-normal text-secondary tracking-tighter">
+            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter">
               Handverlesene Unterkünfte
             </h2>
-            <p className="text-muted-foreground font-normal text-[14px] leading-[20px] max-w-2xl mx-auto tracking-widest opacity-60">
+            <p className="text-muted-foreground font-normal text-base max-w-2xl mx-auto opacity-60">
               Wir wählen jede Lodge persönlich nach Lage, Stil und Service aus
             </p>
           </div>
@@ -531,10 +507,10 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                 />
               </div>
               <div className="p-8 md:p-12 flex flex-col flex-grow space-y-6 text-left">
-                <h3 className="font-headline text-[24px] leading-[32px] font-medium text-secondary tracking-tight">
+                <h3 className="font-headline text-2xl font-medium text-secondary tracking-tight">
                   Boutique Safari-Lodges
                 </h3>
-                <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide tracking-widest opacity-70">
+                <p className="text-base text-muted-foreground font-normal leading-relaxed opacity-70">
                   Luxuriöse Zeltcamps und Lodges mitten in der Wildnis. Jede Unterkunft verbindet authentisches Safari-Feeling mit höchstem Komfort: private Terrassen mit Blick auf die Savanne und erstklassiger Service.
                 </p>
                 <div className="pt-4 border-t border-border/40 space-y-4">
@@ -543,7 +519,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                     "Exquisite Küche und privates Dining",
                     "Persönlicher Butler-Service"
                   ].map((feat, idx) => (
-                    <div key={idx} className="flex items-center gap-4 text-[11px] font-bold text-secondary tracking-widest">
+                    <div key={idx} className="flex items-center gap-4 text-sm font-bold text-secondary">
                       <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
                       {feat}
                     </div>
@@ -562,10 +538,10 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                 />
               </div>
               <div className="p-8 md:p-12 flex flex-col flex-grow space-y-6 text-left">
-                <h3 className="font-headline text-[24px] leading-[32px] font-medium text-secondary tracking-tight">
+                <h3 className="font-headline text-2xl font-medium text-secondary tracking-tight">
                   Sansibar Beach Retreat
                 </h3>
-                <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide tracking-widest opacity-70">
+                <p className="text-base text-muted-foreground font-normal leading-relaxed opacity-70">
                   Ihr privates Strandparadies auf Sansibar. Exklusives Boutique-Resort direkt am schneeweißen Sandstrand, umgeben von Palmen und dem türkisfarbenen Indischen Ozean.
                 </p>
                 <div className="pt-4 border-t border-border/40 space-y-4">
@@ -574,7 +550,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                     "Infinity-Pool und Spa",
                     "Meerblick-Suiten mit privatem Balkon"
                   ].map((feat, idx) => (
-                    <div key={idx} className="flex items-center gap-4 text-[11px] font-bold text-secondary tracking-widest">
+                    <div key={idx} className="flex items-center gap-4 text-sm font-bold text-secondary">
                       <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
                       {feat}
                     </div>
@@ -586,14 +562,14 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         </div>
       </section>
 
-      {/* 08 INCLUSIONS */}
-      <section className="py-8 md:py-16 bg-[#fdfcfb]">
+      {/* 07 INCLUSIONS */}
+      <section className="py-12 md:py-20 bg-[#fdfcfb]">
         <div className="container mx-auto px-4 max-w-7xl text-center">
           <div className="mb-10 md:mb-12 space-y-4">
-            <h2 className="font-headline text-3xl md:text-5xl lg:text-[48px] lg:leading-[1.2] font-normal text-secondary tracking-tighter">
+            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter">
               In Ihrer Reise enthalten
             </h2>
-            <p className="text-muted-foreground font-normal text-[14px] leading-[20px] max-w-xl mx-auto tracking-widest opacity-60">
+            <p className="text-muted-foreground font-normal text-base max-w-xl mx-auto opacity-60">
               Rundum-Sorglos-Paket für Ihr perfektes Safari-Erlebnis
             </p>
           </div>
@@ -602,14 +578,14 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
             <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12 text-left">
               {inclusionsData.map((item, idx) => (
                 <div key={idx} className="flex gap-6 group">
-                  <div className="w-12 h-12 rounded-2xl bg-[#C9A876]/10 border border-[#C9A876]/20 flex items-center justify-center shrink-0 shadow-sm transition-all duration-500 group-hover:bg-primary group-hover:shadow-lg">
+                  <div className="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 shadow-sm transition-all duration-500 group-hover:bg-primary group-hover:shadow-lg">
                     <item.icon className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
                   </div>
                   <div className="space-y-2">
-                    <h4 className="font-headline text-[24px] leading-[32px] font-medium text-secondary tracking-tight transition-colors">
+                    <h4 className="font-headline text-xl font-medium text-secondary tracking-tight transition-colors">
                       {item.title}
                     </h4>
-                    <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-wide tracking-widest opacity-70">
+                    <p className="text-sm text-muted-foreground font-normal opacity-70">
                       {item.desc}
                     </p>
                   </div>
@@ -624,7 +600,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                 </div>
                 
                 <div className="space-y-10 relative z-10 text-left">
-                  <h3 className="font-headline text-[24px] leading-[32px] font-medium text-secondary tracking-tight">
+                  <h3 className="font-headline text-2xl font-medium text-secondary tracking-tight">
                     Extras & Optionen
                   </h3>
 
@@ -633,10 +609,10 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                       <div key={i} className="flex items-center justify-between gap-4 group/item">
                         <div className="flex items-center gap-4">
                           <ex.icon className="w-4 h-4 text-primary/60 group-hover/item:text-primary transition-colors" />
-                          <span className="text-[11px] font-bold text-secondary tracking-widest">{ex.label}</span>
+                          <span className="text-xs font-bold text-secondary">{ex.label}</span>
                         </div>
                         <span className={cn(
-                          "text-[9px] font-bold tracking-widest whitespace-nowrap px-2 py-0.5 rounded",
+                          "text-[10px] font-bold whitespace-nowrap px-2 py-0.5 rounded",
                           ex.status === 'inkludiert*' ? "bg-primary/10 text-primary" : "text-muted-foreground/40"
                         )}>
                           {ex.status}
@@ -646,7 +622,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                   </div>
 
                   <div className="pt-8 border-t border-border/40">
-                    <Button onClick={() => scrollTo('inquiry')} className="w-full rounded-lg h-14 px-8 font-bold text-[11px] tracking-widest border-none shadow-xl">
+                    <Button onClick={() => scrollTo('inquiry')} className="w-full rounded-lg h-14 px-8 font-bold text-xs border-none shadow-xl">
                       Jetzt anfragen
                     </Button>
                   </div>
