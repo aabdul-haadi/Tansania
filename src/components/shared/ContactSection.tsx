@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useEffect, useRef, useState } from 'react';
@@ -13,10 +14,6 @@ import {
   Clock
 } from 'lucide-react';
 
-/**
- * Reusable Contact Registry section.
- * Optimized for natural casing and architectural balance.
- */
 export function ContactSection() {
   const [isMounted, setIsMounted] = useState(false);
   const [formHeight, setFormHeight] = useState(600);
@@ -51,7 +48,6 @@ export function ContactSection() {
 
   return (
     <section id="inquiry" className="py-12 md:py-24 bg-[#fdfcfb] relative overflow-hidden">
-      {/* Dynamic Background Ornament */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none">
         <svg width="100%" height="100%" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
           <path d="M0 100 C 100 80, 300 150, 400 100 S 700 50, 800 100" fill="none" stroke="currentColor" strokeWidth="1" />
@@ -60,13 +56,12 @@ export function ContactSection() {
       </div>
 
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
-        {/* Harmonized Header Registry */}
         <div className="text-center mb-12 md:mb-16 space-y-2">
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-normal uppercase"
+            className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-normal"
           >
             Ihre Expedition beginnt hier
           </motion.h2>
@@ -81,22 +76,19 @@ export function ContactSection() {
           </motion.p>
         </div>
 
-        {/* Modern Compact Manifest Frame */}
         <div className="bg-white rounded-[2.5rem] md:rounded-[3rem] shadow-sm border border-border/40 overflow-hidden flex flex-col lg:flex-row min-h-[550px] md:min-h-[600px] relative transition-all duration-500 hover:shadow-xl">
           
-          {/* Info Protocol Column - MODERN LIGHT THEME */}
           <div className="w-full lg:w-[35%] bg-[#FDF7F2] p-8 md:p-12 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-border/40">
             <div className="space-y-10 md:space-y-12">
               <div className="space-y-4">
-                <h3 className="text-xl md:text-2xl font-headline font-bold text-secondary tracking-tight whitespace-nowrap uppercase">
+                <h3 className="text-xl md:text-2xl font-headline font-bold text-secondary tracking-tight whitespace-nowrap">
                   Premium Beratung
                 </h3>
-                <p className="text-[11px] font-bold text-muted-foreground tracking-widest leading-relaxed uppercase">
+                <p className="text-[11px] font-bold text-muted-foreground tracking-widest leading-relaxed">
                   Berlin Head Office • Safari Ops
                 </p>
               </div>
 
-              {/* Step Flow Protocol */}
               <div className="space-y-6 md:space-y-8">
                 {steps.map((step, i) => (
                   <div key={i} className="flex items-center gap-5 group">
@@ -104,8 +96,8 @@ export function ContactSection() {
                       <step.icon className="w-4 h-4 text-primary" />
                     </div>
                     <div className="space-y-0.5">
-                      <p className="text-[11px] font-black tracking-widest text-secondary uppercase">{step.label}</p>
-                      <p className="text-[9px] font-bold tracking-widest text-muted-foreground/60 uppercase">{step.sub}</p>
+                      <p className="text-[11px] font-black tracking-widest text-secondary">{step.label}</p>
+                      <p className="text-[9px] font-bold tracking-widest text-muted-foreground/60">{step.sub}</p>
                     </div>
                   </div>
                 ))}
@@ -118,8 +110,8 @@ export function ContactSection() {
                   <Phone className="w-4 h-4 text-primary group-hover:text-white transition-colors" />
                 </div>
                 <div>
-                  <p className="text-[8px] font-bold text-muted-foreground tracking-widest uppercase">Hotline</p>
-                  <p className="text-sm font-black text-secondary tracking-tight uppercase">+49 30 22608080</p>
+                  <p className="text-[8px] font-bold text-muted-foreground tracking-widest">Hotline</p>
+                  <p className="text-sm font-black text-secondary tracking-tight">+49 30 22608080</p>
                 </div>
               </div>
               <div className="p-5 bg-white rounded-2xl border border-[#F0EBE0] shadow-sm">
@@ -127,14 +119,13 @@ export function ContactSection() {
                   <ShieldCheck className="w-4 h-4 text-primary" />
                   <span className="text-[9px] font-bold text-secondary tracking-widest uppercase">DRSF Schutz</span>
                 </div>
-                <p className="text-[9px] font-medium text-muted-foreground tracking-wider leading-relaxed uppercase">
+                <p className="text-[9px] font-medium text-muted-foreground tracking-wider leading-relaxed">
                   Ihre Reise ist durch den Deutschen Reisesicherungsfonds abgesichert.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Form Integration Frame */}
           <div className="flex-1 bg-white flex flex-col">
             <div className="p-5 md:p-8 border-b border-border/40 flex items-center justify-between bg-white/50 backdrop-blur-sm sticky top-0 z-20">
               <div className="flex items-center gap-3">
@@ -167,7 +158,6 @@ export function ContactSection() {
               )}
             </div>
 
-            {/* Optimized Trust Bar - Single Line Desktop / Shortened Mobile */}
             <div className="p-4 md:p-6 bg-[#fdfcfb] border-t border-border/40 flex flex-row items-center justify-center gap-4 md:gap-12 lg:gap-16">
               {trustBadges.map((item, idx) => (
                 <div key={idx} className="flex items-center gap-1.5 md:gap-2 text-[7px] md:text-[9px] font-bold uppercase tracking-widest text-muted-foreground/60 whitespace-nowrap">

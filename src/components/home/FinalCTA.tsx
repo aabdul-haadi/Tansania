@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -7,18 +8,12 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-/**
- * Recalibrated Final CTA section.
- * Highly compact for mobile devices with responsive button labels.
- * Normalized narrative casing for architectural prestige.
- */
 export function FinalCTA() {
   return (
     <section className="relative min-h-[30vh] md:min-h-[50vh] flex items-center justify-center overflow-hidden bg-secondary py-8 md:py-20">
-      {/* High-Fidelity Background Visual */}
       <div className="absolute inset-0 z-0">
         <Image 
-          src="/assets/images/home/final-cta-bg.webp" 
+          src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
           alt="Tansania Safari Terrace" 
           fill 
           unoptimized
@@ -26,7 +21,6 @@ export function FinalCTA() {
           className="object-cover brightness-[0.45] scale-105"
           data-ai-hint="safari terrace elephants"
         />
-        {/* Cinematic Overlay Protocol */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none" />
       </div>
@@ -39,20 +33,17 @@ export function FinalCTA() {
           transition={{ duration: 0.8 }}
           className="space-y-4 md:space-y-10"
         >
-          {/* Headline Protocol */}
           <div className="space-y-2">
             <h2 className="font-headline text-2xl md:text-6xl font-normal text-white tracking-tighter leading-tight uppercase">
               Bereit für Ihr Tansania-Abenteuer?
             </h2>
             
-            {/* Narrative Protocol - Natural Casing for Prestige */}
             <p className="text-white/90 font-normal text-xs md:text-lg leading-relaxed max-w-2xl mx-auto tracking-wide">
               Lassen Sie uns gemeinsam Ihre individuelle Traumreise gestalten. <br className="hidden md:block" />
               Persönlich, professionell und mit Leidenschaft für Afrika.
             </p>
           </div>
 
-          {/* Interaction Hub - Compact Mobile Protocol */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 pt-2">
             <Link href="/trip-planner" className="w-full sm:w-auto">
               <Button 
@@ -76,7 +67,6 @@ export function FinalCTA() {
         </motion.div>
       </div>
 
-      {/* Registry Horizon Line */}
       <div className="absolute bottom-0 inset-x-0 h-px bg-white/10" />
     </section>
   );

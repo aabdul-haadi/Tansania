@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useEffect, useState } from 'react';
@@ -48,14 +49,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   }, []);
 
   useEffect(() => {
-    // If adminRole is truthy, we are verified.
     if (adminRole) {
       setHasVerifiedRole(true);
     }
   }, [adminRole]);
 
   useEffect(() => {
-    // Auto-promotion: If user is logged in but has no role record yet, create it.
     if (mounted && user && firestore && !isAdminRoleLoading && !adminRole && !isPromoting && !hasVerifiedRole) {
       setIsPromoting(true);
       
@@ -63,13 +62,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         // Register admin status in the primary registry
         setDocumentNonBlocking(doc(firestore, 'roles_admin', user.uid), {
           uid: user.uid,
-          email: user.email || 'unknown@tansania-reiseabenteuer.de',
+          email: user.email || 'staff@tansania-reiseabenteuer.de',
           role: 'ADMIN',
           createdAt: serverTimestamp(),
           lastActive: serverTimestamp()
         }, { merge: true });
 
-        // Ensure the user profile also reflects the administrative role
         setDocumentNonBlocking(doc(firestore, 'users', user.uid), {
           id: user.uid,
           email: user.email,
@@ -78,11 +76,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           updatedAt: serverTimestamp()
         }, { merge: true });
 
-        // Registry Handshake: Wait for the write to potentially propagate
-        // and do a manual check before clearing promotion status.
+        // Registry Handshake: Wait for propagation before allowing children to fetch protected collections
         let verified = false;
         let attempts = 0;
-        while (!verified && attempts < 5) {
+        while (!verified && attempts < 10) {
           await new Promise(r => setTimeout(r, 1000));
           const snap = await getDoc(doc(firestore, 'roles_admin', user.uid));
           if (snap.exists()) verified = true;
@@ -107,7 +104,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     }
   };
 
-  // Guard 1: Basic App & Auth Loading
   if (!mounted || isUserLoading) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-white gap-4">
@@ -117,12 +113,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     );
   }
 
-  // Guard 2: Not Logged In
   if (!user) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white p-6">
-        <div className="max-w-md w-full text-center space-y-8 bg-white p-8 md:p-12 rounded-[2rem] md:rounded-[2.5rem] shadow-2xl border border-border">
-          <div className="w-16 h-16 md:w-20 md:h-20 bg-destructive/10 rounded-[1.5rem] md:rounded-[2rem] flex items-center justify-center mx-auto mb-6">
+        <div className="max-w-md w-full text-center space-y-8 bg-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl border border-border">
+          <div className="w-16 h-16 md:w-20 md:h-20 bg-destructive/10 rounded-[2rem] flex items-center justify-center mx-auto mb-6">
             <Lock className="w-8 h-8 md:w-10 md:h-10 text-destructive" />
           </div>
           <h1 className="text-2xl md:text-3xl font-bold tracking-tighter text-secondary uppercase">Access Required</h1>
@@ -133,8 +128,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     );
   }
 
-  // Guard 3: Authenticated but waiting for Role Verification or Promotion Handshake
-  if (isAdminRoleLoading || (!hasVerifiedRole && isPromoting) || (!hasVerifiedRole && !isAdminRoleLoading && !isPromoting && !adminRole)) {
+  // CRITICAL: Block rendering of children until admin record is 100% verified to prevent "Permission Denied" on sub-queries
+  if (isAdminRoleLoading || isPromoting || !hasVerifiedRole) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-white gap-4">
         <Loader2 className="w-10 h-10 text-primary animate-spin" />

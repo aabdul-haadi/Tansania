@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -20,7 +21,7 @@ const SIGNATURE_REISEN = [
       'Inklusive Intl. Flug'
     ],
     excerpt: 'Unsere umfassendste Expedition: Vom Herzen der Serengeti bis zu den Palmen Sansibars – inklusive internationaler Flüge.',
-    imageUrl: '/assets/images/home/pkg-01.webp'
+    imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800'
   },
   {
     id: 'safari-sansibar-13',
@@ -36,7 +37,7 @@ const SIGNATURE_REISEN = [
       'Alles gut organisiert'
     ],
     excerpt: 'Die perfekte Balance aus intensiven Wildtierbeobachtungen und exklusiver Entspannung am Indischen Ozean.',
-    imageUrl: '/assets/images/home/pkg-02.webp'
+    imageUrl: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800'
   },
   {
     id: 'safari-sansibar-11',
@@ -52,7 +53,7 @@ const SIGNATURE_REISEN = [
       'Alles gut organisiert'
     ],
     excerpt: 'Kompakt und eindrucksvoll: Erleben Sie die Highlights Tansanias in einer perfekt abgestimmten 11-tägigen Reise.',
-    imageUrl: '/assets/images/home/pkg-03.webp'
+    imageUrl: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=800'
   },
   {
     id: 'familien-safari-12',
@@ -68,7 +69,7 @@ const SIGNATURE_REISEN = [
       'Alles gut organisiert'
     ],
     excerpt: 'Speziell für Familien konzipiert: Unvergessliche Abenteuer und kindgerechte Lodges in Tansanias Wildnis.',
-    imageUrl: '/assets/images/home/pkg-04.png'
+    imageUrl: 'https://images.unsplash.com/photo-1580502304784-8985b777da59?q=80&w=800'
   }
 ];
 

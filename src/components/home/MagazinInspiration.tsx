@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -18,7 +19,7 @@ const magazinePosts = [
     category: "Unterkünfte",
     date: "15. März 2026",
     excerpt: "Entdecken Sie unsere handverlesene Auswahl der luxuriösesten und authentischsten Unterkünfte im Herzen der Serengeti.",
-    img: "/assets/images/home/Magazin-1.webp",
+    img: "https://images.unsplash.com/photo-1577971132997-c10be9372519?q=80&w=800",
     hint: "safari lodge"
   },
   {
@@ -27,7 +28,7 @@ const magazinePosts = [
     category: "Reiseziele",
     date: "8. März 2026",
     excerpt: "Erleben Sie die authentische Seite Sansibars – von versteckten Stränden bis zu lokalen Gewürzmärkten.",
-    img: "/assets/images/home/Magazin-2.webp",
+    img: "https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=800",
     hint: "zanzibar beach"
   },
   {
@@ -36,7 +37,7 @@ const magazinePosts = [
     category: "Reisetipps",
     date: "1. März 2026",
     excerpt: "Von der richtigen Kleidung bis zur Kameraausrüstung – alles, was Sie für Ihre perfekte Safari wissen müssen.",
-    img: "/assets/images/home/magzine-3.png",
+    img: "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800",
     hint: "safari gear"
   }
 ];
@@ -44,8 +45,7 @@ const magazinePosts = [
 export function MagazinInspiration() {
   return (
     <section className="py-16 md:py-24 bg-white overflow-hidden">
-      <div className="container mx-auto px-4 max-w-7xl">
-        {/* Header Protocol */}
+      <div className="container mx-auto px-4 max-get-7xl">
         <div className="flex items-end justify-between mb-12 md:mb-16">
           <div className="space-y-2">
             <motion.h2 
@@ -61,7 +61,7 @@ export function MagazinInspiration() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-[#8A8581] font-medium text-xs md:text-sm tracking-widest opacity-80"
+              className="text-[#8A8581] font-medium text-xs md:text-sm tracking-widest"
             >
               Expertenwissen und Reisetipps aus erster Hand
             </motion.p>
@@ -71,7 +71,6 @@ export function MagazinInspiration() {
           </Link>
         </div>
 
-        {/* Desktop Grid Layout */}
         <div className="hidden md:grid grid-cols-3 gap-8">
           {magazinePosts.map((post, idx) => (
             <motion.div
@@ -86,7 +85,6 @@ export function MagazinInspiration() {
           ))}
         </div>
 
-        {/* Mobile Modern Slider */}
         <div className="md:hidden -mx-4">
           <Carousel opts={{ align: "start", loop: true }} className="w-full">
             <CarouselContent className="-ml-4">
@@ -111,7 +109,6 @@ export function MagazinInspiration() {
 function MagazineCard({ post }: { post: any }) {
   return (
     <div className="flex flex-col h-full bg-white rounded-2xl overflow-hidden shadow-sm border border-border/40 hover:shadow-md transition-all duration-500 group">
-      {/* Visual Anchor */}
       <div className="relative aspect-[16/10] overflow-hidden shrink-0">
         <Image 
           src={post.img} 
@@ -122,7 +119,6 @@ function MagazineCard({ post }: { post: any }) {
         />
       </div>
 
-      {/* Content Protocol */}
       <div className="p-6 md:p-8 flex flex-col flex-grow">
         <div className="flex items-center gap-4 mb-5">
           <span className="text-[10px] font-bold uppercase tracking-widest text-[#C9A876] px-3 py-1.5 rounded-full bg-[#C9A876]/10">

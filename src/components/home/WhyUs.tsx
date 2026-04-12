@@ -1,9 +1,10 @@
+
 "use client";
 
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Sparkles, ShieldCheck, Users, Compass, Star } from 'lucide-react';
+import { Star, ShieldCheck, Users, Compass } from 'lucide-react';
 
 const features = [
   {
@@ -34,7 +35,6 @@ export function WhyUs() {
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
           
-          {/* Left Column: Cinematic Visual Anchor */}
           <div className="lg:col-span-5 relative order-2 lg:order-1">
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
@@ -44,10 +44,9 @@ export function WhyUs() {
             >
               <div className="aspect-[3/4] rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden shadow-2xl border border-border/50 relative z-10 bg-muted">
                 <Image 
-                  src="/assets/images/home/why-travel-01.png" 
+                  src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800" 
                   alt="Tansania Expertise" 
                   fill 
-                  unoptimized
                   className="object-cover"
                   data-ai-hint="safari guide"
                 />
@@ -56,7 +55,6 @@ export function WhyUs() {
             </motion.div>
           </div>
 
-          {/* Right Column: Narrative Manifest */}
           <div className="lg:col-span-7 space-y-10 md:space-y-16 order-1 lg:order-2">
             <div className="space-y-6">
               <motion.div
