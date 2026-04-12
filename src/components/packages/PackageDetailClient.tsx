@@ -168,7 +168,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
       <motion.div className="fixed top-0 left-0 right-0 h-1 bg-primary z-[110] origin-left" style={{ scaleX }} />
 
-      {/* 01 IMMERSIVE CINEMA HERO - CENTERED & BOTTOM ALIGNED */}
+      {/* 01 IMMERSIVE CINEMA HERO */}
       <section className="relative h-[80vh] md:h-[90vh] w-full overflow-hidden bg-secondary">
         <div className="absolute inset-0 z-0">
           <Image 
@@ -192,7 +192,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
               <h1 className="font-headline font-normal text-white text-3xl md:text-5xl lg:text-6xl tracking-tight leading-tight">
                 {pkg.title}
               </h1>
-              <p className="text-white/90 font-light text-sm md:text-lg lg:text-xl tracking-wide leading-relaxed max-w-2xl mx-auto">
+              <p className="text-white/90 font-light text-sm md:text-base lg:text-lg tracking-wide leading-relaxed max-w-2xl mx-auto">
                 Ihre private Safari-Expedition durch Tansania und exklusive Erholung auf Sansibar.
               </p>
             </div>
@@ -203,7 +203,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                  size="default"
                  className="w-full sm:w-auto rounded-lg px-10 font-bold text-[11px] tracking-widest shadow-2xl border-none"
                >
-                 Jetzt Anfragen
+                 Jetzt anfragen
                </Button>
                <Button 
                  onClick={() => scrollTo('itinerary')}
@@ -246,7 +246,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
       </div>
 
       {/* 03 ICON STRIP */}
-      <section className="bg-white border-b border-border/40 py-8 md:py-12">
+      <section className="bg-white border-b border-border/40 py-6 md:py-8">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="hidden md:grid grid-cols-5 gap-12">
             {featureIcons.map((item, i) => (
@@ -285,11 +285,11 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
       </section>
 
       {/* 04 NARRATIVE SECTION */}
-      <section ref={overviewRef} className="py-12 md:py-24 bg-white scroll-mt-20">
+      <section ref={overviewRef} className="py-8 md:py-16 bg-white scroll-mt-20">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-20">
-            <div className="lg:col-span-7 space-y-10">
-              <div className="space-y-6 text-left">
+            <div className="lg:col-span-7 space-y-8">
+              <div className="space-y-4 text-left">
                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold tracking-[0.3em] border border-primary/20">
                   {pkg.durationDays} Tage {pkg.category}
                 </div>
@@ -307,13 +307,13 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                 />
               </div>
 
-              <div className="space-y-8 border-l-4 border-primary/20 pl-8 py-2 text-left">
+              <div className="space-y-6 border-l-4 border-primary/20 pl-8 py-2 text-left">
                 <p className="text-[14px] leading-[20px] font-normal text-muted-foreground tracking-wide tracking-widest opacity-80">
                   Erleben Sie die pure Magie Ostafrikas. Von den goldenen Savannen der Serengeti bis zum türkisblauen Indischen Ozean auf Sansibar. Diese Reise wurde konzipiert, um Ihnen nicht nur die Big Five zu zeigen, sondern Ihnen die Seele Tansanias näherzubringen – exklusiv, privat und mit höchstem Komfort.
                 </p>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <div className="flex flex-col sm:flex-row gap-4 pt-2">
                 <Link href="/trip-planner">
                   <Button className="w-full sm:w-auto h-12 md:h-14 px-10 rounded-xl font-bold text-[11px] tracking-widest border-none transition-all shadow-xl">
                     Reiseberatung anfragen
@@ -330,7 +330,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                 <Card className="rounded-[2.5rem] border-none bg-[#FDF7F2] p-8 md:p-12 shadow-2xl relative overflow-hidden">
                   <div className="space-y-10 relative z-10 text-left">
                     <div className="space-y-4">
-                      <p className="text-primary font-bold tracking-[0.3em] text-[10px]">Master Registry</p>
+                      <p className="text-primary font-bold tracking-[0.3em] text-[10px]">Master-Registry</p>
                       <h3 className="font-headline text-[24px] leading-[32px] font-medium text-secondary tracking-tight">
                         {pkg.title}
                       </h3>
@@ -384,9 +384,9 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
       </section>
 
       {/* 05 HIGHLIGHTS */}
-      <section className="py-12 md:py-24 bg-[#FDF7F2] border-y border-border/40 scroll-mt-20">
+      <section className="py-8 md:py-16 bg-[#FDF7F2] border-y border-border/40 scroll-mt-20">
         <div className="container mx-auto px-4 max-w-7xl text-center">
-          <div className="mb-12 md:mb-20">
+          <div className="mb-10 md:mb-12">
             <h2 className="font-headline text-3xl md:text-5xl lg:text-[48px] lg:leading-[1.2] font-normal text-secondary tracking-tighter">
               Die Höhepunkte Ihrer Reise
             </h2>
@@ -397,7 +397,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
               <CarouselContent className="-ml-4">
                 {highlights.map((h, i) => (
                   <CarouselItem key={i} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3">
-                    <Card className="h-full border-none shadow-sm bg-white rounded-[2rem] overflow-hidden group hover:shadow-xl transition-all duration-500">
+                    <Card className="h-full border-none shadow-sm bg-white rounded-[2rem] overflow-hidden group transition-all duration-500">
                       <CardContent className="p-8 md:p-10 flex flex-col items-center text-center space-y-6">
                         <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-[#FDF7F2] border border-[#F0EBE0]/50 flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors duration-500">
                           <h.icon className="w-8 h-8 md:w-10 md:h-10 text-primary group-hover:text-white transition-colors" />
@@ -423,9 +423,9 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
       </section>
 
       {/* 06 ITINERARY */}
-      <section ref={itineraryRef} className="py-16 md:py-32 bg-white scroll-mt-20">
+      <section ref={itineraryRef} className="py-8 md:py-16 bg-white scroll-mt-20">
         <div className="container mx-auto px-4 max-w-5xl">
-          <div className="text-center mb-16 md:mb-24 space-y-4">
+          <div className="text-center mb-10 md:mb-16 space-y-4">
             <h2 className="font-headline text-3xl md:text-6xl lg:text-[48px] lg:leading-[1.2] font-normal text-secondary tracking-tighter">Ihr Reiseverlauf</h2>
             <p className="text-muted-foreground font-normal text-[14px] leading-[20px] max-xl mx-auto tracking-widest opacity-80">
               Eine sorgfältig kuratierte Route durch die schönsten Regionen Tansanias
@@ -449,10 +449,10 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                       />
                       <div className="relative z-10 flex items-center justify-between w-full text-white py-6 pr-6 md:pr-12">
                         <div className="text-left pl-8 md:pl-16">
-                          <h3 className="font-headline text-lg md:text-3xl font-normal tracking-tighter">
+                          <h3 className="font-headline text-lg md:text-3xl font-normal tracking-tighter text-white">
                             Safari Abenteuer • <span className="text-primary font-bold">Tag {startDay}-{endDay}</span>
                           </h3>
-                          <p className="text-[10px] md:text-xs font-bold tracking-[0.3em] opacity-60">Wildnis & Naturwunder</p>
+                          <p className="text-[10px] md:text-xs font-bold tracking-[0.3em] opacity-60 text-white/80">Wildnis & Naturwunder</p>
                         </div>
                         <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 flex items-center justify-center group-data-[state=open]:rotate-180 transition-transform bg-white/5 shadow-xl">
                           <ChevronDown className="w-5 h-5 text-white" />
@@ -461,7 +461,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                     </div>
                   </AccordionTrigger>
                   
-                  <AccordionContent className="pt-12 pb-4 px-2 md:px-8 space-y-12 relative overflow-visible">
+                  <AccordionContent className="pt-8 pb-4 px-2 md:px-8 space-y-12 relative overflow-visible">
                     <div className="absolute left-[36px] md:left-[60px] top-12 bottom-12 w-px bg-border/60 z-0" />
                     
                     {group.map((day: any, dIdx: number) => (
@@ -509,9 +509,9 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
       </section>
 
       {/* 07 HOTELS */}
-      <section ref={hotelsRef} className="py-16 md:py-32 bg-white scroll-mt-20 border-t border-border/40 text-center">
+      <section ref={hotelsRef} className="py-8 md:py-16 bg-white scroll-mt-20 border-t border-border/40 text-center">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="mb-16 md:mb-24 space-y-4">
+          <div className="mb-10 md:mb-12 space-y-4">
             <h2 className="font-headline text-3xl md:text-5xl lg:text-[48px] lg:leading-[1.2] font-normal text-secondary tracking-tighter">
               Handverlesene Unterkünfte
             </h2>
@@ -530,7 +530,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                   className="object-cover transition-transform duration-1000 group-hover:scale-105"
                 />
               </div>
-              <div className="p-8 md:p-16 flex flex-col flex-grow space-y-8 text-left">
+              <div className="p-8 md:p-12 flex flex-col flex-grow space-y-6 text-left">
                 <h3 className="font-headline text-[24px] leading-[32px] font-medium text-secondary tracking-tight">
                   Boutique Safari-Lodges
                 </h3>
@@ -561,7 +561,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                   className="object-cover transition-transform duration-1000 group-hover:scale-105"
                 />
               </div>
-              <div className="p-8 md:p-16 flex flex-col flex-grow space-y-8 text-left">
+              <div className="p-8 md:p-12 flex flex-col flex-grow space-y-6 text-left">
                 <h3 className="font-headline text-[24px] leading-[32px] font-medium text-secondary tracking-tight">
                   Sansibar Beach Retreat
                 </h3>
@@ -587,10 +587,10 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
       </section>
 
       {/* 08 INCLUSIONS */}
-      <section className="py-16 md:py-32 bg-[#fdfcfb]">
+      <section className="py-8 md:py-16 bg-[#fdfcfb]">
         <div className="container mx-auto px-4 max-w-7xl text-center">
-          <div className="mb-16 md:mb-24 space-y-4">
-            <h2 className="font-headline text-3xl md:text-6xl lg:text-[48px] lg:leading-[1.2] font-normal text-secondary tracking-tighter">
+          <div className="mb-10 md:mb-12 space-y-4">
+            <h2 className="font-headline text-3xl md:text-5xl lg:text-[48px] lg:leading-[1.2] font-normal text-secondary tracking-tighter">
               In Ihrer Reise enthalten
             </h2>
             <p className="text-muted-foreground font-normal text-[14px] leading-[20px] max-w-xl mx-auto tracking-widest opacity-60">
@@ -647,7 +647,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
 
                   <div className="pt-8 border-t border-border/40">
                     <Button onClick={() => scrollTo('inquiry')} className="w-full rounded-lg h-14 px-8 font-bold text-[11px] tracking-widest border-none shadow-xl">
-                      Jetzt Anfragen
+                      Jetzt anfragen
                     </Button>
                   </div>
                 </div>
