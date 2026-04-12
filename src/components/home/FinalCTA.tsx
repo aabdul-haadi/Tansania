@@ -36,12 +36,12 @@ export function FinalCTA() {
         >
           {/* Headline Protocol - Cormorant Garamond 400 */}
           <div className="space-y-4">
-            <h2 className="font-headline text-3xl md:text-6xl font-normal text-white uppercase tracking-tighter leading-tight">
+            <h2 className="font-headline text-3xl md:text-6xl font-normal text-white tracking-tighter leading-tight">
               Bereit für Ihr Tansania-Abenteuer?
             </h2>
             
             {/* Narrative Protocol - Inter */}
-            <p className="text-white/90 font-normal text-xs md:text-lg leading-relaxed max-w-2xl mx-auto">
+            <p className="text-white/90 font-normal text-xs md:text-lg leading-relaxed max-w-2xl mx-auto uppercase tracking-widest">
               Lassen Sie uns gemeinsam Ihre individuelle Traumreise gestalten. <br className="hidden md:block" />
               Persönlich, professionell und mit Leidenschaft für Afrika.
             </p>
@@ -52,9 +52,9 @@ export function FinalCTA() {
             <Link href="/trip-planner" className="w-full sm:w-auto">
               <Button 
                 size="lg" 
-                className="w-full sm:w-auto rounded-lg px-8 h-14 bg-white text-secondary hover:bg-primary hover:text-white transition-all duration-500 font-bold text-[11px] uppercase tracking-widest border-none group shadow-2xl"
+                className="w-full sm:w-auto rounded-lg px-6 md:px-10 h-14 bg-white text-secondary hover:bg-primary hover:text-white transition-all duration-500 font-bold text-[10px] md:text-[11px] uppercase tracking-widest border-none group shadow-2xl"
               >
-                Kostenlose Beratung anfragen <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                <span className="hidden sm:inline">Kostenlose </span>Beratung anfragen <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
             
@@ -62,9 +62,9 @@ export function FinalCTA() {
               <Button 
                 variant="outline"
                 size="lg" 
-                className="w-full sm:w-auto rounded-lg px-8 h-14 bg-transparent text-white border-white hover:bg-white/10 transition-all duration-500 font-bold text-[11px] uppercase tracking-widest"
+                className="w-full sm:w-auto rounded-lg px-6 md:px-10 h-14 bg-transparent text-white border-white hover:bg-white/10 transition-all duration-500 font-bold text-[10px] md:text-[11px] uppercase tracking-widest"
               >
-                Jetzt anrufen
+                <span className="hidden sm:inline">Jetzt </span>anrufen
               </Button>
             </a>
           </div>
