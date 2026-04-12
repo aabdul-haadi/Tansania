@@ -67,7 +67,7 @@
     background-attachment: fixed;
   }
 
-  /* HEADLINE REGISTRY: Default spacing reset */
+  /* HEADLINE REGISTRY: Default spacing reset - NATURAL CASING PROTOCOL */
   h1, h2, h3, h4, h5, h6 {
     @apply font-headline font-normal leading-tight text-secondary;
     font-style: normal;

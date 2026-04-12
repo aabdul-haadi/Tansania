@@ -133,7 +133,6 @@ export default function KilimanjaroPage() {
             className="object-cover"
             data-ai-hint="mount kilimanjaro"
           />
-          {/* Subtle Bottom Shady Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent z-10" />
         </div>
         
@@ -144,7 +143,7 @@ export default function KilimanjaroPage() {
             transition={{ duration: 0.8 }}
             className="flex flex-col items-center"
           >
-            <h1 className="font-headline text-white leading-none whitespace-nowrap text-2xl sm:text-4xl md:text-6xl lg:text-7xl uppercase tracking-normal">
+            <h1 className="font-headline text-white leading-none whitespace-nowrap text-2xl sm:text-4xl md:text-6xl lg:text-7xl tracking-normal">
               Kilimandscharo Besteigung
             </h1>
             <p className="max-w-2xl mx-auto text-white/90 font-bold text-[10px] md:text-sm uppercase tracking-normal mt-6 leading-relaxed">
@@ -167,7 +166,7 @@ export default function KilimanjaroPage() {
               <div className="inline-flex items-center gap-2 text-primary font-bold text-[10px] uppercase tracking-normal">
                 <Mountain className="w-4 h-4" /> Expeditions-Registry
               </div>
-              <h2 className="font-headline text-secondary text-2xl md:text-4xl lg:text-5xl font-normal leading-tight uppercase tracking-normal">
+              <h2 className="font-headline text-secondary text-2xl md:text-4xl lg:text-5xl font-normal leading-tight tracking-normal">
                 Was macht den Berg <span className="text-primary font-bold">so legendär?</span>
               </h2>
             </div>
@@ -226,7 +225,7 @@ export default function KilimanjaroPage() {
           <div className="flex flex-col md:flex-row items-end justify-between mb-16 md:mb-24 gap-8">
             <div className="space-y-4">
               <span className="text-primary font-bold uppercase tracking-normal text-[10px]">Registry Protocol</span>
-              <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary uppercase tracking-normal">
+              <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-normal">
                 Die legendären <span className="text-primary font-bold">Routen</span>
               </h2>
             </div>
@@ -264,7 +263,7 @@ export default function KilimanjaroPage() {
                     </div>
 
                     <div className="space-y-3">
-                      <h3 className="font-headline text-2xl md:text-4xl font-normal text-secondary uppercase tracking-normal group-hover:text-primary transition-colors">
+                      <h3 className="font-headline text-2xl md:text-4xl font-normal text-secondary tracking-normal group-hover:text-primary transition-colors">
                         {route.name}
                       </h3>
                       <p className="text-sm leading-relaxed text-muted-foreground font-normal uppercase tracking-normal opacity-80">
@@ -321,9 +320,9 @@ export default function KilimanjaroPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent" />
         </div>
 
-        <div className="container relative z-10 mx-auto px-4 max-get-7xl">
+        <div className="container relative z-10 mx-auto px-4">
           <div className="text-center mb-12 md:mb-20 space-y-4">
-            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary uppercase tracking-normal leading-none">Quick Facts</h2>
+            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-normal leading-none">Quick Facts</h2>
             <div className="w-20 h-1 bg-primary mx-auto rounded-full opacity-40" />
           </div>
           
@@ -359,7 +358,7 @@ export default function KilimanjaroPage() {
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-20 gap-6">
           <div className="max-w-2xl">
             <span className="text-primary font-bold uppercase text-[10px] mb-2 block tracking-normal">Expeditions Portfolio</span>
-            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary uppercase tracking-normal">Wählen Sie Ihre <span className="text-primary font-bold">Gipfeltour</span></h2>
+            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-normal">Wählen Sie Ihre <span className="text-primary font-bold">Gipfeltour</span></h2>
           </div>
         </div>
 
@@ -381,7 +380,7 @@ export default function KilimanjaroPage() {
       <section className="py-12 md:py-24 bg-[#FDF7F2] border-y border-border/40 scroll-mt-20 text-left">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-12 md:mb-20 space-y-4">
-            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary uppercase tracking-normal">Häufig gestellte Fragen</h2>
+            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-normal">Häufig gestellte Fragen</h2>
             <p className="text-muted-foreground uppercase font-bold text-[10px] tracking-normal">Wissenswertes zur Expedition</p>
           </div>
 
