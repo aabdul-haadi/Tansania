@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -41,7 +40,7 @@ export function FinalCTA() {
             </h2>
             
             {/* Narrative Protocol - Inter */}
-            <p className="text-white/90 font-normal text-[10px] md:text-lg leading-relaxed max-w-2xl mx-auto uppercase tracking-widest">
+            <p className="text-white/90 font-normal text-[10px] md:text-lg leading-relaxed max-w-2xl mx-auto tracking-widest">
               Lassen Sie uns gemeinsam Ihre individuelle Traumreise gestalten. <br className="hidden md:block" />
               Persönlich, professionell und mit Leidenschaft für Afrika.
             </p>

@@ -61,7 +61,7 @@ export function MagazinInspiration() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-[#8A8581] font-medium text-xs md:text-sm uppercase tracking-widest opacity-80"
+              className="text-[#8A8581] font-medium text-xs md:text-sm tracking-widest opacity-80"
             >
               Expertenwissen und Reisetipps aus erster Hand
             </motion.p>

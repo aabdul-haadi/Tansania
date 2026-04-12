@@ -129,10 +129,10 @@ export default function KilimanjaroPage() {
             transition={{ duration: 0.8 }}
             className="flex flex-col items-center"
           >
-            <h1 className="font-headline text-white leading-none whitespace-nowrap text-2xl sm:text-4xl md:text-6xl lg:text-7xl tracking-normal">
+            <h1 className="font-headline text-white leading-none whitespace-nowrap text-2xl sm:text-4xl md:text-6xl lg:text-7xl tracking-normal uppercase">
               Kilimandscharo Besteigung
             </h1>
-            <p className="max-w-2xl mx-auto text-white/90 font-bold text-[10px] md:text-sm uppercase tracking-normal mt-6 leading-relaxed">
+            <p className="max-w-2xl mx-auto text-white/90 font-bold text-[10px] md:text-sm tracking-normal mt-6 leading-relaxed">
               Finden Sie Ihre perfekte Route zum Uhuru Peak. <br /> Erleben Sie eine Expedition, die über den Wolken beginnt.
             </p>
           </motion.div>
@@ -158,10 +158,10 @@ export default function KilimanjaroPage() {
             </div>
             
             <div className="space-y-6 text-muted-foreground font-normal leading-relaxed text-sm md:text-base border-l-4 border-primary/20 pl-8">
-              <p className="uppercase tracking-normal">
+              <p className="tracking-normal">
                 Der Kilimandscharo vereint atemberaubende Landschaften, eine echte körperliche Herausforderung und den Nervenkitzel, den höchsten Gipfel Afrikas zu erklimmen.
               </p>
-              <p className="uppercase tracking-normal">
+              <p className="tracking-normal">
                 Unsere spezialisierten Besteigungs-Protokolle führen Sie durch fünf verschiedene Klimazonen. Wir in Berlin planen Ihre Sicherheit mit, während unsere lokalen Guides Ihren Erfolg garantieren.
               </p>
             </div>
@@ -171,14 +171,14 @@ export default function KilimanjaroPage() {
                 <ShieldCheck className="w-6 h-6 text-primary shrink-0" />
                 <div className="space-y-1">
                   <h4 className="font-bold text-xs text-secondary uppercase tracking-normal">Sicherheits-Fokus</h4>
-                  <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-normal leading-relaxed">Tägliche Gesundheitschecks & modernste Ausrüstung.</p>
+                  <p className="text-[10px] text-muted-foreground font-bold tracking-normal leading-relaxed">Tägliche Gesundheitschecks & modernste Ausrüstung.</p>
                 </div>
               </div>
               <div className="flex items-start gap-4 p-6 bg-white rounded-2xl border border-border shadow-sm group hover:border-primary transition-all">
                 <Users className="w-6 h-6 text-primary shrink-0" />
                 <div className="space-y-1">
                   <h4 className="font-bold text-xs text-secondary uppercase tracking-normal">Profi-Guides</h4>
-                  <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-normal leading-relaxed">Staatlich geprüft mit over 100 Gipfelstürmen.</p>
+                  <p className="text-[10px] text-muted-foreground font-bold tracking-normal leading-relaxed">Staatlich geprüft mit over 100 Gipfelstürmen.</p>
                 </div>
               </div>
             </div>
@@ -215,7 +215,7 @@ export default function KilimanjaroPage() {
                 Die legendären <span className="text-primary font-bold">Routen</span>
               </h2>
             </div>
-            <p className="text-muted-foreground font-bold text-sm md:text-base uppercase tracking-normal max-w-xs border-l-2 border-primary/20 pl-6 leading-relaxed">
+            <p className="text-muted-foreground font-bold text-sm md:text-base tracking-normal max-w-xs border-l-2 border-primary/20 pl-6 leading-relaxed">
               Jeder Pfad erzählt eine eigene Geschichte. Wählen Sie die Route, die zu Ihrer Kondition und Ihren Erwartungen passt.
             </p>
           </div>
@@ -252,7 +252,7 @@ export default function KilimanjaroPage() {
                       <h3 className="font-headline text-2xl md:text-4xl font-normal text-secondary tracking-normal group-hover:text-primary transition-colors">
                         {route.name}
                       </h3>
-                      <p className="text-sm leading-relaxed text-muted-foreground font-normal uppercase tracking-normal opacity-80">
+                      <p className="text-sm leading-relaxed text-muted-foreground font-normal tracking-normal opacity-80">
                         {route.desc}
                       </p>
                     </div>
@@ -333,7 +333,7 @@ export default function KilimanjaroPage() {
                     <div>
                       <p className="text-[9px] uppercase font-bold text-primary mb-1 tracking-normal">{fact.label}</p>
                       <p className="font-bold text-lg md:text-xl text-secondary uppercase leading-none tracking-normal">{fact.val}</p>
-                      <p className="text-[9px] text-muted-foreground uppercase font-bold mt-1 tracking-normal">{fact.sub}</p>
+                      <p className="text-[9px] text-muted-foreground font-bold mt-1 tracking-normal">{fact.sub}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -370,7 +370,7 @@ export default function KilimanjaroPage() {
       <section className="py-12 md:py-24 bg-[#FDF7F2] border-y border-border/40 scroll-mt-20 text-left">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-12 md:mb-20 space-y-4">
-            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-normal">Häufig gestellte Fragen</h2>
+            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-normal uppercase">Häufig gestellte Fragen</h2>
             <p className="text-muted-foreground uppercase font-bold text-[10px] tracking-normal">Wissenswertes zur Expedition</p>
           </div>
 
@@ -383,7 +383,7 @@ export default function KilimanjaroPage() {
                     <Plus className="w-4 h-4 text-primary shrink-0 transition-transform group-data-[state=open]:rotate-45" />
                   </div>
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground text-sm md:text-base leading-relaxed font-normal pb-8 uppercase opacity-80 text-left tracking-normal">
+                <AccordionContent className="text-muted-foreground text-sm md:text-base leading-relaxed font-normal pb-8 text-left tracking-normal">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
