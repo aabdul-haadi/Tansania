@@ -1,3 +1,4 @@
+
 "use client"
 
 import React from 'react';
@@ -67,7 +68,7 @@ export function FAQ() {
                 value={`item-${index}`}
                 className="bg-white border border-border/50 rounded-lg px-4 py-0 shadow-sm transition-all"
               >
-                <AccordionTrigger className="font-bold text-xs md:text-sm py-3 hover:no-underline hover:text-primary transition-colors text-left uppercase tracking-tight">
+                <AccordionTrigger className="font-bold text-xs md:text-sm py-3 hover:no-underline hover:text-primary transition-colors text-left tracking-tight">
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-[9px] md:text-[10px] leading-relaxed pt-0 pb-3 font-bold uppercase tracking-widest">

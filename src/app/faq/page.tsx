@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -54,7 +55,7 @@ export default function FAQPage() {
     <div className="bg-[#fdfcfb] min-h-screen">
       {/* Top Header Section */}
       <section className="bg-secondary pt-32 pb-24 text-center border-none">
-        <div className="container mx-auto px-4 max-get-5xl">
+        <div className="container mx-auto px-4 max-w-5xl">
           <motion.span 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -101,7 +102,7 @@ export default function FAQPage() {
                   value={`q-${idx}`}
                   className="border-none bg-white rounded-2xl px-6 md:px-10 shadow-sm hover:shadow-md transition-all group"
                 >
-                  <AccordionTrigger className="text-left font-normal text-base md:text-lg py-6 hover:no-underline hover:text-primary transition-colors uppercase">
+                  <AccordionTrigger className="text-left font-normal text-base md:text-lg py-6 hover:no-underline hover:text-primary transition-colors">
                     {faq.question}
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground text-sm md:text-base leading-relaxed pb-8 pr-4 text-left">

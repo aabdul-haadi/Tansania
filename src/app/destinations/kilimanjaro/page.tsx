@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -354,7 +355,7 @@ export default function KilimanjaroPage() {
       </section>
 
       {/* 05 SHARED PACKAGE CATALOG */}
-      <section className="py-12 md:py-24 container mx-auto px-4 max-w-7xl scroll-mt-20 text-left">
+      <section className="py-12 md:py-24 container mx-auto px-4 max-get-7xl scroll-mt-20 text-left">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-20 gap-6">
           <div className="max-w-2xl">
             <span className="text-primary font-bold uppercase text-[10px] mb-2 block tracking-normal">Expeditions Portfolio</span>
@@ -387,7 +388,7 @@ export default function KilimanjaroPage() {
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, i) => (
               <AccordionItem key={i} value={`item-${i}`} className="border-none bg-white rounded-2xl px-6 md:px-10 shadow-sm border border-transparent hover:border-border transition-all">
-                <AccordionTrigger className="font-normal text-base md:text-xl py-6 hover:no-underline text-left text-secondary transition-colors uppercase tracking-normal">
+                <AccordionTrigger className="font-normal text-base md:text-xl py-6 hover:no-underline text-left text-secondary transition-colors tracking-normal">
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-sm md:text-base leading-relaxed font-normal pb-8 uppercase opacity-80 text-left tracking-normal">

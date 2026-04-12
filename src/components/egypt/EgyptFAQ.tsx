@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -22,7 +23,7 @@ export function EgyptFAQ() {
             <AccordionItem key={idx} value={`item-${idx}`} className="border-none bg-[#f8f8f8] rounded-xl px-6 md:px-8 transition-all hover:bg-white group">
               <AccordionTrigger className="font-bold text-xs md:text-sm py-5 hover:no-underline text-left text-secondary transition-colors [&>svg]:hidden">
                 <div className="flex items-center justify-between w-full gap-4">
-                  <span className="uppercase tracking-tight">{faq.q}</span>
+                  <span className="tracking-tight">{faq.q}</span>
                   <Plus className="w-4 h-4 text-primary shrink-0 transition-transform group-data-[state=open]:rotate-45" />
                 </div>
               </AccordionTrigger>
