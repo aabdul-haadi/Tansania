@@ -27,7 +27,7 @@ export function VisualJournalGrid() {
             className="relative rounded-[2rem] md:rounded-[3rem] overflow-hidden group shadow-xl border border-border/50 bg-muted h-[500px] md:h-full"
           >
             <Image 
-              src="/assets/images/home/gal-1.webp" 
+              src="/assets/images/home/gallery-01.png" 
               alt="Luxus Safari Erlebnis" 
               fill 
               className="object-cover transition-transform duration-1000 group-hover:scale-105" 
@@ -62,7 +62,7 @@ export function VisualJournalGrid() {
                 className="object-cover transition-transform duration-1000 group-hover:scale-105" 
                 data-ai-hint="zanzibar beach"
               />
-              {/* Targeted Bottom Shady Overlay Protocol: No full image darkening */}
+              {/* Targeted Bottom Shady Overlay Protocol */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
               <div className="absolute bottom-10 left-10 right-10 space-y-2 text-left">
                 <h3 className="font-headline text-xl md:text-3xl text-white leading-tight tracking-normal">
@@ -89,7 +89,7 @@ export function VisualJournalGrid() {
                 className="object-cover transition-transform duration-1000 group-hover:scale-105" 
                 data-ai-hint="safari wildlife"
               />
-              {/* Targeted Bottom Shady Overlay Protocol: No full image darkening */}
+              {/* Targeted Bottom Shady Overlay Protocol */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
               <div className="absolute bottom-10 left-10 right-10 space-y-2 text-left">
                 <h3 className="font-headline text-xl md:text-3xl text-white leading-tight tracking-normal">
