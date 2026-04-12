@@ -31,6 +31,7 @@ export function VisualJournalGrid() {
               src="/assets/images/home/gallery-01.png" 
               alt="Luxus Safari Erlebnis" 
               fill 
+              unoptimized
               className="object-cover transition-transform duration-1000 group-hover:scale-105" 
               data-ai-hint="safari relaxation"
             />
@@ -60,6 +61,7 @@ export function VisualJournalGrid() {
                 src="/assets/images/home/gal-2.webp" 
                 alt="Sansibar Strand" 
                 fill 
+                unoptimized
                 className="object-cover transition-transform duration-1000 group-hover:scale-105" 
                 data-ai-hint="zanzibar beach"
               />
@@ -87,6 +89,7 @@ export function VisualJournalGrid() {
                 src="/assets/images/home/gal-3.webp" 
                 alt="Wildlife Tansania" 
                 fill 
+                unoptimized
                 className="object-cover transition-transform duration-1000 group-hover:scale-105" 
                 data-ai-hint="safari wildlife"
               />

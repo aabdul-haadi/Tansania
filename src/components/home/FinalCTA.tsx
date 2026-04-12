@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -16,6 +17,7 @@ export function FinalCTA() {
           src="/assets/images/home/final-cta-bg.webp" 
           alt="Tansania Safari Terrace Sunset" 
           fill 
+          unoptimized
           priority 
           className="object-cover brightness-[0.5] scale-105"
           data-ai-hint="safari terrace elephants"

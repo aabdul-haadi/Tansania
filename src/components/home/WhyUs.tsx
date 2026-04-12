@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -47,12 +48,13 @@ export function WhyUs() {
               viewport={{ once: true }}
               className="relative"
             >
-              {/* Taller aspect ratio for more impact */}
+              {/* High aspect ratio for dominant visual presence */}
               <div className="aspect-[3/4] rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden shadow-2xl border border-border/50 relative z-10 bg-muted">
                 <Image 
                   src="/assets/images/home/why-travel-01.png" 
                   alt="Tansania Expertise" 
                   fill 
+                  unoptimized
                   className="object-cover"
                   data-ai-hint="safari guide"
                 />

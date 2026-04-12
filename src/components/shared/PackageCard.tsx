@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -62,11 +63,11 @@ export function PackageCard({ pkg, className }: PackageCardProps) {
           </p>
 
           <div className="flex items-center gap-4 pt-1">
-            <div className="flex items-center gap-1.5 text-[11px] font-bold text-muted-foreground tracking-normal uppercase">
+            <div className="flex items-center gap-1.5 text-[11px] font-bold text-muted-foreground tracking-normal">
               <Clock className="w-3 text-primary" /> 
               {pkg.durationDays} Tage
             </div>
-            <div className="flex items-center gap-1.5 text-[11px] font-bold text-muted-foreground tracking-normal uppercase">
+            <div className="flex items-center gap-1.5 text-[11px] font-bold text-muted-foreground tracking-normal">
               <Users className="w-3 text-primary" /> 
               {pkg.groupSize || 'Privat'}
             </div>
