@@ -20,7 +20,7 @@ export function AiCTA() {
       <div className="grid grid-cols-1 md:grid-cols-2">
         
         {/* Tile 1: AI HUB (Top Left) */}
-        <div className="bg-white text-secondary p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col justify-center items-center text-center space-y-6 min-h-[300px] md:min-h-[350px] order-1 border-b md:border-b-0 border-border/40">
+        <div className="bg-white text-secondary p-6 sm:p-8 md:p-10 flex flex-col justify-center items-center text-center space-y-6 min-h-[300px] md:min-h-[350px] order-1 border-b md:border-b-0 border-border/40">
           <div className="space-y-6 flex flex-col items-center">
             <motion.div 
               initial={{ scale: 0.9, opacity: 0 }}
@@ -87,7 +87,7 @@ export function AiCTA() {
         </div>
 
         {/* Tile 3: DIRECT HUMAN CONTACT */}
-        <div className="bg-[#FDF7F2] p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col justify-center items-center text-center space-y-6 min-h-[300px] md:min-h-[350px] order-3 md:order-4 border-t md:border-t-0 border-border/40">
+        <div className="bg-[#FDF7F2] p-6 sm:p-8 md:p-10 flex flex-col justify-center items-center text-center space-y-6 min-h-[300px] md:min-h-[350px] order-3 md:order-4 border-t md:border-t-0 border-border/40">
           <div className="space-y-6">
             <div className="relative w-20 h-20 mx-auto">
               <div className="absolute inset-0 bg-[#C9A876]/20 rounded-full transform rotate-6 scale-110" />

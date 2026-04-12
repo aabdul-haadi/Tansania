@@ -106,14 +106,6 @@ const extrasData = [
   { icon: Palmtree, label: "Sansibar Verlängerung", status: "individuell" },
 ];
 
-const featureIcons = [
-  { icon: PawPrint, label: "Tierbeobachtungen" },
-  { icon: Home, label: "Exklusive Lodge" },
-  { icon: Mountain, label: "Abenteuer & Erholung" },
-  { icon: Calendar, label: "Gut organisiert" },
-  { icon: Plane, label: "Inkl. Flug" }
-];
-
 interface PackageDetailClientProps {
   pkg: any;
 }
@@ -128,10 +120,6 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
   const hotelsRef = useRef<HTMLDivElement>(null);
   const inquiryRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
-
-  const plugin = React.useRef(
-    Autoplay({ delay: 3000, stopOnInteraction: false })
-  );
 
   useEffect(() => {
     setMounted(true);
@@ -163,7 +151,6 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
   }
 
   const basePrice = pkg.startingPrice || 5399;
-  const originalPrice = 5999;
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
@@ -182,7 +169,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
         </div>
         
-        <div className="container relative z-10 mx-auto px-6 h-full flex flex-col justify-end pb-16 md:pb-24 max-w-7xl">
+        <div className="container relative z-10 mx-auto px-6 h-full flex flex-col justify-center pb-16 md:pb-24 max-w-7xl">
           <motion.div 
             initial={{ opacity: 0, y: 30 }} 
             animate={{ opacity: 1, y: 0 }} 
@@ -247,10 +234,9 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
       </div>
 
       {/* 03 NARRATIVE & MASTER CARD SECTION */}
-      <section ref={overviewRef} className="py-8 md:py-16 bg-white scroll-mt-20">
+      <section ref={overviewRef} className="py-8 md:py-12 bg-white scroll-mt-20">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-20">
-            {/* Left Narrative */}
             <div className="lg:col-span-7 space-y-8">
               <div className="space-y-4 text-left">
                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold border border-primary/20">
@@ -275,79 +261,66 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                   Erleben Sie die pure Magie Ostafrikas. Von den goldenen Savannen der Serengeti bis zum türkisblauen Indischen Ozean auf Sansibar. Diese Reise wurde konzipiert, um Ihnen nicht nur die Big Five zu zeigen, sondern Ihnen die Seele Tansanias näherzubringen – exklusiv, privat und mit höchstem Komfort.
                 </p>
               </div>
-
-              <div className="flex flex-col sm:flex-row gap-4 pt-2">
-                <Link href="/trip-planner">
-                  <Button className="w-full sm:w-auto h-12 md:h-14 px-10 rounded-xl font-bold text-xs border-none transition-all shadow-xl">
-                    Reiseberatung anfragen
-                  </Button>
-                </Link>
-                <Button onClick={() => scrollTo('inquiry')} variant="outline" className="w-full sm:w-auto h-12 md:h-14 px-10 rounded-xl font-bold text-xs transition-all">
-                  Diese Reise anfragen
-                </Button>
-              </div>
             </div>
 
-            {/* Right Master Card Clone */}
             <div className="lg:col-span-5 relative">
               <div className="sticky top-32">
-                <Card className="rounded-[1.5rem] border border-border/20 bg-[#FDFCFB] p-8 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.08)] relative overflow-hidden group">
-                  <div className="space-y-8 relative z-10 text-left">
-                    <div className="space-y-4">
-                      <p className="text-[#C9A876] font-bold text-xs tracking-[0.2em] uppercase">Tansania</p>
-                      <h3 className="font-headline text-[32px] md:text-[40px] leading-[1.1] font-medium text-[#3A3634] tracking-tight">
+                <Card className="rounded-[1.5rem] border border-border/20 bg-[#FDFCFB] p-6 md:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.08)] relative overflow-hidden group">
+                  <div className="space-y-6 relative z-10 text-left">
+                    <div className="space-y-3">
+                      <p className="text-[#C9A876] font-bold text-[10px] tracking-[0.2em]">Tansania</p>
+                      <h3 className="font-headline text-[28px] md:text-[34px] leading-[1.1] font-medium text-[#3A3634] tracking-tight">
                         15 Tage Safari & Sansibar
                       </h3>
                     </div>
 
-                    <div className="space-y-6">
-                      <div className="space-y-1">
-                        <p className="text-[#3A3634] font-bold text-lg">Reisedauer:</p>
-                        <p className="text-lg text-[#8A8581] font-normal leading-tight">15-tägig, Flüge inklusive</p>
+                    <div className="space-y-4">
+                      <div className="space-y-0.5">
+                        <p className="text-[#3A3634] font-bold text-base">Reisedauer:</p>
+                        <p className="text-base text-[#8A8581] font-normal leading-tight">15-tägig, Flüge inklusive</p>
                       </div>
-                      <div className="space-y-1">
-                        <p className="text-[#3A3634] font-bold text-lg">Unterkünfte:</p>
-                        <p className="text-lg text-[#8A8581] font-normal leading-tight">Mittelklassehotels, Tented Lodges mit Vollpension</p>
+                      <div className="space-y-0.5">
+                        <p className="text-[#3A3634] font-bold text-base">Unterkünfte:</p>
+                        <p className="text-base text-[#8A8581] font-normal leading-tight">Handverlesene Tented Lodges & Boutique Hotels</p>
                       </div>
-                      <div className="space-y-1">
-                        <p className="text-[#3A3634] font-bold text-lg">Exklusive Gruppen:</p>
-                        <p className="text-lg text-[#8A8581] font-normal leading-tight">Maximal 6 Teilnehmer pro Termin</p>
+                      <div className="space-y-0.5">
+                        <p className="text-[#3A3634] font-bold text-base">Exklusivität:</p>
+                        <p className="text-base text-[#8A8581] font-normal leading-tight">Privat-Safari mit eigenem Guide & Jeep</p>
                       </div>
-                      <div className="space-y-1">
-                        <p className="text-[#3A3634] font-bold text-lg">Reisezeit:</p>
-                        <p className="text-lg text-[#8A8581] font-normal leading-tight">2026-2027</p>
+                      <div className="space-y-0.5">
+                        <p className="text-[#3A3634] font-bold text-base">Reisezeit:</p>
+                        <p className="text-base text-[#8A8581] font-normal leading-tight">Ganzjährig (Beste Zeit: Jun-Okt, Dez-Feb)</p>
                       </div>
                     </div>
 
-                    <div className="flex flex-wrap gap-2.5">
+                    <div className="flex flex-wrap gap-2">
                       {[
                         "Geführte Erlebnisreisen",
                         "Kombinierbar",
-                        "Ideal für Kleingruppen",
-                        "Begrenzte Plätze verfügbar",
-                        "Garantierte Durchführung"
+                        "Kleingruppen",
+                        "Limitierte Plätze"
                       ].map((tag, i) => (
-                        <span key={i} className="px-4 py-2 rounded-full border border-border/60 bg-white text-[#8A8581] text-[11px] font-medium tracking-tight">
+                        <span key={i} className="px-3 py-1.5 rounded-full border border-border/60 bg-white text-[#8A8581] text-[10px] font-medium tracking-tight">
                           {tag}
                         </span>
                       ))}
                     </div>
 
-                    <div className="pt-8 border-t border-border/40 flex flex-col md:flex-row items-end justify-between gap-6">
+                    <div className="pt-6 border-t border-border/40 flex flex-col md:flex-row items-end justify-between gap-4">
                       <div className="flex flex-col">
-                        <span className="text-lg text-[#C9A876] font-medium line-through mb-1">5.999 €</span>
+                        <span className="text-base text-[#C9A876] font-medium line-through mb-0.5">6.210 €</span>
                         <div className="flex items-baseline gap-2">
-                          <span className="text-4xl md:text-5xl font-black text-[#141414] tracking-tighter">ab 5.399 €</span>
+                          <span className="text-2xl md:text-3xl font-black text-[#141414] tracking-tighter">ab 5.399 €</span>
                         </div>
-                        <p className="text-sm font-medium text-[#C9A876] mt-1">pro Person</p>
+                        <p className="text-xs font-medium text-[#C9A876] mt-0.5">pro Person</p>
                       </div>
                       
-                      <div className="flex flex-col gap-3 w-full md:w-auto">
-                        <Button onClick={() => scrollTo('inquiry')} className="w-full md:w-48 h-14 rounded-lg bg-[#C9A876] text-white hover:bg-[#B89765] font-bold text-sm tracking-widest transition-all shadow-lg uppercase border-none">
+                      <div className="flex flex-col gap-2.5 w-full md:w-auto">
+                        <Button onClick={() => scrollTo('inquiry')} className="w-full md:w-44 h-12 rounded-lg bg-[#C9A876] text-white hover:bg-[#B89765] font-bold text-xs tracking-wider transition-all shadow-lg border-none">
                           Jetzt anfragen
                         </Button>
-                        <Button variant="outline" className="w-full md:w-48 h-12 rounded-lg bg-white border-2 border-[#3A3634] text-[#3A3634] hover:bg-[#3A3634] hover:text-white font-bold text-[11px] tracking-widest transition-all flex items-center justify-center gap-2">
-                          <FileText className="w-4 h-4" /> Reiseplan als PDF
+                        <Button variant="outline" className="w-full md:w-44 h-10 rounded-lg bg-white border border-[#3A3634] text-[#3A3634] hover:bg-[#3A3634] hover:text-white font-bold text-[10px] tracking-wider transition-all flex items-center justify-center gap-2">
+                          <FileText className="w-3.5 h-3.5" /> Reiseplan PDF
                         </Button>
                       </div>
                     </div>
@@ -359,10 +332,10 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         </div>
       </section>
 
-      {/* 04 HIGHLIGHTS (Recalibrated Padding & Shadow) */}
-      <section className="py-12 md:py-20 bg-[#FDF7F2] border-y border-border/40 scroll-mt-20">
+      {/* 04 HIGHLIGHTS */}
+      <section className="py-12 md:py-16 bg-[#FDF7F2] border-y border-border/40 scroll-mt-20">
         <div className="container mx-auto px-4 max-w-7xl text-center">
-          <div className="mb-10 md:mb-12">
+          <div className="mb-10">
             <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter">
               Die Höhepunkte Ihrer Reise
             </h2>
@@ -398,8 +371,8 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         </div>
       </section>
 
-      {/* 05 ITINERARY (Bright Headlines) */}
-      <section ref={itineraryRef} className="py-12 md:py-20 bg-white scroll-mt-20">
+      {/* 05 ITINERARY */}
+      <section ref={itineraryRef} className="py-12 md:py-16 bg-white scroll-mt-20">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center mb-10 md:mb-16 space-y-4">
             <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter">Ihr Reiseverlauf</h2>
@@ -485,9 +458,9 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
       </section>
 
       {/* 06 HOTELS */}
-      <section ref={hotelsRef} className="py-12 md:py-20 bg-white scroll-mt-20 border-t border-border/40 text-center">
+      <section ref={hotelsRef} className="py-12 md:py-16 bg-white scroll-mt-20 border-t border-border/40 text-center">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="mb-10 md:mb-12 space-y-4">
+          <div className="mb-10 space-y-4">
             <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter">
               Handverlesene Unterkünfte
             </h2>
@@ -563,9 +536,9 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
       </section>
 
       {/* 07 INCLUSIONS */}
-      <section className="py-12 md:py-20 bg-[#fdfcfb]">
-        <div className="container mx-auto px-4 max-w-7xl text-center">
-          <div className="mb-10 md:mb-12 space-y-4">
+      <section className="py-12 md:py-16 bg-[#fdfcfb]">
+        <div className="container mx-auto px-4 max-get-7xl text-center">
+          <div className="mb-10 space-y-4">
             <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter">
               In Ihrer Reise enthalten
             </h2>

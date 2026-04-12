@@ -46,7 +46,7 @@ export function ContactSection() {
   ];
 
   return (
-    <section id="inquiry" className="py-8 md:py-16 bg-[#fdfcfb] relative overflow-hidden">
+    <section id="inquiry" className="py-8 md:py-12 bg-[#fdfcfb] relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none">
         <svg width="100%" height="100%" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
           <path d="M0 100 C 100 80, 300 150, 400 100 S 700 50, 800 100" fill="none" stroke="currentColor" strokeWidth="1" />
@@ -55,7 +55,7 @@ export function ContactSection() {
       </div>
 
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
-        <div className="text-center mb-12 md:mb-16 space-y-2">
+        <div className="text-center mb-10 md:mb-12 space-y-2">
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -78,8 +78,8 @@ export function ContactSection() {
         <div className="bg-white rounded-[2.5rem] md:rounded-[3rem] shadow-sm border border-border/40 overflow-hidden flex flex-col lg:flex-row min-h-[550px] md:min-h-[600px] relative transition-all duration-500 hover:shadow-xl">
           
           <div className="w-full lg:w-[35%] bg-[#FDF7F2] p-8 md:p-12 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-border/40 text-left">
-            <div className="space-y-10 md:space-y-12">
-              <div className="space-y-4">
+            <div className="space-y-8 md:space-y-10">
+              <div className="space-y-3">
                 <h3 className="text-xl md:text-2xl font-headline font-bold text-secondary tracking-tight whitespace-nowrap">
                   Premium Beratung
                 </h3>
@@ -88,7 +88,7 @@ export function ContactSection() {
                 </p>
               </div>
 
-              <div className="space-y-6 md:space-y-8">
+              <div className="space-y-6">
                 {steps.map((step, i) => (
                   <div key={i} className="flex items-center gap-5 group">
                     <div className="w-10 h-10 rounded-xl bg-white border border-[#F0EBE0] flex items-center justify-center shrink-0 shadow-sm group-hover:border-primary transition-all duration-500">
@@ -103,7 +103,7 @@ export function ContactSection() {
               </div>
             </div>
 
-            <div className="pt-10 md:pt-12 space-y-6">
+            <div className="pt-8 md:pt-10 space-y-6">
               <div className="flex items-center gap-4 group cursor-pointer">
                 <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center border border-[#F0EBE0] group-hover:bg-primary group-hover:border-primary transition-all shadow-sm">
                   <Phone className="w-4 h-4 text-primary group-hover:text-white transition-colors" />
