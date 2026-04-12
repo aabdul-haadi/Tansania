@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -34,7 +35,7 @@ export function VisualJournalGrid() {
               data-ai-hint="safari relaxation"
             />
             {/* Targeted Bottom Shady Overlay Protocol: No full image darkening */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
             <div className="absolute bottom-10 left-10 right-10 space-y-3 text-left">
               <h3 className="font-headline text-2xl md:text-4xl text-white leading-tight tracking-normal">
                 Luxus inmitten der Wildnis
@@ -63,7 +64,7 @@ export function VisualJournalGrid() {
                 data-ai-hint="zanzibar beach"
               />
               {/* Targeted Bottom Shady Overlay Protocol */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
               <div className="absolute bottom-10 left-10 right-10 space-y-2 text-left">
                 <h3 className="font-headline text-xl md:text-3xl text-white leading-tight tracking-normal">
                   Paradiesische Strände
@@ -90,7 +91,7 @@ export function VisualJournalGrid() {
                 data-ai-hint="safari wildlife"
               />
               {/* Targeted Bottom Shady Overlay Protocol */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
               <div className="absolute bottom-10 left-10 right-10 space-y-2 text-left">
                 <h3 className="font-headline text-xl md:text-3xl text-white leading-tight tracking-normal">
                   Wildlife hautnah
