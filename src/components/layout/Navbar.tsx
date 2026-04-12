@@ -112,12 +112,12 @@ export function Navbar() {
                 !isScrolled && "brightness-110"
               )} 
             />
-            <div className="hidden min-[330px]:flex items-baseline gap-1.5 md:gap-2">
-              <span className="font-headline font-black whitespace-nowrap text-sm sm:text-base md:text-2xl lg:text-3xl uppercase tracking-normal">
+            <div className="flex flex-col justify-center">
+              <span className="font-headline font-black whitespace-nowrap text-xs sm:text-sm md:text-xl lg:text-2xl uppercase tracking-normal leading-[1.1]">
                 Tansania
               </span>
               <span className={cn(
-                "font-headline font-black whitespace-nowrap text-sm sm:text-base md:text-2xl lg:text-3xl transition-colors duration-500 uppercase tracking-normal",
+                "font-headline font-black whitespace-nowrap text-xs sm:text-sm md:text-xl lg:text-2xl transition-colors duration-500 uppercase tracking-normal leading-[1.1]",
                 isScrolled ? "text-primary" : "text-white"
               )}>
                 Reiseabenteuer
@@ -143,9 +143,9 @@ export function Navbar() {
               <div className="px-6 py-6 flex items-center border-b border-border/50 shrink-0">
                 <Link href="/" className="flex items-center gap-3">
                   <img src="/iconlogo.jpg" alt="SDL" className="h-8 md:h-10 w-auto" />
-                  <div className="flex flex-col md:flex-row md:items-baseline gap-0.5 md:gap-1.5">
-                    <span className="font-headline font-black text-sm md:text-xl uppercase tracking-normal leading-none">Tansania</span>
-                    <span className="font-headline font-black text-sm md:text-xl text-primary uppercase tracking-normal leading-none">Reiseabenteuer</span>
+                  <div className="flex flex-col">
+                    <span className="font-headline font-black text-sm md:text-xl uppercase tracking-normal leading-[1.1]">Tansania</span>
+                    <span className="font-headline font-black text-sm md:text-xl text-primary uppercase tracking-normal leading-[1.1]">Reiseabenteuer</span>
                   </div>
                 </Link>
               </div>

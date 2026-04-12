@@ -28,17 +28,17 @@ export function Footer() {
 
   return (
     <footer className="relative bg-[#3A3634] text-white pt-20 pb-12 overflow-hidden border-t border-white/5">
-      <div className="container relative z-10 mx-auto px-4 max-w-7xl">
+      <div className="container relative z-10 mx-auto px-4 max-get-7xl">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
           
           {/* Brand Column */}
           <div className="flex flex-col gap-8">
             <div className="space-y-6">
-              <Link href="/" className="flex items-center gap-4 group w-fit">
-                <img src="/iconlogo.jpg" alt="Tansania Reiseabenteuer" className="h-14 w-auto rounded-xl shadow-2xl transition-transform duration-500 group-hover:scale-105" />
-                <div className="flex flex-col -space-y-1">
-                  <span className="font-headline font-black text-2xl leading-none tracking-[0.15em] uppercase">Tansania</span>
-                  <span className="font-headline font-black text-2xl text-primary leading-none tracking-[0.15em] uppercase">Reiseabenteuer</span>
+              <Link href="/" className="flex items-center gap-3 md:gap-4 group w-fit">
+                <img src="/iconlogo.jpg" alt="Tansania Reiseabenteuer" className="h-10 md:h-14 w-auto rounded-xl shadow-2xl transition-transform duration-500 group-hover:scale-105" />
+                <div className="flex flex-col">
+                  <span className="font-headline font-black text-lg sm:text-xl md:text-2xl leading-[1.1] tracking-normal uppercase">Tansania</span>
+                  <span className="font-headline font-black text-lg sm:text-xl md:text-2xl text-primary leading-[1.1] tracking-normal uppercase">Reiseabenteuer</span>
                 </div>
               </Link>
               <p className={cn("font-sans text-[14px] leading-[22.75px] font-normal max-w-xs", textColor)}>
