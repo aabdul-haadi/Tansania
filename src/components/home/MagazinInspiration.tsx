@@ -18,17 +18,15 @@ const magazinePosts = [
     category: "Unterkünfte",
     date: "15. März 2026",
     excerpt: "Entdecken Sie unsere handverlesene Auswahl der luxuriösesten und authentischsten Unterkünfte im Herzen der Serengeti.",
-    img: "https://images.unsplash.com/photo-1577971132997-c10be9372519?q=80&w=800",
-    hint: "safari lodge"
+    img: "https://images.unsplash.com/photo-1577971132997-c10be9372519?q=80&w=800"
   },
   {
     id: 2,
     title: "Sansibar: Geheimtipps abseits der Touristenpfade",
     category: "Reiseziele",
     date: "8. März 2026",
-    excerpt: "Erleben Sie die authentische Seite Sansibars – von versteckten Stränden bis zu lokalen Gewürzmärkten.",
-    img: "https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=800",
-    hint: "zanzibar beach"
+    excerpt: "Erlebe die authentische Seite Sansibars – von versteckten Stränden bis zu lokalen Gewürzmärkten.",
+    img: "https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=800"
   },
   {
     id: 3,
@@ -36,22 +34,21 @@ const magazinePosts = [
     category: "Reisetipps",
     date: "1. März 2026",
     excerpt: "Von der richtigen Kleidung bis zur Kameraausrüstung – alles, was Sie für Ihre perfekte Safari wissen müssen.",
-    img: "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800",
-    hint: "safari gear"
+    img: "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800"
   }
 ];
 
 export function MagazinInspiration() {
   return (
     <section className="py-16 md:py-24 bg-white overflow-hidden">
-      <div className="container mx-auto px-4 max-get-7xl">
+      <div className="container mx-auto px-4 max-w-7xl">
         <div className="flex items-end justify-between mb-12 md:mb-16">
           <div className="space-y-2 text-left">
             <motion.h2 
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="font-headline text-3xl md:text-5xl font-normal text-[#3A3634] uppercase"
+              className="font-headline text-3xl md:text-5xl font-normal text-[#3A3634] uppercase tracking-normal"
             >
               Magazin & Inspiration
             </motion.h2>
@@ -114,7 +111,6 @@ function MagazineCard({ post }: { post: any }) {
           alt={post.title} 
           fill 
           className="object-cover transition-transform duration-1000 group-hover:scale-105"
-          data-ai-hint={post.hint}
         />
       </div>
 

@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -38,38 +37,6 @@ const SIGNATURE_REISEN = [
     ],
     excerpt: 'Die perfekte Balance aus intensiven Wildtierbeobachtungen und exklusiver Entspannung am Indischen Ozean.',
     imageUrl: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800'
-  },
-  {
-    id: 'safari-sansibar-11',
-    title: 'Safari & Sansibar',
-    slug: 'safari-sansibar-11-tage',
-    startingPrice: 2999,
-    durationDays: 11,
-    category: 'Erlebnisreise',
-    highlights: [
-      'Atemberaubende Tierbeobachtungen',
-      'Exklusive Lodges & Camps',
-      'Abenteuer & Erholung',
-      'Alles gut organisiert'
-    ],
-    excerpt: 'Kompakt und eindrucksvoll: Erleben Sie die Highlights Tansanias in einer perfekt abgestimmten 11-tägigen Reise.',
-    imageUrl: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=800'
-  },
-  {
-    id: 'familien-safari-12',
-    title: '12 Tage Familien Safari',
-    slug: 'familien-safari-12-tage',
-    startingPrice: 3499,
-    durationDays: 12,
-    category: 'Erlebnisreise',
-    highlights: [
-      'Atemberaubende Tierbeobachtungen',
-      'Exklusive Lodges & Camps',
-      'Abenteuer & Erholung',
-      'Alles gut organisiert'
-    ],
-    excerpt: 'Speziell für Familien konzipiert: Unvergessliche Abenteuer und kindgerechte Lodges in Tansanias Wildnis.',
-    imageUrl: 'https://images.unsplash.com/photo-1580502304784-8985b777da59?q=80&w=800'
   }
 ];
 
@@ -82,7 +49,7 @@ export function FeaturedPackages() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-normal"
+            className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-normal uppercase"
           >
             Unsere Signature Reisen
           </motion.h2>

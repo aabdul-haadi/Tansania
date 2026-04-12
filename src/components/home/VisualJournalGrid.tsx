@@ -32,9 +32,8 @@ export function VisualJournalGrid() {
               fill 
               unoptimized
               className="object-cover transition-transform duration-1000 group-hover:scale-105" 
-              data-ai-hint="safari relaxation"
             />
-            {/* Protective Bottom Shady Overlay Protocol */}
+            {/* Protective Bottom Shady Overlay Protocol: Targeted Bottom Gradient */}
             <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
             
             <div className="absolute bottom-10 left-10 right-10 space-y-3 text-left">
@@ -60,7 +59,6 @@ export function VisualJournalGrid() {
                 alt="Sansibar Strand" 
                 fill 
                 className="object-cover transition-transform duration-1000 group-hover:scale-105" 
-                data-ai-hint="zanzibar beach"
               />
               <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
               <div className="absolute bottom-10 left-10 right-10 space-y-2 text-left">
@@ -85,7 +83,6 @@ export function VisualJournalGrid() {
                 alt="Wildlife Tansania" 
                 fill 
                 className="object-cover transition-transform duration-1000 group-hover:scale-110" 
-                data-ai-hint="safari wildlife"
               />
               <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
               <div className="absolute bottom-10 left-10 right-10 space-y-2 text-left">

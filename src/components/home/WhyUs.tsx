@@ -47,7 +47,6 @@ export function WhyUs() {
                   alt="Tansania Expertise" 
                   fill 
                   className="object-cover"
-                  data-ai-hint="safari guide"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               </div>

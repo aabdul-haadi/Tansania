@@ -69,7 +69,7 @@ export function ContactSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground font-normal text-xs md:text-sm tracking-normal max-w-xl mx-auto opacity-80 uppercase tracking-widest"
+            className="text-muted-foreground font-normal text-xs md:text-sm tracking-normal max-xl mx-auto opacity-80 uppercase tracking-widest"
           >
             Vom ersten Gedanken bis zum ersten Schritt in der Savanne – unsere Spezialisten begleiten Sie persönlich.
           </motion.p>

@@ -43,10 +43,9 @@ export function PackageCard({ pkg, className }: PackageCardProps) {
           src={pkg.imageUrl || 'https://picsum.photos/seed/safari/800/600'} 
           alt={pkg.title} 
           fill 
-          unoptimized
           className="object-cover transition-transform duration-1000 group-hover:scale-105" 
         />
-        {/* Subtle Protective Bottom Shade */}
+        {/* Subtle Protective Bottom Shade - Active on Hover */}
         <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </Link>
 

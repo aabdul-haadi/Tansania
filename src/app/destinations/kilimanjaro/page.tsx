@@ -110,7 +110,6 @@ export default function KilimanjaroPage() {
             fill 
             priority
             className="object-cover brightness-[0.6]"
-            data-ai-hint="mount kilimanjaro"
           />
           <div className="absolute inset-0 bg-black/20 z-10" />
         </div>
@@ -301,7 +300,6 @@ export default function KilimanjaroPage() {
                 alt="Kilimanjaro Facts Background" 
                 fill 
                 className="object-cover brightness-[0.4]"
-                data-ai-hint="mount kilimanjaro"
               />
               <div className="absolute inset-0 bg-black/30 z-10" />
             </div>

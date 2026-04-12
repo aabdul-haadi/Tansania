@@ -12,7 +12,13 @@ export async function generateMetadata({ params }: any) {
   
   if (!firestore) return { title: 'Registry Offline' };
 
-  const q = query(collection(firestore, 'packages'), where('slug', '==', slug), limit(1));
+  // CRITICAL: Include security filter to satisfy Firestore rules
+  const q = query(
+    collection(firestore, 'packages'), 
+    where('slug', '==', slug), 
+    where('isPublished', '==', true),
+    limit(1)
+  );
   const snap = await getDocs(q);
   const pkg = snap.docs[0]?.data();
 
@@ -39,8 +45,13 @@ export default async function PackageDetailPage({ params }: any) {
   
   if (!firestore) return <div className="p-20 text-center uppercase font-bold">Connecting to Safari Catalog...</div>;
 
-  // Corrected query to use the 'slug' field instead of document ID
-  const q = query(collection(firestore, 'packages'), where('slug', '==', slug), limit(1));
+  // CRITICAL: Explicitly filter for isPublished to satisfy security rules
+  const q = query(
+    collection(firestore, 'packages'), 
+    where('slug', '==', slug), 
+    where('isPublished', '==', true),
+    limit(1)
+  );
   const snap = await getDocs(q);
   
   if (snap.empty) {
@@ -50,7 +61,6 @@ export default async function PackageDetailPage({ params }: any) {
   const docSnap = snap.docs[0];
   const data = docSnap.data();
   
-  // CRITICAL: Ensure object is plain and serializable for client component transition.
   const pkg = {
     ...data,
     id: docSnap.id,

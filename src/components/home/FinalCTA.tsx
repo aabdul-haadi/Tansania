@@ -18,7 +18,6 @@ export function FinalCTA() {
           unoptimized
           priority 
           className="object-cover brightness-[0.45] scale-105"
-          data-ai-hint="safari terrace elephants"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none" />

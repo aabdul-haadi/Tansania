@@ -12,7 +12,13 @@ export async function generateMetadata({ params }: any) {
   
   if (!firestore) return { title: 'Registry Offline' };
 
-  const q = query(collection(firestore, 'blogPosts'), where('slug', '==', slug), limit(1));
+  // CRITICAL: Include security filter to satisfy Firestore rules
+  const q = query(
+    collection(firestore, 'blogPosts'), 
+    where('slug', '==', slug), 
+    where('status', '==', 'PUBLISHED'),
+    limit(1)
+  );
   const snap = await getDocs(q);
   const post = snap.docs[0]?.data();
 
@@ -49,7 +55,13 @@ export default async function BlogPostPage({ params }: any) {
   
   if (!firestore) return <div className="p-20 text-center uppercase font-bold">Registry Connection Pending...</div>;
 
-  const q = query(collection(firestore, 'blogPosts'), where('slug', '==', slug), limit(1));
+  // CRITICAL: Explicitly filter for PUBLISHED status to satisfy security rules
+  const q = query(
+    collection(firestore, 'blogPosts'), 
+    where('slug', '==', slug), 
+    where('status', '==', 'PUBLISHED'),
+    limit(1)
+  );
   const snap = await getDocs(q);
   
   if (snap.empty) {
@@ -57,7 +69,6 @@ export default async function BlogPostPage({ params }: any) {
   }
 
   const postData = snap.docs[0].data();
-  // Ensure dates are serializable for the client wrapper
   const post = {
     ...postData,
     id: snap.docs[0].id,
