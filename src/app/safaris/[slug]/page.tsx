@@ -43,7 +43,7 @@ export default async function PackageDetailPage({ params }: any) {
   const { slug } = await params;
   const { firestore } = initializeFirebase();
   
-  if (!firestore) return <div className="p-20 text-center uppercase font-bold">Connecting to Safari Catalog...</div>;
+  if (!firestore) return <div className="p-20 text-center font-bold">Connecting to Safari Catalog...</div>;
 
   // CRITICAL: Explicitly filter for isPublished to satisfy security rules
   const q = query(
