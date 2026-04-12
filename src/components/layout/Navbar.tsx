@@ -166,7 +166,7 @@ export function Navbar() {
                               <Link 
                                 key={country.name} 
                                 href={country.href}
-                                className="text-xs md:text-sm font-bold text-secondary/60 hover:text-primary tracking-normal transition-colors"
+                                className="text-xs md:text-sm font-bold text-secondary/60 hover:text-primary tracking-normal transition-colors uppercase"
                               >
                                 {country.name}
                               </Link>
@@ -180,7 +180,7 @@ export function Navbar() {
                       <Link 
                         key={link.name} 
                         href={link.href} 
-                        className="text-lg md:text-xl font-headline font-black tracking-normal hover:text-primary transition-colors leading-none text-left"
+                        className="text-lg md:text-xl font-headline font-black tracking-normal hover:text-primary transition-colors leading-none text-left uppercase"
                       >
                         {link.name}
                       </Link>
@@ -196,7 +196,7 @@ export function Navbar() {
                       </p>
                       <Link 
                         href="/safaris" 
-                        className="text-[11px] font-black text-secondary/70 hover:text-primary tracking-normal transition-colors"
+                        className="text-[11px] font-black text-secondary/70 hover:text-primary tracking-normal transition-colors uppercase"
                       >
                         Safari-Kollektion
                       </Link>
@@ -220,7 +220,7 @@ export function Navbar() {
                 </div>
                 
                 <Button asChild className="w-full h-14 rounded-2xl bg-secondary text-white font-black text-[10px] tracking-widest shadow-xl hover:bg-primary transition-all border-none">
-                  <Link href="/trip-planner" className="flex items-center justify-center gap-3">
+                  <Link href="/trip-planner" className="flex items-center justify-center gap-3 uppercase">
                     JETZT ANFRAGEN <ArrowRight className="w-4 h-4" />
                   </Link>
                 </Button>

@@ -124,15 +124,17 @@ export default function KilimanjaroPage() {
     <div className="bg-[#fdfcfb] min-h-screen">
       {/* 01 COMPACT PRESTIGE HERO */}
       <section className="relative h-[65vh] md:h-[80vh] flex items-center justify-center overflow-hidden bg-secondary">
-        <Image 
-          src="https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1920" 
-          alt="Kilimandscharo Besteigung" 
-          fill 
-          priority
-          className="object-cover brightness-[0.85]"
-          data-ai-hint="mount kilimanjaro"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
+        <div className="absolute inset-0">
+          <Image 
+            src="https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1920" 
+            alt="Kilimandscharo Besteigung" 
+            fill 
+            priority
+            className="object-cover"
+            data-ai-hint="mount kilimanjaro"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent z-10" />
+        </div>
         
         <div className="container relative z-20 mx-auto px-4 text-center">
           <motion.div
@@ -315,7 +317,7 @@ export default function KilimanjaroPage() {
             className="object-cover"
             data-ai-hint="mount kilimanjaro"
           />
-          <div className="absolute inset-0 bg-white/60 backdrop-blur-[1px]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent" />
         </div>
 
         <div className="container relative z-10 mx-auto px-4 max-w-7xl">

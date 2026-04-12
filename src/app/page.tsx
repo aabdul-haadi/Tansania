@@ -39,20 +39,19 @@ export default function Home() {
 
       {/* HERO SECTION: VIDEO OPTIMIZATION PROTOCOL */}
       <section className="relative min-h-[85vh] md:h-screen flex items-center overflow-hidden bg-secondary">
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0">
           <video
             autoPlay
             muted
             loop
             playsInline
             preload="auto"
-            poster="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920"
-            className="absolute inset-0 w-full h-full object-cover brightness-[0.85]"
+            className="absolute inset-0 w-full h-full object-cover"
           >
             <source src="/home-page-banner.mp4" type="video/mp4" />
           </video>
           {/* Subtle Bottom Shady Overlay Registry */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80" />
         </div>
 
         <div className="container relative z-20 mx-auto px-6 md:px-10 max-w-7xl h-full flex flex-col justify-center pt-32 md:pt-40">
@@ -63,12 +62,12 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="space-y-6 md:space-y-8"
             >
-              <h1 className="font-headline font-normal text-white text-2xl sm:text-4xl md:text-6xl lg:text-[72px] lg:leading-[90px] tracking-normal leading-tight">
+              <h1 className="font-headline font-normal text-white text-2xl sm:text-4xl md:text-6xl lg:text-[72px] lg:leading-[90px] tracking-normal leading-tight uppercase">
                 Ihre maßgeschneiderte <br />
                 Luxusreise durch Tansania
               </h1>
 
-              <p className="max-w-2xl text-white font-light text-sm sm:text-base md:text-lg lg:text-[24px] lg:leading-[39px] tracking-normal leading-relaxed">
+              <p className="max-w-2xl text-white/90 font-bold text-sm sm:text-base md:text-lg lg:text-[24px] lg:leading-[39px] tracking-normal leading-relaxed uppercase">
                 Erleben Sie exklusive Safaris, handverlesene Lodges und unvergessliche Momente. Persönlich geplant, individuell gestaltet.
               </p>
             </motion.div>
@@ -80,12 +79,12 @@ export default function Home() {
               className="flex flex-col sm:flex-row gap-4 pt-2 md:pt-0 pb-8 md:pb-0"
             >
               <Link href="/trip-planner">
-                <Button className="w-full sm:w-auto h-11 md:h-14 px-6 md:px-10 rounded-lg bg-white text-secondary hover:bg-primary hover:text-white transition-all duration-500 font-bold text-[10px] md:text-[11px] tracking-normal border-none group shadow-2xl">
+                <Button className="w-full sm:w-auto h-11 md:h-14 px-6 md:px-10 rounded-lg bg-white text-secondary hover:bg-primary hover:text-white transition-all duration-500 font-bold text-[10px] md:text-[11px] tracking-widest border-none group shadow-2xl uppercase">
                   Reiseberatung anfragen <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
               <Link href="/safaris">
-                <Button variant="outline" className="w-full sm:w-auto h-11 md:h-14 px-6 md:px-10 rounded-lg bg-transparent text-white border-white/40 hover:bg-white/10 hover:border-white font-bold text-[10px] md:text-[11px] tracking-normal transition-all duration-500">
+                <Button variant="outline" className="w-full sm:w-auto h-11 md:h-14 px-6 md:px-10 rounded-lg bg-transparent text-white border-white/40 hover:bg-white/10 hover:border-white font-bold text-[10px] md:text-[11px] tracking-widest transition-all duration-500 uppercase">
                   Unsere Reisen entdecken
                 </Button>
               </Link>
@@ -93,7 +92,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none" />
+        <div className="absolute inset-0 opacity-[0.02] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none" />
       </section>
 
       <TrustStrip />
