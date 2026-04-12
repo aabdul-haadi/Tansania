@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -6,55 +7,76 @@ import { PackageCard } from '@/components/shared/PackageCard';
 
 const SIGNATURE_REISEN = [
   {
-    id: 'safari-honeymoon',
-    title: 'Safari & Sansibar Honeymoon',
-    slug: 'safari-sansibar-honeymoon',
-    startingPrice: 8900,
-    durationDays: 14,
-    groupSize: '2 Personen',
-    highlights: ['Flitterwochen-Special', 'Boutique-Lodges', 'Private Insel'],
-    excerpt: 'Die perfekte Kombination aus aufregender Wildlife-Safari und romantischem Strandurlaub auf Sansibar',
-    imageUrl: 'https://images.unsplash.com/photo-1577971132997-c10be9372519?q=80&w=1200'
+    id: 'safari-tansania-sansibar-15',
+    title: '15 Tage Safari in Tansania und Sansibar',
+    slug: 'safari-tansania-sansibar-15-tage',
+    startingPrice: 5399,
+    durationDays: 15,
+    category: 'Erlebnisreise',
+    highlights: [
+      'Atemberaubende Tierbeobachtungen',
+      'Exklusive Lodge & Tented Camp',
+      'Abenteuer & Erholung',
+      'Alles gut organisiert',
+      'Inklusive Intl. Flug'
+    ],
+    excerpt: 'Unsere umfassendste Expedition: Vom Herzen der Serengeti bis zu den Palmen Sansibars – inklusive internationaler Flüge.',
+    imageUrl: '/assets/images/home/pkg-01.webp'
   },
   {
-    id: 'kili-safari-kombi',
-    title: '12 Tage Kilimandscharo & Safari Kombi',
-    slug: 'kilimanjaro-safari-kombi',
-    startingPrice: 4850,
-    durationDays: 12,
-    groupSize: 'Privat-Expedition',
-    highlights: ['Gipfelsturm', 'Big Five', 'Exklusive Lodges'],
-    excerpt: 'Die ultimative Herausforderung am Berg kombiniert mit den spektakulärsten Wildlife-Hotspots im Norden Tansanias',
-    imageUrl: 'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1200'
+    id: 'safari-sansibar-13',
+    title: '13 Tage Safari & Sansibar',
+    slug: 'safari-sansibar-13-tage',
+    startingPrice: 3699,
+    durationDays: 13,
+    category: 'Erlebnisreise',
+    highlights: [
+      'Atemberaubende Tierbeobachtungen',
+      'Exklusive Lodges & Camps',
+      'Abenteuer & Erholung',
+      'Alles gut organisiert'
+    ],
+    excerpt: 'Die perfekte Balance aus intensiven Wildtierbeobachtungen und exklusiver Entspannung am Indischen Ozean.',
+    imageUrl: '/assets/images/home/pkg-02.webp'
   },
   {
-    id: 'exclusive-luxury',
-    title: 'Exklusive Luxury Safari',
-    slug: 'exklusive-luxury-safari',
-    startingPrice: 12000,
-    durationDays: 12,
-    groupSize: '2-6 Personen',
-    highlights: ['Ultra-Luxury', 'Heißluftballon', 'Private Safaris'],
-    excerpt: 'Tansanias schönste Wildparks in den luxuriösesten Unterkünften mit höchstem Service-Standard',
-    imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200'
-  },
-  {
-    id: 'familien-safari',
-    title: 'Familiensafari Tansania',
-    slug: 'familien-safari-tansania',
-    startingPrice: 5200,
+    id: 'safari-sansibar-11',
+    title: 'Safari & Sansibar',
+    slug: 'safari-sansibar-11-tage',
+    startingPrice: 2999,
     durationDays: 11,
-    groupSize: '4-6 Personen',
-    highlights: ['Familienfreundlich', 'Kulturelle Begegnungen', 'Flexible Planung'],
-    excerpt: 'Kinderfreundliche Lodges, spannende Tierbegegnungen und unvergessliche Abenteuer für alle Generationen',
-    imageUrl: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=1200'
+    category: 'Erlebnisreise',
+    highlights: [
+      'Atemberaubende Tierbeobachtungen',
+      'Exklusive Lodges & Camps',
+      'Abenteuer & Erholung',
+      'Alles gut organisiert'
+    ],
+    excerpt: 'Kompakt und eindrucksvoll: Erleben Sie die Highlights Tansanias in einer perfekt abgestimmten 11-tägigen Reise.',
+    imageUrl: '/assets/images/home/pkg-03.webp'
+  },
+  {
+    id: 'familien-safari-12',
+    title: '12 Tage Familien Safari',
+    slug: 'familien-safari-12-tage',
+    startingPrice: 3499,
+    durationDays: 12,
+    category: 'Erlebnisreise',
+    highlights: [
+      'Atemberaubende Tierbeobachtungen',
+      'Exklusive Lodges & Camps',
+      'Abenteuer & Erholung',
+      'Alles gut organisiert'
+    ],
+    excerpt: 'Speziell für Familien konzipiert: Unvergessliche Abenteuer und kindgerechte Lodges in Tansanias Wildnis.',
+    imageUrl: '/assets/images/home/pkg-04.webp'
   }
 ];
 
 export function FeaturedPackages() {
   return (
     <section className="py-12 md:py-24 bg-white relative z-10">
-      <div className="container mx-auto px-4 max-get-7xl">
+      <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12 md:mb-16 space-y-2">
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}

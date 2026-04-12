@@ -10,42 +10,42 @@ const categories = [
   {
     title: "Safari & Sansibar",
     desc: "Die perfekte Kombination aus Wildnis und Paradies",
-    img: "/assets/images/home/intro-1.webp",
+    img: "/assets/images/home/intro-01.webp",
     href: "/safaris",
     hint: "safari zanzibar"
   },
   {
     title: "Luxusreisen",
     desc: "Exklusive Unterkünfte und außergewöhnliche Erlebnisse",
-    img: "/assets/images/home/intro-2.webp",
+    img: "/assets/images/home/intro-02.webp",
     href: "/safaris",
     hint: "luxury lodge"
   },
   {
     title: "Flitterwochen",
     desc: "Romantische Momente in Afrikas schönsten Landschaften",
-    img: "/assets/images/home/intro-3.webp",
+    img: "/assets/images/home/intro-03.webp",
     href: "/safaris",
     hint: "honeymoon safari"
   },
   {
     title: "Familienreisen",
     desc: "Unvergessliche Abenteuer für die ganze Familie",
-    img: "/assets/images/home/intro-4.webp",
+    img: "/assets/images/home/intro-04.webp",
     href: "/safaris",
     hint: "family beach"
   },
   {
     title: "Kilimandscharo",
     desc: "Besteigen Sie Afrikas höchsten Gipfel",
-    img: "/assets/images/home/intro-5.webp",
+    img: "/assets/images/home/intro-05.png",
     href: "/destinations/kilimanjaro",
     hint: "mount kilimanjaro"
   },
   {
     title: "Individuelle Afrika-Reisen",
     desc: "Ihre Vision, unsere Expertise",
-    img: "/assets/images/home/intro-6.webp",
+    img: "/assets/images/home/intro-06.webp",
     href: "/trip-planner",
     hint: "custom safari"
   }
