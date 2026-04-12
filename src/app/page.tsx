@@ -48,7 +48,7 @@ export default function Home() {
             preload="auto"
             className="absolute inset-0 w-full h-full object-cover"
           >
-            <source src="/home-page-banner.mp4" type="video/mp4" />
+            <source src="assets/images/home/home-page-banner.mp4" type="video/mp4" />
           </video>
           {/* Subtle Bottom Shady Overlay Registry */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80" />
@@ -79,12 +79,12 @@ export default function Home() {
               className="flex flex-col sm:flex-row gap-4 pt-2 md:pt-0 pb-8 md:pb-0"
             >
               <Link href="/trip-planner">
-                <Button className="w-full sm:w-auto h-11 md:h-14 px-6 md:px-10 rounded-lg bg-white text-secondary hover:bg-primary hover:text-white transition-all duration-500 font-bold text-[10px] md:text-[11px] tracking-widest border-none group shadow-2xl uppercase">
+                <Button className="w-full sm:w-auto h-11 md:h-14 px-6 md:px-10 rounded-lg bg-white text-secondary hover:bg-primary hover:text-white transition-all duration-500 font-bold text-[10px] md:text-[11px] tracking-normal border-none group shadow-2xl uppercase">
                   Reiseberatung anfragen <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
               <Link href="/safaris">
-                <Button variant="outline" className="w-full sm:w-auto h-11 md:h-14 px-6 md:px-10 rounded-lg bg-transparent text-white border-white/40 hover:bg-white/10 hover:border-white font-bold text-[10px] md:text-[11px] tracking-widest transition-all duration-500 uppercase">
+                <Button variant="outline" className="w-full sm:w-auto h-11 md:h-14 px-6 md:px-10 rounded-lg bg-transparent text-white border-white/40 hover:bg-white/10 hover:border-white font-bold text-[10px] md:text-[11px] tracking-normal transition-all duration-500 uppercase">
                   Unsere Reisen entdecken
                 </Button>
               </Link>

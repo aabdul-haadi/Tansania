@@ -166,13 +166,14 @@ export function ZanzibarEscape() {
                   src={activeExp.img} 
                   alt={activeExp.label} 
                   fill 
-                  className="object-cover" 
+                  className="object-cover brightness-95" 
                   priority
                   data-ai-hint={activeExp.hint} 
                 />
               </motion.div>
             </AnimatePresence>
-            <div className="absolute inset-0 bg-gradient-to-tr from-black/30 via-transparent to-primary/5 pointer-events-none" />
+            {/* REFINED: Bottom Shady Overlay Only */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
           </motion.div>
         </div>
       </div>
