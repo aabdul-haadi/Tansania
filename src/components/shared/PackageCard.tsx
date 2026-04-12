@@ -74,7 +74,7 @@ export function PackageCard({ pkg, className }: PackageCardProps) {
 
           <div className="flex flex-wrap gap-1.5 pt-1">
             {(pkg.highlights || []).slice(0, 3).map((h, i) => (
-              <span key={i} className="text-[9px] font-bold tracking-normal text-primary px-2.5 py-1 rounded-md bg-primary/5 border border-primary/10 uppercase">
+              <span key={i} className="text-[9px] font-bold tracking-normal text-primary px-2.5 py-1 rounded-md bg-primary/5 border border-primary/10">
                 {h}
               </span>
             ))}

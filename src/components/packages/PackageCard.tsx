@@ -62,7 +62,7 @@ export function PackageCard({ pkg }: PackageCardProps) {
               {(pkg.highlights || []).slice(0, 3).map((h, i) => (
                 <div key={i} className="flex items-center gap-2.5 text-white/80">
                   <CheckCircle2 className="w-3 h-3 md:w-3.5 md:h-3.5 text-primary shrink-0" />
-                  <span className="text-[8px] md:text-[10px] uppercase font-black tracking-widest">{h}</span>
+                  <span className="text-[8px] md:text-[10px] font-black tracking-normal">{h}</span>
                 </div>
               ))}
             </div>
