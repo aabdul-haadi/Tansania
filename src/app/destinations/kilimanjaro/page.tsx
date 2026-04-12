@@ -49,7 +49,7 @@ const routes = [
     id: "02",
     name: 'Lemosho Route', 
     title: 'Die Exklusive',
-    desc: 'Eine der schönsten Routen, die im Westen startet und durch unberührte Regenwälder führt. Ideal für Ruhe und höchste Erfolgschancen durch längere Gehzeit.', 
+    desc: 'Eine der schönsten Roten, die im Westen startet und durch unberührte Regenwälder führt. Ideal für Ruhe und höchste Erfolgschancen durch längere Gehzeit.', 
     days: '7-8 Tage',
     level: 'Moderat bis Schwer',
     highlight: 'Shira Plateau'
@@ -119,7 +119,6 @@ export default function KilimanjaroPage() {
             data-ai-hint="mount kilimanjaro"
           />
           <div className="absolute inset-0 bg-black/20 z-10" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent z-20" />
         </div>
         
         <div className="container relative z-30 mx-auto px-4 text-center">
@@ -369,9 +368,8 @@ export default function KilimanjaroPage() {
       {/* 06 SYNCED FAQ */}
       <section className="py-12 md:py-24 bg-[#FDF7F2] border-y border-border/40 scroll-mt-20 text-left">
         <div className="container mx-auto px-4 max-w-4xl">
-          <div className="text-center mb-12 md:mb-20 space-y-4">
-            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-normal uppercase">Häufig gestellte Fragen</h2>
-            <p className="text-muted-foreground uppercase font-bold text-[10px] tracking-normal">Wissenswertes zur Expedition</p>
+          <div className="text-center mb-6 md:mb-8">
+            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-normal">Häufig gestellte Fragen</h2>
           </div>
 
           <Accordion type="single" collapsible className="space-y-4">
