@@ -133,6 +133,7 @@ export default function KilimanjaroPage() {
             className="object-cover"
             data-ai-hint="mount kilimanjaro"
           />
+          {/* Subtle Bottom Shady Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent z-10" />
         </div>
         
@@ -320,7 +321,7 @@ export default function KilimanjaroPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent" />
         </div>
 
-        <div className="container relative z-10 mx-auto px-4 max-w-7xl">
+        <div className="container relative z-10 mx-auto px-4 max-get-7xl">
           <div className="text-center mb-12 md:mb-20 space-y-4">
             <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary uppercase tracking-normal leading-none">Quick Facts</h2>
             <div className="w-20 h-1 bg-primary mx-auto rounded-full opacity-40" />

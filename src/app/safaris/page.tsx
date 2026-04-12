@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -103,7 +102,7 @@ export default function SafarisPage() {
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
-      {/* HERO */}
+      {/* HERO: REDUCED OVERLAY PROTOCOL */}
       <section className="relative h-[45vh] md:h-[60vh] w-full flex items-center justify-center overflow-hidden bg-secondary">
         <div className="absolute inset-0 z-0">
           <Image 
@@ -111,10 +110,11 @@ export default function SafarisPage() {
             alt="Savannah Collection" 
             fill 
             priority 
-            className="object-cover brightness-[0.35] scale-105"
+            className="object-cover brightness-[0.9] scale-105"
             data-ai-hint="serengeti safari"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-secondary/20" />
+          {/* Subtle Bottom Shady Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
         </div>
         
         <div className="container relative z-10 mx-auto px-4 text-center space-y-6 pt-24 md:pt-32">
@@ -124,7 +124,7 @@ export default function SafarisPage() {
             transition={{ duration: 0.8 }}
             className="space-y-4"
           >
-            <h1 className="text-white uppercase leading-none tracking-tighter text-3xl md:text-6xl lg:text-7xl">
+            <h1 className="text-white uppercase leading-none tracking-normal text-3xl md:text-6xl lg:text-7xl">
               Savannen-Kollektion
             </h1>
             <p className="max-w-xl mx-auto text-white/60 font-bold text-[9px] md:text-sm uppercase tracking-widest leading-relaxed">
@@ -192,12 +192,11 @@ export default function SafarisPage() {
         )}
       </section>
 
-      {/* 01: UNIQUE MODERN EXPERTISE MANIFEST */}
+      {/* Expertise Manifest */}
       <section className="py-12 md:py-24 bg-white relative overflow-hidden">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24 relative">
             
-            {/* Visual Anchor Column: Layered Narrative */}
             <div className="w-full lg:w-[45%] relative">
               <motion.div 
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -214,14 +213,12 @@ export default function SafarisPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-secondary/40 via-transparent to-transparent" />
               </motion.div>
 
-              {/* Floating Decorative Element */}
               <div className="absolute -bottom-10 -right-10 w-2/3 aspect-square rounded-[2.5rem] overflow-hidden shadow-xl z-0 opacity-20 hidden lg:block bg-primary/10">
                 <div className="absolute inset-0 flex items-center justify-center p-12">
                   <Globe className="w-full h-full text-primary" />
                 </div>
               </div>
 
-              {/* Floating Status Stamp */}
               <motion.div 
                 animate={{ y: [0, -10, 0] }}
                 transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
@@ -237,7 +234,6 @@ export default function SafarisPage() {
               </motion.div>
             </div>
 
-            {/* Content Column: The Manifest Card */}
             <div className="flex-1 space-y-10 lg:pt-10">
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
@@ -250,7 +246,6 @@ export default function SafarisPage() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 relative">
-                {/* Visual Connector */}
                 <div className="absolute top-0 left-0 bottom-0 w-px bg-border/60 hidden md:block" />
                 
                 <div className="space-y-6 md:pl-8">
@@ -293,7 +288,7 @@ export default function SafarisPage() {
             <h2 className="font-headline text-2xl md:text-4xl lg:text-5xl font-normal text-secondary leading-tight tracking-wide">
               Das ultimative Safari Abenteuer in Tansania
             </h2>
-            <p className="text-[14px] leading-[20px] font-normal text-muted-foreground tracking-normal max-w-3xl">
+            <p className="text-[14px] leading-[20px] font-normal text-muted-foreground tracking-normal max-w-3xl mx-auto">
               Stell dir vor, wie ein Löwenrudel in der goldenen Sonne döst, bunte Flamingos den See bei Sonnenaufgang schmücken, endlose Herden von Gnus über weite Ebenen ziehen und der majestätische Kilimandscharo den Horizont dominiert.
             </p>
           </div>
@@ -321,7 +316,7 @@ export default function SafarisPage() {
         </div>
       </section>
 
-      {/* 02: LUXUS UNTERKÜNFTE */}
+      {/* Luxus Unterkünfte */}
       <section className="py-12 md:py-16 bg-white overflow-hidden">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
@@ -352,151 +347,6 @@ export default function SafarisPage() {
               <iframe src="https://www.youtube.com/embed/IMucYRze3vs" title="Luxus Lodges" className="absolute inset-0 w-full h-full border-none opacity-90 group-hover:opacity-100 transition-opacity" allowFullScreen />
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* 03: SAFARI & ERHOLUNG */}
-      <section className="py-12 md:py-16 bg-[#FDFCFB] border-y border-border/40">
-        <div className="container mx-auto px-4 max-w-7xl">
-          <div className="flex flex-col lg:flex-row items-center gap-12 md:gap-20">
-            <div className="w-full lg:w-1/2 relative order-2 lg:order-1">
-              <div className="aspect-square rounded-[3rem] overflow-hidden shadow-2xl border border-border/50">
-                <Image src="https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=1000" alt="Zanzibar Beach" fill className="object-cover" />
-              </div>
-              <div className="absolute -top-6 -right-6 w-24 h-24 bg-primary rounded-2xl flex items-center justify-center shadow-xl rotate-12">
-                <Waves className="w-10 h-10 text-white" />
-              </div>
-            </div>
-            <div className="w-full lg:w-1/2 space-y-8 order-1 lg:order-2">
-              <div className="space-y-4">
-                <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] block">Bush & Beach</span>
-                <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tighter">Safari & Erholung</h2>
-              </div>
-              <p className="text-[14px] leading-[20px] font-normal text-muted-foreground uppercase tracking-widest leading-relaxed opacity-80">
-                Beginne dein Abenteuer mit einer aufregenden Safari durch die Nationalparks Tansanias, wie die Serengeti oder den Ngorongoro-Krater, und beobachte die beeindruckende Tierwelt in ihrem natürlichen Lebensraum. Anschließend kannst du dich auf der Insel Sansibar entspannen.
-              </p>
-              <div className="pt-4">
-                <Link href="/destinations/zanzibar">
-                  <Button variant="outline" className="rounded-xl px-8 h-12 font-bold text-[10px] uppercase tracking-widest border-muted">Sansibar Guide ansehen</Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Sansibar Gallery Section */}
-      <section className="py-12 md:py-16 bg-white overflow-hidden">
-        <div className="container mx-auto px-4 max-w-7xl">
-          <div className="text-center mb-12 md:mb-16 space-y-4">
-            <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px]">Inselparadies</span>
-            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tight">
-              Sansibar Highlights Galerie
-            </h2>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-            {zanzibarGallery.map((img, idx) => (
-              <motion.div 
-                key={idx}
-                whileHover={{ scale: 1.02 }}
-                className="relative aspect-square rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden shadow-lg border border-border/50"
-              >
-                <Image src={img.src} alt={`Sansibar ${idx + 1}`} fill className="object-cover" data-ai-hint={img.hint} />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Beste Reisezeit Grid */}
-      <section className="py-12 md:py-16 bg-[#FDF7F2] border-y border-border/40 overflow-hidden">
-        <div className="container mx-auto px-4 max-w-7xl">
-          <div className="text-center mb-12 md:mb-20 space-y-4">
-            <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px]">Planungs-Navigator</span>
-            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tight">
-              Tansania Safari Beste Reisezeit – Dein perfektes Safari-Erlebnis
-            </h2>
-            <p className="text-[14px] leading-[20px] text-muted-foreground max-w-3xl mx-auto">
-              Die Wahl der richtigen Tansania Safari Reisezeit ist entscheidend. Unsere Experten helfen dir, die beste Zeit für Tierbeobachtungen und perfektes Wetter auszuwählen.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {bestTimeData.map((item, idx) => (
-              <Card key={idx} className="border-none shadow-sm rounded-[2rem] bg-white group hover:shadow-xl transition-all duration-500">
-                <CardContent className="p-8 space-y-6">
-                  <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-colors">
-                    <item.icon className="w-6 h-6 text-primary group-hover:text-white" />
-                  </div>
-                  <div className="space-y-2">
-                    <h4 className="font-headline text-xl md:text-2xl font-medium text-secondary">{item.title}</h4>
-                    <p className="text-primary font-bold text-[10px] uppercase tracking-widest">{item.time}</p>
-                    <p className="text-[14px] leading-[20px] text-muted-foreground">{item.desc}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Reviews Section */}
-      <section className="py-12 md:py-16 bg-white overflow-hidden">
-        <div className="container mx-auto px-4 max-w-7xl">
-          <div className="text-center mb-12 md:mb-20 space-y-4">
-            <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px]">Erfahrungsberichte</span>
-            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tight">
-              Tansania Safari Anbieter Erfahrungen
-            </h2>
-            <p className="text-[14px] leading-[20px] text-muted-foreground max-w-2xl mx-auto">
-              Unsere Kunden schätzen den exzellenten Service und die atemberaubende Tierwelt.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {reviews.map((r, i) => (
-              <div key={i} className="p-8 bg-[#fdfcfb] rounded-[2rem] border border-border/50 shadow-sm space-y-6 flex flex-col justify-between">
-                <div className="space-y-4">
-                  <div className="flex gap-1">
-                    {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-3 h-3 fill-primary text-primary" />)}
-                  </div>
-                  <p className="text-[14px] leading-[20px] text-secondary font-medium tracking-tight uppercase">"{r.text}"</p>
-                </div>
-                <div className="pt-4 border-t border-border/40 flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center font-bold text-xs text-primary">{r.name[0]}</div>
-                  <span className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">{r.name}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Segment */}
-      <section className="py-12 md:py-16 bg-[#fdfcfb] border-t border-border/40">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <div className="text-center mb-12 md:mb-16 space-y-4">
-            <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px]">Wissensdatenbank</span>
-            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tight">
-              Tansania Safari Urlaub – Häufig gestellte Fragen
-            </h2>
-          </div>
-
-          <Accordion type="single" collapsible className="space-y-3">
-            {faqData.map((faq, idx) => (
-              <AccordionItem key={idx} value={`item-${idx}`} className="border-none bg-white rounded-xl px-6 md:px-10 shadow-sm border border-transparent hover:border-border transition-all">
-                <AccordionTrigger className="font-normal text-[14px] leading-[20px] md:text-base py-5 hover:no-underline text-left text-secondary transition-colors tracking-tight [&>svg]:hidden">
-                  <div className="flex items-center justify-between w-full gap-4">
-                    <span className="leading-snug">{faq.q}</span>
-                    <Plus className="w-4 h-4 text-primary shrink-0 transition-transform group-data-[state=open]:rotate-45" />
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground text-[14px] leading-[20px] font-normal pb-6">
-                  {faq.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
         </div>
       </section>
 

@@ -67,32 +67,12 @@
     background-attachment: fixed;
   }
 
-  /* HEADLINE REGISTRY: Standard natural spacing reset */
+  /* HEADLINE REGISTRY: Default spacing reset */
   h1, h2, h3, h4, h5, h6 {
     @apply font-headline font-normal leading-tight text-secondary;
     font-style: normal;
     text-transform: none;
-  }
-
-  /* Hero Headline Specification */
-  h1 {
-    @apply text-3xl sm:text-5xl md:text-6xl lg:text-[72px] lg:leading-[90px];
-    font-weight: 400;
-  }
-
-  /* Section Title Specification */
-  h2 {
-    @apply text-2xl md:text-4xl lg:text-[48px] lg:leading-[1.2];
-    font-weight: 400;
-  }
-
-  /* Card/Title Specification */
-  h3 {
-    @apply text-xl md:text-[24px] md:leading-[32px] font-medium;
-  }
-
-  h4 {
-    @apply text-lg md:text-2xl;
+    letter-spacing: normal;
   }
 
   /* BODY REGISTRY: Strict Inter Protocol */
@@ -100,6 +80,7 @@
     @apply font-sans font-normal;
     font-style: normal;
     text-transform: none;
+    letter-spacing: normal;
   }
 
   /* Narrative Specification */

@@ -50,7 +50,7 @@ export default function Home() {
           >
             <source src="assets/images/home/home-page-banner.mp4" type="video/mp4" />
           </video>
-          {/* Subtle Bottom Shady Overlay Registry */}
+          {/* Targeted Bottom Shady Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80" />
         </div>
 
@@ -67,7 +67,7 @@ export default function Home() {
                 Luxusreise durch Tansania
               </h1>
 
-              <p className="max-w-2xl text-white/90 font-bold text-sm sm:text-base md:text-lg lg:text-[24px] lg:leading-[39px] tracking-normal leading-relaxed uppercase">
+              <p className="max-w-2xl text-white font-light text-sm sm:text-base md:text-lg lg:text-[24px] lg:leading-[39px] tracking-normal leading-relaxed uppercase">
                 Erleben Sie exklusive Safaris, handverlesene Lodges und unvergessliche Momente. Persönlich geplant, individuell gestaltet.
               </p>
             </motion.div>

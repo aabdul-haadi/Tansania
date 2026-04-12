@@ -172,7 +172,7 @@ export function ZanzibarEscape() {
                 />
               </motion.div>
             </AnimatePresence>
-            {/* REFINED: Bottom Shady Overlay Only */}
+            {/* Targeted Bottom Shady Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
           </motion.div>
         </div>

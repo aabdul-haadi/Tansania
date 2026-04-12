@@ -94,13 +94,7 @@ export function FAQ() {
           </Accordion>
         </motion.div>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="mt-16 text-center space-y-6"
-        >
+        <div className="mt-16 text-center space-y-6">
           <p className="text-muted-foreground text-sm md:text-base font-normal">
             Weitere Fragen? Wir sind für Sie da.
           </p>
@@ -109,7 +103,7 @@ export function FAQ() {
               Jetzt Kontakt aufnehmen
             </Button>
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

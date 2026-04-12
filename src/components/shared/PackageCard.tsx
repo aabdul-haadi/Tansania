@@ -28,7 +28,7 @@ interface PackageCardProps {
 }
 
 /**
- * Optimized Signature Card with Bottom Shady Overlay Protocol.
+ * Optimized Signature Card with targeted Bottom Shady Overlay Protocol.
  */
 export function PackageCard({ pkg, className }: PackageCardProps) {
   const packageLink = `/safaris/${pkg.slug}`;
@@ -44,29 +44,29 @@ export function PackageCard({ pkg, className }: PackageCardProps) {
           unoptimized
           className="object-cover transition-transform duration-1000 group-hover:scale-105 brightness-[0.95]" 
         />
-        {/* REFINED: Bottom Shady Overlay Only */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        {/* Subtle Protective Bottom Shade for Group Hover State */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </Link>
 
       {/* Content Protocol */}
       <div className="p-5 md:p-7 flex flex-col flex-grow text-left">
         <div className="space-y-3 flex-grow">
           <Link href={packageLink} className="block group/title">
-            <h3 className="group-hover/title:text-primary transition-colors tracking-normal">
+            <h3 className="group-hover/title:text-primary transition-colors tracking-normal font-headline text-xl md:text-2xl font-medium leading-tight text-secondary">
               {pkg.title}
             </h3>
           </Link>
           
-          <p className="line-clamp-2 tracking-normal">
+          <p className="line-clamp-2 tracking-normal text-[14px] leading-[20px] text-muted-foreground font-normal">
             {pkg.excerpt}
           </p>
 
           <div className="flex items-center gap-4 pt-1">
-            <div className="flex items-center gap-1.5 text-[11px] font-bold text-muted-foreground tracking-normal">
+            <div className="flex items-center gap-1.5 text-[11px] font-bold text-muted-foreground tracking-normal uppercase">
               <Clock className="w-3 text-primary" /> 
               {pkg.durationDays} Tage
             </div>
-            <div className="flex items-center gap-1.5 text-[11px] font-bold text-muted-foreground tracking-normal">
+            <div className="flex items-center gap-1.5 text-[11px] font-bold text-muted-foreground tracking-normal uppercase">
               <Users className="w-3 text-primary" /> 
               {pkg.groupSize || 'Privat'}
             </div>
@@ -74,7 +74,7 @@ export function PackageCard({ pkg, className }: PackageCardProps) {
 
           <div className="flex flex-wrap gap-1.5 pt-1">
             {(pkg.highlights || []).slice(0, 3).map((h, i) => (
-              <span key={i} className="text-[9px] font-bold tracking-normal text-primary px-2.5 py-1 rounded-md bg-primary/5 border border-primary/10">
+              <span key={i} className="text-[9px] font-bold tracking-normal text-primary px-2.5 py-1 rounded-md bg-primary/5 border border-primary/10 uppercase">
                 {h}
               </span>
             ))}
@@ -82,12 +82,12 @@ export function PackageCard({ pkg, className }: PackageCardProps) {
         </div>
 
         <div className="mt-6 pt-4 border-t border-border/40 flex items-center justify-between gap-4">
-          <Link href={packageLink} className="flex flex-col group/price">
-            <span className="text-[9px] font-bold text-muted-foreground tracking-normal leading-none mb-1">Ab Preis</span>
-            <span className="text-xl md:text-2xl font-bold text-secondary leading-none tracking-tighter group-hover/price:text-primary transition-colors">
+          <div className="flex flex-col">
+            <span className="text-[9px] font-bold text-muted-foreground tracking-normal leading-none mb-1 uppercase">Ab Preis</span>
+            <span className="text-xl md:text-2xl font-bold text-secondary leading-none tracking-tighter">
               €{pkg.startingPrice?.toLocaleString('de-DE')}
             </span>
-          </Link>
+          </div>
           
           <Link href={packageLink}>
             <Button variant="outline" size="sm" className="h-10 px-5 rounded-lg text-[11px] font-bold border-border/60 hover:border-primary/40 transition-all flex items-center gap-2 tracking-normal">
