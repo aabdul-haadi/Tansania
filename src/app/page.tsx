@@ -17,7 +17,6 @@ import { FAQ } from '@/components/home/FAQ';
 import { FinalCTA } from '@/components/home/FinalCTA';
 import { TrustStrip } from '@/components/home/TrustStrip';
 import { MagazinInspiration } from '@/components/home/MagazinInspiration';
-import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 
 export default function Home() {
@@ -31,24 +30,28 @@ export default function Home() {
             className="bg-primary text-white p-4 rounded-l-2xl shadow-2xl flex flex-col items-center gap-3 cursor-pointer border-y border-l border-white/20 backdrop-blur-md"
           >
             <Zap className="w-5 h-5 fill-white" />
-            <span className="text-[9px] font-bold tracking-[0.3em] [writing-mode:vertical-lr] rotate-180 py-2">
+            <span className="text-[9px] font-bold tracking-[0.3em] [writing-mode:vertical-lr] rotate-180 py-2 uppercase">
               Express Inquiry
             </span>
           </motion.div>
         </Link>
       </div>
 
-      {/* HERO SECTION */}
+      {/* HERO SECTION: VIDEO OPTIMIZATION PROTOCOL */}
       <section className="relative min-h-[85vh] md:h-screen flex items-center overflow-hidden bg-secondary">
         <div className="absolute inset-0 z-0">
-          <Image 
-            src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
-            alt="Tansania Reiseabenteuer Signature Visual" 
-            fill 
-            priority 
-            className="object-cover object-bottom brightness-[0.85]"
-            data-ai-hint="elephant forest"
-          />
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            poster="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920"
+            className="absolute inset-0 w-full h-full object-cover brightness-[0.85]"
+          >
+            <source src="/home-page-banner.mp4" type="video/mp4" />
+          </video>
+          {/* Subtle Bottom Shady Overlay Registry */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
         </div>
 
