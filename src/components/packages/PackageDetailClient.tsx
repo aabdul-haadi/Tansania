@@ -9,16 +9,12 @@ import {
   ChevronRight, 
   Users,
   Compass,
-  Home,
-  Waves,
   FileText,
   Plus,
   CheckCircle2,
-  Star,
   Zap,
   ShieldCheck,
-  Coffee,
-  Ticket
+  Star
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -85,7 +81,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
       <motion.div className="fixed top-0 left-0 right-0 h-1 bg-primary z-[110] origin-left" style={{ scaleX }} />
 
-      {/* 01 CENTERED BOTTOM HERO */}
+      {/* 01 CENTERED BOTTOM HERO - NATURAL CASING */}
       <section className="relative h-[70vh] md:h-[85vh] w-full overflow-hidden bg-secondary">
         <div className="absolute inset-0 z-0">
           <Image 
@@ -98,12 +94,12 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
         </div>
         
-        <div className="container relative z-10 mx-auto px-6 h-full flex flex-col justify-end items-center pb-12 md:pb-24 max-w-7xl">
+        <div className="container relative z-10 mx-auto px-6 h-full flex flex-col justify-end items-center pb-12 md:pb-20 max-w-7xl">
           <motion.div 
             initial={{ opacity: 0, y: 30 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ duration: 1, ease: "easeOut" }}
-            className="max-w-4xl space-y-6 md:space-y-8 text-center flex flex-col items-center"
+            className="max-w-4xl space-y-6 text-center flex flex-col items-center"
           >
             <div className="space-y-4">
               <h1 className="font-headline font-normal text-white text-3xl md:text-6xl leading-tight">
@@ -114,7 +110,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
               </p>
             </div>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto pt-2">
                <Button onClick={() => scrollTo('inquiry')} className="w-full sm:w-auto rounded-lg px-10 h-12 font-bold text-xs shadow-2xl border-none">
                  Jetzt anfragen
                </Button>
@@ -153,11 +149,11 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         </div>
       </div>
 
-      {/* 03 NARRATIVE & MASTER CARD */}
-      <section ref={overviewRef} className="pt-6 md:pt-10 pb-10 bg-white scroll-mt-20">
+      {/* 03 NARRATIVE & MASTER CARD - HIGH DENSITY */}
+      <section ref={overviewRef} className="pt-8 md:pt-12 pb-12 bg-white scroll-mt-20">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
-            <div className="lg:col-span-7 space-y-6 md:space-y-10 text-left">
+            <div className="lg:col-span-7 space-y-6 md:space-y-8 text-left">
               <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary leading-tight">Eine Reise, die berührt</h2>
               <div className="relative aspect-[16/10] md:aspect-[21/9] rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden shadow-xl border border-border/50 bg-muted">
                 <Image src={pkg.imageUrl || 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200'} alt="Safari" fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
@@ -172,15 +168,15 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                 <Card className="rounded-[1.5rem] border border-border/20 bg-[#FDFCFB] p-6 md:p-8 shadow-sm text-left">
                   <div className="space-y-6">
                     <div>
-                      <p className="text-[#C9A876] font-bold text-[10px] tracking-widest uppercase mb-1">Master-Registry</p>
+                      <p className="text-primary font-bold text-[10px] tracking-widest uppercase mb-1">Master Registry</p>
                       <h3 className="font-headline text-2xl md:text-[28px] font-medium text-secondary leading-tight">{pkg.title}</h3>
                     </div>
                     
                     <div className="space-y-4">
-                      <div className="grid grid-cols-1 gap-4">
+                      <div className="grid grid-cols-1 gap-3">
                         <div className="flex flex-col">
                           <p className="text-secondary font-bold text-sm">Reisedauer</p>
-                          <p className="text-sm text-muted-foreground">{pkg.durationDays}-tägig, Flüge inklusive</p>
+                          <p className="text-sm text-muted-foreground">{pkg.durationDays} Tage, Flüge inklusive</p>
                         </div>
                         <div className="flex flex-col">
                           <p className="text-secondary font-bold text-sm">Unterkünfte</p>
@@ -192,25 +188,25 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                         </div>
                         <div className="flex flex-col">
                           <p className="text-secondary font-bold text-sm">Reisezeit</p>
-                          <p className="text-sm text-muted-foreground">Ganzjährig buchbar (Empfehlung: Jun-Okt)</p>
+                          <p className="text-sm text-muted-foreground">Ganzjährig buchbar</p>
                         </div>
                       </div>
                     </div>
 
                     <div className="pt-5 border-t border-border/40 space-y-6">
                       <div className="flex flex-wrap gap-2">
-                        <div className="px-3 py-1 bg-[#FDF7F2] border border-[#F0EBE0] rounded-full text-[10px] font-bold text-secondary">Inlandsflüge inkl.</div>
-                        <div className="px-3 py-1 bg-[#FDF7F2] border border-[#F0EBE0] rounded-full text-[10px] font-bold text-secondary">Vollpension</div>
-                        <div className="px-3 py-1 bg-[#FDF7F2] border border-[#F0EBE0] rounded-full text-[10px] font-bold text-secondary">Deutschsprachig</div>
+                        {["Inlandsflüge inkl.", "Vollpension", "Deutschsprachig"].map(tag => (
+                          <div key={tag} className="px-3 py-1 bg-primary/5 border border-primary/10 rounded-full text-[10px] font-bold text-secondary">{tag}</div>
+                        ))}
                       </div>
 
                       <div className="flex items-end justify-between gap-4">
                         <div className="flex flex-col">
-                          <span className="text-2xl md:text-3xl font-black text-secondary">ab {pkg.startingPrice?.toLocaleString('de-DE')} €</span>
-                          <p className="text-[10px] font-bold text-primary mt-0.5">pro Person im Doppelzimmer</p>
+                          <span className="text-2xl md:text-3xl font-black text-secondary leading-none">ab {pkg.startingPrice?.toLocaleString('de-DE')} €</span>
+                          <p className="text-[10px] font-bold text-primary mt-1">pro Person im Doppelzimmer</p>
                         </div>
                         <Button onClick={() => scrollTo('inquiry')} className="h-11 px-6 bg-secondary text-white hover:bg-primary font-bold text-[11px] border-none shadow-md">
-                          Verfügbarkeit prüfen
+                          Anfragen
                         </Button>
                       </div>
                       
@@ -226,25 +222,10 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         </div>
       </section>
 
-      {/* 04 HIGHLIGHTS & ITINERARY */}
-      <section className="py-8 md:py-12 bg-[#FDF7F2] border-y border-border/40">
-        <div className="container mx-auto px-4 max-w-7xl text-center space-y-12">
-          <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary">Die Höhepunkte Ihrer Reise</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {(pkg.highlights || []).slice(0, 3).map((h: string, i: number) => (
-              <Card key={i} className="border-none shadow-none bg-white rounded-3xl p-8 flex flex-col items-center justify-center text-center group transition-all duration-500">
-                <Compass className="w-8 h-8 text-primary mb-4 group-hover:scale-110 transition-transform" />
-                <h4 className="font-headline text-xl mb-2">{h}</h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">Einzigartige Momente und exklusive Einblicke in die Natur.</p>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section ref={itineraryRef} className="py-8 md:py-12 bg-white scroll-mt-20">
+      {/* 04 ITINERARY - SPLIT LAYOUT PROTOCOL */}
+      <section ref={itineraryRef} className="py-12 md:py-20 bg-white scroll-mt-20">
         <div className="container mx-auto px-4 max-w-5xl">
-          <div className="text-center mb-8 space-y-2">
+          <div className="text-center mb-12 space-y-2">
             <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary">Ihr Reiseverlauf</h2>
             <p className="text-muted-foreground text-sm">Eine sorgfältig kuratierte Route durch die schönsten Regionen Tansanias</p>
           </div>
@@ -269,11 +250,14 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                           <h4 className="font-headline text-xl md:text-3xl mb-4">{day.title}</h4>
                           <p className="text-sm md:text-base text-muted-foreground leading-relaxed">{day.desc}</p>
                         </div>
-                        {day.img && (
-                          <div className="md:w-1/3 relative aspect-video md:aspect-auto min-h-[200px]">
-                            <Image src={day.img} alt={day.title} fill className="object-cover" />
-                          </div>
-                        )}
+                        <div className="md:w-1/3 relative aspect-video md:aspect-auto min-h-[250px]">
+                          <Image 
+                            src={day.img || `https://picsum.photos/seed/day-${gIdx}-${dIdx}/800/600`} 
+                            alt={day.title} 
+                            fill 
+                            className="object-cover" 
+                          />
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -285,7 +269,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
       </section>
 
       {/* 05 HOTELS & FAQ */}
-      <section ref={hotelsRef} className="py-8 md:py-16 bg-white scroll-mt-20 border-t border-border/40">
+      <section ref={hotelsRef} className="py-12 md:py-20 bg-white scroll-mt-20 border-t border-border/40">
         <div className="container mx-auto px-4 max-w-7xl text-center space-y-12">
           <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary">Handverlesene Unterkünfte</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -311,7 +295,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         </div>
       </section>
 
-      <section ref={faqRef} className="py-8 md:py-16 bg-[#FDF7F2] border-y border-border/40 scroll-mt-20">
+      <section ref={faqRef} className="py-12 md:py-20 bg-[#FDF7F2] border-y border-border/40 scroll-mt-20">
         <div className="container mx-auto px-4 max-w-4xl text-center space-y-10">
           <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary">Häufig gestellte Fragen</h2>
           <Accordion type="single" collapsible className="space-y-4">

@@ -22,105 +22,105 @@ const pkgData = {
       day: 1, 
       location: 'Arusha Region', 
       title: 'Ankommen & Eintauchen', 
-      desc: 'Ihre Traumreise beginnt jetzt! Fliegen Sie mit uns in den schönen tieferen Süden unserer Erdkugel und zwar nach Tanzania. Die Safari ruft... Machen Sie es sich bequem während des Flugs, schliessen Sie gelegentlich Ihre Augen und träumen etwas vor sich hin, was Ihnen so erwarten könnte... schöne Flora & Fauna, schöne und anspruchsvolle Jeepfahrten in den verschiedenen Nationalparks, angenehme und gemütliche Lodges nach einer Safari und Zeit für Entspannung...',
+      desc: 'Ihre Traumreise beginnt! Fliegen Sie mit uns in den schönen Süden unserer Erdkugel. Die Safari ruft... Machen Sie es sich bequem und träumen Sie von unberührter Natur.',
       img: 'https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=800'
     },
     { 
       day: 2, 
       location: 'Arusha City', 
-      title: 'Ankunft in Tanzania', 
-      desc: 'Nach der Ankunft am Kilimandscharo International Airport werden Sie von unserem Reiseleiter empfangen und mit dem Auto in Ihre Unterkunft gebracht. Dort angekommen, können Sie sich von der Anreise erholen. In der Stadt können Sie das turbulente afrikanische Stadtleben hautnah miterleben. Besuchen Sie Märkte, auf denen Sie frisches Obst und Gemüse, traditionelles Street Food, Kleidung und vieles mehr kaufen oder bestaunen können. Fahren Sie z.B. mit einem Daladala, einem traditionellen Bus, um das tansanische Leben hautnah zu erfahren.',
+      title: 'Willkommen in Tansania', 
+      desc: 'Empfang am Flughafen Kilimanjaro und Transfer zu Ihrer Lodge. Tauchen Sie ein in das pulsierende Leben Arushas und besuchen Sie lokale Märkte.',
       img: 'https://images.unsplash.com/photo-1577971132997-c10be9372519?q=80&w=800'
     },
     { 
       day: 3, 
-      location: 'Arusha Region', 
-      title: 'Arusha Nationalpark', 
-      desc: 'Der Arusha Nationalpark belohnt mit einer malerischen Aussicht auf die sieben Momella-Seen und den Ngurdoto Krater. Die Umgebung ist vielfältig und wechselt stetig zwischen Steppen, Dschungel und Hochgebirge. Im Osten des Parks ist ein dichter hoher Wald zu finden, welcher einen optimalen Lebensraum für verschiedenste Affen darstellt. An den Momella Seen besteht die perfekte Möglichkeit, die reiche Vogelwelt, mehr als 400 Arten, zu beobachten. Darunter befinden sich Flamingos, die man in großen Schwärmen antrifft.',
+      location: 'Arusha Nationalpark', 
+      title: 'Die Momella-Seen', 
+      desc: 'Entdecken Sie Giraffen und seltene Stummelaffen im dichten Regenwald am Fuße des Mount Meru. Ein Paradies für Naturfotografen.',
       img: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800'
     },
     { 
       day: 4, 
-      location: 'Babati Rural', 
-      title: 'Tarangire Nationalpark', 
-      desc: 'Nach dem Frühstück fahren Sie für eine morgendliche Pirschfahrt in den Tarangire Nationalpark. Der Park erstreckt sich entlang des Tarangire River und wird geprägt durch offene Baumsavannen, Hügel und Felskuppen, Graslandschaften und Affenbrotbäume. Eines der Highlights dieses Parks ist die hohe Populationsdichte an Elefanten. Herden von bis zu 300 Elefanten suchen täglich im trockenen Flussbett nach unterirdischen Flüssen, während wandernde Gnus, Zebras, Büffel, Impalas, Gazellen, Kuhantilopen und Elen die schrumpfenden Wasserlöcher bevölkern.',
+      location: 'Tarangire Nationalpark', 
+      title: 'Im Reich der Elefanten', 
+      desc: 'Riesige Baobab-Bäume und hunderte Elefanten am Flussufer prägen diesen einzigartigen Park. Ein echtes Wildlife-Highlight.',
       img: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=800'
     },
     { 
       day: 5, 
       location: 'Ngorongoro Region', 
-      title: 'Besuch einer Schule & Maasai Kultur', 
-      desc: 'Auf dem Weg zum Serengeti Nationalpark durchqueren Sie das Naturschutzgebiet Ngorongoro und machen Ihren ersten Zwischenstopp in einem Massai-Dorf, einem Manyatta. Dort haben Sie die Möglichkeit die Massai, eine ostafrikanische Volksgruppe, näher kennenzulernen und einen Einblick in ihre einzigartigen Bräuche und ihren Alltag zu erhalten. Die Massai erkennen Sie an ihrer traditionellen Kleidung. Sie tragen rote und blaue Laken, die geschickt um den Körper gewickelt werden.',
+      title: 'Maasai Kultur', 
+      desc: 'Besuch eines authentischen Maasai-Dorfes. Erfahren Sie mehr über die Bräuche und den Alltag dieses stolzen Volkes auf dem Weg in die Serengeti.',
       img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800'
     },
     { 
       day: 6, 
       location: 'Zentral-Serengeti', 
-      title: 'Endlose Savannen', 
-      desc: 'Ankunft im Herzen der Serengeti. Der Park ist so groß wie Schleswig-Holstein und bietet die spektakulärsten Tierbeobachtungen der Welt. Heute suchen wir nach den großen Katzen – Löwen, Leoparden und Geparden – die sich gerne auf den Granitfelsen, den Kopjes, sonnen.',
+      title: 'Endlose Weiten', 
+      desc: 'Pirschfahrten in der legendären Serengeti. Wir suchen nach Löwen, Leoparden und Geparden auf den charakteristischen Kopjes.',
       img: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800'
     },
     { 
       day: 7, 
       location: 'Nord-Serengeti', 
-      title: 'Auf Spurensuche der Migration', 
-      desc: 'Wir folgen den riesigen Gnuherden nach Norden. In dieser Region ist die Chance groß, die Tiere beim Grasen in den sanften Hügeln zu beobachten. Die Weite der Landschaft ist hier besonders eindrucksvoll und die Stille wird nur durch die Rufe der Wildnis unterbrochen.',
+      title: 'Migration Tracking', 
+      desc: 'Wir folgen den riesigen Gnuherden auf ihrem Weg nach Norden. Ein Naturschauspiel von unvergleichlicher Dimension.',
       img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800'
     },
     { 
       day: 8, 
       location: 'Mara Region', 
-      title: 'Das Drama am Fluss', 
-      desc: 'Ein Tag voller Spannung. Wir verbringen Zeit am Mara River, um eines der berühmten Crossings zu beobachten. Es ist ein Überlebenskampf, wenn tausende Tiere gleichzeitig den Fluss überqueren, in dem Krokodile lauern.',
+      title: 'Flussüberquerung', 
+      desc: 'Spannung am Mara River. Mit Glück beobachten wir eines der dramatischen Crossings, bei denen die Herden den Fluss bezwingen.',
       img: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=800'
     },
     { 
       day: 9, 
       location: 'Ngorongoro Krater', 
-      title: 'Abstieg in das Paradies', 
-      desc: 'Wir verlassen die Serengeti und fahren zum Ngorongoro Krater. Am frühen Morgen steigen wir 600 Meter tief in den Kraterboden ab. Hier leben etwa 25.000 große Säugetiere auf engstem Raum, darunter auch die seltenen schwarzen Nashörner.',
+      title: 'Das Weltwunder', 
+      desc: 'Abstieg in den Vulkankrater. Höchste Raubtierdichte und die Chance, das seltene schwarze Nashorn in freier Wildbahn zu sehen.',
       img: 'https://images.unsplash.com/photo-1580502304784-8985b777da59?q=80&w=800'
     },
     { 
       day: 10, 
       location: 'Lake Manyara', 
-      title: 'Flamingos & Baumkletternde Löwen', 
-      desc: 'Besuch des Lake Manyara Nationalparks. Der Park ist bekannt für seine unglaubliche Vogelvielfalt an den Ufern des Sodasees und seine Löwen, die untypischerweise gerne auf den Ästen von Akazienbäumen ruhen.',
+      title: 'Vogelparadies', 
+      desc: 'Flamingos am Ufer des Sodasees und baumkletternde Löwen machen diesen Park zu einem Juwel am Afrikanischen Grabenbruch.',
       img: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800'
     },
     { 
       day: 11, 
       location: 'Sansibar', 
       title: 'Flug ins Inselglück', 
-      desc: 'Nach der Safari folgt die Entspannung. Wir bringen Sie zum Airstrip für Ihren Flug direkt auf die Gewürzinsel Sansibar. Ein privater Transfer erwartet Sie und bringt Sie in Ihr exklusives Strandresort.',
+      desc: 'Vom Busch direkt an den Strand. Ein privater Transfer bringt Sie in Ihr exklusives Resort an der traumhaften Ostküste.',
       img: 'https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=800'
     },
     { 
       day: 12, 
-      location: 'Sansibar Ostküste', 
-      title: 'Weiße Strände & Türkises Meer', 
-      desc: 'Genießen Sie das süße Nichtstun. Spazieren Sie an den endlosen weißen Sandstränden, beobachten Sie die Gezeiten und lassen Sie sich kulinarisch in Ihrem Resort verwöhnen.',
+      location: 'Sansibar Strände', 
+      title: 'Tropische Erholung', 
+      desc: 'Weiße Sandstrände und türkisfarbenes Wasser laden zum Entspannen ein. Genießen Sie den erstklassigen Service Ihres Resorts.',
       img: 'https://images.unsplash.com/photo-1590001158193-79013ac7fa77?q=80&w=800'
     },
     { 
       day: 13, 
       location: 'Stone Town', 
-      title: 'Geschichte & Gewürze', 
-      desc: 'Ein Ausflug in die historische Altstadt Stone Town (UNESCO Welterbe). Wir schlendern durch die verwinkelten Gassen, besuchen den Sklavenmarkt und tauchen ein in die Geschichte des Sultans.',
+      title: 'Gewürze & Geschichte', 
+      desc: 'Geführter Rundgang durch die historische Altstadt (UNESCO Welterbe) und Besuch der berühmten Gewürzplantagen.',
       img: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800'
     },
     { 
       day: 14, 
       location: 'Sansibar', 
       title: 'Sunset Dhow Cruise', 
-      desc: 'Der letzte volle Tag im Paradies. Am Abend unternehmen wir eine Segeltour auf einer traditionellen Dhow. Wir beobachten den Sonnenuntergang vom Wasser aus, während wir die letzten Momente der Reise genießen.',
+      desc: 'Ein letzter Abend im Paradies auf einer traditionellen Segeldhow. Erleben Sie den Sonnenuntergang vom Wasser aus.',
       img: 'https://images.unsplash.com/photo-1683323935247-ac5105bcea4e?q=80&w=800'
     },
     { 
       day: 15, 
       location: 'Abreise', 
       title: 'Abschied von Afrika', 
-      desc: 'Heute heißt es Abschied nehmen. Je nach Abflugzeit haben Sie noch Zeit für ein letztes Bad im Meer. Transfer zum Flughafen Sansibar und Rückflug nach Hause.',
+      desc: 'Transfer zum Flughafen Sansibar und Rückflug nach Hause mit unvergesslichen Erinnerungen im Gepäck.',
       img: 'https://images.unsplash.com/photo-1436491865332-7a61a109c055?q=80&w=800'
     }
   ]
