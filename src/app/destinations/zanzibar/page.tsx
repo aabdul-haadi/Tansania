@@ -36,55 +36,129 @@ import { PackageCard } from '@/components/shared/PackageCard';
 import { ContactSection } from '@/components/shared/ContactSection';
 import { cn } from '@/lib/utils';
 
+const zanzibarFaqs = [
+  { q: "Wie ist das Internet und die Mobilfunkabdeckung auf Sansibar?", a: "In den meisten Hotels und Resorts gibt es zuverlässiges WLAN. Die Mobilfunkabdeckung in bewohnten Gebieten ist gut, in abgelegenen Regionen kann sie schwankend sein." },
+  { q: "Gibt es besondere Verhaltensregeln auf Sansibar?", a: "Sansibar ist muslimisch geprägt. Wir empfehlen, außerhalb der Resorts Schultern und Knie zu bedecken. In Stone Town ist dies ein Zeichen des Respekts gegenüber der lokalen Kultur." },
+  { q: "Brauche ich für Sansibar besondere Impfungen oder Visa?", a: "Standardimpfungen sowie Schutz gegen Hepatitis A werden empfohlen. Ein Visum für Tansania ist erforderlich und gilt auch für Sansibar. Dieses kann online vorab beantragt werden." },
+  { q: "Ist Sansibar auch für Flitterwochen geeignet?", a: "Absolut! Sansibar gilt als eines der romantischsten Reiseziele weltweit mit exklusiven Honeymoon-Resorts und privaten Erlebnissen am Indischen Ozean." },
+  { q: "Wie sicher ist ein Urlaub auf Sansibar?", a: "Sansibar ist ein sehr sicheres Reiseziel. Wie bei allen Reisen empfehlen wir, Wertsachen im Hotelsafe zu lassen und nachts bekannte Pfade zu nutzen." },
+  { q: "Warum mit Tansania Reiseabenteuer buchen?", a: "Wir bieten lokale Expertise, handverlesene Unterkünfte und eine nahtlose Organisation zwischen Safari-Festland und Inselparadies – alles aus einer Hand." }
+];
+
+const displayPackages = [
+  {
+    id: '15-day-safari-zanzibar',
+    title: '15 Tage Safari in Tansania und Sansibar',
+    slug: '15-day-safari-zanzibar',
+    durationDays: 15,
+    startingPrice: 5399,
+    category: 'Safari & Sansibar',
+    highlights: ['Top Nationalparks Safari', 'Massai Dorfbesuch', 'Familienfreundliche Unterkünfte', 'Sansibar Strände & Tauchen', 'Gewürztour & Stone Town'],
+    excerpt: 'Unsere umfassendste Expedition: Vom Herzen der Serengeti bis zu den Palmen Sansibars – perfekt kombiniert.'
+  },
+  {
+    id: 'safari-sansibar-13-tage',
+    title: '13 Tage Safari & Sansibar',
+    slug: 'safari-sansibar-13-tage',
+    durationDays: 13,
+    startingPrice: 3699,
+    category: 'Safari & Sansibar',
+    highlights: ['Big Five Pirschfahrten', 'Massai Dorfbesuch', 'Ngorongoro UNESCO Krater', 'Sansibar Strände & Tauchen', 'Stone Town Stadttour'],
+    excerpt: 'Die perfekte Balance aus intensiven Wildtierbeobachtungen und exklusiver Entspannung am Ozean.'
+  },
+  {
+    id: 'safari-sansibar-11-tage',
+    title: '11 Tage Safari & Sansibar',
+    slug: 'safari-sansibar-11-tage',
+    durationDays: 11,
+    startingPrice: 2999,
+    category: 'Safari & Sansibar',
+    highlights: ['Elefanten im Tarangire', 'Massai Kultur erleben', 'Serengeti Tiermigration', 'Ngorongoro Kraterfahrt', 'Sansibar Strände & Touren'],
+    excerpt: 'Kompakt und eindrucksvoll: Erleben Sie die Highlights Tansanias in einer perfekt abgestimmten Reise.'
+  },
+  {
+    id: 'familien-safari-12-tage',
+    title: '12 Tage Familien-Safari',
+    slug: 'familien-safari-12-tage',
+    durationDays: 12,
+    startingPrice: 3499,
+    category: 'Familiensafari',
+    highlights: ['Big Five Pirschfahrten', 'Massai Dorfbesuch', 'Schulbesuch in Karatu', 'Lake Manyara Safari', 'Kinderfreundliche Lodges'],
+    excerpt: 'Unvergessliche Erlebnisse für Groß & Klein mit Reisetempo, das alle glücklich macht.'
+  },
+  {
+    id: 'flitterwochen-tansania-sansibar',
+    title: '13 Tage Flitterwochen',
+    slug: 'flitterwochen-tansania-sansibar',
+    durationDays: 13,
+    startingPrice: 3899,
+    category: 'Flitterwochen',
+    highlights: ['Champagner bei Sonnenuntergang', 'Private Pirschfahrten', 'Luxuslodges & Villen', 'Sansibar Stranddinner', 'Heißluftballon Serengeti'],
+    excerpt: 'Romantik pur & Safari-Abenteuer erleben – Ihr Start in ein gemeinsames Leben.'
+  },
+  {
+    id: '7-tage-sansibar',
+    title: '7 Tage Sansibar',
+    slug: '7-tage-sansibar',
+    durationDays: 7,
+    startingPrice: 2699,
+    category: 'Sansibar',
+    highlights: ['Stone Town Stadttour', 'Gewürzplantagen erkunden', 'Bootstour & Schnorcheln', 'Strand & Sonnenuntergang', 'Geführtes Taucherlebnis'],
+    excerpt: 'Traumstrände & Tropenflair erleben – die perfekte Auszeit auf der Gewürzinsel.'
+  },
+  {
+    id: '12-tage-camping-safari',
+    title: '12 Tage Camping Safari',
+    slug: '12-tage-camping-safari',
+    durationDays: 12,
+    startingPrice: 2799,
+    category: 'Camping Safari',
+    highlights: ['Zelten in der Serengeti', 'Lagerfeuer unterm Sternenhimmel', 'Massai Dorfbesuch', 'Sansibar Traumstrände', 'Gewürz & Bootstour'],
+    excerpt: 'Wildnis hautnah, Strand pur – das authentischste Abenteuer für Entdecker.'
+  },
+  {
+    id: '13-tage-kilimandscharo-kombi',
+    title: '13 Tage Kilimandscharo Kombi',
+    slug: '13-tage-kilimandscharo-kombi',
+    durationDays: 13,
+    startingPrice: 4699,
+    category: 'Kilimandscharo Safari',
+    highlights: ['Safari in Top-Nationalparks', 'Kilimandscharo hautnah', 'Big Five & atemberaubende Natur', 'Sansibar: Strand & Kultur', 'Abenteuer & Erholung'],
+    excerpt: 'Vom ewigen Eis des Kilimandscharo bis zum tropischen Paradies Sansibar.'
+  }
+];
+
+const beachData = [
+  { title: "Nordküste", desc: "An der Nordküste liegen die bekanntesten Sansibar Strände, wie Nungwi und Kendwa. Sie sind besonders beliebt, da hier Ebbe und Flut kaum spürbar sind – ideal zum Baden zu jeder Tageszeit.", img: "https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=800", hint: "nungwi beach" },
+  { title: "Ostküste", desc: "Die Ostküste begeistert mit den idyllischsten Stränden Sansibars. Ein beeindruckendes Korallenriff macht diesen Teil zu einem der besten Spots weltweit für Schnorcheln und Tauchen auf Sansibar.", img: "https://images.unsplash.com/photo-1683323935247-ac5105bcea4e?q=80&w=800", hint: "matemwe beach" },
+  { title: "Südostküste", desc: "Hier finden Sie lange, feinsandige Strände und perfekte Bedingungen zum Kitesurfen und Segeln. Charmante Fischerdörfer wie Jambiani und Paje versprühen eine authentische, zeitlose Stimmung.", img: "https://images.unsplash.com/photo-1590001158193-79013ac7fa77?q=80&w=800", hint: "jambiani village" },
+  { title: "Südwestküste", desc: "Abgelegen und ideal für alle, die Ruhe und leere Strände suchen. Ein Highlight ist das Menai Bay Conservation Area, ein Paradies für Taucher und Naturliebhaber.", img: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800", hint: "menai bay" }
+];
+
+const seasonGrid = [
+  { title: "Sonne & warmes Wetter", time: "Juni bis Oktober", desc: "Die trockenste und sonnigste Zeit. Tagsüber herrschen angenehme Temperaturen um 25–30 °C. Perfekt für Sonnenanbeter.", icon: Sun },
+  { title: "Strand & Baden", time: "Jun bis Okt & Dez bis Feb", desc: "Ruhiges Wasser und klare Sicht. Ideal für die weißen Strände und das türkisfarbene Meer.", icon: Waves },
+  { title: "Schnorcheln & Tauchen", time: "Juli bis Oktober", desc: "Die beste Sichtweite und ruhiges Meer für die Erkundung der bunten Unterwasserwelt.", icon: Camera },
+  { title: "Kitesurfen", time: "Jun bis Sep & Dez bis Jan", desc: "Konstante Winde, besonders an der Ostküste wie in Paje, bieten ideale Bedingungen.", icon: Wind },
+  { title: "Ruhe & wenig Touristen", time: "Nov & Mär bis Mai", desc: "Nebensaison mit kurzen Regenschauern, aber viel Privatsphäre und günstigeren Preisen.", icon: Heart },
+  { title: "Kultur & Festivals", time: "Juli bis August", desc: "Erleben Sie Sansibars kulturelle Vielfalt während des International Film Festivals im Juli.", icon: Sparkles }
+];
+
+const testimonials = [
+  { name: "Lea M., München", quote: "Absolut traumhaft! Die Safari war spektakulär, wir haben Löwen, Elefanten und sogar Geparden gesehen. Danach die Ruhe und die Strände auf Sansibar – einfach perfekt." },
+  { name: "Tobias H., Frankfurt", quote: "Vielen Dank für diese unvergessliche Reise. Unsere Guides kannten jedes Detail, auf Safari haben wir die Big Five gesehen. Sansibar war dann purer Genuss." },
+  { name: "Fatma K., Berlin", quote: "Die 12-Tage-Tour war eine unglaubliche Erfahrung. Serengeti und Ngorongoro waren faszinierend. Auf Sansibar hätte ich gern noch ein paar Tage länger gehabt." },
+  { name: "Jonas W., Hamburg", quote: "Wow! Die Safari war das schönste Abenteuer meines Lebens. Sansibar danach war wie ein Traum. Weißer Strand, warmes Meer, alles stressfrei." },
+  { name: "Clara S., Köln", quote: "Schöne Mischung aus Abenteuer und Entspannung. Safari gut organisiert, wir haben alle großen Tiere gesehen. Auf Sansibar habe ich das Schnorcheln geliebt." },
+  { name: "Anna L., Stuttgart", quote: "Die Gewürztour und Stone Town waren kulturelle Highlights. Die Strände sind ein Paradies, und die Organisation war makellos." }
+];
+
 export default function ZanzibarPage() {
-  const firestore = useFirestore();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  const pkgQuery = useMemoFirebase(() => {
-    if (!firestore) return null;
-    return query(collection(firestore, 'packages'), where('isPublished', '==', true));
-  }, [firestore]);
-
-  const { data: packages, isLoading } = useCollection(pkgQuery);
-
-  const zanzibarPackages = packages?.filter(p => 
-    ['Safari & Sansibar', 'Flitterwochen', 'Familiensafari', 'Sansibar'].includes(p.category)
-  ) || [];
-
-  const displayPackages = zanzibarPackages.length > 0 ? zanzibarPackages : [
-    { id: '15-day', title: '15 Tage Safari in Tansania und Sansibar', slug: '15-day-safari-zanzibar', durationDays: 15, startingPrice: 5399, category: 'Safari & Sansibar', highlights: ['Top Nationalparks', 'Massai Besuch', 'Sansibar Tauchen'], excerpt: 'Unsere umfassendste Expedition: Vom Herzen der Serengeti bis zu den Palmen Sansibars.' },
-    { id: '13-day', title: '13 Tage Safari & Sansibar', slug: 'safari-sansibar-13-tage', durationDays: 13, startingPrice: 3699, category: 'Safari & Sansibar', highlights: ['Big Five', 'Ngorongoro Krater', 'Sansibar Strände'], excerpt: 'Die perfekte Balance aus intensiven Wildtierbeobachtungen und exklusiver Entspannung.' },
-    { id: '11-day', title: '11 Tage Safari & Sansibar', slug: 'safari-sansibar-11-tage', durationDays: 11, startingPrice: 2999, category: 'Safari & Sansibar', highlights: ['Elefanten Tarangire', 'Serengeti Migration', 'Sansibar Touren'], excerpt: 'Kompakt und eindrucksvoll: Erleben Sie die Highlights Tansanias in 11 Tagen.' }
-  ];
-
-  const beachData = [
-    { title: "Nordküste", desc: "An der Nordküste liegen die bekanntesten Sansibar Strände, wie Nungwi und Kendwa. Sie sind besonders beliebt, da hier Ebbe und Flut kaum spürbar sind – ideal zum Baden zu jeder Tageszeit.", img: "https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=800", hint: "nungwi beach" },
-    { title: "Ostküste", desc: "Die Ostküste begeistert mit den idyllischsten Stränden Sansibars. Ein beeindruckendes Korallenriff macht diesen Teil zu einem der besten Spots weltweit für Schnorcheln und Tauchen auf Sansibar.", img: "https://images.unsplash.com/photo-1683323935247-ac5105bcea4e?q=80&w=800", hint: "matemwe beach" },
-    { title: "Südostküste", desc: "Hier finden Sie lange, feinsandige Strände und perfekte Bedingungen zum Kitesurfen und Segeln. Charmante Fischerdörfer wie Jambiani und Paje versprühen eine authentische, zeitlose Stimmung.", img: "https://images.unsplash.com/photo-1590001158193-79013ac7fa77?q=80&w=800", hint: "jambiani village" },
-    { title: "Südwestküste", desc: "Abgelegen und ideal für alle, die Ruhe und leere Strände suchen. Ein Highlight ist das Menai Bay Conservation Area, ein Paradies für Taucher und Naturliebhaber.", img: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800", hint: "menai bay" }
-  ];
-
-  const seasonGrid = [
-    { title: "Sonne & warmes Wetter", time: "Juni bis Oktober", desc: "Die trockenste Zeit mit angenehmen Temperaturen um 25–30 °C. Perfekt für Sonnenanbeter.", icon: Sun },
-    { title: "Strand & Baden", time: "Juni bis Oktober & Dez bis Feb", desc: "Ruhiges Wasser und klare Sicht. Ideal für die weißen Strände und das türkisfarbene Meer.", icon: Waves },
-    { title: "Schnorcheln & Tauchen", time: "Juli bis Oktober", desc: "Die beste Sichtweite und ruhiges Meer für die Erkundung der bunten Unterwasserwelt.", icon: Camera },
-    { title: "Kitesurfen", time: "Jun bis Sep & Dez bis Jan", desc: "Konstante Winde, besonders an der Ostküste wie in Paje, bieten ideale Bedingungen.", icon: Wind },
-    { title: "Ruhe & wenig Touristen", time: "November & März bis Mai", desc: "Nebensaison mit kurzen Regenschauern, aber viel Privatsphäre und günstigeren Preisen.", icon: Heart },
-    { title: "Kultur & Festivals", time: "Juli bis August", desc: "Erleben Sie Sansibars kulturelle Vielfalt während des International Film Festivals im Juli.", icon: Sparkles }
-  ];
-
-  const testimonials = [
-    { name: "Lea M., München", quote: "Absolut traumhaft! Die Safari war spektakulär, wir haben Löwen, Elefanten und sogar Geparden gesehen. Danach die Ruhe und die Strände auf Sansibar – einfach perfekt." },
-    { name: "Tobias H., Frankfurt", quote: "Vielen Dank für diese unvergessliche Reise. Unsere Guides kannten jedes Detail, auf Safari haben wir die Big Five gesehen. Sansibar war dann purer Genuss." },
-    { name: "Fatma K., Berlin", quote: "Die 12-Tage-Tour war eine unglaubliche Erfahrung. Serengeti und Ngorongoro waren faszinierend. Auf Sansibar hätte ich gern noch länger gehabt." },
-    { name: "Jonas W., Hamburg", quote: "Wow! Die Safari war das schönste Abenteuer meines Lebens. Sansibar danach war wie ein Traum. Weißer Strand, warmes Meer, alles stressfrei." },
-    { name: "Clara S., Köln", quote: "Schöne Mischung aus Abenteuer und Entspannung. Safari gut organisiert, wir haben alle großen Tiere gesehen. Auf Sansibar habe ich das Schnorcheln geliebt." },
-    { name: "Anna L., Stuttgart", quote: "Die Gewürztour und Stone Town waren kulturelle Highlights. Die Strände sind ein Paradies, und die Organisation war makellos." }
-  ];
 
   if (!mounted) return null;
 
@@ -96,11 +170,10 @@ export default function ZanzibarPage() {
           src="https://images.unsplash.com/photo-1683323935247-ac5105bcea4e?q=80&w=1920" 
           alt="Sansibar Inselparadies" 
           fill 
-          className="object-cover brightness-[0.6]"
+          className="object-cover brightness-90"
           priority
           data-ai-hint="zanzibar coast"
         />
-        <div className="absolute inset-0 bg-black/30" />
         <div className="container relative z-10 mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -121,10 +194,10 @@ export default function ZanzibarPage() {
       {/* 02 Intro Narrative */}
       <section className="pt-8 md:pt-12 pb-12 container mx-auto px-4 max-w-4xl text-center">
         <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary mb-6">
-          Ihr Traumurlaub im Herzen des Indischen Ozeans
+          Erleben Sie das Beste aus zwei Welten
         </h2>
-        <p className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal opacity-80 mb-8">
-          Ein Sansibar Urlaub ist die Erfüllung eines echten Lebenstraums. Die Inselgruppe vor der Küste Tansanias begeistert mit weißen Sandstränden, türkisblauem Wasser und einer faszinierenden Mischung aus afrikanischer, arabischer und indischer Kultur.
+        <p className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal opacity-80">
+          Entspannen Sie an Sansibars Traumstränden und entdecken Sie Tansanias spektakuläre Safaris – perfekt kombiniert in unseren maßgeschneiderten Reisepaketen.
         </p>
       </section>
 
@@ -132,43 +205,37 @@ export default function ZanzibarPage() {
       <section className="pt-8 md:pt-12 pb-12 md:pb-24 container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12 md:mb-16 space-y-4">
           <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary">
-            Sansibar & Safari Abenteuer
+            Unsere Sansibar & Safari Abenteuer
           </h2>
           <p className="text-muted-foreground text-sm md:text-lg font-normal opacity-80">
-            Sorgfältig zusammengestellte Reisepakete für Ihre individuelle Expedition.
+            Entdecken Sie unsere sorgfältig zusammengestellten Reisepakete für Ihren Sansibar Urlaub und Tansania Safari.
           </p>
         </div>
         
-        {isLoading ? (
-          <div className="py-20 text-center animate-pulse font-bold text-xs uppercase tracking-widest text-muted-foreground">Synchronisiere Katalog...</div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 md:gap-y-20">
-            {displayPackages.slice(0, 6).map((pkg) => (
-              <PackageCard key={pkg.id} pkg={pkg as any} />
-            ))}
-          </div>
-        )}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 md:gap-y-20">
+          {displayPackages.map((pkg) => (
+            <PackageCard key={pkg.id} pkg={pkg as any} />
+          ))}
+        </div>
       </section>
 
-      {/* 04 Video Cinematic Integration */}
+      {/* 04 Narrative Why Zanzibar */}
       <section className="pt-8 md:pt-12 pb-12 md:pb-24 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="space-y-8">
               <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary leading-tight">
-                Romantische Flitterwochen auf Sansibar
+                Warum Sansibar perfekt für Ihren Traumurlaub ist?
               </h2>
               <p className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal opacity-80">
-                Ein Abenteuer, das Sie nie vergessen werden: Eine Safari in Tansania bringt Sie hautnah zu den Wundern der Natur. Lassen Sie sich von unserem Experten-Team beraten und planen Sie Ihre ganz persönliche Flucht aus dem Alltag.
+                Ein Sansibar Urlaub ist für viele die Erfüllung eines echten Lebenstraums. Die Inselgruppe vor der Küste Tansanias begeistert mit weißen Sandstränden, türkisblauem Wasser und einer faszinierenden Mischung aus afrikanischer, arabischer und indischer Kultur.
               </p>
               <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
-                  <span className="text-sm font-bold text-secondary">Individuelle Reiseplanung</span>
+                <div className="flex items-center gap-3 text-secondary font-bold text-sm">
+                  <CheckCircle2 className="w-5 h-5 text-primary shrink-0" /> Individuelle Reiseplanung
                 </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
-                  <span className="text-sm font-bold text-secondary">Exklusive Strand-Resorts</span>
+                <div className="flex items-center gap-3 text-secondary font-bold text-sm">
+                  <CheckCircle2 className="w-5 h-5 text-primary shrink-0" /> Exklusive Strand-Resorts
                 </div>
               </div>
             </div>
@@ -176,16 +243,10 @@ export default function ZanzibarPage() {
             <div className="relative aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl bg-black border-8 border-white group">
               <iframe
                 src="https://www.youtube.com/embed/wgudoNLoIXA"
-                title="Zanzibar Romance"
+                title="Romantische Flitterwochen"
                 className="absolute inset-0 w-full h-full border-none"
                 allowFullScreen
               />
-              <div className="absolute top-4 right-4 z-20">
-                <div className="px-4 py-2 bg-secondary/80 backdrop-blur-xl text-white rounded-lg border border-white/10 flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                  <span className="text-[8px] font-bold text-white">Signature View</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -225,7 +286,7 @@ export default function ZanzibarPage() {
           <div className="relative aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl bg-black border-8 border-white">
             <iframe
               src="https://www.youtube.com/embed/ZeJO684dC4M"
-              title="Zanzibar Exploration"
+              title="Sansibar Exploration"
               className="absolute inset-0 w-full h-full border-none"
               allowFullScreen
             />
@@ -329,13 +390,7 @@ export default function ZanzibarPage() {
           </div>
 
           <Accordion type="single" collapsible className="space-y-4">
-            {[
-              { q: "Wie ist das Internet auf Sansibar?", a: "In den meisten Hotels und Resorts gibt es WLAN. In Stone Town ist die Abdeckung gut, in abgelegeneren Regionen kann sie schwankend sein." },
-              { q: "Brauche ich für Sansibar besondere Impfungen?", a: "Standardimpfungen sowie Schutz gegen Hepatitis A werden empfohlen. Eine Gelbfieber-Impfung ist bei Einreise aus Endemiegebieten Pflicht." },
-              { q: "Ist Sansibar für Flitterwochen geeignet?", a: "Absolut! Sansibar gilt als eines der romantischsten Ziele weltweit mit exklusiven Honeymoon-Resorts und privaten Dinner-Optionen am Strand." },
-              { q: "Wie sicher ist ein Urlaub auf Sansibar?", a: "Sansibar ist ein sehr sicheres Reiseziel. Wie überall sollten Sie Wertsachen im Hotelsafe lassen und nachts keine einsamen Strandabschnitte aufsuchen." },
-              { q: "Warum mit uns buchen?", a: "Wir bieten lokale Expertise, handverlesene Unterkünfte und eine nahtlose Organisation zwischen Safari-Festland und Inselparadies." }
-            ].map((faq, i) => (
+            {zanzibarFaqs.map((faq, i) => (
               <AccordionItem key={i} value={`item-${i}`} className="border-none bg-[#fdfcfb] rounded-2xl px-8 shadow-sm hover:shadow-md transition-all group">
                 <AccordionTrigger className="font-bold text-base py-6 hover:no-underline text-left text-secondary [&>svg]:hidden">
                   <div className="flex items-center justify-between w-full gap-4">
