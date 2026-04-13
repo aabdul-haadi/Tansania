@@ -30,8 +30,6 @@ import { PackageCard } from '@/components/shared/PackageCard';
 import { ContactSection } from '@/components/shared/ContactSection';
 import { Button } from '@/components/ui/button';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
-import { collection, query, where, limit } from 'firebase/firestore';
 import { cn } from '@/lib/utils';
 
 const faqData = [
@@ -65,30 +63,87 @@ const faqData = [
   }
 ];
 
+const kiliPackages = [
+  {
+    id: 'kili-kombi',
+    title: '13 Tage Kilimandscharo Kombi: Gipfel & Safari',
+    slug: '13-tage-kilimandscharo-kombi',
+    durationDays: 13,
+    startingPrice: 5299,
+    category: 'Signature',
+    tag: 'Meistverkauft',
+    excerpt: 'Die ultimative Tansania Rundreise – Kilimandscharo Besteigung kombiniert mit einer Safari in der Serengeti und Entspannung auf Sansibar.',
+    highlights: ['Afrikas Dach erklimmen', 'Big Five hautnah erleben', 'Sansibars Strände genießen'],
+    imageUrl: 'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=800'
+  },
+  {
+    id: 'marangu-8',
+    title: '8 Tage Marangu: Komfortabel zum Gipfel',
+    slug: '8-tage-marangu-komfortabel-zum-gipfel',
+    durationDays: 8,
+    startingPrice: 3199,
+    category: 'Expedition',
+    tag: 'Hütten Route',
+    excerpt: 'Die klassische Coca-Cola Route mit festen Berghütten statt Zelten. Ideal für alle, die ein wenig mehr Komfort am Berg suchen.',
+    highlights: ['Hütten statt Zelte', 'Uhuru Peak erreichen', 'Zusatz-Tag für Erfolg'],
+    imageUrl: 'https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=800'
+  },
+  {
+    id: 'machame-9',
+    title: '9 Tage Machame: Der Abenteuer-Weg',
+    slug: '9-tage-machame-der-abenteuer-weg',
+    durationDays: 9,
+    startingPrice: 2499,
+    category: 'Expedition',
+    tag: 'Whiskey Route',
+    excerpt: 'Die spektakulärste Route zum Gipfel mit optimaler Akklimatisierung und abwechslungsreichen Landschaften durch fünf Klimazonen.',
+    highlights: ['Whiskey Route erleben', 'Optimal akklimatisiert', 'Hohe Erfolgsquote'],
+    imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800'
+  },
+  {
+    id: 'lemosho-10',
+    title: '10 Tage Lemosho: Unberührte Wege',
+    slug: '10-tage-lemosho-unberuehrte-wege',
+    durationDays: 10,
+    startingPrice: 3599,
+    category: 'Expedition',
+    tag: 'Premium Route',
+    excerpt: 'Die exklusivste und landschaftlich reizvollste Route über die Westseite des Kilimandscharo mit der höchsten Erfolgsrate.',
+    highlights: ['Wenig begangene Route', 'Westseite Panoramen', 'Premium Ausrüstung'],
+    imageUrl: 'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=800'
+  },
+  {
+    id: 'rongai-8',
+    title: '8 Tage Rongai: Dein stiller Weg',
+    slug: '8-tage-rongai-dein-stiller-weg',
+    durationDays: 8,
+    startingPrice: 2999,
+    category: 'Expedition',
+    tag: 'Ruhige Route',
+    excerpt: 'Entdecken Sie die wilde Nordseite des Kilimandscharo. Eine abgelegene Route mit weiten Panoramablicken und unberührter Natur.',
+    highlights: ['Nordseite Panorama', 'Abgeschieden & ruhig', 'Tierbeobachtungen'],
+    imageUrl: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=800'
+  },
+  {
+    id: 'mount-meru-5',
+    title: '5 Tage Mount Meru: Dein Gipfel-Einstieg',
+    slug: '5-tage-mount-meru-besteigung',
+    durationDays: 5,
+    startingPrice: 2699,
+    category: 'Expedition',
+    tag: 'Einstiegsroute',
+    excerpt: 'Erklimmen Sie Afrikas zweithöchsten Gipfel als perfekte Vorbereitung für den Kilimanjaro oder als eigenständiges Abenteuer.',
+    highlights: ['Afrikas zweithöchster Peak', 'Perfekte Vorbereitung', 'Berghütten Komfort'],
+    imageUrl: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800'
+  }
+];
+
 export default function KilimanjaroPage() {
   const [mounted, setMounted] = useState(false);
-  const firestore = useFirestore();
 
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  const pkgQuery = useMemoFirebase(() => {
-    if (!firestore) return null;
-    return query(
-      collection(firestore, 'packages'), 
-      where('isPublished', '==', true),
-      limit(12)
-    );
-  }, [firestore]);
-
-  const { data: allPackages, isLoading } = useCollection(pkgQuery);
-
-  const kiliPackages = allPackages?.filter(p => 
-    p.category?.toLowerCase().includes('kilimandscharo') || 
-    p.category?.toLowerCase().includes('meru') ||
-    p.title?.toLowerCase().includes('kilimandscharo')
-  ) || [];
 
   if (!mounted) return null;
 
@@ -115,9 +170,6 @@ export default function KilimanjaroPage() {
             transition={{ duration: 0.8 }}
             className="flex flex-col items-center space-y-6"
           >
-            <Badge className="bg-primary text-white border-none font-bold text-[10px] tracking-normal px-6 py-2 shadow-2xl">
-              Das Dach Afrikas
-            </Badge>
             <h1 className="font-headline text-white leading-none text-3xl sm:text-4xl md:text-6xl lg:text-8xl">
               Kilimandscharo Expeditionen
             </h1>
@@ -146,21 +198,11 @@ export default function KilimanjaroPage() {
           </h2>
         </div>
         
-        {isLoading ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map(i => <div key={i} className="aspect-[4/5] bg-muted animate-pulse rounded-[2.5rem]" />)}
-          </div>
-        ) : kiliPackages.length === 0 ? (
-          <div className="py-24 text-center border-2 border-dashed rounded-[3rem] bg-muted/10">
-            <p className="text-muted-foreground font-bold tracking-normal text-[10px]">Registry leer • Bitte Kategorien im Admin-Bereich synchronisieren</p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 md:gap-y-20">
-            {kiliPackages.map((pkg) => (
-              <PackageCard key={pkg.id} pkg={pkg} />
-            ))}
-          </div>
-        )}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 md:gap-y-20">
+          {kiliPackages.map((pkg) => (
+            <PackageCard key={pkg.id} pkg={pkg} />
+          ))}
+        </div>
       </section>
 
       {/* 04 Expert Narrative */}
@@ -202,7 +244,7 @@ export default function KilimanjaroPage() {
           <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter">Kilimandscharo Quick Facts</h2>
         </div>
         <div className="container mx-auto px-4 max-w-7xl relative">
-          <div className="relative rounded-[3rem] overflow-hidden p-8 md:p-16">
+          <div className="relative rounded-[3rem] overflow-hidden p-8 md:p-16 border border-border/50 shadow-2xl">
             <Image 
               src="https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1200" 
               alt="Facts Background" 
@@ -287,7 +329,7 @@ export default function KilimanjaroPage() {
         </div>
       </section>
 
-      {/* 08 Detailed Routes Registry */}
+      {/* 08 Detailed Routes Registry - UI REDESIGN */}
       <section className="py-12 md:py-20 bg-[#fdfcfb]">
         <div className="container mx-auto px-4 max-w-7xl space-y-24 md:space-y-40">
           
@@ -304,7 +346,7 @@ export default function KilimanjaroPage() {
               title: 'Machame-Route',
               desc: 'Die Machame-Route – auch bekannt als „Whiskey Route" – gehört zu den beliebtesten Wegen auf den Kilimandscharo. Dank ihres sanften Anstiegs und der guten Akklimatisierungschancen hat sie zudem eine hohe Erfolgsquote.',
               details: 'Auf dieser Route wandern Sie durch üppigen Regenwald, über das beeindruckende Shira-Plateau bis hin zum Kraterrand bei Stella Point – dem anspruchsvollsten Abschnitt, für den zumindest eine Grundfitness erforderlich ist.',
-              pro: 'Landschaftlich besonders reizvoll.',
+              pro: 'Günstiger als längere Routen, leicht erreichbar und landschaftlich besonders reizvoll.',
               con: 'In der Hochsaison mitunter stark frequentiert.',
               img: 'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=800'
             },
@@ -313,7 +355,7 @@ export default function KilimanjaroPage() {
               title: 'Marangu-Route',
               desc: 'Die als „Coca-Cola-Route" bekannte Marangu-Route ist die einzige mit Hüttenunterkünften anstelle von Zelten – ein großer Pluspunkt für manche Bergsteiger.',
               details: 'Für preisbewusste Bergsteiger ist sie eine der günstigsten Möglichkeiten, den Gipfel zu erreichen, und ihr klarer, einfacher Weg ist leicht zu folgen. Da der Auf- und Abstieg jedoch auf derselben Route erfolgen, verpassen Sie einige der abwechslungsreichen Landschaften des Kilimandscharo.',
-              pro: 'Budgetfreundlich, Unterkunft in Hütten.',
+              pro: 'Budgetfreundlich, kürzeste Dauer, Unterkunft in Hütten.',
               con: 'Höheres Risiko für Höhenkrankheit durch schnellen Aufstieg.',
               img: 'https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=800'
             },
@@ -330,7 +372,7 @@ export default function KilimanjaroPage() {
             <div key={route.id} className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-20 items-center">
               <div className={cn("lg:col-span-6 space-y-8", i % 2 !== 0 ? "lg:order-2" : "lg:order-1")}>
                 <div className="space-y-4">
-                  <Badge variant="outline" className="border-primary/20 text-primary px-4 py-1 font-bold text-[10px] tracking-normal">Official Route Registry</Badge>
+                  <Badge variant="outline" className="border-primary/20 text-primary px-4 py-1 font-bold text-[10px]">Official Route Registry</Badge>
                   <h3 className="font-headline text-2xl md:text-4xl font-normal text-secondary tracking-tight">{route.title}</h3>
                 </div>
                 <div className="space-y-6 text-muted-foreground text-sm md:text-lg font-normal leading-relaxed">
@@ -360,14 +402,14 @@ export default function KilimanjaroPage() {
 
       {/* 09 Best Time to Climb */}
       <section className="py-12 md:py-20 bg-white border-y border-border/40">
-        <div className="container mx-auto px-4 max-get-7xl">
+        <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
             <div className="lg:col-span-5 space-y-8">
               <div>
-                <span className="text-primary font-bold tracking-normal text-[10px] block mb-2">Climbing Season</span>
+                <span className="text-primary font-bold text-[10px] block mb-2">Climbing Season</span>
                 <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter">Beste Zeit, den Kili zu besteigen</h2>
               </div>
-              <p className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal opacity-80 tracking-normal">
+              <p className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal opacity-80">
                 Die beste Zeit, um den Kilimandscharo zu besteigen, ist während der beiden Trockenzeiten: Januar bis Mitte März sowie Juni bis Oktober.
               </p>
             </div>
@@ -384,7 +426,7 @@ export default function KilimanjaroPage() {
                     <Calendar className="w-5 h-5 text-primary group-hover:text-white" />
                   </div>
                   <h4 className="font-bold text-base md:text-lg text-secondary tracking-tight">{item.title}</h4>
-                  <p className="text-[10px] md:text-xs text-muted-foreground font-bold tracking-normal leading-relaxed opacity-70">{item.desc}</p>
+                  <p className="text-[10px] md:text-xs text-muted-foreground font-bold leading-relaxed opacity-70">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -392,11 +434,11 @@ export default function KilimanjaroPage() {
         </div>
       </section>
 
-      {/* 10 Preparation Registry */}
+      {/* 10 Preparation Registry - UI REDESIGN */}
       <section className="py-12 md:py-20 bg-[#FDF7F2] border-b border-border/40">
         <div className="container mx-auto px-4 max-w-5xl text-center space-y-10">
           <div className="space-y-4">
-            <span className="text-primary font-bold tracking-normal text-[10px]">Registry Protocol</span>
+            <span className="text-primary font-bold text-[10px]">Registry Protocol</span>
             <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter">Wie Sie sich auf das Trekking vorbereiten</h2>
           </div>
           <div className="p-10 md:p-16 bg-white rounded-[3rem] shadow-sm border border-border/40 text-left space-y-8 relative overflow-hidden">
@@ -406,7 +448,7 @@ export default function KilimanjaroPage() {
                 Das Besteigen des Kilimandscharo ist ein unvergessliches Abenteuer, erfordert jedoch eine gute körperliche und mentale Vorbereitung. Auch wenn es Routen für jedes Erfahrungslevel gibt, sollten Sie täglich 6–7 Stunden wandern können — oft in großer Höhe.
               </p>
               <div className="h-px bg-border/50 w-24" />
-              <p className="text-muted-foreground font-bold text-[10px] md:text-sm tracking-normal leading-relaxed opacity-70">
+              <p className="text-muted-foreground font-bold text-[10px] md:text-sm leading-relaxed opacity-70">
                 Planen Sie regelmäßige, lange Wanderungen ein- bis zweimal pro Woche und steigern Sie schrittweise Dauer und Schwierigkeit, damit Ihr Körper sich an mehrere aufeinanderfolgende Wandertage gewöhnt. Die Monate vor Ihrer Reise eignen sich ideal, um Ihre Kondition zu steigern.
               </p>
             </div>
