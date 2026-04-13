@@ -22,7 +22,8 @@ import {
   Plus,
   Users,
   Calendar,
-  Play
+  CloudSun,
+  Leaf
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -66,11 +67,11 @@ const faqData = [
 const kiliPackages = [
   {
     id: 'kili-kombi',
-    title: '13 Tage Kilimandscharo Kombi: Gipfel & Safari',
+    title: '13 Tage Kilimandscharo, Serengeti und Sansibar',
     slug: '13-tage-kilimandscharo-kombi',
     durationDays: 13,
     startingPrice: 5299,
-    category: 'Signature',
+    category: 'Kombi-Reise',
     tag: 'Meistverkauft',
     excerpt: 'Die ultimative Tansania Rundreise – Kilimandscharo Besteigung kombiniert mit einer Safari in der Serengeti und Entspannung auf Sansibar.',
     highlights: ['Afrikas Dach erklimmen', 'Big Five hautnah erleben', 'Sansibars Strände genießen'],
@@ -78,7 +79,7 @@ const kiliPackages = [
   },
   {
     id: 'marangu-8',
-    title: '8 Tage Marangu: Komfortabel zum Gipfel',
+    title: '8 Tage Marangu Route Kilimandscharo',
     slug: '8-tage-marangu-komfortabel-zum-gipfel',
     durationDays: 8,
     startingPrice: 3199,
@@ -90,7 +91,7 @@ const kiliPackages = [
   },
   {
     id: 'machame-9',
-    title: '9 Tage Machame: Der Abenteuer-Weg',
+    title: '9 Tage Machame Route Kilimandscharo',
     slug: '9-tage-machame-der-abenteuer-weg',
     durationDays: 9,
     startingPrice: 2499,
@@ -102,7 +103,7 @@ const kiliPackages = [
   },
   {
     id: 'lemosho-10',
-    title: '10 Tage Lemosho: Unberührte Wege',
+    title: '10 Tage Lemosho Route Kilimandscharo',
     slug: '10-tage-lemosho-unberuehrte-wege',
     durationDays: 10,
     startingPrice: 3599,
@@ -114,7 +115,7 @@ const kiliPackages = [
   },
   {
     id: 'rongai-8',
-    title: '8 Tage Rongai: Dein stiller Weg',
+    title: '8 Tage Rongai Route Kilimandscharo',
     slug: '8-tage-rongai-dein-stiller-weg',
     durationDays: 8,
     startingPrice: 2999,
@@ -126,13 +127,13 @@ const kiliPackages = [
   },
   {
     id: 'mount-meru-5',
-    title: '5 Tage Mount Meru: Dein Gipfel-Einstieg',
+    title: '5 Tage Mount Meru Besteigung',
     slug: '5-tage-mount-meru-besteigung',
     durationDays: 5,
     startingPrice: 2699,
     category: 'Expedition',
     tag: 'Einstiegsroute',
-    excerpt: 'Erklimmen Sie Afrikas zweithöchsten Gipfel als perfekte Vorbereitung für den Kilimanjaro oder als eigenständiges Abenteuer.',
+    excerpt: 'Erklimmen Sie Afrikas zweithöchsten Gipfel als perfekte Vorbereitung für den Kilimandscharo oder als eigenständiges Abenteuer.',
     highlights: ['Afrikas zweithöchster Peak', 'Perfekte Vorbereitung', 'Berghütten Komfort'],
     imageUrl: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800'
   }
@@ -170,7 +171,7 @@ export default function KilimanjaroPage() {
             transition={{ duration: 0.8 }}
             className="flex flex-col items-center space-y-6"
           >
-            <h1 className="font-headline text-white leading-none text-3xl sm:text-4xl md:text-6xl lg:text-8xl">
+            <h1 className="font-headline text-white leading-none text-3xl sm:text-4xl md:text-6xl lg:text-8xl tracking-tight">
               Kilimandscharo Expeditionen
             </h1>
             <p className="max-w-2xl mx-auto text-white/90 font-bold text-[10px] md:text-lg tracking-normal leading-relaxed">
@@ -181,7 +182,7 @@ export default function KilimanjaroPage() {
       </section>
 
       {/* 02 Intro Narrative */}
-      <section className="py-8 md:py-16 container mx-auto px-4 max-w-4xl text-center">
+      <section className="pt-8 md:pt-12 pb-12 md:pb-24 container mx-auto px-4 max-w-4xl text-center">
         <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary mb-6">
           Finde deine perfekte Kilimandscharo-Route & Traumreise
         </h2>
@@ -191,9 +192,9 @@ export default function KilimanjaroPage() {
       </section>
 
       {/* 03 Package Registry Grid */}
-      <section className="py-8 md:py-12 container mx-auto px-4 max-w-7xl">
+      <section className="pt-8 md:pt-12 pb-12 md:pb-24 container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12 md:mb-16 space-y-4">
-          <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter">
+          <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary">
             Erleben Sie das ultimative Abenteuer: Besteigen Sie das Dach Afrikas
           </h2>
         </div>
@@ -206,7 +207,7 @@ export default function KilimanjaroPage() {
       </section>
 
       {/* 04 Expert Narrative */}
-      <section className="py-12 md:py-20 bg-white border-y border-border/40">
+      <section className="pt-8 md:pt-12 pb-12 md:pb-24 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="space-y-8">
@@ -239,9 +240,9 @@ export default function KilimanjaroPage() {
       </section>
 
       {/* 05 Quick Facts Registry */}
-      <section className="py-12 md:py-20 bg-[#fdfcfb]">
-        <div className="container mx-auto px-4 max-w-7xl mb-12 text-center">
-          <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter">Kilimandscharo Quick Facts</h2>
+      <section className="pt-8 md:pt-12 pb-12 md:pb-24 bg-[#fdfcfb]">
+        <div className="container mx-auto px-4 max-w-7xl mb-12">
+          <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary text-center">Kilimandscharo Quick Facts</h2>
         </div>
         <div className="container mx-auto px-4 max-w-7xl relative">
           <div className="relative rounded-[3rem] overflow-hidden p-8 md:p-16 border border-border/50 shadow-2xl">
@@ -252,6 +253,7 @@ export default function KilimanjaroPage() {
               className="object-cover brightness-[0.3]"
               data-ai-hint="mount kilimanjaro"
             />
+            <div className="absolute inset-0 bg-secondary/40 backdrop-blur-[2px]" />
             <div className="relative z-10 grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-8">
               {[
                 { icon: TrendingUp, label: "Höhe", val: "5.895 Meter", sub: "Höchster Berg Afrikas" },
@@ -277,7 +279,7 @@ export default function KilimanjaroPage() {
       </section>
 
       {/* 06 Video Registry */}
-      <section className="py-12 md:py-20 bg-white border-y border-border/40">
+      <section className="pt-8 md:pt-12 pb-12 md:pb-24 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl text-center space-y-12">
           <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary">Erleben Sie die Magie des Kilimandscharo</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
@@ -296,10 +298,10 @@ export default function KilimanjaroPage() {
       </section>
 
       {/* 07 Highlights Galerie */}
-      <section className="py-12 md:py-20 bg-white border-y border-border/40 overflow-hidden">
+      <section className="pt-8 md:pt-12 pb-12 md:pb-24 bg-white border-y border-border/40 overflow-hidden">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter">Kilimandscharo Highlights Galerie</h2>
+            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary">Kilimandscharo Highlights Galerie</h2>
           </div>
           
           {/* Desktop Grid */}
@@ -330,12 +332,12 @@ export default function KilimanjaroPage() {
       </section>
 
       {/* 08 Detailed Routes Registry - UI REDESIGN */}
-      <section className="py-12 md:py-20 bg-[#fdfcfb]">
+      <section className="pt-8 md:pt-12 pb-12 md:pb-24 bg-[#fdfcfb]">
         <div className="container mx-auto px-4 max-w-7xl space-y-24 md:space-y-40">
           
           <div className="text-center max-w-4xl mx-auto space-y-6">
             <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary">Beste Kilimandscharo Routen für ein unvergessliches Abenteuer</h2>
-            <p className="text-muted-foreground text-sm md:text-lg leading-relaxed">
+            <p className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal opacity-80">
               Es gibt sieben offizielle Kilimanjaro-Routen, jede mit eigenen Vorteilen und Herausforderungen. Sie unterscheiden sich in Länge, Schwierigkeitsgrad, Landschaft, Besucherandrang, Art der Unterkünfte und vielem mehr.
             </p>
           </div>
@@ -401,7 +403,7 @@ export default function KilimanjaroPage() {
       </section>
 
       {/* 09 Best Time to Climb */}
-      <section className="py-12 md:py-20 bg-white border-y border-border/40">
+      <section className="pt-8 md:pt-12 pb-12 md:pb-24 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
             <div className="lg:col-span-5 space-y-8">
@@ -435,7 +437,7 @@ export default function KilimanjaroPage() {
       </section>
 
       {/* 10 Preparation Registry - UI REDESIGN */}
-      <section className="py-12 md:py-20 bg-[#FDF7F2] border-b border-border/40">
+      <section className="pt-8 md:pt-12 pb-12 md:pb-24 bg-[#FDF7F2] border-b border-border/40">
         <div className="container mx-auto px-4 max-w-5xl text-center space-y-10">
           <div className="space-y-4">
             <span className="text-primary font-bold text-[10px]">Registry Protocol</span>
@@ -457,7 +459,7 @@ export default function KilimanjaroPage() {
       </section>
 
       {/* 11 Testimonials */}
-      <section className="py-12 md:py-20 bg-white border-b border-border/40">
+      <section className="pt-8 md:pt-12 pb-12 md:pb-24 bg-white border-b border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12 md:mb-20">
             <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary tracking-tighter">Hören Sie von denen, die mit uns dort waren</h2>
@@ -486,7 +488,7 @@ export default function KilimanjaroPage() {
       </section>
 
       {/* 12 FAQ Registry */}
-      <section className="py-12 md:py-20 bg-white">
+      <section className="pt-8 md:pt-12 pb-12 md:pb-24 bg-white">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-12">
             <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary">Häufig gestellte Fragen zum Kilimandscharo Trekking</h2>
