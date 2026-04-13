@@ -8,10 +8,6 @@ import { Compass, Phone, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
-/**
- * High-Density 2x2 Mosaic Hub.
- * Compacted heights and natural casing typography.
- */
 export function AiCTA() {
   const elephantsSunset = PlaceHolderImages.find(img => img.id === 'elephants-sunset-lake');
 
@@ -69,7 +65,7 @@ export function AiCTA() {
         </div>
 
         {/* Tile 2: Field Imagery */}
-        <div className="relative aspect-square md:aspect-auto min-h-[350px] md:min-h-full overflow-hidden order-2">
+        <div className="relative aspect-square md:aspect-auto min-h-[350px] md:min-h-[400px] overflow-hidden order-2">
           <Image 
             src="https://images.unsplash.com/photo-1731355775887-e6b2484f494c?q=80&w=1200"
             alt="Safari Expert Guide"
@@ -117,7 +113,7 @@ export function AiCTA() {
         </div>
 
         {/* Tile 4: Atmospheric Anchor */}
-        <div className="relative aspect-square md:aspect-auto min-h-[350px] md:min-h-full overflow-hidden order-4 md:order-3 border-t border-border/40">
+        <div className="relative aspect-square md:aspect-auto min-h-[350px] md:min-h-[400px] overflow-hidden order-4 md:order-3 border-t border-border/40">
           <Image 
             src={elephantsSunset?.imageUrl || "https://images.unsplash.com/photo-1539760397268-33f5146dd9e2?q=80&w=1200"}
             alt="Elephants at Sunset"

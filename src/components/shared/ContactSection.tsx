@@ -55,12 +55,12 @@ export function ContactSection() {
       </div>
 
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
-        <div className="text-center mb-8 md:mb-10 space-y-2">
+        <div className="text-center mb-8 md:mb-10 space-y-2 text-left">
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-normal"
+            className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-normal text-center"
           >
             Ihre Expedition beginnt hier
           </motion.h2>
@@ -69,7 +69,7 @@ export function ContactSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground font-normal text-sm md:text-base max-xl mx-auto opacity-80"
+            className="text-muted-foreground font-normal text-sm md:text-base max-xl mx-auto opacity-80 text-center"
           >
             Vom ersten Gedanken bis zum ersten Schritt in der Savanne – unsere Spezialisten begleiten Sie persönlich.
           </motion.p>
@@ -83,9 +83,7 @@ export function ContactSection() {
                 <h3 className="text-xl md:text-2xl font-headline font-bold text-secondary tracking-tight whitespace-nowrap">
                   Premium Beratung
                 </h3>
-                <p className="text-[10px] font-bold text-muted-foreground tracking-widest uppercase">
-                  Berlin Head Office • Safari Ops
-                </p>
+                <p className="text-[10px] font-bold text-muted-foreground tracking-widest uppercase leading-none">Berlin Head Office • Safari Ops</p>
               </div>
 
               <div className="space-y-6">
@@ -109,7 +107,7 @@ export function ContactSection() {
                   <Phone className="w-4 h-4 text-primary group-hover:text-white transition-colors" />
                 </div>
                 <div>
-                  <p className="text-[10px] font-bold text-muted-foreground">Hotline</p>
+                  <p className="text-[10px] font-bold text-muted-foreground leading-none">Hotline</p>
                   <p className="text-sm font-bold text-secondary tracking-tight">+49 30 22608080</p>
                 </div>
               </div>
