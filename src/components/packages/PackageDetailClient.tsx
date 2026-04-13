@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -13,34 +12,16 @@ import {
   Mountain,
   Home,
   Waves,
-  ChevronDown,
-  CheckCircle2,
-  Plus,
   FileText,
-  HelpCircle
+  Plus
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { 
-  Carousel, 
-  CarouselContent, 
-  CarouselItem, 
-  CarouselNext, 
-  CarouselPrevious 
-} from "@/components/ui/carousel";
 import { cn } from '@/lib/utils';
 import { ContactSection } from '@/components/shared/ContactSection';
 import { AiCTA } from '@/components/sections/AiCTA';
-
-const highlights = [
-  { title: "Serengeti-Safari", desc: "Erleben Sie die große Tierwanderung und beobachten Sie die Big Five in ihrer natürlichen Umgebung.", icon: Compass },
-  { title: "Ngorongoro-Krater", desc: "Entdecken Sie das achte Weltwunder und seine einzigartige Konzentration an Wildtieren.", icon: Mountain },
-  { title: "Sansibar Strände", desc: "Entspannen Sie an den kristallklaren Gewässern und weißen Sandstränden des Indischen Ozeans.", icon: Waves },
-  { title: "Maasai Kultur", desc: "Tauchen Sie ein in die faszinierenden Traditionen und Lebensweisen des Maasai-Volkes.", icon: Users },
-  { title: "Luxus-Lodges", desc: "Übernachten Sie in handverlesenen Boutique-Lodges mit höchstem Komfort und Service.", icon: Home }
-];
 
 const faqData = [
   { q: "Benötige ich ein Visum für Tansania?", a: "Ja, für deutsche Staatsangehörige ist ein Visum erforderlich. Dies kann bequem vorab als E-Visum oder bei der Ankunft am Flughafen erworben werden." },
@@ -99,7 +80,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
       <motion.div className="fixed top-0 left-0 right-0 h-1 bg-primary z-[110] origin-left" style={{ scaleX }} />
 
-      {/* 01 CENTERED HERO */}
+      {/* 01 CENTERED BOTTOM HERO */}
       <section className="relative h-[70vh] md:h-[85vh] w-full overflow-hidden bg-secondary">
         <div className="absolute inset-0 z-0">
           <Image 
@@ -124,7 +105,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                 {pkg.title}
               </h1>
               <p className="text-white/90 font-light text-xs md:text-lg leading-relaxed max-w-2xl mx-auto">
-                {pkg.heroDescription || "Ihre private Safari-Expedition durch Tansania und exklusive Erholung auf Sansibar."}
+                {pkg.heroDescription}
               </p>
             </div>
             
@@ -160,7 +141,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
           <div className="hidden lg:flex items-center gap-6">
             <div className="text-right">
               <p className="text-[9px] font-bold text-muted-foreground leading-none mb-1">Preise ab</p>
-              <p className="text-sm font-bold text-secondary">€{(pkg.startingPrice || 5399).toLocaleString('de-DE')}</p>
+              <p className="text-sm font-bold text-secondary">€{(pkg.startingPrice || 2999).toLocaleString('de-DE')}</p>
             </div>
             <Button onClick={() => scrollTo('inquiry')} size="sm" className="rounded-xl h-11 px-8 text-[10px] font-bold shadow-xl border-none">Anfrage senden</Button>
           </div>
@@ -168,7 +149,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
       </div>
 
       {/* 03 NARRATIVE & MASTER CARD */}
-      <section ref={overviewRef} className="pt-8 pb-12 bg-white scroll-mt-20">
+      <section ref={overviewRef} className="pt-8 md:pt-12 pb-12 bg-white scroll-mt-20">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
             <div className="lg:col-span-7 space-y-6 md:space-y-10">
@@ -189,18 +170,48 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                       <p className="text-[#C9A876] font-bold text-[10px] tracking-widest uppercase mb-1">Master-Registry</p>
                       <h3 className="font-headline text-2xl md:text-[28px] font-medium text-secondary">{pkg.title}</h3>
                     </div>
+                    
                     <div className="space-y-4">
-                      <div><p className="text-secondary font-bold text-sm">Reisedauer</p><p className="text-sm text-muted-foreground">{pkg.durationDays}-tägig, Flüge inklusive</p></div>
-                      <div><p className="text-secondary font-bold text-sm">Unterkünfte</p><p className="text-sm text-muted-foreground">Handverlesene Tented Lodges & Boutique Hotels</p></div>
-                      <div><p className="text-secondary font-bold text-sm">Exklusivität</p><p className="text-sm text-muted-foreground">Privat-Safari mit eigenem Guide & Jeep</p></div>
-                    </div>
-                    <div className="pt-5 border-t border-border/40 flex flex-col md:flex-row items-end justify-between gap-4">
-                      <div className="flex flex-col">
-                        <span className="text-sm text-primary font-bold line-through opacity-60">{(pkg.startingPrice * 1.15).toLocaleString('de-DE')} €</span>
-                        <span className="text-2xl md:text-3xl font-black text-secondary tracking-tight">ab {(pkg.startingPrice || 5399).toLocaleString('de-DE')} €</span>
-                        <p className="text-[10px] font-bold text-primary mt-0.5">pro Person im Doppelzimmer</p>
+                      <div className="grid grid-cols-1 gap-4">
+                        <div>
+                          <p className="text-secondary font-bold text-sm">Reisedauer</p>
+                          <p className="text-sm text-muted-foreground">{pkg.durationDays}-tägig, Flüge inklusive</p>
+                        </div>
+                        <div>
+                          <p className="text-secondary font-bold text-sm">Unterkünfte</p>
+                          <p className="text-sm text-muted-foreground">Handverlesene Tented Lodges & Boutique Hotels</p>
+                        </div>
+                        <div>
+                          <p className="text-secondary font-bold text-sm">Exklusive Gruppen</p>
+                          <p className="text-sm text-muted-foreground">Privat-Safari mit eigenem Guide & Jeep</p>
+                        </div>
+                        <div>
+                          <p className="text-secondary font-bold text-sm">Reisezeit</p>
+                          <p className="text-sm text-muted-foreground">Ganzjährig buchbar (Empfehlung: Jun-Okt)</p>
+                        </div>
                       </div>
-                      <Button onClick={() => scrollTo('inquiry')} className="w-full md:w-40 h-11 bg-primary text-white hover:bg-secondary font-bold text-[11px] border-none shadow-md">Verfügbarkeit prüfen</Button>
+                    </div>
+
+                    <div className="pt-5 border-t border-border/40 space-y-6">
+                      <div className="flex flex-wrap gap-2">
+                        <div className="px-3 py-1 bg-[#FDF7F2] border border-[#F0EBE0] rounded-full text-[10px] font-bold text-secondary">Inlandsflüge inkl.</div>
+                        <div className="px-3 py-1 bg-[#FDF7F2] border border-[#F0EBE0] rounded-full text-[10px] font-bold text-secondary">Vollpension</div>
+                        <div className="px-3 py-1 bg-[#FDF7F2] border border-[#F0EBE0] rounded-full text-[10px] font-bold text-secondary">Deutschsprachig</div>
+                      </div>
+
+                      <div className="flex items-end justify-between gap-4">
+                        <div className="flex flex-col">
+                          <span className="text-2xl md:text-3xl font-black text-secondary tracking-tight">ab {pkg.startingPrice?.toLocaleString('de-DE')} €</span>
+                          <p className="text-[10px] font-bold text-primary mt-0.5">pro Person im Doppelzimmer</p>
+                        </div>
+                        <Button onClick={() => scrollTo('inquiry')} className="h-11 px-6 bg-secondary text-white hover:bg-primary font-bold text-[11px] border-none shadow-md">
+                          Verfügbarkeit prüfen
+                        </Button>
+                      </div>
+                      
+                      <Button variant="outline" className="w-full h-11 border-muted text-secondary font-bold text-[11px] flex items-center justify-center gap-2">
+                        <FileText className="w-4 h-4" /> Reiseplan als PDF
+                      </Button>
                     </div>
                   </div>
                 </Card>
@@ -215,11 +226,11 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         <div className="container mx-auto px-4 max-w-7xl text-center space-y-12">
           <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary">Die Höhepunkte Ihrer Reise</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {highlights.slice(0, 3).map((h, i) => (
-              <Card key={i} className="border-none shadow-none bg-white rounded-3xl p-8">
-                <h.icon className="w-8 h-8 text-primary mx-auto mb-4" />
-                <h4 className="font-headline text-xl mb-2">{h.title}</h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">{h.desc}</p>
+            {(pkg.highlights || []).map((h: string, i: number) => (
+              <Card key={i} className="border-none shadow-none bg-white rounded-3xl p-8 flex flex-col items-center justify-center text-center">
+                <Compass className="w-8 h-8 text-primary mb-4" />
+                <h4 className="font-headline text-xl mb-2">{h}</h4>
+                <p className="text-sm text-muted-foreground leading-relaxed">Einzigartige Momente und exklusive Einblicke in die Natur.</p>
               </Card>
             ))}
           </div>
