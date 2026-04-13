@@ -18,7 +18,8 @@ import {
   Zap,
   ArrowRight,
   ChevronRight,
-  Plus
+  Plus,
+  Users
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -121,18 +122,18 @@ export default function KilimanjaroPage() {
             transition={{ duration: 0.8 }}
             className="flex flex-col items-center"
           >
-            <h1 className="font-headline text-white leading-none whitespace-nowrap text-3xl sm:text-4xl md:text-6xl lg:text-7xl tracking-normal uppercase">
+            <h1 className="font-headline text-white leading-none text-3xl sm:text-4xl md:text-6xl lg:text-7xl">
               Kilimandscharo Besteigung
             </h1>
-            <p className="max-w-2xl mx-auto text-white/90 font-normal text-xs md:text-lg tracking-wide mt-6 leading-relaxed uppercase">
-              Finden Sie Ihre perfekte Route zum Uhuru Peak. <br /> Eine Expedition, die über den Wolken beginnt.
+            <p className="max-w-2xl mx-auto text-white/90 font-light text-xs md:text-lg mt-6 leading-relaxed">
+              Finden Sie Ihre perfekte Route zum Uhuru Peak. Eine Expedition, die über den Wolken beginnt.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* 02 EXPERT MANIFEST */}
-      <section className="py-12 md:py-16 container mx-auto px-4 max-w-7xl text-left">
+      <section className="py-8 md:py-16 container mx-auto px-4 max-w-7xl text-left">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-20 items-center">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
@@ -144,12 +145,12 @@ export default function KilimanjaroPage() {
               <div className="inline-flex items-center gap-2 text-primary font-bold text-[10px] uppercase tracking-widest">
                 <Mountain className="w-4 h-4" /> Expeditions-Registry
               </div>
-              <h2 className="font-headline text-secondary text-2xl md:text-4xl lg:text-5xl font-normal leading-tight tracking-tight uppercase">
+              <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary mb-6">
                 Was macht den Berg <span className="text-primary font-bold">so legendär?</span>
               </h2>
             </div>
             
-            <div className="space-y-6 text-muted-foreground font-normal leading-relaxed text-sm md:text-base border-l-4 border-primary/20 pl-8 tracking-wide opacity-80 uppercase tracking-widest">
+            <div className="space-y-6 text-muted-foreground text-sm md:text-lg leading-relaxed font-normal opacity-80 border-l-4 border-primary/20 pl-8">
               <p>
                 Der Kilimandscharo vereint atemberaubende Landschaften, eine echte körperliche Herausforderung und den Nervenkitzel, den höchsten Gipfel Afrikas zu erklimmen.
               </p>
@@ -162,15 +163,15 @@ export default function KilimanjaroPage() {
               <div className="flex items-start gap-4 p-6 bg-white rounded-2xl border border-border shadow-sm group hover:border-primary transition-all">
                 <ShieldCheck className="w-6 h-6 text-primary shrink-0" />
                 <div className="space-y-1">
-                  <h4 className="font-bold text-xs text-secondary uppercase tracking-tight">Sicherheits-Fokus</h4>
-                  <p className="text-[10px] text-muted-foreground font-bold tracking-widest uppercase opacity-70 leading-relaxed">Tägliche Gesundheitschecks & modernste Ausrüstung.</p>
+                  <h4 className="font-bold text-xs md:text-base text-secondary uppercase leading-none">Sicherheits-Fokus</h4>
+                  <p className="text-[10px] md:text-xs text-muted-foreground font-bold uppercase tracking-widest opacity-70">Tägliche Gesundheitschecks & modernste Ausrüstung.</p>
                 </div>
               </div>
               <div className="flex items-start gap-4 p-6 bg-white rounded-2xl border border-border shadow-sm group hover:border-primary transition-all">
                 <Users className="w-6 h-6 text-primary shrink-0" />
                 <div className="space-y-1">
-                  <h4 className="font-bold text-xs text-secondary uppercase tracking-tight">Profi-Guides</h4>
-                  <p className="text-[10px] text-muted-foreground font-bold tracking-widest uppercase opacity-70 leading-relaxed">Staatlich geprüft mit über 100 Gipfelstürmen.</p>
+                  <h4 className="font-bold text-xs md:text-base text-secondary uppercase leading-none">Profi-Guides</h4>
+                  <p className="text-[10px] md:text-xs text-muted-foreground font-bold uppercase tracking-widest opacity-70">Staatlich geprüft mit über 100 Gipfelstürmen.</p>
                 </div>
               </div>
             </div>
@@ -194,20 +195,20 @@ export default function KilimanjaroPage() {
       </section>
 
       {/* 03 UNIQUE ASYMMETRICAL ROUTE BLUEPRINT */}
-      <section className="py-12 md:py-24 bg-[#f8f8f8] relative overflow-hidden text-left">
+      <section className="py-12 md:py-24 bg-[#f8f8f8] relative overflow-hidden text-left border-y border-border/40">
         <div className="absolute top-0 right-0 p-24 opacity-[0.02] pointer-events-none">
           <Compass className="w-[500px] h-[500px]" />
         </div>
 
         <div className="container relative z-10 mx-auto px-4 max-w-7xl">
-          <div className="flex flex-col md:flex-row items-end justify-between mb-16 md:mb-24 gap-8">
+          <div className="flex flex-col md:flex-row items-end justify-between mb-12 md:mb-16 gap-8">
             <div className="space-y-4">
               <span className="text-primary font-bold uppercase tracking-widest text-[10px]">Registry Protocol</span>
-              <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tight uppercase">
+              <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary mb-6">
                 Die legendären <span className="text-primary font-bold">Routen</span>
               </h2>
             </div>
-            <p className="text-muted-foreground font-bold text-sm md:text-base tracking-widest uppercase opacity-70 max-w-xs border-l-2 border-primary/20 pl-6 leading-relaxed">
+            <p className="text-muted-foreground text-sm md:text-base font-medium uppercase tracking-widest opacity-70 max-w-xs border-l-2 border-primary/20 pl-6 leading-relaxed">
               Jeder Pfad erzählt eine eigene Geschichte. Wählen Sie die Route, die zu Ihrer Kondition passt.
             </p>
           </div>
@@ -225,7 +226,7 @@ export default function KilimanjaroPage() {
                   idx === 1 ? "md:translate-y-12" : ""
                 )}
               >
-                <div className="bg-white rounded-[2rem] md:rounded-[3rem] p-8 md:p-12 shadow-sm border border-border/50 hover:shadow-2xl transition-all duration-700 flex flex-col justify-between h-full relative overflow-hidden">
+                <div className="bg-white rounded-[2rem] md:rounded-[3.5rem] p-8 md:p-12 shadow-sm border border-border/50 hover:shadow-2xl transition-all duration-700 flex flex-col justify-between h-full relative overflow-hidden">
                   <div className="absolute -top-4 -right-4 font-headline font-black text-8xl text-muted/5 select-none transition-colors group-hover:text-primary/5">
                     {route.id}
                   </div>
@@ -235,13 +236,13 @@ export default function KilimanjaroPage() {
                       <div className="w-12 h-12 rounded-2xl bg-secondary flex items-center justify-center shadow-lg group-hover:bg-primary transition-colors">
                         <Compass className="w-6 h-6 text-white" />
                       </div>
-                      <Badge variant="outline" className="rounded-lg border-primary/20 text-primary px-3 py-1 font-black text-[8px] uppercase tracking-widest">
+                      <Badge variant="outline" className="rounded-lg border-primary/20 text-primary px-3 py-1 font-bold text-[8px] uppercase tracking-widest">
                         Official Path
                       </Badge>
                     </div>
 
                     <div className="space-y-3">
-                      <h3 className="font-headline text-2xl md:text-4xl font-normal text-secondary tracking-tight uppercase group-hover:text-primary transition-colors">
+                      <h3 className="font-headline text-xl md:text-3xl font-normal text-secondary group-hover:text-primary transition-colors">
                         {route.name}
                       </h3>
                       <p className="text-sm leading-relaxed text-muted-foreground font-normal tracking-wide opacity-70 uppercase tracking-widest">
@@ -286,10 +287,10 @@ export default function KilimanjaroPage() {
       </section>
 
       {/* 04 WICHTIGE FAKTEN */}
-      <section className="py-12 md:py-24 bg-[#fdfcfb]">
-        <div className="container mx-auto px-4 max-get-7xl">
+      <section className="py-12 md:py-20 bg-[#fdfcfb]">
+        <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-10 md:mb-12 space-y-4">
-            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tight leading-none uppercase">Wichtige Fakten</h2>
+            <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary mb-6 text-center">Wichtige Fakten</h2>
             <div className="w-20 h-1 bg-primary mx-auto rounded-full opacity-40" />
           </div>
           
@@ -335,11 +336,11 @@ export default function KilimanjaroPage() {
       </section>
 
       {/* 05 SHARED PACKAGE CATALOG */}
-      <section className="py-12 md:py-24 container mx-auto px-4 max-get-7xl scroll-mt-20 text-left">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-20 gap-6">
+      <section className="py-8 md:py-16 container mx-auto px-4 max-w-7xl scroll-mt-20 text-left">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 gap-6">
           <div className="max-w-2xl">
             <span className="text-primary font-bold uppercase text-[10px] mb-2 block tracking-widest">Expeditions Portfolio</span>
-            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tight uppercase">Wählen Sie Ihre <span className="text-primary font-bold">Gipfeltour</span></h2>
+            <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary mb-6">Wählen Sie Ihre <span className="text-primary font-bold">Gipfeltour</span></h2>
           </div>
         </div>
 
@@ -358,22 +359,22 @@ export default function KilimanjaroPage() {
       </section>
 
       {/* 06 SYNCED FAQ */}
-      <section className="py-8 md:py-12 bg-[#FDF7F2] border-y border-border/40 scroll-mt-20 text-left">
+      <section className="py-12 md:py-20 bg-[#FDF7F2] border-y border-border/40 scroll-mt-20 text-left">
         <div className="container mx-auto px-4 max-w-4xl">
-          <div className="text-center mb-6 md:mb-8">
-            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tight uppercase">Häufig gestellte Fragen</h2>
+          <div className="text-center mb-10 md:mb-12">
+            <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary mb-6 text-center">Häufig gestellte Fragen</h2>
           </div>
 
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, i) => (
               <AccordionItem key={i} value={`item-${i}`} className="border-none bg-white rounded-2xl px-6 md:px-10 shadow-sm border border-transparent hover:border-border transition-all">
-                <AccordionTrigger className="font-normal text-base md:text-xl py-6 hover:no-underline text-left text-secondary transition-colors tracking-tight [&>svg]:hidden">
+                <AccordionTrigger className="font-bold text-base md:text-lg py-6 hover:no-underline text-left text-secondary transition-colors tracking-tight [&>svg]:hidden">
                   <div className="flex items-center justify-between w-full">
                     <span>{faq.question}</span>
                     <Plus className="w-4 h-4 text-primary shrink-0 transition-transform group-data-[state=open]:rotate-45" />
                   </div>
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground text-sm md:text-base leading-relaxed font-normal pb-8 opacity-80 text-left tracking-normal uppercase tracking-widest">
+                <AccordionContent className="text-muted-foreground text-sm md:text-base leading-relaxed font-normal pb-8 opacity-80 text-left">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
