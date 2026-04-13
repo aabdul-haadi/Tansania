@@ -55,12 +55,12 @@ export function ContactSection() {
       </div>
 
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
-        <div className="text-center mb-8 md:mb-10 space-y-2 text-left">
+        <div className="text-center mb-8 md:mb-10 space-y-2">
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-normal text-center"
+            className="font-headline text-3xl md:text-5xl font-normal text-secondary"
           >
             Ihre Expedition beginnt hier
           </motion.h2>
@@ -69,7 +69,7 @@ export function ContactSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground font-normal text-sm md:text-base max-xl mx-auto opacity-80 text-center"
+            className="text-muted-foreground font-normal text-sm md:text-base max-xl mx-auto opacity-80"
           >
             Vom ersten Gedanken bis zum ersten Schritt in der Savanne – unsere Spezialisten begleiten Sie persönlich.
           </motion.p>
@@ -79,8 +79,8 @@ export function ContactSection() {
           
           <div className="w-full lg:w-[35%] bg-[#FDF7F2] p-8 md:p-10 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-border/40 text-left">
             <div className="space-y-8">
-              <div className="space-y-3">
-                <h3 className="text-xl md:text-2xl font-headline font-bold text-secondary tracking-tight whitespace-nowrap">
+              <div className="space-y-2">
+                <h3 className="text-xl md:text-2xl font-headline font-bold text-secondary">
                   Premium Beratung
                 </h3>
                 <p className="text-[10px] font-bold text-muted-foreground tracking-widest uppercase leading-none">Berlin Head Office • Safari Ops</p>
@@ -89,34 +89,34 @@ export function ContactSection() {
               <div className="space-y-6">
                 {steps.map((step, i) => (
                   <div key={i} className="flex items-center gap-5 group">
-                    <div className="w-10 h-10 rounded-xl bg-white border border-[#F0EBE0] flex items-center justify-center shrink-0 shadow-sm group-hover:border-primary transition-all duration-500">
-                      <step.icon className="w-4 h-4 text-primary" />
+                    <div className="w-12 h-12 rounded-xl bg-white border border-[#F0EBE0] flex items-center justify-center shrink-0 shadow-sm group-hover:border-primary transition-all duration-500">
+                      <step.icon className="w-5 h-5 text-primary" />
                     </div>
                     <div className="space-y-0.5">
-                      <p className="text-[11px] font-bold text-secondary">{step.label}</p>
-                      <p className="text-[10px] font-medium text-muted-foreground/60">{step.sub}</p>
+                      <p className="text-sm md:text-base font-bold text-secondary">{step.label}</p>
+                      <p className="text-xs md:text-sm font-medium text-muted-foreground/60">{step.sub}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="pt-8 space-y-6">
+            <div className="pt-8 space-y-8">
               <div className="flex items-center gap-4 group cursor-pointer">
-                <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center border border-[#F0EBE0] group-hover:bg-primary group-hover:border-primary transition-all shadow-sm">
-                  <Phone className="w-4 h-4 text-primary group-hover:text-white transition-colors" />
+                <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center border border-[#F0EBE0] group-hover:bg-primary group-hover:border-primary transition-all shadow-sm">
+                  <Phone className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
                 </div>
                 <div>
-                  <p className="text-[10px] font-bold text-muted-foreground leading-none">Hotline</p>
-                  <p className="text-sm font-bold text-secondary tracking-tight">+49 30 22608080</p>
+                  <p className="text-xs font-bold text-muted-foreground leading-none mb-1">Hotline</p>
+                  <p className="text-base md:text-xl font-bold text-secondary">+49 30 22608080</p>
                 </div>
               </div>
-              <div className="p-5 bg-white rounded-xl border border-[#F0EBE0] shadow-sm">
+              <div className="p-6 bg-white rounded-xl border border-[#F0EBE0] shadow-sm">
                 <div className="flex items-center gap-3 mb-2">
-                  <ShieldCheck className="w-4 h-4 text-primary" />
-                  <span className="text-[10px] font-bold text-secondary">DRSF Schutz</span>
+                  <ShieldCheck className="w-5 h-5 text-primary" />
+                  <span className="text-sm md:text-base font-bold text-secondary">DRSF Schutz</span>
                 </div>
-                <p className="text-[10px] font-medium text-muted-foreground leading-relaxed">
+                <p className="text-xs md:text-sm font-medium text-muted-foreground leading-relaxed">
                   Ihre Reise ist durch den Deutschen Reisesicherungsfonds abgesichert.
                 </p>
               </div>
@@ -147,6 +147,7 @@ export function ContactSection() {
                   scrolling="no"
                   title="Contact Registry Form"
                   loading="lazy"
+                  allowTransparency
                 />
               ) : (
                 <div className="h-full flex items-center justify-center bg-muted/5 animate-pulse">
