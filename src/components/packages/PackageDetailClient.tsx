@@ -9,11 +9,15 @@ import {
   ChevronRight, 
   Users,
   Compass,
-  Mountain,
   Home,
   Waves,
   FileText,
-  Plus
+  Plus,
+  CheckCircle2,
+  Star,
+  Zap,
+  ShieldCheck,
+  Coffee
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -149,13 +153,13 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
       </div>
 
       {/* 03 NARRATIVE & MASTER CARD */}
-      <section ref={overviewRef} className="pt-8 md:pt-12 pb-12 bg-white scroll-mt-20">
+      <section ref={overviewRef} className="pt-6 md:pt-10 pb-10 bg-white scroll-mt-20">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
-            <div className="lg:col-span-7 space-y-6 md:space-y-10">
+            <div className="lg:col-span-7 space-y-6 md:space-y-10 text-left">
               <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary leading-tight">Eine Reise, die berührt</h2>
               <div className="relative aspect-[16/10] md:aspect-[21/9] rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden shadow-xl border border-border/50 bg-muted">
-                <Image src={pkg.imageUrl || 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200'} alt="Safari" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" />
+                <Image src={pkg.imageUrl || 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200'} alt="Safari" fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
               </div>
               <p className="text-base leading-relaxed text-muted-foreground opacity-80 border-l-4 border-primary/20 pl-8">
                 Erleben Sie die pure Magie Ostafrikas. Von den goldenen Savannen der Serengeti bis zum türkisblauen Indischen Ozean auf Sansibar. Diese Reise wurde konzipiert, um Ihnen die Seele Tansanias näherzubringen – exklusiv und mit höchstem Komfort.
@@ -168,24 +172,24 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                   <div className="space-y-6">
                     <div>
                       <p className="text-[#C9A876] font-bold text-[10px] tracking-widest uppercase mb-1">Master-Registry</p>
-                      <h3 className="font-headline text-2xl md:text-[28px] font-medium text-secondary">{pkg.title}</h3>
+                      <h3 className="font-headline text-2xl md:text-[28px] font-medium text-secondary leading-tight">{pkg.title}</h3>
                     </div>
                     
                     <div className="space-y-4">
                       <div className="grid grid-cols-1 gap-4">
-                        <div>
+                        <div className="flex flex-col">
                           <p className="text-secondary font-bold text-sm">Reisedauer</p>
                           <p className="text-sm text-muted-foreground">{pkg.durationDays}-tägig, Flüge inklusive</p>
                         </div>
-                        <div>
+                        <div className="flex flex-col">
                           <p className="text-secondary font-bold text-sm">Unterkünfte</p>
                           <p className="text-sm text-muted-foreground">Handverlesene Tented Lodges & Boutique Hotels</p>
                         </div>
-                        <div>
-                          <p className="text-secondary font-bold text-sm">Exklusive Gruppen</p>
+                        <div className="flex flex-col">
+                          <p className="text-secondary font-bold text-sm">Exklusivität</p>
                           <p className="text-sm text-muted-foreground">Privat-Safari mit eigenem Guide & Jeep</p>
                         </div>
-                        <div>
+                        <div className="flex flex-col">
                           <p className="text-secondary font-bold text-sm">Reisezeit</p>
                           <p className="text-sm text-muted-foreground">Ganzjährig buchbar (Empfehlung: Jun-Okt)</p>
                         </div>
@@ -201,7 +205,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
 
                       <div className="flex items-end justify-between gap-4">
                         <div className="flex flex-col">
-                          <span className="text-2xl md:text-3xl font-black text-secondary tracking-tight">ab {pkg.startingPrice?.toLocaleString('de-DE')} €</span>
+                          <span className="text-2xl md:text-3xl font-black text-secondary">ab {pkg.startingPrice?.toLocaleString('de-DE')} €</span>
                           <p className="text-[10px] font-bold text-primary mt-0.5">pro Person im Doppelzimmer</p>
                         </div>
                         <Button onClick={() => scrollTo('inquiry')} className="h-11 px-6 bg-secondary text-white hover:bg-primary font-bold text-[11px] border-none shadow-md">
@@ -237,9 +241,9 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         </div>
       </section>
 
-      <section ref={itineraryRef} className="py-8 md:py-16 bg-white scroll-mt-20">
+      <section ref={itineraryRef} className="py-8 md:py-12 bg-white scroll-mt-20">
         <div className="container mx-auto px-4 max-w-5xl">
-          <div className="text-center mb-10 space-y-2">
+          <div className="text-center mb-8 space-y-2">
             <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary">Ihr Reiseverlauf</h2>
             <p className="text-muted-foreground text-sm">Eine sorgfältig kuratierte Route durch die schönsten Regionen Tansanias</p>
           </div>
@@ -300,7 +304,7 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
           <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary">Häufig gestellte Fragen</h2>
           <Accordion type="single" collapsible className="space-y-4">
             {faqData.map((faq, i) => (
-              <AccordionItem key={i} value={`faq-${i}`} className="border-none bg-white rounded-2xl px-8 shadow-sm">
+              <AccordionItem key={i} value={`faq-${i}`} className="border-none bg-white rounded-2xl px-8 shadow-sm transition-all hover:shadow-md">
                 <AccordionTrigger className="font-bold text-base py-6 hover:no-underline text-left text-secondary [&>svg]:hidden">
                   <div className="flex items-center justify-between w-full"><span>{faq.q}</span><Plus className="w-4 h-4 text-primary transition-transform group-data-[state=open]:rotate-45" /></div>
                 </AccordionTrigger>
