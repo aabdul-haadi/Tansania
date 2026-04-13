@@ -17,7 +17,8 @@ import {
   Star,
   Zap,
   ShieldCheck,
-  Coffee
+  Coffee,
+  Ticket
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -230,9 +231,9 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         <div className="container mx-auto px-4 max-w-7xl text-center space-y-12">
           <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary">Die Höhepunkte Ihrer Reise</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {(pkg.highlights || []).map((h: string, i: number) => (
-              <Card key={i} className="border-none shadow-none bg-white rounded-3xl p-8 flex flex-col items-center justify-center text-center">
-                <Compass className="w-8 h-8 text-primary mb-4" />
+            {(pkg.highlights || []).slice(0, 3).map((h: string, i: number) => (
+              <Card key={i} className="border-none shadow-none bg-white rounded-3xl p-8 flex flex-col items-center justify-center text-center group transition-all duration-500">
+                <Compass className="w-8 h-8 text-primary mb-4 group-hover:scale-110 transition-transform" />
                 <h4 className="font-headline text-xl mb-2">{h}</h4>
                 <p className="text-sm text-muted-foreground leading-relaxed">Einzigartige Momente und exklusive Einblicke in die Natur.</p>
               </Card>
@@ -262,10 +263,17 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
                   {group.map((day: any, dIdx: number) => (
                     <div key={dIdx} className="flex gap-6 md:gap-10 text-left items-start">
                       <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#FDF7F2] flex items-center justify-center font-bold text-primary shrink-0">{gIdx * 5 + dIdx + 1}</div>
-                      <div className="flex-1 bg-white rounded-3xl border border-border/40 p-6 md:p-10 shadow-sm">
-                        <Badge className="bg-primary/10 text-primary border-none text-[9px] mb-2">{day.location}</Badge>
-                        <h4 className="font-headline text-xl md:text-3xl mb-4">{day.title}</h4>
-                        <p className="text-sm md:text-base text-muted-foreground leading-relaxed">{day.desc}</p>
+                      <div className="flex-1 bg-white rounded-3xl border border-border/40 overflow-hidden shadow-sm flex flex-col md:flex-row">
+                        <div className="flex-1 p-6 md:p-10 space-y-4">
+                          <Badge className="bg-primary/10 text-primary border-none text-[9px] mb-2">{day.location}</Badge>
+                          <h4 className="font-headline text-xl md:text-3xl mb-4">{day.title}</h4>
+                          <p className="text-sm md:text-base text-muted-foreground leading-relaxed">{day.desc}</p>
+                        </div>
+                        {day.img && (
+                          <div className="md:w-1/3 relative aspect-video md:aspect-auto min-h-[200px]">
+                            <Image src={day.img} alt={day.title} fill className="object-cover" />
+                          </div>
+                        )}
                       </div>
                     </div>
                   ))}
@@ -281,15 +289,19 @@ export function PackageDetailClient({ pkg }: PackageDetailClientProps) {
         <div className="container mx-auto px-4 max-w-7xl text-center space-y-12">
           <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary">Handverlesene Unterkünfte</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-[2rem] overflow-hidden border border-border/40 shadow-sm text-left">
-              <div className="relative aspect-video"><Image src="https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=800" alt="Lodge" fill className="object-cover" /></div>
+            <div className="bg-white rounded-[2rem] overflow-hidden border border-border/40 shadow-sm text-left group">
+              <div className="relative aspect-video overflow-hidden">
+                <Image src="https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=800" alt="Lodge" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+              </div>
               <div className="p-8 space-y-4">
                 <h3 className="font-headline text-2xl font-medium">Boutique Safari-Lodges</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">Luxuriöse Zeltcamps und Lodges mitten in der Wildnis. Jede Unterkunft verbindet authentisches Safari-Feeling mit höchstem Komfort.</p>
               </div>
             </div>
-            <div className="bg-white rounded-[2rem] overflow-hidden border border-border/40 shadow-sm text-left">
-              <div className="relative aspect-video"><Image src="https://images.unsplash.com/photo-1590001158193-79013ac7fa77?q=80&w=800" alt="Beach" fill className="object-cover" /></div>
+            <div className="bg-white rounded-[2rem] overflow-hidden border border-border/40 shadow-sm text-left group">
+              <div className="relative aspect-video overflow-hidden">
+                <Image src="https://images.unsplash.com/photo-1590001158193-79013ac7fa77?q=80&w=800" alt="Beach" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+              </div>
               <div className="p-8 space-y-4">
                 <h3 className="font-headline text-2xl font-medium">Sansibar Beach Retreat</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">Ihr privates Strandparadies auf Sansibar. Exklusives Boutique-Resort direkt am schneeweißen Sandstrand.</p>
