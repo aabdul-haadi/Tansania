@@ -85,7 +85,7 @@ const pkgData = {
       day: 10, 
       location: 'Lake Manyara', 
       title: 'Vogelparadies', 
-      desc: 'Flamingos am Ufer des Sodasees und baumkletternde Löwen machen diesen Park zu einem Juwel am Afrikanischen Grabenbruch.',
+      desc: 'Flamingos am Ufer des Sodasees und baumkletternden Löwen machen diesen Park zu einem Juwel am Afrikanischen Grabenbruch.',
       img: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800'
     },
     { 
