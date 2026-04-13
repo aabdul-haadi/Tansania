@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -28,6 +27,7 @@ import {
   Heart
 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
 import { PackageCard } from '@/components/shared/PackageCard';
@@ -323,7 +323,7 @@ export default function SafarisPage() {
                   Erlebe das Beste aus beiden Welten mit einer Tansania Safari und Baden Sansibar. Beginne dein Abenteuer mit einer aufregenden Safari durch die Nationalparks Tansanias, wie die Serengeti oder den Ngorongoro-Krater.
                 </p>
                 <p>
-                  Anschließend kannst du dich auf der Insel Sansibar entspannen, bekannt für ihre weißen Sandstrände, kristallklaren Gewässer und die faszinierende Mischung aus Kulturen. Tauche ein in die historische Altstadt von Stone Town.
+                  Anschließend kannst du dich auf the Insel Sansibar entspannen, bekannt für ihre weißen Sandstrände, kristallklaren Gewässer und die faszinierende Mischung aus Kulturen. Tauche ein in die Schönheit der Insel, schwimme im warmen Ozean oder erkunde die historische Altstadt von Stone Town.
                 </p>
               </div>
               <Button asChild size="lg" className="rounded-xl px-10 h-14 font-bold shadow-xl border-none">
