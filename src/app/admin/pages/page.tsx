@@ -27,15 +27,15 @@ const siteRegistry = [
     id: "core",
     icon: Layers,
     routes: [
-      { title: "Homepage", path: "/", status: "Live", sub: "Primary Entry" },
-      { title: "Safari Catalog", path: "/safaris", status: "Live", sub: "Master Hub" },
-      { title: "Journal Registry", path: "/blog", status: "Live", sub: "Content Engine" },
-      { title: "National Parks", path: "/national-parks", status: "Live", sub: "Conservation Hub" },
-      { title: "Migration Tracker", path: "/migration", status: "Live", sub: "Wildlife Ops" },
-      { title: "Trip Planner", path: "/trip-planner", status: "Live", sub: "Lead Gen" },
+      { title: "Homepage", path: "/", status: "Live", sub: "Primary entry" },
+      { title: "Safari Catalog", path: "/safaris", status: "Live", sub: "Master hub" },
+      { title: "Journal Registry", path: "/blog", status: "Live", sub: "Content engine" },
+      { title: "National Parks", path: "/national-parks", status: "Live", sub: "Conservation hub" },
+      { title: "Migration Tracker", path: "/migration", status: "Live", sub: "Wildlife ops" },
+      { title: "Trip Planner", path: "/trip-planner", status: "Live", sub: "Lead gen" },
       { title: "AI Trip Advisor", path: "/trip-advisor", status: "Live", sub: "Intelligence" },
-      { title: "Itinerary Builder", path: "/itinerary-builder", status: "Live", sub: "AI Architect" },
-      { title: "About Us", path: "/about", status: "Live", sub: "Brand Identity" },
+      { title: "Itinerary Builder", path: "/itinerary-builder", status: "Live", sub: "AI architect" },
+      { title: "About Us", path: "/about", status: "Live", sub: "Brand identity" },
     ]
   },
   {
@@ -43,11 +43,11 @@ const siteRegistry = [
     id: "regional",
     icon: MapPin,
     routes: [
-      { title: "Tansania Master", path: "/destinations/tanzania", status: "Live", sub: "Country Hub" },
-      { title: "Sansibar Paradise", path: "/destinations/zanzibar", status: "Live", sub: "Island Hub" },
-      { title: "Kilimandscharo Summit", path: "/destinations/kilimanjaro", status: "Live", sub: "Peak Hub" },
-      { title: "Ägypten Specialist", path: "/destinations/egypt", status: "Live", sub: "Cairo Office" },
-      { title: "Kenia Safari", path: "/destinations/kenya", status: "Pending", sub: "Expansion" },
+      { title: "Tanzania Master", path: "/destinations/tanzania", status: "Live", sub: "Country hub" },
+      { title: "Zanzibar Paradise", path: "/destinations/zanzibar", status: "Live", sub: "Island hub" },
+      { title: "Kilimanjaro Summit", path: "/destinations/kilimanjaro", status: "Live", sub: "Peak hub" },
+      { title: "Egypt Specialist", path: "/destinations/egypt", status: "Live", sub: "Cairo office" },
+      { title: "Kenya Safari", path: "/destinations/kenya", status: "Pending", sub: "Expansion" },
       { title: "Botswana Wild", path: "/destinations/botswana", status: "Pending", sub: "Expansion" },
       { title: "Namibia Dunes", path: "/destinations/namibia", status: "Pending", sub: "Expansion" },
       { title: "Uganda Gorillas", path: "/destinations/uganda", status: "Pending", sub: "Expansion" },
@@ -58,14 +58,14 @@ const siteRegistry = [
     id: "catalog",
     icon: LayoutGrid,
     routes: [
-      { title: "15 Tage Safari Tansania & Sansibar", path: "/safaris/15-day-safari-zanzibar", status: "Live", sub: "Signature" },
-      { title: "13 Tage Safari & Sansibar Classic", path: "/safaris/safari-sansibar-13-tage", status: "Live", sub: "Signature" },
-      { title: "11 Tage Safari & Sansibar Kompakt", path: "/safaris/safari-sansibar-11-tage", status: "Live", sub: "Signature" },
-      { title: "10 Tage Lemosho Expedition", path: "/safaris/10-tage-lemosho-unberuehrte-wege", status: "Live", sub: "Expedition" },
-      { title: "8 Tage Marangu Route", path: "/safaris/8-tage-marangu-komfortabel-zum-gipfel", status: "Live", sub: "Expedition" },
-      { title: "9 Tage Machame Route", path: "/safaris/9-tage-machame-der-abenteuer-weg", status: "Live", sub: "Expedition" },
-      { title: "12 Tage Camping Safari", path: "/safaris/12-tage-camping-safari", status: "Live", sub: "Adventure" },
-      { title: "5 Tage Mount Meru", path: "/safaris/5-tage-mount-meru-besteigung", status: "Live", sub: "Entry Expedition" },
+      { title: "15 Day Safari Tanzania & Zanzibar", path: "/safaris/15-day-safari-zanzibar", status: "Live", sub: "Signature" },
+      { title: "13 Day Safari & Zanzibar Classic", path: "/safaris/safari-sansibar-13-tage", status: "Live", sub: "Signature" },
+      { title: "11 Day Safari & Zanzibar Compact", path: "/safaris/safari-sansibar-11-tage", status: "Live", sub: "Signature" },
+      { title: "10 Day Lemosho Expedition", path: "/safaris/10-tage-lemosho-unberuehrte-wege", status: "Live", sub: "Expedition" },
+      { title: "8 Day Marangu Route", path: "/safaris/8-tage-marangu-komfortabel-zum-gipfel", status: "Live", sub: "Expedition" },
+      { title: "9 Day Machame Route", path: "/safaris/9-tage-machame-der-abenteuer-weg", status: "Live", sub: "Expedition" },
+      { title: "12 Day Camping Safari", path: "/safaris/12-tage-camping-safari", status: "Live", sub: "Adventure" },
+      { title: "5 Day Mount Meru", path: "/safaris/5-tage-mount-meru-besteigung", status: "Live", sub: "Entry expedition" },
     ]
   },
   {
@@ -73,9 +73,9 @@ const siteRegistry = [
     id: "journal",
     icon: Activity,
     routes: [
-      { title: "Luxus-Safari Tansania", path: "/blog/luxus-safari-tansania-15-tage", status: "Live", sub: "Editorial" },
-      { title: "Wildebeest Migration Insights", path: "/blog/wildebeest-migration-insights", status: "Live", sub: "SEO Strategy" },
-      { title: "Beste Reisezeit Tansania", path: "/blog/beste-reisezeit-tansania", status: "Live", sub: "User Guide" },
+      { title: "Luxus-Safari Tanzania", path: "/blog/luxus-safari-tansania-15-tage", status: "Live", sub: "Editorial" },
+      { title: "Wildebeest Migration Insights", path: "/blog/wildebeest-migration-insights", status: "Live", sub: "SEO strategy" },
+      { title: "Beste Reisezeit Tanzania", path: "/blog/beste-reisezeit-tansania", status: "Live", sub: "User guide" },
       { title: "Safari Packliste Experten", path: "/blog/safari-packliste-experten", status: "Live", sub: "Utility" },
     ]
   },
@@ -86,12 +86,12 @@ const siteRegistry = [
     routes: [
       { title: "Reise-Store", path: "/reise-shop", status: "Live", sub: "Ecommerce" },
       { title: "Guest Protection", path: "/services/guest-protection", status: "Live", sub: "Insurance" },
-      { title: "Partnernetzwerk", path: "/partner", status: "Live", sub: "B2B" },
-      { title: "Karriere", path: "/karriere", status: "Live", sub: "HR" },
-      { title: "Fam Trip", path: "/fam-trip", status: "Live", sub: "Agent Portal" },
+      { title: "Partner Network", path: "/partner", status: "Live", sub: "B2B" },
+      { title: "Careers", path: "/karriere", status: "Live", sub: "HR" },
+      { title: "Fam Trip", path: "/fam-trip", status: "Live", sub: "Agent portal" },
       { title: "Imprint", path: "/legal/imprint", status: "Live", sub: "Legal" },
       { title: "Privacy", path: "/legal/privacy", status: "Live", sub: "Compliance" },
-      { title: "EU-Directive", path: "/legal/directive", status: "Live", sub: "Consumer Rights" },
+      { title: "EU Directive", path: "/legal/directive", status: "Live", sub: "Consumer rights" },
     ]
   }
 ];
@@ -128,14 +128,14 @@ export default function SiteRegistry() {
               </div>
               <h1 className="font-headline text-2xl md:text-5xl font-normal text-secondary leading-none">Infrastructure Registry</h1>
             </div>
-            <p className="text-muted-foreground text-[10px] font-bold tracking-widest pl-1">
-              Scale Control • 500+ Path Real-time Monitoring
+            <p className="text-muted-foreground text-[10px] font-bold tracking-normal pl-1">
+              Scale control • 500+ path real-time monitoring
             </p>
           </div>
           
           <div className="flex items-center gap-4">
             <Badge className="h-10 md:h-12 px-4 md:px-6 rounded-2xl font-bold text-[10px] bg-secondary text-white border-none shadow-xl">
-              {totalRoutes}+ Active templates
+              {totalRoutes}+ active templates
             </Badge>
           </div>
         </div>
@@ -153,8 +153,8 @@ export default function SiteRegistry() {
           />
         </div>
 
-        {/* Registry Groups */}
-        <div className="flex flex-col gap-12 md:gap-16 pb-32">
+        {/* Registry Grid: 2 columns on large screens */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 pb-32">
           {filteredRegistry.map((group) => (
             <div key={group.id} className="flex flex-col gap-6 md:gap-8">
               <div className="flex items-center gap-4 md:gap-6 px-2">
@@ -163,42 +163,42 @@ export default function SiteRegistry() {
                 </div>
                 <div>
                   <h2 className="font-headline text-lg md:text-2xl font-normal text-secondary leading-none">{group.category}</h2>
-                  <p className="text-[8px] font-bold text-muted-foreground tracking-widest mt-1.5">Registry cluster: {group.id}</p>
+                  <p className="text-[8px] font-bold text-muted-foreground tracking-normal mt-1.5 opacity-60">Registry cluster: {group.id}</p>
                 </div>
                 <div className="h-px flex-grow bg-muted" />
               </div>
               
               <div className="flex flex-col bg-white rounded-[1.5rem] md:rounded-[2.5rem] border border-border overflow-hidden shadow-sm">
                 {group.routes.map((route, rIdx) => (
-                  <div key={rIdx} className="flex items-center justify-between gap-4 md:gap-6 px-6 md:px-10 py-4 md:py-6 hover:bg-muted/30 transition-all group border-b last:border-none">
-                    <div className="flex items-center gap-4 md:gap-8 min-w-0 flex-grow text-left">
+                  <div key={rIdx} className="flex items-center justify-between gap-4 md:gap-6 px-6 md:px-8 py-4 md:py-5 hover:bg-muted/30 transition-all group border-b last:border-none">
+                    <div className="flex items-center gap-4 md:gap-6 min-w-0 flex-grow text-left">
                       <div className={cn(
                         "w-2 md:w-2.5 h-2 md:h-2.5 rounded-full shadow-lg shrink-0",
                         route.status === 'Live' ? "bg-green-500" : "bg-yellow-500"
                       )} />
                       <div className="flex flex-col min-w-0">
-                        <div className="flex flex-wrap items-center gap-2 md:gap-4">
-                          <p className="font-bold text-sm md:text-lg text-secondary truncate leading-none">
+                        <div className="flex flex-wrap items-center gap-2 md:gap-3">
+                          <p className="font-bold text-sm md:text-base text-secondary truncate leading-none">
                             {route.title}
                           </p>
-                          <Badge variant="outline" className="text-[7px] font-bold text-primary tracking-widest px-2 py-0.5 border-primary/20 bg-primary/5 rounded">
+                          <Badge variant="outline" className="text-[7px] font-bold text-primary tracking-normal px-2 py-0.5 border-primary/20 bg-primary/5 rounded">
                             {route.sub}
                           </Badge>
                         </div>
-                        <p className="text-[8px] md:text-[10px] font-bold text-muted-foreground tracking-[0.1em] mt-1.5 md:mt-2 font-mono truncate">
+                        <p className="text-[8px] md:text-[9px] font-bold text-muted-foreground tracking-normal mt-1 md:mt-1.5 font-mono truncate">
                           {route.path}
                         </p>
                       </div>
                     </div>
                     
                     <div className="flex items-center gap-2">
-                      <Button variant="outline" size="icon" className="rounded-xl h-10 w-10 md:h-12 md:w-12 border-muted hover:border-primary/20 hover:text-primary transition-all" asChild>
+                      <Button variant="outline" size="icon" className="rounded-xl h-9 w-9 md:h-10 md:w-10 border-muted hover:border-primary/20 hover:text-primary transition-all" asChild>
                         <Link href={route.path} target="_blank">
-                          <ExternalLink className="w-4 h-4 md:w-5 md:h-5" />
+                          <ExternalLink className="w-3.5 h-3.5 md:w-4 md:h-4" />
                         </Link>
                       </Button>
-                      <Button variant="ghost" size="icon" className="rounded-xl h-10 w-10 md:h-12 md:w-12 text-muted-foreground hover:text-secondary hidden md:flex">
-                        <Monitor className="w-4 h-4" />
+                      <Button variant="ghost" size="icon" className="rounded-xl h-9 w-9 md:h-10 md:w-10 text-muted-foreground hover:text-secondary hidden md:flex">
+                        <Monitor className="w-3.5 h-3.5" />
                       </Button>
                     </div>
                   </div>
