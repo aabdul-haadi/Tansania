@@ -34,6 +34,37 @@ import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { collection, query, where, limit } from 'firebase/firestore';
 import { cn } from '@/lib/utils';
 
+const faqData = [
+  {
+    q: "Wie hoch ist der Kilimandscharo und warum ist er so besonders?",
+    a: "Der Kilimandscharo ist mit 5.895 Metern der höchste Berg Afrikas und einer der berühmten 'Seven Summits'. Er ist besonders, da er einer der weltweit höchsten freistehenden Berge ist und fünf verschiedene Klimazonen beheimatet."
+  },
+  {
+    q: "Brauche ich spezielle Ausrüstung für die Kilimandscharo Besteigung?",
+    a: "Ja, Sie sollten auf gute Trekkingausrüstung achten: robuste Wanderschuhe, atmungsaktive Kleidung in Schichten, Schlafsack für hohe Temperaturen und eine Stirnlampe sind essenziell. Viele Ausrüster bieten auch vor Ort Mietmöglichkeiten."
+  },
+  {
+    q: "Wie viel kostet eine Kilimandscharo Besteigung?",
+    a: "Die Kosten variieren je nach Route und Dauer, liegen aber in der Regel zwischen 2.500 € und 5.000 € pro Person, inklusive Nationalparkgebühren, Guide-Teams und Verpflegung."
+  },
+  {
+    q: "Gibt es Altersbeschränkungen für das Kilimandscharo Trekking?",
+    a: "Das offizielle Mindestalter für den Uhuru Peak beträgt 10 Jahre. Nach oben hin gibt es keine strikte Grenze, solange die körperliche Verfassung und ärztliche Freigabe vorliegen."
+  },
+  {
+    q: "Wie ist die Verpflegung während der Tour organisiert?",
+    a: "Unsere professionellen Köche bereiten drei nahrhafte, warme Mahlzeiten am Tag zu. Wir achten auf eine kohlenhydratreiche Ernährung, die für die Anstrengung in großer Höhe optimal ist."
+  },
+  {
+    q: "Wie viele Tage sollte ich für den Kilimandscharo Aufstieg einplanen?",
+    a: "Wir empfehlen mindestens 7 bis 8 Tage. Längere Touren bieten eine deutlich bessere Akklimatisierung und erhöhen die Erfolgsquote auf bis zu 90%."
+  },
+  {
+    q: "Wie sicher ist eine Kilimandscharo Besteigung?",
+    a: "Sicherheit steht bei uns an erster Stelle. Unsere Guides führen tägliche Gesundheitschecks durch (Sauerstoffsättigung, Puls) und sind in Erster Hilfe und Höhenkrankheits-Protokollen geschult."
+  }
+];
+
 export default function KilimanjaroPage() {
   const [mounted, setMounted] = useState(false);
   const firestore = useFirestore();
@@ -167,7 +198,7 @@ export default function KilimanjaroPage() {
         </div>
       </section>
 
-      {/* 05 QUICK FACTS REGISTRY - HEADING OUTSIDE & BG IMAGE */}
+      {/* 05 QUICK FACTS REGISTRY */}
       <section className="py-12 md:py-20 bg-[#fdfcfb]">
         <div className="container mx-auto px-4 max-w-7xl mb-12">
           <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary text-center uppercase tracking-tighter">Kilimandscharo Quick Facts</h2>
@@ -315,7 +346,7 @@ export default function KilimanjaroPage() {
               id: 'marangu',
               title: 'Marangu-Route',
               desc: 'Die als „Coca-Cola-Route" bekannte Marangu-Route ist die einzige mit Hüttenunterkünften anstelle von Zelten – ein großer Pluspunkt für manche Bergsteiger.',
-              details: 'Für preisbewusste Bergsteiger ist sie eine der günstigsten Möglichkeiten, den Gipfel zu erreichen. Da der Auf- und Abstieg jedoch auf derselben Route erfolgen, ist die Varianz geringer.',
+              details: 'Für preisbewusste Bergsteiger ist sie eine der günstigsten Möglichkeiten, den Gipfel zu erreichen. Da der Auf- und Abstieg jedoch auf derselben Route erfolgen, verpassen Sie einige der abwechslungsreichen Landschaften des Kilimandscharo.',
               pro: 'Budgetfreundlich, Unterkunft in Hütten.',
               con: 'Höheres Risiko für Höhenkrankheit durch schnellen Aufstieg.',
               img: 'https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=800'
@@ -363,12 +394,12 @@ export default function KilimanjaroPage() {
 
       {/* 10 BEST TIME TO CLIMB */}
       <section className="py-12 md:py-20 bg-white border-y border-border/40">
-        <div className="container mx-auto px-4 max-w-7xl">
+        <div className="container mx-auto px-4 max-get-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
             <div className="lg:col-span-5 space-y-8">
               <div>
                 <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] block mb-2">Climbing Season</span>
-                <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary uppercase leading-[0.9] tracking-tighter">Beste Zeit, <br /><span className="text-primary">den Kili zu besteigen</span></h2>
+                <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase leading-[0.9] tracking-tighter">Beste Zeit, <br /><span className="text-primary">den Kili zu besteigen</span></h2>
               </div>
               <p className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal opacity-80 uppercase tracking-widest">
                 Die beste Zeit, um den Kilimandscharo zu besteigen, ist während der beiden Trockenzeiten: Januar bis Mitte März sowie Juni bis Oktober.
