@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -8,7 +9,7 @@ const SIGNATURE_REISEN = [
   {
     id: 'safari-tansania-sansibar-15',
     title: '15 Tage Safari in Tansania und Sansibar',
-    slug: '15-day-safari-zanzibar',
+    slug: 'safari-tansania-sansibar-15-tage',
     startingPrice: 5399,
     durationDays: 15,
     category: 'Erlebnisreise',
@@ -20,7 +21,7 @@ const SIGNATURE_REISEN = [
       'Inklusive Intl. Flug'
     ],
     excerpt: 'Unsere umfassendste Expedition: Vom Herzen der Serengeti bis zu den Palmen Sansibars – inklusive internationaler Flüge.',
-    imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800'
+    imageUrl: '/assets/images/home/pkg-01.webp'
   },
   {
     id: 'safari-sansibar-13',
@@ -36,7 +37,39 @@ const SIGNATURE_REISEN = [
       'Alles gut organisiert'
     ],
     excerpt: 'Die perfekte Balance aus intensiven Wildtierbeobachtungen und exklusiver Entspannung am Indischen Ozean.',
-    imageUrl: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800'
+    imageUrl: '/assets/images/home/pkg-02.webp'
+  },
+  {
+    id: 'safari-sansibar-11',
+    title: 'Safari & Sansibar',
+    slug: 'safari-sansibar-11-tage',
+    startingPrice: 2999,
+    durationDays: 11,
+    category: 'Erlebnisreise',
+    highlights: [
+      'Atemberaubende Tierbeobachtungen',
+      'Exklusive Lodges & Camps',
+      'Abenteuer & Erholung',
+      'Alles gut organisiert'
+    ],
+    excerpt: 'Kompakt und eindrucksvoll: Erleben Sie die Highlights Tansanias in einer perfekt abgestimmten 11-tägigen Reise.',
+    imageUrl: '/assets/images/home/pkg-03.webp'
+  },
+  {
+    id: 'familien-safari-12',
+    title: '12 Tage Familien Safari',
+    slug: 'familien-safari-12-tage',
+    startingPrice: 3499,
+    durationDays: 12,
+    category: 'Erlebnisreise',
+    highlights: [
+      'Atemberaubende Tierbeobachtungen',
+      'Exklusive Lodges & Camps',
+      'Abenteuer & Erholung',
+      'Alles gut organisiert'
+    ],
+    excerpt: 'Speziell für Familien konzipiert: Unvergessliche Abenteuer und kindgerechte Lodges in Tansanias Wildnis.',
+    imageUrl: '/assets/images/home/pkg-04.png'
   }
 ];
 
@@ -49,7 +82,7 @@ export function FeaturedPackages() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-normal uppercase"
+            className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-normal"
           >
             Unsere Signature Reisen
           </motion.h2>
@@ -58,7 +91,7 @@ export function FeaturedPackages() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground font-normal text-[14px] leading-[20px] max-w-2xl mx-auto tracking-normal opacity-80"
+            className="text-muted-foreground font-normal text-[14px] leading-[20px] max-w-2xl mx-auto tracking-widest opacity-80"
           >
             Sorgfältig komponierte Reiserouten – als Inspiration oder Ausgangspunkt für Ihre individuelle Planung
           </motion.p>

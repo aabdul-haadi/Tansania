@@ -49,9 +49,9 @@ const faqs = [
 
 export function FAQ() {
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-12 md:py-24 bg-white">
       <div className="container mx-auto px-4 max-w-4xl">
-        <div className="text-center mb-12 md:mb-16 space-y-2">
+        <div className="text-center mb-6 md:mb-10 space-y-2">
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -77,14 +77,14 @@ export function FAQ() {
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          <Accordion type="single" collapsible className="w-full space-y-4">
+          <Accordion type="single" collapsible className="w-full space-y-3">
             {faqs.map((faq, index) => (
               <AccordionItem 
                 key={index} 
                 value={`item-${index}`}
                 className="bg-white border border-border/60 rounded-lg md:rounded-xl shadow-sm overflow-hidden"
               >
-                <AccordionTrigger className="font-normal text-base md:text-xl py-5 px-6 md:px-8 hover:no-underline text-left text-secondary transition-colors">
+                <AccordionTrigger className="font-normal text-base md:text-xl py-4 px-6 md:px-8 hover:no-underline text-left text-secondary transition-colors tracking-tight">
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-sm md:text-base leading-relaxed px-6 md:px-8 pb-6 font-normal text-left">
@@ -95,12 +95,12 @@ export function FAQ() {
           </Accordion>
         </motion.div>
 
-        <div className="mt-16 text-center space-y-6">
+        <div className="mt-12 text-center space-y-6">
           <p className="text-muted-foreground text-sm md:text-base font-normal">
             Weitere Fragen? Wir sind für Sie da.
           </p>
           <Link href="/contact" className="inline-block">
-            <Button className="rounded-lg px-8 h-14 bg-secondary text-white hover:bg-primary transition-all duration-500 font-bold text-[11px] tracking-widest border-none shadow-lg">
+            <Button className="rounded-lg px-8 h-12 md:h-14 bg-secondary text-white hover:bg-primary transition-all duration-500 font-bold text-[11px] tracking-widest border-none shadow-lg">
               Jetzt Kontakt aufnehmen
             </Button>
           </Link>
