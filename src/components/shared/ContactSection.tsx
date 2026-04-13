@@ -147,7 +147,6 @@ export function ContactSection() {
                   scrolling="no"
                   title="Contact Registry Form"
                   loading="lazy"
-                  allowTransparency
                 />
               ) : (
                 <div className="h-full flex items-center justify-center bg-muted/5 animate-pulse">

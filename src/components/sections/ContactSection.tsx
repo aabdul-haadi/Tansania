@@ -37,15 +37,13 @@ export function ContactSection() {
               <iframe
                 ref={iframeRef}
                 src="https://app.tansania-reiseabenteuer.de/forms/embed/d54e9b2ee319416a81cf32551a1bc3d3"
-                className="w-full h-full min-h-[600px] border-none overflow-hidden"
+                className="w-full h-full border-none overflow-hidden"
                 scrolling="no"
                 title="Anfrageformular"
                 loading="lazy"
-                allowTransparency
               />
             </div>
             
-            {/* Shortened Trust Bar for Section variant */}
             <div className="p-4 bg-[#fdfcfb] border-t border-border/40 flex flex-row items-center justify-center gap-4 md:gap-8">
               {trustBadges.map((item, idx) => (
                 <div key={idx} className="flex items-center gap-1.5 text-[7px] md:text-[9px] font-bold uppercase tracking-widest text-muted-foreground/60 whitespace-nowrap">
