@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -174,7 +173,7 @@ export default function KilimanjaroPage() {
             <h1 className="font-headline text-white leading-none text-3xl sm:text-4xl md:text-6xl lg:text-8xl tracking-tight">
               Kilimandscharo Expeditionen
             </h1>
-            <p className="max-w-2xl mx-auto text-white/90 font-bold text-[10px] md:text-lg tracking-normal leading-relaxed">
+            <p className="max-w-2xl mx-auto text-white/90 font-bold text-xs md:text-lg tracking-normal leading-relaxed">
               Finden Sie Ihre perfekte Route zum Uhuru Peak. Eine Expedition, die über den Wolken beginnt.
             </p>
           </motion.div>
@@ -212,7 +211,7 @@ export default function KilimanjaroPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="space-y-8">
               <div className="space-y-4">
-                <span className="text-primary font-bold text-[10px] tracking-normal">National-Registry</span>
+                <span className="text-primary font-bold text-xs tracking-normal">National-Registry</span>
                 <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary leading-tight">
                   Was macht den Kilimandscharo zum ultimativen Abenteuerziel?
                 </h2>
@@ -230,8 +229,8 @@ export default function KilimanjaroPage() {
             <div className="relative aspect-square md:aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl">
               <Image src="https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1200" alt="Kilimanjaro Peak" fill className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-              <div className="absolute bottom-10 left-10 text-white">
-                <p className="text-[10px] font-bold tracking-normal text-primary mb-2">Uhuru Peak Registry</p>
+              <div className="absolute bottom-10 left-10 text-white text-left">
+                <p className="text-xs font-bold tracking-normal text-primary mb-2">Uhuru Peak Registry</p>
                 <h4 className="text-2xl font-headline font-bold">5.895 Meter Freiheit</h4>
               </div>
             </div>
@@ -263,13 +262,13 @@ export default function KilimanjaroPage() {
                 { icon: Award, label: "Erfolgsquote", val: "Bis zu 90%", sub: "Mit Akklimatisierung" }
               ].map((fact, i) => (
                 <div key={i} className="p-6 md:p-8 rounded-[2rem] bg-white/10 backdrop-blur-md border border-white/10 text-center space-y-4 group hover:bg-white/20 transition-all">
-                  <div className="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center mx-auto transition-transform duration-500 group-hover:scale-110">
-                    <fact.icon className="w-6 h-6 text-white" />
+                  <div className="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center mx-auto transition-transform duration-500 group-hover:scale-110 text-white">
+                    <fact.icon className="w-6 h-6" />
                   </div>
-                  <div>
-                    <p className="text-[9px] font-bold text-primary mb-1 tracking-normal">{fact.label}</p>
+                  <div className="text-center">
+                    <p className="text-[10px] font-bold text-primary mb-1 tracking-normal">{fact.label}</p>
                     <p className="font-bold text-sm md:text-base text-white leading-none">{fact.val}</p>
-                    <p className="text-[8px] text-white/60 font-bold mt-1 tracking-normal opacity-60">{fact.sub}</p>
+                    <p className="text-[10px] text-white/60 font-bold mt-1 tracking-normal opacity-60">{fact.sub}</p>
                   </div>
                 </div>
               ))}
@@ -331,7 +330,7 @@ export default function KilimanjaroPage() {
         </div>
       </section>
 
-      {/* 08 Detailed Routes Registry - UI REDESIGN */}
+      {/* 08 Detailed Routes Registry */}
       <section className="pt-8 md:pt-12 pb-12 md:pb-24 bg-[#fdfcfb]">
         <div className="container mx-auto px-4 max-w-7xl space-y-24 md:space-y-40">
           
@@ -374,20 +373,20 @@ export default function KilimanjaroPage() {
             <div key={route.id} className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-20 items-center">
               <div className={cn("lg:col-span-6 space-y-8", i % 2 !== 0 ? "lg:order-2" : "lg:order-1")}>
                 <div className="space-y-4">
-                  <Badge variant="outline" className="border-primary/20 text-primary px-4 py-1 font-bold text-[10px]">Official Route Registry</Badge>
-                  <h3 className="font-headline text-2xl md:text-4xl font-normal text-secondary tracking-tight">{route.title}</h3>
+                  <Badge variant="outline" className="border-primary/20 text-primary px-4 py-1 font-bold text-xs">Official Route Registry</Badge>
+                  <h3 className="font-headline text-2xl md:text-4xl font-normal text-secondary tracking-tight text-left">{route.title}</h3>
                 </div>
-                <div className="space-y-6 text-muted-foreground text-sm md:text-lg font-normal leading-relaxed">
+                <div className="space-y-6 text-muted-foreground text-sm md:text-lg font-normal leading-relaxed text-left">
                   <p>{route.desc}</p>
                   <p className="opacity-70">{route.details}</p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
-                  <div className="p-6 bg-green-500/5 rounded-2xl border border-green-500/10">
-                    <p className="text-[10px] font-bold text-green-600 mb-2">Vorteil</p>
+                  <div className="p-6 bg-green-500/5 rounded-2xl border border-green-500/10 text-left">
+                    <p className="text-xs font-bold text-green-600 mb-2">Vorteil</p>
                     <p className="text-xs font-bold text-secondary leading-relaxed">{route.pro}</p>
                   </div>
-                  <div className="p-6 bg-red-500/5 rounded-2xl border border-red-500/10">
-                    <p className="text-[10px] font-bold text-red-600 mb-2">Nachteil</p>
+                  <div className="p-6 bg-red-500/5 rounded-2xl border border-red-500/10 text-left">
+                    <p className="text-xs font-bold text-red-600 mb-2">Nachteil</p>
                     <p className="text-xs font-bold text-secondary leading-relaxed">{route.con}</p>
                   </div>
                 </div>
@@ -406,9 +405,9 @@ export default function KilimanjaroPage() {
       <section className="pt-8 md:pt-12 pb-12 md:pb-24 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-            <div className="lg:col-span-5 space-y-8">
+            <div className="lg:col-span-5 space-y-8 text-left">
               <div>
-                <span className="text-primary font-bold text-[10px] block mb-2">Climbing Season</span>
+                <span className="text-primary font-bold text-xs block mb-2">Climbing Season</span>
                 <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter">Beste Zeit, den Kili zu besteigen</h2>
               </div>
               <p className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal opacity-80">
@@ -423,12 +422,12 @@ export default function KilimanjaroPage() {
                 { title: "Regenzeiten meiden", desc: "April bis Mai und November sind rutschig und schwerer begehbar." },
                 { title: "Optimale Bedingungen", desc: "Höchste Gipfelchancen und schönste Panoramen in der Trockenzeit." }
               ].map((item, idx) => (
-                <div key={idx} className="p-8 bg-[#FDFCFB] rounded-3xl border border-border/50 flex flex-col justify-center gap-3 group hover:border-primary transition-all shadow-sm">
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-2 group-hover:bg-primary transition-colors">
-                    <Calendar className="w-5 h-5 text-primary group-hover:text-white" />
+                <div key={idx} className="p-8 bg-[#FDFCFB] rounded-3xl border border-border/50 flex flex-col justify-center gap-3 group hover:border-primary transition-all shadow-sm text-left">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-2 group-hover:bg-primary transition-colors text-primary group-hover:text-white">
+                    <Calendar className="w-5 h-5" />
                   </div>
                   <h4 className="font-bold text-base md:text-lg text-secondary tracking-tight">{item.title}</h4>
-                  <p className="text-[10px] md:text-xs text-muted-foreground font-bold leading-relaxed opacity-70">{item.desc}</p>
+                  <p className="text-xs text-muted-foreground font-bold leading-relaxed opacity-70">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -436,29 +435,7 @@ export default function KilimanjaroPage() {
         </div>
       </section>
 
-      {/* 10 Preparation Registry - UI REDESIGN */}
-      <section className="pt-8 md:pt-12 pb-12 md:pb-24 bg-[#FDF7F2] border-b border-border/40">
-        <div className="container mx-auto px-4 max-w-5xl text-center space-y-10">
-          <div className="space-y-4">
-            <span className="text-primary font-bold text-[10px]">Registry Protocol</span>
-            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter">Wie Sie sich auf das Trekking vorbereiten</h2>
-          </div>
-          <div className="p-10 md:p-16 bg-white rounded-[3rem] shadow-sm border border-border/40 text-left space-y-8 relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-12 opacity-[0.03] pointer-events-none"><Compass className="w-48 h-48" /></div>
-            <div className="relative z-10 space-y-6">
-              <p className="text-secondary font-bold text-base md:text-2xl leading-relaxed tracking-tight">
-                Das Besteigen des Kilimandscharo ist ein unvergessliches Abenteuer, erfordert jedoch eine gute körperliche und mentale Vorbereitung. Auch wenn es Routen für jedes Erfahrungslevel gibt, sollten Sie täglich 6–7 Stunden wandern können — oft in großer Höhe.
-              </p>
-              <div className="h-px bg-border/50 w-24" />
-              <p className="text-muted-foreground font-bold text-[10px] md:text-sm leading-relaxed opacity-70">
-                Planen Sie regelmäßige, lange Wanderungen ein- bis zweimal pro Woche und steigern Sie schrittweise Dauer und Schwierigkeit, damit Ihr Körper sich an mehrere aufeinanderfolgende Wandertage gewöhnt. Die Monate vor Ihrer Reise eignen sich ideal, um Ihre Kondition zu steigern.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 11 Testimonials */}
+      {/* 10 Testimonials */}
       <section className="pt-8 md:pt-12 pb-12 md:pb-24 bg-white border-b border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12 md:mb-20">
@@ -478,16 +455,16 @@ export default function KilimanjaroPage() {
                   <div className="flex gap-1">
                     {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-3.5 h-3.5 fill-primary text-primary" />)}
                   </div>
-                  <p className="text-xs md:text-sm italic text-secondary leading-relaxed font-bold tracking-tight opacity-80 group-hover:text-primary transition-colors">"{t.q}"</p>
+                  <p className="text-xs md:text-sm italic text-secondary leading-relaxed font-bold tracking-tight opacity-80 group-hover:text-primary transition-colors text-left">"{t.q}"</p>
                 </div>
-                <p className="mt-6 font-bold text-primary text-[10px] tracking-normal">— {t.n}</p>
+                <p className="mt-6 font-bold text-primary text-xs tracking-normal text-left">— {t.n}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 12 FAQ Registry */}
+      {/* 11 FAQ Registry */}
       <section className="pt-8 md:pt-12 pb-12 md:pb-24 bg-white">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-12">
@@ -502,7 +479,7 @@ export default function KilimanjaroPage() {
                     <Plus className="w-4 h-4 text-primary transition-transform group-data-[state=open]:rotate-45" />
                   </div>
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground text-[14px] leading-[20px] pb-8 font-normal opacity-80 tracking-normal">{faq.a}</AccordionContent>
+                <AccordionContent className="text-muted-foreground text-[14px] leading-[20px] pb-8 font-normal opacity-80 tracking-normal text-left">{faq.a}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
