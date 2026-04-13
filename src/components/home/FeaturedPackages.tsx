@@ -9,7 +9,7 @@ const SIGNATURE_REISEN = [
   {
     id: 'safari-tansania-sansibar-15',
     title: '15 Tage Safari in Tansania und Sansibar',
-    slug: 'safari-tansania-sansibar-15-tage',
+    slug: '15-day-safari-zanzibar',
     startingPrice: 5399,
     durationDays: 15,
     category: 'Erlebnisreise',
@@ -21,7 +21,7 @@ const SIGNATURE_REISEN = [
       'Inklusive Intl. Flug'
     ],
     excerpt: 'Unsere umfassendste Expedition: Vom Herzen der Serengeti bis zu den Palmen Sansibars – inklusive internationaler Flüge.',
-    imageUrl: '/assets/images/home/pkg-01.webp'
+    imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200'
   },
   {
     id: 'safari-sansibar-13',
@@ -37,7 +37,7 @@ const SIGNATURE_REISEN = [
       'Alles gut organisiert'
     ],
     excerpt: 'Die perfekte Balance aus intensiven Wildtierbeobachtungen und exklusiver Entspannung am Indischen Ozean.',
-    imageUrl: '/assets/images/home/pkg-02.webp'
+    imageUrl: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=1200'
   },
   {
     id: 'safari-sansibar-11',
@@ -53,7 +53,7 @@ const SIGNATURE_REISEN = [
       'Alles gut organisiert'
     ],
     excerpt: 'Kompakt und eindrucksvoll: Erleben Sie die Highlights Tansanias in einer perfekt abgestimmten 11-tägigen Reise.',
-    imageUrl: '/assets/images/home/pkg-03.webp'
+    imageUrl: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=1200'
   },
   {
     id: 'familien-safari-12',
@@ -69,20 +69,20 @@ const SIGNATURE_REISEN = [
       'Alles gut organisiert'
     ],
     excerpt: 'Speziell für Familien konzipiert: Unvergessliche Abenteuer und kindgerechte Lodges in Tansanias Wildnis.',
-    imageUrl: '/assets/images/home/pkg-04.png'
+    imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200'
   }
 ];
 
 export function FeaturedPackages() {
   return (
-    <section className="py-12 md:py-24 bg-white relative z-10">
+    <section className="pt-8 md:pt-12 pb-12 md:pb-24 bg-white relative z-10">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12 md:mb-16 space-y-2">
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-normal"
+            className="font-headline text-3xl md:text-5xl font-normal text-secondary"
           >
             Unsere Signature Reisen
           </motion.h2>
@@ -91,7 +91,7 @@ export function FeaturedPackages() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground font-normal text-[14px] leading-[20px] max-w-2xl mx-auto tracking-widest opacity-80"
+            className="text-muted-foreground font-normal text-sm md:text-base max-w-2xl mx-auto opacity-80"
           >
             Sorgfältig komponierte Reiserouten – als Inspiration oder Ausgangspunkt für Ihre individuelle Planung
           </motion.p>
