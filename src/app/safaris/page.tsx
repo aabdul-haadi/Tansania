@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -8,7 +9,6 @@ import {
   LayoutGrid, 
   Compass, 
   Zap, 
-  Zap as ZapIcon,
   ShieldCheck, 
   Waves, 
   Play, 
@@ -21,7 +21,11 @@ import {
   Star,
   Plus,
   Globe,
-  CheckCircle2
+  CheckCircle2,
+  MapPin,
+  Calendar,
+  Clock,
+  Heart
 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
@@ -38,6 +42,7 @@ import {
 } from "@/components/ui/accordion";
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
+import Link from 'next/link';
 
 const categories = ['All', 'Signature', 'Expedition', 'Wildlife', 'Honeymoon'];
 
@@ -58,7 +63,6 @@ export default function SafarisPage() {
 
   const { data: packages, isLoading } = useCollection(pkgQuery);
 
-  // CRITICAL: Added null-safety check for p.title and p.category to prevent "Systemausfall" crash
   const filteredPackages = (packages || []).filter(p => {
     const matchesCat = activeCategory === 'All' || p.category === activeCategory;
     const matchesSearch = (p.title || '').toLowerCase().includes(search.toLowerCase());
@@ -80,7 +84,6 @@ export default function SafarisPage() {
             className="object-cover brightness-[0.9] scale-105"
             data-ai-hint="serengeti safari"
           />
-          {/* Refined Layered Overlay */}
           <div className="absolute inset-0 bg-black/20 z-10" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent z-20" />
         </div>
@@ -115,6 +118,18 @@ export default function SafarisPage() {
               suppressHydrationWarning
             />
           </motion.div>
+        </div>
+      </section>
+
+      {/* Intro Text Section */}
+      <section className="pt-8 md:pt-16 pb-8 md:pb-12 bg-white">
+        <div className="container mx-auto px-4 max-w-4xl text-center">
+          <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary mb-6">
+            Tansania Safari Buchen – Dein Abenteuer im Herzen Afrikas
+          </h2>
+          <p className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal opacity-80">
+            Erlebe das unvergessliche Abenteuer einer Safari in Tansania, wo wilde Natur, beeindruckende Tierbeobachtungen und atemberaubende Landschaften auf dich warten. Ob auf einer Solo-Safari, einer Familienreise oder einer romantischen Flitterwochen-Safari, Tansania bietet dir die perfekte Gelegenheit, seine Schönheit zu entdecken. Tansania Safari buchen ist der erste Schritt, um das Abenteuer deines Lebens zu erleben!
+          </p>
         </div>
       </section>
 
@@ -158,6 +173,266 @@ export default function SafarisPage() {
             ))}
           </div>
         )}
+      </section>
+
+      {/* Expertise Section */}
+      <section className="py-12 md:py-24 bg-white border-t border-border/40">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px]">Registry Authority</span>
+                <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary leading-tight">
+                  Tansania Safari Deutschsprachig – <br />Deine Experten vor Ort
+                </h2>
+              </div>
+              <div className="space-y-6 text-muted-foreground text-sm md:text-lg leading-relaxed">
+                <p>
+                  Mit jahrelanger Erfahrung, einem eigenen Büro in Tansania und einem mehrsprachigen Team vor Ort garantiert Tansania Reiseabenteuer, dass dein Aufenthalt in Tansania ein reibungsloses und unvergessliches Erlebnis wird. Als Tansania Safari Deutschsprachig Anbieter bieten wir dir die Möglichkeit, diese atemberaubende Reise in deiner Sprache zu genießen.
+                </p>
+                <p>
+                  Auf einer Safari in Tansania erlebst du die beeindruckendste Tierwelt hautnah. Wenige Naturwunder sind so atemberaubend wie die Große Migration. Spüre das Zittern des Bodens, wenn Millionen von Tieren gleichzeitig durch die Serengeti ziehen.
+                </p>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="p-6 bg-[#fdf7f2] rounded-2xl border border-border/50">
+                  <Globe className="w-6 h-6 text-primary mb-3" />
+                  <p className="text-xs font-bold text-secondary uppercase">Eigenes Büro</p>
+                  <p className="text-[10px] text-muted-foreground uppercase mt-1">Direkte Betreuung in Arusha</p>
+                </div>
+                <div className="p-6 bg-[#fdf7f2] rounded-2xl border border-border/50">
+                  <Users className="w-6 h-6 text-primary mb-3" />
+                  <p className="text-xs font-bold text-secondary uppercase">Top-Guides</p>
+                  <p className="text-[10px] text-muted-foreground uppercase mt-1">Deutschsprachige Experten</p>
+                </div>
+              </div>
+            </div>
+            <div className="relative aspect-square md:aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl">
+              <Image src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200" alt="Safari Experience" fill className="object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+              <div className="absolute bottom-10 left-10 text-white">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-primary mb-2">Tansania Reiseabenteuer Jeep</p>
+                <h4 className="text-2xl font-headline font-bold">100% Privat & Individuell</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Ultimate Adventure Section with Video */}
+      <section className="py-12 md:py-24 bg-[#fdfcfb]">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="flex flex-col items-center text-center mb-12 md:mb-16 space-y-4">
+            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary uppercase tracking-tight">
+              Das ultimative Safari Abenteuer in Tansania
+            </h2>
+            <p className="max-w-2xl text-muted-foreground text-sm md:text-lg">
+              Stell dir vor, wie ein Löwenrudel in der goldenen Sonne döst, bunte Flamingos den See bei Sonnenaufgang schmücken, endlose Herden von Gnus über weite Ebenen ziehen und der majestätische Kilimandscharo den Horizont dominiert.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
+            <div className="lg:col-span-7">
+              <div className="relative aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl bg-black border-8 border-white group">
+                <iframe
+                  src="https://www.youtube.com/embed/pSiHhC4dzPk"
+                  title="Safari Adventure Video"
+                  className="absolute inset-0 w-full h-full border-none"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+            <div className="lg:col-span-5 space-y-6">
+              <p className="text-secondary font-bold text-sm md:text-lg leading-relaxed border-l-4 border-primary pl-6 py-2">
+                Mit fast 35% des Landes als Nationalparks und Wildschutzgebieten, darunter der weltberühmte Serengeti-Nationalpark und der Ngorongoro-Krater, gehört Tansania zu den besten Safari-Destinationen.
+              </p>
+              <div className="space-y-4">
+                {[
+                  "Große Migration der Gnus",
+                  "Majestätischer Kilimandscharo",
+                  "Höchste Raubtierdichte",
+                  "UNESCO Weltnaturerbe"
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
+                    <span className="text-[11px] font-bold text-secondary uppercase tracking-widest">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Luxury Lodging Section with Video */}
+      <section className="py-12 md:py-24 bg-secondary text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+        <div className="container relative z-10 mx-auto px-4 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+            <div className="lg:col-span-5 space-y-8">
+              <div className="space-y-4">
+                <Badge className="bg-primary text-white border-none px-4 py-1 text-[9px] font-bold uppercase tracking-widest">Luxus Safari</Badge>
+                <h2 className="font-headline text-3xl md:text-5xl font-normal leading-tight">
+                  Luxuriöse Safari Unterkünfte <br />während deines Abenteuers
+                </h2>
+              </div>
+              <div className="space-y-6 text-white/60 text-sm md:text-lg leading-relaxed">
+                <p>
+                  Mit Tansania Reiseabenteuer übernachtest du in luxuriösen Lodges mit Vollpension, die höchsten Komfort und exklusive Ausstattung bieten. Jede Unterkunft wird regelmäßig von unserem erfahrenen Team überprüft.
+                </p>
+                <p>
+                  Unsere Premium-Lodges liegen in den bekanntesten Nationalparks und bieten atemberaubende Ausblicke. Genieße das Brüllen der Löwen und das Trompeten der Elefanten – alles aus dem Luxus deiner 5-Sterne-Lodge.
+                </p>
+              </div>
+            </div>
+            <div className="lg:col-span-7">
+              <div className="relative aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl bg-black border-8 border-white/10 group">
+                <iframe
+                  src="https://www.youtube.com/embed/IMucYRze3vs"
+                  title="Luxury Safari Lodges"
+                  className="absolute inset-0 w-full h-full border-none"
+                  allowFullScreen
+                />
+              </div>
+              <p className="text-center mt-6 text-[10px] font-bold uppercase tracking-widest text-primary">Luxus Lodges und Camps in Tansania</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Safari & Erholung Section */}
+      <section className="py-12 md:py-24 bg-white">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="relative aspect-[16/10] md:aspect-square rounded-[2.5rem] overflow-hidden shadow-2xl order-2 lg:order-1">
+              <Image src="https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=1200" alt="Zanzibar Beach" fill className="object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute bottom-10 left-10">
+                <p className="text-primary font-bold text-[10px] uppercase tracking-widest mb-2">Safari & Erholung</p>
+                <h4 className="text-3xl font-headline font-bold text-white">Sansibar Highlights</h4>
+              </div>
+            </div>
+            <div className="space-y-8 order-1 lg:order-2">
+              <div className="space-y-4">
+                <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary leading-tight">
+                  Tansania Safari und Baden Sansibar – <br /><span className="text-primary">Abenteuer und Erholung vereint</span>
+                </h2>
+              </div>
+              <div className="space-y-6 text-muted-foreground text-sm md:text-lg leading-relaxed">
+                <p>
+                  Erlebe das Beste aus beiden Welten mit einer Tansania Safari und Baden Sansibar. Beginne dein Abenteuer mit einer aufregenden Safari durch die Nationalparks Tansanias, wie die Serengeti oder den Ngorongoro-Krater.
+                </p>
+                <p>
+                  Anschließend kannst du dich auf der Insel Sansibar entspannen, bekannt für ihre weißen Sandstrände, kristallklaren Gewässer und die faszinierende Mischung aus Kulturen. Tauche ein in die historische Altstadt von Stone Town.
+                </p>
+              </div>
+              <Button asChild size="lg" className="rounded-xl px-10 h-14 font-bold shadow-xl border-none">
+                <Link href="/destinations/zanzibar">Insel Entdecken</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Beste Reisezeit Section */}
+      <section className="py-12 md:py-24 bg-[#fdfcfb] border-y border-border/40">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center mb-12 md:mb-20 space-y-4">
+            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tight">
+              Tansania Safari Beste Reisezeit
+            </h2>
+            <p className="max-w-2xl mx-auto text-muted-foreground text-sm md:text-lg">
+              Die Wahl der richtigen Reisezeit ist entscheidend für dein perfektes Erlebnis. Unsere Experten helfen dir bei der Auswahl.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {[
+              { title: "Große Migration", time: "Juli bis Oktober", desc: "Millionen Gnus und Zebras ziehen durch die Serengeti. Hauptsaison für Flussüberquerungen.", icon: Leaf },
+              { title: "Tierbeobachtungen", time: "Juni bis Oktober", desc: "Trockenzeit. Weniger Vegetation macht Tiere an Wasserquellen leichter auffindbar.", icon: Camera },
+              { title: "Fotografie", time: "Dezember bis März", desc: "Grüne Landschaften nach dem Regen und viele neugeborene Tiere bieten perfekte Motive.", icon: Star },
+              { title: "Vogelbeobachtungen", time: "November bis April", desc: "Paradies für Beobachter durch Zugvögel aus Europa und Tausende von Flamingos.", icon: Bird },
+              { title: "Ruhige Safari", time: "März bis Mai", desc: "Regenzeit mit üppigen Landschaften und deutlich weniger Touristen für private Momente.", icon: Sun },
+              { title: "Familien-Safari", time: "Juni bis September", desc: "Mildes Wetter und beste Sichtbarkeit für ein entspanntes Erlebnis mit Kindern.", icon: Heart }
+            ].map((item, idx) => (
+              <div key={idx} className="bg-white p-8 rounded-[2rem] border border-border/50 shadow-sm hover:shadow-xl transition-all duration-500 group">
+                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+                  <item.icon className="w-6 h-6 text-primary group-hover:text-white" />
+                </div>
+                <h4 className="font-headline text-xl md:text-2xl font-bold text-secondary uppercase mb-2 tracking-tight">{item.title}</h4>
+                <p className="text-primary font-bold text-[10px] uppercase tracking-widest mb-4">{item.time}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed font-medium">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-12 md:py-24 bg-white">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center mb-12 md:mb-20 space-y-4">
+            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tight">
+              Tansania Safari Anbieter Erfahrungen
+            </h2>
+            <p className="max-w-2xl mx-auto text-muted-foreground text-sm">
+              Was unsere Gäste über ihre Reise mit Tansania Reiseabenteuer sagen.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {[
+              { name: "Johanna K.", quote: "Perfekte Safari! Die Lodges waren luxuriös und das Personal sehr freundlich. Besonders beeindruckend war die Begegnung mit den Löwen." },
+              { name: "Martin L.", quote: "Tansania Reiseabenteuer hat unsere Erwartungen übertroffen. Unsere maßgeschneiderte Safari war perfekt organisiert." },
+              { name: "Sarah und Max B.", quote: "Tansania war magisch! Die Tierwelt und Landschaften sind einzigartig. Die Lodges waren komfortabel und das Essen gut." },
+              { name: "Michael T.", quote: "Unvergessliche Safari! Die Tiere und Landschaften waren überwältigend. Besonders die Gnu-Migration war ein Highlight." },
+              { name: "Clara P.", quote: "Tolle Safari! Die Unterkünfte waren luxuriös, ein wenig mehr Vielfalt bei den Mahlzeiten hätte es noch besser gemacht." },
+              { name: "David und Elena R.", quote: "Wunderbare Familien-Safari! Die Guides waren informativ, und die Lodges waren fantastisch. Unsere Kinder liebten es." }
+            ].map((t, i) => (
+              <div key={i} className="bg-[#fdfcfb] p-8 rounded-[2rem] border border-border/40 flex flex-col justify-between">
+                <div className="space-y-4">
+                  <div className="flex gap-1">
+                    {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-3.5 h-3.5 fill-primary text-primary" />)}
+                  </div>
+                  <p className="text-sm md:text-base italic text-secondary leading-relaxed">"{t.quote}"</p>
+                </div>
+                <p className="mt-6 font-bold text-primary uppercase text-[10px] tracking-widest">— {t.name}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Safari FAQ Section */}
+      <section className="py-12 md:py-24 bg-[#fdfcfb] border-t border-border/40">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary">Häufig gestellte Fragen</h2>
+          </div>
+
+          <Accordion type="single" collapsible className="space-y-4">
+            {[
+              { q: "Was sollte ich bei einem Tansania Safari Urlaub beachten?", a: "Planen Sie ausreichend Zeit ein, wählen Sie die richtige Kleidung (Zwiebelprinzip) und achten Sie auf die beste Reisezeit für Ihre Wildlife-Interessen." },
+              { q: "Wie viel kostet ein Tansania Safari Urlaub?", a: "Die Kosten hängen vom Komfortlevel und der Dauer ab. Eine hochwertige Privat-Safari beginnt meist bei ca. 3.000 € pro Person." },
+              { q: "Was kostet eine typische Tansania Safari?", a: "Für eine 7-tägige klassische Safari inklusive Inlandsflügen und Top-Lodges sollten Sie mit ca. 3.500 € bis 5.000 € kalkulieren." },
+              { q: "Was sollte ich für meinen Tansania Safari Urlaub einpacken?", a: "Fernglas, Sonnenschutz, Insektenschutz, bequeme Schuhe und helle Kleidung in Naturfarben sind essenziell." },
+              { q: "Welche Kleidung benötige ich für eine Tansania Safari?", a: "Leichte Stoffe wie Leinen oder Baumwolle in Beige oder Khaki. Für die kühlen Morgenstunden ist eine Fleecejacke wichtig." },
+              { q: "Wie kann ich eine Tansania Safari günstig buchen?", a: "Frühbucherrabatte oder Reisen in der Nebensaison (Grüne Saison) bieten oft preiswertere Optionen ohne Qualitätseinbußen." },
+              { q: "Gibt es günstige Optionen für einen Tansania Safari Urlaub?", a: "Camping-Safaris sind eine hervorragende und authentische Möglichkeit, die Serengeti budgetschonend zu erleben." },
+              { q: "Welche Ausrüstung benötige ich für eine Tansania Safari?", a: "Eine gute Kamera mit Zoom-Objektiv (min. 300mm), Powerbank und ggf. eine Stirnlampe für Camping-Nächte." }
+            ].map((faq, i) => (
+              <AccordionItem key={i} value={`faq-${i}`} className="border-none bg-white rounded-2xl px-8 shadow-sm hover:shadow-md transition-all">
+                <AccordionTrigger className="font-bold text-base py-6 hover:no-underline text-left text-secondary [&>svg]:hidden">
+                  <div className="flex items-center justify-between w-full gap-4">
+                    <span className="tracking-tight">{faq.q}</span>
+                    <Plus className="w-4 h-4 text-primary transition-transform group-data-[state=open]:rotate-45" />
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-sm pb-8">{faq.a}</AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
       </section>
 
       <AiCTA />
