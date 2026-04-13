@@ -79,19 +79,20 @@ export default function AIPlannerPage() {
     if (!blogs || !packages) return;
     setLoading(prev => ({ ...prev, seo: true }));
     try {
+      // CRITICAL: Defensive mapping ensures Zod schema requirements are met
       const result = await adminSeoAndLinkingSuggestions({
         blogPosts: blogs.map(b => ({
-          slug: b.slug,
-          title: b.title,
+          slug: b.slug || '',
+          title: b.title || 'Untitled Post',
           content: b.contentMarkdown?.slice(0, 500) || '',
-          excerpt: b.excerpt,
-          keywords: []
+          excerpt: b.excerpt || '',
+          keywords: b.tags || []
         })),
         packages: packages.map(p => ({
-          slug: p.slug,
-          title: p.title,
-          description: p.description,
-          highlights: p.highlights,
+          slug: p.slug || '',
+          title: p.title || 'Untitled Package',
+          description: p.description || p.heroDescription || '',
+          highlights: p.highlights || [],
           destinationRefs: p.destinationIds || [],
           categories: p.categories || []
         }))
