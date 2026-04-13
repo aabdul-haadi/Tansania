@@ -96,7 +96,7 @@ export default function KilimanjaroPage() {
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
-      {/* 01 COMPACT PRESTIGE HERO */}
+      {/* 01 Compact Prestige Hero */}
       <section className="relative h-[65vh] md:h-[80vh] flex items-center justify-center overflow-hidden bg-secondary">
         <div className="absolute inset-0">
           <Image 
@@ -117,20 +117,20 @@ export default function KilimanjaroPage() {
             transition={{ duration: 0.8 }}
             className="flex flex-col items-center space-y-6"
           >
-            <Badge className="bg-primary text-white border-none font-bold text-[10px] uppercase tracking-[0.4em] px-6 py-2 shadow-2xl">
+            <Badge className="bg-primary text-white border-none font-bold text-[10px] tracking-widest px-6 py-2 shadow-2xl">
               Das Dach Afrikas
             </Badge>
-            <h1 className="font-headline text-white leading-none text-3xl sm:text-4xl md:text-6xl lg:text-8xl uppercase">
-              Kilimandscharo <br /> Expeditionen
+            <h1 className="font-headline text-white leading-none text-3xl sm:text-4xl md:text-6xl lg:text-8xl">
+              Kilimandscharo Expeditionen
             </h1>
-            <p className="max-w-2xl mx-auto text-white/90 font-bold text-[10px] md:text-lg uppercase tracking-widest leading-relaxed">
-              Finden Sie Ihre perfekte Route zum Uhuru Peak. <br />Eine Expedition, die über den Wolken beginnt.
+            <p className="max-w-2xl mx-auto text-white/90 font-bold text-[10px] md:text-lg tracking-widest leading-relaxed">
+              Finden Sie Ihre perfekte Route zum Uhuru Peak. Eine Expedition, die über den Wolken beginnt.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* 02 INTRO NARRATIVE */}
+      {/* 02 Intro Narrative */}
       <section className="py-8 md:py-16 container mx-auto px-4 max-w-4xl text-center">
         <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary mb-6">
           Finde deine perfekte Kilimandscharo-Route & Traumreise
@@ -140,11 +140,11 @@ export default function KilimanjaroPage() {
         </p>
       </section>
 
-      {/* 03 PACKAGE REGISTRY GRID */}
+      {/* 03 Package Registry Grid */}
       <section className="py-8 md:py-12 container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12 md:mb-16 space-y-4">
-          <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tighter">
-            Erleben Sie das ultimative Abenteuer
+          <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter">
+            Erleben Sie das ultimative Abenteuer: Besteigen Sie das Dach Afrikas
           </h2>
         </div>
         
@@ -154,7 +154,7 @@ export default function KilimanjaroPage() {
           </div>
         ) : kiliPackages.length === 0 ? (
           <div className="py-24 text-center border-2 border-dashed rounded-[3rem] bg-muted/10">
-            <p className="text-muted-foreground font-bold uppercase tracking-widest text-[10px]">Registry Empty • Check Admin Category Sync</p>
+            <p className="text-muted-foreground font-bold tracking-widest text-[10px]">Registry leer • Bitte Kategorien im Admin-Bereich synchronisieren</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 md:gap-y-20">
@@ -165,13 +165,13 @@ export default function KilimanjaroPage() {
         )}
       </section>
 
-      {/* 04 EXPERT NARRATIVE */}
+      {/* 04 Expert Narrative */}
       <section className="py-12 md:py-20 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="space-y-8">
               <div className="space-y-4">
-                <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px]">National-Registry</span>
+                <span className="text-primary font-bold text-[10px] tracking-widest">National-Registry</span>
                 <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary leading-tight">
                   Was macht den Kilimandscharo zum ultimativen Abenteuerziel?
                 </h2>
@@ -190,7 +190,7 @@ export default function KilimanjaroPage() {
               <Image src="https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1200" alt="Kilimanjaro Peak" fill className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               <div className="absolute bottom-10 left-10 text-white">
-                <p className="text-[10px] font-bold uppercase tracking-widest text-primary mb-2">Uhuru Peak Registry</p>
+                <p className="text-[10px] font-bold tracking-widest text-primary mb-2">Uhuru Peak Registry</p>
                 <h4 className="text-2xl font-headline font-bold">5.895 Meter Freiheit</h4>
               </div>
             </div>
@@ -198,10 +198,10 @@ export default function KilimanjaroPage() {
         </div>
       </section>
 
-      {/* 05 QUICK FACTS REGISTRY */}
+      {/* 05 Quick Facts Registry */}
       <section className="py-12 md:py-20 bg-[#fdfcfb]">
-        <div className="container mx-auto px-4 max-w-7xl mb-12">
-          <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary text-center uppercase tracking-tighter">Kilimandscharo Quick Facts</h2>
+        <div className="container mx-auto px-4 max-w-7xl mb-12 text-center">
+          <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter">Kilimandscharo Quick Facts</h2>
         </div>
         <div className="container mx-auto px-4 max-w-7xl relative">
           <div className="relative rounded-[3rem] overflow-hidden p-8 md:p-16">
@@ -214,20 +214,20 @@ export default function KilimanjaroPage() {
             />
             <div className="relative z-10 grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-8">
               {[
-                { icon: TrendingUp, label: "Höhe", val: "5.895 Meter", sub: "Uhuru Peak" },
-                { icon: Map, label: "Routen", val: "7 Pfade", sub: "Offiziell" },
-                { icon: Timer, label: "Dauer", val: "5-10 Tage", sub: "Akklimatisierung" },
-                { icon: Wind, label: "Klimazonen", val: "5 Zonen", sub: "Biodiversität" },
-                { icon: Award, label: "Erfolgsquote", val: "Bis zu 90%", sub: "Mit SDL-Profi" }
+                { icon: TrendingUp, label: "Höhe", val: "5.895 Meter", sub: "Höchster Berg Afrikas" },
+                { icon: Map, label: "Routen", val: "7 Pfade", sub: "Offizielle Aufstiege" },
+                { icon: Timer, label: "Dauer", val: "5-10 Tage", sub: "Je nach Route" },
+                { icon: Wind, label: "Klimazonen", val: "5 Zonen", sub: "Auf einem Berg" },
+                { icon: Award, label: "Erfolgsquote", val: "Bis zu 90%", sub: "Mit Akklimatisierung" }
               ].map((fact, i) => (
                 <div key={i} className="p-6 md:p-8 rounded-[2rem] bg-white/10 backdrop-blur-md border border-white/10 text-center space-y-4 group hover:bg-white/20 transition-all">
                   <div className="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center mx-auto transition-transform duration-500 group-hover:scale-110">
                     <fact.icon className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <p className="text-[9px] uppercase font-bold text-primary mb-1 tracking-widest">{fact.label}</p>
-                    <p className="font-bold text-sm md:text-base text-white uppercase leading-none">{fact.val}</p>
-                    <p className="text-[8px] text-white/60 font-bold mt-1 uppercase tracking-widest opacity-60">{fact.sub}</p>
+                    <p className="text-[9px] font-bold text-primary mb-1 tracking-widest">{fact.label}</p>
+                    <p className="font-bold text-sm md:text-base text-white leading-none">{fact.val}</p>
+                    <p className="text-[8px] text-white/60 font-bold mt-1 tracking-widest opacity-60">{fact.sub}</p>
                   </div>
                 </div>
               ))}
@@ -236,7 +236,7 @@ export default function KilimanjaroPage() {
         </div>
       </section>
 
-      {/* 06 VIDEO REGISTRY */}
+      {/* 06 Video Registry */}
       <section className="py-12 md:py-20 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl text-center space-y-12">
           <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary">Erleben Sie die Magie des Kilimandscharo</h2>
@@ -255,7 +255,7 @@ export default function KilimanjaroPage() {
         </div>
       </section>
 
-      {/* 07 ROUTE DECISION MATRIX */}
+      {/* 07 Route Decision Matrix */}
       <section className="py-12 md:py-20 bg-[#fdfcfb]">
         <div className="container mx-auto px-4 max-w-4xl text-center">
           <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary mb-6">Kilimandscharo Routen & Reiseverläufe</h2>
@@ -280,25 +280,25 @@ export default function KilimanjaroPage() {
                     <Plus className="w-4 h-4 text-primary shrink-0 transition-transform group-data-[state=open]:rotate-45" />
                   </div>
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground text-[14px] leading-[20px] font-normal pb-6 uppercase tracking-widest">{faq.a}</AccordionContent>
+                <AccordionContent className="text-muted-foreground text-[14px] leading-[20px] font-normal pb-6 tracking-widest">{faq.a}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
         </div>
       </section>
 
-      {/* 08 HIGHLIGHT GALLERY - MOBILE SLIDER */}
+      {/* 08 Highlights Galerie - Mobile Slider */}
       <section className="py-12 md:py-20 bg-white border-y border-border/40 overflow-hidden">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tighter">Highlights Galerie</h2>
+            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter">Kilimandscharo Highlights Galerie</h2>
           </div>
           
           {/* Desktop Grid */}
           <div className="hidden md:grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
             {[1, 2, 3, 4, 5, 6].map((i) => (
               <div key={i} className="relative aspect-[4/5] md:aspect-square rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden shadow-lg group">
-                <Image src={`https://picsum.photos/seed/kili-gal-${i}/800/800`} alt={`Highlight ${i}`} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
+                <Image src={`https://picsum.photos/seed/kili-gal-${i}/800/800`} alt={`Highlight ${i}`} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-black/10 group-hover:opacity-0 transition-opacity" />
               </div>
             ))}
@@ -321,7 +321,7 @@ export default function KilimanjaroPage() {
         </div>
       </section>
 
-      {/* 09 DETAILED ROUTES REGISTRY */}
+      {/* 09 Detailed Routes Registry */}
       <section className="py-12 md:py-20 bg-[#fdfcfb]">
         <div className="container mx-auto px-4 max-w-7xl space-y-24 md:space-y-40">
           
@@ -337,16 +337,16 @@ export default function KilimanjaroPage() {
               id: 'machame',
               title: 'Machame-Route',
               desc: 'Die Machame-Route – auch bekannt als „Whiskey Route" – gehört zu den beliebtesten Wegen auf den Kilimandscharo. Dank ihres sanften Anstiegs und der guten Akklimatisierungschancen hat sie zudem eine hohe Erfolgsquote.',
-              details: 'Auf dieser Route wandern Sie durch üppigen Regenwald, über das beeindruckende Shira-Plateau bis hin zum Kraterrand bei Stella Point. Wir empfehlen dringend die 7-Tage-Variante.',
+              details: 'Auf dieser Route wandern Sie durch üppigen Regenwald, über das beeindruckende Shira-Plateau bis hin zum Kraterrand bei Stella Point – dem anspruchsvollsten Abschnitt, für den zumindest eine Grundfitness erforderlich ist.',
               pro: 'Landschaftlich besonders reizvoll.',
-              con: 'In der Hochsaison stark frequentiert.',
+              con: 'In der Hochsaison mitunter stark frequentiert.',
               img: 'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=800'
             },
             {
               id: 'marangu',
               title: 'Marangu-Route',
               desc: 'Die als „Coca-Cola-Route" bekannte Marangu-Route ist die einzige mit Hüttenunterkünften anstelle von Zelten – ein großer Pluspunkt für manche Bergsteiger.',
-              details: 'Für preisbewusste Bergsteiger ist sie eine der günstigsten Möglichkeiten, den Gipfel zu erreichen. Da der Auf- und Abstieg jedoch auf derselben Route erfolgen, verpassen Sie einige der abwechslungsreichen Landschaften des Kilimandscharo.',
+              details: 'Für preisbewusste Bergsteiger ist sie eine der günstigsten Möglichkeiten, den Gipfel zu erreichen, und ihr klarer, einfacher Weg ist leicht zu folgen. Da der Auf- und Abstieg jedoch auf derselben Route erfolgen, verpassen Sie einige der abwechslungsreichen Landschaften des Kilimandscharo.',
               pro: 'Budgetfreundlich, Unterkunft in Hütten.',
               con: 'Höheres Risiko für Höhenkrankheit durch schnellen Aufstieg.',
               img: 'https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=800'
@@ -355,7 +355,7 @@ export default function KilimanjaroPage() {
               id: 'lemosho',
               title: 'Lemosho-Route',
               desc: 'Die Lemosho-Route ist ein ruhiger und landschaftlich spektakulärer Weg zum Gipfel, der auf der Westseite des Kilimandscharo beginnt.',
-              details: 'Diese Route führt Sie durch unberührte Wildnis auf das Shira-Plateau. Sie bietet dank der längeren Dauer beste Akklimatisierungschancen – was die Erfolgsquote spürbar erhöht.',
+              details: 'Diese Route führt Sie durch unberührte Wildnis auf das Shira-Plateau und trifft später auf die Machame-Route beim Lava Tower. Sie bietet dank der längeren Dauer beste Akklimatisierungschancen – was die Erfolgsquote spürbar erhöht.',
               pro: 'Wenig Andrang, hervorragende Akklimatisierung.',
               con: 'Höhere Kosten durch längere Dauer.',
               img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800'
@@ -364,8 +364,8 @@ export default function KilimanjaroPage() {
             <div key={route.id} className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-20 items-center">
               <div className={cn("lg:col-span-6 space-y-8", i % 2 !== 0 ? "lg:order-2" : "lg:order-1")}>
                 <div className="space-y-4">
-                  <Badge variant="outline" className="border-primary/20 text-primary px-4 py-1 font-bold text-[10px] uppercase tracking-widest">Official Route Registry</Badge>
-                  <h3 className="font-headline text-2xl md:text-4xl font-normal text-secondary uppercase tracking-tight">{route.title}</h3>
+                  <Badge variant="outline" className="border-primary/20 text-primary px-4 py-1 font-bold text-[10px] tracking-widest">Official Route Registry</Badge>
+                  <h3 className="font-headline text-2xl md:text-4xl font-normal text-secondary tracking-tight">{route.title}</h3>
                 </div>
                 <div className="space-y-6 text-muted-foreground text-sm md:text-lg font-normal leading-relaxed">
                   <p>{route.desc}</p>
@@ -373,12 +373,12 @@ export default function KilimanjaroPage() {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
                   <div className="p-6 bg-green-500/5 rounded-2xl border border-green-500/10">
-                    <p className="text-[10px] font-black uppercase text-green-600 mb-2">Vorteil</p>
-                    <p className="text-xs font-bold text-secondary uppercase leading-relaxed">{route.pro}</p>
+                    <p className="text-[10px] font-bold text-green-600 mb-2">Vorteil</p>
+                    <p className="text-xs font-bold text-secondary leading-relaxed">{route.pro}</p>
                   </div>
                   <div className="p-6 bg-red-500/5 rounded-2xl border border-red-500/10">
-                    <p className="text-[10px] font-black uppercase text-red-600 mb-2">Nachteil</p>
-                    <p className="text-xs font-bold text-secondary uppercase leading-relaxed">{route.con}</p>
+                    <p className="text-[10px] font-bold text-red-600 mb-2">Nachteil</p>
+                    <p className="text-xs font-bold text-secondary leading-relaxed">{route.con}</p>
                   </div>
                 </div>
               </div>
@@ -392,16 +392,16 @@ export default function KilimanjaroPage() {
         </div>
       </section>
 
-      {/* 10 BEST TIME TO CLIMB */}
+      {/* 10 Best Time to Climb */}
       <section className="py-12 md:py-20 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-get-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
             <div className="lg:col-span-5 space-y-8">
               <div>
-                <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] block mb-2">Climbing Season</span>
-                <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase leading-[0.9] tracking-tighter">Beste Zeit, <br /><span className="text-primary">den Kili zu besteigen</span></h2>
+                <span className="text-primary font-bold tracking-widest text-[10px] block mb-2">Climbing Season</span>
+                <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter">Beste Zeit, den Kili zu besteigen</h2>
               </div>
-              <p className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal opacity-80 uppercase tracking-widest">
+              <p className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal opacity-80 tracking-widest">
                 Die beste Zeit, um den Kilimandscharo zu besteigen, ist während der beiden Trockenzeiten: Januar bis Mitte März sowie Juni bis Oktober.
               </p>
             </div>
@@ -417,8 +417,8 @@ export default function KilimanjaroPage() {
                   <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-2 group-hover:bg-primary transition-colors">
                     <Calendar className="w-5 h-5 text-primary group-hover:text-white" />
                   </div>
-                  <h4 className="font-bold text-base md:text-lg text-secondary uppercase tracking-tight">{item.title}</h4>
-                  <p className="text-[10px] md:text-xs text-muted-foreground font-bold uppercase tracking-widest leading-relaxed opacity-70">{item.desc}</p>
+                  <h4 className="font-bold text-base md:text-lg text-secondary tracking-tight">{item.title}</h4>
+                  <p className="text-[10px] md:text-xs text-muted-foreground font-bold tracking-widest leading-relaxed opacity-70">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -426,21 +426,21 @@ export default function KilimanjaroPage() {
         </div>
       </section>
 
-      {/* 11 PREPARATION REGISTRY */}
+      {/* 11 Preparation Registry */}
       <section className="py-12 md:py-20 bg-[#FDF7F2] border-b border-border/40">
         <div className="container mx-auto px-4 max-w-5xl text-center space-y-10">
           <div className="space-y-4">
-            <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px]">Registry Protocol</span>
-            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tighter">Wie Sie sich auf das Trekking vorbereiten</h2>
+            <span className="text-primary font-bold tracking-widest text-[10px]">Registry Protocol</span>
+            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter">Wie Sie sich auf das Trekking vorbereiten</h2>
           </div>
           <div className="p-10 md:p-16 bg-white rounded-[3rem] shadow-sm border border-border/40 text-left space-y-8 relative overflow-hidden">
             <div className="absolute top-0 right-0 p-12 opacity-[0.03] pointer-events-none"><Compass className="w-48 h-48" /></div>
             <div className="relative z-10 space-y-6">
-              <p className="text-secondary font-bold text-base md:text-2xl leading-relaxed uppercase tracking-tight">
+              <p className="text-secondary font-bold text-base md:text-2xl leading-relaxed tracking-tight">
                 Das Besteigen des Kilimandscharo ist ein unvergessliches Abenteuer, erfordert jedoch eine gute körperliche und mentale Vorbereitung. Auch wenn es Routen für jedes Erfahrungslevel gibt, sollten Sie täglich 6–7 Stunden wandern können — oft in großer Höhe.
               </p>
               <div className="h-px bg-border/50 w-24" />
-              <p className="text-muted-foreground font-bold text-[10px] md:text-sm uppercase tracking-widest leading-relaxed opacity-70">
+              <p className="text-muted-foreground font-bold text-[10px] md:text-sm tracking-widest leading-relaxed opacity-70">
                 Planen Sie regelmäßige, lange Wanderungen ein- bis zweimal pro Woche und steigern Sie schrittweise Dauer und Schwierigkeit, damit Ihr Körper sich an mehrere aufeinanderfolgende Wandertage gewöhnt. Die Monate vor Ihrer Reise eignen sich ideal, um Ihre Kondition zu steigern.
               </p>
             </div>
@@ -448,11 +448,11 @@ export default function KilimanjaroPage() {
         </div>
       </section>
 
-      {/* 12 TESTIMONIALS */}
+      {/* 12 Testimonials */}
       <section className="py-12 md:py-20 bg-white border-b border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12 md:mb-20">
-            <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary uppercase tracking-tighter">Hören Sie von denen, die mit uns dort waren</h2>
+            <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary tracking-tighter">Hören Sie von denen, die mit uns dort waren</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {[
@@ -468,16 +468,16 @@ export default function KilimanjaroPage() {
                   <div className="flex gap-1">
                     {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-3.5 h-3.5 fill-primary text-primary" />)}
                   </div>
-                  <p className="text-xs md:text-sm italic text-secondary leading-relaxed font-bold uppercase tracking-tight opacity-80 group-hover:text-primary transition-colors">"{t.q}"</p>
+                  <p className="text-xs md:text-sm italic text-secondary leading-relaxed font-bold tracking-tight opacity-80 group-hover:text-primary transition-colors">"{t.q}"</p>
                 </div>
-                <p className="mt-6 font-bold text-primary text-[10px] tracking-[0.2em] uppercase">— {t.n}</p>
+                <p className="mt-6 font-bold text-primary text-[10px] tracking-widest">— {t.n}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 13 FAQ REGISTRY */}
+      {/* 13 FAQ Registry */}
       <section className="py-12 md:py-20 bg-white">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-12">
@@ -492,7 +492,7 @@ export default function KilimanjaroPage() {
                     <Plus className="w-4 h-4 text-primary transition-transform group-data-[state=open]:rotate-45" />
                   </div>
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground text-[14px] leading-[20px] pb-8 font-normal opacity-80 uppercase tracking-widest">{faq.a}</AccordionContent>
+                <AccordionContent className="text-muted-foreground text-[14px] leading-[20px] pb-8 font-normal opacity-80 tracking-widest">{faq.a}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
