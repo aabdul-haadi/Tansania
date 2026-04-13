@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -51,7 +50,7 @@ export function FAQ() {
   return (
     <section className="py-12 md:py-24 bg-white">
       <div className="container mx-auto px-4 max-w-4xl">
-        <div className="text-center mb-6 md:mb-10 space-y-2">
+        <div className="text-center mb-4 md:mb-6 space-y-2">
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -84,7 +83,7 @@ export function FAQ() {
                 value={`item-${index}`}
                 className="bg-white border border-border/60 rounded-lg md:rounded-xl shadow-sm overflow-hidden"
               >
-                <AccordionTrigger className="font-normal text-base md:text-xl py-4 px-6 md:px-8 hover:no-underline text-left text-secondary transition-colors tracking-tight">
+                <AccordionTrigger className="font-normal text-base md:text-xl py-3 px-6 md:px-8 hover:no-underline text-left text-secondary transition-colors tracking-tight">
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-sm md:text-base leading-relaxed px-6 md:px-8 pb-6 font-normal text-left">
