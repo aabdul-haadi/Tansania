@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -222,7 +223,7 @@ export default function SafarisPage() {
 
       {/* Ultimate Adventure Section with Video */}
       <section className="py-12 md:py-24 bg-[#fdfcfb]">
-        <div className="container mx-auto px-4 max-w-7xl">
+        <div className="container mx-auto px-4 max-get-7xl">
           <div className="flex flex-col items-center text-center mb-12 md:mb-16 space-y-4">
             <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary leading-tight">
               Das ultimative Safari Abenteuer in Tansania
@@ -265,7 +266,7 @@ export default function SafarisPage() {
         </div>
       </section>
 
-      {/* REDESIGNED: Luxury Lodging Section */}
+      {/* Luxury Lodging Section */}
       <section className="py-12 md:py-24 bg-white overflow-hidden">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
@@ -347,7 +348,7 @@ export default function SafarisPage() {
                 <h4 className="text-3xl font-headline font-bold text-white uppercase tracking-tighter">Sansibar Highlights</h4>
               </div>
             </div>
-            <div className="space-y-8 order-1 lg:order-2">
+            <div className="space-y-8 order-1 lg:order-2 text-left">
               <div className="space-y-4">
                 <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary leading-tight">
                   Tansania Safari und Baden Sansibar – Abenteuer und Erholung vereint
@@ -373,7 +374,7 @@ export default function SafarisPage() {
       <section className="py-12 md:py-24 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12 md:mb-20 space-y-4">
-            <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary uppercase tracking-tight">
+            <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary mb-6">
               Tansania Safari Beste Reisezeit – Dein perfektes Safari-Erlebnis
             </h2>
             <p className="max-w-3xl mx-auto text-muted-foreground text-sm md:text-lg leading-relaxed font-normal opacity-80">
@@ -390,13 +391,13 @@ export default function SafarisPage() {
               { title: "Ruhige Safari", time: "März bis Mai", desc: "Regenzeit mit üppigen Landschaften und deutlich weniger Touristen für private Momente.", icon: Sun },
               { title: "Familien-Safari", time: "Juni bis September", desc: "Mildes Wetter und beste Sichtbarkeit für ein entspanntes Erlebnis mit Kindern.", icon: Heart }
             ].map((item, idx) => (
-              <div key={idx} className="bg-[#FDFCFB] p-8 rounded-[2rem] border border-border/50 shadow-sm hover:shadow-xl transition-all duration-500 group">
+              <div key={idx} className="bg-[#FDFCFB] p-8 rounded-[2rem] border border-border/50 shadow-sm hover:shadow-xl transition-all duration-500 group text-left">
                 <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
                   <item.icon className="w-6 h-6 text-primary group-hover:text-white" />
                 </div>
-                <h4 className="font-headline text-xl md:text-2xl font-bold text-secondary uppercase mb-2 tracking-tight">{item.title}</h4>
+                <h4 className="font-headline text-xl md:text-2xl font-bold text-secondary mb-2">{item.title}</h4>
                 <p className="text-primary font-bold text-[10px] uppercase tracking-widest mb-4">{item.time}</p>
-                <p className="text-sm text-muted-foreground leading-relaxed font-medium uppercase tracking-tight opacity-70">{item.desc}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed font-medium opacity-70">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -407,7 +408,7 @@ export default function SafarisPage() {
       <section className="py-12 md:py-24 bg-[#fdfcfb]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12 md:mb-20 space-y-4">
-            <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary uppercase tracking-tight">
+            <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary mb-6">
               Tansania Safari Anbieter Erfahrungen
             </h2>
             <p className="max-w-3xl mx-auto text-muted-foreground text-sm md:text-lg leading-relaxed font-normal opacity-80">
@@ -424,14 +425,14 @@ export default function SafarisPage() {
               { name: "Clara P.", quote: "Tolle Safari! Die Unterkünfte waren luxuriös, aber ein wenig mehr Vielfalt bei den Mahlzeiten hätte es noch besser gemacht. Insgesamt aber eine großartige Erfahrung." },
               { name: "David und Elena R.", quote: "Wunderbare Familien-Safari! Die Guides waren informativ, und die Lodges waren fantastisch. Unsere Kinder liebten es. Wir kommen wieder!" }
             ].map((t, i) => (
-              <div key={i} className="bg-white p-8 rounded-[2rem] border border-border/40 flex flex-col justify-between shadow-sm hover:shadow-md transition-all">
+              <div key={i} className="bg-white p-8 rounded-[2rem] border border-border/40 flex flex-col justify-between shadow-sm hover:shadow-md transition-all text-left">
                 <div className="space-y-4">
                   <div className="flex gap-1">
                     {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-3.5 h-3.5 fill-primary text-primary" />)}
                   </div>
-                  <p className="text-sm md:text-base italic text-secondary leading-relaxed font-medium uppercase tracking-tight opacity-80">"{t.quote}"</p>
+                  <p className="text-sm md:text-base italic text-secondary leading-relaxed font-medium opacity-80">"{t.quote}"</p>
                 </div>
-                <p className="mt-6 font-bold text-primary uppercase text-[10px] tracking-widest">— {t.name}</p>
+                <p className="mt-6 font-bold text-primary text-[10px] tracking-widest">— {t.name}</p>
               </div>
             ))}
           </div>
@@ -442,7 +443,7 @@ export default function SafarisPage() {
       <section className="py-12 md:py-24 bg-white border-t border-border/40">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary leading-tight">
+            <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary mb-6">
               Tansania Safari Urlaub – Häufig gestellte Fragen
             </h2>
           </div>
@@ -465,7 +466,7 @@ export default function SafarisPage() {
                     <Plus className="w-4 h-4 text-primary transition-transform group-data-[state=open]:rotate-45" />
                   </div>
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground text-[14px] leading-[20px] pb-8 font-normal uppercase tracking-widest opacity-80">{faq.a}</AccordionContent>
+                <AccordionContent className="text-muted-foreground text-[14px] leading-[20px] pb-8 font-normal opacity-80">{faq.a}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
