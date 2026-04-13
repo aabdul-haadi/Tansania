@@ -85,7 +85,7 @@ export default function KilimanjaroPage() {
 
   const { data: allPackages, isLoading } = useCollection(pkgQuery);
 
-  // Filter for Kilimanjaro-specific expeditions
+  // Filter for Kilimanjaro-specific expeditions or categories
   const kiliPackages = allPackages?.filter(p => 
     p.category?.toLowerCase().includes('kilimandscharo') || 
     p.category?.toLowerCase().includes('meru') ||
