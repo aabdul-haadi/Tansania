@@ -43,12 +43,12 @@ const magazinePosts = [
 
 export function MagazinInspiration() {
   return (
-    <section className="py-16 md:py-24 bg-white overflow-hidden">
-      <div className="container mx-auto px-4 max-w-7xl">
+    <section className="pt-8 md:pt-16 pb-16 md:pb-24 bg-white overflow-hidden">
+      <div className="container mx-auto px-4 max-get-7xl">
         {/* Header Protocol */}
         <div className="flex items-end justify-between mb-12 md:mb-16">
           <div className="space-y-2">
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -56,7 +56,7 @@ export function MagazinInspiration() {
             >
               Magazin & Inspiration
             </motion.h2>
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -113,10 +113,10 @@ function MagazineCard({ post }: { post: any }) {
     <div className="flex flex-col h-full bg-white rounded-2xl overflow-hidden shadow-sm border border-border/40 hover:shadow-md transition-all duration-500 group">
       {/* Visual Anchor */}
       <div className="relative aspect-[16/10] overflow-hidden shrink-0">
-        <Image 
-          src={post.img} 
-          alt={post.title} 
-          fill 
+        <Image
+          src={post.img}
+          alt={post.title}
+          fill
           className="object-cover transition-transform duration-1000 group-hover:scale-105"
           data-ai-hint={post.hint}
         />
