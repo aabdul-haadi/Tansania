@@ -30,10 +30,9 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="pt-4 md:pt-8 pb-12 md:pb-24 bg-white overflow-hidden">
+    <section className="pt-8 md:pt-12 pb-12 md:pb-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-10 md:mb-16 space-y-2">
-          {/* TITLE: RESET TO STRICT GLOBAL CSS METRICS */}
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}

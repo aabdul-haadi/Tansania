@@ -35,8 +35,8 @@ const features = [
 
 export function WhyUs() {
   return (
-    <section className="py-16 md:py-32 bg-white overflow-hidden border-t border-border/40">
-      <div className="container mx-auto px-4 max-w-7xl">
+    <section className="pt-8 md:pt-12 pb-16 md:pb-32 bg-white overflow-hidden border-t border-border/40">
+      <div className="container mx-auto px-4 max-get-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
           
           {/* Left Column: Visual Manifest */}
@@ -70,8 +70,8 @@ export function WhyUs() {
                 viewport={{ once: true }}
                 className="space-y-4"
               >
-                <span className="text-primary font-black uppercase tracking-[0.4em] text-[10px] block">Unsere DNA</span>
-                <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary leading-[0.9] tracking-tighter">
+                <span className="text-primary font-bold text-[10px] block mb-2 tracking-widest">Unsere DNA</span>
+                <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary leading-[0.9]">
                   Was uns von anderen <br />
                   <span className="text-primary font-bold">unterscheidet</span>
                 </h2>
