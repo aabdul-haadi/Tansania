@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -21,6 +20,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Card } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 
 const parksData = [
@@ -93,7 +93,7 @@ export default function NationalParksPage() {
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen">
-      {/* 01 Hero Section - Matching Reference Layout */}
+      {/* 01 Hero Section - Centered Narrative */}
       <section className="bg-white pt-32 pb-12 text-center border-none">
         <div className="container mx-auto px-4 max-w-5xl space-y-4">
           <motion.h1 
@@ -145,7 +145,7 @@ export default function NationalParksPage() {
             <div className="space-y-6">
               <div>
                 <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] mb-2 block">Park-Register</span>
-                <h2 className="font-headline text-3xl font-normal text-secondary uppercase">Destinationen</h2>
+                <h2 className="font-headline text-3xl font-normal text-secondary">Destinationen</h2>
               </div>
               
               <div className="grid grid-cols-1 gap-2.5">
@@ -167,7 +167,7 @@ export default function NationalParksPage() {
                       )}>
                         Nationalpark
                       </span>
-                      <span className="font-headline text-xl font-bold uppercase tracking-tight">{park.name}</span>
+                      <span className="font-headline text-xl font-bold tracking-tight">{park.name}</span>
                     </div>
                     <ChevronRight className={cn(
                       "w-4 h-4 transition-all duration-500",
@@ -214,11 +214,11 @@ export default function NationalParksPage() {
                     <Badge variant="outline" className="border-primary/20 text-primary px-4 py-1 font-bold text-[9px] uppercase tracking-widest">
                       Offizielles Register: {activePark.name}
                     </Badge>
-                    <h2 className="font-headline text-4xl md:text-6xl font-normal text-secondary leading-tight uppercase tracking-tighter">
+                    <h2 className="font-headline text-4xl md:text-6xl font-normal text-secondary leading-tight tracking-tighter">
                       {activePark.fullName}
                     </h2>
                   </div>
-                  <p className="text-secondary font-bold text-sm md:text-xl leading-relaxed uppercase tracking-tight opacity-80 border-l-4 border-primary/20 pl-8 py-2">
+                  <p className="text-secondary font-bold text-sm md:text-xl leading-relaxed tracking-tight opacity-80 border-l-4 border-primary/20 pl-8 py-2">
                     {activePark.tagline}
                   </p>
                   <p className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal opacity-80">
@@ -242,7 +242,7 @@ export default function NationalParksPage() {
                   ))}
                 </div>
 
-                {/* Highlights Gallery (Park Specific) */}
+                {/* Highlights Registry */}
                 <div className="space-y-8">
                   <h3 className="font-headline text-2xl md:text-4xl font-normal text-secondary uppercase tracking-tight">Erlebnisse & Highlights</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -251,7 +251,7 @@ export default function NationalParksPage() {
                         <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors">
                           <CheckCircle2 className="w-6 h-6 text-primary group-hover:text-white" />
                         </div>
-                        <span className="font-bold text-xs md:text-base text-secondary uppercase tracking-widest">{h}</span>
+                        <span className="font-bold text-xs md:text-base text-secondary tracking-widest">{h}</span>
                       </div>
                     ))}
                   </div>
@@ -261,8 +261,8 @@ export default function NationalParksPage() {
                 <div className="pt-12 border-t border-border/50">
                   <div className="bg-[#FDF7F2] rounded-[2.5rem] p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 border border-[#F0EBE0] shadow-sm">
                     <div className="space-y-4 text-center md:text-left">
-                      <h4 className="font-headline text-2xl md:text-3xl font-bold text-secondary uppercase">Bereit für die {activePark.name}?</h4>
-                      <p className="text-muted-foreground text-xs md:text-sm font-bold uppercase tracking-widest max-w-sm">
+                      <h4 className="font-headline text-2xl md:text-3xl font-bold text-secondary">Bereit für die {activePark.name}?</h4>
+                      <p className="text-muted-foreground text-xs md:text-sm font-bold tracking-widest max-w-sm">
                         Wir entwerfen Ihre individuelle Route inklusive der besten Lodges in diesem Nationalpark.
                       </p>
                     </div>
@@ -279,9 +279,6 @@ export default function NationalParksPage() {
 
         </div>
       </section>
-
-      {/* Support Registry Section */}
-      <ContactSection />
     </div>
   );
 }
