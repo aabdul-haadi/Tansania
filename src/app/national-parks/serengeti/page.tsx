@@ -68,10 +68,10 @@ export default function SerengetiPage() {
             transition={{ duration: 0.8 }}
             className="space-y-2"
           >
-            <p className="text-white text-[10px] md:text-sm font-bold uppercase tracking-[0.4em] drop-shadow-lg">
+            <p className="text-white text-[10px] md:text-sm font-bold uppercase tracking-widest drop-shadow-lg">
               Das größte Naturschauspiel der Erde
             </p>
-            <h1 className="font-headline text-4xl md:text-8xl font-normal text-white uppercase tracking-tighter leading-none">
+            <h1 className="font-headline text-4xl md:text-8xl font-normal text-white tracking-tighter leading-none">
               Serengeti Nationalpark
             </h1>
           </motion.div>
@@ -90,15 +90,15 @@ export default function SerengetiPage() {
               className="space-y-6"
             >
               <div className="space-y-2">
-                <span className="text-primary font-bold uppercase tracking-[0.3em] text-[9px] md:text-[10px] block">
+                <span className="text-primary font-bold text-[9px] md:text-[10px] block">
                   Unesco-Weltnaturerbe seit 1952
                 </span>
-                <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter uppercase leading-tight">
-                  Die endlose Ebene <br /> voller Leben
+                <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter leading-tight">
+                  Die endlose Ebene voller Leben
                 </h2>
               </div>
               
-              <div className="space-y-6 text-muted-foreground font-normal text-sm md:text-lg leading-relaxed text-justify opacity-90">
+              <div className="space-y-6 text-muted-foreground font-normal text-[14px] leading-[20px] text-justify opacity-90">
                 <p>
                   Der Serengeti Nationalpark, 1952 gegründet und UNESCO-Weltnaturerbe, ist eines der ältesten und bekanntesten Ökosysteme der Erde. Sein Name stammt aus der Maasai-Sprache "Siringitu", was "endloses Land" bedeutet – eine perfekte Beschreibung für die weiten Savannen, die sich über fast 30.000 Quadratkilometer erstrecken.
                 </p>
@@ -128,7 +128,7 @@ export default function SerengetiPage() {
                 <div className="w-10 h-10 rounded-xl bg-primary/20 backdrop-blur-xl flex items-center justify-center">
                   <Sparkles className="w-5 h-5 text-primary" />
                 </div>
-                <p className="text-[10px] font-bold uppercase tracking-widest">Signature View</p>
+                <p className="text-[10px] font-bold tracking-widest">Signature View</p>
               </div>
             </motion.div>
           </div>
@@ -154,10 +154,10 @@ export default function SerengetiPage() {
                       <card.icon className="w-6 h-6 md:w-8 md:h-8 text-primary group-hover:text-white transition-colors" />
                     </div>
                     <div className="space-y-3">
-                      <h4 className="font-headline text-xl md:text-3xl font-bold text-secondary uppercase tracking-tight group-hover:text-primary transition-colors leading-none">
+                      <h4 className="font-headline text-xl md:text-3xl font-bold text-secondary tracking-tight group-hover:text-primary transition-colors leading-none">
                         {card.title}
                       </h4>
-                      <p className="text-[10px] md:text-sm text-muted-foreground font-bold uppercase tracking-widest leading-relaxed opacity-80">
+                      <p className="text-[14px] leading-[20px] text-muted-foreground font-normal tracking-widest leading-relaxed opacity-80">
                         {card.desc}
                       </p>
                     </div>
@@ -175,15 +175,15 @@ export default function SerengetiPage() {
           <Compass className="w-8 h-8 text-primary" />
         </div>
         <div className="space-y-6">
-          <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary uppercase tracking-tighter">
-            Planen Sie Ihr <br /> <span className="text-primary">Serengeti Abenteuer</span>
+          <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter">
+            Planen Sie Ihr Serengeti Abenteuer
           </h2>
-          <p className="text-muted-foreground font-bold text-[10px] md:text-lg uppercase tracking-widest leading-relaxed max-w-2xl mx-auto">
+          <p className="text-muted-foreground font-bold text-[10px] md:text-lg tracking-widest leading-relaxed max-w-2xl mx-auto">
             Unsere Spezialisten in Berlin kennen die besten Zeiten und Orte für die Migration. Lassen Sie uns Ihre individuelle Traumreise gestalten.
           </p>
         </div>
         <div className="pt-10">
-          <Button asChild size="lg" className="rounded-xl px-12 h-14 md:h-16 font-black text-[10px] uppercase tracking-[0.3em] shadow-2xl hover:scale-105 transition-transform border-none">
+          <Button asChild size="lg" className="rounded-xl px-12 h-14 md:h-16 font-black text-[10px] tracking-widest shadow-2xl hover:scale-105 transition-transform border-none">
             <a href="#inquiry">Reise individuell gestalten <ArrowRight className="w-4 h-4 ml-2" /></a>
           </Button>
         </div>

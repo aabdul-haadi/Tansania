@@ -49,7 +49,7 @@ export function Navbar() {
   const pathname = usePathname();
 
   // Force Dark Content Protocol for specific "Bright" routes without background
-  const isBrightPage = pathname === '/national-parks' || pathname === '/faq' || pathname?.startsWith('/legal');
+  const isBrightPage = pathname === '/national-parks' || pathname === '/faq' || pathname?.startsWith('/legal') || pathname?.startsWith('/national-parks/');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -119,11 +119,11 @@ export function Navbar() {
               )} 
             />
             <div className="flex items-center gap-2 md:gap-3">
-              <span className="font-headline font-black whitespace-nowrap text-xs sm:text-sm md:text-xl lg:text-2xl uppercase tracking-normal leading-none">
+              <span className="font-headline font-black whitespace-nowrap text-xs sm:text-sm md:text-xl lg:text-2xl tracking-normal leading-none">
                 Tansania
               </span>
               <span className={cn(
-                "font-headline font-black whitespace-nowrap text-xs sm:text-sm md:text-xl lg:text-2xl transition-colors duration-500 uppercase tracking-normal leading-none",
+                "font-headline font-black whitespace-nowrap text-xs sm:text-sm md:text-xl lg:text-2xl transition-colors duration-500 tracking-normal leading-none",
                 useDarkState ? "text-primary" : "text-white"
               )}>
                 Reiseabenteuer
@@ -155,8 +155,8 @@ export function Navbar() {
                 <Link href="/" className="flex items-center gap-3">
                   <img src="/iconlogo.jpg" alt="SDL" className="h-8 md:h-10 w-auto" />
                   <div className="flex flex-col">
-                    <span className="font-headline font-black text-sm md:text-xl uppercase tracking-normal leading-[1.1]">Tansania</span>
-                    <span className="font-headline font-black text-sm md:text-xl text-primary uppercase tracking-normal leading-[1.1]">Reiseabenteuer</span>
+                    <span className="font-headline font-black text-sm md:text-xl tracking-normal leading-[1.1]">Tansania</span>
+                    <span className="font-headline font-black text-sm md:text-xl text-primary tracking-normal leading-[1.1]">Reiseabenteuer</span>
                   </div>
                 </Link>
               </div>
@@ -165,13 +165,13 @@ export function Navbar() {
                 <div className="px-8 py-6 md:py-10 flex flex-col gap-8 md:gap-10">
                   <nav className="flex flex-col gap-5 md:gap-6 text-left">
                     <div className="flex flex-col gap-4 mb-4">
-                      <Link href="/safaris" className="text-xl md:text-2xl font-headline font-black text-secondary hover:text-primary transition-colors leading-none uppercase">
+                      <Link href="/safaris" className="text-xl md:text-2xl font-headline font-black text-secondary hover:text-primary transition-colors leading-none">
                         Safaris
                       </Link>
-                      <Link href="/destinations/kilimanjaro" className="text-xl md:text-2xl font-headline font-black text-secondary hover:text-primary transition-colors leading-none uppercase">
+                      <Link href="/destinations/kilimanjaro" className="text-xl md:text-2xl font-headline font-black text-secondary hover:text-primary transition-colors leading-none">
                         Kilimandscharo
                       </Link>
-                      <Link href="/destinations/zanzibar" className="text-xl md:text-2xl font-headline font-black text-secondary hover:text-primary transition-colors leading-none uppercase">
+                      <Link href="/destinations/zanzibar" className="text-xl md:text-2xl font-headline font-black text-secondary hover:text-primary transition-colors leading-none">
                         Sansibar
                       </Link>
                     </div>
@@ -190,7 +190,7 @@ export function Navbar() {
                               <Link 
                                 key={country.name} 
                                 href={country.href}
-                                className="text-xs md:text-sm font-bold text-secondary/60 hover:text-primary tracking-normal transition-colors uppercase"
+                                className="text-xs md:text-sm font-bold text-secondary/60 hover:text-primary tracking-normal transition-colors"
                               >
                                 {country.name}
                               </Link>
@@ -204,7 +204,7 @@ export function Navbar() {
                       <Link 
                         key={link.name} 
                         href={link.href} 
-                        className="text-lg md:text-xl font-headline font-black tracking-normal hover:text-primary transition-colors leading-none text-left uppercase"
+                        className="text-lg md:text-xl font-headline font-black tracking-normal hover:text-primary transition-colors leading-none text-left"
                       >
                         {link.name}
                       </Link>
@@ -220,7 +220,7 @@ export function Navbar() {
                       </p>
                       <Link 
                         href="/safaris" 
-                        className="text-[11px] font-black text-secondary/70 hover:text-primary tracking-normal transition-colors uppercase"
+                        className="text-[11px] font-black text-secondary/70 hover:text-primary tracking-normal transition-colors"
                       >
                         Vollständige Kollektion
                       </Link>
@@ -244,7 +244,7 @@ export function Navbar() {
                 </div>
                 
                 <Button asChild className="w-full h-14 rounded-2xl bg-secondary text-white font-black text-[10px] tracking-widest shadow-xl hover:bg-primary transition-all border-none">
-                  <Link href="/trip-planner" className="flex items-center justify-center gap-3 uppercase">
+                  <Link href="/trip-planner" className="flex items-center justify-center gap-3">
                     Jetzt anfragen <ArrowRight className="w-4 h-4" />
                   </Link>
                 </Button>

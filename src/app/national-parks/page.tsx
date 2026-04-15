@@ -130,7 +130,7 @@ const parksData = [
     name: 'Kilimandscharo',
     fullName: 'Kilimandscharo-Nationalpark: Dach Afrikas mit Schneefeldern',
     tagline: 'Der Kilimandscharo ist mit 5.895 m der höchste Berg Afrikas und der höchste freistehende Berg der Welt.',
-    desc: 'Sein schneebedeckter Kibo-Gipfel thront majestätisch über der Savanne. Vom dichten Regenwald bis zur kargen alpinen Wüste durchläuft man alle Klimastufen.',
+    desc: 'Sein schneebedeckter Kibo-Gipfel thront majestätisch über der Savanne Nordtansanias. Vom dichten Regenwald bis zur kargen alpinen Wüste durchläuft man alle Klimastufen.',
     img: 'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1200',
     facts: [
       { t: "5895 m Gipfel", v: "Der Kilimandscharo (Kibo) ist ein begehrtes Trekking-Ziel. Mehrere Routen führen zum Uhuru Peak." },
@@ -170,6 +170,7 @@ const parksData = [
 ];
 
 const sidebarRegistry = [
+  { id: 'intro', name: 'Nationalpark-Highlights' },
   { id: 'serengeti', name: 'Serengeti Np' },
   { id: 'ngorongoro', name: 'Ngorongoro Krater' },
   { id: 'tarangire', name: 'Tarangire Np' },
@@ -180,8 +181,7 @@ const sidebarRegistry = [
   { id: 'wildlife', name: 'Tierwelt & Big Five' },
   { id: 'activities', name: 'Top-Aktivitäten' },
   { id: 'budget', name: 'Kosten & Budget' },
-  { id: 'rules', name: 'Verhaltensregeln' },
-  { id: 'culture', name: 'Tansania Erlebnis' }
+  { id: 'rules', name: 'Verhaltensregeln' }
 ];
 
 export default function NationalParksPage() {
@@ -195,7 +195,7 @@ export default function NationalParksPage() {
 
   return (
     <div className="bg-white min-h-screen font-normal">
-      {/* 01 Centered Hero Narrative */}
+      {/* 01 Simple Hero Narrative */}
       <header className="pt-32 pb-12 bg-white text-center">
         <div className="container mx-auto px-4 max-w-5xl space-y-4">
           <motion.h1 
@@ -232,7 +232,7 @@ export default function NationalParksPage() {
         
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-30">
           <Link href="/trip-planner">
-            <Button size="xl" className="rounded-xl px-12 h-14 md:h-16 bg-[#2b5a91] text-white hover:bg-secondary font-bold text-[10px] md:text-xs tracking-[0.2em] border-none shadow-2xl transition-all">
+            <Button size="xl" className="rounded-xl px-12 h-14 md:h-16 bg-[#2b5a91] text-white hover:bg-secondary font-bold text-[10px] md:text-xs tracking-widest border-none shadow-2xl transition-all">
               Jetzt Safari planen
             </Button>
           </Link>
@@ -271,11 +271,11 @@ export default function NationalParksPage() {
               <div className="absolute top-0 right-0 p-6 opacity-10"><Compass className="w-20 h-20 rotate-12" /></div>
               <div className="relative z-10 space-y-6 text-center">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 text-primary text-[8px] font-bold">
-                  <Sparkles className="w-3" /> KI Beratung
+                  <Sparkles className="w-3" /> Ki Beratung
                 </div>
                 <h4 className="font-headline text-2xl font-bold text-white leading-tight">Fragen Sie unseren Berater</h4>
                 <p className="text-white/40 text-[10px] font-bold leading-relaxed">
-                  Unser KI-Berater hilft Ihnen, den perfekten Park basierend auf Ihren Interessen zu finden.
+                  Unser Ki-Berater hilft Ihnen, den perfekten Park basierend auf Ihren Interessen zu finden.
                 </p>
                 <Link href="/trip-advisor" className="block">
                   <Button className="w-full h-12 bg-white text-secondary hover:bg-primary hover:text-white border-none text-[9px] font-black tracking-widest rounded-xl transition-all">
@@ -289,7 +289,7 @@ export default function NationalParksPage() {
           {/* 04 Sequential Content Body */}
           <main className="lg:col-span-8 space-y-16 md:space-y-20">
             
-            <section className="space-y-12">
+            <section id="intro" className="space-y-12 scroll-mt-32">
               <div className="space-y-4">
                 <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary leading-tight">
                   Tansanias Nationalparks – Safari-Abenteuer im Tierparadies
@@ -364,7 +364,7 @@ export default function NationalParksPage() {
                   <p className="text-secondary font-bold text-sm md:text-lg leading-relaxed border-l-4 border-primary/20 pl-8 py-2 text-left">
                     {park.tagline}
                   </p>
-                  <p className="text-muted-foreground text-sm md:text-base font-normal opacity-80 text-left">
+                  <p className="text-muted-foreground text-sm md:text-[14px] leading-[20px] font-normal opacity-80 text-left">
                     {park.desc}
                   </p>
                 </div>
@@ -433,7 +433,7 @@ export default function NationalParksPage() {
               <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary text-left">Kosten und Budget: Was kostet eine Safari?</h2>
               <Card className="rounded-[2.5rem] bg-[#fdfcfb] border border-border/50 overflow-hidden">
                 <CardContent className="p-8 md:p-12 space-y-8 text-left">
-                  <p className="text-muted-foreground text-sm md:text-lg leading-relaxed">
+                  <p className="text-muted-foreground text-sm md:text-[14px] leading-[20px]">
                     Die Safari-Preise variieren stark je nach Komfort und Reisestil. Budget-Safaris beginnen bei etwa 150–220 USD pro Tag. Privat organisierte Safaris der Mittelklasse liegen meist bei ca. 340–500 USD pro Tag.
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
@@ -469,18 +469,6 @@ export default function NationalParksPage() {
                     <span className="font-bold text-xs text-secondary tracking-tight">{rule}</span>
                   </div>
                 ))}
-              </div>
-            </section>
-
-            <section id="culture" className="space-y-12 pt-8 scroll-mt-32">
-              <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary text-left">Tansania-Erlebnis: Kultur & Landschaften</h2>
-              <div className="space-y-8">
-                <p className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal opacity-80 text-justify">
-                  Neben der Tierwelt bezaubert Tansania mit kultureller Vielfalt. Indigene Gruppen wie die Maasai bewahren lebendige Traditionen. Dramatische Landschaften sind überall: die Schneefelder des Kilimandscharo, türkisfarbene Grabenbruchseen und windende Flüsse.
-                </p>
-                <div className="relative aspect-[21/9] rounded-[2.5rem] overflow-hidden shadow-xl border border-border/40">
-                  <Image src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200" alt="Landschaft in Tansania" fill className="object-cover" />
-                </div>
               </div>
             </section>
 
