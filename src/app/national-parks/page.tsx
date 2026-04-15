@@ -38,6 +38,32 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+
+const pillarData = [
+  { 
+    id: 'serengeti',
+    title: "Serengeti", 
+    sub: "Endlose Savannen", 
+    img: "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800" 
+  },
+  { 
+    id: 'ngorongoro',
+    title: "Ngorongoro", 
+    sub: "Afrikas Garten Eden", 
+    img: "https://images.unsplash.com/photo-1580502304784-8985b777da59?q=80&w=800" 
+  },
+  { 
+    id: 'kilimanjaro',
+    title: "Kilimanjaro", 
+    sub: "Dach Afrikas", 
+    img: "https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=800" 
+  }
+];
 
 const parksData = [
   {
@@ -59,7 +85,7 @@ const parksData = [
     name: 'Ngorongoro',
     fullName: 'Ngorongoro-Krater: Größte intakte Vulkankaldera der Erde',
     tagline: 'Der Ngorongoro-Krater ist mit etwa 19 km Durchmesser die größte intakte Vulkankaldera der Erde.',
-    desc: 'Auf dem Kraterboden (ca. 260 km²) leben unzählige Wildtiere dicht gedrängt – von Gnus und Zebras bis zu einer ungewöhnlich hohen Anzahl an Löwen und sogar einigen seltenen Spitzmaulnashörnern.',
+    desc: 'Auf dem Kraterboden (ca. 260 km²) leben unzähliede Wildtiere dicht gedrängt – von Gnus und Zebras bis zu einer ungewöhnlich hohen Anzahl an Löwen und sogar einigen seltenen Spitzmaulnashörnern.',
     img: 'https://images.unsplash.com/photo-1580502304784-8985b777da59?q=80&w=1200',
     facts: [
       { t: "Riesige Caldera", v: "Ngorongoro ist die größte unversehrte Vulkankrater-Landschaft der Welt (Ø ~19 km)." },
@@ -186,7 +212,6 @@ export default function NationalParksPage() {
           <div className="absolute inset-0 bg-black/5" />
         </div>
         
-        {/* Overlapping Button sits half on image, half on content below */}
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-30">
           <Link href="/trip-planner">
             <Button size="xl" className="rounded-xl px-12 h-14 md:h-16 bg-[#2b5a91] text-white hover:bg-secondary font-bold text-[10px] md:text-xs tracking-[0.2em] border-none shadow-2xl transition-all">
@@ -247,31 +272,51 @@ export default function NationalParksPage() {
           {/* Sequential Main Content */}
           <main className="lg:col-span-8 space-y-24 md:space-y-40">
             
-            {/* Introductory Narrative */}
-            <div className="space-y-8">
-              <div className="bg-[#fdf7f2] p-8 md:p-12 rounded-[2.5rem] border border-[#f0ebe0] shadow-sm">
-                <p className="text-secondary font-bold text-sm md:text-xl leading-relaxed uppercase tracking-tight">
-                  Tansania ist ein echtes Safari-Paradies – rund ein Drittel der Landesfläche steht unter Naturschutz. Die Parks sichern die Artenvielfalt und machen das Land zu einem erstklassigen Ziel für Naturliebhaber.
-                </p>
+            {/* Visual Pillars Section - UPDATED TO 350PX MIN-HEIGHT & MOBILE SLIDER */}
+            <section className="space-y-8">
+              {/* Desktop Grid */}
+              <div className="hidden md:grid grid-cols-3 gap-4">
+                {pillarData.map((item, idx) => (
+                  <Link key={idx} href={`#${item.id}`}>
+                    <div className="relative h-[450px] rounded-2xl overflow-hidden shadow-xl group border border-border/40 bg-muted cursor-pointer">
+                      <Image src={item.img} alt={item.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                      <div className="absolute top-4 left-4">
+                        <Badge className="bg-primary text-white border-none text-[7px] font-bold uppercase px-2 py-0.5 shadow-lg">Nationalpark Registry</Badge>
+                      </div>
+                      <div className="absolute bottom-6 left-6 right-6">
+                        <h3 className="text-white font-headline text-2xl leading-none mb-1">{item.title}</h3>
+                        <p className="text-primary font-bold text-[9px] uppercase tracking-widest">{item.sub}</p>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
               </div>
-            </div>
 
-            {/* Visual Pillars Section */}
-            <section className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {[
-                { t: "Serengeti", s: "Endlose Savannen", img: "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=600" },
-                { t: "Ngorongoro", s: "Afrikas Garten Eden", img: "https://images.unsplash.com/photo-1580502304784-8985b777da59?q=80&w=600" },
-                { t: "Kilimanjaro", s: "Dach Afrikas", img: "https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=600" }
-              ].map((item, idx) => (
-                <div key={idx} className="relative aspect-[16/10] rounded-2xl overflow-hidden shadow-sm group border border-border/40">
-                  <Image src={item.img} alt={item.t} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                  <div className="absolute bottom-4 left-4">
-                    <p className="text-white font-headline text-lg leading-none">{item.t}</p>
-                    <p className="text-primary font-bold text-[8px] uppercase tracking-widest mt-1">{item.s}</p>
-                  </div>
-                </div>
-              ))}
+              {/* Mobile Modern Slider */}
+              <div className="md:hidden -mx-4">
+                <Carousel opts={{ align: "start", loop: true }} className="w-full">
+                  <CarouselContent className="-ml-4">
+                    {pillarData.map((item, idx) => (
+                      <CarouselItem key={idx} className="pl-4 basis-[85%]">
+                        <Link href={`#${item.id}`}>
+                          <div className="relative h-[350px] rounded-[2rem] overflow-hidden shadow-xl border border-border/50 bg-muted">
+                            <Image src={item.img} alt={item.title} fill className="object-cover" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                            <div className="absolute top-4 left-4">
+                              <Badge className="bg-primary text-white border-none text-[7px] font-bold uppercase px-2 py-0.5">Nationalpark Registry</Badge>
+                            </div>
+                            <div className="absolute bottom-6 left-6 right-6">
+                              <h3 className="text-white font-headline text-xl leading-none mb-1">{item.title}</h3>
+                              <p className="text-primary font-bold text-[8px] uppercase tracking-widest">{item.sub}</p>
+                            </div>
+                          </div>
+                        </Link>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                </Carousel>
+              </div>
             </section>
 
             {/* Individual Park Registries */}
