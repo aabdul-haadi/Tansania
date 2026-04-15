@@ -48,7 +48,6 @@ export function Navbar() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const pathname = usePathname();
 
-  // Registry Protocol: Define routes that require a dark header (visible on bright backgrounds)
   const isBrightPage = pathname === '/national-parks' || pathname === '/faq' || pathname?.startsWith('/legal');
 
   useEffect(() => {
@@ -90,7 +89,6 @@ export function Navbar() {
     { name: 'Kontakt', href: '/contact' },
   ];
 
-  // Visual State determination
   const useDarkState = isScrolled || isBrightPage;
 
   return (
@@ -104,10 +102,10 @@ export function Navbar() {
     >
       <nav className="container mx-auto px-4 max-w-7xl">
         <div className={cn(
-          "flex items-center justify-between transition-all duration-500 px-4 md:px-8 h-14 md:h-16 rounded-full",
+          "flex items-center justify-between transition-all duration-500 h-14 md:h-16 w-full",
           useDarkState 
-            ? "bg-transparent text-secondary border border-transparent" 
-            : "bg-transparent text-white border border-transparent",
+            ? "bg-transparent text-secondary" 
+            : "bg-transparent text-white",
           isOpen ? "opacity-0 pointer-events-none" : "opacity-100"
         )}>
           <Link href="/" className="flex items-center gap-2 md:gap-3 group shrink-0">

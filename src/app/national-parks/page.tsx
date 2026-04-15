@@ -23,7 +23,11 @@ import {
   ShieldCheck,
   Star,
   Coffee,
-  Ticket
+  Ticket,
+  PalmTree,
+  TreePine,
+  Bird,
+  CloudSun
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -56,7 +60,7 @@ const parksData = [
     name: 'Ngorongoro',
     fullName: 'Ngorongoro-Krater: Größte intakte Vulkankaldera der Erde',
     tagline: 'Der Ngorongoro-Krater ist mit etwa 19 km Durchmesser die größte intakte Vulkankaldera der Erde.',
-    desc: 'Auf dem Kraterboden (ca. 260 km²) leben unzählige Wildtiere dicht gedrängt – von Gnus und Zebras bis zu einer ungewöhnlich hohen Anzahl an Löwen und seltenen Spitzmaulnashörnern.',
+    desc: 'Auf dem Kraterboden (ca. 260 km²) leben unzählige Wildtiere dicht gedrängt – von Gnus und Zebras bis zu einer ungewöhnlich hohen Anzahl an Löwen und sogar einigen seltenen Spitzmaulnashörnern.',
     img: 'https://images.unsplash.com/photo-1580502304784-8985b777da59?q=80&w=1200',
     facts: [
       { t: "Riesige Caldera", v: "Ngorongoro ist die größte unversehrte Vulkankrater-Landschaft der Welt (Ø ~19 km)." },
@@ -69,7 +73,7 @@ const parksData = [
     id: 'tarangire',
     name: 'Tarangire',
     fullName: 'Tarangire-Nationalpark: Elefantenparadies mit Baobab-Landschaft',
-    tagline: 'Bekannt für seine riesigen Elefantenherden und malerischen Baobab-Bäume (Affenbrotbäume).',
+    tagline: 'Bekannt für seine riesigen Elefantenherden und malerischen Baobab-Bäume.',
     desc: 'In der Trockenzeit (Juni–Oktober) versammeln sich hier bis zu 2.000 Elefanten entlang des Tarangire-Flusses, der selbst in Dürreperioden Wasser führt.',
     img: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=1200',
     facts: [
@@ -148,7 +152,6 @@ export default function NationalParksPage() {
 
   return (
     <div className="bg-white min-h-screen font-bold">
-      {/* 01 Hero Centered Narrative */}
       <header className="pt-32 pb-12 bg-white text-center">
         <div className="container mx-auto px-4 max-w-5xl space-y-4">
           <motion.h1 
@@ -169,7 +172,6 @@ export default function NationalParksPage() {
         </div>
       </header>
 
-      {/* 02 Visual Highlights Grid */}
       <section className="container mx-auto px-4 max-w-7xl pb-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {[
@@ -189,7 +191,6 @@ export default function NationalParksPage() {
         </div>
       </section>
 
-      {/* 03 Full-Width Cinematic visual with Overlapping Button */}
       <section className="relative mb-24 md:mb-32">
         <div className="w-full relative aspect-[21/9] md:h-[600px] overflow-hidden">
           <Image
@@ -212,11 +213,9 @@ export default function NationalParksPage() {
         </div>
       </section>
 
-      {/* 04 Main Content Dual-Column Layout */}
       <section className="container mx-auto px-4 max-w-7xl pb-32">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
           
-          {/* Sidebar Sticky Navigation */}
           <aside className="lg:col-span-4 lg:sticky lg:top-24 space-y-8 hidden lg:block">
             <div className="space-y-6">
               <div>
@@ -260,9 +259,7 @@ export default function NationalParksPage() {
             </Card>
           </aside>
 
-          {/* Sequential Main Content Flow */}
           <main className="lg:col-span-8 space-y-24 md:space-y-40">
-            {/* Intro Narrative */}
             <div className="space-y-8">
               <div className="bg-[#fdf7f2] p-8 md:p-12 rounded-[2.5rem] border border-[#f0ebe0] shadow-sm">
                 <p className="text-secondary font-bold text-sm md:text-xl leading-relaxed uppercase tracking-tight">
@@ -319,7 +316,6 @@ export default function NationalParksPage() {
               </section>
             ))}
 
-            {/* Wildlife Hierarchy Section */}
             <section className="space-y-12">
               <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary">Tierwelt in Tansania: Big Five & mehr</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -337,7 +333,6 @@ export default function NationalParksPage() {
               </div>
             </section>
 
-            {/* Activities Hub */}
             <section className="space-y-12">
               <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary">Top-Aktivitäten in Tansania</h2>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -347,7 +342,7 @@ export default function NationalParksPage() {
                   { icon: Mountain, t: "Bergtouren" },
                   { icon: Waves, t: "Boots-Touren" },
                   { icon: Heart, t: "Kultur" },
-                  { icon: Palmtree, t: "Strand" }
+                  { icon: PalmTree, t: "Strand" }
                 ].map((act, i) => (
                   <div key={i} className="p-6 bg-white rounded-2xl border border-border shadow-sm text-center space-y-3 group hover:bg-secondary transition-all duration-500">
                     <act.icon className="w-6 h-6 text-primary mx-auto group-hover:text-white" />
@@ -357,7 +352,6 @@ export default function NationalParksPage() {
               </div>
             </section>
 
-            {/* Final CTA Registry */}
             <section className="pt-12 border-t border-border/50">
               <div className="bg-secondary text-white rounded-[2.5rem] p-8 md:p-16 text-center space-y-8 relative overflow-hidden">
                 <div className="absolute top-0 right-0 p-10 opacity-10"><Compass className="w-48 h-48 rotate-12" /></div>
