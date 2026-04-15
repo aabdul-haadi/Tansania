@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -105,7 +106,7 @@ export function Navbar() {
         <div className={cn(
           "flex items-center justify-between transition-all duration-500 px-4 md:px-8 h-14 md:h-16 rounded-full",
           useDarkState 
-            ? "bg-white/95 backdrop-blur-md text-secondary shadow-2xl border border-border" 
+            ? "bg-transparent text-secondary border border-transparent" 
             : "bg-transparent text-white border border-transparent",
           isOpen ? "opacity-0 pointer-events-none" : "opacity-100"
         )}>
