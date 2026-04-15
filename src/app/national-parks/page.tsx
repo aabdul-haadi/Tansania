@@ -24,7 +24,7 @@ import {
   Star,
   Coffee,
   Ticket,
-  PalmTree,
+  Palmtree,
   TreePine,
   Bird,
   CloudSun
@@ -172,6 +172,7 @@ export default function NationalParksPage() {
         </div>
       </header>
 
+      {/* Visual Anchor Pillars */}
       <section className="container mx-auto px-4 max-w-7xl pb-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {[
@@ -191,6 +192,7 @@ export default function NationalParksPage() {
         </div>
       </section>
 
+      {/* Overlapping Hero Button Implementation */}
       <section className="relative mb-24 md:mb-32">
         <div className="w-full relative aspect-[21/9] md:h-[600px] overflow-hidden">
           <Image
@@ -260,6 +262,7 @@ export default function NationalParksPage() {
           </aside>
 
           <main className="lg:col-span-8 space-y-24 md:space-y-40">
+            {/* Sequential Content Implementation */}
             <div className="space-y-8">
               <div className="bg-[#fdf7f2] p-8 md:p-12 rounded-[2.5rem] border border-[#f0ebe0] shadow-sm">
                 <p className="text-secondary font-bold text-sm md:text-xl leading-relaxed uppercase tracking-tight">
@@ -342,7 +345,7 @@ export default function NationalParksPage() {
                   { icon: Mountain, t: "Bergtouren" },
                   { icon: Waves, t: "Boots-Touren" },
                   { icon: Heart, t: "Kultur" },
-                  { icon: PalmTree, t: "Strand" }
+                  { icon: Palmtree, t: "Strand" }
                 ].map((act, i) => (
                   <div key={i} className="p-6 bg-white rounded-2xl border border-border shadow-sm text-center space-y-3 group hover:bg-secondary transition-all duration-500">
                     <act.icon className="w-6 h-6 text-primary mx-auto group-hover:text-white" />
@@ -356,7 +359,7 @@ export default function NationalParksPage() {
               <div className="bg-secondary text-white rounded-[2.5rem] p-8 md:p-16 text-center space-y-8 relative overflow-hidden">
                 <div className="absolute top-0 right-0 p-10 opacity-10"><Compass className="w-48 h-48 rotate-12" /></div>
                 <div className="relative z-10 space-y-6">
-                  <h3 className="font-headline text-3xl md:text-6xl font-normal leading-tight">Bereit für Ihre <br /><span className="text-primary font-bold">Traum-Safari?</span></h3>
+                  <h3 className="font-headline text-3xl md:text-6xl font-normal text-white leading-tight">Bereit für Ihre <br /><span className="text-primary font-bold">Traum-Safari?</span></h3>
                   <p className="text-white/60 font-bold text-[10px] md:text-sm uppercase tracking-[0.3em] max-w-xl mx-auto">
                     Wir planen Ihre Safari nach Maß – von der ersten Idee bis zum letzten Sonnenuntergang am Nil.
                   </p>

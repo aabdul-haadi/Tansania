@@ -48,6 +48,7 @@ export function Navbar() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const pathname = usePathname();
 
+  // Force Dark Header Protocol for specific "Bright" routes
   const isBrightPage = pathname === '/national-parks' || pathname === '/faq' || pathname?.startsWith('/legal');
 
   useEffect(() => {
@@ -97,7 +98,8 @@ export function Navbar() {
         "top-0 w-full z-[100] transition-all duration-500",
         "fixed md:absolute",
         (!isVisible && !isOpen) ? "-translate-y-full md:translate-y-0" : "translate-y-0",
-        isScrolled ? "py-3" : "py-6 md:py-8"
+        // Removed background from dark header state as requested
+        isScrolled && !isBrightPage ? "py-3 bg-white/80 backdrop-blur-md shadow-sm" : "py-6 md:py-8"
       )}
     >
       <nav className="container mx-auto px-4 max-w-7xl">
