@@ -47,6 +47,9 @@ export function Navbar() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const pathname = usePathname();
 
+  // Registry Protocol: Define routes that require a dark header (visible on bright backgrounds)
+  const isBrightPage = pathname === '/national-parks' || pathname === '/faq' || pathname?.startsWith('/legal');
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -86,6 +89,9 @@ export function Navbar() {
     { name: 'Kontakt', href: '/contact' },
   ];
 
+  // Visual State determination
+  const useDarkState = isScrolled || isBrightPage;
+
   return (
     <header 
       className={cn(
@@ -98,7 +104,7 @@ export function Navbar() {
       <nav className="container mx-auto px-4 max-w-7xl">
         <div className={cn(
           "flex items-center justify-between transition-all duration-500 px-4 md:px-8 h-14 md:h-16 rounded-full",
-          isScrolled 
+          useDarkState 
             ? "bg-white/95 backdrop-blur-md text-secondary shadow-2xl border border-border" 
             : "bg-transparent text-white border border-transparent",
           isOpen ? "opacity-0 pointer-events-none" : "opacity-100"
@@ -109,17 +115,16 @@ export function Navbar() {
               alt="Tansania Reiseabenteuer" 
               className={cn(
                 "h-8 md:h-12 w-auto transition-all duration-500 shrink-0",
-                !isScrolled && "brightness-110"
+                !useDarkState && "brightness-110"
               )} 
             />
-            {/* BRAND NAME: SINGLE LINE PROTOCOL FOR MAIN HEADER */}
             <div className="flex items-center gap-2 md:gap-3">
               <span className="font-headline font-black whitespace-nowrap text-xs sm:text-sm md:text-xl lg:text-2xl uppercase tracking-normal leading-none">
                 Tansania
               </span>
               <span className={cn(
                 "font-headline font-black whitespace-nowrap text-xs sm:text-sm md:text-xl lg:text-2xl transition-colors duration-500 uppercase tracking-normal leading-none",
-                isScrolled ? "text-primary" : "text-white"
+                useDarkState ? "text-primary" : "text-white"
               )}>
                 Reiseabenteuer
               </span>
@@ -131,7 +136,7 @@ export function Navbar() {
               <button
                 className={cn(
                   "flex items-center justify-center w-10 h-10 md:w-auto md:h-11 md:px-4 rounded-full transition-all duration-500 border shrink-0 group",
-                  isScrolled 
+                  useDarkState 
                     ? "bg-secondary text-white border-secondary shadow-lg" 
                     : "bg-white/10 text-white border-white/20 hover:bg-white hover:text-secondary"
                 )}
@@ -141,7 +146,6 @@ export function Navbar() {
             </SheetTrigger>
             
             <SheetContent side="right" className="w-[85vw] sm:max-w-[400px] p-0 bg-white text-secondary border-none flex flex-col shadow-2xl">
-              {/* Visually hidden for accessibility requirements */}
               <div className="sr-only">
                 <SheetTitle>Menü</SheetTitle>
                 <SheetDescription>Hauptnavigation der Tansania Reiseabenteuer Website</SheetDescription>
@@ -150,7 +154,6 @@ export function Navbar() {
               <div className="px-6 py-6 flex items-center border-b border-border/50 shrink-0">
                 <Link href="/" className="flex items-center gap-3">
                   <img src="/iconlogo.jpg" alt="SDL" className="h-8 md:h-10 w-auto" />
-                  {/* HAMBURGER: MULTI-LINE COMPACT PROTOCOL */}
                   <div className="flex flex-col">
                     <span className="font-headline font-black text-sm md:text-xl uppercase tracking-normal leading-[1.1]">Tansania</span>
                     <span className="font-headline font-black text-sm md:text-xl text-primary uppercase tracking-normal leading-[1.1]">Reiseabenteuer</span>
@@ -163,13 +166,13 @@ export function Navbar() {
                   <nav className="flex flex-col gap-5 md:gap-6 text-left">
                     <div className="flex flex-col gap-4 mb-4">
                       <Link href="/safaris" className="text-xl md:text-2xl font-headline font-black text-secondary hover:text-primary transition-colors leading-none uppercase">
-                        SAFARIS
+                        Safaris
                       </Link>
                       <Link href="/destinations/kilimanjaro" className="text-xl md:text-2xl font-headline font-black text-secondary hover:text-primary transition-colors leading-none uppercase">
-                        KILIMANDSCHARO
+                        Kilimandscharo
                       </Link>
                       <Link href="/destinations/zanzibar" className="text-xl md:text-2xl font-headline font-black text-secondary hover:text-primary transition-colors leading-none uppercase">
-                        SANSIBAR
+                        Sansibar
                       </Link>
                     </div>
 
@@ -178,7 +181,7 @@ export function Navbar() {
                     <Accordion type="single" collapsible className="w-full">
                       <AccordionItem value="destinations" className="border-none">
                         <AccordionTrigger className="text-lg md:text-xl font-headline font-black tracking-normal hover:text-primary transition-colors leading-none py-0 hover:no-underline [&>svg]:hidden justify-start gap-4">
-                          <span>ALLE REISEZIELE</span>
+                          <span>Alle Reiseziele</span>
                           <ChevronDown className="w-4 h-4 text-primary" />
                         </AccordionTrigger>
                         <AccordionContent className="pt-4 pb-2 pl-4">
@@ -242,7 +245,7 @@ export function Navbar() {
                 
                 <Button asChild className="w-full h-14 rounded-2xl bg-secondary text-white font-black text-[10px] tracking-widest shadow-xl hover:bg-primary transition-all border-none">
                   <Link href="/trip-planner" className="flex items-center justify-center gap-3 uppercase">
-                    JETZT ANFRAGEN <ArrowRight className="w-4 h-4" />
+                    Jetzt anfragen <ArrowRight className="w-4 h-4" />
                   </Link>
                 </Button>
                 
