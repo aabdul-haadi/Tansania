@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useEffect, useState } from 'react';
@@ -78,7 +77,7 @@ const parksData = [
     img: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=1200',
     facts: [
       { t: "Elefantenparadies", v: "Bis zu 2.000 Tiere werden gleichzeitig am Fluss gezählt." },
-      { t: "Baobab-Landschaft", v: "Zahlreiche uralte Riesen-Baobabs prägen den Horizont." },
+      { t: "Baobab-Landschaft", v: "Zahlreiche uralte Riesen-Baobabs (Affenbrotbäume) prägen den Horizont." },
       { t: "Vielfältige Tierwelt", v: "Büffel, Giraffen und Leoparden tummeln sich an den Wasserstellen." }
     ],
     highlights: ['Elefanten-Migration', 'Baobab Safari', 'Bird Watching']
@@ -151,7 +150,8 @@ export default function NationalParksPage() {
   if (!mounted) return null;
 
   return (
-    <div className="bg-white min-h-screen font-bold">
+    <div className="bg-white min-h-screen">
+      {/* 01 Centered Hero Narrative */}
       <header className="pt-32 pb-12 bg-white text-center">
         <div className="container mx-auto px-4 max-w-5xl space-y-4">
           <motion.h1 
@@ -159,7 +159,7 @@ export default function NationalParksPage() {
             animate={{ opacity: 1, y: 0 }}
             className="font-headline text-4xl md:text-7xl font-normal text-secondary tracking-tighter"
           >
-            Tansanias Nationalparks – Safari-Abenteuer im Tierparadies
+            Die Nationalparks in Tansania
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -172,32 +172,12 @@ export default function NationalParksPage() {
         </div>
       </header>
 
-      {/* Visual Anchor Pillars */}
-      <section className="container mx-auto px-4 max-w-7xl pb-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {[
-            { t: "Serengeti", s: "Endlose Savannen", img: "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=600" },
-            { t: "Ngorongoro", s: "Afrikas Garten Eden", img: "https://images.unsplash.com/photo-1580502304784-8985b777da59?q=80&w=600" },
-            { t: "Kilimanjaro", s: "Dach Afrikas", img: "https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=600" }
-          ].map((item, idx) => (
-            <div key={idx} className="relative aspect-[16/10] rounded-2xl overflow-hidden shadow-sm group border border-border/40">
-              <Image src={item.img} alt={item.t} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-4">
-                <p className="text-white font-headline text-lg leading-none">{item.t}</p>
-                <p className="text-primary font-bold text-[8px] uppercase tracking-widest mt-1">{item.s}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Overlapping Hero Button Implementation */}
+      {/* 02 Full Width Visual with Overlapping Button */}
       <section className="relative mb-24 md:mb-32">
-        <div className="w-full relative aspect-[21/9] md:h-[600px] overflow-hidden">
+        <div className="w-full relative aspect-[21/9] md:h-[600px] overflow-hidden shadow-sm">
           <Image
             src="https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=1920"
-            alt="Elefanten in der Savanne"
+            alt="Elephants Savannah"
             fill
             priority
             className="object-cover"
@@ -206,6 +186,7 @@ export default function NationalParksPage() {
           <div className="absolute inset-0 bg-black/5" />
         </div>
         
+        {/* Overlapping Button sits half on image, half on content below */}
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-30">
           <Link href="/trip-planner">
             <Button size="xl" className="rounded-xl px-12 h-14 md:h-16 bg-[#2b5a91] text-white hover:bg-secondary font-bold text-[10px] md:text-xs tracking-[0.2em] border-none shadow-2xl transition-all">
@@ -215,9 +196,11 @@ export default function NationalParksPage() {
         </div>
       </section>
 
+      {/* 03 Main Sequential Content Body */}
       <section className="container mx-auto px-4 max-w-7xl pb-32">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
           
+          {/* Sticky Anchor Registry */}
           <aside className="lg:col-span-4 lg:sticky lg:top-24 space-y-8 hidden lg:block">
             <div className="space-y-6">
               <div>
@@ -244,7 +227,7 @@ export default function NationalParksPage() {
 
             <Card className="rounded-[2.5rem] border-none bg-secondary text-white p-10 overflow-hidden relative shadow-2xl">
               <div className="absolute top-0 right-0 p-6 opacity-10"><Compass className="w-20 h-20 rotate-12" /></div>
-              <div className="relative z-10 space-y-6">
+              <div className="relative z-10 space-y-6 text-center">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 text-primary text-[8px] font-bold">
                   <Sparkles className="w-3" /> KI Beratung
                 </div>
@@ -261,8 +244,10 @@ export default function NationalParksPage() {
             </Card>
           </aside>
 
+          {/* Sequential Main Content */}
           <main className="lg:col-span-8 space-y-24 md:space-y-40">
-            {/* Sequential Content Implementation */}
+            
+            {/* Introductory Narrative */}
             <div className="space-y-8">
               <div className="bg-[#fdf7f2] p-8 md:p-12 rounded-[2.5rem] border border-[#f0ebe0] shadow-sm">
                 <p className="text-secondary font-bold text-sm md:text-xl leading-relaxed uppercase tracking-tight">
@@ -271,10 +256,29 @@ export default function NationalParksPage() {
               </div>
             </div>
 
+            {/* Visual Pillars Section */}
+            <section className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {[
+                { t: "Serengeti", s: "Endlose Savannen", img: "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=600" },
+                { t: "Ngorongoro", s: "Afrikas Garten Eden", img: "https://images.unsplash.com/photo-1580502304784-8985b777da59?q=80&w=600" },
+                { t: "Kilimanjaro", s: "Dach Afrikas", img: "https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=600" }
+              ].map((item, idx) => (
+                <div key={idx} className="relative aspect-[16/10] rounded-2xl overflow-hidden shadow-sm group border border-border/40">
+                  <Image src={item.img} alt={item.t} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute bottom-4 left-4">
+                    <p className="text-white font-headline text-lg leading-none">{item.t}</p>
+                    <p className="text-primary font-bold text-[8px] uppercase tracking-widest mt-1">{item.s}</p>
+                  </div>
+                </div>
+              ))}
+            </section>
+
+            {/* Individual Park Registries */}
             {parksData.map((park) => (
               <section key={park.id} id={park.id} className="space-y-12 scroll-mt-32">
                 <div className="space-y-6">
-                  <div className="space-y-2">
+                  <div className="space-y-2 text-left">
                     <Badge variant="outline" className="border-primary/20 text-primary px-4 py-1 font-bold text-[9px]">
                       Nationalpark Registry
                     </Badge>
@@ -282,10 +286,10 @@ export default function NationalParksPage() {
                       {park.fullName}
                     </h2>
                   </div>
-                  <p className="text-secondary font-bold text-sm md:text-lg leading-relaxed border-l-4 border-primary/20 pl-8 py-2">
+                  <p className="text-secondary font-bold text-sm md:text-lg leading-relaxed border-l-4 border-primary/20 pl-8 py-2 text-left">
                     {park.tagline}
                   </p>
-                  <p className="text-muted-foreground text-sm md:text-base font-normal opacity-80">
+                  <p className="text-muted-foreground text-sm md:text-base font-normal opacity-80 text-left">
                     {park.desc}
                   </p>
                 </div>
@@ -296,7 +300,7 @@ export default function NationalParksPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {park.facts.map((fact, i) => (
-                    <div key={i} className="p-6 bg-white rounded-2xl border border-border/50 shadow-sm space-y-2 group hover:border-primary/20 transition-all">
+                    <div key={i} className="p-6 bg-white rounded-2xl border border-border/50 shadow-sm space-y-2 group hover:border-primary/20 transition-all text-left">
                       <p className="text-[8px] font-black uppercase text-primary tracking-widest">{fact.t}</p>
                       <p className="font-bold text-[10px] text-muted-foreground leading-relaxed">{fact.v}</p>
                     </div>
@@ -304,7 +308,7 @@ export default function NationalParksPage() {
                 </div>
 
                 <div className="space-y-8">
-                  <h3 className="font-headline text-xl md:text-3xl font-normal text-secondary tracking-tight">Erlebnisse & Highlights</h3>
+                  <h3 className="font-headline text-xl md:text-3xl font-normal text-secondary tracking-tight text-left">Erlebnisse & Highlights</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {park.highlights.map((h, i) => (
                       <div key={i} className="flex items-center gap-4 p-5 bg-white rounded-xl border border-border/50 shadow-sm group hover:border-primary/30 transition-all">
@@ -319,8 +323,9 @@ export default function NationalParksPage() {
               </section>
             ))}
 
+            {/* Wildlife Overview */}
             <section className="space-y-12">
-              <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary">Tierwelt in Tansania: Big Five & mehr</h2>
+              <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary text-left">Tierwelt in Tansania: Big Five & mehr</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {[
                   { t: "Big Five", v: "Löwe, Elefant, Nashorn, Büffel und Leopard in fast allen großen Nationalparks." },
@@ -328,7 +333,7 @@ export default function NationalParksPage() {
                   { t: "Vogelvielfalt", v: "Mehr als 400 Vogelarten im Lake Manyara, darunter Tausende Flamingos." },
                   { t: "Seltene Arten", v: "Spitzmaulnashorn, Afrikanischer Wildhund, Baumlöwen (Manyara)." }
                 ].map((item, i) => (
-                  <div key={i} className="p-8 bg-muted/10 rounded-3xl space-y-3">
+                  <div key={i} className="p-8 bg-muted/10 rounded-3xl space-y-3 text-left">
                     <h4 className="font-headline text-xl font-bold text-primary">{item.t}</h4>
                     <p className="text-xs font-bold text-muted-foreground uppercase leading-relaxed tracking-widest">{item.v}</p>
                   </div>
@@ -336,8 +341,9 @@ export default function NationalParksPage() {
               </div>
             </section>
 
+            {/* Global Activities */}
             <section className="space-y-12">
-              <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary">Top-Aktivitäten in Tansania</h2>
+              <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary text-left">Top-Aktivitäten in Tansania</h2>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {[
                   { icon: Camera, t: "Pirschfahrten" },
@@ -355,6 +361,7 @@ export default function NationalParksPage() {
               </div>
             </section>
 
+            {/* Support Trigger */}
             <section className="pt-12 border-t border-border/50">
               <div className="bg-secondary text-white rounded-[2.5rem] p-8 md:p-16 text-center space-y-8 relative overflow-hidden">
                 <div className="absolute top-0 right-0 p-10 opacity-10"><Compass className="w-48 h-48 rotate-12" /></div>
