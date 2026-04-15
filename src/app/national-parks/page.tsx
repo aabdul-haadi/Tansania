@@ -69,7 +69,7 @@ const parksData = [
   {
     id: 'serengeti',
     name: 'Serengeti',
-    fullName: 'Serengeti Nationalpark: UNESCO-Weltnaturerbe & Große Migration',
+    fullName: 'Serengeti-Nationalpark: UNESCO-Weltnaturerbe & Große Migration',
     tagline: 'Der Serengeti-Nationalpark (ca. 14.763 km²) ist weltberühmt für seine endlosen Graslandschaften und die legendäre Große Tierwanderung.',
     desc: 'Jährlich ziehen hier über eine Million Gnus, Zebras und Gazellen durch die Savanne – eines der beeindruckendsten Naturschauspiele der Welt – dicht gefolgt von Löwen, Geparden und Hyänen.',
     img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200',
@@ -85,7 +85,7 @@ const parksData = [
     name: 'Ngorongoro',
     fullName: 'Ngorongoro-Krater: Größte intakte Vulkankaldera der Erde',
     tagline: 'Der Ngorongoro-Krater ist mit etwa 19 km Durchmesser die größte intakte Vulkankaldera der Erde.',
-    desc: 'Auf dem Kraterboden (ca. 260 km²) leben unzähliede Wildtiere dicht gedrängt – von Gnus und Zebras bis zu einer ungewöhnlich hohen Anzahl an Löwen und sogar einigen seltenen Spitzmaulnashörnern.',
+    desc: 'Auf dem Kraterboden (ca. 260 km²) leben unzählige Wildtiere dicht gedrängt – von Gnus und Zebras bis zu einer ungewöhnlich hohen Anzahl an Löwen und sogar einigen seltenen Spitzmaulnashörnern.',
     img: 'https://images.unsplash.com/photo-1580502304784-8985b777da59?q=80&w=1200',
     facts: [
       { t: "Riesige Caldera", v: "Ngorongoro ist die größte unversehrte Vulkankrater-Landschaft der Welt (Ø ~19 km)." },
@@ -270,9 +270,9 @@ export default function NationalParksPage() {
           </aside>
 
           {/* Sequential Main Content */}
-          <main className="lg:col-span-8 space-y-24 md:space-y-40">
+          <main className="lg:col-span-8 space-y-16 md:space-y-24">
             
-            {/* Visual Pillars Section - UPDATED TO 350PX MIN-HEIGHT & MOBILE SLIDER */}
+            {/* Visual Pillars Section */}
             <section className="space-y-8">
               {/* Desktop Grid */}
               <div className="hidden md:grid grid-cols-3 gap-4">
@@ -321,7 +321,7 @@ export default function NationalParksPage() {
 
             {/* Individual Park Registries */}
             {parksData.map((park) => (
-              <section key={park.id} id={park.id} className="space-y-12 scroll-mt-32">
+              <section key={park.id} id={park.id} className="space-y-8 scroll-mt-32">
                 <div className="space-y-6">
                   <div className="space-y-2 text-left">
                     <Badge variant="outline" className="border-primary/20 text-primary px-4 py-1 font-bold text-[9px]">
@@ -369,7 +369,7 @@ export default function NationalParksPage() {
             ))}
 
             {/* Wildlife Overview */}
-            <section className="space-y-12">
+            <section className="space-y-12 pt-8">
               <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary text-left">Tierwelt in Tansania: Big Five & mehr</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {[
@@ -387,7 +387,7 @@ export default function NationalParksPage() {
             </section>
 
             {/* Global Activities */}
-            <section className="space-y-12">
+            <section className="space-y-12 pt-8">
               <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary text-left">Top-Aktivitäten in Tansania</h2>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {[
