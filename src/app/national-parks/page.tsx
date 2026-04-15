@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useEffect, useState } from 'react';
@@ -26,7 +27,8 @@ import {
   Palmtree,
   TreePine,
   Bird,
-  CloudSun
+  CloudSun,
+  Plus
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -229,7 +231,7 @@ export default function NationalParksPage() {
           <aside className="lg:col-span-4 lg:sticky lg:top-24 space-y-8 hidden lg:block">
             <div className="space-y-6">
               <div>
-                <span className="text-primary font-bold text-[10px] mb-2 block">Park-Register</span>
+                <span className="text-primary font-bold text-[10px] mb-2 block tracking-widest uppercase">Park-Register</span>
                 <h2 className="font-headline text-3xl font-normal text-secondary">Destinationen</h2>
               </div>
               
@@ -270,11 +272,20 @@ export default function NationalParksPage() {
           </aside>
 
           {/* Sequential Main Content */}
-          <main className="lg:col-span-8 space-y-16 md:space-y-24">
+          <main className="lg:col-span-8 space-y-16 md:space-y-20">
             
+            {/* Intro Narrative Block 1 */}
+            <div className="space-y-4">
+              <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary leading-tight">
+                Tansanias Nationalparks – Safari-Abenteuer im Tierparadies
+              </h2>
+              <span className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold tracking-widest">
+                Tansanias Nationalpark-Highlights
+              </span>
+            </div>
+
             {/* Visual Pillars Section */}
             <section className="space-y-8">
-              {/* Desktop Grid */}
               <div className="hidden md:grid grid-cols-3 gap-4">
                 {pillarData.map((item, idx) => (
                   <Link key={idx} href={`#${item.id}`}>
@@ -293,7 +304,6 @@ export default function NationalParksPage() {
                 ))}
               </div>
 
-              {/* Mobile Modern Slider */}
               <div className="md:hidden -mx-4">
                 <Carousel opts={{ align: "start", loop: true }} className="w-full">
                   <CarouselContent className="-ml-4">
@@ -304,7 +314,7 @@ export default function NationalParksPage() {
                             <Image src={item.img} alt={item.title} fill className="object-cover" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                             <div className="absolute top-4 left-4">
-                              <Badge className="bg-primary text-white border-none text-[7px] font-bold uppercase px-2 py-0.5">Nationalpark Registry</Badge>
+                              <Badge className="bg-primary text-white border-none text-[7px] font-bold uppercase px-2 py-0.5 shadow-lg">Nationalpark Registry</Badge>
                             </div>
                             <div className="absolute bottom-6 left-6 right-6">
                               <h3 className="text-white font-headline text-xl leading-none mb-1">{item.title}</h3>
@@ -317,6 +327,13 @@ export default function NationalParksPage() {
                   </CarouselContent>
                 </Carousel>
               </div>
+            </section>
+
+            {/* Intro Narrative Block 2 */}
+            <section className="py-2">
+              <p className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal opacity-80 text-justify">
+                Tansania ist ein echtes Safari-Paradies – rund ein Drittel der Landesfläche steht unter Naturschutz und bietet unvergessliche Wildtier-Erlebnisse. Die bekanntesten Schutzgebiete – von der endlosen Serengeti bis zum dramatischen Ngorongoro-Krater – sind Teil eines umfassenden Nationalparksystems. In diesen Parks herrscht striktes Schutzregime: Bauen, Jagen und Landwirtschaft sind verboten. Alle menschlichen Aktivitäten dienen einzig dem Tourismus, z. B. Pirschfahrten mit dem Geländewagen. Dieser Schutz sichert die Artenvielfalt (Big Five, Flamingos, etc.) und macht Tansania zu einem erstklassigen Ziel für Naturliebhaber und Fotografen.
+              </p>
             </section>
 
             {/* Individual Park Registries */}
