@@ -207,7 +207,7 @@ export default function ActivitiesPage() {
             <h1 className="font-headline text-3xl md:text-7xl font-normal text-white leading-tight tracking-tight">
               Abenteuer in Tansania
             </h1>
-            <p className="text-white/80 text-[11px] md:text-sm font-bold tracking-widest max-w-xl mx-auto uppercase">
+            <p className="text-white/80 text-[11px] md:text-sm font-normal tracking-widest max-w-xl mx-auto">
               Entdecken Sie die vielfältigen Aktivitäten von Safari bis zum Kilimandscharo
             </p>
           </motion.div>
@@ -217,7 +217,7 @@ export default function ActivitiesPage() {
       {/* 02 Filter & Registry Header */}
       <section className="py-8 md:py-12 container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-10 md:mb-16 space-y-4">
-          <span className="text-primary font-bold tracking-[0.4em] text-[10px]">Unsere Aktivitäten</span>
+          <span className="text-primary font-normal tracking-[0.4em] text-[10px]">Unsere Aktivitäten</span>
           <h2 className="font-headline text-2xl md:text-5xl font-normal text-secondary tracking-tighter">
             Erleben Sie unvergessliche Abenteuer
           </h2>
@@ -271,12 +271,12 @@ export default function ActivitiesPage() {
                       <div className="flex items-center gap-2 text-primary font-bold text-[10px] tracking-widest">
                         <Clock className="w-3.5 h-3.5" /> {act.duration}
                       </div>
-                      <Link href="/trip-planner" className="block">
-                        <h3 className="font-headline text-lg md:text-2xl font-bold text-secondary leading-tight tracking-tight uppercase group-hover:text-primary transition-colors">
+                      <Link href="/trip-planner" className="block group/title">
+                        <h3 className="font-headline text-lg md:text-2xl font-bold text-secondary leading-tight tracking-tight uppercase group-hover/title:text-primary transition-colors">
                           {act.title}
                         </h3>
                       </Link>
-                      <p className="text-[13px] leading-[20px] text-muted-foreground font-normal opacity-80 line-clamp-2">
+                      <p className="text-[14px] leading-[20px] text-muted-foreground font-normal opacity-80 line-clamp-2">
                         {act.desc}
                       </p>
                       <div className="pt-4 space-y-2.5">
@@ -340,11 +340,11 @@ export default function ActivitiesPage() {
                 <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl">
                   <Sparkles className="w-6 h-6 md:w-8 md:h-8 text-white" />
                 </div>
-                <h2 className="font-headline text-xl sm:text-2xl md:text-5xl font-bold tracking-tighter text-white">
+                <h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-normal tracking-tighter text-white">
                   Designen Sie Ihr Erlebnis
                 </h2>
               </div>
-              <p className="text-white/80 font-bold text-[11px] md:text-base tracking-widest leading-relaxed max-w-2xl">
+              <p className="text-white/80 font-normal text-[11px] md:text-base tracking-widest leading-relaxed max-w-2xl">
                 Kombinieren Sie Ihre Lieblings-Aktivitäten zu einer perfekten Safari. Unsere Spezialisten in Berlin beraten Sie persönlich zu Logistik und Verfügbarkeit.
               </p>
             </div>

@@ -173,7 +173,7 @@ export default function SerengetiPage() {
             transition={{ duration: 0.8 }}
             className="space-y-4"
           >
-            <p className="text-white text-[11px] font-bold tracking-normal drop-shadow-lg">
+            <p className="text-white text-[11px] font-normal tracking-normal drop-shadow-lg">
               Das größte Naturschauspiel der Erde
             </p>
             <h1 className="font-headline text-4xl md:text-7xl font-normal text-white leading-tight tracking-tight">
@@ -196,7 +196,7 @@ export default function SerengetiPage() {
               <div className="space-y-4 text-left">
                 <div className="space-y-2">
                   <div className="w-8 h-0.5 bg-primary" />
-                  <span className="text-primary font-bold text-[10px] md:text-[11px] block tracking-normal">
+                  <span className="text-primary font-normal text-[10px] md:text-[11px] block tracking-normal">
                     Unesco-Weltnaturerbe seit 1952
                   </span>
                 </div>
@@ -278,7 +278,7 @@ export default function SerengetiPage() {
       <section className="py-8 md:py-12 bg-white border-t border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-8 md:mb-12 space-y-6">
-            <span className="text-primary font-bold text-[10px] tracking-[0.2em] block">
+            <span className="text-primary font-normal text-[10px] tracking-[0.2em] block">
               Serengeti Geografie
             </span>
             <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tight">
@@ -311,7 +311,7 @@ export default function SerengetiPage() {
                     ].map((h, i) => (
                       <div key={i} className="flex flex-col border-b border-border/40 pb-3 last:border-none">
                         <span className="text-[11px] font-bold text-secondary tracking-tight leading-none mb-1">{h.t}</span>
-                        <span className="text-[9px] font-bold text-muted-foreground tracking-widest">{h.d}</span>
+                        <span className="text-[9px] font-normal text-muted-foreground tracking-widest">{h.d}</span>
                       </div>
                     ))}
                   </div>
@@ -344,7 +344,7 @@ export default function SerengetiPage() {
                   <p className="text-[13px] leading-[20px] text-muted-foreground font-normal opacity-80">{region.desc}</p>
                   <div className="flex flex-wrap gap-2 pt-2">
                     {region.tags.map((tag) => (
-                      <span key={tag} className="px-3 py-1 bg-muted/20 border border-border rounded-full text-[9px] font-bold text-secondary/60 tracking-widest">
+                      <span key={tag} className="px-3 py-1 bg-muted/20 border border-border rounded-full text-[9px] font-normal text-secondary/60 tracking-widest">
                         {tag}
                       </span>
                     ))}
@@ -356,7 +356,7 @@ export default function SerengetiPage() {
         </div>
       </section>
 
-      {/* 04 Migration Timeline Section - REFINED WITH LIGHTER OVERLAY & NATURAL CASING */}
+      {/* 04 Migration Timeline Section */}
       <section className="relative py-12 md:py-24 overflow-hidden bg-secondary">
         <Image 
           src="/assets/images/national-parks/card-migration.jpg" 
@@ -381,7 +381,7 @@ export default function SerengetiPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-white/80 font-bold text-[10px] md:text-sm tracking-widest max-w-xl mx-auto"
+              className="text-white/80 font-normal text-[10px] md:text-sm tracking-widest max-w-xl mx-auto"
             >
               Folgen Sie dem jährlichen Zyklus der Tierwanderung
             </motion.p>
@@ -413,7 +413,7 @@ export default function SerengetiPage() {
                       <h4 className="font-headline text-xl md:text-2xl font-bold text-secondary leading-none">{item.title}</h4>
                       <Badge className="bg-primary text-white border-none px-4 py-1.5 text-[9px] font-bold tracking-widest shadow-xl">{item.dates}</Badge>
                     </div>
-                    <p className="text-[13px] md:text-[14px] text-muted-foreground font-bold tracking-tight leading-relaxed opacity-80">{item.desc}</p>
+                    <p className="text-[13px] md:text-[14px] text-muted-foreground font-normal tracking-tight leading-relaxed opacity-80">{item.desc}</p>
                   </div>
                 </div>
                 <div className="hidden md:flex w-8 h-8 rounded-full bg-primary border-4 border-secondary shadow-xl items-center justify-center shrink-0 z-20" />
@@ -428,7 +428,7 @@ export default function SerengetiPage() {
       <section className="py-8 md:py-12 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-8 md:mb-12 space-y-4">
-            <span className="text-primary font-bold tracking-[0.4em] text-[10px]">Aktivitäten & Erlebnisse</span>
+            <span className="text-primary font-normal tracking-[0.4em] text-[10px]">Aktivitäten & Erlebnisse</span>
             <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter">
               Unvergessliche <span className="text-primary">Aktivitäten</span> in der Serengeti
             </h2>
@@ -496,7 +496,7 @@ export default function SerengetiPage() {
                       </div>
                     </div>
 
-                    <p className="text-muted-foreground text-sm md:text-base font-bold leading-relaxed tracking-tight opacity-70">
+                    <p className="text-muted-foreground text-sm md:text-base font-normal leading-relaxed tracking-tight opacity-70">
                       {activeActivity.desc}
                     </p>
 
@@ -533,12 +533,12 @@ export default function SerengetiPage() {
                 <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl">
                   <Compass className="w-6 h-6 md:w-8 md:h-8 text-white" />
                 </div>
-                <h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-bold tracking-tighter text-white">
+                <h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-normal tracking-tighter text-white">
                   Planen Sie Ihre perfekte Serengeti Safari
                 </h2>
               </div>
               
-              <p className="text-white/80 font-bold text-[11px] md:text-base tracking-widest leading-relaxed max-w-2xl">
+              <p className="text-white/80 font-normal text-[11px] md:text-base tracking-widest leading-relaxed max-w-2xl">
                 Unsere Safari-Experten helfen Ihnen, die idealen Aktivitäten für Ihre Reisezeit und Interessen zu kombinieren. Erstellen Sie jetzt Ihr individuelles Programm.
               </p>
 
@@ -546,7 +546,7 @@ export default function SerengetiPage() {
                 {["Kostenlose Beratung", "Individuelle Routenplanung", "Beste Preisgarantie"].map((item, i) => (
                   <div key={i} className="flex items-center gap-2.5">
                     <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                    <span className="text-[10px] md:text-[11px] font-bold tracking-widest">{item}</span>
+                    <span className="text-[10px] md:text-[11px] font-normal tracking-widest">{item}</span>
                   </div>
                 ))}
               </div>

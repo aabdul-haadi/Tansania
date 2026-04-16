@@ -69,7 +69,7 @@ export default function KilimanjaroParkPage() {
             transition={{ duration: 0.8 }}
             className="space-y-4"
           >
-            <p className="text-white text-[11px] font-bold tracking-normal drop-shadow-lg">
+            <p className="text-white text-[11px] font-normal tracking-normal drop-shadow-lg">
               Das Dach Afrikas über den Wolken Tansanias
             </p>
             <h1 className="font-headline text-4xl md:text-7xl font-normal text-white leading-tight tracking-tight">
@@ -80,7 +80,7 @@ export default function KilimanjaroParkPage() {
       </section>
 
       {/* 02 Narrative Context: Die Thronende Majestät */}
-      <section className="py-8 md:py-12 container mx-auto px-4 max-get-7xl">
+      <section className="py-8 md:py-12 container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
           
           <div className="lg:col-span-7 space-y-10">
@@ -91,7 +91,7 @@ export default function KilimanjaroParkPage() {
               className="space-y-6"
             >
               <div className="space-y-3 text-left">
-                <span className="text-primary font-bold text-[11px] block tracking-normal">
+                <span className="text-primary font-normal text-[11px] block tracking-normal">
                   Nationalpark Registry seit 1973
                 </span>
                 <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary leading-tight tracking-tight">
@@ -115,7 +115,7 @@ export default function KilimanjaroParkPage() {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative aspect-square md:aspect-[4/5] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border border-border/40 bg-muted"
+              className="relative aspect-square md:aspect-[4/3] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border border-border/40 bg-muted"
             >
               <Image 
                 src="https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=1200" 
@@ -129,7 +129,7 @@ export default function KilimanjaroParkPage() {
                 <div className="w-10 h-10 rounded-xl bg-primary/20 backdrop-blur-xl flex items-center justify-center">
                   <Sparkles className="w-5 h-5 text-primary" />
                 </div>
-                <p className="text-[11px] font-bold tracking-normal">Uhuru Peak Protocol</p>
+                <p className="text-[11px] font-normal tracking-normal">Uhuru Peak Protocol</p>
               </div>
             </motion.div>
           </div>
@@ -181,12 +181,12 @@ export default function KilimanjaroParkPage() {
                 <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl">
                   <Compass className="w-6 h-6 md:w-8 md:h-8 text-white" />
                 </div>
-                <h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-bold tracking-tighter text-white">
+                <h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-normal tracking-tighter text-white">
                   Planen Sie Ihre perfekte Kilimandscharo Safari
                 </h2>
               </div>
               
-              <p className="text-white/80 font-bold text-[11px] md:text-base tracking-widest leading-relaxed max-w-2xl">
+              <p className="text-white/80 font-normal text-[11px] md:text-base tracking-widest leading-relaxed max-w-2xl">
                 Erreichen Sie das Dach Afrikas mit professioneller Unterstützung. Wir entwerfen Ihre Gipfel-Expedition mit höchster Sicherheit und Expertise.
               </p>
             </div>

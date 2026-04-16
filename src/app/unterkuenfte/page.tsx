@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useMemo } from 'react';
@@ -16,7 +15,8 @@ import {
   ShieldCheck,
   Palmtree,
   Mountain,
-  Waves
+  Waves,
+  Globe
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -26,7 +26,7 @@ import { cn } from '@/lib/utils';
 import { ContactSection } from '@/components/shared/ContactSection';
 
 const categories = [
-  { id: 'all', label: 'Alle Regionen', icon: GlobeIcon },
+  { id: 'all', label: 'Alle Regionen', icon: Globe },
   { id: 'arusha', label: 'Arusha Hotel', icon: Mountain },
   { id: 'sansibar', label: 'Sansibar Hotel', icon: Palmtree },
   { id: 'tanzania', label: 'Tansania Hotel', icon: Compass },
@@ -46,7 +46,7 @@ const accommodations = [
     id: 'fun-beach-hotel',
     name: "Fun Beach Hotel",
     location: "Jambiani, Sansibar",
-    desc: "Das Fun Beach Hotel auf Sansibar bietet eine entspannte, ungezwungene Atmosphäre direkt am weißen Sandstrand von Jambiani. Mit seinen stilvollen Bungalows ist es der perfekte Ort für Strandliebhaber.",
+    desc: "Das Fun Beach Hotel auf Sansibar bietet eine entspannte, ungezwungene Atmosphäre direkt am weißen Sandstrand von Jambiani. Mit seinen stilvollen Bungalows, die sich harmonisch in die tropische Umgebung einfügen, ist es der perfekte Ort für Strandliebhaber.",
     img: "https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=800",
     category: 'sansibar',
     hint: "zanzibar bungalows"
@@ -206,7 +206,7 @@ export default function AccommodationsPage() {
             <h1 className="font-headline text-3xl md:text-7xl font-normal text-white leading-tight tracking-tight uppercase">
               Unterkünfte
             </h1>
-            <p className="text-white/80 text-[11px] md:text-sm font-bold tracking-widest max-w-xl mx-auto uppercase">
+            <p className="text-white/80 text-[11px] md:text-sm font-normal tracking-widest max-w-xl mx-auto uppercase">
               Wir haben nur die besten Unterkünfte für Sie ausgesucht.
             </p>
           </motion.div>
@@ -295,7 +295,7 @@ export default function AccommodationsPage() {
                         </h3>
                       </Link>
 
-                      <p className="text-[13px] leading-[20px] text-muted-foreground font-normal opacity-80 line-clamp-3">
+                      <p className="text-[14px] leading-[20px] text-muted-foreground font-normal opacity-80 line-clamp-3">
                         {item.desc}
                       </p>
                     </div>
@@ -329,26 +329,5 @@ export default function AccommodationsPage() {
         <ContactSection />
       </section>
     </div>
-  );
-}
-
-function GlobeIcon(props: any) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="12" cy="12" r="10" />
-      <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-      <path d="M2 12h20" />
-    </svg>
   );
 }

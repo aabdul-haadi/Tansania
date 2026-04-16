@@ -6,23 +6,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Compass, 
   ArrowRight,
-  ShieldCheck,
   CheckCircle2,
   Map as MapIcon,
   Zap,
-  Sparkles,
   MapPin,
   Clock,
   Users,
   Camera,
-  Bird,
-  Sun,
-  Wind,
-  Phone,
   Plus,
-  ChevronRight,
-  History,
-  Mountain
+  History
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -30,7 +22,6 @@ import { ContactSection } from '@/components/shared/ContactSection';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { cn } from '@/lib/utils';
-import Link from 'next/link';
 import { ReviewVideos } from '@/components/sections/ReviewVideos';
 import { OtherParks } from '@/components/sections/OtherParks';
 
@@ -177,7 +168,7 @@ export default function NgorongoroPage() {
             transition={{ duration: 0.8 }}
             className="space-y-4"
           >
-            <p className="text-white text-[11px] font-bold tracking-normal drop-shadow-lg">
+            <p className="text-white text-[11px] font-normal tracking-normal drop-shadow-lg">
               UNESCO-Welterbe & Größte Caldera der Welt
             </p>
             <h1 className="font-headline text-4xl md:text-7xl font-normal text-white leading-tight tracking-tight">
@@ -200,7 +191,7 @@ export default function NgorongoroPage() {
               <div className="space-y-4">
                 <div className="space-y-2">
                   <div className="w-8 h-0.5 bg-primary" />
-                  <span className="text-primary font-bold text-[10px] md:text-[11px] block tracking-normal">
+                  <span className="text-primary font-normal text-[10px] md:text-[11px] block tracking-normal">
                     Ein einzigartiges Naturwunder Afrikas
                   </span>
                 </div>
@@ -282,7 +273,7 @@ export default function NgorongoroPage() {
       <section className="py-8 md:py-12 bg-white border-t border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-10 md:mb-16 space-y-6">
-            <span className="text-primary font-bold text-[10px] tracking-[0.2em] block">
+            <span className="text-primary font-normal text-[10px] tracking-[0.2em] block">
               Ngorongoro Geografie
             </span>
             <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tight">
@@ -315,7 +306,7 @@ export default function NgorongoroPage() {
                     ].map((h, i) => (
                       <div key={i} className="flex flex-col border-b border-border/40 pb-3 last:border-none">
                         <span className="text-[11px] font-bold text-secondary tracking-tight leading-none mb-1">{h.t}</span>
-                        <span className="text-[9px] font-bold text-muted-foreground tracking-widest">{h.d}</span>
+                        <span className="text-[9px] font-normal text-muted-foreground tracking-widest">{h.d}</span>
                       </div>
                     ))}
                   </div>
@@ -348,7 +339,7 @@ export default function NgorongoroPage() {
                   <p className="text-[13px] leading-[20px] text-muted-foreground font-normal opacity-80">{region.desc}</p>
                   <div className="flex flex-wrap gap-2 pt-2">
                     {region.tags.map((tag) => (
-                      <span key={tag} className="px-3 py-1 bg-muted/20 border border-border rounded-full text-[9px] font-bold text-secondary/60 tracking-widest">
+                      <span key={tag} className="px-3 py-1 bg-muted/20 border border-border rounded-full text-[9px] font-normal text-secondary/60 tracking-widest">
                         {tag}
                       </span>
                     ))}
@@ -367,7 +358,7 @@ export default function NgorongoroPage() {
             <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter">
               Ihre perfekte Ngorongoro Krater Safari
             </h2>
-            <p className="text-muted-foreground font-bold text-[10px] md:text-sm tracking-widest max-w-xl mx-auto">
+            <p className="text-muted-foreground font-normal text-[10px] md:text-sm tracking-widest max-w-xl mx-auto">
               Optimale Tagesplanung für ein unvergessliches Erlebnis im Krater
             </p>
           </div>
@@ -398,7 +389,7 @@ export default function NgorongoroPage() {
                       <h4 className="font-headline text-lg md:text-xl font-bold text-secondary leading-none">{item.title}</h4>
                       <Badge className="bg-primary text-white border-none px-3 py-1 text-[8px] font-bold tracking-widest">{item.dates}</Badge>
                     </div>
-                    <p className="text-[11px] md:text-xs text-muted-foreground font-bold tracking-widest leading-relaxed">{item.desc}</p>
+                    <p className="text-[11px] md:text-[14px] text-muted-foreground font-normal tracking-widest leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
                 <div className="hidden md:flex w-8 h-8 rounded-full bg-primary border-4 border-white shadow-xl items-center justify-center shrink-0" />
@@ -413,11 +404,11 @@ export default function NgorongoroPage() {
       <section className="py-8 md:py-12 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-10 md:mb-16 space-y-4">
-            <span className="text-primary font-bold tracking-[0.4em] text-[10px]">Aktivitäten & Erlebnisse</span>
+            <span className="text-primary font-normal tracking-[0.4em] text-[10px]">Aktivitäten & Erlebnisse</span>
             <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter text-center">
               Unvergessliche <span className="text-primary">Aktivitäten</span> im Ngorongoro-Krater
             </h2>
-            <p className="text-muted-foreground text-sm font-bold max-w-2xl mx-auto leading-relaxed">
+            <p className="text-muted-foreground text-sm font-normal max-w-2xl mx-auto leading-relaxed">
               Erleben Sie das achte Weltwunder Afrikas auf einzigartige Weise – von spektakulären Krater-Safaris über Maasai-Kultur-Erlebnisse bis hin zu archäologischen Entdeckungen in der Olduvai-Schlucht.
             </p>
           </div>
@@ -484,7 +475,7 @@ export default function NgorongoroPage() {
                       </div>
                     </div>
 
-                    <p className="text-muted-foreground text-sm md:text-base font-bold leading-relaxed tracking-tight opacity-70">
+                    <p className="text-muted-foreground text-sm md:text-base font-normal leading-relaxed tracking-tight opacity-70">
                       {activeActivity.desc}
                     </p>
 
@@ -512,7 +503,7 @@ export default function NgorongoroPage() {
 
       {/* 06 Action Banner */}
       <section className="py-8 md:py-12 bg-white">
-        <div className="container mx-auto px-4 max-get-7xl">
+        <div className="container mx-auto px-4 max-w-7xl">
           <div className="bg-primary rounded-[2.5rem] md:rounded-[3.5rem] p-8 md:p-16 text-white relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-10 shadow-2xl">
             <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
             
@@ -521,12 +512,12 @@ export default function NgorongoroPage() {
                 <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl">
                   <Compass className="w-6 h-6 md:w-8 md:h-8 text-white" />
                 </div>
-                <h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-bold tracking-tighter text-white">
+                <h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-normal tracking-tighter text-white">
                   Planen Sie Ihre perfekte Ngorongoro Safari
                 </h2>
               </div>
               
-              <p className="text-white/80 font-bold text-[11px] md:text-base tracking-widest leading-relaxed max-w-2xl">
+              <p className="text-white/80 font-normal text-[11px] md:text-base tracking-widest leading-relaxed max-w-2xl">
                 Unsere Safari-Experten helfen Ihnen, die idealen Aktivitäten für Ihre Reisezeit und Interessen zu kombinieren. Erleben Sie Big Five, Maasai-Kultur und archäologische Wunder in einer unvergesslichen Reise.
               </p>
 
@@ -534,7 +525,7 @@ export default function NgorongoroPage() {
                 {["Kostenlose Beratung", "Optimale Krater-Zeitplanung", "Beste Preisgarantie"].map((item, i) => (
                   <div key={i} className="flex items-center gap-2.5">
                     <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                    <span className="text-[10px] md:text-[11px] font-bold tracking-widest">{item}</span>
+                    <span className="text-[10px] md:text-[11px] font-normal tracking-widest">{item}</span>
                   </div>
                 ))}
               </div>

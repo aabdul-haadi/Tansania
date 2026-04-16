@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -123,11 +122,11 @@ export function Navbar() {
               )} 
             />
             <div className="flex items-center gap-2 md:gap-4">
-              <span className="font-headline font-black whitespace-nowrap text-sm sm:text-base md:text-2xl lg:text-3xl tracking-normal leading-none uppercase">
+              <span className="font-headline font-black whitespace-nowrap text-base sm:text-lg md:text-2xl lg:text-4xl tracking-normal leading-none uppercase">
                 Tansania
               </span>
               <span className={cn(
-                "font-headline font-black whitespace-nowrap text-sm sm:text-base md:text-2xl lg:text-3xl transition-colors duration-500 tracking-normal leading-none uppercase",
+                "font-headline font-black whitespace-nowrap text-base sm:text-lg md:text-2xl lg:text-4xl transition-colors duration-500 tracking-normal leading-none uppercase",
                 useDarkState ? "text-primary" : "text-white"
               )}>
                 Reiseabenteuer

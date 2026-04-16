@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from 'react';
@@ -146,7 +145,7 @@ export default function TarangireParkPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
         <div className="container relative z-10 mx-auto px-6 h-full flex flex-col items-center justify-end text-center pb-12 md:pb-16 max-w-7xl">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="space-y-4">
-            <p className="text-white text-[11px] font-bold tracking-normal drop-shadow-lg">Das Reich der sanften Riesen und uralten Bäume</p>
+            <p className="text-white text-[11px] font-normal tracking-normal drop-shadow-lg">Das Reich der sanften Riesen und uralten Bäume</p>
             <h1 className="font-headline text-4xl md:text-7xl font-normal text-white leading-tight tracking-tight">Tarangire Nationalpark</h1>
           </motion.div>
         </div>
@@ -157,12 +156,12 @@ export default function TarangireParkPage() {
           <div className="space-y-10">
             <div className="space-y-6">
               <div className="space-y-4 text-left">
-                <div className="space-y-2"><div className="w-8 h-0.5 bg-primary" /><span className="text-primary font-bold text-[11px] block tracking-normal">Ein Refugium der Stille und Größe</span></div>
+                <div className="space-y-2"><div className="w-8 h-0.5 bg-primary" /><span className="text-primary font-normal text-[11px] block tracking-normal">Ein Refugium der Stille und Größe</span></div>
                 <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary leading-tight tracking-tight text-left">Elefantenparadies mit Baobab-Landschaft</h2>
               </div>
               <div className="space-y-6 text-muted-foreground font-normal text-[14px] leading-[20px] text-left opacity-90">
                 <p>Der Tarangire-Nationalpark liegt südlich des Manyara-Sees und ist ein echter Geheimtipp für Naturfotografen. Die Landschaft aus goldgelben Ebenen, weiten Palmenhainen und uralten Affenbrotbäumen macht jede Safari hier zu einem ästhetischen Erlebnis der Extraklasse.</p>
-                <p>In der Trockenzeit von Juni bis Oktober wird der Tarangire-Fluss zum einzigen dauerhaften Wasserspeicher der Region. Dies führt zu einer Tierkonzentration, die der Serengeti in nichts nachsteht. Besonders die Begegnungen mit den riesigen Elefantenfamilien bleiben unvergesslich.</p>
+                <p>In der Trockenzeit von Juni bis Oktober wird der Tarangire-Fluss zum einzigen dauerhaften Wasserspeicher der Region. Dies führt zu einer Tierkonzentration, die der Serengeti in nichts nachsteht. Besonders die Begegnungen mit den riesigen Elefantenfamilien bleiben unvergessliche.</p>
               </div>
             </div>
           </div>
@@ -186,7 +185,7 @@ export default function TarangireParkPage() {
       <section className="py-8 md:py-12 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-8 md:mb-12 space-y-4">
-            <span className="text-primary font-bold tracking-[0.4em] text-[10px]">Aktivitäten & Erlebnisse</span>
+            <span className="text-primary font-normal tracking-[0.4em] text-[10px]">Aktivitäten & Erlebnisse</span>
             <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter text-center">Unvergessliche Aktivitäten im <span className="text-primary">Tarangire Park</span></h2>
           </div>
           <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-8 md:mb-12">
@@ -202,7 +201,7 @@ export default function TarangireParkPage() {
                   <div className="space-y-6">
                     <h3 className="font-headline text-2xl md:text-4xl font-bold text-secondary tracking-tight">{activeActivity.title}</h3>
                     <div className="grid grid-cols-3 gap-2 md:gap-4 pb-6 border-b border-border/50"><div className="space-y-1"><div className="flex items-center gap-2 text-primary"><MapIcon className="w-4 h-4" /><span className="text-[8px] md:text-[9px] font-bold tracking-widest uppercase">Strecke</span></div><p className="text-xs font-bold text-secondary">{activeActivity.distance}</p></div><div className="space-y-1"><div className="flex items-center gap-2 text-primary"><Clock className="w-4 h-4" /><span className="text-[8px] md:text-[9px] font-bold tracking-widest uppercase">Dauer</span></div><p className="text-xs font-bold text-secondary">{activeActivity.duration}</p></div><div className="space-y-1"><div className="flex items-center gap-2 text-primary"><Users className="w-4 h-4" /><span className="text-[8px] md:text-[9px] font-bold tracking-widest uppercase">Personen</span></div><p className="text-xs font-bold text-secondary">{activeActivity.people}</p></div></div>
-                    <p className="text-muted-foreground text-sm md:text-base font-bold leading-relaxed tracking-tight opacity-70">{activeActivity.desc}</p>
+                    <p className="text-muted-foreground text-sm md:text-base font-normal leading-relaxed tracking-tight opacity-70">{activeActivity.desc}</p>
                     <div className="space-y-3">{activeActivity.features.map((f, i) => (<div key={i} className="flex items-center gap-3 text-[10px] md:text-[11px] font-bold text-secondary tracking-widest"><CheckCircle2 className="w-4 h-4 text-primary shrink-0" />{f}</div>))}</div>
                   </div>
                   <div className="pt-4"><Button onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })} className="rounded-xl px-10 h-14 bg-primary text-white font-bold text-[10px] tracking-widest shadow-xl border-none">Jetzt anfragen <ArrowRight className="w-4 h-4 ml-2" /></Button></div>
@@ -218,8 +217,8 @@ export default function TarangireParkPage() {
           <div className="bg-primary rounded-[2.5rem] md:rounded-[3.5rem] p-8 md:p-16 text-white relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-10 shadow-2xl">
             <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
             <div className="relative z-10 lg:w-[60%] space-y-8 text-left">
-              <div className="flex items-center gap-4"><div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl"><Compass className="w-6 h-6 md:w-8 md:h-8 text-white" /></div><h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-bold tracking-tighter text-white">Planen Sie Ihre perfekte Tarangire Safari</h2></div>
-              <p className="text-white/80 font-bold text-[11px] md:text-base tracking-widest leading-relaxed max-w-2xl">Erleben Sie die Giganten der Savanne in ihrer natürlichen Umgebung. Wir gestalten Ihre Route für maximale Tiersichtungen und exklusiven Komfort.</p>
+              <div className="flex items-center gap-4"><div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl"><Compass className="w-6 h-6 md:w-8 md:h-8 text-white" /></div><h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-normal tracking-tighter text-white">Planen Sie Ihre perfekte Tarangire Safari</h2></div>
+              <p className="text-white/80 font-normal text-[11px] md:text-base tracking-widest leading-relaxed max-w-2xl">Erleben Sie die Giganten der Savanne in ihrer natürlichen Umgebung. Wir gestalten Ihre Route für maximale Tiersichtungen und exklusiven Komfort.</p>
             </div>
             <div className="relative z-10 w-full lg:w-auto flex flex-col gap-3 shrink-0"><Button onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })} className="w-full lg:w-[280px] h-14 md:h-16 rounded-xl bg-white text-primary hover:bg-secondary hover:text-white font-bold text-[11px] tracking-widest shadow-xl border-none transition-all group">Kostenloses Angebot <ArrowRight className="w-4 h-4 ml-2" /></Button></div>
           </div>

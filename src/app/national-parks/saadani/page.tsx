@@ -66,7 +66,7 @@ export default function SaadaniParkPage() {
             transition={{ duration: 0.8 }}
             className="space-y-4"
           >
-            <p className="text-white text-[11px] font-bold tracking-normal drop-shadow-lg">
+            <p className="text-white text-[11px] font-normal tracking-normal drop-shadow-lg">
               Dort, wo the Busch den Ozean küsst
             </p>
             <h1 className="font-headline text-4xl md:text-7xl font-normal text-white leading-tight tracking-tight">
@@ -88,7 +88,7 @@ export default function SaadaniParkPage() {
               className="space-y-6"
             >
               <div className="space-y-3 text-left">
-                <span className="text-primary font-bold text-[11px] block tracking-normal">
+                <span className="text-primary font-normal text-[11px] block tracking-normal">
                   Einzigartige Küsten-Dynamik
                 </span>
                 <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary leading-tight tracking-tight">
@@ -126,7 +126,7 @@ export default function SaadaniParkPage() {
                 <div className="w-10 h-10 rounded-xl bg-primary/20 backdrop-blur-xl flex items-center justify-center">
                   <Sparkles className="w-5 h-5 text-primary" />
                 </div>
-                <p className="text-[11px] font-bold tracking-normal">Maritime Safari Registry</p>
+                <p className="text-[11px] font-normal tracking-normal">Maritime Safari Registry</p>
               </div>
             </motion.div>
           </div>
@@ -178,12 +178,12 @@ export default function SaadaniParkPage() {
                 <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl">
                   <Compass className="w-6 h-6 md:w-8 md:h-8 text-white" />
                 </div>
-                <h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-bold tracking-tighter text-white">
+                <h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-normal tracking-tighter text-white">
                   Planen Sie Ihre perfekte Saadani Safari
                 </h2>
               </div>
               
-              <p className="text-white/80 font-bold text-[11px] md:text-base tracking-widest leading-relaxed max-w-2xl">
+              <p className="text-white/80 font-normal text-[11px] md:text-base tracking-widest leading-relaxed max-w-2xl">
                 Erleben Sie den Busch direkt am Indischen Ozean. Wir entwerfen Ihre individuelle Küsten-Safari für ein unvergleichliches Naturerlebnis.
               </p>
             </div>
