@@ -158,7 +158,7 @@ const parksData = [
     facts: [
       { t: "Safari am Strand", v: "Endlose einsame Strände mit palmengesäumten Buchten grenzen direkt an wildes Buschland – diese Kombination aus Strandurlaub und Safari findet man sonst kaum irgendwo." },
       { t: "Kleine Serengeti", v: "Die Tierwelt Saadanis steht den bekannten Parks kaum nach: Löwen, Büffel, Zebras, Giraffen, Warzenschweine und zahlreiche Antilopen durchstreifen sogar die Dünen und Mangroven." },
-      { t: "Wasser-Paradies", v: "Die Flussmündungen und Mangroven im Park bieten Lebensraum für unzählige Vögel (darunter Flamingos), Nilkrokodile, Flusspferde und sogar Meeresschildkröten." }
+      { t: "Wasser-Paradies", v: "Die Flussmündungen und Mangroven im Park bieten Lebensraum für unzählige vögel (darunter Flamingos), Nilkrokodile, Flusspferde und sogar Meeresschildkröten." }
     ],
     ctaLabel: 'Saadani erleben',
     ctaLink: '/national-parks/saadani'
@@ -227,7 +227,7 @@ export default function NationalParksPage() {
         
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-30">
           <Link href="/trip-planner">
-            <Button size="xl" className="rounded-xl px-12 h-14 md:h-16 bg-secondary text-white hover:bg-primary font-bold text-xs tracking-widest border-none shadow-2xl transition-all">
+            <Button size="xl" className="rounded-none px-12 h-14 md:h-16 bg-secondary text-white hover:bg-primary font-bold text-xs tracking-widest border-none shadow-2xl transition-all">
               Jetzt Safari planen
             </Button>
           </Link>
@@ -338,11 +338,11 @@ export default function NationalParksPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center pt-2">
-                <p className="text-muted-foreground text-[14px] leading-[20px] font-normal opacity-80 text-left">
+              <div className="space-y-10 pt-2">
+                <p className="text-muted-foreground text-[14px] leading-[20px] font-normal opacity-80 text-left max-w-none">
                   Tansania ist ein echtes Safari-Paradies – rund ein Drittel der Landesfläche steht unter Naturschutz und bietet unvergessliche Wildtier-Erlebnisse. Die bekanntesten Schutzgebiete – von der endlosen Serengeti bis zum dramatischen Ngorongoro-Krater – sind Teil eines umfassenden Nationalparksystems. In diesen Parks herrscht striktes Schutzregime: Bauen, Jagen und Landwirtschaft sind verboten. Alle menschlichen Aktivitäten dienen einzig dem Tourismus, z. B. Pirschfahrten mit dem Geländewagen. Dieser Schutz sichert die Artenvielfalt (Big Five, Flamingos, etc.) und macht Tansania zu einem erstklassigen Ziel für Naturliebhaber und Fotografen.
                 </p>
-                <div className="relative aspect-video rounded-[2rem] overflow-hidden shadow-xl border border-border/40">
+                <div className="relative aspect-video md:aspect-[21/9] rounded-[2.5rem] overflow-hidden shadow-xl border border-border/40 w-full">
                   <Image src="/assets/images/national-parks/info-national.jpg" alt="Nationalpark Flora" fill className="object-cover" />
                 </div>
               </div>
