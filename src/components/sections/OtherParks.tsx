@@ -5,7 +5,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, MapPin } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 const allParks = [
@@ -29,10 +29,10 @@ export function OtherParks({ excludeId }: OtherParksProps) {
     <section className="py-10 md:py-20 bg-[#fdfcfb] overflow-hidden border-t border-border/40">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-10 md:mb-16 space-y-3">
-          <h2 className="font-headline text-2xl md:text-5xl font-normal text-secondary uppercase tracking-tighter">
+          <h2 className="font-headline text-2xl md:text-5xl font-normal text-secondary tracking-tighter">
             Weitere Nationalparks entdecken
           </h2>
-          <p className="text-muted-foreground font-bold text-[10px] md:text-sm uppercase tracking-widest max-w-xl mx-auto">
+          <p className="text-muted-foreground font-bold text-[10px] md:text-sm tracking-widest max-w-xl mx-auto">
             Tansania bietet unzählige Wunder – erkunden Sie die Vielfalt unserer geschützten Ökosysteme.
           </p>
         </div>
@@ -50,12 +50,12 @@ export function OtherParks({ excludeId }: OtherParksProps) {
               <Image src={park.img} alt={park.name} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
               <div className="absolute top-4 left-4">
-                <Badge className="bg-primary text-white border-none text-[7px] font-bold px-3 py-1 uppercase tracking-widest">Nationalpark</Badge>
+                <Badge className="bg-primary text-white border-none text-[7px] font-bold px-3 py-1 tracking-widest">Nationalpark</Badge>
               </div>
-              <div className="absolute bottom-6 left-6 right-6">
+              <div className="absolute bottom-6 left-6 right-6 text-left">
                 <h3 className="text-white font-headline text-2xl mb-1 leading-none">{park.name}</h3>
-                <p className="text-primary font-bold text-[9px] uppercase tracking-widest mb-4">{park.sub}</p>
-                <Link href={park.href} className="inline-flex items-center gap-2 text-white font-bold text-[10px] uppercase tracking-widest group/link">
+                <p className="text-primary font-bold text-[9px] tracking-widest mb-4">{park.sub}</p>
+                <Link href={park.href} className="inline-flex items-center gap-2 text-white font-bold text-[10px] tracking-widest group/link">
                   Park ansehen <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-1" />
                 </Link>
               </div>

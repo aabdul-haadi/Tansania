@@ -25,7 +25,7 @@ export function ReviewVideos() {
           <h2 className="font-headline text-2xl md:text-5xl font-normal text-secondary leading-tight">
             Unsere Gäste erzählen von Momenten, die sie nie vergessen werden
           </h2>
-          <p className="text-muted-foreground font-bold text-[10px] md:text-sm uppercase tracking-widest max-w-3xl mx-auto leading-relaxed">
+          <p className="text-muted-foreground font-bold text-[10px] md:text-sm tracking-widest max-w-3xl mx-auto leading-relaxed">
             Unsere Reisenden teilen ihre schönsten Erinnerungen an Tansania, Sansibar und die Big Five: Erlebnisse, die berühren und bleiben.
           </p>
         </div>

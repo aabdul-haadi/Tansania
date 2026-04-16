@@ -263,7 +263,7 @@ export default function SerengetiPage() {
               transition={{ delay: i * 0.1 }}
             >
               <Card className="h-full border-none shadow-sm bg-white rounded-2xl md:rounded-[2.5rem] hover:shadow-md transition-all duration-500 border border-border/40">
-                <CardContent className="p-8 md:p-10 space-y-3">
+                <CardContent className="p-8 md:p-10 space-y-3 text-left">
                   <h4 className="font-headline text-lg md:text-2xl font-bold text-secondary tracking-tight leading-tight">
                     {card.title}
                   </h4>
@@ -277,7 +277,7 @@ export default function SerengetiPage() {
         </div>
       </section>
 
-      {/* 03 GEOGRAPHY SECTION */}
+      {/* 03 Geography Section */}
       <section className="py-10 md:py-16 bg-white border-t border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-10 md:mb-16 space-y-6">
@@ -296,7 +296,7 @@ export default function SerengetiPage() {
               loading="lazy"
             />
             
-            <div className="absolute top-6 right-6 md:top-10 md:right-10 z-20 w-64 md:w-80 hidden md:block">
+            <div className="absolute top-6 right-6 md:top-10 md:right-10 z-20 w-64 md:w-80 hidden md:block text-left">
               <Card className="bg-white/95 backdrop-blur-xl border border-white rounded-[2rem] p-6 shadow-2xl">
                 <div className="space-y-6">
                   <div className="flex items-center gap-3">
@@ -313,8 +313,8 @@ export default function SerengetiPage() {
                       { t: "Ndutu Area", d: "Südliche Kalbungsregion" }
                     ].map((h, i) => (
                       <div key={i} className="flex flex-col border-b border-border/40 pb-3 last:border-none">
-                        <span className="text-[11px] font-bold text-secondary uppercase tracking-tight leading-none mb-1">{h.t}</span>
-                        <span className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest">{h.d}</span>
+                        <span className="text-[11px] font-bold text-secondary tracking-tight leading-none mb-1">{h.t}</span>
+                        <span className="text-[9px] font-bold text-muted-foreground tracking-widest">{h.d}</span>
                       </div>
                     ))}
                   </div>
@@ -336,18 +336,18 @@ export default function SerengetiPage() {
                 <div className="relative aspect-[16/10] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-xl group border border-border/40 bg-muted">
                   <Image src={region.img} alt={region.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
                   <div className="absolute top-4 left-4">
-                    <Badge className={cn("text-white border-none font-bold text-[8px] px-3 py-1 uppercase tracking-widest", region.badgeColor)}>
+                    <Badge className={cn("text-white border-none font-bold text-[8px] px-3 py-1 tracking-widest", region.badgeColor)}>
                       {region.badge}
                     </Badge>
                   </div>
                 </div>
                 
-                <div className="space-y-4 px-1">
+                <div className="space-y-4 px-1 text-left">
                   <h3 className="font-headline text-xl md:text-2xl font-normal text-secondary tracking-tight">{region.title}</h3>
                   <p className="text-[13px] leading-[20px] text-muted-foreground font-normal opacity-80">{region.desc}</p>
                   <div className="flex flex-wrap gap-2 pt-2">
                     {region.tags.map((tag) => (
-                      <span key={tag} className="px-3 py-1 bg-muted/20 border border-border rounded-full text-[9px] font-bold text-secondary/60 uppercase tracking-widest">
+                      <span key={tag} className="px-3 py-1 bg-muted/20 border border-border rounded-full text-[9px] font-bold text-secondary/60 tracking-widest">
                         {tag}
                       </span>
                     ))}
@@ -359,14 +359,14 @@ export default function SerengetiPage() {
         </div>
       </section>
 
-      {/* 04 MIGRATION TIMELINE SECTION */}
+      {/* 04 Migration Timeline Section */}
       <section className="py-10 md:py-16 bg-[#FDFCFB] overflow-hidden">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center mb-12 md:mb-16 space-y-4">
-            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter uppercase">
+            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter">
               Die Route der Großen Migration
             </h2>
-            <p className="text-muted-foreground font-bold text-[10px] md:text-sm uppercase tracking-widest max-w-xl mx-auto">
+            <p className="text-muted-foreground font-bold text-[10px] md:text-sm tracking-widest max-w-xl mx-auto">
               Folgen Sie dem jährlichen Zyklus der Tierwanderung durch die Serengeti.
             </p>
           </div>
@@ -394,10 +394,10 @@ export default function SerengetiPage() {
                       "flex items-center gap-4 mb-3",
                       item.side === 'right' ? "flex-row-reverse" : "flex-row justify-end"
                     )}>
-                      <h4 className="font-headline text-lg md:text-xl font-bold text-secondary uppercase leading-none">{item.title}</h4>
-                      <Badge className="bg-primary text-white border-none px-3 py-1 text-[8px] font-bold uppercase tracking-widest">{item.dates}</Badge>
+                      <h4 className="font-headline text-lg md:text-xl font-bold text-secondary leading-none">{item.title}</h4>
+                      <Badge className="bg-primary text-white border-none px-3 py-1 text-[8px] font-bold tracking-widest">{item.dates}</Badge>
                     </div>
-                    <p className="text-[11px] md:text-xs text-muted-foreground font-bold uppercase tracking-widest leading-relaxed">{item.desc}</p>
+                    <p className="text-[11px] md:text-xs text-muted-foreground font-bold tracking-widest leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
                 <div className="hidden md:flex w-8 h-8 rounded-full bg-primary border-4 border-white shadow-xl items-center justify-center shrink-0" />
@@ -408,24 +408,23 @@ export default function SerengetiPage() {
         </div>
       </section>
 
-      {/* 05 ACTIVITY HUB SECTION */}
+      {/* 05 Activity Hub Section */}
       <section className="py-10 md:py-16 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-10 md:mb-16 space-y-4">
-            <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px]">Aktivitäten & Erlebnisse</span>
-            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary uppercase tracking-tighter">
+            <span className="text-primary font-bold tracking-[0.4em] text-[10px]">Aktivitäten & Erlebnisse</span>
+            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter">
               Unvergessliche <span className="text-primary">Aktivitäten</span> in der Serengeti
             </h2>
           </div>
 
-          {/* Activity Tabs */}
           <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-10 md:mb-12">
             {activities.map((act) => (
               <button
                 key={act.id}
                 onClick={() => setActiveActivity(act)}
                 className={cn(
-                  "px-6 py-3 rounded-xl text-[9px] md:text-[10px] font-black uppercase tracking-widest transition-all border flex items-center gap-3",
+                  "px-6 py-3 rounded-xl text-[9px] md:text-[10px] font-bold tracking-widest transition-all border flex items-center gap-3",
                   activeActivity.id === act.id 
                     ? "bg-secondary text-white border-secondary shadow-xl scale-105" 
                     : "bg-white text-muted-foreground border-border hover:border-primary/40"
@@ -437,7 +436,6 @@ export default function SerengetiPage() {
             ))}
           </div>
 
-          {/* Activity Card */}
           <AnimatePresence mode="wait">
             <motion.div
               key={activeActivity.id}
@@ -450,45 +448,45 @@ export default function SerengetiPage() {
                 <div className="w-full lg:w-[45%] relative aspect-[16/9] lg:aspect-auto min-h-[350px]">
                   <Image src={activeActivity.img} alt={activeActivity.title} fill className="object-cover" />
                   <div className="absolute top-6 left-6 flex flex-col gap-2">
-                    <Badge className="bg-white/95 backdrop-blur-md text-secondary border-none px-3 py-1 text-[8px] font-bold uppercase">{activeActivity.duration}</Badge>
-                    <Badge className="bg-primary text-white border-none px-3 py-1 text-[8px] font-bold uppercase">{activeActivity.level}</Badge>
+                    <Badge className="bg-white/95 backdrop-blur-md text-secondary border-none px-3 py-1 text-[8px] font-bold">{activeActivity.duration}</Badge>
+                    <Badge className="bg-primary text-white border-none px-3 py-1 text-[8px] font-bold">{activeActivity.level}</Badge>
                   </div>
                 </div>
-                <div className="flex-1 p-8 md:p-12 lg:p-16 space-y-8 flex flex-col justify-center">
+                <div className="flex-1 p-8 md:p-12 lg:p-16 space-y-8 flex flex-col justify-center text-left">
                   <div className="space-y-6">
-                    <h3 className="font-headline text-2xl md:text-4xl font-bold text-secondary uppercase tracking-tight">{activeActivity.title}</h3>
+                    <h3 className="font-headline text-2xl md:text-4xl font-bold text-secondary tracking-tight">{activeActivity.title}</h3>
                     
                     <div className="grid grid-cols-3 gap-4 pb-6 border-b border-border/50">
                       <div className="space-y-1">
                         <div className="flex items-center gap-2 text-primary">
                           <Clock className="w-4 h-4" />
-                          <span className="text-[9px] font-black uppercase tracking-widest">Dauer</span>
+                          <span className="text-[9px] font-bold tracking-widest">Dauer</span>
                         </div>
                         <p className="text-xs font-bold text-secondary">{activeActivity.duration}</p>
                       </div>
                       <div className="space-y-1">
                         <div className="flex items-center gap-2 text-primary">
                           <Users className="w-4 h-4" />
-                          <span className="text-[9px] font-black uppercase tracking-widest">Personen</span>
+                          <span className="text-[9px] font-bold tracking-widest">Personen</span>
                         </div>
                         <p className="text-xs font-bold text-secondary">{activeActivity.people}</p>
                       </div>
                       <div className="space-y-1">
                         <div className="flex items-center gap-2 text-primary">
                           <Zap className="w-4 h-4" />
-                          <span className="text-[9px] font-black uppercase tracking-widest">Starts</span>
+                          <span className="text-[9px] font-bold tracking-widest">Starts</span>
                         </div>
                         <p className="text-xs font-bold text-secondary">{activeActivity.frequency}</p>
                       </div>
                     </div>
 
-                    <p className="text-muted-foreground text-sm md:text-base font-bold leading-relaxed uppercase tracking-tight opacity-70">
+                    <p className="text-muted-foreground text-sm md:text-base font-bold leading-relaxed tracking-tight opacity-70">
                       {activeActivity.desc}
                     </p>
 
                     <div className="space-y-3">
                       {activeActivity.features.map((f, i) => (
-                        <div key={i} className="flex items-center gap-3 text-[10px] md:text-[11px] font-bold text-secondary uppercase tracking-widest">
+                        <div key={i} className="flex items-center gap-3 text-[10px] md:text-[11px] font-bold text-secondary tracking-widest">
                           <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
                           {f}
                         </div>
@@ -497,8 +495,8 @@ export default function SerengetiPage() {
                   </div>
 
                   <div className="pt-4">
-                    <Button onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })} className="rounded-xl px-10 h-14 bg-primary text-white font-black text-[10px] uppercase tracking-[0.2em] shadow-xl border-none">
-                      JETZT ANFRAGEN <ArrowRight className="w-4 h-4 ml-2" />
+                    <Button onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })} className="rounded-xl px-10 h-14 bg-primary text-white font-bold text-[10px] tracking-widest shadow-xl border-none">
+                      Jetzt anfragen <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                   </div>
                 </div>
@@ -508,23 +506,23 @@ export default function SerengetiPage() {
         </div>
       </section>
 
-      {/* 06 HIGH-CONTRAST PRESTIGE BANNER */}
+      {/* 06 High-Contrast Action Banner */}
       <section className="py-8 md:py-12 bg-white">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="bg-primary rounded-[2.5rem] md:rounded-[3.5rem] p-8 md:p-16 text-white relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-10 shadow-2xl">
             <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
             
-            <div className="relative z-10 lg:w-[60%] space-y-8">
+            <div className="relative z-10 lg:w-[60%] space-y-8 text-left">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl">
                   <Compass className="w-6 h-6 md:w-8 md:h-8 text-white" />
                 </div>
-                <h2 className="font-headline text-2xl md:text-5xl font-bold uppercase tracking-tighter leading-[1.1]">
+                <h2 className="font-headline text-2xl md:text-5xl font-bold tracking-tighter leading-[1.1]">
                   Planen Sie Ihre perfekte <br /> Serengeti Safari
                 </h2>
               </div>
               
-              <p className="text-white/80 font-bold text-[11px] md:text-base uppercase tracking-widest leading-relaxed max-w-2xl">
+              <p className="text-white/80 font-bold text-[11px] md:text-base tracking-widest leading-relaxed max-w-2xl">
                 Unsere Safari-Experten helfen Ihnen, die idealen Aktivitäten für Ihre Reisezeit und Interessen zu kombinieren. Erstellen Sie jetzt Ihr individuelles Programm.
               </p>
 
@@ -532,19 +530,19 @@ export default function SerengetiPage() {
                 {["Kostenlose Beratung", "Individuelle Routenplanung", "Beste Preisgarantie"].map((item, i) => (
                   <div key={i} className="flex items-center gap-2.5">
                     <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                    <span className="text-[10px] md:text-[11px] font-black uppercase tracking-widest">{item}</span>
+                    <span className="text-[10px] md:text-[11px] font-bold tracking-widest">{item}</span>
                   </div>
                 ))}
               </div>
             </div>
 
             <div className="relative z-10 w-full lg:w-auto flex flex-col gap-3 shrink-0">
-              <Button onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })} className="w-full lg:w-[280px] h-14 md:h-16 rounded-xl bg-white text-primary hover:bg-secondary hover:text-white font-black text-[11px] uppercase tracking-[0.2em] shadow-xl border-none transition-all group">
-                KOSTENLOSES ANGEBOT <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              <Button onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })} className="w-full lg:w-[280px] h-14 md:h-16 rounded-xl bg-white text-primary hover:bg-secondary hover:text-white font-bold text-[11px] tracking-widest shadow-xl border-none transition-all group">
+                Kostenloses Angebot <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
               <a href="tel:+493022608080" className="block">
-                <Button variant="outline" className="w-full lg:w-[280px] h-14 md:h-16 rounded-xl bg-transparent border-white/40 text-white hover:bg-white/10 font-black text-[10px] uppercase tracking-widest transition-all">
-                  +49 30 22608080 ANRUFEN
+                <Button variant="outline" className="w-full lg:w-[280px] h-14 md:h-16 rounded-xl bg-transparent border-white/40 text-white hover:bg-white/10 font-bold text-[10px] tracking-widest transition-all">
+                  +49 30 22608080 anrufen
                 </Button>
               </a>
             </div>
@@ -552,11 +550,11 @@ export default function SerengetiPage() {
         </div>
       </section>
 
-      {/* 07 FAQ REGISTRY SECTION */}
+      {/* 07 FAQ Section */}
       <section className="py-10 md:py-16 bg-white">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-10 md:mb-12">
-            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tight">Häufig gestellte Fragen</h2>
+            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tight">Häufig gestellte Fragen</h2>
           </div>
           <Accordion type="single" collapsible className="space-y-4">
             {[
@@ -579,7 +577,7 @@ export default function SerengetiPage() {
         </div>
       </section>
 
-      {/* 08 REVIEWS & OTHER PARKS */}
+      {/* 08 Shared Review and Parks Modules */}
       <ReviewVideos />
       <OtherParks excludeId="serengeti" />
 
