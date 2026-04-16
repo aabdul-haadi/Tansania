@@ -41,7 +41,7 @@ const regions = [
     badge: 'Krater',
     badgeColor: 'bg-secondary',
     title: 'Ngorongoro Krater',
-    desc: 'Die größte intakte vulkanische Caldera der Welt (20 km Durchmesser), Unesco-Welterbe und geschlossenes Ökosystem mit ganzjährigem Wildreichtum.',
+    desc: 'Die größte intakte vulkanische Caldera der Welt (20 km Durchmesser), UNESCO-Welterbe und geschlossenes Ökosystem mit ganzjährigem Wildreichtum.',
     tags: ['Lake Magadi', 'Lerai Forest', 'Ngoitokitok'],
     img: 'https://images.unsplash.com/photo-1580502304784-8985b777da59?q=80&w=600',
     hint: 'ngorongoro crater'
@@ -179,7 +179,7 @@ export default function NgorongoroPage() {
             className="space-y-4"
           >
             <p className="text-white text-[11px] font-bold tracking-normal drop-shadow-lg">
-              Unesco-Welterbe & größte Caldera der Welt
+              UNESCO-Welterbe & Größte Caldera der Welt
             </p>
             <h1 className="font-headline text-4xl md:text-7xl font-normal text-white leading-tight tracking-tight">
               Ngorongoro-Krater
@@ -212,7 +212,7 @@ export default function NgorongoroPage() {
               
               <div className="space-y-6 text-muted-foreground font-normal text-[14px] leading-[20px] text-left opacity-90">
                 <p>
-                  Der Ngorongoro-Krater gilt als eine der spektakulärsten Naturlandschaften Afrikas. Als größte intakte vulkanische Caldera der Welt, Teil des Unesco-Welterbes und Herzstück der Ngorongoro Conservation Area beeindruckt er durch seine außergewöhnliche Kombination aus Naturvielfalt, Kulturgeschichte und dem harmonischen Zusammenleben von Mensch und Tier.
+                  Der Ngorongoro-Krater gilt als eine der spektakulärsten Naturlandschaften Afrikas. Als größte intakte vulkanische Caldera der Welt, Teil des UNESCO-Welterbes und Herzstück der Ngorongoro Conservation Area beeindruckt er durch seine außergewöhnliche Kombination aus Naturvielfalt, Kulturgeschichte und dem harmonischen Zusammenleben von Mensch und Tier.
                 </p>
                 <p>
                   Vor 2–3 Millionen Jahren brach ein gigantischer Vulkan zusammen und schuf die 20 km breite Caldera. Heute ist sie ein geschlossenes Ökosystem mit ganzjährig Wasser und Nahrung – Grund für die unglaubliche Tierdichte.
@@ -419,7 +419,7 @@ export default function NgorongoroPage() {
               Unvergessliche <span className="text-primary">Aktivitäten</span> im Ngorongoro-Krater
             </h2>
             <p className="text-muted-foreground text-sm font-bold max-w-2xl mx-auto leading-relaxed">
-              Erleben Sie das achte Weltwunder Afrikas auf einzigartige Weise – von spektakulären Krater-Safaris über Maasai-Kultur bis hin zur Olduvai-Schlucht.
+              Erleben Sie das achte Weltwunder Afrikas auf einzigartige Weise – von spektakulären Krater-Safaris über Maasai-Kultur-Erlebnisse bis hin zu archäologischen Entdeckungen in der Olduvai-Schlucht.
             </p>
           </div>
 
@@ -522,8 +522,8 @@ export default function NgorongoroPage() {
                 <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl">
                   <Compass className="w-6 h-6 md:w-8 md:h-8 text-white" />
                 </div>
-                <h2 className="font-headline text-2xl md:text-5xl font-bold tracking-tighter leading-[1.1]">
-                  Planen Sie Ihre perfekte <br /> Ngorongoro Safari
+                <h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-bold tracking-tighter leading-tight whitespace-nowrap">
+                  Planen Sie Ihre perfekte Ngorongoro Safari
                 </h2>
               </div>
               
@@ -564,4 +564,3 @@ export default function NgorongoroPage() {
     </div>
   );
 }
-

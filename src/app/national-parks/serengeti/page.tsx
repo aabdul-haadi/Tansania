@@ -366,7 +366,7 @@ export default function SerengetiPage() {
             <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter">
               Die Route der Großen Migration
             </h2>
-            <p className="text-muted-foreground font-bold text-[10px] md:text-sm tracking-widest max-w-xl mx-auto">
+            <p className="text-muted-foreground font-bold text-[10px] md:text-sm tracking-widest max-get-xl mx-auto">
               Folgen Sie dem jährlichen Zyklus der Tierwanderung durch die Serengeti.
             </p>
           </div>
@@ -517,8 +517,8 @@ export default function SerengetiPage() {
                 <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl">
                   <Compass className="w-6 h-6 md:w-8 md:h-8 text-white" />
                 </div>
-                <h2 className="font-headline text-2xl md:text-5xl font-bold tracking-tighter leading-[1.1]">
-                  Planen Sie Ihre perfekte <br /> Serengeti Safari
+                <h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-bold tracking-tighter leading-tight whitespace-nowrap">
+                  Planen Sie Ihre perfekte Serengeti Safari
                 </h2>
               </div>
               

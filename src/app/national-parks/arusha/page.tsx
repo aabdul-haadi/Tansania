@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -166,31 +167,38 @@ export default function ArushaParkPage() {
         </div>
       </section>
 
-      <ReviewVideos />
-      <OtherParks excludeId="arusha" />
+      {/* 04 Action Banner */}
+      <section className="py-8 md:py-12 bg-white">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="bg-primary rounded-[2.5rem] md:rounded-[3.5rem] p-8 md:p-16 text-white relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-10 shadow-2xl">
+            <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+            
+            <div className="relative z-10 lg:w-[60%] space-y-8 text-left">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl">
+                  <Compass className="w-6 h-6 md:w-8 md:h-8 text-white" />
+                </div>
+                <h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-bold tracking-tighter leading-tight whitespace-nowrap">
+                  Planen Sie Ihre perfekte Arusha Safari
+                </h2>
+              </div>
+              
+              <p className="text-white/80 font-bold text-[11px] md:text-base tracking-widest leading-relaxed max-w-2xl">
+                Starten Sie Ihr Abenteuer direkt vor den Toren Arushas. Wir entwerfen Ihre individuelle Tour durch Bergwälder und Kraterlandschaften.
+              </p>
+            </div>
 
-      {/* 04 Strategy CTA */}
-      <section className="py-10 md:py-16 container mx-auto px-4 max-w-4xl text-center space-y-10">
-        <div className="w-16 h-16 rounded-[1.5rem] bg-white border border-border shadow-xl mx-auto flex items-center justify-center">
-          <Compass className="w-8 h-8 text-primary" />
-        </div>
-        <div className="space-y-6">
-          <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tight">
-            Ihre Expedition beginnt hier
-          </h2>
-          <p className="text-muted-foreground font-bold text-[14px] md:text-lg tracking-normal leading-relaxed max-w-2xl mx-auto">
-            Ob Tagesausflug oder mehrtägiges Trekking – Arusha Nationalpark ist der perfekte Startpunkt für Ihre Tansania-Reise. Lassen Sie sich persönlich beraten.
-          </p>
-        </div>
-        <div className="pt-10">
-          <Button onClick={() => {
-            const el = document.getElementById('inquiry');
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
-          }} size="lg" className="rounded-xl px-12 h-14 md:h-16 font-bold text-[11px] tracking-widest shadow-2xl hover:scale-105 transition-transform border-none">
-            Anfrage senden <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
+            <div className="relative z-10 w-full lg:w-auto flex flex-col gap-3 shrink-0">
+              <Button onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })} className="w-full lg:w-[280px] h-14 md:h-16 rounded-xl bg-white text-primary hover:bg-secondary hover:text-white font-bold text-[11px] tracking-widest shadow-xl border-none transition-all group">
+                Jetzt anfragen <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
+
+      <ReviewVideos />
+      <OtherParks excludeId="arusha" />
 
       <section id="inquiry" className="scroll-mt-20">
         <ContactSection />

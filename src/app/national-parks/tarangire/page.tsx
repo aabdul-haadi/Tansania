@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -171,6 +172,36 @@ export default function TarangirePage() {
                 </Card>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 04 Strategy CTA */}
+      <section className="py-8 md:py-12 bg-white">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="bg-primary rounded-[2.5rem] md:rounded-[3.5rem] p-8 md:p-16 text-white relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-10 shadow-2xl">
+            <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+            
+            <div className="relative z-10 lg:w-[60%] space-y-8 text-left">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl">
+                  <Compass className="w-6 h-6 md:w-8 md:h-8 text-white" />
+                </div>
+                <h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-bold tracking-tighter leading-tight whitespace-nowrap">
+                  Planen Sie Ihre perfekte Tarangire Safari
+                </h2>
+              </div>
+              
+              <p className="text-white/80 font-bold text-[11px] md:text-base tracking-widest leading-relaxed max-w-2xl">
+                Erleben Sie die Giganten der Savanne in ihrer natürlichen Umgebung. Wir gestalten Ihre Route für maximale Tiersichtungen und exklusiven Komfort.
+              </p>
+            </div>
+
+            <div className="relative z-10 w-full lg:w-auto flex flex-col gap-3 shrink-0">
+              <Button onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })} className="w-full lg:w-[280px] h-14 md:h-16 rounded-xl bg-white text-primary hover:bg-secondary hover:text-white font-bold text-[11px] tracking-widest shadow-xl border-none transition-all group">
+                Kostenloses Angebot <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </div>
           </div>
         </div>
       </section>

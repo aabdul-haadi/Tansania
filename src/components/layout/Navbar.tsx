@@ -48,15 +48,15 @@ export function Navbar() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const pathname = usePathname();
 
-  // Force Dark Content Protocol for specific "Bright" routes without background
-  const isBrightPage = pathname === '/national-parks' || pathname === '/faq' || pathname?.startsWith('/legal') || pathname?.startsWith('/national-parks/');
+  // Force Dark Content Protocol for specific "Bright" routes without hero backgrounds
+  // Removed park sub-pages from this condition so they use the light hero navbar
+  const isBrightPage = pathname === '/national-parks' || pathname === '/faq' || pathname?.startsWith('/legal');
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       setIsScrolled(currentScrollY > 50);
       
-      // Handle visibility for desktop if needed, but the user requested no reappear on phone
       if (currentScrollY > lastScrollY && currentScrollY > 200 && !isOpen) {
         setIsVisible(false);
       } else {
@@ -92,14 +92,12 @@ export function Navbar() {
     { name: 'Kontakt', href: '/contact' },
   ];
 
-  // Dark state is used if scrolled OR if on a bright page
   const useDarkState = isScrolled || isBrightPage;
 
   return (
     <header 
       className={cn(
         "top-0 w-full z-[100] transition-all duration-500 absolute",
-        // On mobile, we no longer hide/show on scroll to avoid "appearing when scroll back"
         "translate-y-0",
         (isScrolled && !isBrightPage) ? "py-3 bg-white/80 backdrop-blur-md shadow-sm" : "py-6 md:py-8 bg-transparent"
       )}
