@@ -258,22 +258,24 @@ export default function ActivitiesPage() {
                 transition={{ duration: 0.4 }}
               >
                 <Card className="h-full border-none shadow-sm bg-white rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden hover:shadow-xl transition-all duration-500 border border-border/40 group">
-                  <div className="relative aspect-[16/10] overflow-hidden">
+                  <Link href="/trip-planner" className="block relative aspect-[16/10] overflow-hidden">
                     <Image src={act.img} alt={act.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-105" data-ai-hint={act.hint} />
                     <div className="absolute top-4 left-4 flex gap-2">
                       <Badge className="bg-primary text-white border-none font-bold text-[7px] md:text-[8px] px-2.5 py-1 tracking-widest">{act.tag}</Badge>
                       <Badge className="bg-white/90 backdrop-blur-sm text-secondary border-none font-bold text-[7px] md:text-[8px] px-2.5 py-1 tracking-widest">{act.location}</Badge>
                     </div>
-                  </div>
+                  </Link>
                   
-                  <CardContent className="p-6 md:p-8 flex flex-col h-[calc(100%-16/10)]">
+                  <CardContent className="p-6 md:p-8 flex flex-col h-[calc(100%-16/10)] text-left">
                     <div className="flex-grow space-y-4">
                       <div className="flex items-center gap-2 text-primary font-bold text-[10px] tracking-widest">
                         <Clock className="w-3.5 h-3.5" /> {act.duration}
                       </div>
-                      <h3 className="font-headline text-lg md:text-2xl font-bold text-secondary leading-tight tracking-tight uppercase group-hover:text-primary transition-colors">
-                        {act.title}
-                      </h3>
+                      <Link href="/trip-planner" className="block">
+                        <h3 className="font-headline text-lg md:text-2xl font-bold text-secondary leading-tight tracking-tight uppercase group-hover:text-primary transition-colors">
+                          {act.title}
+                        </h3>
+                      </Link>
                       <p className="text-[13px] leading-[20px] text-muted-foreground font-normal opacity-80 line-clamp-2">
                         {act.desc}
                       </p>

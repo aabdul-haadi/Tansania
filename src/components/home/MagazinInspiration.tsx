@@ -109,10 +109,12 @@ export function MagazinInspiration() {
 }
 
 function MagazineCard({ post }: { post: any }) {
+  const blogLink = `/blog`; // Standard blog link for now
+
   return (
     <div className="flex flex-col h-full bg-white rounded-2xl overflow-hidden shadow-sm border border-border/40 hover:shadow-md transition-all duration-500 group">
-      {/* Visual Anchor */}
-      <div className="relative aspect-[16/10] overflow-hidden shrink-0">
+      {/* Visual Anchor - Linked */}
+      <Link href={blogLink} className="relative aspect-[16/10] overflow-hidden shrink-0 block">
         <Image
           src={post.img}
           alt={post.title}
@@ -120,10 +122,10 @@ function MagazineCard({ post }: { post: any }) {
           className="object-cover transition-transform duration-1000 group-hover:scale-105"
           data-ai-hint={post.hint}
         />
-      </div>
+      </Link>
 
       {/* Content Protocol */}
-      <div className="p-6 md:p-8 flex flex-col flex-grow">
+      <div className="p-6 md:p-8 flex flex-col flex-grow text-left">
         <div className="flex items-center gap-4 mb-5">
           <span className="text-[10px] font-bold uppercase tracking-widest text-[#C9A876] px-3 py-1.5 rounded-full bg-[#C9A876]/10">
             {post.category}
@@ -135,16 +137,18 @@ function MagazineCard({ post }: { post: any }) {
         </div>
 
         <div className="space-y-4 flex-grow">
-          <h3 className="font-headline text-xl md:text-[24px] leading-[32px] font-medium text-[#3A3634] leading-tight group-hover:text-[#C9A876] transition-colors">
-            {post.title}
-          </h3>
+          <Link href={blogLink}>
+            <h3 className="font-headline text-xl md:text-[24px] leading-[32px] font-medium text-[#3A3634] leading-tight group-hover:text-[#C9A876] transition-colors">
+              {post.title}
+            </h3>
+          </Link>
           <p className="text-sm md:text-base text-[#4A4543] font-normal leading-relaxed line-clamp-3">
             {post.excerpt}
           </p>
         </div>
 
         <div className="mt-8 pt-6 border-t border-border/50">
-          <Link href={`/blog`} className="inline-flex items-center gap-2 text-[11px] font-bold text-[#3A3634] hover:text-[#C9A876] transition-colors group/link">
+          <Link href={blogLink} className="inline-flex items-center gap-2 text-[11px] font-bold text-[#3A3634] hover:text-[#C9A876] transition-colors group/link">
             Weiterlesen <ArrowRight className="w-3 h-3 transition-transform group/link:translate-x-1" />
           </Link>
         </div>

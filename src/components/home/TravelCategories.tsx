@@ -85,25 +85,29 @@ export function TravelCategories() {
               transition={{ delay: idx * 0.1 }}
               className="group relative aspect-[16/11] md:aspect-[4/3] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-xl bg-muted border border-border/50"
             >
-              <Image 
-                src={cat.img} 
-                alt={cat.title} 
-                fill 
-                className="object-cover transition-transform duration-1000 group-hover:scale-110"
-                data-ai-hint={cat.hint}
-              />
-              {/* Targeted Bottom Shady Overlay Protocol: No full image darkening */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+              <Link href={cat.href} className="block relative h-full w-full">
+                <Image 
+                  src={cat.img} 
+                  alt={cat.title} 
+                  fill 
+                  className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                  data-ai-hint={cat.hint}
+                />
+                {/* Targeted Bottom Shady Overlay Protocol: No full image darkening */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+              </Link>
               
-              <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end text-left">
-                <h3 className="text-white mb-2 font-headline text-[24px] leading-[32px] font-medium tracking-normal">
-                  {cat.title}
-                </h3>
+              <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end text-left pointer-events-none">
+                <Link href={cat.href} className="pointer-events-auto">
+                  <h3 className="text-white mb-2 font-headline text-[24px] leading-[32px] font-medium tracking-normal hover:text-primary transition-colors">
+                    {cat.title}
+                  </h3>
+                </Link>
                 <p className="text-white/90 mb-6 line-clamp-2 text-[14px] leading-[20px] font-normal tracking-normal">
                   {cat.desc}
                 </p>
                 
-                <Link href={cat.href} className="inline-flex items-center gap-2 text-white font-bold text-[11px] tracking-normal group/link">
+                <Link href={cat.href} className="inline-flex items-center gap-2 text-white font-bold text-[11px] tracking-normal group/link pointer-events-auto">
                   Mehr erfahren <ArrowRight className="w-3.5 h-3.5 text-primary transition-transform group/link:translate-x-1" />
                 </Link>
               </div>

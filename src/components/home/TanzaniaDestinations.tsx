@@ -104,6 +104,8 @@ export function TanzaniaDestinations() {
 }
 
 function DestinationCard({ dest }: { dest: any }) {
+  const destLink = `/destinations/${dest.slug}`;
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.98 }}
@@ -111,25 +113,29 @@ function DestinationCard({ dest }: { dest: any }) {
       viewport={{ once: true }}
       className="group relative aspect-[4/5] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-xl bg-muted transition-all duration-700 hover:shadow-2xl border border-border/50"
     >
-      <Image 
-        src={dest.img} 
-        alt={dest.name} 
-        fill 
-        className="object-cover transition-transform duration-1000 group-hover:scale-110"
-        data-ai-hint={dest.hint}
-      />
-      {/* Targeted Bottom Shady Overlay Protocol: No full image darkening */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
+      <Link href={destLink} className="block relative h-full w-full">
+        <Image 
+          src={dest.img} 
+          alt={dest.name} 
+          fill 
+          className="object-cover transition-transform duration-1000 group-hover:scale-110"
+          data-ai-hint={dest.hint}
+        />
+        {/* Targeted Bottom Shady Overlay Protocol: No full image darkening */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
+      </Link>
       
-      <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end text-left">
-        <h3 className="text-white font-headline text-[24px] leading-[32px] font-medium tracking-normal mb-2">
-          {dest.name}
-        </h3>
+      <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end text-left pointer-events-none">
+        <Link href={destLink} className="pointer-events-auto">
+          <h3 className="text-white font-headline text-[24px] leading-[32px] font-medium tracking-normal mb-2 hover:text-primary transition-colors">
+            {dest.name}
+          </h3>
+        </Link>
         <p className="text-white/90 text-[14px] leading-[20px] font-normal tracking-normal mb-6 line-clamp-2">
           {dest.desc}
         </p>
         
-        <Link href={`/destinations/${dest.slug}`} className="inline-flex items-center gap-2 text-white font-bold text-[11px] tracking-normal group/link">
+        <Link href={destLink} className="inline-flex items-center gap-2 text-white font-bold text-[11px] tracking-normal group/link pointer-events-auto">
           Mehr erfahren <ArrowRight className="w-3 h-3 text-primary transition-transform group/link:translate-x-1" />
         </Link>
       </div>

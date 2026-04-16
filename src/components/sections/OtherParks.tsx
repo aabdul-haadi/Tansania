@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -47,15 +46,19 @@ export function OtherParks({ excludeId }: OtherParksProps) {
               transition={{ delay: idx * 0.05 }}
               className="group relative aspect-[16/10] rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden shadow-sm border border-border/40 bg-muted"
             >
-              <Image src={park.img} alt={park.name} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-              <div className="absolute top-4 left-4">
+              <Link href={park.href} className="block relative h-full w-full">
+                <Image src={park.img} alt={park.name} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+              </Link>
+              <div className="absolute top-4 left-4 pointer-events-none">
                 <Badge className="bg-primary text-white border-none text-[7px] font-bold px-3 py-1 tracking-widest">Nationalpark</Badge>
               </div>
-              <div className="absolute bottom-6 left-6 right-6 text-left">
-                <h3 className="text-white font-headline text-2xl mb-1 leading-none">{park.name}</h3>
+              <div className="absolute bottom-6 left-6 right-6 text-left pointer-events-none">
+                <Link href={park.href} className="pointer-events-auto">
+                  <h3 className="text-white font-headline text-2xl mb-1 leading-none hover:text-primary transition-colors">{park.name}</h3>
+                </Link>
                 <p className="text-primary font-bold text-[9px] tracking-widest mb-4">{park.sub}</p>
-                <Link href={park.href} className="inline-flex items-center gap-2 text-white font-bold text-[10px] tracking-widest group/link">
+                <Link href={park.href} className="inline-flex items-center gap-2 text-white font-bold text-[10px] tracking-widest group/link pointer-events-auto">
                   Park ansehen <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-1" />
                 </Link>
               </div>
