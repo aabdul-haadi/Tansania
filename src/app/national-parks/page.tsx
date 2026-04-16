@@ -342,8 +342,14 @@ export default function NationalParksPage() {
                 <p className="text-muted-foreground text-[14px] leading-[20px] font-normal opacity-80 text-left max-w-none">
                   Tansania ist ein echtes Safari-Paradies – rund ein Drittel der Landesfläche steht unter Naturschutz und bietet unvergessliche Wildtier-Erlebnisse. Die bekanntesten Schutzgebiete – von der endlosen Serengeti bis zum dramatischen Ngorongoro-Krater – sind Teil eines umfassenden Nationalparksystems. In diesen Parks herrscht striktes Schutzregime: Bauen, Jagen und Landwirtschaft sind verboten. Alle menschlichen Aktivitäten dienen einzig dem Tourismus, z. B. Pirschfahrten mit dem Geländewagen. Dieser Schutz sichert die Artenvielfalt (Big Five, Flamingos, etc.) und macht Tansania zu einem erstklassigen Ziel für Naturliebhaber und Fotografen.
                 </p>
-                <div className="relative aspect-video md:aspect-[21/9] rounded-[2.5rem] overflow-hidden shadow-xl border border-border/40 w-full">
-                  <Image src="/assets/images/national-parks/info-national.jpg" alt="Nationalpark Flora" fill className="object-cover" />
+                <div className="relative w-full overflow-hidden rounded-[2.5rem] shadow-xl border border-border/40">
+                  <Image 
+                    src="/assets/images/national-parks/info-national.jpg" 
+                    alt="Nationalpark Flora" 
+                    width={1920} 
+                    height={1080} 
+                    className="w-full h-auto block" 
+                  />
                 </div>
               </div>
             </section>
