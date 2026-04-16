@@ -11,8 +11,7 @@ import {
   Facebook,
   Youtube,
   Globe,
-  ChevronDown,
-  X
+  ChevronDown
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -48,7 +47,6 @@ export function Navbar() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const pathname = usePathname();
 
-  // Force Dark Content Protocol for specific "Bright" routes without hero backgrounds
   const isBrightPage = pathname === '/national-parks' || pathname === '/faq' || pathname?.startsWith('/legal');
 
   useEffect(() => {
@@ -103,9 +101,10 @@ export function Navbar() {
   return (
     <header 
       className={cn(
-        "top-0 w-full z-[100] transition-all duration-500 absolute",
-        "translate-y-0",
-        (isScrolled && !isBrightPage) ? "py-3 bg-white/80 backdrop-blur-md shadow-sm" : "py-6 md:py-8 bg-transparent"
+        "top-0 w-full z-[100] transition-all duration-500 fixed",
+        !isVisible && "-translate-y-full",
+        isVisible && "translate-y-0",
+        useDarkState ? "py-3 bg-white/95 backdrop-blur-md shadow-sm" : "py-6 md:py-8 bg-transparent"
       )}
     >
       <nav className="container mx-auto px-4 max-w-7xl">
@@ -124,11 +123,11 @@ export function Navbar() {
               )} 
             />
             <div className="flex items-center gap-2 md:gap-4">
-              <span className="font-headline font-black whitespace-nowrap text-sm sm:text-base md:text-2xl lg:text-3xl tracking-normal leading-none">
+              <span className="font-headline font-black whitespace-nowrap text-sm sm:text-base md:text-2xl lg:text-3xl tracking-normal leading-none uppercase">
                 Tansania
               </span>
               <span className={cn(
-                "font-headline font-black whitespace-nowrap text-sm sm:text-base md:text-2xl lg:text-3xl transition-colors duration-500 tracking-normal leading-none",
+                "font-headline font-black whitespace-nowrap text-sm sm:text-base md:text-2xl lg:text-3xl transition-colors duration-500 tracking-normal leading-none uppercase",
                 useDarkState ? "text-primary" : "text-white"
               )}>
                 Reiseabenteuer
@@ -160,8 +159,8 @@ export function Navbar() {
                 <Link href="/" className="flex items-center gap-3">
                   <img src="/iconlogo.jpg" alt="SDL" className="h-8 md:h-10 w-auto" />
                   <div className="flex flex-col">
-                    <span className="font-headline font-black text-sm md:text-xl tracking-normal leading-[1.1]">Tansania</span>
-                    <span className="font-headline font-black text-sm md:text-xl text-primary tracking-normal leading-[1.1]">Reiseabenteuer</span>
+                    <span className="font-headline font-black text-sm md:text-xl tracking-normal leading-[1.1] uppercase">Tansania</span>
+                    <span className="font-headline font-black text-sm md:text-xl text-primary tracking-normal leading-[1.1] uppercase">Reiseabenteuer</span>
                   </div>
                 </Link>
               </div>
@@ -170,13 +169,13 @@ export function Navbar() {
                 <div className="px-8 py-6 md:py-10 flex flex-col gap-8 md:gap-10">
                   <nav className="flex flex-col gap-5 md:gap-6 text-left">
                     <div className="flex flex-col gap-4 mb-4">
-                      <Link href="/safaris" className="text-xl md:text-2xl font-headline font-black text-secondary hover:text-primary transition-colors leading-none">
+                      <Link href="/safaris" className="text-xl md:text-2xl font-headline font-black text-secondary hover:text-primary transition-colors leading-none uppercase">
                         Safaris
                       </Link>
-                      <Link href="/destinations/kilimanjaro" className="text-xl md:text-2xl font-headline font-black text-secondary hover:text-primary transition-colors leading-none">
+                      <Link href="/destinations/kilimanjaro" className="text-xl md:text-2xl font-headline font-black text-secondary hover:text-primary transition-colors leading-none uppercase">
                         Kilimandscharo
                       </Link>
-                      <Link href="/destinations/zanzibar" className="text-xl md:text-2xl font-headline font-black text-secondary hover:text-primary transition-colors leading-none">
+                      <Link href="/destinations/zanzibar" className="text-xl md:text-2xl font-headline font-black text-secondary hover:text-primary transition-colors leading-none uppercase">
                         Sansibar
                       </Link>
                     </div>
@@ -185,7 +184,7 @@ export function Navbar() {
 
                     <Accordion type="single" collapsible className="w-full">
                       <AccordionItem value="reisen2026" className="border-none mb-4">
-                        <AccordionTrigger className="text-lg md:text-xl font-headline font-black tracking-normal hover:text-primary transition-colors leading-none py-0 hover:no-underline [&>svg]:hidden justify-start gap-4">
+                        <AccordionTrigger className="text-lg md:text-xl font-headline font-black tracking-normal hover:text-primary transition-colors leading-none py-0 hover:no-underline [&>svg]:hidden justify-start gap-4 uppercase">
                           <span>Reisen 2026</span>
                           <ChevronDown className="w-4 h-4 text-primary" />
                         </AccordionTrigger>
@@ -205,7 +204,7 @@ export function Navbar() {
                       </AccordionItem>
 
                       <AccordionItem value="destinations" className="border-none">
-                        <AccordionTrigger className="text-lg md:text-xl font-headline font-black tracking-normal hover:text-primary transition-colors leading-none py-0 hover:no-underline [&>svg]:hidden justify-start gap-4">
+                        <AccordionTrigger className="text-lg md:text-xl font-headline font-black tracking-normal hover:text-primary transition-colors leading-none py-0 hover:no-underline [&>svg]:hidden justify-start gap-4 uppercase">
                           <span>Alle Reiseziele</span>
                           <ChevronDown className="w-4 h-4 text-primary" />
                         </AccordionTrigger>
@@ -229,7 +228,7 @@ export function Navbar() {
                       <Link 
                         key={link.name} 
                         href={link.href} 
-                        className="text-lg md:text-xl font-headline font-black tracking-normal hover:text-primary transition-colors leading-none text-left"
+                        className="text-lg md:text-xl font-headline font-black tracking-normal hover:text-primary transition-colors leading-none text-left uppercase"
                       >
                         {link.name}
                       </Link>
@@ -240,12 +239,12 @@ export function Navbar() {
 
                   <div className="flex flex-col gap-6 text-left">
                     <div className="space-y-4">
-                      <p className="text-[9px] font-bold tracking-widest text-primary/60 flex items-center gap-2">
+                      <p className="text-[9px] font-bold tracking-widest text-primary/60 flex items-center gap-2 uppercase">
                         <Globe className="w-3" /> Explore Catalog
                       </p>
                       <Link 
                         href="/safaris" 
-                        className="text-[11px] font-black text-secondary/70 hover:text-primary tracking-normal transition-colors"
+                        className="text-[11px] font-black text-secondary/70 hover:text-primary tracking-normal transition-colors uppercase"
                       >
                         Vollständige Kollektion
                       </Link>
@@ -268,7 +267,7 @@ export function Navbar() {
                   ))}
                 </div>
                 
-                <Button asChild className="w-full h-14 rounded-2xl bg-secondary text-white font-black text-[10px] tracking-widest shadow-xl hover:bg-primary transition-all border-none">
+                <Button asChild className="w-full h-14 rounded-2xl bg-secondary text-white font-black text-[10px] tracking-widest shadow-xl hover:bg-primary transition-all border-none uppercase">
                   <Link href="/trip-planner" className="flex items-center justify-center gap-3">
                     Jetzt anfragen <ArrowRight className="w-4 h-4" />
                   </Link>
