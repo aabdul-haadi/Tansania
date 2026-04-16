@@ -40,8 +40,8 @@ export function ContactSection() {
   ];
 
   const trustBadges = [
-    { icon: CheckCircle2, full: "DSGVO konform", short: "DSGVO" },
-    { icon: ShieldCheck, full: "SSL verschlüsselt", short: "SSL" },
+    { icon: CheckCircle2, full: "Dsgvo konform", short: "Dsgvo" },
+    { icon: ShieldCheck, full: "Ssl verschlüsselt", short: "Ssl" },
     { icon: Globe, full: "Offizielle Registry", short: "Registry" }
   ];
 
@@ -69,7 +69,7 @@ export function ContactSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground font-normal text-sm md:text-base max-xl mx-auto opacity-80"
+            className="text-muted-foreground font-normal text-[14px] leading-[20px] max-w-xl mx-auto opacity-80"
           >
             Vom ersten Gedanken bis zum ersten Schritt in der Savanne – unsere Spezialisten begleiten Sie persönlich.
           </motion.p>
@@ -83,7 +83,7 @@ export function ContactSection() {
                 <h3 className="text-xl md:text-2xl font-headline font-bold text-secondary">
                   Premium Beratung
                 </h3>
-                <p className="text-[10px] font-bold text-muted-foreground tracking-widest uppercase leading-none">Berlin Head Office • Safari Ops</p>
+                <p className="text-[11px] font-bold text-primary tracking-normal leading-none mb-1">Berlin head office • Safari ops</p>
               </div>
 
               <div className="space-y-6">
@@ -107,16 +107,16 @@ export function ContactSection() {
                   <Phone className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-muted-foreground leading-none mb-1">Hotline</p>
+                  <p className="text-[11px] font-bold text-primary leading-none mb-1">Hotline</p>
                   <p className="text-base md:text-xl font-bold text-secondary">+49 30 22608080</p>
                 </div>
               </div>
               <div className="p-6 bg-white rounded-xl border border-[#F0EBE0] shadow-sm">
                 <div className="flex items-center gap-3 mb-2">
                   <ShieldCheck className="w-5 h-5 text-primary" />
-                  <span className="text-sm md:text-base font-bold text-secondary">DRSF Schutz</span>
+                  <span className="text-sm md:text-base font-bold text-secondary">Drsf Schutz</span>
                 </div>
-                <p className="text-xs md:text-sm font-medium text-muted-foreground leading-relaxed">
+                <p className="text-[14px] leading-[20px] font-normal text-muted-foreground">
                   Ihre Reise ist durch den Deutschen Reisesicherungsfonds abgesichert.
                 </p>
               </div>
@@ -127,7 +127,7 @@ export function ContactSection() {
             <div className="p-5 md:p-6 border-b border-border/40 flex items-center justify-between bg-white/50 backdrop-blur-sm sticky top-0 z-20">
               <div className="flex items-center gap-3">
                 <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-[11px] font-bold text-secondary">Registry active</span>
+                <span className="text-[11px] font-bold text-secondary">Registry aktiv</span>
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="w-3.5 h-3.5 text-primary" />
@@ -145,20 +145,20 @@ export function ContactSection() {
                   src="https://app.tansania-reiseabenteuer.de/forms/embed/d54e9b2ee319416a81cf32551a1bc3d3"
                   className="w-full h-full border-none overflow-hidden"
                   scrolling="no"
-                  title="Contact Registry Form"
+                  title="Kontaktformular"
                   loading="lazy"
                 />
               ) : (
                 <div className="h-full flex items-center justify-center bg-muted/5 animate-pulse">
-                  <p className="text-xs font-bold text-muted-foreground">Initializing manifest...</p>
+                  <p className="text-xs font-bold text-muted-foreground">Initialisiere Formular...</p>
                 </div>
               )}
             </div>
 
             <div className="p-4 bg-[#fdfcfb] border-t border-border/40 flex flex-row items-center justify-center gap-4 md:gap-12">
               {trustBadges.map((item, idx) => (
-                <div key={idx} className="flex items-center gap-1.5 md:gap-2 text-[8px] md:text-[9px] font-bold text-muted-foreground/60 whitespace-nowrap">
-                  <item.icon className="w-3 h-3 md:w-3.5 md:h-3.5 text-primary/40 shrink-0" />
+                <div key={idx} className="flex items-center gap-1.5 md:gap-2 text-[10px] font-bold text-muted-foreground/60 whitespace-nowrap">
+                  <item.icon className="w-3.5 h-3.5 text-primary/40 shrink-0" />
                   <span className="hidden sm:inline">{item.full}</span>
                   <span className="sm:hidden">{item.short}</span>
                 </div>
