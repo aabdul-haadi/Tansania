@@ -9,10 +9,10 @@ import {
   Sparkles, 
   MapPin, 
   Clock, 
-  Mountain, 
+  Zap, 
   Camera, 
   ArrowRight,
-  ShieldCheck,
+  Bird,
   Waves
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -21,39 +21,39 @@ import { ContactSection } from '@/components/shared/ContactSection';
 
 const registryCards = [
   {
-    title: "Mount Meru Trekking",
-    desc: "Tansanias zweithöchster Vulkan (4.566 m) bietet anspruchsvolle Wanderungen und dient oft als ideale Akklimatisierungstour für den Kilimandscharo.",
-    icon: Mountain
+    title: "Baumkletternde Löwen",
+    desc: "Weltberühmt für seine Löwen, die sich tagsüber in die Äste der Akazien zurückziehen. Ein seltenes Verhalten, das in Manyara besonders häufig zu beobachten ist.",
+    icon: Camera
   },
   {
-    title: "Die Momella Seen",
-    desc: "Eine Gruppe flacher alkalischer Seen, die tausende Flamingos anziehen. Kanutouren ermöglichen lautlose Begegnungen mit Wasserbüffeln am Ufer.",
-    icon: Waves
+    title: "Vogelparadies am See",
+    desc: "Über 400 Vogelarten sind hier heimisch. Tausende Flamingos färben die Ufer des alkalischen Sees oft in ein leuchtendes Rosa.",
+    icon: Bird
   },
   {
-    title: "Ngurdoto Krater",
-    desc: "Ein unberührter, versunkener Krater mit 3 km Durchmesser, der wie ein Mini-Ngorongoro wirkt und eine hohe Dichte an Waldtieren beheimatet.",
+    title: "Tropischer Grundwasserwald",
+    desc: "Gespeist von unterirdischen Quellen, bietet dieser üppig grüne Dschungel einen starken Kontrast zu den trockenen Savannen der Region.",
+    icon: Zap
+  },
+  {
+    title: "UNESCO Biosphärenreservat",
+    desc: "Seit 1981 geschützt, bewahrt der Park eine unglaubliche Vielfalt an Lebensräumen auf kleinstem Raum – vom Wald bis zur Grassavanne.",
     icon: Compass
-  },
-  {
-    title: "Vielseitige Safari-Logistik",
-    desc: "Nur 45 Minuten von Arusha entfernt, bietet der Park eine perfekte Kombination aus Bergwald, Kraterlandschaft und offener Savanne.",
-    icon: Clock
   }
 ];
 
-export default function ArushaParkPage() {
+export default function ManyaraPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
-      {/* 01 Cinematic Hero: The Volcanic Peak */}
+      {/* 01 Cinematic Hero: The Emerald Hub */}
       <section className="relative h-[55vh] md:h-[75vh] w-full overflow-hidden bg-secondary">
         <Image 
-          src="https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=1920" 
-          alt="Mount Meru View" 
+          src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=1920" 
+          alt="Lake Manyara Flamingos" 
           fill 
           priority
           className="object-cover brightness-75 scale-105"
-          data-ai-hint="mount meru tanzania"
+          data-ai-hint="lake manyara flamingos"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
         
@@ -65,20 +65,20 @@ export default function ArushaParkPage() {
             className="space-y-4"
           >
             <p className="text-white text-[11px] font-bold tracking-normal drop-shadow-lg">
-              Das Tor zur Wildnis vor den Toren Arushas
+              Das grüne Juwel am Afrikanischen Grabenbruch
             </p>
             <h1 className="font-headline text-4xl md:text-7xl font-normal text-white leading-tight tracking-tight">
-              Arusha Nationalpark & Mount Meru
+              Lake Manyara Nationalpark
             </h1>
           </motion.div>
         </div>
       </section>
 
-      {/* 02 Narrative Context: Mystische Bergwälder */}
+      {/* 02 Narrative Context: Kontrastreiche Wildnis */}
       <section className="py-16 md:py-32 container mx-auto px-4 max-w-7xl">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
           
-          <div className="lg:col-span-7 space-y-10">
+          <div className="space-y-10">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -87,44 +87,53 @@ export default function ArushaParkPage() {
             >
               <div className="space-y-3">
                 <span className="text-primary font-bold text-[11px] block tracking-normal">
-                  Vielschichtige Ökosysteme
+                  Kompakte Vielfalt auf engstem Raum
                 </span>
                 <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary leading-tight tracking-tight">
-                  Vom Regenwald bis zum Gipfel
+                  Vom Urwald bis zum See
                 </h2>
               </div>
               
               <div className="space-y-6 text-muted-foreground font-normal text-[14px] leading-[20px] text-justify opacity-90">
                 <p>
-                  Der Arusha Nationalpark ist Tansanias vielseitigstes Schutzgebiet. Hier finden Sie keine endlosen Ebenen, sondern mystische Bergregenwälder, in denen die schwarz-weißen Colobusaffen durch die Äste schwingen, und kristallklare Seen voller Flamingos.
+                  Obwohl Lake Manyara einer der kleineren Parks Tansanias ist, beeindruckt er durch seine landschaftliche Abwechslung. Direkt hinter dem Eingangsbereich durchfahren Sie einen dichten Grundwasserwald, in dem Paviane und Diademmeerkatzen in den Wipfeln spielen.
                 </p>
                 <p>
-                  Dominierend über allem thront der majestätische Mount Meru. Eine Besteigung dieses erloschenen Vulkans führt Sie durch dramatische Landschaften bis zum Kraterrand, von wo aus Sie bei Sonnenaufgang den besten Blick auf den fernen Kilimandscharo genießen können. Es ist der ideale Ort für Wander-Safaris und echte Naturbegegnungen abseits der Jeeps.
+                  Wenn sich der Wald lichtet, öffnet sich der Blick auf den alkalischen Manyara-See, der oft von tausenden Flamingos gesäumt wird. Hier, am Fuße des dramatischen Escarpments des Grabenbruchs, erleben Sie eine Safari, die besonders durch ihre Farbenpracht und die Nähe zur Tierwelt besticht.
                 </p>
               </div>
             </motion.div>
+
+            <div className="pt-4">
+              <Button onClick={() => {
+                const el = document.getElementById('inquiry');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }} className="rounded-xl px-10 h-14 font-bold text-[11px] tracking-widest shadow-xl border-none">
+                Reise individuell planen <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </div>
           </div>
 
-          <div className="lg:col-span-5 relative">
+          <div className="relative">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative aspect-square md:aspect-[4/5] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl border border-border/40 bg-muted"
+              className="relative aspect-square rounded-[2rem] md:rounded-[3.5rem] overflow-hidden shadow-2xl border border-border/40 bg-muted"
             >
               <Image 
-                src="https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1200" 
-                alt="Colobus Monkey" 
+                src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200" 
+                alt="Manyara Wildlife" 
                 fill 
                 className="object-cover transition-transform duration-1000 hover:scale-105"
-                data-ai-hint="colobus monkey"
+                data-ai-hint="safari manyara"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               <div className="absolute bottom-10 left-10 text-white flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-primary/20 backdrop-blur-xl flex items-center justify-center">
                   <Sparkles className="w-5 h-5 text-primary" />
                 </div>
-                <p className="text-[11px] font-bold tracking-normal">Boutique Safari Experience</p>
+                <p className="text-[11px] font-bold tracking-normal">Signature Safari Ansicht</p>
               </div>
             </motion.div>
           </div>
@@ -172,10 +181,10 @@ export default function ArushaParkPage() {
         </div>
         <div className="space-y-6">
           <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tight">
-            Ihre Expedition beginnt hier
+            Ihre Expedition beginnt in Berlin
           </h2>
           <p className="text-muted-foreground font-bold text-[14px] md:text-lg tracking-normal leading-relaxed max-w-2xl mx-auto">
-            Ob Tagesausflug oder mehrtägiges Trekking – Arusha Nationalpark ist der perfekte Startpunkt für Ihre Tansania-Reise. Lassen Sie sich persönlich beraten.
+            Wir planen Ihre private Safari so, dass Sie die Highlights von Lake Manyara optimal mit den großen Parks des Nordens verbinden können.
           </p>
         </div>
         <div className="pt-10">
