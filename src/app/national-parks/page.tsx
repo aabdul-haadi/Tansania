@@ -191,13 +191,13 @@ export default function NationalParksPage() {
 
   return (
     <div className="bg-white min-h-screen font-normal">
-      {/* 01 Hero Narrative */}
-      <header className="pt-32 pb-8 bg-white text-center">
-        <div className="container mx-auto px-4 max-w-5xl space-y-4">
+      {/* 01 Hero Narrative - Compacted for mobile */}
+      <header className="pt-24 md:pt-32 pb-8 bg-white text-center">
+        <div className="container mx-auto px-4 max-w-5xl space-y-3 md:space-y-4">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-headline text-4xl md:text-7xl font-normal text-secondary tracking-tight"
+            className="font-headline text-3xl sm:text-5xl md:text-7xl font-normal text-secondary tracking-tight"
           >
             Die Nationalparks in Tansania
           </motion.h1>
@@ -205,14 +205,14 @@ export default function NationalParksPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground text-sm md:text-xl font-normal tracking-widest opacity-60"
+            className="text-muted-foreground text-xs sm:text-base md:text-xl font-normal tracking-widest opacity-60"
           >
             Entdecken Sie die atemberaubende Vielfalt Afrikas
           </motion.p>
         </div>
       </header>
 
-      {/* 02 Hero Visual Hub */}
+      {/* 02 Hero Visual Hub - Squared Button */}
       <section className="relative mb-20 md:mb-24">
         <div className="w-full relative aspect-[21/9] md:h-[600px] overflow-hidden shadow-sm">
           <Image
@@ -379,9 +379,9 @@ export default function NationalParksPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {park.facts.map((fact, i) => (
-                    <div key={i} className="p-6 bg-white rounded-2xl border border-border/50 shadow-sm space-y-2 group hover:border-primary/20 transition-all text-left">
-                      <p className="text-[8px] font-bold text-primary tracking-widest">{fact.t}</p>
-                      <p className="font-bold text-[10px] text-muted-foreground leading-relaxed">{fact.v}</p>
+                    <div key={i} className="p-6 bg-white rounded-2xl border border-border/50 shadow-sm space-y-3 group hover:border-primary/20 transition-all text-left">
+                      <p className="text-[11px] md:text-xs font-bold text-primary tracking-widest">{fact.t}</p>
+                      <p className="font-bold text-xs md:text-[14px] text-muted-foreground leading-relaxed">{fact.v}</p>
                     </div>
                   ))}
                 </div>
@@ -409,7 +409,7 @@ export default function NationalParksPage() {
                 ].map((item, i) => (
                   <div key={i} className="p-8 bg-muted/10 rounded-3xl space-y-3 text-left">
                     <h4 className="font-headline text-xl font-bold text-primary">{item.t}</h4>
-                    <p className="text-[10px] font-bold text-muted-foreground leading-relaxed tracking-widest">{item.v}</p>
+                    <p className="text-sm font-bold text-muted-foreground leading-relaxed tracking-tight">{item.v}</p>
                   </div>
                 ))}
               </div>
@@ -477,7 +477,7 @@ export default function NationalParksPage() {
               </div>
             </section>
 
-            {/* Final Conversion Banner */}
+            {/* Final Conversion Banner - Reduced Mobile Font Scaling */}
             <section className="pt-12 border-t border-border/50">
               <div className="bg-secondary text-white rounded-[2.5rem] p-8 md:p-16 text-center space-y-6 md:space-y-8 relative overflow-hidden">
                 <div className="absolute top-0 right-0 p-10 opacity-10"><Compass className="w-48 h-48 rotate-12" /></div>
