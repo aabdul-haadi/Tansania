@@ -73,7 +73,7 @@ const parksData = [
     id: 'serengeti',
     name: 'Serengeti',
     fullName: 'Serengeti-Nationalpark: Unesco-Weltnaturerbe & Große Migration',
-    tagline: 'Der Serengeti-Nationalpark (ca. 14.763 km²) ist weltberühmt für seine endlosen Graslandschaften und die legendäre Große Tierwanderung.',
+    tagline: 'Der Serengeti-Nationalpark (ca. 14.763 km²) ist weltberühmt für seine endlosen Graslandschaften und die legendäre große Tierwanderung.',
     desc: 'Jährlich ziehen hier über eine Million Gnus, Zebras und Gazellen durch die Savanne – eines der beeindruckendsten Naturschauspiele der Welt – dicht gefolgt von Löwen, Geparden und Hyänen. Die Serengeti beherbergt dadurch eine der artenreichsten Raubtier- und Huftiergemeinschaften Afrikas. Dank dieser einzigartigen Tierkonzentration steht der Park seit 1981 unter Unesco-Welterbe-Schutz.',
     img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200',
     facts: [
@@ -81,7 +81,7 @@ const parksData = [
       { t: "Reiche Raubtierwelt", v: "Rund 3.000 Löwen leben hier – zudem viele Leoparden, Geparden und Schakale sowie große Clans von Hyänen. Nirgendwo sonst finden sich so viele große Raubtiere auf einem Fleck." },
       { t: "Unesco-Welterbe", v: "Die Serengeti wurde 1981 wegen ihrer enormen Biodiversität und des intakten Ökosystems als Weltnaturerbe ausgezeichnet. Bis heute gilt sie als Musterbeispiel für erfolgreichen Naturschutz." }
     ],
-    ctaLabel: 'Serengeti Balloon Safari erleben',
+    ctaLabel: 'Serengeti erleben',
     ctaLink: '/national-parks/serengeti'
   },
   {
@@ -96,7 +96,7 @@ const parksData = [
       { t: "Hohe Wildtierdichte", v: "Im Kraterinneren konzentrieren sich nahezu alle ostafrikanischen Großsäuger auf kleinem Raum – eine einzigartige Dichte an Löwen, Elefanten, Büffeln, Zebras, Antilopen und mehr." },
       { t: "Teil der Serengeti-Wanderung", v: "Alljährlich ziehen ca. 2 Mio. Gnus und Zebras durch die Ngorongoro Conservation Area, wenn sie der großen Migration folgen." }
     ],
-    ctaLabel: 'Vogelbeobachtung im Ngorongoro',
+    ctaLabel: 'Krater-Safari entdecken',
     ctaLink: '/national-parks/ngorongoro'
   },
   {
@@ -111,7 +111,7 @@ const parksData = [
       { t: "Baobab-Landschaft", v: "Zahlreiche uralte Riesen-Baobabs prägen den Horizont – sie bieten nicht nur spektakuläre Fotomotive, sondern auch Schatten und Wasserreservoirs für Tiere." },
       { t: "Vielfältige Tierwelt", v: "Auch Büffel, Giraffen, verschiedene Antilopenarten und Raubkatzen (Löwen, Leoparden) sind anzutreffen. Besonders in der Trockenzeit tummeln sich an den Wasserstellen viele Tiere nebeneinander." }
     ],
-    ctaLabel: 'Baobab Safari in Tarangire',
+    ctaLabel: 'Tarangire Abenteuer',
     ctaLink: '/national-parks/tarangire'
   },
   {
@@ -126,7 +126,7 @@ const parksData = [
       { v: "In Manyara kann man mit etwas Glück Löwen in Bäumen dösen sehen – ein ungewöhnliches Verhalten, das tolle Fotomotive bietet.", t: "Löwen im Geäst" },
       { t: "Vogelparadies", v: "Über 400 Vogelarten wurden gezählt. Besonders eindrucksvoll sind tausende Flamingos, Pelikane und Störche, die je nach Saison den See rosa färben oder in Scharen über das Wasser ziehen." }
     ],
-    ctaLabel: 'Baumlöwen in Manyara erleben',
+    ctaLabel: 'Lake Manyara besuchen',
     ctaLink: '/national-parks/manyara'
   },
   {
@@ -141,7 +141,7 @@ const parksData = [
       { t: "Schnee- und Eisfelder", v: "Als einziger Ort Afrikas trägt der Kili ganzjährig Schnee und Eis – allerdings sind die Gletscher stark rückläufig und könnten in wenigen Jahrzehnten verschwunden sein." },
       { t: "Vielschichtige Ökozonen", v: "Vom dichten Regenwald am Fuß (mit Colobusaffen und Elefanten) über Nebel- und Moorzonen bis zur felsigen Gipfelregion durchläuft man alle Klima- und Vegetationsstufen der Tropen." }
     ],
-    ctaLabel: 'Kilimanjaro Gipfel besteigen',
+    ctaLabel: 'Kilimandscharo entdecken',
     ctaLink: '/national-parks/kilimanjaro'
   },
   {
@@ -156,7 +156,7 @@ const parksData = [
       { t: "Vielfältige Tierwelt", v: "Der Meru ist Heimat seltener Bergwaldbewohner wie Colobusaffen und Waldantilopen. Auf den offenen Grasflächen des Parks sieht man oft Giraffen, Warzenschweine und Büffel grasen." },
       { t: "Nahe Arusha", v: "Durch die Lage direkt bei Arusha (der Safari-Hauptstadt) ist der Arusha-Nationalpark leicht erreichbar – ideal für einen Tagesausflug oder als Einstieg in eine längere Safari." }
     ],
-    ctaLabel: 'Arusha National Park entdecken',
+    ctaLabel: 'Arusha Park erkunden',
     ctaLink: '/national-parks/arusha'
   },
   {
@@ -171,24 +171,24 @@ const parksData = [
       { t: "Kleine Serengeti", v: "Die Tierwelt Saadanis steht den bekannten Parks kaum nach: Löwen, Büffel, Zebras, Giraffen, Warzenschweine und zahlreiche Antilopen durchstreifen sogar die Dünen und Mangroven." },
       { t: "Wasser-Paradies", v: "Die Flussmündungen und Mangroven im Park bieten Lebensraum für unzählige Vögel (darunter Flamingos), Nilkrokodile, Flusspferde und sogar Meeresschildkröten." }
     ],
-    ctaLabel: 'Safari & Strand in Saadani',
+    ctaLabel: 'Saadani erleben',
     ctaLink: '/national-parks/saadani'
   }
 ];
 
 const sidebarRegistry = [
-  { id: 'intro', name: 'Nationalpark-Highlights' },
-  { id: 'serengeti', name: 'Serengeti Np' },
-  { id: 'ngorongoro', name: 'Ngorongoro Krater' },
-  { id: 'tarangire', name: 'Tarangire Np' },
+  { id: 'intro', name: 'Park-Highlights' },
+  { id: 'serengeti', name: 'Serengeti' },
+  { id: 'ngorongoro', name: 'Ngorongoro' },
+  { id: 'tarangire', name: 'Tarangire' },
   { id: 'manyara', name: 'Lake Manyara' },
-  { id: 'kilimanjaro', name: 'Kilimandscharo Np' },
+  { id: 'kilimanjaro', name: 'Kilimandscharo' },
   { id: 'arusha', name: 'Mount Meru' },
-  { id: 'saadani', name: 'Saadani Np' },
-  { id: 'wildlife', name: 'Tierwelt & Big Five' },
-  { id: 'activities', name: 'Top-Aktivitäten' },
-  { id: 'budget', name: 'Kosten & Budget' },
-  { id: 'rules', name: 'Verhaltensregeln' }
+  { id: 'saadani', name: 'Saadani' },
+  { id: 'wildlife', name: 'Tierwelt' },
+  { id: 'activities', name: 'Aktivitäten' },
+  { id: 'budget', name: 'Budget' },
+  { id: 'rules', name: 'Regeln' }
 ];
 
 export default function NationalParksPage() {
@@ -227,19 +227,19 @@ export default function NationalParksPage() {
       <section className="relative mb-24 md:mb-32">
         <div className="w-full relative aspect-[21/9] md:h-[600px] overflow-hidden shadow-sm">
           <Image
-            src="https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=1920"
-            alt="Elefanten in der Savanne"
+            src="/assets/images/national-parks/national-bn-5.webp"
+            alt="Nationalparks Panorama"
             fill
             priority
             className="object-cover"
-            data-ai-hint="elephants savannah"
+            data-ai-hint="safari savannah"
           />
           <div className="absolute inset-0 bg-black/5" />
         </div>
         
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-30">
           <Link href="/trip-planner">
-            <Button size="xl" className="rounded-xl px-12 h-14 md:h-16 bg-secondary text-white hover:bg-primary font-bold text-[10px] md:text-xs tracking-widest border-none shadow-2xl transition-all">
+            <Button size="xl" className="rounded-xl px-12 h-14 md:h-16 bg-secondary text-white hover:bg-primary font-bold text-xs tracking-widest border-none shadow-2xl transition-all">
               Jetzt Safari planen
             </Button>
           </Link>
@@ -278,11 +278,11 @@ export default function NationalParksPage() {
               <div className="absolute top-0 right-0 p-6 opacity-10"><Compass className="w-20 h-20 rotate-12" /></div>
               <div className="relative z-10 space-y-6 text-center">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 text-primary text-[8px] font-bold">
-                  <Sparkles className="w-3" /> Ki Beratung
+                  <Sparkles className="w-3" /> Beratung
                 </div>
                 <h4 className="font-headline text-2xl font-bold text-white leading-tight">Fragen Sie unseren Berater</h4>
                 <p className="text-white/40 text-[10px] font-bold leading-relaxed">
-                  Unser Ki-Berater hilft Ihnen, den perfekten Park basierend auf Ihren Interessen zu finden.
+                  Wir helfen Ihnen, den perfekten Park basierend auf Ihren Interessen zu finden.
                 </p>
                 <Link href="/trip-advisor" className="block">
                   <Button className="w-full h-12 bg-white text-secondary hover:bg-primary hover:text-white border-none text-[9px] font-black tracking-widest rounded-xl transition-all">
@@ -302,7 +302,7 @@ export default function NationalParksPage() {
                   Tansanias Nationalparks – Safari-Abenteuer im Tierparadies
                 </h2>
                 <span className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold tracking-widest">
-                  Tansanias Nationalpark-Highlights
+                  Nationalpark-Highlights
                 </span>
               </div>
 
@@ -480,15 +480,17 @@ export default function NationalParksPage() {
             </section>
 
             <section className="pt-12 border-t border-border/50">
-              <div className="bg-secondary text-white rounded-[2.5rem] p-8 md:p-16 text-center space-y-8 relative overflow-hidden">
+              <div className="bg-secondary text-white rounded-[2.5rem] p-8 md:p-16 text-center space-y-6 md:space-y-8 relative overflow-hidden">
                 <div className="absolute top-0 right-0 p-10 opacity-10"><Compass className="w-48 h-48 rotate-12" /></div>
-                <div className="relative z-10 space-y-6">
-                  <h3 className="font-headline text-3xl md:text-6xl font-normal text-white leading-tight">Bereit für Ihre <br /><span className="text-primary font-bold">Traum-Safari?</span></h3>
-                  <p className="text-white/60 font-bold text-[10px] md:text-sm tracking-widest max-w-xl mx-auto">
+                <div className="relative z-10 space-y-4 md:space-y-6">
+                  <h3 className="font-headline text-2xl sm:text-3xl md:text-6xl font-normal text-white leading-tight">
+                    Bereit für Ihre <br /><span className="text-primary font-bold">Traum-Safari?</span>
+                  </h3>
+                  <p className="text-white/60 font-bold text-[11px] md:text-sm tracking-widest max-w-xl mx-auto leading-relaxed">
                     Wir planen Ihre Safari nach Maß – von der ersten Idee bis zum letzten Sonnenuntergang am Nil.
                   </p>
-                  <Link href="/trip-planner" className="inline-block">
-                    <Button size="xl" className="rounded-xl px-12 h-14 md:h-16 bg-primary text-white font-black text-[10px] shadow-2xl border-none">
+                  <Link href="/trip-planner" className="inline-block pt-2">
+                    <Button size="xl" className="rounded-xl px-12 h-13 md:h-16 bg-primary text-white font-black text-[10px] shadow-2xl border-none">
                       Persönliche Beratung erhalten <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                   </Link>
