@@ -253,7 +253,7 @@ export default function ArushaParkPage() {
 
       {/* 03 Geography Section */}
       <section className="py-8 md:py-12 bg-white border-t border-border/40">
-        <div className="container mx-auto px-4 max-get-7xl">
+        <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-10 md:mb-16 space-y-6">
             <span className="text-primary font-bold text-[10px] tracking-[0.2em] block">
               Unsere Standorte
@@ -438,7 +438,7 @@ export default function ArushaParkPage() {
                 <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl">
                   <Compass className="w-6 h-6 md:w-8 md:h-8 text-white" />
                 </div>
-                <h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-bold tracking-tighter leading-tight whitespace-nowrap">
+                <h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-bold tracking-tighter leading-tight text-white">
                   Planen Sie Ihre perfekte Arusha Safari
                 </h2>
               </div>

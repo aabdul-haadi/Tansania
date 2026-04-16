@@ -78,7 +78,7 @@ export default function KilimanjaroParkPage() {
       </section>
 
       {/* 02 Narrative Context: Die Thronende Majestät */}
-      <section className="py-10 md:py-16 container mx-auto px-4 max-w-7xl">
+      <section className="py-8 md:py-12 container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
           
           <div className="lg:col-span-7 space-y-10">
@@ -88,7 +88,7 @@ export default function KilimanjaroParkPage() {
               viewport={{ once: true }}
               className="space-y-6"
             >
-              <div className="space-y-3">
+              <div className="space-y-3 text-left">
                 <span className="text-primary font-bold text-[11px] block tracking-normal">
                   Nationalpark Registry seit 1973
                 </span>
@@ -136,7 +136,7 @@ export default function KilimanjaroParkPage() {
       </section>
 
       {/* 03 Information Matrix: Registry Grid */}
-      <section className="py-10 md:py-16 bg-white border-y border-border/40">
+      <section className="py-8 md:py-12 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
             {registryCards.map((card, i) => (
@@ -179,7 +179,7 @@ export default function KilimanjaroParkPage() {
                 <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl">
                   <Compass className="w-6 h-6 md:w-8 md:h-8 text-white" />
                 </div>
-                <h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-bold tracking-tighter leading-tight whitespace-nowrap">
+                <h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-bold tracking-tighter leading-tight text-white">
                   Planen Sie Ihre perfekte Kilimandscharo Safari
                 </h2>
               </div>

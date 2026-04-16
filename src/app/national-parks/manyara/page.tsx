@@ -263,7 +263,7 @@ export default function ManyaraPage() {
 
           <div className="relative rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl bg-muted border border-border/50 aspect-video md:aspect-[21/9] mb-10 md:mb-16 group">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.555555555555!2d35.8!3d-3.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM8KwMzAnMDAuMCJTIDM1wrA0OCcwMC4wIkU!5e0!3m2!1sen!2stz!4v1711234567890!5m2!1sen!2stz"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.555555555555!2d35.8!3d-3.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM8KwMzAnMDAuMCJTIDM2wrA0OCcwMC4wIkU!5e0!3m2!1sen!2stz!4v1711234567890!5m2!1sen!2stz"
               className="absolute inset-0 w-full h-full border-none grayscale-[0.2] group-hover:grayscale-0 transition-all duration-1000"
               loading="lazy"
             />
@@ -433,7 +433,7 @@ export default function ManyaraPage() {
                 <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl">
                   <Compass className="w-6 h-6 md:w-8 md:h-8 text-white" />
                 </div>
-                <h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-bold tracking-tighter leading-tight whitespace-nowrap">
+                <h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-bold tracking-tighter leading-tight text-white">
                   Planen Sie Ihre perfekte Manyara Safari
                 </h2>
               </div>

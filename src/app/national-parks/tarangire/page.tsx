@@ -199,7 +199,7 @@ export default function TarangireParkPage() {
                   Der Tarangire-Nationalpark liegt südlich des Manyara-Sees und ist ein echter Geheimtipp für Naturfotografen. Die Landschaft aus goldgelben Ebenen, weiten Palmenhainen und uralten Affenbrotbäumen macht jede Safari hier zu einem ästhetischen Erlebnis der Extraklasse.
                 </p>
                 <p>
-                  In der Trockenzeit von Juni bis Oktober wird der Tarangire-Fluss zum einzigen dauerhaften Wasserspeicher der Region. Dies führt zu einer Tierkonzentration, die der Serengeti in nichts nachsteht. Besonders die Begegnungen mit den riesigen Elefantenfamilien bleiben unvergesslich.
+                  In der Trockenzeit von Juni bis Oktober wird der Tarangire-Fluss zum einzigen dauerhaften Wasserspeicher der Region. Dies führt zu einer Tierkonzentration, die der Serengeti in nichts nachsteht. Besonders die Begegnungen mit den riesigen Elefantenfamilien bleiben unvergessliche.
                 </p>
               </div>
             </motion.div>
@@ -438,7 +438,7 @@ export default function TarangireParkPage() {
                 <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl">
                   <Compass className="w-6 h-6 md:w-8 md:h-8 text-white" />
                 </div>
-                <h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-bold tracking-tighter leading-tight whitespace-nowrap">
+                <h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-bold tracking-tighter leading-tight text-white">
                   Planen Sie Ihre perfekte Tarangire Safari
                 </h2>
               </div>

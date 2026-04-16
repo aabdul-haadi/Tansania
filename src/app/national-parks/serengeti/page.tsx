@@ -19,7 +19,6 @@ import {
   Bird,
   Sun,
   Wind,
-  Phone,
   Plus,
   ChevronRight
 } from 'lucide-react';
@@ -29,7 +28,6 @@ import { ContactSection } from '@/components/shared/ContactSection';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { cn } from '@/lib/utils';
-import Link from 'next/link';
 import { ReviewVideos } from '@/components/sections/ReviewVideos';
 import { OtherParks } from '@/components/sections/OtherParks';
 
@@ -517,7 +515,7 @@ export default function SerengetiPage() {
                 <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl">
                   <Compass className="w-6 h-6 md:w-8 md:h-8 text-white" />
                 </div>
-                <h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-bold tracking-tighter leading-tight whitespace-nowrap">
+                <h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-bold tracking-tighter leading-tight text-white">
                   Planen Sie Ihre perfekte Serengeti Safari
                 </h2>
               </div>
