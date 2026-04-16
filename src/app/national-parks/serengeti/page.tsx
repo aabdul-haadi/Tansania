@@ -30,6 +30,8 @@ import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
+import { ReviewVideos } from '@/components/sections/ReviewVideos';
+import { OtherParks } from '@/components/sections/OtherParks';
 
 const regions = [
   {
@@ -164,7 +166,6 @@ export default function SerengetiPage() {
           fill 
           priority
           className="object-cover brightness-75 scale-105"
-          data-ai-hint="migration herds"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
         
@@ -186,7 +187,7 @@ export default function SerengetiPage() {
       </section>
 
       {/* 02 Narrative Context */}
-      <section className="py-16 md:py-24 container mx-auto px-4 max-w-7xl">
+      <section className="py-10 md:py-16 container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           <div className="space-y-10">
             <motion.div
@@ -203,7 +204,7 @@ export default function SerengetiPage() {
                   </span>
                 </div>
                 <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary leading-tight tracking-tight">
-                  Die endlose Ebene voller leben
+                  Die endlose Ebene voller Leben
                 </h2>
               </div>
               
@@ -230,13 +231,12 @@ export default function SerengetiPage() {
                 alt="Serengeti Sunset Tree" 
                 fill 
                 className="object-cover transition-transform duration-1000 hover:scale-105"
-                data-ai-hint="savannah tree"
               />
             </motion.div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mt-16 md:mt-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mt-12 md:mt-16">
           {[
             {
               title: "Big Five & Raubtiere",
@@ -278,37 +278,18 @@ export default function SerengetiPage() {
       </section>
 
       {/* 03 GEOGRAPHY SECTION */}
-      <section className="py-16 md:py-32 bg-white border-t border-border/40">
+      <section className="py-10 md:py-16 bg-white border-t border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="text-center mb-12 md:mb-20 space-y-6">
-            <motion.span 
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-primary font-bold text-[10px] tracking-[0.2em] block"
-            >
+          <div className="text-center mb-10 md:mb-16 space-y-6">
+            <span className="text-primary font-bold text-[10px] tracking-[0.2em] block">
               Serengeti Geografie
-            </motion.span>
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tight"
-            >
+            </span>
+            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tight">
               Entdecken Sie die Serengeti <span className="text-primary">auf der Karte</span>
-            </motion.h2>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto leading-relaxed"
-            >
-              Die Serengeti erstreckt sich über 30.000 km² von Nordtansania bis zur kenianischen Grenze. Entdecken Sie die drei Hauptregionen und folgen Sie der Route der Großen Migration.
-            </motion.p>
+            </h2>
           </div>
 
-          <div className="relative rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl bg-muted border border-border/50 aspect-video md:aspect-[21/9] mb-12 md:mb-20 group">
+          <div className="relative rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl bg-muted border border-border/50 aspect-video md:aspect-[21/9] mb-10 md:mb-16 group">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1021272.775330386!2d34.33120155!3d-2.333333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19ca71a684365773%3A0x67396c9c9b45660b!2sSerengeti%20National%20Park!5e0!3m2!1sen!2stz!4v1711234567890!5m2!1sen!2stz"
               className="absolute inset-0 w-full h-full border-none grayscale-[0.2] group-hover:grayscale-0 transition-all duration-1000"
@@ -353,7 +334,7 @@ export default function SerengetiPage() {
                 className="flex flex-col space-y-6"
               >
                 <div className="relative aspect-[16/10] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-xl group border border-border/40 bg-muted">
-                  <Image src={region.img} alt={region.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-105" data-ai-hint={region.hint} />
+                  <Image src={region.img} alt={region.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
                   <div className="absolute top-4 left-4">
                     <Badge className={cn("text-white border-none font-bold text-[8px] px-3 py-1 uppercase tracking-widest", region.badgeColor)}>
                       {region.badge}
@@ -379,9 +360,9 @@ export default function SerengetiPage() {
       </section>
 
       {/* 04 MIGRATION TIMELINE SECTION */}
-      <section className="py-16 md:py-32 bg-[#FDFCFB] overflow-hidden">
+      <section className="py-10 md:py-16 bg-[#FDFCFB] overflow-hidden">
         <div className="container mx-auto px-4 max-w-5xl">
-          <div className="text-center mb-16 md:mb-24 space-y-4">
+          <div className="text-center mb-12 md:mb-16 space-y-4">
             <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter uppercase">
               Die Route der Großen Migration
             </h2>
@@ -428,20 +409,17 @@ export default function SerengetiPage() {
       </section>
 
       {/* 05 ACTIVITY HUB SECTION */}
-      <section className="py-16 md:py-32 bg-white border-y border-border/40">
+      <section className="py-10 md:py-16 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="text-center mb-12 md:mb-20 space-y-4">
+          <div className="text-center mb-10 md:mb-16 space-y-4">
             <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px]">Aktivitäten & Erlebnisse</span>
             <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary uppercase tracking-tighter">
               Unvergessliche <span className="text-primary">Aktivitäten</span> in der Serengeti
             </h2>
-            <p className="text-muted-foreground font-bold text-[10px] md:text-sm uppercase tracking-widest max-w-3xl mx-auto leading-relaxed">
-              Erleben Sie die Serengeti auf einzigartige Weise – von spannenden Pirschfahrten über Heißluftballon-Safaris bis hin zu geführten Tierbeobachtungen. Hier finden Sie für jeden Geschmack das perfekte Safari-Abenteuer.
-            </p>
           </div>
 
           {/* Activity Tabs */}
-          <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-12 md:mb-16">
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-10 md:mb-12">
             {activities.map((act) => (
               <button
                 key={act.id}
@@ -575,9 +553,9 @@ export default function SerengetiPage() {
       </section>
 
       {/* 07 FAQ REGISTRY SECTION */}
-      <section className="py-16 md:py-32 bg-white">
+      <section className="py-10 md:py-16 bg-white">
         <div className="container mx-auto px-4 max-w-4xl">
-          <div className="text-center mb-12 md:mb-16">
+          <div className="text-center mb-10 md:mb-12">
             <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tight">Häufig gestellte Fragen</h2>
           </div>
           <Accordion type="single" collapsible className="space-y-4">
@@ -600,6 +578,10 @@ export default function SerengetiPage() {
           </Accordion>
         </div>
       </section>
+
+      {/* 08 REVIEWS & OTHER PARKS */}
+      <ReviewVideos />
+      <OtherParks excludeId="serengeti" />
 
       <section id="inquiry" className="scroll-mt-20">
         <ContactSection />
