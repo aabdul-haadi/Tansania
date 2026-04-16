@@ -356,15 +356,15 @@ export default function SerengetiPage() {
         </div>
       </section>
 
-      {/* 04 Migration Timeline Section - REFINED WITH BG IMAGE & OVERLAY */}
+      {/* 04 Migration Timeline Section - REFINED WITH LIGHTER OVERLAY & NATURAL CASING */}
       <section className="relative py-12 md:py-24 overflow-hidden bg-secondary">
         <Image 
           src="/assets/images/national-parks/card-migration.jpg" 
           alt="Great Migration Path" 
           fill 
-          className="object-cover brightness-[0.4] opacity-40 scale-105"
+          className="object-cover brightness-[0.6] opacity-60 scale-105"
         />
-        <div className="absolute inset-0 bg-secondary/80 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]" />
         
         <div className="container relative z-10 mx-auto px-4 max-w-5xl">
           <div className="text-center mb-12 md:mb-20 space-y-4">
@@ -381,7 +381,7 @@ export default function SerengetiPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-white/60 font-bold text-[10px] md:text-sm tracking-[0.3em] uppercase max-w-xl mx-auto"
+              className="text-white/80 font-bold text-[10px] md:text-sm tracking-widest max-w-xl mx-auto"
             >
               Folgen Sie dem jährlichen Zyklus der Tierwanderung
             </motion.p>
@@ -413,7 +413,7 @@ export default function SerengetiPage() {
                       <h4 className="font-headline text-xl md:text-2xl font-bold text-secondary leading-none">{item.title}</h4>
                       <Badge className="bg-primary text-white border-none px-4 py-1.5 text-[9px] font-bold tracking-widest shadow-xl">{item.dates}</Badge>
                     </div>
-                    <p className="text-[13px] md:text-[14px] text-muted-foreground font-bold tracking-tight leading-relaxed uppercase opacity-80">{item.desc}</p>
+                    <p className="text-[13px] md:text-[14px] text-muted-foreground font-bold tracking-tight leading-relaxed opacity-80">{item.desc}</p>
                   </div>
                 </div>
                 <div className="hidden md:flex w-8 h-8 rounded-full bg-primary border-4 border-secondary shadow-xl items-center justify-center shrink-0 z-20" />
