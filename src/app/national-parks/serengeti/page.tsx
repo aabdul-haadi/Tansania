@@ -187,7 +187,7 @@ export default function SerengetiPage() {
       </section>
 
       {/* 02 Narrative Context */}
-      <section className="py-10 md:py-16 container mx-auto px-4 max-w-7xl">
+      <section className="py-8 md:py-12 container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           <div className="space-y-10">
             <motion.div
@@ -278,9 +278,9 @@ export default function SerengetiPage() {
       </section>
 
       {/* 03 Geography Section */}
-      <section className="py-10 md:py-16 bg-white border-t border-border/40">
+      <section className="py-8 md:py-12 bg-white border-t border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="text-center mb-10 md:mb-16 space-y-6">
+          <div className="text-center mb-8 md:mb-12 space-y-6">
             <span className="text-primary font-bold text-[10px] tracking-[0.2em] block">
               Serengeti Geografie
             </span>
@@ -360,13 +360,13 @@ export default function SerengetiPage() {
       </section>
 
       {/* 04 Migration Timeline Section */}
-      <section className="py-10 md:py-16 bg-[#FDFCFB] overflow-hidden">
+      <section className="py-8 md:py-12 bg-[#FDFCFB] overflow-hidden">
         <div className="container mx-auto px-4 max-w-5xl">
-          <div className="text-center mb-12 md:mb-16 space-y-4">
+          <div className="text-center mb-10 md:mb-16 space-y-4">
             <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter">
               Die Route der Großen Migration
             </h2>
-            <p className="text-muted-foreground font-bold text-[10px] md:text-sm tracking-widest max-get-xl mx-auto">
+            <p className="text-muted-foreground font-bold text-[10px] md:text-sm tracking-widest max-w-xl mx-auto">
               Folgen Sie dem jährlichen Zyklus der Tierwanderung durch die Serengeti.
             </p>
           </div>
@@ -409,16 +409,16 @@ export default function SerengetiPage() {
       </section>
 
       {/* 05 Activity Hub Section */}
-      <section className="py-10 md:py-16 bg-white border-y border-border/40">
+      <section className="py-8 md:py-12 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="text-center mb-10 md:mb-16 space-y-4">
+          <div className="text-center mb-8 md:mb-12 space-y-4">
             <span className="text-primary font-bold tracking-[0.4em] text-[10px]">Aktivitäten & Erlebnisse</span>
             <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter">
               Unvergessliche <span className="text-primary">Aktivitäten</span> in der Serengeti
             </h2>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-10 md:mb-12">
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-8 md:mb-12">
             {activities.map((act) => (
               <button
                 key={act.id}
@@ -440,19 +440,19 @@ export default function SerengetiPage() {
             <motion.div
               key={activeActivity.id}
               initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.5 }}
             >
               <Card className="rounded-[2rem] md:rounded-[3rem] border border-border/40 overflow-hidden shadow-2xl bg-white flex flex-col lg:flex-row">
-                <div className="w-full lg:w-[45%] relative aspect-[16/9] lg:aspect-auto min-h-[350px]">
+                <div className="w-full lg:w-[45%] relative aspect-[16/9] lg:aspect-auto min-h-[300px] md:min-h-[350px]">
                   <Image src={activeActivity.img} alt={activeActivity.title} fill className="object-cover" />
                   <div className="absolute top-6 left-6 flex flex-col gap-2">
                     <Badge className="bg-white/95 backdrop-blur-md text-secondary border-none px-3 py-1 text-[8px] font-bold">{activeActivity.duration}</Badge>
                     <Badge className="bg-primary text-white border-none px-3 py-1 text-[8px] font-bold">{activeActivity.level}</Badge>
                   </div>
                 </div>
-                <div className="flex-1 p-8 md:p-12 lg:p-16 space-y-8 flex flex-col justify-center text-left">
+                <div className="flex-1 p-6 md:p-12 lg:p-16 space-y-8 flex flex-col justify-center text-left">
                   <div className="space-y-6">
                     <h3 className="font-headline text-2xl md:text-4xl font-bold text-secondary tracking-tight">{activeActivity.title}</h3>
                     
@@ -474,7 +474,7 @@ export default function SerengetiPage() {
                       <div className="space-y-1">
                         <div className="flex items-center gap-2 text-primary">
                           <Zap className="w-4 h-4" />
-                          <span className="text-[9px] font-bold tracking-widest">Starts</span>
+                          <span className="text-[9px] font-bold tracking-widest">Fokus</span>
                         </div>
                         <p className="text-xs font-bold text-secondary">{activeActivity.frequency}</p>
                       </div>
@@ -506,7 +506,7 @@ export default function SerengetiPage() {
         </div>
       </section>
 
-      {/* 06 High-Contrast Action Banner */}
+      {/* 06 Action Banner */}
       <section className="py-8 md:py-12 bg-white">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="bg-primary rounded-[2.5rem] md:rounded-[3.5rem] p-8 md:p-16 text-white relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-10 shadow-2xl">
@@ -550,34 +550,6 @@ export default function SerengetiPage() {
         </div>
       </section>
 
-      {/* 07 FAQ Section */}
-      <section className="py-10 md:py-16 bg-white">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <div className="text-center mb-10 md:mb-12">
-            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tight">Häufig gestellte Fragen</h2>
-          </div>
-          <Accordion type="single" collapsible className="space-y-4">
-            {[
-              { q: "Benötige ich ein Visum für Tansania?", a: "Ja, für deutsche Staatsangehörige ist ein Visum erforderlich. Es kann online als e-Visum oder bei Ankunft am Flughafen erworben werden." },
-              { q: "Welche Impfungen werden empfohlen?", a: "Standardimpfungen sowie Schutz gegen Hepatitis A werden empfohlen. Gelbfieber ist bei Einreise aus Endemiegebieten Pflicht." },
-              { q: "Wann ist die beste Zeit für die Migration?", a: "Die Flussüberquerungen im Norden finden meist zwischen Juli und Oktober statt. Die Kalbungszeit im Süden von Januar bis März." },
-              { q: "Sind Safaris sicher für Kinder?", a: "Ja, wir wählen kinderfreundliche Lodges und passen die Aktivitäten an das Alter der Kinder an." }
-            ].map((faq, i) => (
-              <AccordionItem key={i} value={`faq-${i}`} className="border-none bg-[#FDFCFB] rounded-2xl px-8 shadow-sm hover:shadow-md transition-all border border-transparent hover:border-border">
-                <AccordionTrigger className="font-bold text-base py-6 hover:no-underline text-left text-secondary [&>svg]:hidden">
-                  <div className="flex items-center justify-between w-full gap-4">
-                    <span className="tracking-tight leading-snug">{faq.q}</span>
-                    <Plus className="w-4 h-4 text-primary transition-transform group-data-[state=open]:rotate-45" />
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground text-[14px] leading-[20px] pb-8 font-normal opacity-80">{faq.a}</AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-      </section>
-
-      {/* 08 Shared Review and Parks Modules */}
       <ReviewVideos />
       <OtherParks excludeId="serengeti" />
 
