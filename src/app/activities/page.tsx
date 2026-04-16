@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useMemo } from 'react';
@@ -19,7 +18,8 @@ import {
   Sparkles,
   Fish,
   ShieldCheck,
-  Users
+  Users,
+  CheckCircle2
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
