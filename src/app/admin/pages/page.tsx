@@ -12,7 +12,8 @@ import {
   Zap,
   LayoutGrid,
   ChevronRight,
-  Monitor
+  Monitor,
+  Compass
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -93,6 +94,20 @@ const siteRegistry = [
       { title: "Privacy", path: "/legal/privacy", status: "Live", sub: "Compliance" },
       { title: "EU Directive", path: "/legal/directive", status: "Live", sub: "Consumer rights" },
     ]
+  },
+  {
+    category: "06. National Parks Registry",
+    id: "parks",
+    icon: Compass,
+    routes: [
+      { title: "Serengeti Nationalpark", path: "/national-parks/serengeti", status: "Live", sub: "UNESCO Heritage" },
+      { title: "Ngorongoro-Krater", path: "/national-parks/ngorongoro", status: "Live", sub: "Natural Wonder" },
+      { title: "Tarangire Nationalpark", path: "/national-parks/tarangire", status: "Live", sub: "Elephant Hub" },
+      { title: "Lake Manyara Nationalpark", path: "/national-parks/manyara", status: "Live", sub: "Biosphere" },
+      { title: "Kilimandscharo Nationalpark", path: "/national-parks/kilimanjaro", status: "Live", sub: "Roof of Africa" },
+      { title: "Arusha Nationalpark", path: "/national-parks/arusha", status: "Live", sub: "Meru Hub" },
+      { title: "Saadani Nationalpark", path: "/national-parks/saadani", status: "Live", sub: "Bush & Beach" },
+    ]
   }
 ];
 
@@ -107,7 +122,7 @@ export default function SiteRegistry() {
       routes: group.routes.filter(r => 
         r.title.toLowerCase().includes(lowerSearch) || 
         r.path.toLowerCase().includes(lowerSearch) ||
-        r.sub.toLowerCase().includes(lowerSearch)
+        (r.sub && r.sub.toLowerCase().includes(lowerSearch))
       )
     })).filter(group => group.routes.length > 0);
   }, [searchTerm]);
@@ -121,7 +136,7 @@ export default function SiteRegistry() {
       {/* Registry Header */}
       <header className="p-6 md:p-10 border-b border-border bg-white sticky top-0 z-20">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-end justify-between gap-8">
-          <div className="space-y-3">
+          <div className="space-y-3 text-left">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-secondary flex items-center justify-center shadow-lg">
                 <Globe className="w-5 h-5 md:w-6 md:h-6 text-primary" />
@@ -153,7 +168,7 @@ export default function SiteRegistry() {
           />
         </div>
 
-        {/* Registry Grid: 2 columns on large screens */}
+        {/* Registry Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 pb-32">
           {filteredRegistry.map((group) => (
             <div key={group.id} className="flex flex-col gap-6 md:gap-8">
@@ -161,7 +176,7 @@ export default function SiteRegistry() {
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-secondary text-primary flex items-center justify-center shadow-md shrink-0">
                   <group.icon className="w-5 h-5 md:w-6 md:h-6" />
                 </div>
-                <div>
+                <div className="text-left">
                   <h2 className="font-headline text-lg md:text-2xl font-normal text-secondary leading-none">{group.category}</h2>
                   <p className="text-[8px] font-bold text-muted-foreground tracking-normal mt-1.5 opacity-60">Registry cluster: {group.id}</p>
                 </div>
