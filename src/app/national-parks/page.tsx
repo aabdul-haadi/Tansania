@@ -20,7 +20,10 @@ import {
   Leaf,
   Users,
   Bird,
-  Zap
+  Zap,
+  Heart,
+  Palmtree,
+  Plane
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -59,7 +62,7 @@ const parksData = [
     id: 'serengeti',
     name: 'Serengeti',
     fullName: 'Serengeti-Nationalpark: Unesco-Weltnaturerbe & Große Migration',
-    tagline: 'Der Serengeti-Nationalpark (ca. 14.763 km²) ist weltberühmt für seine endlosen Graslandschaften und die legendäre große Tierwanderung.',
+    tagline: 'Der Serengeti-Nationalpark ist weltberühmt für seine endlosen Graslandschaften und die legendäre große Tierwanderung.',
     desc: 'Jährlich ziehen hier über eine Million Gnus, Zebras und Gazellen durch die Savanne – eines der beeindruckendsten Naturschauspiele der Welt – dicht gefolgt von Löwen, Geparden und Hyänen. Die Serengeti beherbergt dadurch eine der artenreichsten Raubtier- und Huftiergemeinschaften Afrikas. Dank dieser einzigartigen Tierkonzentration steht der Park seit 1981 unter Unesco-Welterbe-Schutz.',
     img: '/assets/images/national-parks/serengeti-migration.jpg',
     facts: [
@@ -105,7 +108,7 @@ const parksData = [
     name: 'Lake Manyara',
     fullName: 'Lake-Manyara-Nationalpark: Baumkletternde Löwen & Vogelparadies',
     tagline: 'Ein üppig grünes Juwel am Fuß des Ostafrikanischen Grabenbruchs.',
-    desc: 'Berühmt ist Manyara für seine baumkletternden Löwen, die sich tagsüber gern in die Äste der Akazien zurückziehen. Der Park (ca. 330 km²) umfasst auch den flachen Manyara-See, an dessen alkalischen Ufern Schwärme von Flamingos und anderen Wasservögeln leben.',
+    desc: 'Berühmt ist Manyara für seine baumkletternden Löwen, die sich tagsüber gern in die Äste der Akazien zurückziehen. Der Park umfasst auch den flachen Manyara-See, an dessen alkalischen Ufern Schwärme von Flamingos und anderen Wasservögeln leben.',
     img: '/assets/images/national-parks/manyara-lake.jpg',
     facts: [
       { t: "Tropischer Grundwasserwald", v: "Ständig sprudelnde Quellen nähren einen dichten Urwald am Rand des Sees. Aufgrund dieses seltenen Habitats wurde Manyara von der Unesco zum Biosphärenreservat erklärt." },
@@ -189,7 +192,7 @@ export default function NationalParksPage() {
   return (
     <div className="bg-white min-h-screen font-normal">
       {/* 01 Hero Narrative */}
-      <header className="pt-32 pb-12 bg-white text-center">
+      <header className="pt-32 pb-8 bg-white text-center">
         <div className="container mx-auto px-4 max-w-5xl space-y-4">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -210,7 +213,7 @@ export default function NationalParksPage() {
       </header>
 
       {/* 02 Hero Visual Hub */}
-      <section className="relative mb-24 md:mb-32">
+      <section className="relative mb-20 md:mb-24">
         <div className="w-full relative aspect-[21/9] md:h-[600px] overflow-hidden shadow-sm">
           <Image
             src="/assets/images/national-parks/national-bn-5.webp"
@@ -279,7 +282,7 @@ export default function NationalParksPage() {
           </aside>
 
           {/* 04 Content Stream */}
-          <main className="lg:col-span-8 space-y-16 md:space-y-20">
+          <main className="lg:col-span-8 space-y-12 md:space-y-16">
             
             <section id="intro" className="space-y-12 scroll-mt-32">
               <div className="space-y-4 text-left">
@@ -346,7 +349,7 @@ export default function NationalParksPage() {
             </section>
 
             {parksData.map((park) => (
-              <section key={park.id} id={park.id} className="space-y-8 scroll-mt-32">
+              <section key={park.id} id={park.id} className="space-y-8 scroll-mt-32 pt-8">
                 <div className="space-y-6">
                   <div className="space-y-2 text-left">
                     <Badge variant="outline" className="border-primary/20 text-primary px-4 py-1 font-bold text-[9px]">
