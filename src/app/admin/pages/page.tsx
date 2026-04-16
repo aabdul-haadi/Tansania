@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useMemo } from 'react';
@@ -13,7 +14,8 @@ import {
   LayoutGrid,
   ChevronRight,
   Monitor,
-  Compass
+  Compass,
+  Sparkles
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -30,6 +32,7 @@ const siteRegistry = [
     routes: [
       { title: "Homepage", path: "/", status: "Live", sub: "Primary entry" },
       { title: "Safari Catalog", path: "/safaris", status: "Live", sub: "Master hub" },
+      { title: "Activities Registry", path: "/activities", status: "Live", sub: "Adventure hub" },
       { title: "Journal Registry", path: "/blog", status: "Live", sub: "Content engine" },
       { title: "National Parks", path: "/national-parks", status: "Live", sub: "Conservation hub" },
       { title: "Migration Tracker", path: "/migration", status: "Live", sub: "Wildlife ops" },
