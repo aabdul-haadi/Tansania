@@ -72,100 +72,107 @@ const parksData = [
   {
     id: 'serengeti',
     name: 'Serengeti',
-    fullName: 'Serengeti-Nationalpark: UNESCO-Weltnaturerbe & Große Migration',
+    fullName: 'Serengeti-Nationalpark: Unesco-Weltnaturerbe & Große Migration',
     tagline: 'Der Serengeti-Nationalpark (ca. 14.763 km²) ist weltberühmt für seine endlosen Graslandschaften und die legendäre Große Tierwanderung.',
-    desc: 'Jährlich ziehen hier über eine Million Gnus, Zebras und Gazellen durch die Savanne – eines der beeindruckendsten Naturschauspiele der Welt – dicht gefolgt von Löwen, Geparden und Hyänen. Die Serengeti beherbergt dadurch eine der artenreichsten Raubtier- und Huftiergemeinschaften Afrikas. Dank dieser einzigartigen Tierkonzentration steht der Park seit 1981 unter UNESCO-Welterbe-Schutz.',
+    desc: 'Jährlich ziehen hier über eine Million Gnus, Zebras und Gazellen durch die Savanne – eines der beeindruckendsten Naturschauspiele der Welt – dicht gefolgt von Löwen, Geparden und Hyänen. Die Serengeti beherbergt dadurch eine der artenreichsten Raubtier- und Huftiergemeinschaften Afrikas. Dank dieser einzigartigen Tierkonzentration steht der Park seit 1981 unter Unesco-Welterbe-Schutz.',
     img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200',
     facts: [
       { t: "Tiermigration", v: "Über 1 Mio. Gnus, Zebras und Gazellen wandern jährlich mit den Regenzeiten durch die Serengeti. Dieses Schauspiel der Massenwanderung ist weltweit einmalig." },
       { t: "Reiche Raubtierwelt", v: "Rund 3.000 Löwen leben hier – zudem viele Leoparden, Geparden und Schakale sowie große Clans von Hyänen. Nirgendwo sonst finden sich so viele große Raubtiere auf einem Fleck." },
-      { t: "UNESCO-Welterbe", v: "Die Serengeti wurde 1981 wegen ihrer enormen Biodiversität und des intakten Ökosystems als Weltnaturerbe ausgezeichnet." }
+      { t: "Unesco-Welterbe", v: "Die Serengeti wurde 1981 wegen ihrer enormen Biodiversität und des intakten Ökosystems als Weltnaturerbe ausgezeichnet. Bis heute gilt sie als Musterbeispiel für erfolgreichen Naturschutz." }
     ],
-    ctaLabel: 'Serengeti Balloon Safari erleben'
+    ctaLabel: 'Serengeti Balloon Safari erleben',
+    ctaLink: '/national-parks/serengeti'
   },
   {
     id: 'ngorongoro',
     name: 'Ngorongoro',
     fullName: 'Ngorongoro-Krater: Größte intakte Vulkankaldera der Erde',
     tagline: 'Der Ngorongoro-Krater ist mit etwa 19 km Durchmesser die größte intakte Vulkankaldera der Erde.',
-    desc: 'Auf dem Kraterboden (ca. 260 km²) leben unzählige Wildtiere dicht gedrängt – von Gnus und Zebras bis zu einer ungewöhnlich hohen Anzahl an Löwen und sogar einigen seltenen Spitzmaulnashörnern. Dieses „ursprüngliche Eden" wirkt wie ein natürlicher Zoo.',
+    desc: 'Auf dem Kraterboden (ca. 260 km²) leben unzählige Wildtiere dicht gedrängt – von Gnus und Zebras bis zu einer ungewöhnlich hohen Anzahl an Löwen und sogar einigen seltenen Spitzmaulnashörnern. Dieses „ursprüngliche Eden" wirkt wie ein natürlicher Zoo. In der umliegenden Ngorongoro Conservation Area ziehen außerdem rund zwei Millionen Gnus und Zebras auf ihren Wanderungen am Kraterrand entlang.',
     img: 'https://images.unsplash.com/photo-1580502304784-8985b777da59?q=80&w=1200',
     facts: [
       { t: "Riesige Caldera", v: "Ngorongoro ist die größte unversehrte Vulkankrater-Landschaft der Welt (Ø ~19 km). Die Sicht vom Kraterrand hinab auf die Ebene ist spektakulär." },
-      { t: "Hohe Wildtierdichte", v: "Im Kraterinneren konzentrieren sich nahezu alle ostafrikanischen Großsäuger auf kleinem Raum – eine einzigartige Dichte." },
-      { t: "Teil der Wanderung", v: "Alljährlich ziehen ca. 2 Mio. Gnus und Zebras durch die Ngorongoro Conservation Area." }
+      { t: "Hohe Wildtierdichte", v: "Im Kraterinneren konzentrieren sich nahezu alle ostafrikanischen Großsäuger auf kleinem Raum – eine einzigartige Dichte an Löwen, Elefanten, Büffeln, Zebras, Antilopen und mehr." },
+      { t: "Teil der Serengeti-Wanderung", v: "Alljährlich ziehen ca. 2 Mio. Gnus und Zebras durch die Ngorongoro Conservation Area, wenn sie der großen Migration folgen." }
     ],
-    ctaLabel: 'Vogelbeobachtung im Ngorongoro'
+    ctaLabel: 'Vogelbeobachtung im Ngorongoro',
+    ctaLink: '/national-parks/ngorongoro'
   },
   {
     id: 'tarangire',
     name: 'Tarangire',
     fullName: 'Tarangire-Nationalpark: Elefantenparadies mit Baobab-Landschaft',
-    tagline: 'Der Tarangire-Nationalpark liegt südlich des Manyara-Sees und ist bekannt für seine riesigen Elefantenherden.',
-    desc: 'In der Trockenzeit (Juni–Oktober) versammeln sich hier bis zu 2.000 Elefanten entlang des Tarangire-Flusses. Die Landschaft aus goldgelben Ebenen und uralten Affenbrotbäumen macht jede Safari im Tarangire zu einem besonderen Erlebnis.',
+    tagline: 'Der Tarangire-Nationalpark liegt südlich des Manyara-Sees und ist bekannt für seine riesigen Elefantenherden und malerischen Baobab-Bäume.',
+    desc: 'In der Trockenzeit (Juni–Oktober) versammeln sich hier bis zu 2.000 Elefanten entlang des Tarangire-Flusses, der selbst in Dürreperioden Wasser führt. Die Landschaft aus goldgelben Ebenen, Palmenhainen und uralten Affenbrotbäumen macht jede Safari im Tarangire zu einem besonderen Erlebnis.',
     img: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=1200',
     facts: [
       { t: "Elefantenparadies", v: "Eine der größten Elefantenpopulationen Tansanias lebt hier – in der Trockenzeit werden bis zu ~2.000 Tiere gleichzeitig am Fluss gezählt." },
-      { t: "Baobab-Landschaft", v: "Zahlreiche uralte Riesen-Baobabs prägen den Horizont – sie bieten spektakuläre Fotomotive und Schatten." },
-      { t: "Vielfältige Tierwelt", v: "Auch Büffel, Giraffen und Raubkatzen sind anzutreffen. Besonders in der Trockenzeit an den Wasserstellen." }
+      { t: "Baobab-Landschaft", v: "Zahlreiche uralte Riesen-Baobabs prägen den Horizont – sie bieten nicht nur spektakuläre Fotomotive, sondern auch Schatten und Wasserreservoirs für Tiere." },
+      { t: "Vielfältige Tierwelt", v: "Auch Büffel, Giraffen, verschiedene Antilopenarten und Raubkatzen (Löwen, Leoparden) sind anzutreffen. Besonders in der Trockenzeit tummeln sich an den Wasserstellen viele Tiere nebeneinander." }
     ],
-    ctaLabel: 'Baobab Safari in Tarangire'
+    ctaLabel: 'Baobab Safari in Tarangire',
+    ctaLink: '/national-parks/tarangire'
   },
   {
     id: 'manyara',
     name: 'Lake Manyara',
     fullName: 'Lake-Manyara-Nationalpark: Baumkletternde Löwen & Vogelparadies',
     tagline: 'Ein üppig grünes Juwel am Fuß des Ostafrikanischen Grabenbruchs.',
-    desc: 'Berühmt ist Manyara für seine baumkletternden Löwen, die sich tagsüber gern in die Äste der Akazien zurückziehen. Der Park umfasst auch den flachen Manyara-See.',
+    desc: 'Berühmt ist Manyara für seine baumkletternden Löwen, die sich tagsüber gern in die Äste der Akazien zurückziehen. Der Park (ca. 330 km²) umfasst auch den flachen Manyara-See, an dessen alkalischen Ufern Schwärme von Flamingos und anderen Wasservögeln leben.',
     img: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=1200',
     facts: [
-      { t: "Grundwasserwald", v: "Ständig sprudelnde Quellen nähren einen dichten Urwald am Rand des Sees. Biosphärenreservat der UNESCO." },
-      { t: "Löwen im Geäst", v: "In Manyara kann man mit etwas Glück Löwen in Bäumen dösen sehen – ein ungewöhnliches Verhalten." },
-      { t: "Vogelparadies", v: "Über 400 Vogelarten wurden gezählt. Besonders eindrucksvoll sind Tausende Flamingos und Pelikane." }
+      { t: "Tropischer Grundwasserwald", v: "Ständig sprudelnde Quellen nähren einen dichten Urwald am Rand des Sees. Aufgrund dieses seltenen Habitats wurde Manyara von der Unesco zum Biosphärenreservat erklärt." },
+      { v: "In Manyara kann man mit etwas Glück Löwen in Bäumen dösen sehen – ein ungewöhnliches Verhalten, das tolle Fotomotive bietet.", t: "Löwen im Geäst" },
+      { t: "Vogelparadies", v: "Über 400 Vogelarten wurden gezählt. Besonders eindrucksvoll sind tausende Flamingos, Pelikane und Störche, die je nach Saison den See rosa färben oder in Scharen über das Wasser ziehen." }
     ],
-    ctaLabel: 'Baumlöwen in Manyara erleben'
+    ctaLabel: 'Baumlöwen in Manyara erleben',
+    ctaLink: '/national-parks/manyara'
   },
   {
     id: 'kilimanjaro',
     name: 'Kilimandscharo',
     fullName: 'Kilimandscharo-Nationalpark: Dach Afrikas mit Schneefeldern',
     tagline: 'Der Kilimandscharo ist mit 5.895 m der höchste Berg Afrikas und der höchste freistehende Berg der Welt.',
-    desc: 'Sein schneebedeckter Kibo-Gipfel thront majestätisch über der Savanne Nordtansanias. Vom dichten Regenwald bis zur kargen alpinen Wüste durchläuft man alle Klimastufen.',
+    desc: 'Sein schneebedeckter Kibo-Gipfel thront majestätisch über der Savanne Nordtansanias. Der Kilimanjaro-Nationalpark schützt das Bergmassiv und die umliegenden Wälder: Unten dichter tropischer Regenwald, weiter oben Hochmoor, Heidelandschaft und schließlich karge alpine Wüste nahe dem Gipfel.',
     img: 'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1200',
     facts: [
-      { t: "5895 m Gipfel", v: "Der Kilimandscharo (Kibo) ist ein begehrtes Trekking-Ziel. Mehrere Routen führen zum Uhuru Peak." },
-      { t: "Schnee am Äquator", v: "Einziger Ort Afrikas, der ganzjährig Schnee und Eis trägt – ein faszinierendes Phänomen." },
-      { t: "Ökozonen", v: "Vom Regenwald bis zum ewigen Eis – ein kompletter Querschnitt durch die Vegetationszonen der Erde." }
+      { t: "5895 m Gipfel", v: "Der Kilimandscharo (Kibo) ist ein begehrtes Trekking-Ziel. Mehrere Routen (Marangu, Machame, Lemosho u.a.) führen in 5–8 Tagen zum Uhuru Peak." },
+      { t: "Schnee- und Eisfelder", v: "Als einziger Ort Afrikas trägt der Kili ganzjährig Schnee und Eis – allerdings sind die Gletscher stark rückläufig und könnten in wenigen Jahrzehnten verschwunden sein." },
+      { t: "Vielschichtige Ökozonen", v: "Vom dichten Regenwald am Fuß (mit Colobusaffen und Elefanten) über Nebel- und Moorzonen bis zur felsigen Gipfelregion durchläuft man alle Klima- und Vegetationsstufen der Tropen." }
     ],
-    ctaLabel: 'Kilimandscharo Gipfel besteigen'
+    ctaLabel: 'Kilimanjaro Gipfel besteigen',
+    ctaLink: '/national-parks/kilimanjaro'
   },
   {
     id: 'arusha',
     name: 'Mount Meru',
     fullName: 'Mount Meru (Arusha-Nationalpark): Zweithöchster Berg Tansanias',
     tagline: 'Der Mount Meru (4.566 m) ist Tansanias zweithöchster Berg und ein erloschener Vulkan.',
-    desc: 'Er erhebt sich im Arusha-Nationalpark. Ideal als Akklimatisierungstour oder eigenständiges Abenteuer mit Blick auf den Kilimandscharo.',
+    desc: 'Er erhebt sich im Arusha-Nationalpark, nur etwa 70 km vom Kilimandscharo entfernt. Eine mehrtägige Trekkingtour auf den Meru führt durch dichten Bergregenwald, mystische Moorlandschaften und entlang des Kraterrands bis zum erloschenen Gipfel.',
     img: 'https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=1200',
     facts: [
-      { t: "4566 m Vulkan", v: "Der Aufstieg auf den Meru (meist 3–4 Tage) ist anspruchsvoll, aber lohnend. Blick ins Innere des Vulkans." },
-      { t: "Vielfältige Tierwelt", v: "Heimat seltener Bergwaldbewohner wie Colobusaffen. Auf den offenen Grasflächen sieht man oft Giraffen." },
-      { t: "Zentrumsnah", v: "Direkt bei Arusha gelegen und somit leicht erreichbar – ideal für einen Tagesausflug." }
+      { t: "4566 m Vulkan", v: "Der Aufstieg auf den Meru (meist 3–4 Tage) ist anspruchsvoll, aber lohnend – oft wird er als Akklimatisierungstour vor dem Kilimandscharo genutzt. Am Gipfelkrater eröffnet sich ein Blick ins Innere des Vulkans." },
+      { t: "Vielfältige Tierwelt", v: "Der Meru ist Heimat seltener Bergwaldbewohner wie Colobusaffen und Waldantilopen. Auf den offenen Grasflächen des Parks sieht man oft Giraffen, Warzenschweine und Büffel grasen." },
+      { t: "Nahe Arusha", v: "Durch die Lage direkt bei Arusha (der Safari-Hauptstadt) ist der Arusha-Nationalpark leicht erreichbar – ideal für einen Tagesausflug oder als Einstieg in eine längere Safari." }
     ],
-    ctaLabel: 'Arusha National Park entdecken'
+    ctaLabel: 'Arusha National Park entdecken',
+    ctaLink: '/national-parks/arusha'
   },
   {
     id: 'saadani',
     name: 'Saadani',
     fullName: 'Saadani-Nationalpark: Safari am Strand - Einzigartige Kombination',
     tagline: 'Der Saadani-Nationalpark ist eine echte Safari-Kuriosität: Hier trifft Wildnis auf das Meer.',
-    desc: 'Als einziger Küsten-Nationalpark Tansanias umfasst Saadani etwa 1.100 km² Savanne, Küstenwald und einen unberührten Strand am Indischen Ozean.',
+    desc: 'Als einziger Küsten-Nationalpark Tansanias umfasst Saadani etwa 1.100 km² Savanne, Küstenwald und einen 15 km langen unberührten Strand am Indischen Ozean. Nur wenige hundert Meter hinter dem Strand streifen Löwen, Giraffen, Elefanten, Büffel und Gnus durch Palmenhaine und Grasland.',
     img: 'https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=1200',
     facts: [
-      { t: "Safari am Strand", v: "Endlose einsame Strände mit palmengesäumten Buchten grenzen direkt an wildes Buschland." },
-      { t: "Kleine Serengeti", v: "Die Tierwelt Saadanis steht den bekannten Parks kaum nach: Löwen und Büffel durchstreifen die Dünen." },
-      { t: "Wasser-Paradies", v: "Flusspferde und sogar Meeresschildkröten, die an Saadanis Stränden ihre Eier ablegen." }
+      { t: "Safari am Strand", v: "Endlose einsame Strände mit palmengesäumten Buchten grenzen direkt an wildes Buschland – diese Kombination aus Strandurlaub und Safari findet man sonst kaum irgendwo." },
+      { t: "Kleine Serengeti", v: "Die Tierwelt Saadanis steht den bekannten Parks kaum nach: Löwen, Büffel, Zebras, Giraffen, Warzenschweine und zahlreiche Antilopen durchstreifen sogar die Dünen und Mangroven." },
+      { t: "Wasser-Paradies", v: "Die Flussmündungen und Mangroven im Park bieten Lebensraum für unzählige Vögel (darunter Flamingos), Nilkrokodile, Flusspferde und sogar Meeresschildkröten." }
     ],
-    ctaLabel: 'Safari & Strand in Saadani'
+    ctaLabel: 'Safari & Strand in Saadani',
+    ctaLink: '/national-parks/saadani'
   }
 ];
 
@@ -232,7 +239,7 @@ export default function NationalParksPage() {
         
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-30">
           <Link href="/trip-planner">
-            <Button size="xl" className="rounded-xl px-12 h-14 md:h-16 bg-[#2b5a91] text-white hover:bg-secondary font-bold text-[10px] md:text-xs tracking-widest border-none shadow-2xl transition-all">
+            <Button size="xl" className="rounded-xl px-12 h-14 md:h-16 bg-secondary text-white hover:bg-primary font-bold text-[10px] md:text-xs tracking-widest border-none shadow-2xl transition-all">
               Jetzt Safari planen
             </Button>
           </Link>
@@ -290,7 +297,7 @@ export default function NationalParksPage() {
           <main className="lg:col-span-8 space-y-16 md:space-y-20">
             
             <section id="intro" className="space-y-12 scroll-mt-32">
-              <div className="space-y-4">
+              <div className="space-y-4 text-left">
                 <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary leading-tight">
                   Tansanias Nationalparks – Safari-Abenteuer im Tierparadies
                 </h2>
@@ -344,8 +351,8 @@ export default function NationalParksPage() {
               </div>
 
               <div className="py-2">
-                <p className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal opacity-80 text-justify">
-                  Tansania ist ein echtes Safari-Paradies – rund ein Drittel der Landesfläche steht unter Naturschutz und bietet unvergessliche Wildtier-Erlebnisse. Die bekanntesten Schutzgebiete – von der endlosen Serengeti bis zum dramatischen Ngorongoro-Krater – sind Teil eines umfassenden Nationalparksystems. In diesen Parks herrscht striktes Schutzregime: Bauen, Jagen und Landwirtschaft sind verboten. Alle menschlichen Aktivitäten dienen einzig dem Tourismus, z. B. Pirschfahrten mit dem Geländewagen. Dieser Schutz sichert die Artenvielfalt (Big Five, Flamingos, etc.) und macht Tansania zu einem erstklassigen Ziel für Naturliebhaber und Fotografen.
+                <p className="text-muted-foreground text-[14px] leading-[20px] font-normal opacity-80 text-justify">
+                  Tansania ist ein echtes Safari-Paradies – rund ein Drittel der Landesfläche steht unter Naturschutz und bietet unvergessliche Wildtier-Erlebnisse. Die bekanntesten Schutzgebiete – von der endlosen Serengeti bis zum dramatischen Ngorongoro-Krater – sind Teil eines umfassenden Nationalparksystems. In diesen Parks herrscht striktes Schutzregime: Bauen, Jagen und Landwirtschaft sind verboten. Alle menschlichen Aktivitäten dienen einzig dem Tourismus, z. B. Pirschfahrten mit dem Geländewagen. Dieser Schutz sichert die Artenvielfalt (Big Five, Flamingos, etc.) und macht Tansania zu einem erstklassigen Ziel für Naturliebhaber und Fotografen.
                 </p>
               </div>
             </section>
@@ -364,7 +371,7 @@ export default function NationalParksPage() {
                   <p className="text-secondary font-bold text-sm md:text-lg leading-relaxed border-l-4 border-primary/20 pl-8 py-2 text-left">
                     {park.tagline}
                   </p>
-                  <p className="text-muted-foreground text-sm md:text-[14px] leading-[20px] font-normal opacity-80 text-left">
+                  <p className="text-muted-foreground text-[14px] leading-[20px] font-normal opacity-80 text-left">
                     {park.desc}
                   </p>
                 </div>
@@ -383,7 +390,7 @@ export default function NationalParksPage() {
                 </div>
 
                 <div className="pt-4 text-left">
-                  <Link href="/contact">
+                  <Link href={park.ctaLink}>
                     <Button className="rounded-xl px-8 h-12 font-bold text-[10px] md:text-xs tracking-widest shadow-xl border-none">
                       {park.ctaLabel} <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
@@ -404,7 +411,7 @@ export default function NationalParksPage() {
                 ].map((item, i) => (
                   <div key={i} className="p-8 bg-muted/10 rounded-3xl space-y-3 text-left">
                     <h4 className="font-headline text-xl font-bold text-primary">{item.t}</h4>
-                    <p className="text-xs font-bold text-muted-foreground leading-relaxed tracking-widest">{item.v}</p>
+                    <p className="text-[10px] font-bold text-muted-foreground leading-relaxed tracking-widest">{item.v}</p>
                   </div>
                 ))}
               </div>
@@ -433,7 +440,7 @@ export default function NationalParksPage() {
               <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary text-left">Kosten und Budget: Was kostet eine Safari?</h2>
               <Card className="rounded-[2.5rem] bg-[#fdfcfb] border border-border/50 overflow-hidden">
                 <CardContent className="p-8 md:p-12 space-y-8 text-left">
-                  <p className="text-muted-foreground text-sm md:text-[14px] leading-[20px]">
+                  <p className="text-muted-foreground text-[14px] leading-[20px]">
                     Die Safari-Preise variieren stark je nach Komfort und Reisestil. Budget-Safaris beginnen bei etwa 150–220 USD pro Tag. Privat organisierte Safaris der Mittelklasse liegen meist bei ca. 340–500 USD pro Tag.
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
@@ -489,7 +496,6 @@ export default function NationalParksPage() {
               </div>
             </section>
           </main>
-
         </div>
       </section>
 
