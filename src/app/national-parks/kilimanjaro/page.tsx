@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -19,6 +18,8 @@ import {
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ContactSection } from '@/components/shared/ContactSection';
+import { ReviewVideos } from '@/components/sections/ReviewVideos';
+import { OtherParks } from '@/components/sections/OtherParks';
 
 const registryCards = [
   {
@@ -47,7 +48,7 @@ export default function KilimanjaroParkPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
       {/* 01 Cinematic Hero: The Roof of Africa */}
-      <section className="relative h-[55vh] md:h-[75vh] w-full overflow-hidden bg-secondary">
+      <section className="relative h-[40vh] md:h-[55vh] w-full overflow-hidden bg-secondary">
         <Image 
           src="https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1920" 
           alt="Mount Kilimanjaro Summit" 
@@ -58,7 +59,7 @@ export default function KilimanjaroParkPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
         
-        <div className="container relative z-10 mx-auto px-6 h-full flex flex-col items-center justify-end text-center pb-16 md:pb-24 max-w-7xl">
+        <div className="container relative z-10 mx-auto px-6 h-full flex flex-col items-center justify-end text-center pb-12 md:pb-16 max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -76,7 +77,7 @@ export default function KilimanjaroParkPage() {
       </section>
 
       {/* 02 Narrative Context: Die Thronende Majestät */}
-      <section className="py-16 md:py-32 container mx-auto px-4 max-w-7xl">
+      <section className="py-10 md:py-16 container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
           
           <div className="lg:col-span-7 space-y-10">
@@ -95,9 +96,9 @@ export default function KilimanjaroParkPage() {
                 </h2>
               </div>
               
-              <div className="space-y-6 text-muted-foreground font-normal text-[14px] leading-[20px] text-justify opacity-90">
+              <div className="space-y-6 text-muted-foreground font-normal text-[14px] leading-[20px] text-left opacity-90">
                 <p>
-                  Der Kilimandscharo ist weit mehr als nur ein Berg. Er ist ein Symbol für Freiheit, Ausdauer und die unbändige Kraft der Natur. Seit seiner Ernennung zum Nationalpark im Jahr 1973 und zum UNESCO-Weltnaturerbe im Jahr 1987 schützt das Gebiet eines der faszinierendsten Bergmassive der Welt.
+                  Der Kilimandscharo ist weit mehr als nur ein Berg. Er ist ein Symbol für Freiheit, Ausdauer und die unbändige Kraft der Natur. Seit seiner Ernennung zum Nationalpark im Jahr 1973 und zum Unesco-Weltnaturerbe im Jahr 1987 schützt das Gebiet eines der faszinierendsten Bergmassive der Welt.
                 </p>
                 <p>
                   Ein Aufstieg zum Uhuru Peak ist eine Reise durch alle Klimazonen unserer Erde. Sie beginnen im üppigen Regenwald, wandern durch neblige Heidemoor-Landschaften und erreichen schließlich die karge, eisige Steinwüste der Gipfelregion. Es ist eine physische und mentale Herausforderung, die mit dem wohl spektakulärsten Sonnenaufgang Ihres Lebens belohnt wird.
@@ -111,7 +112,7 @@ export default function KilimanjaroParkPage() {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative aspect-square md:aspect-[4/5] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl border border-border/40 bg-muted"
+              className="relative aspect-square md:aspect-[4/5] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border border-border/40 bg-muted"
             >
               <Image 
                 src="https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=1200" 
@@ -134,7 +135,7 @@ export default function KilimanjaroParkPage() {
       </section>
 
       {/* 03 Information Matrix: Registry Grid */}
-      <section className="py-12 md:py-24 bg-white border-y border-border/40">
+      <section className="py-10 md:py-16 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
             {registryCards.map((card, i) => (
@@ -146,7 +147,7 @@ export default function KilimanjaroParkPage() {
                 transition={{ delay: i * 0.1 }}
               >
                 <Card className="h-full border-none shadow-sm bg-[#fdfcfb] rounded-[1.5rem] md:rounded-[2.5rem] hover:shadow-xl transition-all duration-500 group border border-border/20">
-                  <CardContent className="p-8 md:p-12 flex items-start gap-6 md:gap-8">
+                  <CardContent className="p-8 md:p-12 flex items-start gap-6 md:gap-8 text-left">
                     <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white flex items-center justify-center shrink-0 shadow-sm group-hover:bg-primary transition-colors border border-border/40">
                       <card.icon className="w-6 h-6 md:w-8 md:h-8 text-primary group-hover:text-white transition-colors" />
                     </div>
@@ -166,8 +167,11 @@ export default function KilimanjaroParkPage() {
         </div>
       </section>
 
+      <ReviewVideos />
+      <OtherParks excludeId="kilimanjaro" />
+
       {/* 04 Strategy CTA */}
-      <section className="py-16 md:py-32 container mx-auto px-4 max-w-4xl text-center space-y-10">
+      <section className="py-10 md:py-16 container mx-auto px-4 max-w-4xl text-center space-y-10">
         <div className="w-16 h-16 rounded-[1.5rem] bg-white border border-border shadow-xl mx-auto flex items-center justify-center">
           <Compass className="w-8 h-8 text-primary" />
         </div>
@@ -189,7 +193,9 @@ export default function KilimanjaroParkPage() {
         </div>
       </section>
 
-      <ContactSection />
+      <section id="inquiry" className="scroll-mt-20">
+        <ContactSection />
+      </section>
     </div>
   );
 }

@@ -17,6 +17,8 @@ import {
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ContactSection } from '@/components/shared/ContactSection';
+import { ReviewVideos } from '@/components/sections/ReviewVideos';
+import { OtherParks } from '@/components/sections/OtherParks';
 
 const registryCards = [
   {
@@ -45,7 +47,7 @@ export default function TarangirePage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
       {/* 01 Cinematic Hero: The Giant's Realm */}
-      <section className="relative h-[55vh] md:h-[75vh] w-full overflow-hidden bg-secondary">
+      <section className="relative h-[40vh] md:h-[55vh] w-full overflow-hidden bg-secondary">
         <Image 
           src="https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=1920" 
           alt="Tarangire Elefanten Herde" 
@@ -56,7 +58,7 @@ export default function TarangirePage() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
         
-        <div className="container relative z-10 mx-auto px-6 h-full flex flex-col items-center justify-end text-center pb-16 md:pb-24 max-w-7xl">
+        <div className="container relative z-10 mx-auto px-6 h-full flex flex-col items-center justify-end text-center pb-12 md:pb-16 max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -74,7 +76,7 @@ export default function TarangirePage() {
       </section>
 
       {/* 02 Narrative Context: Baobab-Landschaft */}
-      <section className="py-16 md:py-32 container mx-auto px-4 max-w-7xl">
+      <section className="py-10 md:py-16 container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
           
           <div className="space-y-10">
@@ -93,7 +95,7 @@ export default function TarangirePage() {
                 </h2>
               </div>
               
-              <div className="space-y-6 text-muted-foreground font-normal text-[14px] leading-[20px] text-justify opacity-90">
+              <div className="space-y-6 text-muted-foreground font-normal text-[14px] leading-[20px] text-left opacity-90">
                 <p>
                   Der Tarangire-Nationalpark liegt südlich des Manyara-Sees und ist ein echter Geheimtipp für Naturfotografen. Die Landschaft aus goldgelben Ebenen, weiten Palmenhainen und uralten Affenbrotbäumen macht jede Safari hier zu einem ästhetischen Erlebnis der Extraklasse.
                 </p>
@@ -103,7 +105,7 @@ export default function TarangirePage() {
               </div>
             </motion.div>
 
-            <div className="pt-4">
+            <div className="pt-4 text-left">
               <Button onClick={() => {
                 const el = document.getElementById('inquiry');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -141,7 +143,7 @@ export default function TarangirePage() {
       </section>
 
       {/* 03 Information Matrix: Registry Grid */}
-      <section className="py-12 md:py-24 bg-white border-y border-border/40">
+      <section className="py-10 md:py-16 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
             {registryCards.map((card, i) => (
@@ -153,7 +155,7 @@ export default function TarangirePage() {
                 transition={{ delay: i * 0.1 }}
               >
                 <Card className="h-full border-none shadow-sm bg-[#fdfcfb] rounded-[1.5rem] md:rounded-[2.5rem] hover:shadow-xl transition-all duration-500 group border border-border/20">
-                  <CardContent className="p-8 md:p-12 flex items-start gap-6 md:gap-8">
+                  <CardContent className="p-8 md:p-12 flex items-start gap-6 md:gap-8 text-left">
                     <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white flex items-center justify-center shrink-0 shadow-sm group-hover:bg-primary transition-colors border border-border/40">
                       <card.icon className="w-6 h-6 md:w-8 md:h-8 text-primary group-hover:text-white transition-colors" />
                     </div>
@@ -173,30 +175,12 @@ export default function TarangirePage() {
         </div>
       </section>
 
-      {/* 04 Strategy CTA */}
-      <section className="py-16 md:py-32 container mx-auto px-4 max-w-4xl text-center space-y-10">
-        <div className="w-16 h-16 rounded-[1.5rem] bg-white border border-border shadow-xl mx-auto flex items-center justify-center">
-          <Compass className="w-8 h-8 text-primary" />
-        </div>
-        <div className="space-y-6">
-          <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tight">
-            Ihre Expedition beginnt in Berlin
-          </h2>
-          <p className="text-muted-foreground font-bold text-[14px] md:text-lg tracking-normal leading-relaxed max-w-2xl mx-auto">
-            Von der Spree an den Tarangire. Wir planen Ihre private Expedition mit der Präzision und Leidenschaft, die dieses einzigartige Ökosystem verdient.
-          </p>
-        </div>
-        <div className="pt-10">
-          <Button onClick={() => {
-            const el = document.getElementById('inquiry');
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
-          }} size="lg" className="rounded-xl px-12 h-14 md:h-16 font-bold text-[11px] tracking-widest shadow-2xl hover:scale-105 transition-transform border-none">
-            Unverbindliche Anfrage <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
-        </div>
-      </section>
+      <ReviewVideos />
+      <OtherParks excludeId="tarangire" />
 
-      <ContactSection />
+      <section id="inquiry" className="scroll-mt-20">
+        <ContactSection />
+      </section>
     </div>
   );
 }
