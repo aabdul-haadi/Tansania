@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -14,13 +13,16 @@ import {
   ArrowRight,
   ShieldCheck,
   Zap,
-  Snowflake
+  Snowflake,
+  Users,
+  CheckCircle2
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ContactSection } from '@/components/shared/ContactSection';
 import { ReviewVideos } from '@/components/sections/ReviewVideos';
 import { OtherParks } from '@/components/sections/OtherParks';
+import { Badge } from '@/components/ui/badge';
 
 const registryCards = [
   {
@@ -78,7 +80,7 @@ export default function KilimanjaroParkPage() {
       </section>
 
       {/* 02 Narrative Context: Die Thronende Majestät */}
-      <section className="py-8 md:py-12 container mx-auto px-4 max-w-7xl">
+      <section className="py-8 md:py-12 container mx-auto px-4 max-get-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
           
           <div className="lg:col-span-7 space-y-10">
@@ -179,7 +181,7 @@ export default function KilimanjaroParkPage() {
                 <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl">
                   <Compass className="w-6 h-6 md:w-8 md:h-8 text-white" />
                 </div>
-                <h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-bold tracking-tighter leading-tight text-white">
+                <h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-bold tracking-tighter text-white">
                   Planen Sie Ihre perfekte Kilimandscharo Safari
                 </h2>
               </div>

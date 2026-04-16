@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from 'react';
@@ -389,7 +388,7 @@ export default function NgorongoroPage() {
               >
                 <div className="w-full md:w-1/2 flex justify-center md:justify-end">
                   <div className={cn(
-                    "p-6 md:p-8 bg-white rounded-2xl border border-border/40 shadow-sm w-full transition-all hover:shadow-md",
+                    "p-5 md:p-8 bg-white rounded-2xl border border-border/40 shadow-sm w-full transition-all hover:shadow-md",
                     item.side === 'right' ? "md:text-left" : "md:text-right"
                   )}>
                     <div className={cn(
@@ -415,7 +414,7 @@ export default function NgorongoroPage() {
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-10 md:mb-16 space-y-4">
             <span className="text-primary font-bold tracking-[0.4em] text-[10px]">Aktivitäten & Erlebnisse</span>
-            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter">
+            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter text-center">
               Unvergessliche <span className="text-primary">Aktivitäten</span> im Ngorongoro-Krater
             </h2>
             <p className="text-muted-foreground text-sm font-bold max-w-2xl mx-auto leading-relaxed">
@@ -423,7 +422,7 @@ export default function NgorongoroPage() {
             </p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-10 md:mb-12">
+          <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-10 md:mb-12">
             {activities.map((act) => (
               <button
                 key={act.id}
@@ -449,37 +448,37 @@ export default function NgorongoroPage() {
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.5 }}
             >
-              <Card className="rounded-[2rem] md:rounded-[3rem] border border-border/40 overflow-hidden shadow-2xl bg-white flex flex-col lg:flex-row">
-                <div className="w-full lg:w-[45%] relative aspect-[16/9] lg:aspect-auto min-h-[300px] md:min-h-[350px]">
+              <Card className="rounded-[1.5rem] md:rounded-[3rem] border border-border/40 overflow-hidden shadow-2xl bg-white flex flex-col lg:flex-row">
+                <div className="w-full lg:w-[45%] relative aspect-video lg:aspect-auto min-h-[220px] md:min-h-[350px]">
                   <Image src={activeActivity.img} alt={activeActivity.title} fill className="object-cover" />
                   <div className="absolute top-6 left-6 flex flex-col gap-2">
                     <Badge className="bg-white/95 backdrop-blur-md text-secondary border-none px-3 py-1 text-[8px] font-bold">{activeActivity.duration}</Badge>
                     <Badge className="bg-primary text-white border-none px-3 py-1 text-[8px] font-bold">{activeActivity.level}</Badge>
                   </div>
                 </div>
-                <div className="flex-1 p-6 md:p-12 lg:p-16 space-y-8 flex flex-col justify-center text-left">
+                <div className="flex-1 p-5 md:p-12 lg:p-16 space-y-6 md:space-y-8 flex flex-col justify-center text-left">
                   <div className="space-y-6">
                     <h3 className="font-headline text-2xl md:text-4xl font-bold text-secondary tracking-tight">{activeActivity.title}</h3>
                     
-                    <div className="grid grid-cols-3 gap-4 pb-6 border-b border-border/50">
+                    <div className="grid grid-cols-3 gap-2 md:gap-4 pb-6 border-b border-border/50">
                       <div className="space-y-1">
                         <div className="flex items-center gap-2 text-primary">
                           <Clock className="w-4 h-4" />
-                          <span className="text-[9px] font-bold tracking-widest">Dauer</span>
+                          <span className="text-[8px] md:text-[9px] font-bold tracking-widest">Dauer</span>
                         </div>
                         <p className="text-xs font-bold text-secondary">{activeActivity.duration}</p>
                       </div>
                       <div className="space-y-1">
                         <div className="flex items-center gap-2 text-primary">
                           <Users className="w-4 h-4" />
-                          <span className="text-[9px] font-bold tracking-widest">Personen</span>
+                          <span className="text-[8px] md:text-[9px] font-bold tracking-widest">Personen</span>
                         </div>
                         <p className="text-xs font-bold text-secondary">{activeActivity.people}</p>
                       </div>
                       <div className="space-y-1">
                         <div className="flex items-center gap-2 text-primary">
                           <Zap className="w-4 h-4" />
-                          <span className="text-[9px] font-bold tracking-widest">Fokus</span>
+                          <span className="text-[8px] md:text-[9px] font-bold tracking-widest">Fokus</span>
                         </div>
                         <p className="text-xs font-bold text-secondary">{activeActivity.frequency}</p>
                       </div>
@@ -522,7 +521,7 @@ export default function NgorongoroPage() {
                 <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl">
                   <Compass className="w-6 h-6 md:w-8 md:h-8 text-white" />
                 </div>
-                <h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-bold tracking-tighter leading-tight text-white">
+                <h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-bold tracking-tighter text-white">
                   Planen Sie Ihre perfekte Ngorongoro Safari
                 </h2>
               </div>

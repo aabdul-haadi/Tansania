@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -20,6 +19,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { ContactSection } from '@/components/shared/ContactSection';
 import { ReviewVideos } from '@/components/sections/ReviewVideos';
 import { OtherParks } from '@/components/sections/OtherParks';
+import { Badge } from '@/components/ui/badge';
 
 const registryCards = [
   {
@@ -178,7 +178,7 @@ export default function SaadaniParkPage() {
                 <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl">
                   <Compass className="w-6 h-6 md:w-8 md:h-8 text-white" />
                 </div>
-                <h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-bold tracking-tighter leading-tight text-white">
+                <h2 className="font-headline text-lg sm:text-2xl md:text-5xl font-bold tracking-tighter text-white">
                   Planen Sie Ihre perfekte Saadani Safari
                 </h2>
               </div>
