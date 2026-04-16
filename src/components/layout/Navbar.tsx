@@ -83,6 +83,13 @@ export function Navbar() {
     { name: 'Uganda', href: '/destinations/uganda' },
   ];
 
+  const seasonalReisen = [
+    { name: 'Neujahrsreisen Tansania 2026', href: '/neujahrsreisen-tansania-2026' },
+    { name: 'Sommerreisen Abenteuer & Erholung 2026', href: '/sommerreisen-abenteuer-und-erholung-2026' },
+    { name: 'Weihnachten Reisen Tansania 2026', href: '/weihnachten-reisen-tansania-2026' },
+    { name: 'Ostern Safari Urlaub 2026', href: '/ostern-safari-urlaub-2026' },
+  ];
+
   const primaryLinks = [
     { name: 'Über uns', href: '/about' },
     { name: 'Reisetipps', href: '/blog?category=Tipps' },
@@ -177,6 +184,26 @@ export function Navbar() {
                     <div className="w-full h-px bg-border/50" />
 
                     <Accordion type="single" collapsible className="w-full">
+                      <AccordionItem value="reisen2026" className="border-none mb-4">
+                        <AccordionTrigger className="text-lg md:text-xl font-headline font-black tracking-normal hover:text-primary transition-colors leading-none py-0 hover:no-underline [&>svg]:hidden justify-start gap-4">
+                          <span>Reisen 2026</span>
+                          <ChevronDown className="w-4 h-4 text-primary" />
+                        </AccordionTrigger>
+                        <AccordionContent className="pt-4 pb-2 pl-4">
+                          <div className="flex flex-col gap-3 border-l-2 border-primary/20 pl-4 text-left">
+                            {seasonalReisen.map((link) => (
+                              <Link 
+                                key={link.name} 
+                                href={link.href}
+                                className="text-xs md:text-sm font-bold text-secondary/60 hover:text-primary tracking-normal transition-colors"
+                              >
+                                {link.name}
+                              </Link>
+                            ))}
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+
                       <AccordionItem value="destinations" className="border-none">
                         <AccordionTrigger className="text-lg md:text-xl font-headline font-black tracking-normal hover:text-primary transition-colors leading-none py-0 hover:no-underline [&>svg]:hidden justify-start gap-4">
                           <span>Alle Reiseziele</span>
