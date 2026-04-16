@@ -191,7 +191,7 @@ export default function NationalParksPage() {
 
   return (
     <div className="bg-white min-h-screen font-normal">
-      {/* 01 Hero Narrative - Compacted for mobile */}
+      {/* 01 Hero Narrative */}
       <header className="pt-24 md:pt-32 pb-8 bg-white text-center">
         <div className="container mx-auto px-4 max-w-5xl space-y-3 md:space-y-4">
           <motion.h1 
@@ -212,7 +212,7 @@ export default function NationalParksPage() {
         </div>
       </header>
 
-      {/* 02 Hero Visual Hub - Squared Button */}
+      {/* 02 Hero Visual Hub - Compacted Button Size */}
       <section className="relative mb-20 md:mb-24">
         <div className="w-full relative aspect-[21/9] md:h-[600px] overflow-hidden shadow-sm">
           <Image
@@ -227,7 +227,7 @@ export default function NationalParksPage() {
         
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-30">
           <Link href="/trip-planner">
-            <Button size="xl" className="rounded-none px-12 h-14 md:h-16 bg-secondary text-white hover:bg-primary font-bold text-xs tracking-widest border-none shadow-2xl transition-all">
+            <Button size="xl" className="rounded-none px-8 md:px-12 h-11 md:h-16 bg-secondary text-white hover:bg-primary font-bold text-[10px] md:text-xs tracking-widest border-none shadow-2xl transition-all whitespace-nowrap">
               Jetzt Safari planen
             </Button>
           </Link>
@@ -477,7 +477,7 @@ export default function NationalParksPage() {
               </div>
             </section>
 
-            {/* Final Conversion Banner - Reduced Mobile Font Scaling */}
+            {/* Final Conversion Banner */}
             <section className="pt-12 border-t border-border/50">
               <div className="bg-secondary text-white rounded-[2.5rem] p-8 md:p-16 text-center space-y-6 md:space-y-8 relative overflow-hidden">
                 <div className="absolute top-0 right-0 p-10 opacity-10"><Compass className="w-48 h-48 rotate-12" /></div>

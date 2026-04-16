@@ -49,7 +49,6 @@ export function Navbar() {
   const pathname = usePathname();
 
   // Force Dark Content Protocol for specific "Bright" routes without hero backgrounds
-  // Removed park sub-pages from this condition so they use the light hero navbar
   const isBrightPage = pathname === '/national-parks' || pathname === '/faq' || pathname?.startsWith('/legal');
 
   useEffect(() => {
@@ -108,21 +107,21 @@ export function Navbar() {
           useDarkState ? "text-secondary" : "text-white",
           isOpen ? "opacity-0 pointer-events-none" : "opacity-100"
         )}>
-          <Link href="/" className="flex items-center gap-2 md:gap-3 group shrink-0">
+          <Link href="/" className="flex items-center gap-3 md:gap-5 group shrink-0">
             <img 
               src="/iconlogo.jpg" 
               alt="Tansania Reiseabenteuer" 
               className={cn(
-                "h-8 md:h-12 w-auto transition-all duration-500 shrink-0",
+                "h-10 md:h-14 w-auto transition-all duration-500 shrink-0",
                 !useDarkState && "brightness-110"
               )} 
             />
-            <div className="flex items-center gap-2 md:gap-3">
-              <span className="font-headline font-black whitespace-nowrap text-xs sm:text-sm md:text-xl lg:text-2xl tracking-normal leading-none">
+            <div className="flex items-center gap-2 md:gap-4">
+              <span className="font-headline font-black whitespace-nowrap text-sm sm:text-base md:text-2xl lg:text-3xl tracking-normal leading-none">
                 Tansania
               </span>
               <span className={cn(
-                "font-headline font-black whitespace-nowrap text-xs sm:text-sm md:text-xl lg:text-2xl transition-colors duration-500 tracking-normal leading-none",
+                "font-headline font-black whitespace-nowrap text-sm sm:text-base md:text-2xl lg:text-3xl transition-colors duration-500 tracking-normal leading-none",
                 useDarkState ? "text-primary" : "text-white"
               )}>
                 Reiseabenteuer
