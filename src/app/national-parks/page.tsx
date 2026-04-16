@@ -7,39 +7,25 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { 
   Compass, 
-  Map, 
-  Camera, 
-  Sun, 
   ChevronRight, 
   ArrowRight,
   Sparkles,
   MapPin,
   CheckCircle2,
-  Leaf,
-  Info,
+  ShieldCheck,
+  Camera,
+  Sun,
   Waves,
   Mountain,
-  Heart,
-  ShieldCheck,
-  Star,
-  Coffee,
-  Ticket,
-  Palmtree,
-  TreePine,
+  Leaf,
+  Users,
   Bird,
-  CloudSun,
-  Plus
+  Zap
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import {
   Carousel,
   CarouselContent,
@@ -52,19 +38,19 @@ const pillarData = [
     id: 'serengeti',
     title: "Serengeti", 
     sub: "Endlose Savannen", 
-    img: "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800" 
+    img: "/assets/images/national-parks/serengeti-thumb.webp" 
   },
   { 
     id: 'ngorongoro',
     title: "Ngorongoro", 
     sub: "Afrikas Garten Eden", 
-    img: "https://images.unsplash.com/photo-1580502304784-8985b777da59?q=80&w=800" 
+    img: "/assets/images/national-parks/ngorongoro-thumb.webp" 
   },
   { 
     id: 'kilimanjaro',
     title: "Kilimanjaro", 
     sub: "Dach Afrikas", 
-    img: "https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=800" 
+    img: "/assets/images/national-parks/kilimanjaro-thumb.webp" 
   }
 ];
 
@@ -75,7 +61,7 @@ const parksData = [
     fullName: 'Serengeti-Nationalpark: Unesco-Weltnaturerbe & Große Migration',
     tagline: 'Der Serengeti-Nationalpark (ca. 14.763 km²) ist weltberühmt für seine endlosen Graslandschaften und die legendäre große Tierwanderung.',
     desc: 'Jährlich ziehen hier über eine Million Gnus, Zebras und Gazellen durch die Savanne – eines der beeindruckendsten Naturschauspiele der Welt – dicht gefolgt von Löwen, Geparden und Hyänen. Die Serengeti beherbergt dadurch eine der artenreichsten Raubtier- und Huftiergemeinschaften Afrikas. Dank dieser einzigartigen Tierkonzentration steht der Park seit 1981 unter Unesco-Welterbe-Schutz.',
-    img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200',
+    img: '/assets/images/national-parks/serengeti.webp',
     facts: [
       { t: "Tiermigration", v: "Über 1 Mio. Gnus, Zebras und Gazellen wandern jährlich mit den Regenzeiten durch die Serengeti. Dieses Schauspiel der Massenwanderung ist weltweit einmalig." },
       { t: "Reiche Raubtierwelt", v: "Rund 3.000 Löwen leben hier – zudem viele Leoparden, Geparden und Schakale sowie große Clans von Hyänen. Nirgendwo sonst finden sich so viele große Raubtiere auf einem Fleck." },
@@ -90,7 +76,7 @@ const parksData = [
     fullName: 'Ngorongoro-Krater: Größte intakte Vulkankaldera der Erde',
     tagline: 'Der Ngorongoro-Krater ist mit etwa 19 km Durchmesser die größte intakte Vulkankaldera der Erde.',
     desc: 'Auf dem Kraterboden (ca. 260 km²) leben unzählige Wildtiere dicht gedrängt – von Gnus und Zebras bis zu einer ungewöhnlich hohen Anzahl an Löwen und sogar einigen seltenen Spitzmaulnashörnern. Dieses „ursprüngliche Eden" wirkt wie ein natürlicher Zoo. In der umliegenden Ngorongoro Conservation Area ziehen außerdem rund zwei Millionen Gnus und Zebras auf ihren Wanderungen am Kraterrand entlang.',
-    img: 'https://images.unsplash.com/photo-1580502304784-8985b777da59?q=80&w=1200',
+    img: '/assets/images/national-parks/ngorongoro.webp',
     facts: [
       { t: "Riesige Caldera", v: "Ngorongoro ist die größte unversehrte Vulkankrater-Landschaft der Welt (Ø ~19 km). Die Sicht vom Kraterrand hinab auf die Ebene ist spektakulär." },
       { t: "Hohe Wildtierdichte", v: "Im Kraterinneren konzentrieren sich nahezu alle ostafrikanischen Großsäuger auf kleinem Raum – eine einzigartige Dichte an Löwen, Elefanten, Büffeln, Zebras, Antilopen und mehr." },
@@ -105,7 +91,7 @@ const parksData = [
     fullName: 'Tarangire-Nationalpark: Elefantenparadies mit Baobab-Landschaft',
     tagline: 'Der Tarangire-Nationalpark liegt südlich des Manyara-Sees und ist bekannt für seine riesigen Elefantenherden und malerischen Baobab-Bäume.',
     desc: 'In der Trockenzeit (Juni–Oktober) versammeln sich hier bis zu 2.000 Elefanten entlang des Tarangire-Flusses, der selbst in Dürreperioden Wasser führt. Die Landschaft aus goldgelben Ebenen, Palmenhainen und uralten Affenbrotbäumen macht jede Safari im Tarangire zu einem besonderen Erlebnis.',
-    img: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=1200',
+    img: '/assets/images/national-parks/tarangire.webp',
     facts: [
       { t: "Elefantenparadies", v: "Eine der größten Elefantenpopulationen Tansanias lebt hier – in der Trockenzeit werden bis zu ~2.000 Tiere gleichzeitig am Fluss gezählt." },
       { t: "Baobab-Landschaft", v: "Zahlreiche uralte Riesen-Baobabs prägen den Horizont – sie bieten nicht nur spektakuläre Fotomotive, sondern auch Schatten und Wasserreservoirs für Tiere." },
@@ -120,7 +106,7 @@ const parksData = [
     fullName: 'Lake-Manyara-Nationalpark: Baumkletternde Löwen & Vogelparadies',
     tagline: 'Ein üppig grünes Juwel am Fuß des Ostafrikanischen Grabenbruchs.',
     desc: 'Berühmt ist Manyara für seine baumkletternden Löwen, die sich tagsüber gern in die Äste der Akazien zurückziehen. Der Park (ca. 330 km²) umfasst auch den flachen Manyara-See, an dessen alkalischen Ufern Schwärme von Flamingos und anderen Wasservögeln leben.',
-    img: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=1200',
+    img: '/assets/images/national-parks/manyara.webp',
     facts: [
       { t: "Tropischer Grundwasserwald", v: "Ständig sprudelnde Quellen nähren einen dichten Urwald am Rand des Sees. Aufgrund dieses seltenen Habitats wurde Manyara von der Unesco zum Biosphärenreservat erklärt." },
       { v: "In Manyara kann man mit etwas Glück Löwen in Bäumen dösen sehen – ein ungewöhnliches Verhalten, das tolle Fotomotive bietet.", t: "Löwen im Geäst" },
@@ -135,7 +121,7 @@ const parksData = [
     fullName: 'Kilimandscharo-Nationalpark: Dach Afrikas mit Schneefeldern',
     tagline: 'Der Kilimandscharo ist mit 5.895 m der höchste Berg Afrikas und der höchste freistehende Berg der Welt.',
     desc: 'Sein schneebedeckter Kibo-Gipfel thront majestätisch über der Savanne Nordtansanias. Der Kilimanjaro-Nationalpark schützt das Bergmassiv und die umliegenden Wälder: Unten dichter tropischer Regenwald, weiter oben Hochmoor, Heidelandschaft und schließlich karge alpine Wüste nahe dem Gipfel.',
-    img: 'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1200',
+    img: '/assets/images/national-parks/kilimanjaro.webp',
     facts: [
       { t: "5895 m Gipfel", v: "Der Kilimandscharo (Kibo) ist ein begehrtes Trekking-Ziel. Mehrere Routen (Marangu, Machame, Lemosho u.a.) führen in 5–8 Tagen zum Uhuru Peak." },
       { t: "Schnee- und Eisfelder", v: "Als einziger Ort Afrikas trägt der Kili ganzjährig Schnee und Eis – allerdings sind die Gletscher stark rückläufig und könnten in wenigen Jahrzehnten verschwunden sein." },
@@ -150,10 +136,10 @@ const parksData = [
     fullName: 'Mount Meru (Arusha-Nationalpark): Zweithöchster Berg Tansanias',
     tagline: 'Der Mount Meru (4.566 m) ist Tansanias zweithöchster Berg und ein erloschener Vulkan.',
     desc: 'Er erhebt sich im Arusha-Nationalpark, nur etwa 70 km vom Kilimandscharo entfernt. Eine mehrtägige Trekkingtour auf den Meru führt durch dichten Bergregenwald, mystische Moorlandschaften und entlang des Kraterrands bis zum erloschenen Gipfel.',
-    img: 'https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=1200',
+    img: '/assets/images/national-parks/arusha.webp',
     facts: [
       { t: "4566 m Vulkan", v: "Der Aufstieg auf den Meru (meist 3–4 Tage) ist anspruchsvoll, aber lohnend – oft wird er als Akklimatisierungstour vor dem Kilimandscharo genutzt. Am Gipfelkrater eröffnet sich ein Blick ins Innere des Vulkans." },
-      { t: "Vielfältige Tierwelt", v: "Der Meru ist Heimat seltener Bergwaldbewohner wie Colobusaffen und Waldantilopen. Auf den offenen Grasflächen des Parks sieht man oft Giraffen, Warzenschweine und Büffel grasen." },
+      { t: "Vielfältige Tierwelt", v: "Der Meru ist Heimat seltener Bergwaldbewohner wie Colobusaffen und Waldantilopen. Auf den offenen Grasflächen des Parks sieht man oft Giraffen, Büffel und Warzenschweine grasen." },
       { t: "Nahe Arusha", v: "Durch die Lage direkt bei Arusha (der Safari-Hauptstadt) ist der Arusha-Nationalpark leicht erreichbar – ideal für einen Tagesausflug oder als Einstieg in eine längere Safari." }
     ],
     ctaLabel: 'Arusha Park erkunden',
@@ -165,7 +151,7 @@ const parksData = [
     fullName: 'Saadani-Nationalpark: Safari am Strand - Einzigartige Kombination',
     tagline: 'Der Saadani-Nationalpark ist eine echte Safari-Kuriosität: Hier trifft Wildnis auf das Meer.',
     desc: 'Als einziger Küsten-Nationalpark Tansanias umfasst Saadani etwa 1.100 km² Savanne, Küstenwald und einen 15 km langen unberührten Strand am Indischen Ozean. Nur wenige hundert Meter hinter dem Strand streifen Löwen, Giraffen, Elefanten, Büffel und Gnus durch Palmenhaine und Grasland.',
-    img: 'https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=1200',
+    img: '/assets/images/national-parks/saadani.webp',
     facts: [
       { t: "Safari am Strand", v: "Endlose einsame Strände mit palmengesäumten Buchten grenzen direkt an wildes Buschland – diese Kombination aus Strandurlaub und Safari findet man sonst kaum irgendwo." },
       { t: "Kleine Serengeti", v: "Die Tierwelt Saadanis steht den bekannten Parks kaum nach: Löwen, Büffel, Zebras, Giraffen, Warzenschweine und zahlreiche Antilopen durchstreifen sogar die Dünen und Mangroven." },
@@ -232,7 +218,6 @@ export default function NationalParksPage() {
             fill
             priority
             className="object-cover"
-            data-ai-hint="safari savannah"
           />
           <div className="absolute inset-0 bg-black/5" />
         </div>
@@ -250,7 +235,7 @@ export default function NationalParksPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
           
           {/* 03 Sticky Registry Navigation */}
-          <aside className="lg:col-span-4 lg:sticky lg:top-24 space-y-8 hidden lg:block">
+          <aside className="lg:col-span-4 lg:sticky lg:top-24 space-y-8 hidden lg:block text-left">
             <div className="space-y-6">
               <div className="space-y-1">
                 <span className="text-primary font-bold text-[10px] block tracking-widest">Park-Register</span>
@@ -316,7 +301,7 @@ export default function NationalParksPage() {
                         <div className="absolute top-4 left-4">
                           <Badge className="bg-primary text-white border-none text-[7px] font-bold px-2 py-0.5 shadow-lg">Nationalpark Registry</Badge>
                         </div>
-                        <div className="absolute bottom-6 left-6 right-6">
+                        <div className="absolute bottom-6 left-6 right-6 text-left">
                           <h3 className="text-white font-headline text-2xl leading-none mb-1">{item.title}</h3>
                           <p className="text-primary font-bold text-[9px] tracking-widest">{item.sub}</p>
                         </div>
@@ -337,7 +322,7 @@ export default function NationalParksPage() {
                               <div className="absolute top-4 left-4">
                                 <Badge className="bg-primary text-white border-none text-[7px] font-bold px-2 py-0.5 shadow-lg">Nationalpark Registry</Badge>
                               </div>
-                              <div className="absolute bottom-6 left-6 right-6">
+                              <div className="absolute bottom-6 left-6 right-6 text-left">
                                 <h3 className="text-white font-headline text-xl leading-none mb-1">{item.title}</h3>
                                 <p className="text-primary font-bold text-[8px]">{item.sub}</p>
                               </div>
