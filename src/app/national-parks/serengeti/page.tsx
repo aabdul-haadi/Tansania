@@ -356,20 +356,39 @@ export default function SerengetiPage() {
         </div>
       </section>
 
-      {/* 04 Migration Timeline Section */}
-      <section className="py-8 md:py-12 bg-[#FDFCFB] overflow-hidden">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <div className="text-center mb-10 md:mb-16 space-y-4">
-            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter">
+      {/* 04 Migration Timeline Section - REFINED WITH BG IMAGE & OVERLAY */}
+      <section className="relative py-12 md:py-24 overflow-hidden bg-secondary">
+        <Image 
+          src="/assets/images/national-parks/card-migration.jpg" 
+          alt="Great Migration Path" 
+          fill 
+          className="object-cover brightness-[0.4] opacity-40 scale-105"
+        />
+        <div className="absolute inset-0 bg-secondary/80 backdrop-blur-[2px]" />
+        
+        <div className="container relative z-10 mx-auto px-4 max-w-5xl">
+          <div className="text-center mb-12 md:mb-20 space-y-4">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="font-headline text-3xl md:text-6xl font-normal text-white tracking-tighter"
+            >
               Die Route der Großen Migration
-            </h2>
-            <p className="text-muted-foreground font-bold text-[10px] md:text-sm tracking-widest max-w-xl mx-auto">
-              Folgen Sie dem jährlichen Zyklus der Tierwanderung durch die Serengeti.
-            </p>
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-white/60 font-bold text-[10px] md:text-sm tracking-[0.3em] uppercase max-w-xl mx-auto"
+            >
+              Folgen Sie dem jährlichen Zyklus der Tierwanderung
+            </motion.p>
           </div>
 
           <div className="relative space-y-12 md:space-y-16">
-            <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-primary/20 z-0 hidden md:block" />
+            <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-white/20 z-0 hidden md:block" />
             
             {timeline.map((item, idx) => (
               <motion.div 
@@ -384,20 +403,20 @@ export default function SerengetiPage() {
               >
                 <div className="w-full md:w-1/2 flex justify-center md:justify-end">
                   <div className={cn(
-                    "p-5 md:p-8 bg-white rounded-2xl border border-border/40 shadow-sm w-full transition-all hover:shadow-md",
+                    "p-6 md:p-10 bg-white rounded-2xl md:rounded-[2.5rem] shadow-2xl w-full transition-all hover:shadow-primary/5 border border-white/10",
                     item.side === 'right' ? "md:text-left" : "md:text-right"
                   )}>
                     <div className={cn(
-                      "flex items-center gap-4 mb-3",
+                      "flex items-center gap-4 mb-4",
                       item.side === 'right' ? "flex-row-reverse" : "flex-row justify-end"
                     )}>
-                      <h4 className="font-headline text-lg md:text-xl font-bold text-secondary leading-none">{item.title}</h4>
-                      <Badge className="bg-primary text-white border-none px-3 py-1 text-[8px] font-bold tracking-widest">{item.dates}</Badge>
+                      <h4 className="font-headline text-xl md:text-2xl font-bold text-secondary leading-none">{item.title}</h4>
+                      <Badge className="bg-primary text-white border-none px-4 py-1.5 text-[9px] font-bold tracking-widest shadow-xl">{item.dates}</Badge>
                     </div>
-                    <p className="text-[11px] md:text-xs text-muted-foreground font-bold tracking-widest leading-relaxed">{item.desc}</p>
+                    <p className="text-[13px] md:text-[14px] text-muted-foreground font-bold tracking-tight leading-relaxed uppercase opacity-80">{item.desc}</p>
                   </div>
                 </div>
-                <div className="hidden md:flex w-8 h-8 rounded-full bg-primary border-4 border-white shadow-xl items-center justify-center shrink-0" />
+                <div className="hidden md:flex w-8 h-8 rounded-full bg-primary border-4 border-secondary shadow-xl items-center justify-center shrink-0 z-20" />
                 <div className="hidden md:block w-1/2" />
               </motion.div>
             ))}
