@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from 'react';
@@ -11,7 +12,6 @@ import {
   Camera, 
   ArrowRight,
   Waves,
-  Bird,
   Users,
   CheckCircle2,
   Map as MapIcon,
@@ -90,7 +90,7 @@ const activities = [
     duration: '5-6 Std',
     people: 'Max. 6',
     distance: '3-10 km',
-    desc: 'Entdecken Sie den Arusha Nationalpark aus nächster Nähe! Unsere geführten Wanderungen führen Sie durch verschiedene Vegetationszonen – vom tropischen Regenwald bis zu offenen Grassavannen.',
+    desc: 'Entdecken Sie den Arusha Nationalpark aus nächster Nähe! Unsere geführten Wanderungen führen Sie durch verschiedene Vegetationszonen.',
     features: [
       'Wanderung zum Tululusia Wasserfall',
       'Naturlehrpfad durch den Meru-Wald',
@@ -107,7 +107,7 @@ const activities = [
     duration: '2-3 Std',
     people: 'Max. 2 pro Kanu',
     distance: 'Variabel',
-    desc: 'Erleben Sie die Stille des Wassers. Lautlos gleiten wir an Wasserbüffeln und Flamingos vorbei – eine völlig neue Perspektive auf die Tierwelt.',
+    desc: 'Erleben Sie die Stille des Wassers. Lautlos gleiten wir an Wasserbüffeln und Flamingos vorbei.',
     features: [
       'Nahe Begegnungen am Seeufer',
       'Professionelle Kanu-Guides',
@@ -124,7 +124,7 @@ const activities = [
     duration: 'Ganztags',
     people: 'Max. 6',
     distance: 'Variabel',
-    desc: 'Die Vielfalt auf engstem Raum: Vom Kraterboden bis zu den Bergwäldern. Ein kompakter, aber intensiver Safari-Tag erwartet Sie.',
+    desc: 'Die Vielfalt auf engstem Raum: Vom Kraterboden bis zu den Bergwäldern. Ein intensiver Safari-Tag erwartet Sie.',
     features: [
       'Ngurdoto Krater Aussichtspunkte',
       'Suche nach Leoparden im Bergwald',
@@ -141,7 +141,7 @@ export default function ArushaParkPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
       <section className="relative h-[40vh] md:h-[55vh] w-full overflow-hidden bg-secondary">
-        <Image src="https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=1920" alt="Mount Meru View" fill priority className="object-cover brightness-75 scale-105" />
+        <Image src="https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=1920" alt="Mount Meru" fill priority className="object-cover brightness-75 scale-105" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
         <div className="container relative z-10 mx-auto px-6 h-full flex flex-col items-center justify-end text-center pb-12 md:pb-16 max-w-7xl">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="space-y-4">
@@ -154,14 +154,12 @@ export default function ArushaParkPage() {
       <section className="py-8 md:py-12 container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           <div className="space-y-10">
-            <div className="space-y-6">
-              <div className="space-y-4 text-left">
-                <div className="space-y-2"><div className="w-8 h-0.5 bg-primary" /><span className="text-primary font-normal text-[11px] block tracking-normal">Der vielfältigste Nationalpark Tansanias</span></div>
-                <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary leading-tight tracking-tight">Einzigartiges Naturschauspiel am Mount Meru</h2>
-              </div>
-              <div className="space-y-6 text-muted-foreground font-normal text-[14px] leading-[20px] text-left opacity-90">
-                <p>Nur wenige Kilometer von Arusha Stadt entfernt erwartet Sie ein einzigartiges Naturschauspiel. Der Arusha Nationalpark vereint drei spektakuläre Landschaften: den majestätischen Mount Meru, den Ngurdoto Krater und die sieben zauberhaften Momella Seen.</p>
-                <p>Im Gegensatz zu anderen Nationalparks Tansanias können Sie hier Wanderungen unternehmen, Kanu fahren und die Natur hautnah erleben. Ideal für Reisende, die sowohl Wildlife als auch spektakuläre Landschaften suchen.</p>
+            <div className="space-y-6 text-left">
+              <div className="space-y-2"><div className="w-8 h-0.5 bg-primary" /><span className="text-primary font-normal text-[11px] block tracking-normal">Der vielfältigste Nationalpark Tansanias</span></div>
+              <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary leading-tight tracking-tight">Einzigartiges Naturschauspiel am Mount Meru</h2>
+              <div className="space-y-6 text-muted-foreground font-normal text-[14px] leading-[20px] opacity-90">
+                <p>Nur wenige Kilometer von Arusha Stadt entfernt erwartet Sie ein einzigartiges Naturschauspiel. Der Arusha Nationalpark vereint drei spektakuläre Landschaften: den majestätischen Mount Meru, den Ngurdoto Krater und die sieben Momella Seen.</p>
+                <p>Im Gegensatz zu anderen Nationalparks können Sie hier Wanderungen unternehmen und Kanu fahren. Ideal für Reisende, die Wildlife und spektakuläre Landschaften suchen.</p>
               </div>
             </div>
           </div>
@@ -171,45 +169,13 @@ export default function ArushaParkPage() {
             </div>
           </div>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mt-12 md:mt-16">
-          {registryCards.map((card, i) => (
-            <div key={i} className="p-8 md:p-10 bg-white rounded-2xl border border-border/40 flex items-start gap-6 shadow-sm transition-all hover:shadow-md group">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 transition-colors group-hover:bg-primary"><card.icon className="w-6 h-6 text-primary group-hover:text-white" /></div>
-              <div className="space-y-3"><h4 className="font-headline text-lg md:text-2xl font-bold text-secondary tracking-tight leading-tight">{card.title}</h4><p className="text-[14px] leading-[20px] text-muted-foreground font-normal opacity-80">{card.desc}</p></div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="py-8 md:py-12 bg-white border-t border-border/40">
-        <div className="container mx-auto px-4 max-w-7xl">
-          <div className="text-center mb-10 md:mb-16 space-y-4">
-            <span className="text-primary font-normal text-[10px] tracking-[0.2em] block">Unsere Standorte</span>
-            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tight">Entdecken Sie Tansania <span className="text-primary">auf der Karte</span></h2>
-          </div>
-          <div className="relative rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl bg-muted border border-border/50 aspect-video md:aspect-[21/9] mb-10 md:mb-16 group">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255141.0565814515!2d36.63467655!3d-3.23307525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1837090885e33d07%3A0x633190d79674066b!2sArusha%20National%20Park!5e0!3m2!1sen!2stz!4v1711234567890!5m2!1sen!2stz" className="absolute inset-0 w-full h-full border-none grayscale-[0.2] group-hover:grayscale-0 transition-all duration-1000" loading="lazy" />
-            <div className="absolute top-6 right-6 md:top-10 md:right-10 z-20 w-64 md:w-80 hidden md:block text-left">
-              <Card className="bg-white/95 backdrop-blur-xl border border-white rounded-[2rem] p-6 shadow-2xl"><div className="space-y-6"><div className="flex items-center gap-3"><div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary"><MapPin className="w-5 h-5" /></div><h4 className="font-headline text-xl font-bold text-secondary">Top Safari Ziele</h4></div><div className="space-y-4">{[{ t: "Serengeti Nationalpark", d: "Große Tierwanderung" }, { t: "Ngorongoro Krater", d: "UNESCO Weltnaturerbe" }, { t: "Kilimanjaro", d: "Afrikas höchster Berg" }, { t: "Sansibar", d: "Gewürzinsel & Traumstrände" }].map((h, i) => (<div key={i} className="flex flex-col border-b border-border/40 pb-3 last:border-none"><span className="text-[11px] font-bold text-secondary tracking-tight leading-none mb-1">{h.t}</span><span className="text-[9px] font-normal text-muted-foreground tracking-widest">{h.d}</span></div>))}</div></div></Card>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
-            {regions.map((region) => (
-              <div key={region.id} className="flex flex-col space-y-6 text-left">
-                <div className="relative aspect-[16/10] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-xl group border border-border/40 bg-muted"><Image src={region.img} alt={region.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" /><div className="absolute top-4 left-4"><Badge className={cn("text-white border-none font-bold text-[8px] px-3 py-1 tracking-widest", region.badgeColor)}>{region.badge}</Badge></div></div>
-                <div className="space-y-4 px-1"><h3 className="font-headline text-xl md:text-2xl font-normal text-secondary tracking-tight">{region.title}</h3><p className="text-[13px] leading-[20px] text-muted-foreground font-normal opacity-80">{region.desc}</p></div>
-              </div>
-            ))}
-          </div>
-        </div>
       </section>
 
       <section className="py-8 md:py-12 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-8 md:mb-12 space-y-4">
             <span className="text-primary font-normal tracking-[0.4em] text-[10px]">Aktivitäten & Erlebnisse</span>
-            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter text-center">Unvergessliche Aktivitäten im <span className="text-primary">Arusha Park</span></h2>
+            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter text-center">Unvergessliche <span className="text-primary">Aktivitäten</span> im Arusha Park</h2>
           </div>
           <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-8 md:mb-12">
             {activities.map((act) => (
@@ -236,7 +202,7 @@ export default function ArushaParkPage() {
       </section>
 
       <section className="py-8 md:py-12 bg-white">
-        <div className="container mx-auto px-4 max-w-7xl">
+        <div className="container mx-auto px-4 max-get-7xl">
           <div className="bg-primary rounded-[2.5rem] md:rounded-[3.5rem] p-8 md:p-16 text-white relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-10 shadow-2xl">
             <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
             <div className="relative z-10 lg:w-[60%] space-y-8 text-left">

@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from 'react';
@@ -5,7 +6,6 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Compass, 
-  MapPin, 
   Clock, 
   Camera, 
   ArrowRight,
@@ -14,7 +14,6 @@ import {
   Bird,
   Users,
   CheckCircle2,
-  Map as MapIcon,
   Footprints
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -24,62 +23,6 @@ import { ContactSection } from '@/components/shared/ContactSection';
 import { ReviewVideos } from '@/components/sections/ReviewVideos';
 import { OtherParks } from '@/components/sections/OtherParks';
 import { cn } from '@/lib/utils';
-
-const registryCards = [
-  {
-    title: "Elefantenparadies am Fluss",
-    desc: "In der Trockenzeit versammeln sich bis zu 2.000 Elefanten entlang des Tarangire-Flusses. Es ist eine der höchsten Konzentrationen an Dickhäutern weltweit.",
-    icon: Camera
-  },
-  {
-    title: "Die Giganten der Flora",
-    desc: "Uralte Affenbrotbäume (Baobabs) prägen das Landschaftsbild. Diese jahrtausendealten Riesen dienen als natürliche Wasserspeicher und Schattenspender.",
-    icon: TreePine
-  },
-  {
-    title: "Vielfältige Raubtierpräsenz",
-    desc: "Neben den großen Herden beheimatet der Park Löwen, Leoparden und seltene afrikanische Wildhunde, die in den Akazienwäldern auf Jagd gehen.",
-    icon: Wind
-  },
-  {
-    title: "Expeditions-Saisonalität",
-    desc: "Die Monate Juni bis Oktober bieten spektakuläre Sichtungen an den Wasserstellen. Wir planen Ihre Safari so, dass Sie die Wanderbewegungen optimal nutzen.",
-    icon: Clock
-  }
-];
-
-const regions = [
-  {
-    id: 'river',
-    badge: 'Flussregion',
-    badgeColor: 'bg-secondary',
-    title: 'Tarangire River Korridor',
-    desc: 'Die Lebensader des Parks. Besonders in der Trockenzeit sammeln sich hier tausende Tiere zur Tränke.',
-    tags: ['Elefantenherden', 'Raubtier-Action', 'Vogelvielfalt'],
-    img: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=600',
-    hint: 'elephants river'
-  },
-  {
-    id: 'silale',
-    badge: 'Sumpfgebiet',
-    badgeColor: 'bg-primary',
-    title: 'Silale Sumpf',
-    desc: 'Ein riesiges grünes Meer, das das ganze Jahr über Wasser führt und ein Magnet für Büffel und Löwen ist.',
-    tags: ['Büffel', 'Löwen', 'Landschaft'],
-    img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=600',
-    hint: 'safari savannah'
-  },
-  {
-    id: 'south',
-    badge: 'Süden',
-    badgeColor: 'bg-orange-700',
-    title: 'Südliches Hinterland',
-    desc: 'Wild, unberührt und weniger besucht. Ideal für Reisende, die absolute Einsamkeit im Busch suchen.',
-    tags: ['Einsamkeit', 'Baobabs', 'Wildnis'],
-    img: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=600',
-    hint: 'baobab landscape'
-  }
-];
 
 const activities = [
   {
@@ -107,7 +50,7 @@ const activities = [
     duration: '2-4 Std',
     people: 'Max. 4',
     distance: '5-8 km',
-    desc: 'Spüren Sie den Boden unter Ihren Füßen. In Begleitung eines bewaffneten Rangers entdecken Sie die kleinen Wunder der Natur, die vom Auto aus verborgen bleiben.',
+    desc: 'Spüren Sie den Boden unter Ihren Füßen. In Begleitung eines Rangers entdecken Sie die kleinen Wunder der Natur.',
     features: [
       'Spurenlesen & Fährtenkunde',
       'Botanische Einblicke',
@@ -124,7 +67,7 @@ const activities = [
     duration: '4-6 Std',
     people: 'Max. 6',
     distance: 'Variabel',
-    desc: 'Mit über 550 Vogelarten ist Tarangire ein Paradies für Beobachter. Wir suchen seltene Arten in den Sümpfen und Akazienwäldern.',
+    desc: 'Mit über 550 Vogelarten ist Tarangire ein Paradies für Beobachter. Wir suchen seltene Arten in den Sümpfen.',
     features: [
       'Spezialisierte Birding-Guides',
       'Besuch des Silale Sumpfes',
@@ -141,7 +84,7 @@ export default function TarangireParkPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
       <section className="relative h-[40vh] md:h-[55vh] w-full overflow-hidden bg-secondary">
-        <Image src="/assets/images/national-parks/tarangire-baobab.jpg" alt="Tarangire Baobab" fill priority className="object-cover brightness-75 scale-105" />
+        <Image src="/assets/images/national-parks/tarangire-baobab.jpg" alt="Tarangire" fill priority className="object-cover brightness-75 scale-105" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
         <div className="container relative z-10 mx-auto px-6 h-full flex flex-col items-center justify-end text-center pb-12 md:pb-16 max-w-7xl">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="space-y-4">
@@ -154,14 +97,12 @@ export default function TarangireParkPage() {
       <section className="py-8 md:py-12 container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           <div className="space-y-10">
-            <div className="space-y-6">
-              <div className="space-y-4 text-left">
-                <div className="space-y-2"><div className="w-8 h-0.5 bg-primary" /><span className="text-primary font-normal text-[11px] block tracking-normal">Ein Refugium der Stille und Größe</span></div>
-                <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary leading-tight tracking-tight text-left">Elefantenparadies mit Baobab-Landschaft</h2>
-              </div>
-              <div className="space-y-6 text-muted-foreground font-normal text-[14px] leading-[20px] text-left opacity-90">
-                <p>Der Tarangire-Nationalpark liegt südlich des Manyara-Sees und ist ein echter Geheimtipp für Naturfotografen. Die Landschaft aus goldgelben Ebenen, weiten Palmenhainen und uralten Affenbrotbäumen macht jede Safari hier zu einem ästhetischen Erlebnis der Extraklasse.</p>
-                <p>In der Trockenzeit von Juni bis Oktober wird der Tarangire-Fluss zum einzigen dauerhaften Wasserspeicher der Region. Dies führt zu einer Tierkonzentration, die der Serengeti in nichts nachsteht. Besonders die Begegnungen mit den riesigen Elefantenfamilien bleiben unvergessliche.</p>
+            <div className="space-y-6 text-left">
+              <div className="space-y-2"><div className="w-8 h-0.5 bg-primary" /><span className="text-primary font-normal text-[11px] block tracking-normal">Ein Refugium der Stille und Größe</span></div>
+              <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary leading-tight tracking-tight">Elefantenparadies mit Baobab-Landschaft</h2>
+              <div className="space-y-6 text-muted-foreground font-normal text-[14px] leading-[20px] opacity-90">
+                <p>Der Tarangire-Nationalpark liegt südlich des Manyara-Sees und ist ein echter Geheimtipp für Naturfotografen. Die Landschaft aus goldgelben Ebenen und uralten Affenbrotbäumen ist einzigartig.</p>
+                <p>In der Trockenzeit von Juni bis Oktober wird der Tarangire-Fluss zum einzigen dauerhaften Wasserspeicher der Region, was zu einer enormen Tierkonzentration führt.</p>
               </div>
             </div>
           </div>
@@ -171,22 +112,13 @@ export default function TarangireParkPage() {
             </div>
           </div>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mt-12 md:mt-16">
-          {registryCards.map((card, i) => (
-            <div key={i} className="p-8 md:p-10 bg-white rounded-2xl border border-border/40 flex items-start gap-6 shadow-sm transition-all hover:shadow-md group">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 transition-colors group-hover:bg-primary"><card.icon className="w-6 h-6 text-primary group-hover:text-white" /></div>
-              <div className="space-y-3"><h4 className="font-headline text-lg md:text-2xl font-bold text-secondary tracking-tight leading-tight">{card.title}</h4><p className="text-[14px] leading-[20px] text-muted-foreground font-normal opacity-80">{card.desc}</p></div>
-            </div>
-          ))}
-        </div>
       </section>
 
       <section className="py-8 md:py-12 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-8 md:mb-12 space-y-4">
             <span className="text-primary font-normal tracking-[0.4em] text-[10px]">Aktivitäten & Erlebnisse</span>
-            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter text-center">Unvergessliche Aktivitäten im <span className="text-primary">Tarangire Park</span></h2>
+            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter text-center">Unvergessliche <span className="text-primary">Aktivitäten</span> im Tarangire Park</h2>
           </div>
           <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-8 md:mb-12">
             {activities.map((act) => (
@@ -197,10 +129,10 @@ export default function TarangireParkPage() {
             <motion.div key={activeActivity.id} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.5 }}>
               <Card className="rounded-[1.5rem] md:rounded-[3rem] border border-border/40 overflow-hidden shadow-2xl bg-white flex flex-col lg:flex-row">
                 <div className="w-full lg:w-[45%] relative aspect-video lg:aspect-auto min-h-[220px] md:min-h-[350px]"><Image src={activeActivity.img} alt={activeActivity.title} fill className="object-cover" /><div className="absolute top-6 left-6 flex flex-col gap-2"><Badge className="bg-white/95 backdrop-blur-md text-secondary border-none px-3 py-1 text-[8px] font-bold">{activeActivity.duration}</Badge><Badge className="bg-primary text-white border-none px-3 py-1 text-[8px] font-bold">{activeActivity.level}</Badge></div></div>
-                <div className="flex-1 p-5 md:p-12 lg:p-16 space-y-6 md:space-y-8 flex flex-col justify-center text-left">
+                <div className="flex-1 p-5 md:p-10 lg:p-12 space-y-6 md:space-y-8 flex flex-col justify-center text-left">
                   <div className="space-y-6">
                     <h3 className="font-headline text-2xl md:text-4xl font-bold text-secondary tracking-tight">{activeActivity.title}</h3>
-                    <div className="grid grid-cols-3 gap-2 md:gap-4 pb-6 border-b border-border/50"><div className="space-y-1"><div className="flex items-center gap-2 text-primary"><MapIcon className="w-4 h-4" /><span className="text-[8px] md:text-[9px] font-bold tracking-widest uppercase">Strecke</span></div><p className="text-xs font-bold text-secondary">{activeActivity.distance}</p></div><div className="space-y-1"><div className="flex items-center gap-2 text-primary"><Clock className="w-4 h-4" /><span className="text-[8px] md:text-[9px] font-bold tracking-widest uppercase">Dauer</span></div><p className="text-xs font-bold text-secondary">{activeActivity.duration}</p></div><div className="space-y-1"><div className="flex items-center gap-2 text-primary"><Users className="w-4 h-4" /><span className="text-[8px] md:text-[9px] font-bold tracking-widest uppercase">Personen</span></div><p className="text-xs font-bold text-secondary">{activeActivity.people}</p></div></div>
+                    <div className="grid grid-cols-3 gap-2 md:gap-4 pb-6 border-b border-border/50"><div className="space-y-1"><div className="flex items-center gap-2 text-primary"><Clock className="w-4 h-4" /><span className="text-[8px] md:text-[9px] font-bold tracking-widest uppercase">Dauer</span></div><p className="text-xs font-bold text-secondary">{activeActivity.duration}</p></div><div className="space-y-1"><div className="flex items-center gap-2 text-primary"><Users className="w-4 h-4" /><span className="text-[8px] md:text-[9px] font-bold tracking-widest uppercase">Personen</span></div><p className="text-xs font-bold text-secondary">{activeActivity.people}</p></div><div className="space-y-1"><div className="flex items-center gap-2 text-primary"><TreePine className="w-4 h-4" /><span className="text-[8px] md:text-[9px] font-bold tracking-widest uppercase">Art</span></div><p className="text-xs font-bold text-secondary">{activeActivity.label}</p></div></div>
                     <p className="text-muted-foreground text-sm md:text-base font-normal leading-relaxed tracking-tight opacity-70">{activeActivity.desc}</p>
                     <div className="space-y-3">{activeActivity.features.map((f, i) => (<div key={i} className="flex items-center gap-3 text-[10px] md:text-[11px] font-bold text-secondary tracking-widest"><CheckCircle2 className="w-4 h-4 text-primary shrink-0" />{f}</div>))}</div>
                   </div>
