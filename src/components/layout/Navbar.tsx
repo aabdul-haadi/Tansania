@@ -55,6 +55,8 @@ export function Navbar() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       setIsScrolled(currentScrollY > 50);
+      
+      // Handle visibility for desktop if needed, but the user requested no reappear on phone
       if (currentScrollY > lastScrollY && currentScrollY > 200 && !isOpen) {
         setIsVisible(false);
       } else {
@@ -96,10 +98,9 @@ export function Navbar() {
   return (
     <header 
       className={cn(
-        "top-0 w-full z-[100] transition-all duration-500",
-        "fixed md:absolute",
-        (!isVisible && !isOpen) ? "-translate-y-full md:translate-y-0" : "translate-y-0",
-        // Scrolled background only on dark-hero pages. Bright pages stay transparent.
+        "top-0 w-full z-[100] transition-all duration-500 absolute",
+        // On mobile, we no longer hide/show on scroll to avoid "appearing when scroll back"
+        "translate-y-0",
         (isScrolled && !isBrightPage) ? "py-3 bg-white/80 backdrop-blur-md shadow-sm" : "py-6 md:py-8 bg-transparent"
       )}
     >
