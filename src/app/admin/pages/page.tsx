@@ -33,6 +33,7 @@ const siteRegistry = [
       { title: "Homepage", path: "/", status: "Live", sub: "Primary entry" },
       { title: "Safari Catalog", path: "/safaris", status: "Live", sub: "Master hub" },
       { title: "Activities Registry", path: "/activities", status: "Live", sub: "Adventure hub" },
+      { title: "Accommodations", path: "/unterkuenfte", status: "Live", sub: "Hotel hub" },
       { title: "Journal Registry", path: "/blog", status: "Live", sub: "Content engine" },
       { title: "National Parks", path: "/national-parks", status: "Live", sub: "Conservation hub" },
       { title: "Migration Tracker", path: "/migration", status: "Live", sub: "Wildlife ops" },
@@ -144,7 +145,7 @@ export default function SiteRegistry() {
               <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-secondary flex items-center justify-center shadow-lg">
                 <Globe className="w-5 h-5 md:w-6 md:h-6 text-primary" />
               </div>
-              <h1 className="font-headline text-2xl md:text-5xl font-normal text-secondary leading-none">Infrastructure Registry</h1>
+              <h1 className="font-headline text-2xl md:text-5xl font-normal text-secondary leading-none uppercase">Infrastructure Registry</h1>
             </div>
             <p className="text-muted-foreground text-[10px] font-bold tracking-normal pl-1">
               Scale control • 500+ path real-time monitoring
@@ -180,7 +181,7 @@ export default function SiteRegistry() {
                   <group.icon className="w-5 h-5 md:w-6 md:h-6" />
                 </div>
                 <div className="text-left">
-                  <h2 className="font-headline text-lg md:text-2xl font-normal text-secondary leading-none">{group.category}</h2>
+                  <h2 className="font-headline text-lg md:text-2xl font-normal text-secondary leading-none uppercase">{group.category}</h2>
                   <p className="text-[8px] font-bold text-muted-foreground tracking-normal mt-1.5 opacity-60">Registry cluster: {group.id}</p>
                 </div>
                 <div className="h-px flex-grow bg-muted" />
@@ -196,7 +197,7 @@ export default function SiteRegistry() {
                       )} />
                       <div className="flex flex-col min-w-0">
                         <div className="flex flex-wrap items-center gap-2 md:gap-3">
-                          <p className="font-bold text-sm md:text-base text-secondary truncate leading-none">
+                          <p className="font-bold text-sm md:text-base text-secondary truncate leading-none uppercase">
                             {route.title}
                           </p>
                           <Badge variant="outline" className="text-[7px] font-bold text-primary tracking-normal px-2 py-0.5 border-primary/20 bg-primary/5 rounded">
@@ -214,9 +215,6 @@ export default function SiteRegistry() {
                         <Link href={route.path} target="_blank">
                           <ExternalLink className="w-3.5 h-3.5 md:w-4 md:h-4" />
                         </Link>
-                      </Button>
-                      <Button variant="ghost" size="icon" className="rounded-xl h-9 w-9 md:h-10 md:w-10 text-muted-foreground hover:text-secondary hidden md:flex">
-                        <Monitor className="w-3.5 h-3.5" />
                       </Button>
                     </div>
                   </div>
