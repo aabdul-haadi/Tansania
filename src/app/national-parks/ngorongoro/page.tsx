@@ -116,12 +116,12 @@ export default function NgorongoroPage() {
         </div>
       </section>
 
-      {/* 03 Unvergessliche Aktivitäten - Centered Mobile Registry */}
+      {/* 03 Unvergessliche Aktivitäten - Compact & Centered */}
       <section className="py-8 md:py-12 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-8 md:mb-12 space-y-3">
             <span className="text-primary font-bold tracking-[0.4em] text-[10px] uppercase">Aktivitäten & Erlebnisse</span>
-            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter uppercase text-center">Unvergessliche Aktivitäten</h2>
+            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter uppercase">Unvergessliche Aktivitäten</h2>
           </div>
           
           <div className="flex flex-wrap justify-center gap-2 mb-8 md:mb-12">
@@ -157,11 +157,11 @@ export default function NgorongoroPage() {
                     <Badge className="bg-primary text-white border-none px-3 py-1 text-[8px] font-bold uppercase">{activeActivity.level}</Badge>
                   </div>
                 </div>
-                <div className="flex-1 p-5 md:p-10 lg:p-12 space-y-6 flex flex-col justify-center text-center lg:text-left">
-                  <div className="space-y-4 md:space-y-6">
+                <div className="flex-1 p-5 md:p-10 lg:p-12 space-y-6 flex flex-col justify-center text-center lg:text-left items-center lg:items-start">
+                  <div className="space-y-4 md:space-y-6 w-full">
                     <h3 className="font-headline text-2xl md:text-4xl font-bold text-secondary tracking-tight uppercase leading-tight">{activeActivity.title}</h3>
                     
-                    <div className="grid grid-cols-3 gap-2 md:gap-4 pb-4 border-b border-border/50">
+                    <div className="grid grid-cols-3 gap-2 md:gap-4 pb-4 border-b border-border/50 w-full">
                       <div className="space-y-1">
                         <div className="flex items-center justify-center lg:justify-start gap-1.5 text-primary">
                           <Clock className="w-3 h-3 md:w-4 md:h-4" />
@@ -196,7 +196,7 @@ export default function NgorongoroPage() {
                       ))}
                     </div>
                   </div>
-                  <div className="pt-4">
+                  <div className="pt-4 w-full sm:w-auto">
                     <Button onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })} className="w-full sm:w-auto rounded-xl px-10 h-12 md:h-14 bg-primary text-white font-bold text-[10px] tracking-widest shadow-xl border-none uppercase">Jetzt anfragen <ArrowRight className="w-4 h-4 ml-2" /></Button>
                   </div>
                 </div>
@@ -218,7 +218,7 @@ export default function NgorongoroPage() {
                 </div>
                 <h2 className="font-headline text-2xl sm:text-3xl md:text-5xl font-normal text-white leading-tight tracking-tighter uppercase">Planen Sie Ihre perfekte Ngorongoro Safari</h2>
               </div>
-              <p className="text-white/80 font-normal text-[11px] md:text-base tracking-widest leading-relaxed max-w-2xl mx-auto lg:mx-0">Unsere Safari-Experten helfen Ihnen, die idealen Aktivitäten für Ihre Reisezeit und Interessen zu kombinieren. Erleben Sie Big Five und Maasai-Kultur in einer unvergesslichen Reise.</p>
+              <p className="text-white/80 font-normal text-[11px] md:text-base tracking-widest leading-relaxed max-w-2xl mx-auto lg:mx-0">Unsere Safari-Experten helfen Ihnen, die idealen Aktivitäten für Ihre Reisezeit und Interessen zu kombinieren. Erleben Sie Big Five und Maasai-Kultur in einer unvergessliche Reise.</p>
             </div>
             <div className="relative z-10 w-full lg:w-auto flex flex-col gap-3 shrink-0">
               <Button onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })} className="w-full lg:w-[280px] h-14 md:h-16 rounded-xl bg-white text-primary hover:bg-secondary hover:text-white font-bold text-[11px] tracking-widest shadow-xl border-none transition-all group uppercase">Kostenloses Angebot <ArrowRight className="w-4 h-4 ml-2" /></Button>

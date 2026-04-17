@@ -105,7 +105,7 @@ export default function TarangireParkPage() {
               </div>
               <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary leading-tight tracking-tight uppercase">Elefantenparadies</h2>
               <div className="space-y-6 text-muted-foreground font-normal text-[14px] leading-[20px] opacity-90">
-                <p>Der Tarangire-Nationalpark liegt südlich des Manyara-Sees und ist ein echter Geheimtipp für Naturfotografen. Die Landschaft aus goldgelben Ebenen und uralten Affenbrotbäumen ist einzigartig.</p>
+                <p>Der Tarangire-Nationalpark liegt südlich des Manyara-Sees und ist ein echter Geheimtipp für Naturfotografen. Die Landschaft aus goldgelben Ebenen und uralten Affenbrotbäumen ist einzigartige.</p>
                 <p>In der Trockenzeit von Juni bis Oktober wird der Tarangire-Fluss zum einzigen dauerhaften Wasserspeicher der Region, was zu einer enormen Tierkonzentration führt.</p>
               </div>
             </div>
@@ -118,7 +118,7 @@ export default function TarangireParkPage() {
         </div>
       </section>
 
-      {/* 03 Unvergessliche Aktivitäten - Centered Mobile Registry */}
+      {/* 03 Unvergessliche Aktivitäten - Compact & Centered */}
       <section className="py-8 md:py-12 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-8 md:mb-12 space-y-3">
@@ -159,11 +159,11 @@ export default function TarangireParkPage() {
                     <Badge className="bg-primary text-white border-none px-3 py-1 text-[8px] font-bold uppercase">{activeActivity.level}</Badge>
                   </div>
                 </div>
-                <div className="flex-1 p-5 md:p-10 lg:p-12 space-y-6 flex flex-col justify-center text-center lg:text-left">
-                  <div className="space-y-4 md:space-y-6">
+                <div className="flex-1 p-5 md:p-10 lg:p-12 space-y-6 flex flex-col justify-center text-center lg:text-left items-center lg:items-start">
+                  <div className="space-y-4 md:space-y-6 w-full">
                     <h3 className="font-headline text-2xl md:text-4xl font-bold text-secondary tracking-tight uppercase leading-tight">{activeActivity.title}</h3>
                     
-                    <div className="grid grid-cols-3 gap-2 md:gap-4 pb-4 border-b border-border/50">
+                    <div className="grid grid-cols-3 gap-2 md:gap-4 pb-4 border-b border-border/50 w-full">
                       <div className="space-y-1">
                         <div className="flex items-center justify-center lg:justify-start gap-1.5 text-primary">
                           <Clock className="w-3 h-3 md:w-4 md:h-4" />
@@ -198,7 +198,7 @@ export default function TarangireParkPage() {
                       ))}
                     </div>
                   </div>
-                  <div className="pt-4">
+                  <div className="pt-4 w-full sm:w-auto">
                     <Button onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })} className="w-full sm:w-auto rounded-xl px-10 h-12 md:h-14 bg-primary text-white font-bold text-[10px] tracking-widest shadow-xl border-none uppercase">Jetzt anfragen <ArrowRight className="w-4 h-4 ml-2" /></Button>
                   </div>
                 </div>

@@ -158,12 +158,12 @@ export default function SerengetiPage() {
 
       {/* 03 Migration Timeline with Cinematic Overlay */}
       <section className="relative py-12 md:py-24 overflow-hidden bg-secondary">
-        <Image src="/assets/images/national-parks/card-migration.jpg" alt="Migration Path" fill className="object-cover brightness-[0.5] opacity-50 scale-105" />
-        <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]" />
+        <Image src="/assets/images/national-parks/card-migration.jpg" alt="Migration Path" fill className="object-cover brightness-[0.5] opacity-60 scale-105" />
+        <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
         <div className="container relative z-10 mx-auto px-4 max-w-5xl">
           <div className="text-center mb-12 md:mb-16 space-y-4">
             <h2 className="font-headline text-3xl md:text-6xl font-normal text-white tracking-tighter uppercase">Die Route der Großen Migration</h2>
-            <p className="text-white/80 font-normal text-[10px] md:text-sm tracking-widest max-w-xl mx-auto uppercase">Folgen Sie dem jährlichen Zyklus der Tierwanderung</p>
+            <p className="text-white/80 font-normal text-[10px] md:text-sm tracking-widest max-w-xl mx-auto">Folgen Sie dem jährlichen Zyklus der Tierwanderung</p>
           </div>
           <div className="relative space-y-12 md:space-y-16">
             <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-white/20 z-0 hidden md:block" />
@@ -186,7 +186,7 @@ export default function SerengetiPage() {
         </div>
       </section>
 
-      {/* 04 Unvergessliche Aktivitäten - Compact & Centered Mobile Registry */}
+      {/* 04 Unvergessliche Aktivitäten - Compact & Centered */}
       <section className="py-8 md:py-12 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-8 md:mb-12 space-y-3">
@@ -223,15 +223,15 @@ export default function SerengetiPage() {
                 <div className="w-full lg:w-[45%] relative aspect-video lg:aspect-auto min-h-[220px]">
                   <Image src={activeActivity.img} alt={activeActivity.title} fill className="object-cover" />
                   <div className="absolute top-4 left-4 flex flex-col gap-2">
-                    <Badge className="bg-white/95 backdrop-blur-md text-secondary border-none px-3 py-1 text-[8px] font-bold uppercase">{activeActivity.duration}</Badge>
+                    <Badge className="bg-white/95 backdrop-blur-sm text-secondary border-none px-3 py-1 text-[8px] font-bold uppercase">{activeActivity.duration}</Badge>
                     <Badge className="bg-primary text-white border-none px-3 py-1 text-[8px] font-bold uppercase">{activeActivity.level}</Badge>
                   </div>
                 </div>
-                <div className="flex-1 p-5 md:p-10 lg:p-12 space-y-6 flex flex-col justify-center text-center lg:text-left">
-                  <div className="space-y-4 md:space-y-6">
+                <div className="flex-1 p-5 md:p-10 lg:p-12 space-y-6 flex flex-col justify-center text-center lg:text-left items-center lg:items-start">
+                  <div className="space-y-4 md:space-y-6 w-full">
                     <h3 className="font-headline text-2xl md:text-4xl font-bold text-secondary tracking-tight uppercase leading-tight">{activeActivity.title}</h3>
                     
-                    <div className="grid grid-cols-3 gap-2 md:gap-4 pb-4 border-b border-border/50">
+                    <div className="grid grid-cols-3 gap-2 md:gap-4 pb-4 border-b border-border/50 w-full">
                       <div className="space-y-1">
                         <div className="flex items-center justify-center lg:justify-start gap-1.5 text-primary">
                           <Clock className="w-3 h-3 md:w-4 md:h-4" />
@@ -266,7 +266,7 @@ export default function SerengetiPage() {
                       ))}
                     </div>
                   </div>
-                  <div className="pt-4">
+                  <div className="pt-4 w-full sm:w-auto">
                     <Button onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })} className="w-full sm:w-auto rounded-xl px-10 h-12 md:h-14 bg-primary text-white font-bold text-[10px] tracking-widest shadow-xl border-none uppercase">Jetzt anfragen <ArrowRight className="w-4 h-4 ml-2" /></Button>
                   </div>
                 </div>

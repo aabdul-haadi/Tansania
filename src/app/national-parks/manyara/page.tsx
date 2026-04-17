@@ -54,7 +54,7 @@ const activities = [
       'Stille des Sees genießen',
       'Professionelle Kanu-Guides'
     ],
-    img: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800',
+    img: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=1200',
     level: 'Leicht'
   },
   {
@@ -117,7 +117,7 @@ export default function ManyaraPage() {
         </div>
       </section>
 
-      {/* 03 Unvergessliche Aktivitäten - Centered Mobile Registry */}
+      {/* 03 Unvergessliche Aktivitäten - Compact & Centered */}
       <section className="py-8 md:py-12 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-8 md:mb-12 space-y-3">
@@ -158,11 +158,11 @@ export default function ManyaraPage() {
                     <Badge className="bg-primary text-white border-none px-3 py-1 text-[8px] font-bold uppercase">{activeActivity.level}</Badge>
                   </div>
                 </div>
-                <div className="flex-1 p-5 md:p-10 lg:p-12 space-y-6 flex flex-col justify-center text-center lg:text-left">
-                  <div className="space-y-4 md:space-y-6">
+                <div className="flex-1 p-5 md:p-10 lg:p-12 space-y-6 flex flex-col justify-center text-center lg:text-left items-center lg:items-start">
+                  <div className="space-y-4 md:space-y-6 w-full">
                     <h3 className="font-headline text-2xl md:text-4xl font-bold text-secondary tracking-tight uppercase leading-tight">{activeActivity.title}</h3>
                     
-                    <div className="grid grid-cols-3 gap-2 md:gap-4 pb-4 border-b border-border/50">
+                    <div className="grid grid-cols-3 gap-2 md:gap-4 pb-4 border-b border-border/50 w-full">
                       <div className="space-y-1">
                         <div className="flex items-center justify-center lg:justify-start gap-1.5 text-primary">
                           <Clock className="w-3 h-3 md:w-4 md:h-4" />
@@ -197,7 +197,7 @@ export default function ManyaraPage() {
                       ))}
                     </div>
                   </div>
-                  <div className="pt-4">
+                  <div className="pt-4 w-full sm:w-auto">
                     <Button onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })} className="w-full sm:w-auto rounded-xl px-10 h-12 md:h-14 bg-primary text-white font-bold text-[10px] tracking-widest shadow-xl border-none uppercase">Jetzt anfragen <ArrowRight className="w-4 h-4 ml-2" /></Button>
                   </div>
                 </div>
