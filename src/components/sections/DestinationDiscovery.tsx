@@ -63,7 +63,7 @@ export function DestinationDiscovery() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.05 }}
-              className="group relative aspect-[3/4] rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-700 bg-muted border border-border/40"
+              className="group relative aspect-[3/4] rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-700 bg-muted border border-border/40"
             >
               <Link href={`/destinations/${dest.id}`} className="block relative h-full w-full">
                 <Image 

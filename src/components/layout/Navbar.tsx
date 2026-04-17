@@ -102,8 +102,8 @@ export function Navbar() {
                 <div className="px-8 py-6 md:py-10 flex flex-col gap-8 md:gap-10">
                   <nav className="flex flex-col gap-5 md:gap-6 text-left">
                     <div className="flex flex-col gap-4 mb-4">
-                      <Link href="/safaris" className="text-xl md:text-2xl font-headline font-black text-secondary hover:text-primary transition-colors leading-none">
-                        Safaris
+                      <Link href="/reiseangebote" className="text-xl md:text-2xl font-headline font-black text-secondary hover:text-primary transition-colors leading-none">
+                        Reiseangebote
                       </Link>
                       <Link href="/destinations/kilimanjaro" className="text-xl md:text-2xl font-headline font-black text-secondary hover:text-primary transition-colors leading-none">
                         Kilimandscharo
@@ -176,10 +176,10 @@ export function Navbar() {
                         <Globe className="w-3" /> Explore Catalog
                       </p>
                       <Link 
-                        href="/safaris" 
+                        href="/reiseangebote" 
                         className="text-[11px] font-black text-secondary/70 hover:text-primary tracking-normal transition-colors"
                       >
-                        Vollständige Kollektion
+                        Alle Reiseangebote ansehen
                       </Link>
                     </div>
                   </div>
@@ -188,13 +188,13 @@ export function Navbar() {
 
               <div className="p-8 border-t border-border bg-[#fdfcfb] flex flex-col gap-6 md:gap-8 items-center shrink-0">
                 <Button asChild className="w-full h-14 rounded-2xl bg-secondary text-white font-black text-[10px] tracking-widest shadow-xl hover:bg-primary transition-all border-none">
-                  <Link href="/trip-planner" className="flex items-center justify-center gap-3">
-                    Jetzt anfragen <ArrowRight className="w-4 h-4" />
+                  <Link href="/reiseangebote" className="flex items-center justify-center gap-3">
+                    Angebote ansehen <ArrowRight className="w-4 h-4" />
                   </Link>
                 </Button>
                 
                 <p className="text-[7px] font-black tracking-widest text-muted-foreground/40">
-                  Registry 2026/27 • Established 2014
+                  Established 2014 • Registry 2026/27
                 </p>
               </div>
             </SheetContent>

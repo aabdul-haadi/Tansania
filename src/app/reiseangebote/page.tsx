@@ -18,7 +18,8 @@ import {
   Calendar,
   Heart,
   Globe,
-  Plus
+  Plus,
+  ChevronRight
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -32,6 +33,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { PackageCard } from '@/components/shared/PackageCard';
 import { DestinationDiscovery } from '@/components/sections/DestinationDiscovery';
 import { cn } from '@/lib/utils';
@@ -93,6 +100,13 @@ const bestsellers = [
   { name: "13 Tage Honeymoon Special", count: "80+ Buchungen", rating: 5.0, icon: Heart, urgency: "Aktiv" }
 ];
 
+const faqs = [
+  { q: "Wie finde ich das passende Angebot für mich?", a: "Nutzen Sie unsere Filter nach Kategorie und Dauer. Gerne beraten wir Sie auch persönlich, um das Angebot auf Ihre Wünsche zuzuschneiden." },
+  { q: "Sind Inlandsflüge in den Preisen enthalten?", a: "In unseren Signature-Kombinationen sind die Flüge vom Busch an die Küste in der Regel inkludiert. Details finden Sie in der jeweiligen Reisebeschreibung." },
+  { q: "Wie sicher sind die Last-Minute Deals?", a: "Alle Angebote, auch kurzfristige Deals, unterliegen unseren strengen Qualitätskontrollen und sind zu 100% durch den DRSF abgesichert." },
+  { q: "Gibt es Rabatte für Familien?", a: "Ja, für unsere Familiensafaris haben wir spezielle Konditionen bei den Lodges und Nationalparks verhandelt, die wir direkt an Sie weitergeben." }
+];
+
 export default function ReiseangebotePage() {
   const [mounted, setMounted] = useState(false);
   const [activeCategory, setActiveCategory] = useState('All');
@@ -123,7 +137,7 @@ export default function ReiseangebotePage() {
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
-      {/* 01 Hero Section - Recalibrated for Prestige & Spacing */}
+      {/* 01 Hero Section - Increased Padding for Navbar Clearance */}
       <section className="relative h-[65vh] md:h-[80vh] flex items-center justify-center overflow-hidden bg-secondary">
         <Image 
           src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
@@ -151,10 +165,10 @@ export default function ReiseangebotePage() {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
-              <Button onClick={() => document.getElementById('catalog')?.scrollIntoView({ behavior: 'smooth' })} className="w-full sm:w-auto h-12 md:h-14 px-8 md:px-12 rounded-xl font-bold text-xs shadow-2xl border-none">
+              <Button onClick={() => document.getElementById('catalog')?.scrollIntoView({ behavior: 'smooth' })} className="w-fit mx-auto sm:w-auto h-12 md:h-14 px-8 md:px-12 rounded-xl font-bold text-xs shadow-2xl border-none">
                 Alle Angebote ansehen
               </Button>
-              <Button variant="glass" className="w-full sm:w-auto h-12 md:h-14 px-8 md:px-12 rounded-xl font-bold text-xs">
+              <Button variant="glass" className="w-fit mx-auto sm:w-auto h-12 md:h-14 px-8 md:px-12 rounded-xl font-bold text-xs">
                 Sonderangebote & Deals
               </Button>
             </div>
@@ -162,7 +176,7 @@ export default function ReiseangebotePage() {
         </div>
       </section>
 
-      {/* 02 Filter Bar - Sliding Protocol */}
+      {/* 02 Filter Bar - Sliding Protocol for Mobile */}
       <section className="py-4 md:py-6 bg-white border-y border-border/40 sticky top-0 z-40 shadow-sm">
         <div className="container mx-auto px-4 max-w-7xl flex flex-col lg:flex-row items-center justify-between gap-6">
           <div className="w-full lg:w-auto flex overflow-x-auto no-scrollbar gap-2 pb-1 scroll-smooth">
@@ -192,7 +206,7 @@ export default function ReiseangebotePage() {
         </div>
       </section>
 
-      {/* 03 Highlight Grid - Compacted Top */}
+      {/* 03 Highlight Grid */}
       <section id="catalog" className="pt-8 pb-16 container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
           {filteredPackages.map((pkg) => (
@@ -201,7 +215,7 @@ export default function ReiseangebotePage() {
         </div>
       </section>
 
-      {/* 04 Comparison Matrix - Cinematic Style */}
+      {/* 04 Comparison Matrix with Background Image & Overlay */}
       <section className="relative pt-8 pb-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image 
@@ -215,7 +229,7 @@ export default function ReiseangebotePage() {
         
         <div className="container relative z-10 mx-auto px-4 max-w-5xl">
           <div className="text-center mb-10 md:mb-12 space-y-2">
-            <h2 className="font-headline text-2xl md:text-4xl font-normal text-white tracking-normal">
+            <h2 className="font-headline text-3xl md:text-5xl font-normal text-white tracking-normal">
               Angebote im Vergleich
             </h2>
             <p className="text-white/70 font-normal text-[14px] leading-[20px] tracking-normal opacity-80">
@@ -252,16 +266,16 @@ export default function ReiseangebotePage() {
         </div>
       </section>
 
-      {/* 05 Destination Registry - Asset Focused */}
+      {/* 05 Destination Discovery */}
       <DestinationDiscovery />
 
-      {/* 06 Bestseller & Proof - Mobile Optimized */}
+      {/* 06 Bestseller & Favoriten - Compacted for Mobile */}
       <section className="pt-8 pb-16 bg-white border-t border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 items-start">
             <div className="lg:col-span-5 space-y-10">
-              <div className="space-y-4">
-                <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary tracking-normal">
+              <div className="space-y-4 text-center lg:text-left">
+                <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-normal">
                   Bestseller & Favoriten
                 </h2>
                 <p className="text-muted-foreground font-normal text-[14px] leading-[20px] tracking-normal opacity-80">
@@ -329,34 +343,45 @@ export default function ReiseangebotePage() {
         </div>
       </section>
 
-      {/* 07 Credibility Signals */}
-      <section className="pt-8 pb-16 bg-white border-t border-border/40">
-        <div className="container mx-auto px-4 max-w-7xl">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-            {[
-              { icon: ShieldCheck, t: "DRSF Abgesichert", d: "Ihre Zahlungen sind zu 100% durch den deutschen Reisesicherungsfonds geschützt." },
-              { icon: Globe, t: "Arusha Office", d: "Direkte Betreuung vor Ort durch unser Expertenteam rund um die Uhr." },
-              { icon: Compass, t: "Deutschsprachige Guides", d: "Staatlich geprüfte Experten, die Ihre Sprache sprechen und die Savanne kennen." }
-            ].map((item, i) => (
-              <div key={i} className="flex flex-col items-center text-center space-y-4 group">
-                <div className="w-14 h-14 rounded-2xl bg-[#fdf7f2] border border-[#f0ebe0] flex items-center justify-center transition-all group-hover:bg-primary shadow-sm">
-                  <item.icon className="w-7 h-7 text-primary group-hover:text-white transition-colors" />
-                </div>
-                <div className="space-y-1">
-                  <h4 className="font-bold text-base text-secondary tracking-tight">{item.t}</h4>
-                  <p className="text-muted-foreground font-normal text-[13px] leading-[18px] opacity-80 max-w-[260px]">{item.d}</p>
-                </div>
-              </div>
-            ))}
+      {/* 07 FAQ Section */}
+      <section className="py-8 md:py-16 bg-white border-t border-border/40">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="text-center mb-10 md:mb-16 space-y-2">
+            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-normal">
+              Häufig gestellte Fragen
+            </h2>
+            <p className="text-muted-foreground font-normal text-[14px] leading-[20px] tracking-normal opacity-80">
+              Alles Wissenswerte zu unseren Angeboten und Ihrer Buchung
+            </p>
           </div>
+
+          <Accordion type="single" collapsible className="space-y-4">
+            {faqs.map((faq, idx) => (
+              <AccordionItem 
+                key={idx} 
+                value={`faq-${idx}`}
+                className="border-none bg-[#fdfcfb] rounded-2xl px-6 md:px-10 shadow-sm hover:shadow-md transition-all group"
+              >
+                <AccordionTrigger className="text-left font-normal text-base md:text-xl py-6 hover:no-underline hover:text-primary transition-colors tracking-tight [&>svg]:hidden">
+                  <div className="flex items-center justify-between w-full gap-4">
+                    <span className="leading-snug">{faq.q}</span>
+                    <Plus className="w-4 h-4 text-primary shrink-0 transition-transform group-data-[state=open]:rotate-45" />
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-sm md:text-base leading-relaxed pb-8 pr-4 text-left">
+                  {faq.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </section>
 
-      {/* 08 Specialized Dynamic Inquiry - The Only Form */}
+      {/* 08 Individuelle Beratung - Specialized Embed Protocol */}
       <section id="inquiry" className="pt-8 pb-20 bg-[#fdfcfb] scroll-mt-20">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-8 md:mb-12 space-y-2">
-            <h2 className="font-headline text-2xl md:text-4xl font-normal text-secondary tracking-normal">
+            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-normal">
               Individuelle Beratung
             </h2>
             <p className="text-muted-foreground font-normal text-[14px] leading-[20px] tracking-normal opacity-80">
@@ -383,7 +408,7 @@ export default function ReiseangebotePage() {
             
             <div className="p-4 bg-muted/5 border-t border-border/40 flex items-center justify-center gap-8 md:gap-16">
               <div className="flex items-center gap-1.5 text-[8px] md:text-[10px] font-bold text-muted-foreground/40 tracking-normal">
-                <ShieldCheck className="w-3.5 h-3.5" /> Dsgvo Konform
+                <ShieldCheck className="w-3.5 h-3.5" /> DSGVO konform
               </div>
               <div className="flex items-center gap-1.5 text-[8px] md:text-[10px] font-bold text-muted-foreground/40 tracking-normal">
                 <Zap className="w-3.5 h-3.5" /> Schnelle Antwort
