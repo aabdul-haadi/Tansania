@@ -17,7 +17,7 @@ const packages = [
   { id: 'family-12', title: '12 Tage Familien-Safari', slug: 'familien-safari-12-tage', durationDays: 12, startingPrice: 3499, category: 'Familie', highlights: ['Big Five Erlebnisse', 'Massai Begegnung', 'Schulbesuch', 'Manyara Safari', 'Kinder-Lodges'], imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800' },
   { id: 'honeymoon-13', title: '13 Tage Flitterwochen', slug: 'flitterwochen-tansania-sansibar', durationDays: 13, startingPrice: 3899, category: 'Romantik', highlights: ['Champagner Sunset', 'Private Pirschfahrten', 'Luxusvillen', 'Stranddinner', 'Ballonsafari'], imageUrl: 'https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=800' },
   { id: 'zanzibar-7', title: '7 Tage Sansibar', slug: '7-tage-sansibar', durationDays: 7, startingPrice: 2699, category: 'Strand', highlights: ['Stone Town Tour', 'Gewürzplantagen', 'Schnorcheln', 'Strandurlaub', 'Taucherlebnis'], imageUrl: 'https://images.unsplash.com/photo-1590001158193-79013ac7fa77?q=80&w=800' },
-  { id: 'camping-12', title: '12 Tage Camping Safari & Sansibar', slug: '12-tage-camping-safari', durationDays: 12, startingPrice: 2799, category: 'Abenteuer', highlights: ['Serengeti Zelten', 'Lagerfeuer Nächte', 'Massai Dorf', 'Traumstrände', 'Gewürztour'], imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800' },
+  { id: 'camping-12', title: '12 Tage Camping Safari & Sansibar', slug: '12-tage-camping-safari', durationDays: 12, startingPrice: 2799, category: 'Abenteuer', highlights: ['Serengeti Zelten', 'Lagerfeuer Nächte', 'Massai Dorf', 'Traumstrände', 'Gewürztour'], imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200' },
   { id: 'kili-13', title: '13 Tage Safari & Sansibar Abenteuer', slug: '13-tage-kilimandscharo-kombi', durationDays: 13, startingPrice: 4699, category: 'Kombi', highlights: ['Nationalparks Tour', 'Kilimandscharo nah', 'Big Five Safari', 'Sansibar Relax', 'Kultur-Mix'], imageUrl: 'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=800' },
 ];
 
@@ -31,7 +31,7 @@ const faqs = [
 export default function SummerTravelPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
-      {/* 01 Hero Section - Clean bottom transition */}
+      {/* 01 Hero Section */}
       <section className="relative h-[65vh] md:h-[80vh] flex items-center justify-center overflow-hidden bg-secondary">
         <Image 
           src="https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=1920" 
@@ -40,7 +40,6 @@ export default function SummerTravelPage() {
           priority
           className="object-cover brightness-50"
         />
-        {/* Stable simple overlay protocol */}
         <div className="absolute inset-0 bg-black/40" />
         
         <div className="container relative z-10 mx-auto px-4 text-center">
@@ -59,10 +58,10 @@ export default function SummerTravelPage() {
       </section>
 
       {/* 02 Narrative Intro */}
-      <section className="py-8 md:py-12 container mx-auto px-4 max-w-5xl text-center">
+      <section className="py-8 md:py-12 container mx-auto px-4 max-get-5xl text-center">
         <div className="space-y-6">
           <p className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal opacity-90">
-            Erleben Sie den Sommer einmal anders: Statt überfüllter Strände erwarten Sie exklusive Safaris in der Serengeti – und anschließend pure Entspannung an Sansibars weißen Traumküsten. Handverlesene Lodges, privater Guide und deutschsprachige Betreuung – individuell für Sie gestaltet.
+            Erleben Sie den Sommer einmal anders: Statt überfüllter Strände erwarten Sie exklusive Safaris in der Serengeti – und anschließend pure Entspannung an Sansibars weißen Traumküsten.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-10">
             {[
@@ -102,8 +101,8 @@ export default function SummerTravelPage() {
             {[
               { icon: Waves, t: "Sansibar Strände", d: "Genießen Sie die weißen Sandstrände und das kristallklare Wasser der tropischen Insel." },
               { icon: Compass, t: "Safari-Abenteuer", d: "Erleben Sie ein exklusives Safari-Abenteuer durch die Serengeti und den Ngorongoro-Krater." },
-              { icon: Zap, t: "Kilimanjaro Trekking", d: "Wandern Sie auf dem majestätischen Kilimandscharo und genießen Sie die atemberaubende Aussicht." },
-              { icon: Star, t: "Die Big 5", d: "Treffen Sie die legendären Big 5 und machen Sie Ihre Safari zu einem exklusiven Erlebnis." }
+              { icon: Zap, t: "Kilimanjaro Trekking", d: "Wandern Sie auf dem majestätischen Kilimandscharo und genießen Sie die Aussicht." },
+              { icon: Star, t: "Die Big 5", d: "Treffen Sie die legendären Big 5 und machen Sie Ihre Safari zu einem Erlebnis." }
             ].map((item, i) => (
               <div key={i} className="p-8 bg-[#fdfcfb] rounded-3xl border border-border/50 text-left space-y-4 group hover:border-primary/20 transition-all">
                 <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
@@ -123,14 +122,14 @@ export default function SummerTravelPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="space-y-10">
               <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter">
-                Sommer in Tansania – Sonne, Safari & Luxus 2026/2027
+                Sommer in Tansania 2026/2027
               </h2>
               <div className="space-y-6">
                 {[
                   { t: "Exklusive Luxus-Safaris", d: "Starten Sie Ihren Sommer mit einer privat geführten Safari und luxuriösen Lodges." },
-                  { t: "Afrika erleben", d: "Wählen Sie Ihre Traumreise. Safari-Abenteuer und Sonne statt Regen im Sommer." },
-                  { t: "Familien-Safari", d: "Abenteuer, die Kinder begeistern, und Entspannung in familienfreundlichen Lodges." },
-                  { t: "Dein unvergesslicher Sommer", d: "Begrüßen Sie den Sommer inmitten der Serengeti und finden Sie Entspannung am weißen Strand." }
+                  { t: "Afrika erleben", d: "Wählen Sie Ihre Traumreise. Safari-Abenteuer und Sonne statt Regen." },
+                  { t: "Familien-Safari", d: "Abenteuer, die Kinder begeistern, und Entspannung in sicheren Umgebungen." },
+                  { t: "Dein unvergesslicher Sommer", d: "Begrüßen Sie den Sommer inmitten der Serengeti." }
                 ].map((point, i) => (
                   <div key={i} className="flex gap-4">
                     <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
