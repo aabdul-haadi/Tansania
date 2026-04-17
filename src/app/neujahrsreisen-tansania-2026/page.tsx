@@ -21,6 +21,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { PackageCard } from '@/components/shared/PackageCard';
+import { ContactSection } from '@/components/shared/ContactSection';
 
 const packages = [
   { id: '15-day', title: '15 Tage Safari in Tansania und Sansibar', slug: '15-day-safari-zanzibar', durationDays: 15, startingPrice: 5399, category: 'Signature', tag: 'Meistverkauft', highlights: ['Top Nationalparks Safari', 'Massai Dorfbesuch', 'Familienfreundlich', 'Sansibar Strände', 'Stone Town'], imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200' },
@@ -92,7 +93,7 @@ export default function NewYearPage() {
       </section>
 
       {/* 04 How Tanzania Makes New Year Unforgettable */}
-      <section className="py-12 md:py-24 bg-white border-y border-border/40">
+      <section className="py-8 md:py-12 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-16">
             <div className="space-y-6 text-left">
@@ -121,7 +122,7 @@ export default function NewYearPage() {
                   <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-2">
                     <item.icon className="w-5 h-5" />
                   </div>
-                  <h4 className="font-headline text-xl font-bold text-secondary uppercase tracking-tight">{item.t}</h4>
+                  <h4 className="font-headline text-xl font-bold text-secondary">{item.t}</h4>
                   <p className="text-[12px] md:text-sm text-muted-foreground font-normal leading-relaxed opacity-80">{item.d}</p>
                 </div>
               </div>
@@ -131,9 +132,9 @@ export default function NewYearPage() {
       </section>
 
       {/* 05 Why Your New Year 2026/2027 becomes Unique */}
-      <section className="py-12 md:py-24 bg-[#FDF7F2] overflow-hidden border-b border-border/40">
+      <section className="py-8 md:py-12 bg-[#FDF7F2] overflow-hidden border-b border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="text-center mb-12 md:mb-16 space-y-4">
+          <div className="text-center mb-10 md:mb-12 space-y-4">
             <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter">
               Warum Ihr Neujahr 2026/2027 in Tansania einzigartig wird
             </h2>
@@ -144,7 +145,7 @@ export default function NewYearPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {[
-              { t: "Exklusive Luxus-Safaris", d: "Starte ins neue Jahr mit einer privat geführten Safari, luxuriösen Lodges und purem Strandgenuss auf Sansibar." },
+              { t: "Exklusive Luxus-Safaris", d: "Starte ins neue Jahr mit einer privat geführten Safari, luxuriösen Lodges und purem strandgenuss auf Sansibar." },
               { t: "Sonne statt Kälte", d: "Wählen Sie Ihre Traumreise und genießen Sie Sonne zum Jahresbeginn. Safari-Abenteuer statt Kälte." },
               { t: "Familienzauber", d: "Erleben Sie Safari-Abenteuer, die Kinder begeistern, und entspanne in familienfreundlichen Lodges mit Pool." },
               { t: "Last-Minute Option", d: "Kurzentschlossen ins Paradies: sichern Sie sich eine spontane Luxus-Safari mit persönlichem Guide." },
@@ -156,7 +157,7 @@ export default function NewYearPage() {
                   <CheckCircle2 className="w-5 h-5 text-primary" />
                 </div>
                 <div className="space-y-2">
-                  <h4 className="font-bold text-base text-secondary tracking-tight leading-tight">{point.t}</h4>
+                  <h4 className="font-bold text-base text-secondary">{point.t}</h4>
                   <p className="text-[11px] md:text-xs text-muted-foreground font-normal leading-relaxed opacity-80">{point.d}</p>
                 </div>
               </div>
@@ -166,7 +167,7 @@ export default function NewYearPage() {
       </section>
 
       {/* 06 Why Partner for Exclusive New Year Trip */}
-      <section className="py-12 md:py-24 bg-white overflow-hidden">
+      <section className="py-8 md:py-12 bg-white overflow-hidden">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="space-y-10 text-left">
@@ -180,13 +181,13 @@ export default function NewYearPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {[
                   { t: "Neujahrszauber für Familien", d: "Kindgerechte Safaris mit Elefanten & Giraffen und familienfreundliche Lodges." },
-                  { t: "Romantik für Zwei", d: "Beginnen Sie das Jahr mit privaten Safaris und erholsamen Stunden am Traumstrand." },
+                  { t: "Romantik für Zwei", d: "Beginnen Sie das neue Jahr mit privaten Safaris und erholsamen Stunden am Traumstrand." },
                   { t: "Individuelle Abenteurer", d: "Alleinreisende genießen maßgeschneiderte Routen und absolute Flexibilität." },
                   { t: "Freunde & Teams", d: "Spektakuläre Natur und entspannte Tage am Ozean für Gruppen." }
                 ].map((item, i) => (
                   <div key={i} className="p-6 bg-[#fdf7f2] rounded-2xl border border-border/40 space-y-2 group hover:border-primary/20 transition-all">
-                    <h4 className="font-bold text-sm text-secondary uppercase leading-none">{item.t}</h4>
-                    <p className="text-[10px] text-muted-foreground font-normal uppercase tracking-widest leading-relaxed opacity-70">{item.d}</p>
+                    <h4 className="font-bold text-sm text-secondary leading-none">{item.t}</h4>
+                    <p className="text-[10px] text-muted-foreground font-normal leading-relaxed opacity-70">{item.d}</p>
                   </div>
                 ))}
               </div>
@@ -215,7 +216,7 @@ export default function NewYearPage() {
       </section>
 
       {/* 07 Reviews */}
-      <section className="py-12 md:py-24 bg-[#fdfcfb] border-t border-border/40">
+      <section className="py-8 md:py-12 bg-[#fdfcfb] border-t border-border/40">
         <div className="container mx-auto px-4 max-w-7xl text-center">
           <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary mb-12 tracking-tighter">Kundenbewertungen zu unseren Neujahrsreisen</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
