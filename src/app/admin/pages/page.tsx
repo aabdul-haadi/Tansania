@@ -8,7 +8,10 @@ import {
   Globe,
   Layers,
   Calendar,
-  ChevronRight
+  ChevronRight,
+  Package,
+  ShieldCheck,
+  FileText
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -23,16 +26,16 @@ const siteRegistry = [
     id: "core",
     icon: Layers,
     routes: [
-      { title: "Homepage", path: "/", status: "Live", sub: "Primary entry" },
-      { title: "Safari Catalog", path: "/safaris", status: "Live", sub: "Master hub" },
-      { title: "Activities Registry", path: "/activities", status: "Live", sub: "Adventure hub" },
-      { title: "Accommodations", path: "/unterkuenfte", status: "Live", sub: "Hotel hub" },
-      { title: "Journal Registry", path: "/blog", status: "Live", sub: "Content engine" },
-      { title: "National Parks", path: "/national-parks", status: "Live", sub: "Conservation hub" },
-      { title: "Migration Tracker", path: "/migration", status: "Live", sub: "Wildlife ops" },
-      { title: "Trip Planner", path: "/trip-planner", status: "Live", sub: "Lead gen" },
+      { title: "Homepage", path: "/", status: "Live", sub: "Primary Entry" },
+      { title: "Safari Catalog", path: "/safaris", status: "Live", sub: "Master Hub" },
+      { title: "Destinations Hub", path: "/destinations", status: "Live", sub: "Regional Entry" },
+      { title: "National Parks Hub", path: "/national-parks", status: "Live", sub: "Conservation Hub" },
+      { title: "Journal Registry", path: "/blog", status: "Live", sub: "Content Engine" },
+      { title: "Activities Registry", path: "/activities", status: "Live", sub: "Adventure Hub" },
+      { title: "Accommodations", path: "/unterkuenfte", status: "Live", sub: "Hotel Hub" },
+      { title: "Trip Planner", path: "/trip-planner", status: "Live", sub: "Lead Gen" },
       { title: "AI Trip Advisor", path: "/trip-advisor", status: "Live", sub: "Intelligence" },
-      { title: "About Us", path: "/about", status: "Live", sub: "Brand identity" },
+      { title: "About Us", path: "/about", status: "Live", sub: "Brand Identity" },
     ]
   },
   {
@@ -40,25 +43,51 @@ const siteRegistry = [
     id: "seasonal",
     icon: Calendar,
     routes: [
-      { title: "Neujahr 2026/27", path: "/neujahrsreisen-tansania-2026", status: "Live", sub: "Campaign" },
-      { title: "Sommer 2026", path: "/sommerreisen-abenteuer-und-erholung-2026", status: "Live", sub: "Campaign" },
-      { title: "Weihnachten 2026/27", path: "/weihnachten-reisen-tansania-2026", status: "Live", sub: "Campaign" },
-      { title: "Ostern 2026", path: "/ostern-safari-urlaub-2026", status: "Live", sub: "Campaign" },
+      { title: "Neujahr 2026/27", path: "/neujahrsreisen-tansania-2026", status: "Live", sub: "Winter Season" },
+      { title: "Weihnachten 2026/27", path: "/weihnachten-reisen-tansania-2026", status: "Live", sub: "Winter Season" },
+      { title: "Sommer 2026", path: "/sommerreisen-abenteuer-und-erholung-2026", status: "Live", sub: "Summer Season" },
+      { title: "Ostern 2026", path: "/ostern-safari-urlaub-2026", status: "Live", sub: "Spring Season" },
+      { title: "Migration Tracker", path: "/migration", status: "Live", sub: "Wildlife Ops" },
     ]
   },
   {
-    category: "03. Regional Portfolio (8+ Countries)",
+    category: "03. Safari Catalog (Master)",
+    id: "catalog",
+    icon: Package,
+    routes: [
+      { title: "15 Tage Tansania & Sansibar", path: "/safaris/15-day-safari-zanzibar", status: "Live", sub: "Signature" },
+      { title: "13 Tage Safari & Sansibar", path: "/safaris/safari-sansibar-13-tage", status: "Live", sub: "Signature" },
+      { title: "11 Tage Safari & Sansibar", path: "/safaris/safari-sansibar-11-tage", status: "Live", sub: "Kompakt" },
+      { title: "12 Tage Familien-Safari", path: "/safaris/familien-safari-12-tage", status: "Live", sub: "Familie" },
+      { title: "13 Tage Kili & Safari", path: "/safaris/13-tage-kilimandscharo-kombi", status: "Live", sub: "Expedition" },
+      { title: "12 Tage Camping Safari", path: "/safaris/12-tage-camping-safari", status: "Live", sub: "Abenteuer" },
+      { title: "10 Tage Lemosho Route", path: "/safaris/10-tage-lemosho-unberuehrte-wege", status: "Live", sub: "Expedition" },
+      { title: "9 Tage Machame Route", path: "/safaris/9-tage-machame-der-abenteuer-weg", status: "Live", sub: "Expedition" },
+    ]
+  },
+  {
+    category: "04. Regional Portfolio",
     id: "regional",
     icon: MapPin,
     routes: [
-      { title: "Tanzania Master", path: "/destinations/tanzania", status: "Live", sub: "Country hub" },
-      { title: "Zanzibar Paradise", path: "/destinations/zanzibar", status: "Live", sub: "Island hub" },
-      { title: "Kilimanjaro Summit", path: "/destinations/kilimanjaro", status: "Live", sub: "Peak hub" },
-      { title: "Egypt Specialist", path: "/destinations/egypt", status: "Live", sub: "Cairo office" },
-      { title: "Kenya Safari", path: "/destinations/kenya", status: "Live", sub: "Expansion" },
-      { title: "South Africa", path: "/destinations/south-africa", status: "Live", sub: "Portfolio" },
-      { title: "Namibia Dunes", path: "/destinations/namibia", status: "Live", sub: "Portfolio" },
-      { title: "Botswana Wild", path: "/destinations/botswana", status: "Live", sub: "Portfolio" },
+      { title: "Tanzania Master", path: "/destinations/tanzania", status: "Live", sub: "Country Hub" },
+      { title: "Zanzibar Paradise", path: "/destinations/zanzibar", status: "Live", sub: "Island Hub" },
+      { title: "Egypt Specialist", path: "/destinations/egypt", status: "Live", sub: "Cairo Office" },
+      { title: "Kenia Safari", path: "/destinations/kenya", status: "Live", sub: "Expansion" },
+      { title: "Serengeti Nationalpark", path: "/national-parks/serengeti", status: "Live", sub: "Wildlife Hub" },
+      { title: "Ngorongoro-Krater", path: "/national-parks/ngorongoro", status: "Live", sub: "Wildlife Hub" },
+      { title: "Kilimandscharo Park", path: "/national-parks/kilimanjaro", status: "Live", sub: "Expedition Hub" },
+    ]
+  },
+  {
+    category: "05. Legal Registry",
+    id: "legal",
+    icon: ShieldCheck,
+    routes: [
+      { title: "Impressum", path: "/legal/imprint", status: "Live", sub: "Official" },
+      { title: "AGB", path: "/legal/terms", status: "Live", sub: "Official" },
+      { title: "Datenschutz", path: "/legal/privacy", status: "Live", sub: "Official" },
+      { title: "EU-Richtlinie", path: "/legal/directive", status: "Live", sub: "Official" },
     ]
   }
 ];
@@ -84,7 +113,7 @@ export default function SiteRegistry() {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen bg-white font-bold">
+    <div className="flex flex-col min-h-screen bg-white font-normal">
       <header className="p-6 md:p-10 border-b border-border bg-white sticky top-0 z-20">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="space-y-3 text-left">
@@ -94,14 +123,14 @@ export default function SiteRegistry() {
               </div>
               <h1 className="font-headline text-2xl md:text-5xl font-normal text-secondary leading-none uppercase">Infrastructure Registry</h1>
             </div>
-            <p className="text-muted-foreground text-[10px] font-bold tracking-normal pl-1">
-              Scale control • 500+ path real-time monitoring
+            <p className="text-muted-foreground text-[10px] font-bold tracking-widest pl-1 uppercase">
+              Scale control • {totalRoutes}+ path real-time monitoring
             </p>
           </div>
           
           <div className="flex items-center gap-4">
             <Badge className="h-10 md:h-12 px-4 md:px-6 rounded-2xl font-bold text-[10px] bg-secondary text-white border-none shadow-xl">
-              {totalRoutes}+ active templates
+              Sync Active: 2026/2027
             </Badge>
           </div>
         </div>
@@ -127,7 +156,7 @@ export default function SiteRegistry() {
                 </div>
                 <div className="text-left">
                   <h2 className="font-headline text-lg md:text-2xl font-normal text-secondary leading-none uppercase">{group.category}</h2>
-                  <p className="text-[8px] font-bold text-muted-foreground tracking-normal mt-1.5 opacity-60">Registry cluster: {group.id}</p>
+                  <p className="text-[8px] font-bold text-muted-foreground tracking-widest mt-1.5 opacity-60 uppercase">Registry cluster: {group.id}</p>
                 </div>
                 <div className="h-px flex-grow bg-muted" />
               </div>

@@ -19,7 +19,7 @@ import {
   CloudSun
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { PackageCard } from '@/components/packages/PackageCard';
+import { PackageCard } from '@/components/shared/PackageCard';
 import { ContactSection } from '@/components/shared/ContactSection';
 import {
   Carousel,
@@ -29,7 +29,7 @@ import {
 import { cn } from '@/lib/utils';
 
 const packages = [
-  { id: '15-day', title: '15 Tage Safari in Tansania und Sansibar', slug: '15-day-safari-zanzibar', durationDays: 15, startingPrice: 5399, category: 'Signature', highlights: ['Top Nationalparks Safari', 'Massai Dorfbesuch', 'Sansibar Strände'], imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200', excerpt: 'Vom Herzen der Serengeti bis zu den Palmen Sansibars – inklusive Flüge.' },
+  { id: '15-day', title: '15 Tage Safari in Tansania und Sansibar', slug: '15-day-safari-zanzibar', durationDays: 15, startingPrice: 5399, category: 'Signature', highlights: ['Top Nationalparks Safari', 'Massai Dorfbesuch', 'Sansibar Strände'], imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200', excerpt: 'Vom Herzen der Serengeti bis zu den Palmen Sansibars.' },
   { id: '13-day', title: '13 Tage Safari & Sansibar', slug: 'safari-sansibar-13-tage', durationDays: 13, startingPrice: 3699, category: 'Signature', highlights: ['Big Five Pirschfahrten', 'Ngorongoro UNESCO Krater', 'Sansibar Strände'], imageUrl: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800', excerpt: 'Die perfekte Balance aus intensiven Wildtierbeobachtungen und exklusiver Entspannung.' },
   { id: '11-day', title: '11 Tage Safari & Sansibar', slug: 'safari-sansibar-11-tage', durationDays: 11, startingPrice: 2999, category: 'Kompakt', highlights: ['Elefanten im Tarangire', 'Serengeti Tiermigration', 'Sansibar Touren'], imageUrl: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=800', excerpt: 'Erleben Sie die Highlights Tansanias in einer perfekt abgestimmten 11-tägigen Reise.' },
   { id: 'family-12', title: '12 Tage Familien-Safari', slug: 'familien-safari-12-tage', durationDays: 12, startingPrice: 3499, category: 'Familie', highlights: ['Big Five Erlebnisse', 'Massai Begegnung', 'Kinder-Lodges'], imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200', excerpt: 'Speziell für Familien konzipiert: Unvergessliche Abenteuer und kindgerechte Lodges.' },
