@@ -45,7 +45,7 @@ export default function NewYearPage() {
         
         <div className="container relative z-10 mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <Badge className="bg-primary text-white border-none px-5 py-2 text-[11px] font-bold mb-6 shadow-2xl">
+            <Badge className="bg-primary text-white border-none px-5 py-2 text-[11px] font-bold mb-6">
               Saison-Registry 2025/2026
             </Badge>
             <h1 className="font-headline text-4xl md:text-7xl font-normal text-white mb-8 leading-tight tracking-tight">

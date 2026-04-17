@@ -45,7 +45,8 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
 
-  const isBrightPage = pathname === '/national-parks' || pathname === '/faq' || pathname?.startsWith('/legal');
+  // Force Dark Content Protocol for specific "Bright" routes without hero backgrounds
+  const isBrightPage = pathname === '/national-parks' || pathname === '/faq' || pathname?.startsWith('/legal') || pathname === '/unterkuenfte' || pathname === '/blog';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -91,14 +92,14 @@ export function Navbar() {
     <header 
       className={cn(
         "fixed top-0 w-full z-[100] transition-all duration-500",
-        (isScrolled && !isBrightPage) ? "py-3 bg-white/95 backdrop-blur-md shadow-sm" : "py-6 md:py-8 bg-transparent"
+        useDarkState ? "py-3 bg-white/95 backdrop-blur-md shadow-sm" : "py-6 md:py-8 bg-transparent"
       )}
     >
       <nav className="container mx-auto px-4 max-w-7xl">
         <div className={cn(
           "flex items-center justify-between transition-all duration-500 h-14 md:h-16 w-full",
           useDarkState ? "text-secondary" : "text-white",
-          isOpen && "opacity-0 pointer-events-none"
+          isOpen ? "opacity-0 pointer-events-none" : "opacity-100"
         )}>
           <Link href="/" className="flex items-center gap-2 md:gap-3 group shrink-0">
             <img 

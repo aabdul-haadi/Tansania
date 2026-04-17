@@ -95,7 +95,7 @@ export default function SummerTravelPage() {
             <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter">
               Warum den Sommer in Tansania verbringen?
             </h2>
-            <p className="text-muted-foreground font-normal text-[14px] md:text-sm max-w-2xl mx-auto">
+            <p className="text-muted-foreground font-normal text-[14px] md:text-sm max-get-2xl mx-auto">
               Statt überfüllter Mittelmeerstrände genießt du in Tansania unvergessliche Safaris und weiße Traumstrände.
             </p>
           </div>
@@ -163,7 +163,7 @@ export default function SummerTravelPage() {
                 <AccordionTrigger className="font-bold text-base py-6 hover:no-underline text-left text-secondary [&>svg]:hidden">
                   <div className="flex items-center justify-between w-full gap-4">
                     <span className="tracking-tight leading-snug">{faq.q}</span>
-                    <Plus className="w-4 h-4 text-primary shrink-0 transition-transform group-data-[state=open]:rotate-45" />
+                    <PlusIcon className="w-4 h-4 text-primary shrink-0 transition-transform group-data-[state=open]:rotate-45" />
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-sm pb-8 leading-relaxed">{faq.a}</AccordionContent>
@@ -178,7 +178,7 @@ export default function SummerTravelPage() {
   );
 }
 
-function Plus(props: any) {
+function PlusIcon(props: any) {
   return (
     <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
   );
