@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, MapPin, Sparkles, Compass, Leaf, Mountain, Waves } from 'lucide-react';
+import { ArrowRight, Sparkles, Compass, Leaf, Mountain, Waves } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 
@@ -45,17 +45,9 @@ const destinations = [
 
 export function DestinationDiscovery() {
   return (
-    <section className="py-12 md:py-20 bg-white">
+    <section className="pt-8 pb-16 bg-white">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center mb-12 md:mb-16 space-y-4">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold border border-primary/20"
-          >
-            <Compass className="w-3.5 h-3.5" /> Destination Registry
-          </motion.div>
+        <div className="text-center mb-10 md:mb-16 space-y-4">
           <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tight">
             Ihre Expeditions-Ziele
           </h2>
@@ -79,14 +71,14 @@ export function DestinationDiscovery() {
                   src={dest.img} 
                   alt={dest.name} 
                   fill 
-                  className="object-cover transition-transform duration-1000 group-hover:scale-110" 
+                  className="object-cover transition-transform duration-1000 group-hover:scale-105" 
                 />
                 {/* Modern Bottom Shady Overlay Protocol */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
               </Link>
 
               <div className="absolute top-6 left-6 pointer-events-none">
-                <Badge className="bg-white/10 backdrop-blur-md text-white border-white/20 font-bold text-[8px] px-3 py-1 uppercase tracking-widest">
+                <Badge className="bg-white/10 backdrop-blur-md text-white border-white/20 font-bold text-[8px] px-3 py-1 tracking-normal">
                   {dest.tag}
                 </Badge>
               </div>
@@ -100,13 +92,13 @@ export function DestinationDiscovery() {
                     <h3 className="text-white font-headline text-2xl md:text-3xl font-normal leading-none mb-1">
                       {dest.name}
                     </h3>
-                    <p className="text-white/60 text-[10px] font-bold uppercase tracking-widest opacity-80">
+                    <p className="text-white/60 text-[10px] font-bold tracking-normal opacity-80">
                       {dest.sub}
                     </p>
                   </div>
                   <div className="pt-2">
                     <Link href={`/destinations/${dest.id}`} className="inline-flex items-center gap-2 text-white font-bold text-[10px] tracking-normal group/link pointer-events-auto hover:text-primary transition-colors">
-                      Route entdecken <ArrowRight className="w-3 h-3 text-primary transition-transform group-hover/link:translate-x-1" />
+                      Route entdecken <ArrowRight className="w-3 h-3 text-primary transition-transform group/link:translate-x-1" />
                     </Link>
                   </div>
                 </div>
