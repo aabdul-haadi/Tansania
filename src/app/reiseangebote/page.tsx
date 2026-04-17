@@ -22,7 +22,8 @@ import {
   Calendar,
   ChevronRight,
   Heart,
-  Plus
+  Plus,
+  Globe
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -127,7 +128,7 @@ export default function ReiseangebotePage() {
   const filteredPackages = useMemo(() => {
     return packages.filter(p => {
       const matchesCat = activeCategory === 'All' || p.category === activeCategory;
-      const matchesSearch = p.title.toLowerCase().includes(search.toLowerCase());
+      const matchesSearch = (p.title || '').toLowerCase().includes(search.toLowerCase());
       return matchesCat && matchesSearch;
     });
   }, [activeCategory, search]);
@@ -277,7 +278,9 @@ export default function ReiseangebotePage() {
                 {bestsellers.map((item, i) => (
                   <div key={i} className="p-5 bg-white rounded-2xl border border-border/40 shadow-sm flex items-center justify-between group hover:border-primary/20 transition-all">
                     <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary"><item.icon className="w-5 h-5" /></div>
+                      <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                        <item.icon className="w-5 h-5" />
+                      </div>
                       <div className="text-left">
                         <h4 className="font-bold text-sm text-secondary">{item.name}</h4>
                         <p className="text-[10px] text-muted-foreground font-bold mt-0.5">{item.count}</p>
@@ -325,7 +328,7 @@ export default function ReiseangebotePage() {
 
       {/* 06 Geographic Discovery */}
       <section className="py-12 md:py-24 bg-white border-y border-border/40">
-        <div className="container mx-auto px-4 max-w-7xl">
+        <div className="container mx-auto px-4 max-get-7xl">
           <div className="text-center mb-12 md:mb-20">
             <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter">Ihre Expeditions-Ziele</h2>
           </div>
@@ -445,4 +448,3 @@ export default function ReiseangebotePage() {
     </div>
   );
 }
-
