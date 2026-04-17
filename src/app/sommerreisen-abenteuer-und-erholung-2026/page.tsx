@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Star, Compass, ArrowRight, CheckCircle2, Zap, Waves, Sun, ShieldCheck } from 'lucide-react';
+import { Star, Compass, ArrowRight, CheckCircle2, Zap, Waves, Sun, ShieldCheck, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { PackageCard } from '@/components/shared/PackageCard';
@@ -31,7 +31,7 @@ const faqs = [
 export default function SummerTravelPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
-      {/* 01 Hero Section */}
+      {/* 01 Hero Section - Clean Transition */}
       <section className="relative h-[65vh] md:h-[80vh] flex items-center justify-center overflow-hidden bg-secondary">
         <Image 
           src="https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=1920" 
@@ -40,7 +40,7 @@ export default function SummerTravelPage() {
           priority
           className="object-cover brightness-50"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#fdfcfb]" />
+        <div className="absolute inset-0 bg-black/40" />
         
         <div className="container relative z-10 mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
@@ -57,8 +57,8 @@ export default function SummerTravelPage() {
         </div>
       </section>
 
-      {/* 02 Narrative Intro */}
-      <section className="py-16 md:py-24 container mx-auto px-4 max-w-5xl text-center">
+      {/* 02 Narrative Intro - Reduced Padding */}
+      <section className="py-8 md:py-12 container mx-auto px-4 max-w-5xl text-center">
         <div className="space-y-6">
           <p className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal opacity-90">
             Erleben Sie den Sommer einmal anders: Statt überfüllter Strände erwarten Sie exklusive Safaris in der Serengeti – und anschließend pure Entspannung an Sansibars weißen Traumküsten. Handverlesene Lodges, privater Guide und deutschsprachige Betreuung – individuell für Sie gestaltet.
@@ -79,8 +79,8 @@ export default function SummerTravelPage() {
         </div>
       </section>
 
-      {/* 03 Package Registry */}
-      <section className="py-12 md:py-24 container mx-auto px-4 max-w-7xl">
+      {/* 03 Package Registry - Reduced Padding */}
+      <section className="py-8 md:py-12 container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
           {packages.map((pkg) => (
             <PackageCard key={pkg.id} pkg={pkg as any} />
@@ -88,16 +88,13 @@ export default function SummerTravelPage() {
         </div>
       </section>
 
-      {/* 04 Why Summer Section */}
-      <section className="py-16 md:py-32 bg-white border-y border-border/40">
+      {/* 04 Why Summer Section - Reduced Padding */}
+      <section className="py-8 md:py-16 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="text-center mb-16 md:mb-24 space-y-4">
+          <div className="text-center mb-10 md:mb-16 space-y-4">
             <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter">
               Warum den Sommer in Tansania verbringen?
             </h2>
-            <p className="text-muted-foreground font-normal text-[14px] md:text-sm max-get-2xl mx-auto">
-              Statt überfüllter Mittelmeerstrände genießt du in Tansania unvergessliche Safaris und weiße Traumstrände.
-            </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -119,8 +116,8 @@ export default function SummerTravelPage() {
         </div>
       </section>
 
-      {/* 05 Expertise Hub */}
-      <section className="py-16 md:py-32 bg-[#FDF7F2]">
+      {/* 05 Expertise Hub - Reduced Padding */}
+      <section className="py-8 md:py-16 bg-[#FDF7F2]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="space-y-10">
@@ -151,10 +148,10 @@ export default function SummerTravelPage() {
         </div>
       </section>
 
-      {/* 06 FAQ Registry */}
-      <section className="py-16 md:py-32 bg-white border-t border-border/40">
+      {/* 06 FAQ Registry - Reduced Padding */}
+      <section className="py-8 md:py-16 bg-white border-t border-border/40">
         <div className="container mx-auto px-4 max-w-4xl">
-          <div className="text-center mb-12 md:mb-16">
+          <div className="text-center mb-10 md:mb-16">
             <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary mb-6 tracking-tighter">Häufig gestellte Fragen</h2>
           </div>
           <Accordion type="single" collapsible className="space-y-4">
@@ -163,7 +160,7 @@ export default function SummerTravelPage() {
                 <AccordionTrigger className="font-bold text-base py-6 hover:no-underline text-left text-secondary [&>svg]:hidden">
                   <div className="flex items-center justify-between w-full gap-4">
                     <span className="tracking-tight leading-snug">{faq.q}</span>
-                    <PlusIcon className="w-4 h-4 text-primary shrink-0 transition-transform group-data-[state=open]:rotate-45" />
+                    <Plus className="w-4 h-4 text-primary shrink-0 transition-transform group-data-[state=open]:rotate-45" />
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-sm pb-8 leading-relaxed">{faq.a}</AccordionContent>
@@ -175,11 +172,5 @@ export default function SummerTravelPage() {
 
       <section id="inquiry"><ContactSection /></section>
     </div>
-  );
-}
-
-function PlusIcon(props: any) {
-  return (
-    <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
   );
 }

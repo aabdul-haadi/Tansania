@@ -45,7 +45,6 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
 
-  // Force Dark Content Protocol for specific "Bright" routes without hero backgrounds
   const isBrightPage = pathname === '/national-parks' || pathname === '/faq' || pathname?.startsWith('/legal') || pathname === '/unterkuenfte' || pathname === '/blog';
 
   useEffect(() => {
@@ -91,7 +90,7 @@ export function Navbar() {
   return (
     <header 
       className={cn(
-        "fixed top-0 w-full z-[100] transition-all duration-500",
+        "absolute top-0 w-full z-[100] transition-all duration-500",
         useDarkState ? "py-3 bg-white/95 backdrop-blur-md shadow-sm" : "py-6 md:py-8 bg-transparent"
       )}
     >
@@ -110,12 +109,12 @@ export function Navbar() {
                 !useDarkState && "brightness-110"
               )} 
             />
-            <div className="flex items-center gap-2 md:gap-3">
-              <span className="font-headline font-black whitespace-nowrap text-xs sm:text-sm md:text-xl lg:text-2xl tracking-normal leading-none">
+            <div className="flex flex-col md:flex-row md:items-center gap-0.5 md:gap-3">
+              <span className="font-headline font-black whitespace-nowrap text-lg sm:text-xl md:text-xl lg:text-2xl tracking-normal leading-none uppercase">
                 Tansania
               </span>
               <span className={cn(
-                "font-headline font-black whitespace-nowrap text-xs sm:text-sm md:text-xl lg:text-2xl transition-colors duration-500 tracking-normal leading-none",
+                "font-headline font-black whitespace-nowrap text-lg sm:text-xl md:text-xl lg:text-2xl transition-colors duration-500 tracking-normal leading-none uppercase",
                 useDarkState ? "text-primary" : "text-white"
               )}>
                 Reiseabenteuer
@@ -146,9 +145,9 @@ export function Navbar() {
               <div className="px-6 py-6 flex items-center border-b border-border/50 shrink-0">
                 <Link href="/" className="flex items-center gap-3">
                   <img src="/iconlogo.jpg" alt="SDL" className="h-8 md:h-10 w-auto" />
-                  <div className="flex flex-col">
-                    <span className="font-headline font-black text-sm md:text-xl tracking-normal leading-[1.1]">Tansania</span>
-                    <span className="font-headline font-black text-sm md:text-xl text-primary tracking-normal leading-[1.1]">Reiseabenteuer</span>
+                  <div className="flex flex-col text-left">
+                    <span className="font-headline font-black text-sm md:text-xl tracking-normal leading-[1.1] uppercase">Tansania</span>
+                    <span className="font-headline font-black text-sm md:text-xl text-primary tracking-normal leading-[1.1] uppercase">Reiseabenteuer</span>
                   </div>
                 </Link>
               </div>
