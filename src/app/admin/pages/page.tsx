@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useMemo } from 'react';
@@ -15,7 +14,8 @@ import {
   ChevronRight,
   Monitor,
   Compass,
-  Sparkles
+  Sparkles,
+  Calendar
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -44,7 +44,18 @@ const siteRegistry = [
     ]
   },
   {
-    category: "02. Regional Portfolio (8+ Countries)",
+    category: "02. Seasonal Campaigns (2026)",
+    id: "seasonal",
+    icon: Calendar,
+    routes: [
+      { title: "New Year 2026", path: "/neujahrsreisen-tansania-2026", status: "Live", sub: "Campaign" },
+      { title: "Summer 2026", path: "/sommerreisen-abenteuer-und-erholung-2026", status: "Live", sub: "Campaign" },
+      { title: "Christmas 2026", path: "/weihnachten-reisen-tansania-2026", status: "Pending", sub: "Draft" },
+      { title: "Easter 2026", path: "/ostern-safari-urlaub-2026", status: "Pending", sub: "Draft" },
+    ]
+  },
+  {
+    category: "03. Regional Portfolio (8+ Countries)",
     id: "regional",
     icon: MapPin,
     routes: [
@@ -56,61 +67,6 @@ const siteRegistry = [
       { title: "Botswana Wild", path: "/destinations/botswana", status: "Pending", sub: "Expansion" },
       { title: "Namibia Dunes", path: "/destinations/namibia", status: "Pending", sub: "Expansion" },
       { title: "Uganda Gorillas", path: "/destinations/uganda", status: "Pending", sub: "Expansion" },
-    ]
-  },
-  {
-    category: "03. Safari Catalog (100+ Slugs)",
-    id: "catalog",
-    icon: LayoutGrid,
-    routes: [
-      { title: "15 Day Safari Tanzania & Zanzibar", path: "/safaris/15-day-safari-zanzibar", status: "Live", sub: "Signature" },
-      { title: "13 Day Safari & Zanzibar Classic", path: "/safaris/safari-sansibar-13-tage", status: "Live", sub: "Signature" },
-      { title: "11 Day Safari & Zanzibar Compact", path: "/safaris/safari-sansibar-11-tage", status: "Live", sub: "Signature" },
-      { title: "10 Day Lemosho Expedition", path: "/safaris/10-tage-lemosho-unberuehrte-wege", status: "Live", sub: "Expedition" },
-      { title: "8 Day Marangu Route", path: "/safaris/8-tage-marangu-komfortabel-zum-gipfel", status: "Live", sub: "Expedition" },
-      { title: "9 Day Machame Route", path: "/safaris/9-tage-machame-der-abenteuer-weg", status: "Live", sub: "Expedition" },
-      { title: "12 Day Camping Safari", path: "/safaris/12-tage-camping-safari", status: "Live", sub: "Adventure" },
-      { title: "5 Day Mount Meru", path: "/safaris/5-tage-mount-meru-besteigung", status: "Live", sub: "Entry expedition" },
-    ]
-  },
-  {
-    category: "04. Journal Archive (100+ Stories)",
-    id: "journal",
-    icon: Activity,
-    routes: [
-      { title: "Luxus-Safari Tanzania", path: "/blog/luxus-safari-tansania-15-tage", status: "Live", sub: "Editorial" },
-      { title: "Wildebeest Migration Insights", path: "/blog/wildebeest-migration-insights", status: "Live", sub: "SEO strategy" },
-      { title: "Beste Reisezeit Tanzania", path: "/blog/beste-reisezeit-tansania", status: "Live", sub: "User guide" },
-      { title: "Safari Packliste Experten", path: "/blog/safari-packliste-experten", status: "Live", sub: "Utility" },
-    ]
-  },
-  {
-    category: "05. Client Services & Legal",
-    id: "services",
-    icon: ShoppingBag,
-    routes: [
-      { title: "Reise-Store", path: "/reise-shop", status: "Live", sub: "Ecommerce" },
-      { title: "Guest Protection", path: "/services/guest-protection", status: "Live", sub: "Insurance" },
-      { title: "Partner Network", path: "/partner", status: "Live", sub: "B2B" },
-      { title: "Careers", path: "/karriere", status: "Live", sub: "HR" },
-      { title: "Fam Trip", path: "/fam-trip", status: "Live", sub: "Agent portal" },
-      { title: "Imprint", path: "/legal/imprint", status: "Live", sub: "Legal" },
-      { title: "Privacy", path: "/legal/privacy", status: "Live", sub: "Compliance" },
-      { title: "EU Directive", path: "/legal/directive", status: "Live", sub: "Consumer rights" },
-    ]
-  },
-  {
-    category: "06. National Parks Registry",
-    id: "parks",
-    icon: Compass,
-    routes: [
-      { title: "Serengeti Nationalpark", path: "/national-parks/serengeti", status: "Live", sub: "UNESCO Heritage" },
-      { title: "Ngorongoro-Krater", path: "/national-parks/ngorongoro", status: "Live", sub: "Natural Wonder" },
-      { title: "Tarangire Nationalpark", path: "/national-parks/tarangire", status: "Live", sub: "Elephant Hub" },
-      { title: "Lake Manyara Nationalpark", path: "/national-parks/manyara", status: "Live", sub: "Biosphere" },
-      { title: "Kilimandscharo Nationalpark", path: "/national-parks/kilimanjaro", status: "Live", sub: "Roof of Africa" },
-      { title: "Arusha Nationalpark", path: "/national-parks/arusha", status: "Live", sub: "Meru Hub" },
-      { title: "Saadani Nationalpark", path: "/national-parks/saadani", status: "Live", sub: "Bush & Beach" },
     ]
   }
 ];
