@@ -40,6 +40,7 @@ import {
 } from "@/components/ui/accordion";
 import { PackageCard } from '@/components/shared/PackageCard';
 import { DestinationDiscovery } from '@/components/sections/DestinationDiscovery';
+import { ContactSection } from '@/components/shared/ContactSection';
 import { cn } from '@/lib/utils';
 
 const packages = [
@@ -51,7 +52,7 @@ const packages = [
     durationDays: 15,
     category: 'Signature',
     highlights: ['Große Migration', 'Luxus Camps', 'Sansibar Strände'],
-    imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200',
+    imageUrl: '/assets/images/home/pkg-01.webp',
     excerpt: 'Unsere umfassendste Expedition: Vom Herzen der Serengeti bis zu den Palmen Sansibars.',
     tag: 'Bestseller'
   },
@@ -63,7 +64,7 @@ const packages = [
     durationDays: 13,
     category: 'Signature',
     highlights: ['Big Five Safaris', 'Ngorongoro Krater', 'Strand-Relax'],
-    imageUrl: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=1200',
+    imageUrl: '/assets/images/home/pkg-02.webp',
     excerpt: 'Die perfekte Balance aus intensiven Wildtierbeobachtungen und exklusiver Entspannung.',
     tag: 'Beliebt'
   },
@@ -75,7 +76,7 @@ const packages = [
     durationDays: 11,
     category: 'Kompakt',
     highlights: ['Elefanten Tarangire', 'Serengeti Highlights', 'Sansibar Tour'],
-    imageUrl: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=1200',
+    imageUrl: '/assets/images/home/pkg-03.webp',
     excerpt: 'Erleben Sie die Highlights Tansanias in einer perfekt abgestimmten 11-tägigen Reise.',
     tag: 'Best Value'
   },
@@ -87,7 +88,7 @@ const packages = [
     durationDays: 12,
     category: 'Familie',
     highlights: ['Pool Lodges', 'Kinder-Safaris', 'Kultur-Besuche'],
-    imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200',
+    imageUrl: '/assets/images/home/pkg-04.png',
     excerpt: 'Speziell für Familien: Unvergessliche Abenteuer und kindgerechte Lodges in der Wildnis.',
     tag: 'Familientipp'
   }
@@ -151,7 +152,7 @@ export default function ReiseangebotePage() {
               <Sparkles className="w-3.5 h-3.5 text-primary" /> Offizielles Safari-Register 2026/27
             </div>
             <h1 className="font-headline text-3xl md:text-7xl font-normal text-white leading-tight tracking-tight">
-              Unglaubliche Safari- und <br /> Tansania-Reiseangebote
+              Unglaubliche Safari- und Tansania-Reiseangebote
             </h1>
             <p className="max-w-2xl mx-auto text-white/90 text-sm md:text-xl font-normal leading-relaxed opacity-80">
               Abenteuer, Kultur und Entspannung – perfekt geplant. Erleben Sie Tansania in seiner reinsten Form.
