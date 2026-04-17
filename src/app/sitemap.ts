@@ -50,10 +50,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/legal/terms',
     '/legal/privacy',
     '/legal/directive',
+    // Individual Safari Packages
+    '/safaris/15-day-safari-zanzibar',
+    '/safaris/safari-sansibar-13-tage',
+    '/safaris/safari-sansibar-11-tage',
+    '/safaris/familien-safari-12-tage',
+    '/safaris/10-tage-lemosho-unberuehrte-wege',
+    '/safaris/12-tage-camping-safari',
+    '/safaris/13-tage-kilimandscharo-kombi',
+    '/safaris/13-tage-kombi-safari-komplett',
+    '/safaris/5-tage-mount-meru-besteigung',
+    '/safaris/7-tage-sansibar',
+    '/safaris/8-tage-marangu-komfortabel-zum-gipfel',
+    '/safaris/8-tage-rongai-dein-stiller-weg',
+    '/safaris/9-tage-machame-der-abenteuer-weg',
   ].map((route) => {
-    // Higher priority for campaign and core hub pages
+    // Higher priority for campaign, packages and core hub pages
     let priority = 0.8;
     if (route === '') priority = 1.0;
+    if (route.includes('/safaris/')) priority = 0.9;
     if (route.includes('reisen-tansania') || route.includes('safari-urlaub')) priority = 0.9;
     if (route.startsWith('/national-parks/')) priority = 0.85;
 
@@ -65,16 +80,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     };
   });
 
-  let packageRoutes: MetadataRoute.Sitemap = [];
+  let dynamicPackageRoutes: MetadataRoute.Sitemap = [];
   let blogRoutes: MetadataRoute.Sitemap = [];
   let destinationRoutes: MetadataRoute.Sitemap = [];
   let cmsPageRoutes: MetadataRoute.Sitemap = [];
 
   if (firestore) {
     try {
-      // 2. Fetch All Published Safari Packages (Dynamic)
+      // 2. Fetch Dynamic Safari Packages from Firestore (for any not in static list)
       const pkgsSnap = await getDocs(query(collection(firestore, 'packages'), where('isPublished', '==', true)));
-      packageRoutes = pkgsSnap.docs.map((doc) => {
+      dynamicPackageRoutes = pkgsSnap.docs.map((doc) => {
         const data = doc.data();
         return {
           url: `${siteConfig.url}/safaris/${data.slug}`,
@@ -127,12 +142,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         });
 
     } catch (e) {
-      console.warn("Sitemap generation sync delayed:", e);
+      console.warn("Sitemap generation dynamic sync delayed:", e);
     }
   }
 
   // Combine and de-duplicate by URL
-  const allRoutes = [...staticRoutes, ...packageRoutes, ...blogRoutes, ...destinationRoutes, ...cmsPageRoutes];
+  const allRoutes = [...staticRoutes, ...dynamicPackageRoutes, ...blogRoutes, ...destinationRoutes, ...cmsPageRoutes];
   const uniqueRoutes = Array.from(new Map(allRoutes.map(item => [item.url, item])).values());
 
   return uniqueRoutes;
