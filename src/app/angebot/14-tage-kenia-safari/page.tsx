@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -22,7 +21,7 @@ import { Badge } from '@/components/ui/badge';
 
 export default function KeniaLeadPage() {
   return (
-    <div className="bg-[#fdfcfb] min-h-screen font-bold pt-12 pb-24">
+    <div className="bg-[#fdfcfb] min-h-screen font-normal pt-12 pb-24">
       <div className="container mx-auto px-4 max-w-4xl space-y-16">
         
         {/* Header Section */}
@@ -41,12 +40,12 @@ export default function KeniaLeadPage() {
           
           <div className="space-y-2">
             <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.3em]">
-              <span className="text-primary">Persönlich Geplant.</span> <span className="text-primary">Sorgfältig</span> umgesetzt.
+              <span className="text-primary">Persönlich geplant.</span> <span className="text-primary">Sorgfältig</span> umgesetzt.
             </p>
-            <h1 className="font-headline text-3xl md:text-5xl font-bold text-secondary uppercase tracking-tight leading-tight">
+            <h1 className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tight leading-tight">
               14 Tage Kenia Safari & Diani Beach
             </h1>
-            <p className="text-muted-foreground text-xs md:text-base font-bold uppercase tracking-widest max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-xs md:text-base font-normal tracking-widest max-w-2xl mx-auto opacity-80">
               Erlebe die Big Five, handverlesene Lodges und entspannte Tage am Diani Beach. Fragt jetzt unverbindlich euer persönliches Reiseangebot an.
             </p>
           </div>
@@ -55,8 +54,8 @@ export default function KeniaLeadPage() {
         {/* Form & Trust Section */}
         <section className="space-y-10">
           <div className="text-center space-y-2">
-            <h3 className="text-sm md:text-lg font-bold uppercase tracking-tight text-secondary">
-              Jetzt persönliches Angebot für eure Kenia Safari & Diani Beach Reise anfragen.
+            <h3 className="text-sm md:text-lg font-bold text-secondary">
+              Jetzt persönliches Angebot für eure Kenia Safari & Diani Beach Reise anfragen
             </h3>
             <p className="text-muted-foreground text-[10px] md:text-xs font-bold uppercase tracking-widest">
               Unverbindlich, persönlich und auf eure Wünsche abgestimmt.
@@ -72,20 +71,20 @@ export default function KeniaLeadPage() {
             />
             
             {/* Trust Footer inside Form Card */}
-            <div className="p-6 md:p-8 bg-muted/10 border-t border-border/50 flex flex-col items-center gap-4">
-              <div className="flex items-center gap-4">
-                <div className="flex -space-x-2">
-                  {[1, 2, 3, 4, 5].map(i => (
-                    <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-muted overflow-hidden">
-                      <img src={`https://picsum.photos/seed/trust-${i}/100/100`} alt="Traveler" />
-                    </div>
-                  ))}
-                </div>
-                <div className="flex flex-col">
-                  <div className="flex gap-0.5 text-orange-400">
-                    {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-3 h-3 fill-current" />)}
+            <div className="p-6 md:p-8 bg-muted/5 border-t border-border/50 flex flex-col items-center gap-4">
+              <div className="flex items-center gap-6">
+                <div className="flex items-center gap-2">
+                  <div className="flex gap-0.5 text-primary">
+                    {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-3.5 h-3.5 fill-current" />)}
                   </div>
-                  <p className="text-[9px] font-bold uppercase tracking-widest text-secondary">1200+ Safari Touristen erfolgreich begleitet</p>
+                  <p className="text-[10px] font-bold text-secondary uppercase tracking-widest">
+                    1.200+ Safari-Touristen erfolgreich begleitet
+                  </p>
+                </div>
+                <div className="h-4 w-px bg-border hidden sm:block" />
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-primary" />
+                  <span className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest">DRSF Abgesichert</span>
                 </div>
               </div>
             </div>
@@ -93,22 +92,22 @@ export default function KeniaLeadPage() {
 
           {/* Partner Logos */}
           <div className="flex justify-center items-center gap-8 opacity-40 grayscale filter">
-            <div className="w-12 h-12 rounded-full border-2 border-secondary flex items-center justify-center font-bold text-[8px]">DRV</div>
-            <div className="w-12 h-12 rounded-full border-2 border-secondary flex items-center justify-center font-bold text-[8px]">Hanse</div>
-            <div className="w-12 h-12 rounded-full border-2 border-secondary flex items-center justify-center font-bold text-[8px]">DRSF</div>
+            <div className="text-[10px] font-black border border-secondary px-3 py-1 rounded">DRV</div>
+            <div className="text-[10px] font-black border border-secondary px-3 py-1 rounded">HANSE</div>
+            <div className="text-[10px] font-black border border-secondary px-3 py-1 rounded">DRSF</div>
           </div>
         </section>
 
         {/* Process Section */}
         <section className="py-12 space-y-12 text-center">
-          <h2 className="font-headline text-xl md:text-2xl font-bold text-secondary uppercase tracking-tight">So geht es weiter:</h2>
+          <h2 className="font-headline text-xl md:text-2xl font-normal text-secondary uppercase tracking-tight">So geht es weiter</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
             <div className="hidden md:block absolute top-1/2 left-1/4 right-1/4 h-px border-t-2 border-dashed border-primary/20 -translate-y-1/2" />
             
             {[
-              { icon: Send, label: "Anfrage Senden" },
-              { icon: Search, label: "Verfügbarkeit Prüfen" },
-              { icon: Gift, label: "Angebot Erhalten" }
+              { icon: Send, label: "Anfrage senden" },
+              { icon: Search, label: "Verfügbarkeit prüfen" },
+              { icon: Gift, label: "Angebot erhalten" }
             ].map((step, i) => (
               <div key={i} className="relative z-10 flex flex-col items-center gap-4">
                 <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-white shadow-xl">
@@ -122,7 +121,7 @@ export default function KeniaLeadPage() {
 
         {/* Why Us Section */}
         <section className="py-12 space-y-12">
-          <h2 className="font-headline text-xl md:text-2xl font-bold text-secondary text-center uppercase tracking-tight">
+          <h2 className="font-headline text-xl md:text-2xl font-normal text-secondary text-center uppercase tracking-tight">
             Warum ihr euer Angebot bei uns anfragen solltet
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -138,7 +137,7 @@ export default function KeniaLeadPage() {
                 </div>
                 <div className="space-y-1">
                   <h4 className="font-bold text-sm text-secondary uppercase leading-none">{item.title}</h4>
-                  <p className="text-[10px] text-muted-foreground font-bold uppercase leading-relaxed tracking-widest">{item.desc}</p>
+                  <p className="text-[10px] text-muted-foreground font-normal leading-relaxed tracking-widest">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -147,11 +146,11 @@ export default function KeniaLeadPage() {
 
         {/* Final Visual & CTA */}
         <section className="py-12 space-y-12 text-center">
-          <h2 className="font-headline text-xl md:text-2xl font-bold text-secondary uppercase tracking-tight">
+          <h2 className="font-headline text-xl md:text-2xl font-normal text-secondary uppercase tracking-tight">
             Safari-Abenteuer und entspannte Tage am Diani Beach
           </h2>
           
-          <div className="relative aspect-square md:aspect-video w-full rounded-[2.5rem] overflow-hidden shadow-2xl border-[12px] border-white group">
+          <div className="relative aspect-square md:aspect-video w-full rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white group">
             <Image 
               src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200" 
               alt="Löwenbaby Kenia" 
@@ -163,12 +162,12 @@ export default function KeniaLeadPage() {
           </div>
 
           <div className="space-y-8">
-            <p className="text-muted-foreground text-xs md:text-sm font-bold uppercase tracking-widest max-w-xl mx-auto leading-relaxed">
+            <p className="text-muted-foreground text-xs md:text-sm font-normal tracking-widest max-w-xl mx-auto leading-relaxed opacity-80">
               Von beeindruckenden Tierbeobachtungen bis zu entspannten Tagen am Diani Beach verbindet diese Reise Abenteuer, Komfort und Erholung auf besondere Weise.
             </p>
             
             <div className="flex flex-col items-center gap-4">
-              <Button size="xl" className="rounded-xl px-12 h-16 bg-primary text-white font-bold text-xs md:text-sm uppercase tracking-[0.3em] shadow-2xl group transition-all">
+              <Button size="xl" className="rounded-xl px-12 h-16 bg-primary text-white font-bold text-xs md:text-sm uppercase tracking-[0.3em] shadow-2xl group transition-all border-none">
                 Unverbindliches Angebot anfragen <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
               </Button>
               <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest">

@@ -45,6 +45,7 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
 
+  // Route registry for high-contrast visibility
   const isBrightPage = pathname === '/national-parks' || pathname === '/faq' || pathname?.startsWith('/legal') || pathname === '/unterkuenfte' || pathname === '/blog';
 
   useEffect(() => {
@@ -71,10 +72,10 @@ export function Navbar() {
   ];
 
   const seasonalReisen = [
-    { name: 'Neujahrsreisen Tansania 2026/27', href: '/neujahrsreisen-tansania-2026' },
+    { name: 'Neujahrsreisen 2026/27', href: '/neujahrsreisen-tansania-2026' },
     { name: 'Sommerreisen 2026', href: '/sommerreisen-abenteuer-und-erholung-2026' },
-    { name: 'Weihnachten Reisen Tansania 2026/27', href: '/weihnachten-reisen-tansania-2026' },
-    { name: 'Ostern Safari Urlaub 2026', href: '/ostern-safari-urlaub-2026' },
+    { name: 'Weihnachten 2026/27', href: '/weihnachten-reisen-tansania-2026' },
+    { name: 'Ostern 2026', href: '/ostern-safari-urlaub-2026' },
   ];
 
   const primaryLinks = [
@@ -90,8 +91,8 @@ export function Navbar() {
   return (
     <header 
       className={cn(
-        "absolute top-0 w-full z-[100] transition-all duration-500",
-        useDarkState ? "py-3 bg-white/95 backdrop-blur-md shadow-sm" : "py-6 md:py-8 bg-transparent"
+        "absolute top-0 w-full z-[100] transition-all duration-500 bg-transparent",
+        useDarkState ? "py-3" : "py-6 md:py-8"
       )}
     >
       <nav className="container mx-auto px-4 max-w-7xl">
