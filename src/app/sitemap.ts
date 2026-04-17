@@ -16,6 +16,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '',
     '/about',
     '/safaris',
+    '/reiseangebote',
     '/blog',
     '/national-parks',
     '/national-parks/serengeti',
@@ -68,6 +69,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Higher priority for campaign, packages and core hub pages
     let priority = 0.8;
     if (route === '') priority = 1.0;
+    if (route === '/reiseangebote' || route === '/safaris') priority = 0.95;
     if (route.includes('/safaris/')) priority = 0.9;
     if (route.includes('reisen-tansania') || route.includes('safari-urlaub')) priority = 0.9;
     if (route.startsWith('/national-parks/')) priority = 0.85;

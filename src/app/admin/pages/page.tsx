@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useMemo } from 'react';
@@ -30,6 +29,7 @@ const siteRegistry = [
     icon: Layers,
     routes: [
       { title: "Homepage", path: "/", status: "Live", sub: "Primary Entry" },
+      { title: "Offer Hub (Reiseangebote)", path: "/reiseangebote", status: "Live", sub: "Conversion Hub" },
       { title: "Safari Catalog Hub", path: "/safaris", status: "Live", sub: "Master Hub" },
       { title: "Destinations Hub", path: "/destinations", status: "Live", sub: "Regional Entry" },
       { title: "National Parks Hub", path: "/national-parks", status: "Live", sub: "Nature Entry" },
