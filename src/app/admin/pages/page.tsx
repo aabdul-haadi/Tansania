@@ -11,7 +11,8 @@ import {
   ChevronRight,
   Package,
   ShieldCheck,
-  FileText
+  Zap,
+  Target
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -80,7 +81,15 @@ const siteRegistry = [
     ]
   },
   {
-    category: "05. Legal Registry",
+    category: "05. Lead Infrastructure (Angebot)",
+    id: "angebot",
+    icon: Target,
+    routes: [
+      { title: "14 Tage Kenia Safari", path: "/angebot/14-tage-kenia-safari", status: "Live", sub: "Lead Gen" },
+    ]
+  },
+  {
+    category: "06. Legal Registry",
     id: "legal",
     icon: ShieldCheck,
     routes: [
