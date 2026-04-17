@@ -12,7 +12,8 @@ import {
   Package,
   ShieldCheck,
   Zap,
-  Target
+  Target,
+  Trees
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -28,10 +29,10 @@ const siteRegistry = [
     icon: Layers,
     routes: [
       { title: "Homepage", path: "/", status: "Live", sub: "Primary Entry" },
-      { title: "Safari Catalog", path: "/safaris", status: "Live", sub: "Master Hub" },
+      { title: "Safari Catalog Hub", path: "/safaris", status: "Live", sub: "Master Hub" },
       { title: "Destinations Hub", path: "/destinations", status: "Live", sub: "Regional Entry" },
-      { title: "National Parks Hub", path: "/national-parks", status: "Live", sub: "Conservation Hub" },
-      { title: "Journal Registry", path: "/blog", status: "Live", sub: "Content Engine" },
+      { title: "National Parks Hub", path: "/national-parks", status: "Live", sub: "Nature Entry" },
+      { title: "Expeditions Journal", path: "/blog", status: "Live", sub: "Content Engine" },
       { title: "Activities Registry", path: "/activities", status: "Live", sub: "Adventure Hub" },
       { title: "Accommodations", path: "/unterkuenfte", status: "Live", sub: "Hotel Hub" },
       { title: "Trip Planner", path: "/trip-planner", status: "Live", sub: "Lead Gen" },
@@ -44,26 +45,25 @@ const siteRegistry = [
     id: "seasonal",
     icon: Calendar,
     routes: [
-      { title: "Neujahr 2026/27", path: "/neujahrsreisen-tansania-2026", status: "Live", sub: "Winter Season" },
+      { title: "Neujahrsreisen 2026/27", path: "/neujahrsreisen-tansania-2026", status: "Live", sub: "Winter Season" },
       { title: "Weihnachten 2026/27", path: "/weihnachten-reisen-tansania-2026", status: "Live", sub: "Winter Season" },
-      { title: "Sommer 2026", path: "/sommerreisen-abenteuer-und-erholung-2026", status: "Live", sub: "Summer Season" },
+      { title: "Sommerreisen 2026", path: "/sommerreisen-abenteuer-und-erholung-2026", status: "Live", sub: "Summer Season" },
       { title: "Ostern 2026", path: "/ostern-safari-urlaub-2026", status: "Live", sub: "Spring Season" },
       { title: "Migration Tracker", path: "/migration", status: "Live", sub: "Wildlife Ops" },
     ]
   },
   {
-    category: "03. Safari Catalog (Master)",
-    id: "catalog",
-    icon: Package,
+    category: "03. National Parks (Wildlife Regions)",
+    id: "parks",
+    icon: Trees,
     routes: [
-      { title: "15 Tage Tansania & Sansibar", path: "/safaris/15-day-safari-zanzibar", status: "Live", sub: "Signature" },
-      { title: "13 Tage Safari & Sansibar", path: "/safaris/safari-sansibar-13-tage", status: "Live", sub: "Signature" },
-      { title: "11 Tage Safari & Sansibar", path: "/safaris/safari-sansibar-11-tage", status: "Live", sub: "Kompakt" },
-      { title: "12 Tage Familien-Safari", path: "/safaris/familien-safari-12-tage", status: "Live", sub: "Familie" },
-      { title: "13 Tage Kili & Safari", path: "/safaris/13-tage-kilimandscharo-kombi", status: "Live", sub: "Expedition" },
-      { title: "12 Tage Camping Safari", path: "/safaris/12-tage-camping-safari", status: "Live", sub: "Abenteuer" },
-      { title: "10 Tage Lemosho Route", path: "/safaris/10-tage-lemosho-unberuehrte-wege", status: "Live", sub: "Expedition" },
-      { title: "9 Tage Machame Route", path: "/safaris/9-tage-machame-der-abenteuer-weg", status: "Live", sub: "Expedition" },
+      { title: "Serengeti Nationalpark", path: "/national-parks/serengeti", status: "Live", sub: "Wildlife Hub" },
+      { title: "Ngorongoro-Krater", path: "/national-parks/ngorongoro", status: "Live", sub: "Unesco Site" },
+      { title: "Kilimandscharo Park", path: "/national-parks/kilimanjaro", status: "Live", sub: "Expedition Hub" },
+      { title: "Tarangire Nationalpark", path: "/national-parks/tarangire", status: "Live", sub: "Elephants" },
+      { title: "Lake Manyara", path: "/national-parks/manyara", status: "Live", sub: "Birding" },
+      { title: "Arusha Nationalpark", path: "/national-parks/arusha", status: "Live", sub: "Mount Meru" },
+      { title: "Saadani Park", path: "/national-parks/saadani", status: "Live", sub: "Beach Safari" },
     ]
   },
   {
@@ -75,28 +75,40 @@ const siteRegistry = [
       { title: "Zanzibar Paradise", path: "/destinations/zanzibar", status: "Live", sub: "Island Hub" },
       { title: "Egypt Specialist", path: "/destinations/egypt", status: "Live", sub: "Cairo Office" },
       { title: "Kenia Safari", path: "/destinations/kenya", status: "Live", sub: "Expansion" },
-      { title: "Serengeti Nationalpark", path: "/national-parks/serengeti", status: "Live", sub: "Wildlife Hub" },
-      { title: "Ngorongoro-Krater", path: "/national-parks/ngorongoro", status: "Live", sub: "Wildlife Hub" },
-      { title: "Kilimandscharo Park", path: "/national-parks/kilimanjaro", status: "Live", sub: "Expedition Hub" },
     ]
   },
   {
-    category: "05. Lead Infrastructure (Angebot)",
+    category: "05. Safari Catalog (Master)",
+    id: "catalog",
+    icon: Package,
+    routes: [
+      { title: "15 Tage Tansania & Sansibar", path: "/safaris/15-day-safari-zanzibar", status: "Live", sub: "Signature" },
+      { title: "13 Tage Safari & Sansibar", path: "/safaris/safari-sansibar-13-tage", status: "Live", sub: "Signature" },
+      { title: "11 Tage Safari & Sansibar", path: "/safaris/safari-sansibar-11-tage", status: "Live", sub: "Kompakt" },
+      { title: "12 Tage Familien-Safari", path: "/safaris/familien-safari-12-tage", status: "Live", sub: "Familie" },
+      { title: "10 Tage Lemosho Route", path: "/safaris/10-tage-lemosho-unberuehrte-wege", status: "Live", sub: "Expedition" },
+      { title: "12 Tage Camping Safari", path: "/safaris/12-tage-camping-safari", status: "Live", sub: "Abenteuer" },
+    ]
+  },
+  {
+    category: "06. Lead Infrastructure (Angebot)",
     id: "angebot",
     icon: Target,
     routes: [
-      { title: "14 Tage Kenia Safari", path: "/angebot/14-tage-kenia-safari", status: "Live", sub: "Lead Gen" },
+      { title: "14 Tage Kenia Safari", path: "/angebot/14-tage-kenia-safari", status: "Live", sub: "High Conversion" },
+      { title: "FAM Trip Portfolio", path: "/fam-trip", status: "Live", sub: "Professional" },
+      { title: "Partner-Registry", path: "/partner", status: "Live", sub: "B2B Ops" },
     ]
   },
   {
-    category: "06. Legal Registry",
+    category: "07. Legal Registry",
     id: "legal",
     icon: ShieldCheck,
     routes: [
       { title: "Impressum", path: "/legal/imprint", status: "Live", sub: "Official" },
       { title: "AGB", path: "/legal/terms", status: "Live", sub: "Official" },
-      { title: "Datenschutz", path: "/legal/privacy", status: "Live", sub: "Official" },
-      { title: "EU-Richtlinie", path: "/legal/directive", status: "Live", sub: "Official" },
+      { title: "Datenschutz", path: "/legal/privacy", status: "Live", sub: "Security" },
+      { title: "EU-Richtlinie", path: "/legal/directive", status: "Live", sub: "Compliance" },
     ]
   }
 ];
