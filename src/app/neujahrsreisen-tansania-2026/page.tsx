@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -8,7 +9,6 @@ import {
   Compass, 
   ArrowRight, 
   CheckCircle2, 
-  Zap, 
   Waves, 
   Sun, 
   ShieldCheck, 
@@ -46,7 +46,7 @@ const reviews = [
 export default function NewYearPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
-      {/* 01 Hero Section - Clean Protocol */}
+      {/* 01 Hero Section */}
       <section className="relative h-[65vh] md:h-[80vh] flex items-center justify-center overflow-hidden bg-secondary">
         <Image 
           src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
@@ -62,7 +62,7 @@ export default function NewYearPage() {
             <h1 className="font-headline text-3xl md:text-7xl font-normal text-white mb-8 leading-tight tracking-tight">
               Exklusive Neujahrs Safari & Sansibar 2026/2027
             </h1>
-            <p className="max-w-2xl mx-auto text-[14px] md:text-xl text-white/90 font-normal leading-relaxed opacity-80">
+            <p className="max-w-2xl mx-auto text-sm md:text-xl text-white/90 font-normal leading-relaxed opacity-80">
               Ihr Jahreswechsel in Luxus & Abenteuer. Starten Sie das Jahr im Herzen der Savanne.
             </p>
           </motion.div>
@@ -76,7 +76,7 @@ export default function NewYearPage() {
             Starten Sie das neue Jahr mit unvergesslichen Erlebnissen: eine private Safari in der Serengeti, luxuriöse Lodges unter Afrikas Sternenhimmel oder Entspannung an den paradiesischen Stränden Sansibars. Unsere handverlesenen Neujahrsreisen verbinden Abenteuer, Luxus und Exklusivität – perfekt auf Ihre Wünsche abgestimmt.
           </p>
           <div className="pt-4">
-            <Button onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })} className="rounded-xl px-12 h-14 md:h-16 font-bold text-[11px] shadow-xl border-none transition-all">
+            <Button onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })} className="rounded-xl px-12 h-14 md:h-16 font-bold text-xs shadow-xl border-none transition-all">
               Jetzt Jahreswechsel planen
             </Button>
           </div>
@@ -123,7 +123,7 @@ export default function NewYearPage() {
                     <item.icon className="w-5 h-5" />
                   </div>
                   <h4 className="font-headline text-xl font-bold text-secondary">{item.t}</h4>
-                  <p className="text-[12px] md:text-sm text-muted-foreground font-normal leading-relaxed opacity-80">{item.d}</p>
+                  <p className="text-sm text-muted-foreground font-normal leading-relaxed opacity-80">{item.d}</p>
                 </div>
               </div>
             ))}
@@ -158,7 +158,7 @@ export default function NewYearPage() {
                 </div>
                 <div className="space-y-2">
                   <h4 className="font-bold text-base text-secondary">{point.t}</h4>
-                  <p className="text-[11px] md:text-xs text-muted-foreground font-normal leading-relaxed opacity-80">{point.d}</p>
+                  <p className="text-sm text-muted-foreground font-normal leading-relaxed opacity-80">{point.d}</p>
                 </div>
               </div>
             ))}
@@ -181,13 +181,13 @@ export default function NewYearPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {[
                   { t: "Neujahrszauber für Familien", d: "Kindgerechte Safaris mit Elefanten & Giraffen und familienfreundliche Lodges." },
-                  { t: "Romantik für Zwei", d: "Beginnen Sie das neue Jahr mit privaten Safaris und erholsamen Stunden am Traumstrand." },
-                  { t: "Individuelle Abenteurer", d: "Alleinreisende genießen maßgeschneiderte Routen und absolute Flexibilität." },
+                  { t: "Romantik für Zwei", d: "Beginnen Sie das neue Jahr mit romantischen Tagen in exklusiven Lodges, privaten Safaris nur für Sie und erholsamen Stunden am Traumstrand." },
+                  { t: "Individuelle Abenteurer", d: "Als Alleinreisende:r genießen Sie maßgeschneiderte Routen, private Guides und absolute Flexibilität." },
                   { t: "Freunde & Teams", d: "Spektakuläre Natur und entspannte Tage am Ozean für Gruppen." }
                 ].map((item, i) => (
                   <div key={i} className="p-6 bg-[#fdf7f2] rounded-2xl border border-border/40 space-y-2 group hover:border-primary/20 transition-all">
-                    <h4 className="font-bold text-sm text-secondary leading-none">{item.t}</h4>
-                    <p className="text-[10px] text-muted-foreground font-normal leading-relaxed opacity-70">{item.d}</p>
+                    <h4 className="font-bold text-base text-secondary">{item.t}</h4>
+                    <p className="text-sm text-muted-foreground font-normal leading-relaxed opacity-80">{item.d}</p>
                   </div>
                 ))}
               </div>
@@ -228,7 +228,7 @@ export default function NewYearPage() {
                   </div>
                   <p className="text-sm md:text-base font-normal italic text-secondary leading-relaxed opacity-80">"{r.text}"</p>
                 </div>
-                <p className="mt-8 font-bold text-primary text-[10px] tracking-widest uppercase">— {r.name}</p>
+                <p className="mt-8 font-bold text-primary text-xs tracking-widest uppercase">— {r.name}</p>
               </div>
             ))}
           </div>
