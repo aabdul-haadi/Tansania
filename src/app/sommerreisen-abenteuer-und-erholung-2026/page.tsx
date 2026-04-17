@@ -31,7 +31,7 @@ const faqs = [
 export default function SummerTravelPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
-      {/* 01 Hero Section - Clean Transition */}
+      {/* 01 Hero Section - Clean bottom transition */}
       <section className="relative h-[65vh] md:h-[80vh] flex items-center justify-center overflow-hidden bg-secondary">
         <Image 
           src="https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=1920" 
@@ -40,15 +40,16 @@ export default function SummerTravelPage() {
           priority
           className="object-cover brightness-50"
         />
+        {/* Stable simple overlay protocol */}
         <div className="absolute inset-0 bg-black/40" />
         
         <div className="container relative z-10 mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <Badge className="bg-primary text-white border-none px-5 py-2 text-[11px] font-bold mb-6 shadow-2xl">
-              Sommer-Edition 2026
+            <Badge className="bg-primary text-white border-none px-5 py-2 text-[11px] font-bold mb-6">
+              Sommer-Edition 2026/2027
             </Badge>
-            <h1 className="font-headline text-4xl md:text-7xl font-normal text-white mb-8 leading-tight tracking-tight">
-              Sommerurlaub 2026 in Tansania
+            <h1 className="font-headline text-3xl md:text-7xl font-normal text-white mb-8 leading-tight tracking-tight">
+              Sommerurlaub 2026/2027 in Tansania
             </h1>
             <p className="max-w-2xl mx-auto text-[14px] md:text-xl text-white/90 font-normal leading-relaxed opacity-80">
               Private Luxus Safari & Sansibar. Erleben Sie den Sommer einmal anders.
@@ -57,7 +58,7 @@ export default function SummerTravelPage() {
         </div>
       </section>
 
-      {/* 02 Narrative Intro - Reduced Padding */}
+      {/* 02 Narrative Intro */}
       <section className="py-8 md:py-12 container mx-auto px-4 max-w-5xl text-center">
         <div className="space-y-6">
           <p className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal opacity-90">
@@ -79,7 +80,7 @@ export default function SummerTravelPage() {
         </div>
       </section>
 
-      {/* 03 Package Registry - Reduced Padding */}
+      {/* 03 Package Registry */}
       <section className="py-8 md:py-12 container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
           {packages.map((pkg) => (
@@ -88,8 +89,8 @@ export default function SummerTravelPage() {
         </div>
       </section>
 
-      {/* 04 Why Summer Section - Reduced Padding */}
-      <section className="py-8 md:py-16 bg-white border-y border-border/40">
+      {/* 04 Why Summer Section */}
+      <section className="py-8 md:py-12 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-10 md:mb-16 space-y-4">
             <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter">
@@ -99,10 +100,10 @@ export default function SummerTravelPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: Waves, t: "Sansibar Strände", d: "Genieße die weißen Sandstrände und das kristallklare Wasser der tropischen Insel." },
-              { icon: Compass, t: "Safari-Abenteuer", d: "Erlebe ein exklusives Safari-Abenteuer durch die Serengeti und den Ngorongoro-Krater." },
-              { icon: Zap, t: "Kilimanjaro Trekking", d: "Wandere auf dem majestätischen Kilimandscharo und genieße die atemberaubende Aussicht." },
-              { icon: Star, t: "Die Big 5", d: "Treffe die legendären Big 5 und mache deine Safari zu einem exklusiven Erlebnis." }
+              { icon: Waves, t: "Sansibar Strände", d: "Genießen Sie die weißen Sandstrände und das kristallklare Wasser der tropischen Insel." },
+              { icon: Compass, t: "Safari-Abenteuer", d: "Erleben Sie ein exklusives Safari-Abenteuer durch die Serengeti und den Ngorongoro-Krater." },
+              { icon: Zap, t: "Kilimanjaro Trekking", d: "Wandern Sie auf dem majestätischen Kilimandscharo und genießen Sie die atemberaubende Aussicht." },
+              { icon: Star, t: "Die Big 5", d: "Treffen Sie die legendären Big 5 und machen Sie Ihre Safari zu einem exklusiven Erlebnis." }
             ].map((item, i) => (
               <div key={i} className="p-8 bg-[#fdfcfb] rounded-3xl border border-border/50 text-left space-y-4 group hover:border-primary/20 transition-all">
                 <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
@@ -116,20 +117,20 @@ export default function SummerTravelPage() {
         </div>
       </section>
 
-      {/* 05 Expertise Hub - Reduced Padding */}
-      <section className="py-8 md:py-16 bg-[#FDF7F2]">
+      {/* 05 Expertise Hub */}
+      <section className="py-8 md:py-12 bg-[#FDF7F2]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="space-y-10">
               <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter">
-                Sommer in Tansania – Sonne, Safari & Luxus
+                Sommer in Tansania – Sonne, Safari & Luxus 2026/2027
               </h2>
               <div className="space-y-6">
                 {[
-                  { t: "Exklusive Luxus-Safaris", d: "Starte deinen Sommer mit einer privat geführten Safari und luxuriösen Lodges." },
-                  { t: "Afrika erleben", d: "Wähle deine Traumreise. Safari-Abenteuer und Sonne statt Regen im Sommer." },
+                  { t: "Exklusive Luxus-Safaris", d: "Starten Sie Ihren Sommer mit einer privat geführten Safari und luxuriösen Lodges." },
+                  { t: "Afrika erleben", d: "Wählen Sie Ihre Traumreise. Safari-Abenteuer und Sonne statt Regen im Sommer." },
                   { t: "Familien-Safari", d: "Abenteuer, die Kinder begeistern, und Entspannung in familienfreundlichen Lodges." },
-                  { t: "Dein unvergesslicher Sommer", d: "Begrüße den Sommer inmitten der Serengeti und finde Entspannung am weißen Strand." }
+                  { t: "Dein unvergesslicher Sommer", d: "Begrüßen Sie den Sommer inmitten der Serengeti und finden Sie Entspannung am weißen Strand." }
                 ].map((point, i) => (
                   <div key={i} className="flex gap-4">
                     <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
@@ -148,8 +149,8 @@ export default function SummerTravelPage() {
         </div>
       </section>
 
-      {/* 06 FAQ Registry - Reduced Padding */}
-      <section className="py-8 md:py-16 bg-white border-t border-border/40">
+      {/* 06 FAQ Registry */}
+      <section className="py-8 md:py-12 bg-white border-t border-border/40">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-10 md:mb-16">
             <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary mb-6 tracking-tighter">Häufig gestellte Fragen</h2>

@@ -71,9 +71,9 @@ export function Navbar() {
   ];
 
   const seasonalReisen = [
-    { name: 'Neujahrsreisen Tansania 2026', href: '/neujahrsreisen-tansania-2026' },
-    { name: 'Sommerreisen Abenteuer & Erholung 2026', href: '/sommerreisen-abenteuer-und-erholung-2026' },
-    { name: 'Weihnachten Reisen Tansania 2026', href: '/weihnachten-reisen-tansania-2026' },
+    { name: 'Neujahrsreisen Tansania 2026/27', href: '/neujahrsreisen-tansania-2026' },
+    { name: 'Sommerreisen 2026', href: '/sommerreisen-abenteuer-und-erholung-2026' },
+    { name: 'Weihnachten Reisen Tansania 2026/27', href: '/weihnachten-reisen-tansania-2026' },
     { name: 'Ostern Safari Urlaub 2026', href: '/ostern-safari-urlaub-2026' },
   ];
 
@@ -109,7 +109,8 @@ export function Navbar() {
                 !useDarkState && "brightness-110"
               )} 
             />
-            <div className="flex flex-col md:flex-row md:items-center gap-0.5 md:gap-3">
+            {/* Brand text: Hidden below 340px, stays in single line */}
+            <div className="hidden min-[340px]:flex flex-col md:flex-row md:items-center gap-0.5 md:gap-3">
               <span className="font-headline font-black whitespace-nowrap text-lg sm:text-xl md:text-xl lg:text-2xl tracking-normal leading-none uppercase">
                 Tansania
               </span>
@@ -172,7 +173,7 @@ export function Navbar() {
                     <Accordion type="single" collapsible className="w-full">
                       <AccordionItem value="reisen2026" className="border-none mb-4">
                         <AccordionTrigger className="text-lg md:text-xl font-headline font-black tracking-normal hover:text-primary transition-colors leading-none py-0 hover:no-underline [&>svg]:hidden justify-start gap-4">
-                          <span>Reisen 2026</span>
+                          <span>Reisen 2026/27</span>
                           <ChevronDown className="w-4 h-4 text-primary" />
                         </AccordionTrigger>
                         <AccordionContent className="pt-4 pb-2 pl-4">
@@ -261,7 +262,7 @@ export function Navbar() {
                 </Button>
                 
                 <p className="text-[7px] font-black tracking-widest text-muted-foreground/40">
-                  Registry 2026 • Established 2014
+                  Registry 2026/27 • Established 2014
                 </p>
               </div>
             </SheetContent>

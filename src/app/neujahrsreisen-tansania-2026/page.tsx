@@ -41,15 +41,16 @@ export default function NewYearPage() {
           priority
           className="object-cover brightness-50"
         />
+        {/* Stable simple overlay protocol */}
         <div className="absolute inset-0 bg-black/40" />
         
         <div className="container relative z-10 mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <Badge className="bg-primary text-white border-none px-5 py-2 text-[11px] font-bold mb-6">
-              Saison-Registry 2025/2026
+              Saison-Registry 2026/2027
             </Badge>
             <h1 className="font-headline text-3xl md:text-7xl font-normal text-white mb-8 leading-tight tracking-tight">
-              Exklusive Neujahrs Safari & Sansibar
+              Exklusive Neujahrs Safari & Sansibar 2026/2027
             </h1>
             <p className="max-w-2xl mx-auto text-[14px] md:text-xl text-white/90 font-normal leading-relaxed opacity-80">
               Ihr Jahreswechsel in Luxus & Abenteuer. Starten Sie das Jahr im Herzen der Savanne.
@@ -58,7 +59,7 @@ export default function NewYearPage() {
         </div>
       </section>
 
-      {/* 02 Narrative Intro - Reduced Padding */}
+      {/* 02 Narrative Intro */}
       <section className="py-8 md:py-12 container mx-auto px-4 max-w-5xl text-center">
         <div className="space-y-6">
           <p className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal opacity-90">
@@ -72,7 +73,7 @@ export default function NewYearPage() {
         </div>
       </section>
 
-      {/* 03 Package Registry - Reduced Padding */}
+      {/* 03 Package Registry */}
       <section className="py-8 md:py-12 container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
           {packages.map((pkg) => (
@@ -81,8 +82,8 @@ export default function NewYearPage() {
         </div>
       </section>
 
-      {/* 04 Highlights Grid - Reduced Padding */}
-      <section className="py-8 md:py-16 bg-white border-y border-border/40">
+      {/* 04 Highlights Grid */}
+      <section className="py-8 md:py-12 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-10 md:mb-16 space-y-4">
             <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter">
@@ -109,13 +110,13 @@ export default function NewYearPage() {
         </div>
       </section>
 
-      {/* 05 Why Us Protocol - Reduced Padding */}
-      <section className="py-8 md:py-16 bg-[#FDF7F2] overflow-hidden">
+      {/* 05 Why Us Protocol */}
+      <section className="py-8 md:py-12 bg-[#FDF7F2] overflow-hidden">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="space-y-10">
               <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter">
-                Warum Ihr Neujahr 2026 einzigartig wird
+                Warum Ihr Neujahr 2026/2027 einzigartig wird
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {[
@@ -141,8 +142,8 @@ export default function NewYearPage() {
         </div>
       </section>
 
-      {/* 06 Reviews - Reduced Padding */}
-      <section className="py-8 md:py-16 bg-white border-t border-border/40">
+      {/* 06 Reviews */}
+      <section className="py-8 md:py-12 bg-white border-t border-border/40">
         <div className="container mx-auto px-4 max-w-7xl text-center">
           <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary mb-12 tracking-tighter">Was unsere Gäste sagen</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
