@@ -12,17 +12,17 @@ import { Separator } from "@/components/ui/separator";
 
 const testimonials = [
   {
-    quote: "Eine unvergessliche Reise für die ganze Familie! Die Planung war perfekt auf unsere Bedürfnisse mit zwei Kindern abgestimmt. Besonders die kinderfreundlichen Lodges und die flexible Gestaltung haben uns begeistert.",
+    quote: "Eine unvergessliche reise für die ganze familie! Die planung war perfekt auf unsere bedürfnisse mit zwei kindern abgestimmt. Besonders die kinderfreundlichen lodges und die flexible gestaltung haben uns begeistert.",
     author: "Familie Schmidt",
     category: "Familiensafari Tansania"
   },
   {
-    quote: "Unsere Flitterwochen waren ein absoluter Traum. Von der ersten Beratung bis zur Rückkehr fühlten wir uns bestens betreut. Die Kombination aus Safari und Strand war perfekt – und die ausgewählten Unterkünfte einfach traumhaft.",
+    quote: "Unsere flitterwochen waren ein absoluter traum. Von der ersten beratung bis zur rückkehr fühlten wir uns bestens betreut. Die kombination aus safari und strand war perfekt – und die ausgewählten unterkünfte einfach traumhaft.",
     author: "Julia & Thomas M.",
     category: "Safari & Sansibar Honeymoon"
   },
   {
-    quote: "Als anspruchsvolle Reisende waren wir von der Qualität und dem Service absolut begeistert. Jedes Detail stimmte, die Lodges waren erstklassig und die persönliche Betreuung vor Ort außergewöhnlich.",
+    quote: "Als anspruchsvolle reisende waren wir von der qualität und dem service absolut begeistert. Jedes detail stimmte, die lodges waren erstklassig und die persönliche betreuung vor Ort außergewöhnlich.",
     author: "Dr. Petra Müller",
     category: "Exklusive Luxury Safari"
   }
@@ -39,7 +39,7 @@ export function Testimonials() {
             viewport={{ once: true }}
             className="font-headline text-3xl md:text-5xl font-normal text-secondary mb-4"
           >
-            Was unsere Gäste sagen
+            Was unsere gäste sagen
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 10 }}
@@ -48,7 +48,7 @@ export function Testimonials() {
             transition={{ delay: 0.1 }}
             className="text-muted-foreground font-normal text-[11px] md:text-sm tracking-widest opacity-80"
           >
-            Authentische Erfahrungen von zufriedenen Reisenden
+            Authentische erfahrungen von zufriedenen reisenden
           </motion.p>
         </div>
 
@@ -66,7 +66,7 @@ export function Testimonials() {
           ))}
         </div>
 
-        <div className="md:hidden -mx-4">
+        <div className="md:hidden">
           <Carousel opts={{ align: "start", loop: true }} className="w-full">
             <CarouselContent className="-ml-4">
               {testimonials.map((item, idx) => (
@@ -84,7 +84,7 @@ export function Testimonials() {
 
 function TestimonialCard({ item }: { item: any }) {
   return (
-    <div className="bg-white rounded-xl p-6 md:p-8 shadow-sm border border-border/40 h-full flex flex-col transition-all duration-500 hover:shadow-md">
+    <div className="bg-white rounded-xl p-6 md:p-8 shadow-sm border border-border/40 h-full flex flex-col transition-all duration-500 hover:shadow-md text-left">
       <div className="flex gap-1 mb-5">
         {[...Array(5)].map((_, i) => (
           <Star key={i} className="w-3.5 h-3.5 fill-primary text-primary" />
@@ -99,7 +99,7 @@ function TestimonialCard({ item }: { item: any }) {
 
       <Separator className="bg-border/40 mb-5" />
 
-      <div className="space-y-1 text-left">
+      <div className="space-y-1">
         <p className="text-[13px] font-bold text-secondary tracking-tight">
           {item.author}
         </p>

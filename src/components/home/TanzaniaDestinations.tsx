@@ -15,42 +15,42 @@ import { cn } from '@/lib/utils';
 const destinations = [
   {
     name: "Serengeti",
-    desc: "Die endlose Savanne und die große Tierwanderung",
+    desc: "Die endlose savanne und die große tierwanderung",
     img: "/assets/images/home/destinations-01.png",
     slug: "serengeti",
     hint: "serengeti herds"
   },
   {
     name: "Ngorongoro Krater",
-    desc: "Das achte Weltwunder mit unglaublicher Tierdichte",
+    desc: "Das achte weltwunder mit unglaublicher tierdichte",
     img: "/assets/images/home/park-2.webp",
     slug: "ngorongoro",
     hint: "ngorongoro crater"
   },
   {
     name: "Tarangire",
-    desc: "Elefantenherden und majestätische Baobab-Bäume",
+    desc: "Elefantenherden und majestätische baobab-bäume",
     img: "/assets/images/home/destinations-03.png",
     slug: "tarangire",
     hint: "elephant savannah"
   },
   {
     name: "Sansibar",
-    desc: "Traumstrände und exotische Gewürzinsel-Kultur",
+    desc: "Traumstrände und exotische gewürzinsel-kultur",
     img: "/assets/images/home/destinations-04.png",
     slug: "zanzibar",
     hint: "zanzibar beach"
   },
   {
     name: "Kilimandscharo",
-    desc: "Afrikas höchster Gipfel und ultimative Herausforderung",
+    desc: "Afrikas höchster gipfel und ultimative herausforderung",
     img: "/assets/images/home/destinations-05.png",
     slug: "kilimanjaro",
     hint: "mount kilimanjaro"
   },
   {
-    name: "Arusha NP",
-    desc: "Das grüne Juwel am Fuße des Mount Meru",
+    name: "Arusha Park",
+    desc: "Das grüne juwel am fuße des mount meru",
     img: "/assets/images/home/destinations-06.png",
     slug: "arusha",
     hint: "mount meru"
@@ -77,7 +77,7 @@ export function TanzaniaDestinations() {
             transition={{ delay: 0.1 }}
             className="text-muted-foreground font-normal text-[14px] leading-[20px] tracking-normal max-w-xl mx-auto opacity-80"
           >
-            Die schönsten Destinationen für Ihre individuelle Reise
+            Die schönsten destinationen für Ihre individuelle reise
           </motion.p>
         </div>
 
@@ -87,7 +87,7 @@ export function TanzaniaDestinations() {
           ))}
         </div>
 
-        <div className="md:hidden -mx-4">
+        <div className="md:hidden">
           <Carousel opts={{ align: "start", loop: true }} className="w-full">
             <CarouselContent className="-ml-4">
               {destinations.map((dest, idx) => (
@@ -121,7 +121,6 @@ function DestinationCard({ dest }: { dest: any }) {
           className="object-cover transition-transform duration-1000 group-hover:scale-110"
           data-ai-hint={dest.hint}
         />
-        {/* Targeted Bottom Shady Overlay Protocol: No full image darkening */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
       </Link>
       

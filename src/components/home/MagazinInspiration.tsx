@@ -14,28 +14,28 @@ import {
 const magazinePosts = [
   {
     id: 1,
-    title: "Die schönsten Safari-Lodges in der Serengeti",
+    title: "Die schönsten safari-lodges in der serengeti",
     category: "Unterkünfte",
     date: "15. März 2026",
-    excerpt: "Entdecken Sie unsere handverlesene Auswahl der luxuriösesten und authentischsten Unterkünfte im Herzen der Serengeti.",
+    excerpt: "Entdecken Sie unsere handverlesene auswahl der luxuriösesten und authentischsten unterkünfte im herzen der serengeti.",
     img: "/assets/images/home/Magazin-1.webp",
     hint: "safari lodge"
   },
   {
     id: 2,
-    title: "Sansibar: Geheimtipps abseits der Touristenpfade",
+    title: "Sansibar: Geheimtipps abseits der touristenpfade",
     category: "Reiseziele",
     date: "8. März 2026",
-    excerpt: "Erleben Sie die authentische Seite Sansibars – von versteckten Stränden bis zu lokalen Gewürzmärkten.",
+    excerpt: "Erleben Sie die authentische seite sansibars – von versteckten stränden bis zu lokalen gewürzmärkten.",
     img: "/assets/images/home/Magazin-2.webp",
     hint: "zanzibar beach"
   },
   {
     id: 3,
-    title: "Optimal vorbereitet: Checkliste für Ihre Safari",
+    title: "Optimal vorbereitet: Checkliste für Ihre safari",
     category: "Reisetipps",
     date: "1. März 2026",
-    excerpt: "Von der richtigen Kleidung bis zur Kameraausrüstung – alles, was Sie für Ihre perfekte Safari wissen müssen.",
+    excerpt: "Von der richtigen kleidung bis zur kameraausrüstung – alles, was Sie für Ihre perfekte safari wissen müssen.",
     img: "/assets/images/home/magzine-3.png",
     hint: "safari gear"
   }
@@ -44,10 +44,9 @@ const magazinePosts = [
 export function MagazinInspiration() {
   return (
     <section className="pt-8 md:pt-16 pb-16 md:pb-24 bg-white overflow-hidden">
-      <div className="container mx-auto px-4 max-get-7xl">
-        {/* Header Protocol */}
+      <div className="container mx-auto px-4 max-w-7xl">
         <div className="flex items-end justify-between mb-12 md:mb-16">
-          <div className="space-y-2">
+          <div className="space-y-2 text-left">
             <motion.h2
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -63,15 +62,14 @@ export function MagazinInspiration() {
               transition={{ delay: 0.1 }}
               className="text-[#8A8581] font-medium text-xs md:text-sm tracking-widest opacity-80"
             >
-              Expertenwissen und Reisetipps aus erster Hand
+              Expertenwissen und reisetipps aus erster hand
             </motion.p>
           </div>
           <Link href="/blog" className="hidden md:flex items-center gap-2 text-[11px] font-bold text-[#3A3634] uppercase tracking-widest hover:text-[#C9A876] transition-colors group">
-            Alle Artikel <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+            Alle artikel <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
 
-        {/* Desktop Grid Layout */}
         <div className="hidden md:grid grid-cols-3 gap-8">
           {magazinePosts.map((post, idx) => (
             <motion.div
@@ -86,8 +84,7 @@ export function MagazinInspiration() {
           ))}
         </div>
 
-        {/* Mobile Modern Slider */}
-        <div className="md:hidden -mx-4">
+        <div className="md:hidden">
           <Carousel opts={{ align: "start", loop: true }} className="w-full">
             <CarouselContent className="-ml-4">
               {magazinePosts.map((post, idx) => (
@@ -99,7 +96,7 @@ export function MagazinInspiration() {
           </Carousel>
           <div className="mt-10 flex justify-center">
             <Link href="/blog" className="flex items-center gap-2 text-[10px] font-bold text-[#3A3634] uppercase tracking-widest">
-              Alle Artikel <ArrowRight className="w-3 h-3" />
+              Alle artikel <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
         </div>
@@ -109,11 +106,10 @@ export function MagazinInspiration() {
 }
 
 function MagazineCard({ post }: { post: any }) {
-  const blogLink = `/blog`; // Standard blog link for now
+  const blogLink = `/blog`;
 
   return (
-    <div className="flex flex-col h-full bg-white rounded-2xl overflow-hidden shadow-sm border border-border/40 hover:shadow-md transition-all duration-500 group">
-      {/* Visual Anchor - Linked */}
+    <div className="flex flex-col h-full bg-white rounded-2xl overflow-hidden shadow-sm border border-border/40 hover:shadow-md transition-all duration-500 group text-left">
       <Link href={blogLink} className="relative aspect-[16/10] overflow-hidden shrink-0 block">
         <Image
           src={post.img}
@@ -124,8 +120,7 @@ function MagazineCard({ post }: { post: any }) {
         />
       </Link>
 
-      {/* Content Protocol */}
-      <div className="p-6 md:p-8 flex flex-col flex-grow text-left">
+      <div className="p-6 md:p-8 flex flex-col flex-grow">
         <div className="flex items-center gap-4 mb-5">
           <span className="text-[10px] font-bold uppercase tracking-widest text-[#C9A876] px-3 py-1.5 rounded-full bg-[#C9A876]/10">
             {post.category}
@@ -138,7 +133,7 @@ function MagazineCard({ post }: { post: any }) {
 
         <div className="space-y-4 flex-grow">
           <Link href={blogLink}>
-            <h3 className="font-headline text-xl md:text-[24px] leading-[32px] font-medium text-[#3A3634] leading-tight group-hover:text-[#C9A876] transition-colors">
+            <h3 className="font-headline text-xl md:text-[24px] leading-[32px] font-medium text-[#3A3634] group-hover:text-[#C9A876] transition-colors">
               {post.title}
             </h3>
           </Link>

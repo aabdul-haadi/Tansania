@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -23,10 +22,10 @@ export function ReviewVideos() {
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12 md:mb-16 space-y-4">
           <h2 className="font-headline text-2xl md:text-5xl font-normal text-secondary leading-tight">
-            Unsere Gäste erzählen von Momenten, die sie nie vergessen werden
+            Unsere gäste erzählen von momenten, die sie nie vergessen werden
           </h2>
           <p className="text-muted-foreground font-bold text-[10px] md:text-sm tracking-widest max-w-3xl mx-auto leading-relaxed">
-            Unsere Reisenden teilen ihre schönsten Erinnerungen an Tansania, Sansibar und die Big Five: Erlebnisse, die berühren und bleiben.
+            Unsere reisenden teilen ihre schönsten erinnerungen an Tansania, Sansibar und die Big Five: Erlebnisse, die berühren und bleiben.
           </p>
         </div>
 
@@ -52,7 +51,7 @@ export function ReviewVideos() {
         </div>
 
         {/* Mobile: Modern Slider */}
-        <div className="md:hidden -mx-4">
+        <div className="md:hidden">
           <Carousel opts={{ align: "start", loop: true }} className="w-full">
             <CarouselContent className="-ml-4">
               {reviewVideos.map((url, idx) => (

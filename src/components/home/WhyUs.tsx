@@ -16,19 +16,19 @@ const features = [
   {
     id: "02",
     title: "100% Private Expeditionen",
-    desc: "Kein geteilter Bus, keine Kompromisse. Ihr eigener Jeep und Ihr privater Guide garantieren ein exklusives Abenteuer in Ihrem eigenen Tempo.",
+    desc: "Kein geteilter bus, keine Kompromisse. Ihr eigener Jeep und Ihr privater Guide garantieren ein exklusives Abenteuer in Ihrem eigenen Tempo.",
     icon: Compass,
   },
   {
     id: "03",
     title: "Echte lokale Wurzeln",
-    desc: "Unsere Partner in Arusha sind Freunde, denen wir unsere eigene Familie anvertrauen würden. Authentizität ist bei uns kein Marketing – es ist unsere Basis.",
+    desc: "Unsere Partner in Arusha sind freunde, denen wir unsere eigene familie anvertrauen würden. Authentizität ist bei uns kein Marketing – es ist unsere basis.",
     icon: Users,
   },
   {
     id: "04",
     title: "Geprüfte Sicherheit",
-    desc: "TATO-Mitglied & DRSF-abgesichert. Wir übernehmen die volle Verantwortung für Ihre Reise – von der Planung in Berlin bis zur Umsetzung vor Ort.",
+    desc: "Tato-mitglied & Drsf-abgesichert. Wir übernehmen die volle verantwortung für Ihre Reise – von der planung in Berlin bis zur umsetzung vor Ort.",
     icon: ShieldCheck,
   }
 ];
@@ -36,7 +36,7 @@ const features = [
 export function WhyUs() {
   return (
     <section className="pt-8 md:pt-12 pb-16 md:pb-32 bg-white overflow-hidden border-t border-border/40">
-      <div className="container mx-auto px-4 max-get-7xl">
+      <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
           
           {/* Left Column: Visual Manifest */}
@@ -47,7 +47,6 @@ export function WhyUs() {
               viewport={{ once: true }}
               className="relative"
             >
-              {/* Taller aspect ratio for more impact */}
               <div className="aspect-[3/4] rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden shadow-2xl border border-border/50 relative z-10 bg-muted">
                 <Image 
                   src="/assets/images/home/why-travel-01.png" 
@@ -63,21 +62,21 @@ export function WhyUs() {
 
           {/* Right Column: Narrative Manifest */}
           <div className="lg:col-span-7 space-y-10 md:space-y-16 order-1 lg:order-2">
-            <div className="space-y-6">
+            <div className="space-y-6 text-left">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 className="space-y-4"
               >
-                <span className="text-primary font-bold text-[10px] block mb-2 tracking-widest">Unsere DNA</span>
+                <span className="text-primary font-bold text-[10px] block mb-2 tracking-widest">Unsere Dna</span>
                 <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary leading-[0.9]">
                   Was uns von anderen <br />
-                  <span className="text-primary font-bold">unterscheidet</span>
+                  <span className="text-primary font-normal">unterscheidet</span>
                 </h2>
               </motion.div>
               <p className="text-muted-foreground font-normal text-[14px] leading-[20px] max-w-xl opacity-80 tracking-normal">
-                Wir planen keine Reisen von der Stange. Wir gestalten individuelle Expeditionen für Menschen, die das Echte suchen – mit maximaler Sicherheit und persönlicher Note.
+                Wir planen keine Reisen von der stange. Wir gestalten individuelle expeditionen für menschen, die das echte suchen – mit maximaler sicherheit und persönlicher note.
               </p>
             </div>
 
@@ -101,7 +100,7 @@ export function WhyUs() {
                       {feature.id}
                     </span>
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-2 text-left">
                     <h3 className="font-headline text-xl md:text-2xl font-bold text-secondary tracking-tight group-hover:text-primary transition-colors">
                       {feature.title}
                     </h3>
