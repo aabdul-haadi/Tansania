@@ -46,7 +46,7 @@ export function Navbar() {
   const pathname = usePathname();
 
   // Route registry for high-contrast visibility
-  const isBrightPage = pathname === '/national-parks' || pathname === '/faq' || pathname?.startsWith('/legal') || pathname === '/unterkuenfte' || pathname === '/blog';
+  const isBrightPage = pathname === '/national-parks' || pathname === '/faq' || pathname?.startsWith('/legal') || pathname === '/unterkuenfte' || pathname === '/blog' || pathname?.includes('2026');
 
   useEffect(() => {
     const handleScroll = () => {

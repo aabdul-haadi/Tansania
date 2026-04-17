@@ -44,13 +44,13 @@ const siteRegistry = [
     ]
   },
   {
-    category: "02. Seasonal Campaigns (2026)",
+    category: "02. Seasonal Campaigns (2026/27)",
     id: "seasonal",
     icon: Calendar,
     routes: [
-      { title: "New Year 2026", path: "/neujahrsreisen-tansania-2026", status: "Live", sub: "Campaign" },
+      { title: "New Year 2026/27", path: "/neujahrsreisen-tansania-2026", status: "Live", sub: "Campaign" },
       { title: "Summer 2026", path: "/sommerreisen-abenteuer-und-erholung-2026", status: "Live", sub: "Campaign" },
-      { title: "Christmas 2026", path: "/weihnachten-reisen-tansania-2026", status: "Pending", sub: "Draft" },
+      { title: "Christmas 2026/27", path: "/weihnachten-reisen-tansania-2026", status: "Live", sub: "Campaign" },
       { title: "Easter 2026", path: "/ostern-safari-urlaub-2026", status: "Pending", sub: "Draft" },
     ]
   },
