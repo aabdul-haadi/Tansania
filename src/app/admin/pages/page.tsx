@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useMemo } from 'react';
@@ -88,6 +89,8 @@ const siteRegistry = [
       { title: "12 Tage Familien-Safari", path: "/safaris/familien-safari-12-tage", status: "Live", sub: "Familie" },
       { title: "10 Tage Lemosho Route", path: "/safaris/10-tage-lemosho-unberuehrte-wege", status: "Live", sub: "Expedition" },
       { title: "12 Tage Camping Safari", path: "/safaris/12-tage-camping-safari", status: "Live", sub: "Abenteuer" },
+      { title: "13 Tage Kili-Kombi", path: "/safaris/13-tage-kilimandscharo-kombi", status: "Live", sub: "Expedition" },
+      { title: "7 Tage Sansibar", path: "/safaris/7-tage-sansibar", status: "Live", sub: "Kompakt" },
     ]
   },
   {
