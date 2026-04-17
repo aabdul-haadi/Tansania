@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { 
   Search, 
@@ -20,7 +21,8 @@ import {
   Waves, 
   Calendar,
   ChevronRight,
-  Heart
+  Heart,
+  Plus
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -41,7 +43,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { PackageCard } from '@/components/shared/PackageCard';
-import { ContactSection } from '@/components/shared/ContactSection';
 import { cn } from '@/lib/utils';
 
 // Master Data Registry for Offers
@@ -54,7 +55,7 @@ const packages = [
     durationDays: 15,
     category: 'Signature',
     highlights: ['Große Migration', 'Luxus Camps', 'Sansibar Strände'],
-    imageUrl: '/assets/images/home/pkg-01.webp',
+    imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200',
     excerpt: 'Unsere umfassendste Expedition: Vom Herzen der Serengeti bis zu den Palmen Sansibars.',
     tier: 'Luxury'
   },
@@ -66,7 +67,7 @@ const packages = [
     durationDays: 13,
     category: 'Signature',
     highlights: ['Big Five Safaris', 'Ngorongoro Krater', 'Strand-Relax'],
-    imageUrl: '/assets/images/home/pkg-02.webp',
+    imageUrl: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=1200',
     excerpt: 'Die perfekte Balance aus intensiven Wildtierbeobachtungen und exklusiver Entspannung.',
     tier: 'Premium'
   },
@@ -78,7 +79,7 @@ const packages = [
     durationDays: 11,
     category: 'Kompakt',
     highlights: ['Elefanten Tarangire', 'Serengeti Highlights', 'Sansibar Tour'],
-    imageUrl: '/assets/images/home/pkg-03.webp',
+    imageUrl: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=1200',
     excerpt: 'Erleben Sie die Highlights Tansanias in einer perfekt abgestimmten 11-tägigen Reise.',
     tier: 'Standard'
   },
@@ -90,7 +91,7 @@ const packages = [
     durationDays: 12,
     category: 'Familie',
     highlights: ['Pool Lodges', 'Kinder-Safaris', 'Kultur-Besuche'],
-    imageUrl: '/assets/images/home/pkg-04.png',
+    imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200',
     excerpt: 'Speziell für Familien: Unvergessliche Abenteuer und kindgerechte Lodges in der Wildnis.',
     tier: 'Premium'
   }
@@ -106,9 +107,21 @@ export default function ReiseangebotePage() {
   const [mounted, setMounted] = useState(false);
   const [activeCategory, setActiveCategory] = useState('All');
   const [search, setSearch] = useState('');
+  const [formHeight, setFormHeight] = useState(600);
+  const formContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
+    
+    // Dynamic Form Registry Protocol
+    const handleMessage = (e: MessageEvent) => {
+      if (e.data && e.data.formHeight) {
+        setFormHeight(e.data.formHeight);
+      }
+    };
+
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
   }, []);
 
   const filteredPackages = useMemo(() => {
@@ -123,16 +136,16 @@ export default function ReiseangebotePage() {
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
-      {/* 01 Hero Section */}
+      {/* 01 Clean Prestige Hero */}
       <section className="relative h-[60vh] md:h-[75vh] flex items-center justify-center overflow-hidden bg-secondary">
         <Image 
           src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
           alt="Safari-Angebote Tansania" 
           fill 
           priority 
-          className="object-cover brightness-[0.55] scale-105"
+          className="object-cover brightness-[0.5] scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-[#fdfcfb]/10" />
         
         <div className="container relative z-10 mx-auto px-4 text-center">
           <motion.div
@@ -152,14 +165,14 @@ export default function ReiseangebotePage() {
                 Alle Angebote ansehen
               </Button>
               <Button variant="glass" className="rounded-xl px-10 h-14 font-bold text-[11px] border-white/20">
-                Sonderangebote & Last-Minute Deals
+                Sonderangebote & Deals
               </Button>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* 02 Filter & Search Bar Hub */}
+      {/* 02 Filter & Search Hub */}
       <section className="py-6 bg-white border-y border-border/40 sticky top-0 z-40 shadow-sm">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
@@ -195,17 +208,13 @@ export default function ReiseangebotePage() {
                 placeholder="Region oder Route suchen..." 
                 className="h-11 pl-11 rounded-xl bg-muted/10 border-none font-bold text-[10px]"
               />
-              <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-1.5 pointer-events-none">
-                <span className="text-[10px] font-bold text-primary">{filteredPackages.length}</span>
-                <span className="text-[8px] font-bold text-muted-foreground uppercase opacity-40">Treffer</span>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* 03 Reisepaket Highlight Grid */}
-      <section id="catalog" className="py-8 md:py-12 container mx-auto px-4 max-w-7xl">
+      <section id="catalog" className="py-12 md:py-20 container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
           {filteredPackages.map((pkg) => (
             <PackageCard key={pkg.id} pkg={pkg as any} />
@@ -214,10 +223,10 @@ export default function ReiseangebotePage() {
       </section>
 
       {/* 04 Vergleichstabelle */}
-      <section className="py-8 md:py-12 bg-white border-y border-border/40">
+      <section className="py-12 md:py-24 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-5xl">
-          <div className="text-center mb-10 space-y-3">
-            <h2 className="font-headline text-2xl md:text-5xl font-normal text-secondary tracking-tight">Expeditions-Vergleich</h2>
+          <div className="text-center mb-12 space-y-3">
+            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tight">Expeditions-Vergleich</h2>
             <p className="text-muted-foreground text-sm font-normal opacity-70">Die wichtigsten Parameter auf einen Blick.</p>
           </div>
 
@@ -252,7 +261,7 @@ export default function ReiseangebotePage() {
       </section>
 
       {/* 05 Bestseller & Favoriten */}
-      <section className="py-8 md:py-12 bg-[#fdfcfb]">
+      <section className="py-12 md:py-24 bg-[#fdfcfb]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
             <div className="lg:col-span-5 space-y-10">
@@ -260,7 +269,7 @@ export default function ReiseangebotePage() {
                 <span className="text-primary font-bold text-[10px] block">Trending Registry</span>
                 <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary leading-none">Bestseller & Favoriten</h2>
                 <p className="text-muted-foreground font-normal text-sm md:text-lg leading-relaxed opacity-80">
-                  Basierend auf über 1.200 Expeditionen im letzten Jahr. Dies sind die Routen, die unsere Gäste am meisten bewegen.
+                  Basierend auf über 1.200 Expeditionen im letzten Jahr.
                 </p>
               </div>
 
@@ -285,7 +294,7 @@ export default function ReiseangebotePage() {
             <div className="lg:col-span-7">
               <div className="relative group">
                 <div className="absolute -inset-4 bg-primary/5 rounded-[3rem] -rotate-1" />
-                <Card className="relative bg-white rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border border-border/40">
+                <Card className="relative bg-white rounded-[2.5rem] md:rounded-[3rem] overflow-hidden shadow-2xl border border-border/40">
                   <div className="aspect-video relative overflow-hidden">
                     <Image src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=1200" alt="Reise des Monats" fill className="object-cover group-hover:scale-105 transition-transform duration-1000" />
                     <div className="absolute top-6 left-6">
@@ -294,7 +303,7 @@ export default function ReiseangebotePage() {
                   </div>
                   <div className="p-8 md:p-12 space-y-6 text-left">
                     <h3 className="font-headline text-2xl md:text-4xl font-normal text-secondary">Great Migration Special 2026</h3>
-                    <p className="text-muted-foreground text-base md:text-xl font-normal leading-relaxed opacity-80">
+                    <p className="text-muted-foreground text-base md:text-xl font-normal leading-relaxed opacity-80 italic">
                       „Das war die beste Reise unseres Lebens! Das Brüllen der Löwen nachts in der Serengeti ist unbeschreiblich. Alles war perfekt organisiert.“
                     </p>
                     <div className="flex items-center gap-4 border-t border-border/40 pt-6">
@@ -303,7 +312,7 @@ export default function ReiseangebotePage() {
                       </div>
                       <div className="text-left">
                         <p className="text-xs font-bold text-secondary">Familie Weidner</p>
-                        <p className="text-[10px] font-bold text-muted-foreground">Safari im Juni 2024</p>
+                        <p className="text-[10px] font-bold text-muted-foreground">Safari im Juni 2025</p>
                       </div>
                     </div>
                   </div>
@@ -315,10 +324,10 @@ export default function ReiseangebotePage() {
       </section>
 
       {/* 06 Geographic Discovery */}
-      <section className="py-8 md:py-12 bg-white border-y border-border/40">
+      <section className="py-12 md:py-24 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="text-center mb-10 md:mb-16">
-            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter">Ihre Expeditions-Ziele</h2>
+          <div className="text-center mb-12 md:mb-20">
+            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter">Ihre Expeditions-Ziele</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
@@ -344,28 +353,28 @@ export default function ReiseangebotePage() {
         </div>
       </section>
 
-      {/* 07 Trust & Security */}
-      <section className="py-8 md:py-12 bg-white">
+      {/* 07 Trust & Why Us */}
+      <section className="py-12 md:py-24 bg-white">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-            <div className="relative aspect-[16/10] md:aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl order-2 lg:order-1">
-              <Image src="https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=1200" alt="Guide Expertise" fill className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            <div className="relative aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl order-2 lg:order-1">
+              <Image src="https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=1200" alt="Expertise" fill className="object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
             </div>
             
             <div className="space-y-10 order-1 lg:order-2 text-left">
               <div className="space-y-4">
-                <span className="text-primary font-bold text-[10px] block">Warum mit uns reisen?</span>
-                <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary leading-[0.9] tracking-tighter">Sicherheit & Vertrauen</h2>
+                <span className="text-primary font-bold text-[10px] block">Premium Standard</span>
+                <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary leading-[0.9] tracking-tighter">Warum mit uns reisen?</h2>
               </div>
               <div className="grid grid-cols-1 gap-6">
                 {[
                   { icon: ShieldCheck, t: "DRSF Abgesichert", d: "Ihre Zahlungen sind zu 100% durch den deutschen Reisesicherungsfonds geschützt." },
-                  { icon: Globe, t: "Lokales Büro in Arusha", d: "Direkte Betreuung vor Ort durch unser Expertenteam rund um die Uhr." },
-                  { icon: Compass, t: "Deutschsprachige Guides", d: "Staatlich geprüfte Experten, die Ihre Sprache sprechen und das Land lieben." }
+                  { icon: Globe, t: "Arusha Registry Office", d: "Direkte Betreuung vor Ort durch unser Expertenteam rund um die Uhr." },
+                  { icon: Compass, t: "Deutschsprachige Guides", d: "Staatlich geprüfte Experten, die Ihre Sprache sprechen." }
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-6 group">
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary transition-all duration-500">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary transition-all">
                       <item.icon className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
                     </div>
                     <div className="space-y-1">
@@ -380,19 +389,47 @@ export default function ReiseangebotePage() {
         </div>
       </section>
 
-      {/* 08 FAQ Hub */}
-      <section className="py-8 md:py-12 bg-[#FDF7F2] border-y border-border/40">
+      {/* 08 Specialized Dynamic Inquiry Registry */}
+      <section id="inquiry" className="py-12 md:py-24 bg-[#fdfcfb] scroll-mt-20">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="text-center mb-12 space-y-4">
+            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter">Individuelle Beratung</h2>
+            <p className="text-muted-foreground text-[10px] md:text-sm font-bold uppercase tracking-widest max-w-xl mx-auto">
+              Begrenzte Plätze – unsere Experten klären alle Details für Sie.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-[2rem] md:rounded-[3.5rem] shadow-2xl border border-border/50 overflow-hidden relative transition-all duration-500 hover:shadow-primary/5">
+            <div 
+              ref={formContainerRef}
+              className="w-full transition-all duration-500 ease-in-out"
+              style={{ height: `${formHeight}px` }}
+            >
+              <iframe
+                src="https://app.tansania-reiseabenteuer.de/forms/embed/571d4d75ca0448ab9a1df187bb8e4cba"
+                className="w-full h-full border-none overflow-hidden"
+                scrolling="no"
+                title="Spezialisierte Reiseanfrage"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 09 FAQ Hub */}
+      <section className="py-12 md:py-24 bg-white border-t border-border/40">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-12">
             <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tighter">Häufig gestellte Fragen</h2>
           </div>
           <Accordion type="single" collapsible className="space-y-3">
             {[
-              { q: "Wann benötige ich ein Visum für Tansania?", a: "Für Tansania ist ein Visum erforderlich. Wir empfehlen das e-Visum (ca. 50 USD) mindestens 2 Wochen vor Abflug online zu beantragen. Unser Team unterstützt Sie gerne dabei." },
-              { q: "Welche Impfvorschriften gelten für die Reise?", a: "Standardimpfungen und Hepatitis A werden empfohlen. Eine Gelbfieber-Impfung ist bei Einreise aus Endemiegebieten (z.B. Nachbarländer) Pflicht." },
-              { q: "Was ist in den Safari-Angeboten inkludiert?", a: "In der Regel sind alle Inlandsflüge, Transfers, Unterkünfte mit Vollpension auf Safari, Nationalpark-Gebühren und ein privater deutschsprachiger Guide inkludiert." }
+              { q: "Wann ist die beste Reisezeit?", a: "Die Trockenzeiten von Juni bis Oktober und Januar bis Februar sind ideal für Safaris." },
+              { q: "Benötige ich ein Visum?", a: "Ja, für Tansania ist ein Visum erforderlich. Wir unterstützen Sie gerne beim e-Visum Prozess." },
+              { q: "Was ist in den Angeboten inkludiert?", a: "In der Regel alle Inlandsflüge, Transfers, Unterkünfte mit Vollpension und private Guides." }
             ].map((faq, i) => (
-              <AccordionItem key={i} value={`offer-faq-${i}`} className="border-none bg-white rounded-2xl px-8 shadow-sm transition-all hover:shadow-md border border-transparent hover:border-border">
+              <AccordionItem key={i} value={`faq-${i}`} className="border-none bg-[#FDFCFB] rounded-2xl px-8 shadow-sm transition-all hover:bg-white border border-transparent hover:border-border">
                 <AccordionTrigger className="font-bold text-base py-6 hover:no-underline text-left text-secondary [&>svg]:hidden">
                   <div className="flex items-center justify-between w-full gap-4">
                     <span className="tracking-tight leading-snug">{faq.q}</span>
@@ -405,11 +442,7 @@ export default function ReiseangebotePage() {
           </Accordion>
         </div>
       </section>
-
-      {/* 09 Inquiry Registry */}
-      <section id="inquiry" className="scroll-mt-20">
-        <ContactSection />
-      </section>
     </div>
   );
 }
+
