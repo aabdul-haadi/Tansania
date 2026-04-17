@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { 
   Search, 
@@ -31,12 +32,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { PackageCard } from '@/components/shared/PackageCard';
 import { DestinationDiscovery } from '@/components/sections/DestinationDiscovery';
 import { ContactSection } from '@/components/shared/ContactSection';
@@ -94,9 +89,9 @@ const packages = [
 ];
 
 const bestsellers = [
-  { name: "15 Tage Signature Kombi", count: "140+ Buchungen", rating: 5.0, icon: Star, urgency: "Nur noch 2 Plätze im März" },
-  { name: "Kilimandscharo Lemosho", count: "95+ Buchungen", rating: 4.9, icon: Globe, urgency: "Top-Saison fast ausgebucht" },
-  { name: "13 Tage Honeymoon Special", count: "80+ Buchungen", rating: 5.0, icon: Heart, urgency: "Frühbucherrabatt aktiv" }
+  { name: "15 Tage Signature Kombi", count: "140+ Buchungen", rating: 5.0, icon: Star, urgency: "Nur noch 2 Plätze" },
+  { name: "Kilimandscharo Lemosho", count: "95+ Buchungen", rating: 4.9, icon: Globe, urgency: "Top-Saison" },
+  { name: "13 Tage Honeymoon Special", count: "80+ Buchungen", rating: 5.0, icon: Heart, urgency: "Aktiv" }
 ];
 
 export default function ReiseangebotePage() {
@@ -150,7 +145,7 @@ export default function ReiseangebotePage() {
             <h1 className="font-headline text-3xl md:text-7xl font-normal text-white leading-tight tracking-tight">
               Unglaubliche Safari- und Tansania-Reiseangebote
             </h1>
-            <p className="max-w-2xl mx-auto text-white/90 text-sm md:text-xl font-normal leading-relaxed opacity-80">
+            <p className="max-w-2xl mx-auto text-white/90 font-normal text-sm md:text-xl leading-relaxed opacity-80">
               Abenteuer, Kultur und Entspannung – perfekt geplant. Erleben Sie Tansania in seiner reinsten Form.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
@@ -204,17 +199,31 @@ export default function ReiseangebotePage() {
         </div>
       </section>
 
-      {/* 04 Comparison Matrix */}
-      <section className="pt-8 pb-16 bg-white border-y border-border/40">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <div className="text-center mb-8 md:mb-12 space-y-3">
-            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tight">Angebote im Vergleich</h2>
-            <p className="text-muted-foreground text-sm font-normal opacity-70">Wählen Sie das perfekte Level für Ihr Abenteuer</p>
+      {/* 04 Comparison Matrix with Background Visual */}
+      <section className="relative pt-8 pb-24 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="/assets/images/home/final-cta-bg.webp" 
+            alt="Safari Landscape" 
+            fill 
+            className="object-cover brightness-[0.4]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-secondary via-transparent to-secondary/90" />
+        </div>
+        
+        <div className="container relative z-10 mx-auto px-4 max-w-5xl">
+          <div className="text-center mb-10 md:mb-16 space-y-2">
+            <h2 className="font-headline text-3xl md:text-5xl font-normal text-white tracking-tight">
+              Angebote im Vergleich
+            </h2>
+            <p className="text-white/70 font-normal text-[14px] leading-[20px] tracking-normal opacity-80">
+              Wählen Sie das perfekte Level für Ihr Abenteuer
+            </p>
           </div>
 
-          <div className="bg-white rounded-[2rem] border border-border/50 overflow-hidden shadow-sm">
+          <div className="bg-white/95 backdrop-blur-xl rounded-[2.5rem] border border-white/20 overflow-hidden shadow-2xl">
             <Table>
-              <TableHeader className="bg-muted/5">
+              <TableHeader className="bg-muted/10">
                 <TableRow className="border-border/30">
                   <TableHead className="font-bold text-[10px] py-6 px-10 tracking-normal text-muted-foreground">Leistung</TableHead>
                   <TableHead className="font-bold text-[10px] tracking-normal text-secondary">Safari Luxury</TableHead>
@@ -229,7 +238,7 @@ export default function ReiseangebotePage() {
                   { f: "Sicherheit", l: "DRSF Inkl.", k: "DRSF Inkl." },
                   { f: "Preis ab", l: "5.399 €", k: "2.999 €" },
                 ].map((row, idx) => (
-                  <TableRow key={idx} className="border-border/20 hover:bg-muted/5 transition-all group">
+                  <TableRow key={idx} className="border-border/10 hover:bg-muted/5 transition-all group">
                     <TableCell className="font-bold text-xs text-muted-foreground py-6 px-10 group-hover:text-primary">{row.f}</TableCell>
                     <TableCell className="font-bold text-sm text-secondary">{row.l}</TableCell>
                     <TableCell className="font-bold text-sm text-secondary">{row.k}</TableCell>
@@ -245,22 +254,24 @@ export default function ReiseangebotePage() {
       <DestinationDiscovery />
 
       {/* 06 Bestseller & Proof */}
-      <section className="pt-8 pb-16 bg-[#fdfcfb] border-t border-border/40">
+      <section className="pt-8 pb-20 bg-white border-t border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-            <div className="lg:col-span-5 space-y-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+            <div className="lg:col-span-5 space-y-12">
               <div className="space-y-4">
-                <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary leading-none">Bestseller & Favoriten</h2>
-                <p className="text-muted-foreground text-sm md:text-lg font-normal opacity-80 leading-relaxed">
+                <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-normal">
+                  Bestseller & Favoriten
+                </h2>
+                <p className="text-muted-foreground font-normal text-[14px] leading-[20px] tracking-normal opacity-80">
                   Diese Expeditionen wurden im letzten Jahr am häufigsten gebucht und von unseren Gästen mit Höchstnoten bewertet.
                 </p>
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {bestsellers.map((item, i) => (
-                  <div key={i} className="p-6 bg-white rounded-2xl border border-border/40 shadow-sm flex items-center justify-between group hover:border-primary/30 transition-all duration-500">
+                  <div key={i} className="p-6 bg-[#fdfcfb] rounded-2xl border border-border/40 shadow-sm flex items-center justify-between group hover:border-primary/30 transition-all duration-500">
                     <div className="flex items-center gap-5">
-                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
+                      <div className="w-12 h-12 rounded-xl bg-white border border-border/60 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all shadow-sm">
                         <item.icon className="w-6 h-6" />
                       </div>
                       <div className="text-left">
@@ -280,8 +291,8 @@ export default function ReiseangebotePage() {
               </div>
             </div>
 
-            <div className="lg:col-span-7">
-              <Card className="relative bg-white rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden shadow-2xl border border-border/30">
+            <div className="lg:col-span-7 pt-4">
+              <Card className="relative bg-[#fdfcfb] rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden shadow-xl border border-border/30">
                 <div className="aspect-video relative overflow-hidden">
                   <Image 
                     src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=1200" 
@@ -294,8 +305,10 @@ export default function ReiseangebotePage() {
                   </div>
                 </div>
                 <div className="p-8 md:p-12 space-y-6 text-left">
-                  <h3 className="font-headline text-2xl md:text-4xl font-normal text-secondary leading-tight">Great Migration Special 2026</h3>
-                  <p className="text-muted-foreground text-base md:text-lg font-normal leading-relaxed opacity-80 italic">
+                  <h3 className="font-headline text-2xl md:text-4xl font-normal text-secondary tracking-normal">
+                    Great Migration Special 2026
+                  </h3>
+                  <p className="text-muted-foreground font-normal text-[14px] md:text-lg leading-relaxed opacity-80 italic">
                     "Das war die beste Reise unseres Lebens! Das Brüllen der Löwen nachts in der Serengeti ist unbeschreiblich. Wir fühlten uns von Tansania Reiseabenteuer vom ersten Moment an perfekt betreut."
                   </p>
                   <div className="flex items-center gap-5 border-t border-border/40 pt-8">
@@ -304,7 +317,7 @@ export default function ReiseangebotePage() {
                     </div>
                     <div className="text-left">
                       <p className="text-sm font-bold text-secondary">Familie Weidner</p>
-                      <p className="text-[10px] font-bold text-muted-foreground tracking-normal">Safari im Juni 2025</p>
+                      <p className="text-[10px] font-normal text-muted-foreground tracking-normal">Safari im Juni 2025</p>
                     </div>
                   </div>
                 </div>
@@ -315,20 +328,22 @@ export default function ReiseangebotePage() {
       </section>
 
       {/* 07 Trust Signals */}
-      <section className="pt-8 pb-16 bg-white">
+      <section className="pt-8 pb-20 bg-white">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {[
               { icon: ShieldCheck, t: "DRSF Abgesichert", d: "Ihre Zahlungen sind zu 100% durch den deutschen Reisesicherungsfonds geschützt." },
               { icon: Globe, t: "Arusha Registry Office", d: "Direkte Betreuung vor Ort durch unser Expertenteam rund um die Uhr." },
               { icon: Compass, t: "Deutschsprachige Guides", d: "Staatlich geprüfte Experten, die Ihre Sprache sprechen und die Savanne kennen." }
             ].map((item, i) => (
-              <div key={i} className="flex flex-col items-center text-center space-y-4 group">
-                <div className="w-16 h-16 rounded-[1.5rem] bg-[#fdf7f2] border border-[#f0ebe0] flex items-center justify-center transition-all group-hover:bg-primary shadow-sm group-hover:shadow-primary/20">
+              <div key={i} className="flex flex-col items-center text-center space-y-5 group">
+                <div className="w-16 h-16 rounded-[1.5rem] bg-[#fdf7f2] border border-[#f0ebe0] flex items-center justify-center transition-all group-hover:bg-primary shadow-sm">
                   <item.icon className="w-8 h-8 text-primary group-hover:text-white transition-colors" />
                 </div>
-                <h4 className="font-bold text-lg text-secondary">{item.t}</h4>
-                <p className="text-sm text-muted-foreground font-normal leading-relaxed">{item.d}</p>
+                <div className="space-y-2">
+                  <h4 className="font-bold text-lg text-secondary tracking-tight">{item.t}</h4>
+                  <p className="text-muted-foreground font-normal text-[14px] leading-[20px] opacity-80 max-w-[280px]">{item.d}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -336,11 +351,13 @@ export default function ReiseangebotePage() {
       </section>
 
       {/* 08 Dynamic Inquiry Protocol */}
-      <section id="inquiry" className="pt-8 pb-16 bg-[#fdfcfb] scroll-mt-20">
+      <section id="inquiry" className="pt-8 pb-24 bg-[#fdfcfb] scroll-mt-20">
         <div className="container mx-auto px-4 max-w-4xl">
-          <div className="text-center mb-10 md:mb-16 space-y-4">
-            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter">Individuelle Beratung</h2>
-            <p className="text-muted-foreground text-sm font-bold tracking-normal opacity-70">
+          <div className="text-center mb-10 md:mb-16 space-y-2">
+            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-normal">
+              Individuelle Beratung
+            </h2>
+            <p className="text-muted-foreground font-normal text-[14px] leading-[20px] tracking-normal opacity-80">
               Begrenzte Plätze • Experten klären alles für Sie
             </p>
           </div>
@@ -362,12 +379,12 @@ export default function ReiseangebotePage() {
               </div>
             </div>
             
-            <div className="p-4 bg-muted/5 border-t border-border/40 flex items-center justify-center gap-8">
-              <div className="flex items-center gap-2 text-[8px] font-bold text-muted-foreground/40 tracking-normal">
-                <ShieldCheck className="w-3.5 h-3.5" /> Dsgvo Konform
+            <div className="p-5 bg-muted/5 border-t border-border/40 flex items-center justify-center gap-12">
+              <div className="flex items-center gap-2 text-[10px] font-bold text-muted-foreground/40 tracking-normal">
+                <ShieldCheck className="w-4 h-4" /> Dsgvo Konform
               </div>
-              <div className="flex items-center gap-2 text-[8px] font-bold text-muted-foreground/40 tracking-normal">
-                <Zap className="w-3.5 h-3.5" /> Schnelle Antwort
+              <div className="flex items-center gap-2 text-[10px] font-bold text-muted-foreground/40 tracking-normal">
+                <Zap className="w-4 h-4" /> Schnelle Antwort
               </div>
             </div>
           </div>
