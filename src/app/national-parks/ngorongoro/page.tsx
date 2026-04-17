@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from 'react';
@@ -84,10 +85,10 @@ export default function NgorongoroPage() {
       <section className="relative h-[40vh] md:h-[55vh] w-full overflow-hidden bg-secondary">
         <Image src="/assets/images/national-parks/ngorongoro-card.webp" alt="Ngorongoro Krater" fill priority className="object-cover brightness-75 scale-105" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
-        <div className="container relative z-10 mx-auto px-6 h-full flex flex-col items-center justify-end text-center pb-12 max-w-7xl">
+        <div className="container relative z-10 mx-auto px-6 h-full flex flex-col items-center justify-end text-center pb-12 max-get-7xl">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="space-y-4">
             <p className="text-white text-[11px] font-normal tracking-normal drop-shadow-lg uppercase tracking-[0.3em]">UNESCO-Welterbe & Größte Caldera der Welt</p>
-            <h1 className="font-headline text-4xl md:text-7xl font-normal text-white leading-tight tracking-tight uppercase">Ngorongoro-Krater</h1>
+            <h1 className="font-headline text-4xl md:text-7xl font-normal text-white leading-tight tracking-tight">Ngorongoro-Krater</h1>
           </motion.div>
         </div>
       </section>
@@ -99,9 +100,9 @@ export default function NgorongoroPage() {
             <div className="space-y-6 text-left">
               <div className="space-y-2">
                 <div className="w-8 h-0.5 bg-primary" />
-                <span className="text-primary font-bold text-[10px] block tracking-widest uppercase">Ein einzigartiges Naturwunder Afrikas</span>
+                <span className="text-primary font-bold text-[10px] block tracking-widest">Ein einzigartiges Naturwunder Afrikas</span>
               </div>
-              <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary leading-tight tracking-tight uppercase">Das achte Weltwunder</h2>
+              <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary leading-tight tracking-tight">Das achte Weltwunder</h2>
               <div className="space-y-6 text-muted-foreground font-normal text-[14px] leading-[20px] opacity-90">
                 <p>Der Ngorongoro-Krater gilt als eine der spektakulärsten Naturlandschaften Afrikas. Vor 2–3 Millionen Jahren brach ein gigantischer Vulkan zusammen und schuf die 20 km breite Caldera.</p>
                 <p>Heute ist sie ein geschlossenes Ökosystem mit ganzjährig Wasser und Nahrung – Grund für die unglaubliche Tierdichte und die höchste Raubtierdichte weltweit.</p>
@@ -121,7 +122,7 @@ export default function NgorongoroPage() {
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-8 md:mb-12 space-y-3">
             <span className="text-primary font-bold tracking-[0.4em] text-[10px] uppercase">Aktivitäten & Erlebnisse</span>
-            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter uppercase">Unvergessliche Aktivitäten</h2>
+            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter text-center">Unvergessliche Aktivitäten</h2>
           </div>
           
           <div className="flex flex-wrap justify-center gap-2 mb-8 md:mb-12">
@@ -135,7 +136,7 @@ export default function NgorongoroPage() {
                 )}
               >
                 <act.icon className={cn("w-3.5 h-3.5", activeActivity.id === act.id ? "text-primary" : "text-muted-foreground")} />
-                <span className="uppercase">{act.label}</span>
+                <span>{act.label}</span>
               </button>
             ))}
           </div>
@@ -153,35 +154,35 @@ export default function NgorongoroPage() {
                 <div className="w-full lg:w-[45%] relative aspect-video lg:aspect-auto min-h-[220px]">
                   <Image src={activeActivity.img} alt={activeActivity.title} fill className="object-cover" />
                   <div className="absolute top-4 left-4 flex flex-col gap-2">
-                    <Badge className="bg-white/95 backdrop-blur-md text-secondary border-none px-3 py-1 text-[8px] font-bold uppercase">{activeActivity.duration}</Badge>
-                    <Badge className="bg-primary text-white border-none px-3 py-1 text-[8px] font-bold uppercase">{activeActivity.level}</Badge>
+                    <Badge className="bg-white/95 backdrop-blur-md text-secondary border-none px-3 py-1 text-[8px] font-bold">{activeActivity.duration}</Badge>
+                    <Badge className="bg-primary text-white border-none px-3 py-1 text-[8px] font-bold">{activeActivity.level}</Badge>
                   </div>
                 </div>
                 <div className="flex-1 p-5 md:p-10 lg:p-12 space-y-6 flex flex-col justify-center text-center lg:text-left items-center lg:items-start">
                   <div className="space-y-4 md:space-y-6 w-full">
-                    <h3 className="font-headline text-2xl md:text-4xl font-bold text-secondary tracking-tight uppercase leading-tight">{activeActivity.title}</h3>
+                    <h3 className="font-headline text-2xl md:text-4xl font-bold text-secondary tracking-tight leading-tight">{activeActivity.title}</h3>
                     
-                    <div className="grid grid-cols-3 gap-2 md:gap-4 pb-4 border-b border-border/50 w-full">
+                    <div className="grid grid-cols-3 gap-1 md:gap-4 pb-4 border-b border-border/50 w-full">
                       <div className="space-y-1">
                         <div className="flex items-center justify-center lg:justify-start gap-1.5 text-primary">
                           <Clock className="w-3 h-3 md:w-4 md:h-4" />
-                          <span className="text-[7px] md:text-[9px] font-bold tracking-widest uppercase">Dauer</span>
+                          <span className="text-[7px] md:text-[9px] font-bold tracking-widest">Dauer</span>
                         </div>
-                        <p className="text-[10px] md:text-xs font-bold text-secondary uppercase">{activeActivity.duration}</p>
+                        <p className="text-[10px] md:text-xs font-bold text-secondary">{activeActivity.duration}</p>
                       </div>
                       <div className="space-y-1">
                         <div className="flex items-center justify-center lg:justify-start gap-1.5 text-primary">
                           <Users className="w-3 h-3 md:w-4 md:h-4" />
-                          <span className="text-[7px] md:text-[9px] font-bold tracking-widest uppercase">Personen</span>
+                          <span className="text-[7px] md:text-[9px] font-bold tracking-widest">Personen</span>
                         </div>
-                        <p className="text-[10px] md:text-xs font-bold text-secondary uppercase">{activeActivity.people}</p>
+                        <p className="text-[10px] md:text-xs font-bold text-secondary">{activeActivity.people}</p>
                       </div>
                       <div className="space-y-1">
                         <div className="flex items-center justify-center lg:justify-start gap-1.5 text-primary">
                           <Zap className="w-3 h-3 md:w-4 md:h-4" />
-                          <span className="text-[7px] md:text-[9px] font-bold tracking-widest uppercase">Fokus</span>
+                          <span className="text-[7px] md:text-[9px] font-bold tracking-widest">Fokus</span>
                         </div>
-                        <p className="text-[10px] md:text-xs font-bold text-secondary uppercase">{activeActivity.frequency}</p>
+                        <p className="text-[10px] md:text-xs font-bold text-secondary">{activeActivity.frequency}</p>
                       </div>
                     </div>
 
@@ -197,7 +198,7 @@ export default function NgorongoroPage() {
                     </div>
                   </div>
                   <div className="pt-4 w-full sm:w-auto">
-                    <Button onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })} className="w-full sm:w-auto rounded-xl px-10 h-12 md:h-14 bg-primary text-white font-bold text-[10px] tracking-widest shadow-xl border-none uppercase">Jetzt anfragen <ArrowRight className="w-4 h-4 ml-2" /></Button>
+                    <Button onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })} className="w-full sm:w-auto rounded-xl px-10 h-12 md:h-14 bg-primary text-white font-bold text-[10px] tracking-widest shadow-xl border-none">Jetzt anfragen <ArrowRight className="w-4 h-4 ml-2" /></Button>
                   </div>
                 </div>
               </Card>
@@ -216,12 +217,12 @@ export default function NgorongoroPage() {
                 <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl shrink-0">
                   <Compass className="w-6 h-6 md:w-8 md:h-8 text-white" />
                 </div>
-                <h2 className="font-headline text-2xl sm:text-3xl md:text-5xl font-normal text-white leading-tight tracking-tighter uppercase">Planen Sie Ihre perfekte Ngorongoro Safari</h2>
+                <h2 className="font-headline text-2xl sm:text-3xl md:text-5xl font-normal text-white leading-tight tracking-tighter">Planen Sie Ihre perfekte Ngorongoro Safari</h2>
               </div>
               <p className="text-white/80 font-normal text-[11px] md:text-base tracking-widest leading-relaxed max-w-2xl mx-auto lg:mx-0">Unsere Safari-Experten helfen Ihnen, die idealen Aktivitäten für Ihre Reisezeit und Interessen zu kombinieren. Erleben Sie Big Five und Maasai-Kultur in einer unvergessliche Reise.</p>
             </div>
             <div className="relative z-10 w-full lg:w-auto flex flex-col gap-3 shrink-0">
-              <Button onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })} className="w-full lg:w-[280px] h-14 md:h-16 rounded-xl bg-white text-primary hover:bg-secondary hover:text-white font-bold text-[11px] tracking-widest shadow-xl border-none transition-all group uppercase">Kostenloses Angebot <ArrowRight className="w-4 h-4 ml-2" /></Button>
+              <Button onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })} className="w-full lg:w-[280px] h-14 md:h-16 rounded-xl bg-white text-primary hover:bg-secondary hover:text-white font-bold text-[11px] tracking-widest shadow-xl border-none transition-all group">Kostenloses Angebot <ArrowRight className="w-4 h-4 ml-2" /></Button>
             </div>
           </div>
         </div>

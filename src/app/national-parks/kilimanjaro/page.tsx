@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -65,7 +66,7 @@ export default function KilimanjaroParkPage() {
             <p className="text-white text-[11px] font-normal tracking-normal drop-shadow-lg uppercase tracking-[0.3em]">
               Das Dach Afrikas über den Wolken Tansanias
             </p>
-            <h1 className="font-headline text-4xl md:text-7xl font-normal text-white leading-tight tracking-tight uppercase">
+            <h1 className="font-headline text-4xl md:text-7xl font-normal text-white leading-tight tracking-tight">
               Kilimandscharo Nationalpark
             </h1>
           </motion.div>
@@ -80,11 +81,11 @@ export default function KilimanjaroParkPage() {
             <div className="space-y-6 text-left">
               <div className="space-y-2">
                 <div className="w-8 h-0.5 bg-primary" />
-                <span className="text-primary font-bold text-[10px] block tracking-widest uppercase">
+                <span className="text-primary font-bold text-[10px] block tracking-widest">
                   Nationalpark Registry seit 1973
                 </span>
               </div>
-              <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary leading-tight tracking-tight uppercase">
+              <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary leading-tight tracking-tight">
                 Uhuru Peak – Das Ziel Ihrer Träume
               </h2>
               
@@ -123,7 +124,7 @@ export default function KilimanjaroParkPage() {
                     <card.icon className="w-6 h-6 md:w-8 md:h-8 text-primary group-hover:text-white transition-colors" />
                   </div>
                   <div className="space-y-3">
-                    <h4 className="font-headline text-xl md:text-[28px] font-normal text-secondary tracking-tight group-hover:text-primary transition-colors leading-tight uppercase">
+                    <h4 className="font-headline text-xl md:text-[28px] font-normal text-secondary tracking-tight group-hover:text-primary transition-colors leading-tight">
                       {card.title}
                     </h4>
                     <p className="text-[14px] leading-[20px] text-muted-foreground font-normal opacity-80">
@@ -147,12 +148,12 @@ export default function KilimanjaroParkPage() {
                 <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl shrink-0">
                   <Compass className="w-6 h-6 md:w-8 md:h-8 text-white" />
                 </div>
-                <h2 className="font-headline text-2xl sm:text-3xl md:text-5xl font-normal text-white leading-tight tracking-tighter uppercase">Planen Sie Ihre perfekte Kilimandscharo Safari</h2>
+                <h2 className="font-headline text-2xl sm:text-3xl md:text-5xl font-normal text-white leading-tight tracking-tighter">Planen Sie Ihre perfekte Kilimandscharo Safari</h2>
               </div>
               <p className="text-white/80 font-normal text-[11px] md:text-base tracking-widest leading-relaxed max-w-2xl mx-auto lg:mx-0">Erreichen Sie das Dach Afrikas mit professioneller Unterstützung. Wir entwerfen Ihre Gipfel-Expedition mit höchster Sicherheit und Expertise.</p>
             </div>
             <div className="relative z-10 w-full lg:w-auto flex flex-col gap-3 shrink-0">
-              <Button onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })} className="w-full lg:w-[280px] h-14 md:h-16 rounded-xl bg-white text-primary hover:bg-secondary hover:text-white font-bold text-[11px] tracking-widest shadow-xl border-none transition-all group uppercase">Gipfel-Tour planen <ArrowRight className="w-4 h-4 ml-2" /></Button>
+              <Button onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })} className="w-full lg:w-[280px] h-14 md:h-16 rounded-xl bg-white text-primary hover:bg-secondary hover:text-white font-bold text-[11px] tracking-widest shadow-xl border-none transition-all group">Gipfel-Tour planen <ArrowRight className="w-4 h-4 ml-2" /></Button>
             </div>
           </div>
         </div>
