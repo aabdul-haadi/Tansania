@@ -5,7 +5,7 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
 
 /**
  * Dynamically generates the sitemap by combining static routes 
- * with dynamic content from the Firestore registry (Packages, Blogs, Destinations, & CMS Pages).
+ * with dynamic content from the Firestore registry.
  * Supports the 500+ page ecosystem scalability.
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -28,6 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/neujahrsreisen-tansania-2026',
     '/sommerreisen-abenteuer-und-erholung-2026',
     '/weihnachten-reisen-tansania-2026',
+    '/ostern-safari-urlaub-2026',
     '/legal/imprint',
     '/legal/terms',
     '/legal/privacy',
@@ -46,7 +47,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   if (firestore) {
     try {
-      // 2. Fetch All Published Safari Packages (100+ Slugs)
+      // 2. Fetch All Published Safari Packages
       const pkgsSnap = await getDocs(query(collection(firestore, 'packages'), where('isPublished', '==', true)));
       packageRoutes = pkgsSnap.docs.map((doc) => {
         const data = doc.data();
@@ -58,7 +59,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         };
       });
 
-      // 3. Fetch All Published Blog Posts (100+ Stories)
+      // 3. Fetch All Published Blog Posts
       const blogsSnap = await getDocs(query(collection(firestore, 'blogPosts'), where('status', '==', 'PUBLISHED')));
       blogRoutes = blogsSnap.docs.map((doc) => {
         const data = doc.data();
@@ -70,7 +71,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         };
       });
 
-      // 4. Fetch All Published Country Hubs (8 Countries + Regions)
+      // 4. Fetch All Published Destinations
       const destsSnap = await getDocs(query(collection(firestore, 'destinations'), where('isPublished', '==', true)));
       destinationRoutes = destsSnap.docs.map((doc) => {
         const data = doc.data();
@@ -85,7 +86,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       // 5. Fetch CMS Managed Pages
       const pagesSnap = await getDocs(query(collection(firestore, 'pages'), where('status', '==', 'PUBLISHED')));
       cmsPageRoutes = pagesSnap.docs
-        .filter(doc => doc.data().path && doc.data().path !== '/') // Avoid duplicates of static routes
+        .filter(doc => doc.data().path && doc.data().path !== '/')
         .map((doc) => {
           const data = doc.data();
           return {
@@ -97,7 +98,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         });
 
     } catch (e) {
-      console.warn("Sitemap generation had limited data access due to sync delays:", e);
+      console.warn("Sitemap generation sync delayed:", e);
     }
   }
 

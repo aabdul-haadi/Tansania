@@ -7,15 +7,8 @@ import {
   MapPin,
   Globe,
   Layers,
-  Activity,
-  ShoppingBag,
-  Zap,
-  LayoutGrid,
-  ChevronRight,
-  Monitor,
-  Compass,
-  Sparkles,
-  Calendar
+  Calendar,
+  ChevronRight
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -39,7 +32,6 @@ const siteRegistry = [
       { title: "Migration Tracker", path: "/migration", status: "Live", sub: "Wildlife ops" },
       { title: "Trip Planner", path: "/trip-planner", status: "Live", sub: "Lead gen" },
       { title: "AI Trip Advisor", path: "/trip-advisor", status: "Live", sub: "Intelligence" },
-      { title: "Itinerary Builder", path: "/itinerary-builder", status: "Live", sub: "AI architect" },
       { title: "About Us", path: "/about", status: "Live", sub: "Brand identity" },
     ]
   },
@@ -48,10 +40,10 @@ const siteRegistry = [
     id: "seasonal",
     icon: Calendar,
     routes: [
-      { title: "New Year 2026/27", path: "/neujahrsreisen-tansania-2026", status: "Live", sub: "Campaign" },
-      { title: "Summer 2026", path: "/sommerreisen-abenteuer-und-erholung-2026", status: "Live", sub: "Campaign" },
-      { title: "Christmas 2026/27", path: "/weihnachten-reisen-tansania-2026", status: "Live", sub: "Campaign" },
-      { title: "Easter 2026", path: "/ostern-safari-urlaub-2026", status: "Pending", sub: "Draft" },
+      { title: "Neujahr 2026/27", path: "/neujahrsreisen-tansania-2026", status: "Live", sub: "Campaign" },
+      { title: "Sommer 2026", path: "/sommerreisen-abenteuer-und-erholung-2026", status: "Live", sub: "Campaign" },
+      { title: "Weihnachten 2026/27", path: "/weihnachten-reisen-tansania-2026", status: "Live", sub: "Campaign" },
+      { title: "Ostern 2026", path: "/ostern-safari-urlaub-2026", status: "Live", sub: "Campaign" },
     ]
   },
   {
@@ -63,10 +55,10 @@ const siteRegistry = [
       { title: "Zanzibar Paradise", path: "/destinations/zanzibar", status: "Live", sub: "Island hub" },
       { title: "Kilimanjaro Summit", path: "/destinations/kilimanjaro", status: "Live", sub: "Peak hub" },
       { title: "Egypt Specialist", path: "/destinations/egypt", status: "Live", sub: "Cairo office" },
-      { title: "Kenya Safari", path: "/destinations/kenya", status: "Pending", sub: "Expansion" },
-      { title: "Botswana Wild", path: "/destinations/botswana", status: "Pending", sub: "Expansion" },
-      { title: "Namibia Dunes", path: "/destinations/namibia", status: "Pending", sub: "Expansion" },
-      { title: "Uganda Gorillas", path: "/destinations/uganda", status: "Pending", sub: "Expansion" },
+      { title: "Kenya Safari", path: "/destinations/kenya", status: "Live", sub: "Expansion" },
+      { title: "South Africa", path: "/destinations/south-africa", status: "Live", sub: "Portfolio" },
+      { title: "Namibia Dunes", path: "/destinations/namibia", status: "Live", sub: "Portfolio" },
+      { title: "Botswana Wild", path: "/destinations/botswana", status: "Live", sub: "Portfolio" },
     ]
   }
 ];
@@ -93,7 +85,6 @@ export default function SiteRegistry() {
 
   return (
     <div className="flex flex-col min-h-screen bg-white font-bold">
-      {/* Registry Header */}
       <header className="p-6 md:p-10 border-b border-border bg-white sticky top-0 z-20">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="space-y-3 text-left">
@@ -117,7 +108,6 @@ export default function SiteRegistry() {
       </header>
 
       <div className="p-6 md:p-10 max-w-7xl mx-auto w-full space-y-12">
-        {/* Search Control */}
         <div className="relative group max-w-2xl">
           <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground transition-colors group-focus-within:text-primary" />
           <Input 
@@ -128,7 +118,6 @@ export default function SiteRegistry() {
           />
         </div>
 
-        {/* Registry Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 pb-32">
           {filteredRegistry.map((group) => (
             <div key={group.id} className="flex flex-col gap-6 md:gap-8">

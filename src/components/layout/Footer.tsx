@@ -65,16 +65,15 @@ export function Footer() {
             </div>
           </div>
           
-          {/* Company Column */}
+          {/* Seasonal Journeys Column */}
           <div>
-            <h4 className={labelClass}>Über uns</h4>
+            <h4 className={labelClass}>Reisen 2026/27</h4>
             <ul className="flex flex-col gap-3.5">
-              <li><Link href="/about" className={linkClass}>Unsere Geschichte</Link></li>
-              <li><Link href="/services/guest-protection" className={linkClass}>Reiseversicherung</Link></li>
-              <li><Link href="/reise-shop" className={linkClass}>Reise-Store</Link></li>
-              <li><Link href="/partner" className={linkClass}>Partnernetzwerk</Link></li>
-              <li><Link href="/karriere" className={linkClass}>Karriere</Link></li>
-              <li><Link href="/auth/login" className={linkClass}>Mitarbeiter-Portal</Link></li>
+              <li><Link href="/neujahrsreisen-tansania-2026" className={linkClass}>Neujahrsreisen 26/27</Link></li>
+              <li><Link href="/sommerreisen-abenteuer-und-erholung-2026" className={linkClass}>Sommerreisen 2026</Link></li>
+              <li><Link href="/weihnachten-reisen-tansania-2026" className={linkClass}>Weihnachtsreisen 26/27</Link></li>
+              <li><Link href="/ostern-safari-urlaub-2026" className={linkClass}>Ostern 2026</Link></li>
+              <li><Link href="/migration" className={linkClass}>Migration Tracker</Link></li>
             </ul>
           </div>
 
@@ -115,7 +114,7 @@ export function Footer() {
         {/* Footer Bottom */}
         <div className="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="font-sans text-[12px] font-normal text-[#FDFCFB]/40">
-            © 2026 Tansania Reiseabenteuer SDL GmbH. Alle Rechte vorbehalten.
+            © 2026/27 Tansania Reiseabenteuer SDL GmbH. Alle Rechte vorbehalten.
           </p>
           <div className="flex items-center gap-6">
             <span className="font-headline text-[12px] font-normal text-[#FDFCFB]/40 tracking-widest">Est. 2014</span>
@@ -127,7 +126,6 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Global Registry Noise Texture */}
       <div className="absolute inset-0 opacity-[0.02] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none" />
     </footer>
   );

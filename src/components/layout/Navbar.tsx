@@ -6,55 +6,23 @@ import { usePathname } from 'next/navigation';
 import { 
   Menu, 
   ArrowRight,
-  Instagram,
-  Facebook,
-  Youtube,
-  Globe,
   ChevronDown,
-  X
+  Globe
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from '@/components/ui/sheet';
-import { Button } from '@/components/ui/button';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-
-const TikTokIcon = ({ className }: { className?: string }) => (
-  <svg 
-    width="20" 
-    height="20" 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round" 
-    className={className}
-  >
-    <path d="M9 12a4 4 0 1 0 4 4V2a5 5 0 0 0 5 5"/>
-  </svg>
-);
+import { Button } from '@/components/ui/button';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
-
-  // Route registry for high-contrast visibility
-  const isBrightPage = pathname === '/national-parks' || pathname === '/faq' || pathname?.startsWith('/legal') || pathname === '/unterkuenfte' || pathname === '/blog' || pathname?.includes('2026');
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   useEffect(() => {
     setIsOpen(false);
@@ -86,35 +54,22 @@ export function Navbar() {
     { name: 'Kontakt', href: '/contact' },
   ];
 
-  const useDarkState = isScrolled || isBrightPage;
-
   return (
-    <header 
-      className={cn(
-        "absolute top-0 w-full z-[100] transition-all duration-500 bg-transparent",
-        useDarkState ? "py-3" : "py-6 md:py-8"
-      )}
-    >
+    <header className="absolute top-0 w-full z-[100] bg-transparent py-6 md:py-8">
       <nav className="container mx-auto px-4 max-w-7xl">
         <div className={cn(
           "flex items-center justify-between transition-all duration-500 h-14 md:h-16 w-full",
-          useDarkState ? "text-secondary" : "text-white",
+          "text-white",
           isOpen ? "opacity-0 pointer-events-none" : "opacity-100"
         )}>
           <Link href="/" className="flex items-center gap-2 md:gap-3 group shrink-0">
             <img 
               src="/iconlogo.jpg" 
               alt="Tansania Reiseabenteuer" 
-              className={cn(
-                "h-8 md:h-12 w-auto transition-all duration-500 shrink-0",
-                !useDarkState && "brightness-110"
-              )} 
+              className="h-8 md:h-12 w-auto brightness-110 shrink-0" 
             />
             <div className="hidden min-[340px]:flex flex-col md:flex-row md:items-center gap-0.5 md:gap-2">
-              <span className={cn(
-                "font-headline font-semibold whitespace-nowrap text-lg sm:text-xl md:text-2xl lg:text-3xl tracking-tight leading-tight normal-case transition-colors duration-500",
-                useDarkState ? "text-secondary" : "text-white"
-              )}>
+              <span className="font-headline font-semibold whitespace-nowrap text-lg sm:text-xl md:text-2xl lg:text-3xl tracking-tight leading-tight normal-case">
                 Tansania Reiseabenteuer
               </span>
             </div>
@@ -122,14 +77,7 @@ export function Navbar() {
 
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <button
-                className={cn(
-                  "flex items-center justify-center w-10 h-10 md:w-auto md:h-11 md:px-4 rounded-full transition-all duration-500 border shrink-0 group",
-                  useDarkState 
-                    ? "bg-secondary text-white border-secondary shadow-lg" 
-                    : "bg-white/10 text-white border-white/20 hover:bg-white hover:text-secondary"
-                )}
-              >
+              <button className="flex items-center justify-center w-10 h-10 md:w-auto md:h-11 md:px-4 rounded-full bg-white/10 text-white border border-white/20 hover:bg-white hover:text-secondary transition-all shrink-0 group">
                 <Menu className="w-4 h-4 transition-transform group-hover:scale-110" />
               </button>
             </SheetTrigger>
@@ -239,19 +187,6 @@ export function Navbar() {
               </ScrollArea>
 
               <div className="p-8 border-t border-border bg-[#fdfcfb] flex flex-col gap-6 md:gap-8 items-center shrink-0">
-                <div className="flex gap-4">
-                  {[
-                    { icon: Facebook, href: "#" },
-                    { icon: Instagram, href: "#" },
-                    { icon: Youtube, href: "#" },
-                    { icon: TikTokIcon, href: "#" }
-                  ].map((social, i) => (
-                    <a key={i} href={social.href} className="w-10 h-10 rounded-xl border border-border flex items-center justify-center hover:bg-primary hover:border-primary transition-all group">
-                      <social.icon className="w-4 h-4 text-secondary group-hover:text-white" />
-                    </a>
-                  ))}
-                </div>
-                
                 <Button asChild className="w-full h-14 rounded-2xl bg-secondary text-white font-black text-[10px] tracking-widest shadow-xl hover:bg-primary transition-all border-none">
                   <Link href="/trip-planner" className="flex items-center justify-center gap-3">
                     Jetzt anfragen <ArrowRight className="w-4 h-4" />
