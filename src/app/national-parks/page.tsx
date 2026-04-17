@@ -212,8 +212,8 @@ export default function NationalParksPage() {
         </div>
       </header>
 
-      {/* 02 Hero Visual Hub - Compacted Button Size */}
-      <section className="relative mb-20 md:mb-24">
+      {/* 02 Hero Visual Hub */}
+      <section className="relative mb-16 md:mb-20">
         <div className="w-full relative aspect-[21/9] md:h-[600px] overflow-hidden shadow-sm">
           <Image
             src="/assets/images/national-parks/national-bn-5.webp"
@@ -227,7 +227,7 @@ export default function NationalParksPage() {
         
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-30">
           <Link href="/trip-planner">
-            <Button size="xl" className="rounded-none px-8 md:px-12 h-11 md:h-16 bg-secondary text-white hover:bg-primary font-bold text-[10px] md:text-xs tracking-widest border-none shadow-2xl transition-all whitespace-nowrap">
+            <Button className="rounded-none px-6 md:px-10 h-10 md:h-14 bg-secondary text-white hover:bg-primary font-bold text-[9px] md:text-[10px] tracking-normal border-none shadow-2xl transition-all whitespace-nowrap">
               Jetzt Safari planen
             </Button>
           </Link>

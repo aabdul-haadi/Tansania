@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -10,7 +11,7 @@ import { PackageCard } from '@/components/shared/PackageCard';
 import { ContactSection } from '@/components/shared/ContactSection';
 
 const packages = [
-  { id: '15-day', title: '15 Tage Safari in Tansania und Sansibar', slug: '15-day-safari-zanzibar', durationDays: 15, startingPrice: 5399, category: 'Signature', tag: 'Meistverkauft', highlights: ['Top Nationalparks Safari', 'Massai Dorfbesuch', 'Familienfreundlich', 'Sansibar Strände', 'Stone Town'], imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800' },
+  { id: '15-day', title: '15 Tage Safari in Tansania und Sansibar', slug: '15-day-safari-zanzibar', durationDays: 15, startingPrice: 5399, category: 'Signature', tag: 'Meistverkauft', highlights: ['Top Nationalparks Safari', 'Massai Dorfbesuch', 'Familienfreundlich', 'Sansibar Strände', 'Stone Town'], imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200' },
   { id: '13-day', title: '13 Tage Safari & Sansibar', slug: 'safari-sansibar-13-tage', durationDays: 13, startingPrice: 3699, category: 'Signature', highlights: ['Big Five Pirschfahrten', 'Massai Dorfbesuch', 'Ngorongoro Krater', 'Sansibar Strände', 'Stone Town'], imageUrl: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800' },
   { id: '11-day', title: '11 Tage Safari & Sansibar', slug: 'safari-sansibar-11-tage', durationDays: 11, startingPrice: 2999, category: 'Kompakt', highlights: ['Tarangire Elefanten', 'Massai Kultur', 'Serengeti Tiermigration', 'Ngorongoro Krater', 'Sansibar Touren'], imageUrl: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=800' },
   { id: 'family-12', title: '12 Tage Familien-Safari', slug: 'familien-safari-12-tage', durationDays: 12, startingPrice: 3499, category: 'Familie', highlights: ['Big Five Erlebnisse', 'Massai Begegnung', 'Schulbesuch', 'Manyara Safari', 'Kinder-Lodges'], imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800' },
@@ -22,17 +23,17 @@ const packages = [
 
 const reviews = [
   { name: "Lena M.", text: "Ich hatte eine großartige Erfahrung mit Neujahrsreisen in Tansania! Der Buchungsprozess war einfach, und das Reiseziel war einfach wunderschön." },
-  { name: "Johannes S.", text: "Unsere Neujahr-Safari-Tour in Tansania war magisch! Wir haben die Big 5 aus nächster Nähe gesehen. Auch die Strände von Sansibar waren traumhaft." },
+  { name: "Johannes S.", text: "Unsere Neujahr-Safari-Tour in Tansania war magisch! Wir haben die Big 5 aus nächster Nähe gesehen. Auch die Strände von Sansibar waren traumhaft. Diese Firma hat unseren Neujahrsurlaub 2026/2027 unvergesslich gemacht." },
   { name: "Clara W.", text: "Unsere Luxus Neujahrsreise-Buchung war ein wahrer Traum! Die Unterkunft war erstklassig, das Essen hervorragend und die private Safari-Erfahrung einzigartig." },
   { name: "Maximilian K.", text: "Ich habe einen Last Minute Neujahrsurlaub gebucht und war anfangs etwas besorgt, aber alles verlief reibungslos. Die Strände von Sansibar und die Neujahr-Safari in Tansania waren fantastisch." },
-  { name: "Julia B.", text: "Wer hätte gedacht, dass Neujahrsurlaub in Tansania so toll wäre? Keine Schneeflocken, dafür die Sonne und Strände von Sansibar! Großartiger Service und ein unvergesslicher Neujahrsurlaub. Sehr zu empfehlen!" },
-  { name: "Felix R.", text: "Unser Neujahrsurlaub in Tansania war unvergesslich. Die Neujahr-Safari war ein Highlight – die Big 5 aus nächster Nähe zu sehen war einfach atemberaubend. Die Strände von Sansibar waren perfekt zum Entspannen." }
+  { name: "Julia B.", text: "Wer hätte gedacht, dass Neujahrsurlaub in Tansania so toll wäre? Keine Schneeflocken, dafür die Sonne und Strände von Sansibar! Großartiger Service und ein unvergesslicher Neujahrsurlaub." },
+  { name: "Felix R.", text: "Unser Neujahrsurlaub in Tansania war unvergesslich. Die Neujahr-Safari war ein Highlight – die Big 5 aus nächster Nähe zu sehen war einfach atemberaubend." }
 ];
 
 export default function NewYearPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
-      {/* 01 Hero Section - Clean bottom transition */}
+      {/* 01 Hero Section */}
       <section className="relative h-[65vh] md:h-[80vh] flex items-center justify-center overflow-hidden bg-secondary">
         <Image 
           src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
@@ -41,7 +42,6 @@ export default function NewYearPage() {
           priority
           className="object-cover brightness-50"
         />
-        {/* Stable simple overlay protocol */}
         <div className="absolute inset-0 bg-black/40" />
         
         <div className="container relative z-10 mx-auto px-4 text-center">

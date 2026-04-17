@@ -110,15 +110,17 @@ export function Navbar() {
               )} 
             />
             {/* Brand text: Hidden below 340px, stays in single line */}
-            <div className="hidden min-[340px]:flex flex-col md:flex-row md:items-center gap-0.5 md:gap-3">
-              <span className="font-headline font-black whitespace-nowrap text-lg sm:text-xl md:text-xl lg:text-2xl tracking-normal leading-none uppercase">
-                Tansania
-              </span>
+            <div className="hidden min-[340px]:flex flex-col md:flex-row md:items-center gap-0.5 md:gap-2">
+  <span className="font-headline font-semibold whitespace-nowrap 
+                   text-lg sm:text-xl md:text-2xl lg:text-3xl 
+                   tracking-tight leading-tight normal-case">
+    Tansania Reiseabenteuer
+  </span>
               <span className={cn(
                 "font-headline font-black whitespace-nowrap text-lg sm:text-xl md:text-xl lg:text-2xl transition-colors duration-500 tracking-normal leading-none uppercase",
                 useDarkState ? "text-primary" : "text-white"
               )}>
-                Reiseabenteuer
+                
               </span>
             </div>
           </Link>
