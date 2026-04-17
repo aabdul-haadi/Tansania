@@ -6,8 +6,8 @@ import { usePathname } from 'next/navigation';
 import { 
   Menu, 
   ArrowRight,
-  Instagram,
   Facebook,
+  Instagram,
   Youtube,
   Globe,
   ChevronDown
@@ -15,7 +15,6 @@ import {
 import { cn } from '@/lib/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from '@/components/ui/sheet';
-import { Button } from '@/components/ui/button';
 import {
   Accordion,
   AccordionContent,
@@ -42,28 +41,17 @@ const TikTokIcon = ({ className }: { className?: string }) => (
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const pathname = usePathname();
 
-  const isBrightPage = pathname === '/national-parks' || pathname === '/faq' || pathname?.startsWith('/legal');
+  const isBrightPage = pathname === '/national-parks' || pathname === '/faq' || pathname?.startsWith('/legal') || pathname === '/unterkuenfte' || pathname === '/activities';
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setIsScrolled(currentScrollY > 50);
-      
-      if (currentScrollY > lastScrollY && currentScrollY > 200 && !isOpen) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
-      }
-      setLastScrollY(currentScrollY);
+      setIsScrolled(window.scrollY > 50);
     };
-
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY, isOpen]);
+  }, []);
 
   useEffect(() => {
     setIsOpen(false);
@@ -101,32 +89,29 @@ export function Navbar() {
     <header 
       className={cn(
         "top-0 w-full z-[100] transition-all duration-500 fixed",
-        !isVisible && "-translate-y-full",
-        isVisible && "translate-y-0",
-        useDarkState ? "py-3 bg-white/95 backdrop-blur-md shadow-sm" : "py-6 md:py-8 bg-transparent"
+        useDarkState ? "py-3 bg-white/95 backdrop-blur-md shadow-sm border-b" : "py-6 md:py-8 bg-transparent"
       )}
     >
       <nav className="container mx-auto px-4 max-w-7xl">
         <div className={cn(
           "flex items-center justify-between transition-all duration-500 h-14 md:h-16 w-full",
-          useDarkState ? "text-secondary" : "text-white",
-          isOpen ? "opacity-0 pointer-events-none" : "opacity-100"
+          useDarkState ? "text-secondary" : "text-white"
         )}>
           <Link href="/" className="flex items-center gap-3 md:gap-5 group shrink-0">
             <img 
               src="/iconlogo.jpg" 
               alt="Tansania Reiseabenteuer" 
               className={cn(
-                "h-10 md:h-14 w-auto transition-all duration-500 shrink-0",
+                "h-10 md:h-14 w-auto transition-all duration-500 shrink-0 rounded-lg",
                 !useDarkState && "brightness-110"
               )} 
             />
-            <div className="flex items-center gap-2 md:gap-4">
-              <span className="font-headline font-black whitespace-nowrap text-base sm:text-lg md:text-2xl lg:text-4xl tracking-normal leading-none uppercase">
+            <div className="flex flex-col md:flex-row md:items-center md:gap-3">
+              <span className="font-headline font-black whitespace-nowrap text-base sm:text-lg md:text-2xl lg:text-3xl tracking-normal leading-none uppercase">
                 Tansania
               </span>
               <span className={cn(
-                "font-headline font-black whitespace-nowrap text-base sm:text-lg md:text-2xl lg:text-4xl transition-colors duration-500 tracking-normal leading-none uppercase",
+                "font-headline font-black whitespace-nowrap text-base sm:text-lg md:text-2xl lg:text-3xl transition-colors duration-500 tracking-normal leading-none uppercase",
                 useDarkState ? "text-primary" : "text-white"
               )}>
                 Reiseabenteuer
@@ -138,17 +123,18 @@ export function Navbar() {
             <SheetTrigger asChild>
               <button
                 className={cn(
-                  "flex items-center justify-center w-10 h-10 md:w-auto md:h-11 md:px-4 rounded-full transition-all duration-500 border shrink-0 group",
+                  "flex items-center justify-center w-10 h-10 md:w-auto md:h-11 md:px-5 rounded-full transition-all duration-500 border shrink-0 group",
                   useDarkState 
                     ? "bg-secondary text-white border-secondary shadow-lg" 
                     : "bg-white/10 text-white border-white/20 hover:bg-white hover:text-secondary"
                 )}
               >
-                <Menu className="w-4 h-4 transition-transform group-hover:scale-110" />
+                <Menu className="w-4 h-4 md:mr-2 transition-transform group-hover:scale-110" />
+                <span className="hidden md:inline text-[10px] font-black uppercase tracking-widest">Menü</span>
               </button>
             </SheetTrigger>
             
-            <SheetContent side="right" className="w-[85vw] sm:max-w-[400px] p-0 bg-white text-secondary border-none flex flex-col shadow-2xl">
+            <SheetContent side="right" className="w-[85vw] sm:max-w-[420px] p-0 bg-white text-secondary border-none flex flex-col shadow-2xl">
               <div className="sr-only">
                 <SheetTitle>Menü</SheetTitle>
                 <SheetDescription>Hauptnavigation der Tansania Reiseabenteuer Website</SheetDescription>
@@ -156,7 +142,7 @@ export function Navbar() {
 
               <div className="px-6 py-6 flex items-center border-b border-border/50 shrink-0">
                 <Link href="/" className="flex items-center gap-3">
-                  <img src="/iconlogo.jpg" alt="SDL" className="h-8 md:h-10 w-auto" />
+                  <img src="/iconlogo.jpg" alt="SDL" className="h-8 md:h-10 w-auto rounded-lg" />
                   <div className="flex flex-col">
                     <span className="font-headline font-black text-sm md:text-xl tracking-normal leading-[1.1] uppercase">Tansania</span>
                     <span className="font-headline font-black text-sm md:text-xl text-primary tracking-normal leading-[1.1] uppercase">Reiseabenteuer</span>
@@ -165,16 +151,16 @@ export function Navbar() {
               </div>
 
               <ScrollArea className="flex-grow">
-                <div className="px-8 py-6 md:py-10 flex flex-col gap-8 md:gap-10">
-                  <nav className="flex flex-col gap-5 md:gap-6 text-left">
-                    <div className="flex flex-col gap-4 mb-4">
-                      <Link href="/safaris" className="text-xl md:text-2xl font-headline font-black text-secondary hover:text-primary transition-colors leading-none uppercase">
+                <div className="px-8 py-8 md:py-10 flex flex-col gap-8">
+                  <nav className="flex flex-col gap-6 text-left">
+                    <div className="flex flex-col gap-4">
+                      <Link href="/safaris" className="text-xl md:text-2xl font-headline font-bold text-secondary hover:text-primary transition-colors uppercase">
                         Safaris
                       </Link>
-                      <Link href="/destinations/kilimanjaro" className="text-xl md:text-2xl font-headline font-black text-secondary hover:text-primary transition-colors leading-none uppercase">
+                      <Link href="/destinations/kilimanjaro" className="text-xl md:text-2xl font-headline font-bold text-secondary hover:text-primary transition-colors uppercase">
                         Kilimandscharo
                       </Link>
-                      <Link href="/destinations/zanzibar" className="text-xl md:text-2xl font-headline font-black text-secondary hover:text-primary transition-colors leading-none uppercase">
+                      <Link href="/destinations/zanzibar" className="text-xl md:text-2xl font-headline font-bold text-secondary hover:text-primary transition-colors uppercase">
                         Sansibar
                       </Link>
                     </div>
@@ -183,17 +169,17 @@ export function Navbar() {
 
                     <Accordion type="single" collapsible className="w-full">
                       <AccordionItem value="reisen2026" className="border-none mb-4">
-                        <AccordionTrigger className="text-lg md:text-xl font-headline font-black tracking-normal hover:text-primary transition-colors leading-none py-0 hover:no-underline [&>svg]:hidden justify-start gap-4 uppercase">
+                        <AccordionTrigger className="text-lg md:text-xl font-headline font-bold hover:text-primary transition-colors leading-none py-0 hover:no-underline [&>svg]:hidden justify-start gap-4 uppercase">
                           <span>Reisen 2026</span>
                           <ChevronDown className="w-4 h-4 text-primary" />
                         </AccordionTrigger>
-                        <AccordionContent className="pt-4 pb-2 pl-4">
-                          <div className="flex flex-col gap-3 border-l-2 border-primary/20 pl-4 text-left">
+                        <AccordionContent className="pt-4 pb-2">
+                          <div className="flex flex-col gap-3 border-l-2 border-primary/20 pl-6 text-left">
                             {seasonalReisen.map((link) => (
                               <Link 
                                 key={link.name} 
                                 href={link.href}
-                                className="text-xs md:text-sm font-bold text-secondary/60 hover:text-primary tracking-normal transition-colors"
+                                className="text-[13px] font-bold text-secondary/60 hover:text-primary transition-colors"
                               >
                                 {link.name}
                               </Link>
@@ -203,17 +189,17 @@ export function Navbar() {
                       </AccordionItem>
 
                       <AccordionItem value="destinations" className="border-none">
-                        <AccordionTrigger className="text-lg md:text-xl font-headline font-black tracking-normal hover:text-primary transition-colors leading-none py-0 hover:no-underline [&>svg]:hidden justify-start gap-4 uppercase">
+                        <AccordionTrigger className="text-lg md:text-xl font-headline font-bold hover:text-primary transition-colors leading-none py-0 hover:no-underline [&>svg]:hidden justify-start gap-4 uppercase">
                           <span>Alle Reiseziele</span>
                           <ChevronDown className="w-4 h-4 text-primary" />
                         </AccordionTrigger>
-                        <AccordionContent className="pt-4 pb-2 pl-4">
-                          <div className="flex flex-col gap-3 border-l-2 border-primary/20 pl-4 text-left">
+                        <AccordionContent className="pt-4 pb-2">
+                          <div className="flex flex-col gap-3 border-l-2 border-primary/20 pl-6 text-left">
                             {countries.map((country) => (
                               <Link 
                                 key={country.name} 
                                 href={country.href}
-                                className="text-xs md:text-sm font-bold text-secondary/60 hover:text-primary tracking-normal transition-colors"
+                                className="text-[13px] font-bold text-secondary/60 hover:text-primary transition-colors"
                               >
                                 {country.name}
                               </Link>
@@ -227,7 +213,7 @@ export function Navbar() {
                       <Link 
                         key={link.name} 
                         href={link.href} 
-                        className="text-lg md:text-xl font-headline font-black tracking-normal hover:text-primary transition-colors leading-none text-left uppercase"
+                        className="text-lg md:text-xl font-headline font-bold text-secondary hover:text-primary transition-colors uppercase"
                       >
                         {link.name}
                       </Link>
@@ -236,23 +222,20 @@ export function Navbar() {
 
                   <div className="w-full h-px bg-border/50" />
 
-                  <div className="flex flex-col gap-6 text-left">
-                    <div className="space-y-4">
-                      <p className="text-[9px] font-bold tracking-widest text-primary/60 flex items-center gap-2 uppercase">
-                        <Globe className="w-3" /> Explore Catalog
-                      </p>
-                      <Link 
-                        href="/safaris" 
-                        className="text-[11px] font-black text-secondary/70 hover:text-primary tracking-normal transition-colors uppercase"
-                      >
-                        Vollständige Kollektion
-                      </Link>
+                  <div className="flex flex-col gap-4">
+                    <p className="text-[9px] font-bold tracking-[0.3em] text-primary/60 flex items-center gap-2 uppercase">
+                      <Globe className="w-3" /> Quick Access Registry
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <Link href="/national-parks" className="text-[11px] font-black text-secondary/60 hover:text-primary uppercase tracking-widest border border-border px-3 py-1 rounded-lg">Nationalparks</Link>
+                      <Link href="/activities" className="text-[11px] font-black text-secondary/60 hover:text-primary uppercase tracking-widest border border-border px-3 py-1 rounded-lg">Aktivitäten</Link>
+                      <Link href="/unterkuenfte" className="text-[11px] font-black text-secondary/60 hover:text-primary uppercase tracking-widest border border-border px-3 py-1 rounded-lg">Hotels</Link>
                     </div>
                   </div>
                 </div>
               </ScrollArea>
 
-              <div className="p-8 border-t border-border bg-[#fdfcfb] flex flex-col gap-6 md:gap-8 items-center shrink-0">
+              <div className="p-8 border-t border-border bg-[#fdfcfb] flex flex-col gap-6 items-center shrink-0">
                 <div className="flex gap-4">
                   {[
                     { icon: Facebook, href: "#" },
@@ -266,14 +249,14 @@ export function Navbar() {
                   ))}
                 </div>
                 
-                <Button asChild className="w-full h-14 rounded-2xl bg-secondary text-white font-black text-[10px] tracking-widest shadow-xl hover:bg-primary transition-all border-none uppercase">
-                  <Link href="/trip-planner" className="flex items-center justify-center gap-3">
-                    Jetzt anfragen <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </Button>
+                <Link href="/trip-planner" className="w-full">
+                  <button className="w-full h-14 rounded-2xl bg-secondary text-white font-black text-[10px] tracking-[0.3em] shadow-xl hover:bg-primary transition-all uppercase">
+                    Anfrage Senden
+                  </button>
+                </Link>
                 
-                <p className="text-[7px] font-black tracking-widest text-muted-foreground/40">
-                  Registry 2026 • Established 2014
+                <p className="text-[7px] font-black tracking-widest text-muted-foreground/40 uppercase">
+                  Registry 2026 • established 2014
                 </p>
               </div>
             </SheetContent>
