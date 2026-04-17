@@ -2,19 +2,18 @@
 
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Star, Compass, MapPin, Clock, Users, ArrowRight, CheckCircle2, Sparkles, Plus, Sun, Waves, Zap } from 'lucide-react';
+import { Star, Compass, ArrowRight, CheckCircle2, Zap, Waves, Sun, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { PackageCard } from '@/components/shared/PackageCard';
 import { ContactSection } from '@/components/shared/ContactSection';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const packages = [
   { id: '15-day', title: '15 Tage Safari in Tansania und Sansibar', slug: '15-day-safari-zanzibar', durationDays: 15, startingPrice: 5399, category: 'Signature', tag: 'Meistverkauft', highlights: ['Top Nationalparks Safari', 'Massai Dorfbesuch', 'Familienfreundlich', 'Sansibar Strände', 'Stone Town'], imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800' },
   { id: '13-day', title: '13 Tage Safari & Sansibar', slug: 'safari-sansibar-13-tage', durationDays: 13, startingPrice: 3699, category: 'Signature', highlights: ['Big Five Pirschfahrten', 'Massai Dorfbesuch', 'Ngorongoro Krater', 'Sansibar Strände', 'Stone Town'], imageUrl: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800' },
-  { id: '11-day', title: '11 Tage Safari & Sansibar', slug: 'safari-sansibar-11-tage', durationDays: 11, startingPrice: 2999, category: 'Kompakt', highlights: ['Tarangire Elefanten', 'Massai Kultur', 'Serengeti Migration', 'Ngorongoro Krater', 'Sansibar Touren'], imageUrl: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=800' },
+  { id: '11-day', title: '11 Tage Safari & Sansibar', slug: 'safari-sansibar-11-tage', durationDays: 11, startingPrice: 2999, category: 'Kompakt', highlights: ['Tarangire Elefanten', 'Massai Kultur', 'Serengeti Tiermigration', 'Ngorongoro Krater', 'Sansibar Touren'], imageUrl: 'https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=800' },
   { id: 'family-12', title: '12 Tage Familien-Safari', slug: 'familien-safari-12-tage', durationDays: 12, startingPrice: 3499, category: 'Familie', highlights: ['Big Five Erlebnisse', 'Massai Begegnung', 'Schulbesuch', 'Manyara Safari', 'Kinder-Lodges'], imageUrl: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800' },
   { id: 'honeymoon-13', title: '13 Tage Flitterwochen', slug: 'flitterwochen-tansania-sansibar', durationDays: 13, startingPrice: 3899, category: 'Romantik', highlights: ['Champagner Sunset', 'Private Pirschfahrten', 'Luxusvillen', 'Stranddinner', 'Ballonsafari'], imageUrl: 'https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=800' },
   { id: 'zanzibar-7', title: '7 Tage Sansibar', slug: '7-tage-sansibar', durationDays: 7, startingPrice: 2699, category: 'Strand', highlights: ['Stone Town Tour', 'Gewürzplantagen', 'Schnorcheln', 'Strandurlaub', 'Taucherlebnis'], imageUrl: 'https://images.unsplash.com/photo-1590001158193-79013ac7fa77?q=80&w=800' },
@@ -26,14 +25,13 @@ const faqs = [
   { q: "Was kostet ein Sommerurlaub in Tansania?", a: "Die Kosten variieren je nach Reisedauer und Lodge-Kategorie. In der Regel beginnen hochwertige Privat-Safaris inkl. Sansibar bei ca. 3.000 € pro Person." },
   { q: "Warum sollte ich den Sommer in Tansania verbringen?", a: "Die Sommermonate (Juni bis Oktober) sind die beste Reisezeit für Tierbeobachtungen, da es trocken ist und sich die Tiere an den Wasserstellen konzentrieren." },
   { q: "Bietet Tansania Reiseabenteuer deutschsprachige Sommerreisen an?", a: "Ja, wir sind spezialisiert auf deutschsprachige Privat-Safaris mit exzellent ausgebildeten Guides." },
-  { q: "Was ist der beste Zeitpunkt, um nach Tansania für den Sommer zu reisen?", a: "August und September sind ideal für die Flussüberquerungen der Großen Migration im Norden der Serengeti." },
-  { q: "Welche Aktivitäten kann ich in Tansania während meines Sommerurlaubs machen?", a: "Pirschfahrten, Heißluftballon-Safaris, Schnorcheln auf Sansibar und Wanderungen am Kilimandscharo." }
+  { q: "Was ist der beste Zeitpunkt, um nach Tansania für den Sommer zu reisen?", a: "August und September sind ideal für die Flussüberquerungen der Großen Migration im Norden der Serengeti." }
 ];
 
 export default function SummerTravelPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
-      {/* 01 HERO SECTION */}
+      {/* 01 Hero Section - No shadow, No uppercase */}
       <section className="relative h-[65vh] md:h-[80vh] flex items-center justify-center overflow-hidden bg-secondary">
         <Image 
           src="https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=1920" 
@@ -46,23 +44,23 @@ export default function SummerTravelPage() {
         
         <div className="container relative z-10 mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <Badge className="bg-primary text-white border-none px-5 py-2 text-[11px] font-black uppercase tracking-[0.4em] mb-6 shadow-2xl">
+            <Badge className="bg-primary text-white border-none px-5 py-2 text-[11px] font-bold mb-6 shadow-2xl">
               Sommer-Edition 2026
             </Badge>
-            <h1 className="font-headline text-4xl md:text-7xl font-normal text-white mb-8 leading-tight tracking-tight uppercase">
-              Sommerurlaub 2026 <br /><span className="text-primary font-bold">In Tansania</span>
+            <h1 className="font-headline text-4xl md:text-7xl font-normal text-white mb-8 leading-tight tracking-tight">
+              Sommerurlaub 2026 in Tansania
             </h1>
-            <p className="max-w-2xl mx-auto text-[14px] md:text-xl text-white/90 font-normal leading-relaxed uppercase tracking-widest opacity-80">
+            <p className="max-w-2xl mx-auto text-[14px] md:text-xl text-white/90 font-normal leading-relaxed opacity-80">
               Private Luxus Safari & Sansibar. Erleben Sie den Sommer einmal anders.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* 02 NARRATIVE INTRO */}
+      {/* 02 Narrative Intro */}
       <section className="py-16 md:py-24 container mx-auto px-4 max-w-5xl text-center">
         <div className="space-y-6">
-          <p className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal opacity-90 uppercase tracking-widest">
+          <p className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal opacity-90">
             Erleben Sie den Sommer einmal anders: Statt überfüllter Strände erwarten Sie exklusive Safaris in der Serengeti – und anschließend pure Entspannung an Sansibars weißen Traumküsten. Handverlesene Lodges, privater Guide und deutschsprachige Betreuung – individuell für Sie gestaltet.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-10">
@@ -73,15 +71,15 @@ export default function SummerTravelPage() {
             ].map((item, i) => (
               <div key={i} className="space-y-2">
                 <item.icon className="w-8 h-8 text-primary mx-auto mb-4" />
-                <h4 className="font-bold text-secondary uppercase text-sm">{item.t}</h4>
-                <p className="text-[11px] text-muted-foreground uppercase font-bold tracking-widest leading-relaxed">{item.d}</p>
+                <h4 className="font-bold text-secondary text-sm">{item.t}</h4>
+                <p className="text-[11px] text-muted-foreground font-normal leading-relaxed">{item.d}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 03 PACKAGE REGISTRY */}
+      {/* 03 Package Registry */}
       <section className="py-12 md:py-24 container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
           {packages.map((pkg) => (
@@ -90,14 +88,14 @@ export default function SummerTravelPage() {
         </div>
       </section>
 
-      {/* 04 WHY SUMMER SECTION */}
+      {/* 04 Why Summer Section */}
       <section className="py-16 md:py-32 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-16 md:mb-24 space-y-4">
-            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tighter">
-              Warum den Sommer in <br /><span className="text-primary">Tansania verbringen?</span>
+            <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter">
+              Warum den Sommer in Tansania verbringen?
             </h2>
-            <p className="text-muted-foreground font-bold text-[10px] md:text-sm uppercase tracking-widest max-w-2xl mx-auto">
+            <p className="text-muted-foreground font-normal text-[14px] md:text-sm max-w-2xl mx-auto">
               Statt überfüllter Mittelmeerstrände genießt du in Tansania unvergessliche Safaris und weiße Traumstrände.
             </p>
           </div>
@@ -113,7 +111,7 @@ export default function SummerTravelPage() {
                 <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                   <item.icon className="w-6 h-6" />
                 </div>
-                <h4 className="font-headline text-xl font-bold text-secondary uppercase tracking-tight">{item.t}</h4>
+                <h4 className="font-headline text-xl font-bold text-secondary tracking-tight">{item.t}</h4>
                 <p className="text-[12px] md:text-sm text-muted-foreground font-normal leading-relaxed">{item.d}</p>
               </div>
             ))}
@@ -121,13 +119,13 @@ export default function SummerTravelPage() {
         </div>
       </section>
 
-      {/* 05 EXPERTISE HUB */}
+      {/* 05 Expertise Hub */}
       <section className="py-16 md:py-32 bg-[#FDF7F2]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="space-y-10">
-              <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary uppercase tracking-tighter">
-                Sommer in Tansania – <br /><span className="text-primary">Sonne, Safari & Luxus</span>
+              <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary tracking-tighter">
+                Sommer in Tansania – Sonne, Safari & Luxus
               </h2>
               <div className="space-y-6">
                 {[
@@ -139,7 +137,7 @@ export default function SummerTravelPage() {
                   <div key={i} className="flex gap-4">
                     <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
                     <div>
-                      <p className="font-bold text-secondary text-sm uppercase mb-1">{point.t}</p>
+                      <p className="font-bold text-secondary text-sm mb-1">{point.t}</p>
                       <p className="text-[12px] text-muted-foreground font-normal leading-relaxed">{point.d}</p>
                     </div>
                   </div>
@@ -153,11 +151,11 @@ export default function SummerTravelPage() {
         </div>
       </section>
 
-      {/* 06 FAQ REGISTRY */}
+      {/* 06 FAQ Registry */}
       <section className="py-16 md:py-32 bg-white border-t border-border/40">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary mb-6 uppercase tracking-tighter">Häufig gestellte Fragen</h2>
+            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary mb-6 tracking-tighter">Häufig gestellte Fragen</h2>
           </div>
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, i) => (
@@ -177,5 +175,11 @@ export default function SummerTravelPage() {
 
       <section id="inquiry"><ContactSection /></section>
     </div>
+  );
+}
+
+function Plus(props: any) {
+  return (
+    <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
   );
 }
