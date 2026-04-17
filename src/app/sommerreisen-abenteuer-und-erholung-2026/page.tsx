@@ -31,7 +31,7 @@ const faqs = [
 export default function SummerTravelPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
-      {/* 01 Hero Section - No shadow, No uppercase */}
+      {/* 01 Hero Section */}
       <section className="relative h-[65vh] md:h-[80vh] flex items-center justify-center overflow-hidden bg-secondary">
         <Image 
           src="https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=1920" 

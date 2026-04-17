@@ -97,7 +97,8 @@ export function Navbar() {
       <nav className="container mx-auto px-4 max-w-7xl">
         <div className={cn(
           "flex items-center justify-between transition-all duration-500 h-14 md:h-16 w-full",
-          useDarkState ? "text-secondary" : "text-white"
+          useDarkState ? "text-secondary" : "text-white",
+          isOpen && "opacity-0 pointer-events-none"
         )}>
           <Link href="/" className="flex items-center gap-2 md:gap-3 group shrink-0">
             <img 
