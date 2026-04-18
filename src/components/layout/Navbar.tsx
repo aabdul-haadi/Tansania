@@ -92,8 +92,8 @@ export function Navbar() {
                 <Link href="/" className="flex items-center gap-3">
                   <img src="/iconlogo.jpg" alt="SDL" className="h-8 md:h-10 w-auto" />
                   <div className="flex flex-col text-left">
-                    <span className="font-headline font-black text-sm md:text-xl tracking-normal leading-[1.1] uppercase">Tansania</span>
-                    <span className="font-headline font-black text-sm md:text-xl text-primary tracking-normal leading-[1.1] uppercase">Reiseabenteuer</span>
+                    <span className="font-headline font-black text-sm md:text-xl tracking-normal leading-[1.1]">Tansania</span>
+                    <span className="font-headline font-black text-sm md:text-xl text-primary tracking-normal leading-[1.1]">Reiseabenteuer</span>
                   </div>
                 </Link>
               </div>

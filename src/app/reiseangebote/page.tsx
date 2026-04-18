@@ -165,10 +165,10 @@ export default function ReiseangebotePage() {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
-              <Button onClick={() => document.getElementById('catalog')?.scrollIntoView({ behavior: 'smooth' })} className="w-fit mx-auto sm:w-auto h-12 md:h-14 px-8 md:px-12 rounded-xl font-bold text-xs shadow-2xl border-none">
+              <Button onClick={() => document.getElementById('catalog')?.scrollIntoView({ behavior: 'smooth' })} className="w-fit mx-auto sm:w-auto h-12 md:h-14 px-6 md:px-10 rounded-xl font-bold text-xs shadow-2xl border-none">
                 Alle Angebote ansehen
               </Button>
-              <Button variant="glass" className="w-fit mx-auto sm:w-auto h-12 md:h-14 px-8 md:px-12 rounded-xl font-bold text-xs">
+              <Button variant="glass" className="w-fit mx-auto sm:w-auto h-12 md:h-14 px-6 md:px-10 rounded-xl font-bold text-xs">
                 Sonderangebote & Deals
               </Button>
             </div>
