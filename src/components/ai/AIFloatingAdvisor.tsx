@@ -34,21 +34,16 @@ export function AIFloatingAdvisor() {
   const [input, setInput] = useState('');
   const [isListening, setIsListening] = useState(false);
   const [messages, setMessages] = useState<any[]>([
-    { role: 'model', content: 'Jambo! Ich bin Ihr persönlicher Tansania Reiseabenteuer Concierge. Wie kann ich Ihre Reise heute zu etwas ganz Besonderem machen?' }
+    { role: 'model', content: 'Jambo! Ich bin Ihr persönlicher Tansania Reiseabenteuer Berater. Wie kann ich Ihre Reise heute zu etwas ganz Besonderem machen?' }
   ]);
   const [loading, setLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<any>(null);
   const firestore = useFirestore();
-
-  // Fetch package data for AI context
-  const pkgQuery = useMemoFirebase(() => {
-    if (!firestore) return null;
-    return query(collection(firestore, 'packages'), where('isPublished', '==', true), limit(8));
-  }, [firestore]);
-  const { data: packages } = useCollection(pkgQuery);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const timer = setTimeout(() => {
       if (!isOpen) setShowTeaser(true);
     }, 3000);
@@ -113,13 +108,7 @@ export function AIFloatingAdvisor() {
       const result = await askTripAdvisor({ 
         message: userMsg, 
         history: messages.filter(m => m.role !== 'error').map(m => ({ role: m.role, content: m.content })),
-        packagesContext: packages?.map(p => ({
-          title: p.title,
-          description: p.description,
-          price: p.startingPrice,
-          duration: p.durationDays,
-          slug: p.slug
-        }))
+        packagesContext: []
       });
       setMessages([...newMessages, { 
         role: 'model', 
@@ -133,6 +122,9 @@ export function AIFloatingAdvisor() {
       setLoading(false);
     }
   };
+
+  // CRITICAL: Prevent hydration mismatch by rendering null on the server
+  if (!mounted) return null;
 
   return (
     <>
@@ -148,7 +140,7 @@ export function AIFloatingAdvisor() {
         )}
       </AnimatePresence>
 
-      <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[100] flex flex-col items-end gap-3 md:gap-4 pointer-events-none font-bold">
+      <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[100] flex flex-col items-end gap-3 md:gap-4 pointer-events-none font-normal">
         <AnimatePresence>
           {showTeaser && !isOpen && (
             <motion.div
@@ -159,14 +151,14 @@ export function AIFloatingAdvisor() {
               onClick={() => { setIsOpen(true); setShowTeaser(false); }}
             >
               <div className="absolute -bottom-2 right-8 w-4 h-4 bg-white border-r border-b border-primary/20 rotate-45" />
-              <p className="text-[10px] md:text-[11px] font-bold text-secondary uppercase tracking-widest leading-tight">
+              <p className="text-[10px] md:text-[11px] font-bold text-secondary tracking-normal leading-tight">
                 Haben Sie Fragen? <span className="text-primary">Ich helfe Ihnen gerne!</span>
               </p>
               <button 
                 onClick={(e) => { e.stopPropagation(); setShowTeaser(false); }}
                 className="absolute -top-2 -left-2 w-5 h-5 rounded-full bg-secondary flex items-center justify-center text-white shadow-md border border-white/10 hover:bg-primary transition-colors"
               >
-                <X className="w-2.5 h-2.5" />
+                <X className="w-2.5 h-2.5 text-white" />
               </button>
             </motion.div>
           )}
@@ -193,10 +185,10 @@ export function AIFloatingAdvisor() {
                     <Compass className="w-5 h-5 md:w-6 md:h-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-[10px] md:text-xs uppercase tracking-widest leading-none">AI Advisor</h4>
+                    <h4 className="font-bold text-[10px] md:text-xs tracking-normal leading-none">KI Berater</h4>
                     <div className="flex items-center gap-1.5 mt-1">
                       <span className={cn("w-1 h-1 rounded-full bg-green-500", !loading && "animate-pulse")} />
-                      <p className="text-[7px] text-white/40 uppercase font-black tracking-widest">Live Catalog Sync</p>
+                      <p className="text-[7px] text-white/40 font-bold tracking-widest">Katalog-Abgleich aktiv</p>
                     </div>
                   </div>
                 </div>
@@ -206,7 +198,7 @@ export function AIFloatingAdvisor() {
                     {isMinimized ? <Maximize2 className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
                   </button>
                   <button onClick={() => setIsOpen(false)} className="p-1.5 hover:bg-white/10 rounded-lg transition-colors">
-                    <X className="w-3.5 h-3.5" />
+                    <X className="w-3.5 h-3.5 text-white" />
                   </button>
                 </div>
               </div>
@@ -237,7 +229,7 @@ export function AIFloatingAdvisor() {
                           </div>
                           {m.action && m.route && (
                             <Link href={m.route} className="ml-10">
-                              <Button size="sm" variant="outline" className="rounded-full h-8 px-3 text-[7px] font-bold uppercase tracking-widest border-primary/20 text-primary hover:bg-primary/5 group" suppressHydrationWarning>
+                              <Button size="sm" variant="outline" className="rounded-full h-8 px-3 text-[7px] font-bold border-primary/20 text-primary hover:bg-primary/5 group">
                                 {m.action} <ArrowRight className="w-2.5 h-2.5 ml-1.5 group-hover:translate-x-1 transition-transform" />
                               </Button>
                             </Link>
@@ -271,14 +263,12 @@ export function AIFloatingAdvisor() {
                             "h-11 rounded-xl border-muted bg-[#fdfcfb] shadow-inner focus:ring-primary/20 text-[10px] md:text-[11px] font-bold transition-all",
                             isListening && "ring-2 ring-primary bg-primary/5"
                           )}
-                          suppressHydrationWarning
                         />
                         <Button 
                           type="button" 
                           size="icon" 
                           variant="ghost" 
                           onClick={toggleListening}
-                          suppressHydrationWarning
                           className={cn(
                             "absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 rounded-lg transition-all",
                             isListening ? "text-primary bg-primary/10 animate-pulse" : "text-muted-foreground hover:text-primary"
@@ -290,7 +280,6 @@ export function AIFloatingAdvisor() {
                       <Button 
                         type="submit" 
                         size="icon" 
-                        suppressHydrationWarning
                         className="w-11 h-11 rounded-xl shadow-xl shadow-primary/20 shrink-0 border-none" 
                         disabled={!input.trim() || loading}
                       >
@@ -308,7 +297,6 @@ export function AIFloatingAdvisor() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => { setIsOpen(true); setShowTeaser(false); }}
-          suppressHydrationWarning
           className={cn(
             "w-14 h-14 md:w-16 md:h-16 rounded-[1.5rem] md:rounded-[2rem] bg-secondary text-white shadow-2xl flex items-center justify-center relative overflow-hidden transition-all duration-500 pointer-events-auto",
             isOpen && "scale-0 opacity-0 pointer-events-none"
