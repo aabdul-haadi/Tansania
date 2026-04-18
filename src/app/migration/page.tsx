@@ -37,7 +37,7 @@ export default function MigrationPage() {
           >
             <div className="space-y-4">
               <h1 className="font-headline text-3xl md:text-7xl lg:text-8xl font-normal text-white leading-tight tracking-tight">
-                Die Grosse Tierwanderung
+                Die große Tierwanderung
               </h1>
               <p className="max-w-2xl mx-auto text-white/90 font-normal text-sm md:text-xl leading-relaxed opacity-80">
                 Erleben Sie das grösste Naturschauspiel der Welt in der Serengeti. Wir bringen Sie direkt an das Herz des Geschehens – exklusiv und privat.
@@ -65,7 +65,7 @@ export default function MigrationPage() {
             ].map((item, idx) => (
               <div key={idx} className="flex flex-col items-center gap-2">
                 <item.icon className="w-5 h-5 text-primary" />
-                <span className="text-[10px] font-bold text-white/60 tracking-widest uppercase">{item.label}</span>
+                <span className="text-[10px] font-bold text-white/60 tracking-normal uppercase">{item.label}</span>
               </div>
             ))}
           </div>
@@ -80,7 +80,9 @@ export default function MigrationPage() {
       <MigrationVideoBlog />
       
       {/* Lead Capture */}
-      <ContactSection />
+      <div className="pt-8">
+        <ContactSection />
+      </div>
     </div>
   );
 }

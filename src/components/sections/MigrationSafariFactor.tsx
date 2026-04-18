@@ -51,11 +51,11 @@ export function MigrationSafariFactor() {
   return (
     <section className="pt-8 pb-16 md:pb-24 bg-[#fdfcfb] overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center mb-12 md:mb-20 space-y-3">
-          <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary">
+        <div className="text-center mb-12 md:mb-16 space-y-2">
+          <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-normal">
             Der entscheidende Faktor für Ihre Safari
           </h2>
-          <p className="text-muted-foreground font-normal text-[14px] leading-[20px] max-w-2xl mx-auto opacity-80">
+          <p className="text-muted-foreground font-normal text-[14px] leading-[20px] max-w-2xl mx-auto opacity-80 tracking-normal">
             Wir positionieren Sie immer am richtigen Ort zur richtigen Zeit. Strategische Planung ist der Schlüssel zu spektakulären Tierbeobachtungen.
           </p>
         </div>
@@ -76,7 +76,7 @@ export function MigrationSafariFactor() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                     
                     <div className="absolute inset-0 p-8 flex flex-col justify-end text-center items-center">
-                      <h3 className="font-headline text-2xl md:text-4xl font-normal text-white mb-3">
+                      <h3 className="font-headline text-2xl md:text-4xl font-normal text-white mb-3 tracking-tight">
                         {slide.title}
                       </h3>
                       <p className="text-[14px] leading-[20px] text-white/80 font-normal mb-8 max-w-[280px]">

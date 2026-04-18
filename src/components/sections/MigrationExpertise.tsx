@@ -40,7 +40,7 @@ export function MigrationExpertise() {
             viewport={{ once: true }}
             className="lg:col-span-6 relative"
           >
-            <div className="relative aspect-square md:aspect-[4/3] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl">
+            <div className="relative aspect-square md:aspect-[4/3] rounded-[2rem] md:rounded-[3.5rem] overflow-hidden shadow-2xl">
               <Image 
                 src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200" 
                 alt="Migration Safari" 
@@ -57,7 +57,7 @@ export function MigrationExpertise() {
                 </div>
                 <div>
                   <p className="text-white font-bold text-sm leading-tight">Geprüfte Sicherheit</p>
-                  <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest">DRSF Abgesichert</p>
+                  <p className="text-white/40 text-[10px] font-bold uppercase tracking-normal">Drsf abgesichert</p>
                 </div>
               </div>
             </div>
@@ -76,12 +76,14 @@ export function MigrationExpertise() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {expertiseItems.map((item, i) => (
-                <div key={i} className="space-y-3 group">
+                <div key={i} className="space-y-3 group text-left">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl bg-[#FDF7F2] border border-[#F0EBE0] flex items-center justify-center shrink-0 group-hover:bg-primary transition-all">
                       <Check className="w-5 h-5 text-primary group-hover:text-white" />
                     </div>
-                    <h4 className="font-bold text-base text-secondary group-hover:text-primary transition-colors">{item.title}</h4>
+                    <h4 className="font-bold text-base text-secondary group-hover:text-primary transition-colors leading-tight">
+                      {item.title}
+                    </h4>
                   </div>
                   <p className="text-[14px] leading-[20px] text-muted-foreground opacity-70">
                     {item.desc}
@@ -90,7 +92,7 @@ export function MigrationExpertise() {
               ))}
             </div>
 
-            <div className="pt-4">
+            <div className="pt-4 text-left">
               <Link href="/trip-planner">
                 <Button size="lg" className="rounded-xl px-8 h-14 font-bold text-xs shadow-xl border-none group">
                   Beratung anfragen <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />

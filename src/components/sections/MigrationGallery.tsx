@@ -17,11 +17,11 @@ export function MigrationGallery() {
   return (
     <section className="pt-8 pb-16 md:pb-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center mb-12 md:mb-16 space-y-3">
-          <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary">
+        <div className="text-center mb-10 md:mb-12 space-y-2">
+          <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-normal">
             Augenblicke der Wildnis
           </h2>
-          <p className="text-muted-foreground font-normal text-[14px] leading-[20px] max-w-2xl mx-auto opacity-80">
+          <p className="text-muted-foreground font-normal text-[14px] leading-[20px] max-w-2xl mx-auto opacity-80 tracking-normal">
             Unsere Guides halten die magischsten Momente der Migration fest. Erleben Sie die Serengeti durch ihre Augen.
           </p>
         </div>
