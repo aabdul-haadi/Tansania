@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -9,16 +9,11 @@ import {
   MapPin, 
   Search, 
   ArrowRight, 
-  Star, 
   Compass, 
-  Sparkles,
-  ShieldCheck,
+  Globe,
   Palmtree,
-  Mountain,
-  Waves,
-  Globe
+  Mountain
 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
@@ -27,9 +22,9 @@ import { ContactSection } from '@/components/shared/ContactSection';
 
 const categories = [
   { id: 'all', label: 'Alle Regionen', icon: Globe },
-  { id: 'arusha', label: 'Arusha Hotel', icon: Mountain },
-  { id: 'sansibar', label: 'Sansibar Hotel', icon: Palmtree },
-  { id: 'tanzania', label: 'Tansania Hotel', icon: Compass },
+  { id: 'arusha', label: 'Arusha Hotels', icon: Mountain },
+  { id: 'sansibar', label: 'Sansibar Hotels', icon: Palmtree },
+  { id: 'tanzania', label: 'Tansania Safari Lodges', icon: Compass },
 ];
 
 const accommodations = [
@@ -95,84 +90,17 @@ const accommodations = [
     img: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800",
     category: 'sansibar',
     hint: "zanzibar spa"
-  },
-  {
-    id: 'upendo-house',
-    name: "Upendo House Zanzibar",
-    location: "Stone Town, Sansibar",
-    desc: "Das Upendo House Zanzibar ist eine einzigartige Unterkunft, die modernes Design mit der historischen Atmosphäre von Stone Town verbindet.",
-    img: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=800",
-    category: 'sansibar',
-    hint: "stone town boutique"
-  },
-  {
-    id: 'blue-moon-resort',
-    name: "Blue Moon Resort",
-    location: "Ostküste von Sansibar",
-    desc: "Das Blue Moon Resort auf Sansibar bietet eine traumhafte Kulisse für Entspannung und Abenteuer. Eingebettet in eine ruhige und natürliche Umgebung.",
-    img: "https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?q=80&w=800",
-    category: 'sansibar',
-    hint: "east coast resort"
-  },
-  {
-    id: 'kisiwa-on-the-beach',
-    name: "Kisiwa On The Beach",
-    location: "Paje Beach, Sansibar",
-    desc: "Das Kisiwa On The Beach liegt an einem der schönsten Strände Sansibars und bietet eine ruhige, luxuriöse Atmosphäre mit einem Hauch Swahili-Tradition.",
-    img: "https://images.unsplash.com/photo-1577971132997-c10be9372519?q=80&w=800",
-    category: 'sansibar',
-    hint: "luxury beach villa"
-  },
-  {
-    id: 'lawns-hotel',
-    name: "Lawn Hotel Lushoto",
-    location: "Lushoto, Tansania",
-    desc: "Das Lawns Hotel Lushoto ist das älteste noch betriebene Hotel in den West-Usambara-Bergen Tansanias. Atemberaubender Blick auf die umliegenden Berge.",
-    img: "https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=800",
-    category: 'tanzania',
-    hint: "mountain hotel"
-  },
-  {
-    id: 'sharazad-boutique',
-    name: "Sharazād Boutique Hotel",
-    location: "Jambiani, Sansibar",
-    desc: "Das Sharazād Boutique Hotel liegt an der malerischen Südostküste Sansibars und bietet eine ruhige und luxuriöse Atmosphäre.",
-    img: "https://images.unsplash.com/photo-1646668072507-b2215b873c70?q=80&w=800",
-    category: 'sansibar',
-    hint: "boutique jambiani"
-  },
-  {
-    id: 'casa-del-mar',
-    name: "Casa del Mar",
-    location: "Jambiani, Sansibar",
-    desc: "Das Casa del Mar ist ein charmantes Boutique-Hotel an der Südostküste von Sansibar, das sich durch eine familiäre und entspannte Atmosphäre auszeichnet.",
-    img: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800",
-    category: 'sansibar',
-    hint: "cozy beach hotel"
-  },
-  {
-    id: 'riu-palace',
-    name: "Riu Palace Zanzibar",
-    location: "Nungwi Beach, Sansibar",
-    desc: "Das Riu Palace Zanzibar ist ein exklusives Resort an der Nordküste von Sansibar und ein perfekter Rückzugsort für Erwachsene. All-Inclusive Luxus.",
-    img: "https://images.unsplash.com/photo-1510011560141-62c7e8fc7910?q=80&w=800",
-    category: 'sansibar',
-    hint: "all inclusive resort"
-  },
-  {
-    id: 'royal-zanzibar',
-    name: "Royal Zanzibar Beach Resort",
-    location: "Nungwi, Sansibar",
-    desc: "Das Royal Zanzibar Beach Resort erstreckt sich entlang der malerischen Küste von Sansibar und bietet eine Vielzahl von Unterkunftsmöglichkeiten.",
-    img: "https://images.unsplash.com/photo-1436491865332-7a61a109c055?q=80&w=800",
-    category: 'sansibar',
-    hint: "large beach resort"
   }
 ];
 
 export default function AccommodationsPage() {
   const [activeTab, setActiveTab] = useState('all');
   const [search, setSearch] = useState('');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const filteredItems = useMemo(() => {
     return accommodations.filter(item => {
@@ -183,9 +111,11 @@ export default function AccommodationsPage() {
     });
   }, [activeTab, search]);
 
+  if (!mounted) return null;
+
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
-      {/* 01 Less-Weighted Hero Section */}
+      {/* 01 Compact Hero Section */}
       <section className="relative h-[40vh] md:h-[50vh] w-full overflow-hidden bg-secondary">
         <Image 
           src="https://images.unsplash.com/photo-1577971132997-c10be9372519?q=80&w=1920" 
@@ -203,33 +133,33 @@ export default function AccommodationsPage() {
             transition={{ duration: 0.8 }}
             className="space-y-4"
           >
-            <h1 className="font-headline text-3xl md:text-7xl font-normal text-white leading-tight tracking-tight uppercase">
-              Unterkünfte
+            <h1 className="font-headline text-3xl md:text-7xl font-normal text-white leading-tight tracking-tight">
+              Unsere Unterkünfte
             </h1>
             <p className="text-white/80 text-[11px] md:text-sm font-normal tracking-widest max-w-xl mx-auto uppercase">
-              Wir haben nur die besten Unterkünfte für Sie ausgesucht.
+              Handverlesene Lodges & Resorts für Ihr Abenteuer
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* 02 Intro Narrative */}
-      <section className="py-8 md:py-16 container mx-auto px-4 max-w-5xl text-center">
-        <p className="text-muted-foreground font-normal text-[14px] leading-[22px] md:text-base opacity-80 uppercase tracking-widest leading-relaxed">
-          Unsere Unterkunftsangebote in Tansania decken eine breite Palette von Ansprüchen ab. Sie reichen von eleganten Hotels in Arusha über charmante Lodges in der Serengeti bis hin zu authentischen Zeltcamps inmitten der wilden Natur. Auch Strandresorts auf Sansibar stehen zur Auswahl. Wir haben jede Unterkunft persönlich ausgewählt und geprüft, um Ihnen eine erstklassige und unvergessliche Reise zu garantieren.
+      <section className="py-8 md:py-16 container mx-auto px-4 max-w-4xl text-center">
+        <p className="text-muted-foreground font-normal text-[14px] leading-[22px] md:text-base opacity-80 tracking-normal">
+          Unsere Unterkunftsangebote in Tansania decken eine breite Palette von Ansprüchen ab. Sie reichen von eleganten Hotels in Arusha über charmante Lodges in der Serengeti bis hin zu authentischen Zeltcamps inmitten der wilden Natur. Jede Unterkunft wurde persönlich ausgewählt, um Ihnen eine erstklassige und unvergessliche Reise zu garantieren.
         </p>
       </section>
 
       {/* 03 Filters & Search Hub */}
-      <section className="py-8 bg-white border-y border-border/40 sticky top-0 z-40 shadow-sm">
+      <section className="py-6 bg-white border-y border-border/40 sticky top-0 z-40 shadow-sm">
         <div className="container mx-auto px-4 max-w-7xl flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex flex-wrap justify-center md:justify-start gap-2">
+          <div className="flex overflow-x-auto no-scrollbar gap-2 w-full md:w-auto pb-1">
             {categories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setActiveTab(cat.id)}
                 className={cn(
-                  "px-4 py-2 rounded-xl text-[9px] md:text-[10px] font-bold tracking-widest transition-all border flex items-center gap-2",
+                  "px-6 py-2 rounded-full text-[10px] font-bold transition-all border flex items-center gap-2 whitespace-nowrap",
                   activeTab === cat.id 
                     ? "bg-secondary text-white border-secondary shadow-lg" 
                     : "bg-white text-muted-foreground border-border hover:border-primary/40"
@@ -246,69 +176,74 @@ export default function AccommodationsPage() {
             <Input 
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Ort oder Name suchen..." 
-              className="h-11 pl-11 rounded-xl bg-muted/20 border-none font-bold text-[10px] uppercase tracking-widest"
-              suppressHydrationWarning
+              placeholder="Suchen..." 
+              className="h-10 pl-11 rounded-xl bg-muted/10 border-none font-bold text-[10px]"
             />
           </div>
         </div>
       </section>
 
-      {/* 04 Accommodations Grid */}
-      <section className="py-12 md:py-24 container mx-auto px-4 max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+      {/* 04 Accommodations Grid - One Per Row Horizontal Protocol */}
+      <section className="py-12 md:py-20 container mx-auto px-4 max-w-6xl">
+        <div className="grid grid-cols-1 gap-8 md:gap-12">
           <AnimatePresence mode="popLayout">
             {filteredItems.map((item, idx) => (
               <motion.div
                 key={item.id}
                 layout
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.4, delay: idx * 0.05 }}
               >
-                <Card className="h-full border-none shadow-sm bg-white rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden hover:shadow-2xl transition-all duration-500 border border-border/40 group flex flex-col">
-                  <Link href="/trip-planner" className="block relative aspect-[16/10] overflow-hidden shrink-0">
-                    <Image 
-                      src={item.img} 
-                      alt={item.name} 
-                      fill 
-                      className="object-cover transition-transform duration-1000 group-hover:scale-105"
-                      data-ai-hint={item.hint}
-                    />
-                    <div className="absolute top-4 left-4">
-                      <Badge className="bg-primary/90 backdrop-blur-sm text-white border-none font-bold text-[8px] px-3 py-1 tracking-widest shadow-xl">
-                        {item.category === 'sansibar' ? 'Insel-Luxus' : 'Safari-Komfort'}
-                      </Badge>
-                    </div>
-                  </Link>
-                  
-                  <CardContent className="p-6 md:p-10 flex flex-col flex-grow text-left">
-                    <div className="flex-grow space-y-4">
-                      <div className="flex items-center gap-2 text-primary font-bold text-[9px] tracking-widest">
-                        <MapPin className="w-3.5 h-3.5" /> {item.location}
+                <Card className="h-full border border-border/40 shadow-sm bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-500 group">
+                  <div className="flex flex-col lg:flex-row">
+                    {/* Image Hub */}
+                    <Link href="/trip-planner" className="block relative lg:w-[40%] aspect-[16/10] lg:aspect-auto min-h-[250px] overflow-hidden">
+                      <Image 
+                        src={item.img} 
+                        alt={item.name} 
+                        fill 
+                        className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                        data-ai-hint={item.hint}
+                      />
+                      <div className="absolute top-4 left-4">
+                        <Badge className="bg-primary/95 text-white border-none font-bold text-[8px] px-3 py-1 shadow-xl">
+                          {item.category === 'sansibar' ? 'Insel-Resort' : 'Safari-Lodge'}
+                        </Badge>
                       </div>
-                      
-                      <Link href="/trip-planner" className="block group/title">
-                        <h3 className="font-headline text-xl md:text-2xl font-bold text-secondary uppercase leading-tight tracking-tight group-hover/title:text-primary transition-colors">
-                          {item.name}
-                        </h3>
-                      </Link>
-
-                      <p className="text-[14px] leading-[20px] text-muted-foreground font-normal opacity-80 line-clamp-3">
-                        {item.desc}
-                      </p>
-                    </div>
-
-                    <div className="mt-8 pt-6 border-t border-border/40">
-                      <Link href="/trip-planner" className="inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-secondary hover:text-primary transition-all group/link">
-                        Diese Unterkunft erkunden 
-                        <div className="w-8 h-8 rounded-full border border-border flex items-center justify-center transition-colors group-hover/link:bg-primary group-hover/link:border-primary group-hover/link:text-white">
-                          <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-0.5" />
+                    </Link>
+                    
+                    {/* Content Hub */}
+                    <CardContent className="flex-1 p-8 md:p-10 flex flex-col justify-center text-left">
+                      <div className="space-y-4">
+                        <div className="flex items-center gap-2 text-primary font-bold text-[9px] tracking-widest uppercase">
+                          <MapPin className="w-3.5 h-3.5" /> {item.location}
                         </div>
-                      </Link>
-                    </div>
-                  </CardContent>
+                        
+                        <Link href="/trip-planner" className="block group/title">
+                          <h3 className="font-headline text-2xl md:text-3xl font-normal text-secondary leading-tight group-hover/title:text-primary transition-colors">
+                            {item.name}
+                          </h3>
+                        </Link>
+
+                        <p className="text-[14px] leading-[20px] text-muted-foreground font-normal opacity-80 max-w-2xl">
+                          {item.desc}
+                        </p>
+
+                        <div className="pt-6 border-t border-border/40 flex items-center">
+                          <Link href="/trip-planner">
+                            <button className="flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-secondary hover:text-primary transition-all group/btn">
+                              Diese Unterkunft anfragen
+                              <div className="w-8 h-8 rounded-full border border-border flex items-center justify-center transition-colors group-hover/btn:bg-primary group-hover/btn:border-primary group-hover/btn:text-white">
+                                <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-0.5" />
+                              </div>
+                            </button>
+                          </Link>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </div>
                 </Card>
               </motion.div>
             ))}
@@ -316,18 +251,15 @@ export default function AccommodationsPage() {
         </div>
 
         {filteredItems.length === 0 && (
-          <div className="py-40 text-center space-y-6 bg-white rounded-[3rem] border-2 border-dashed border-muted/50">
-            <Hotel className="w-12 h-12 mx-auto opacity-10" />
-            <h3 className="text-xl font-bold text-secondary uppercase tracking-tight">Keine Unterkünfte gefunden</h3>
-            <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Versuchen Sie es mit einem anderen Suchbegriff.</p>
+          <div className="py-40 text-center space-y-6 bg-white rounded-3xl border-2 border-dashed border-muted/50">
+            <Hotel className="w-12 h-12 mx-auto opacity-10 text-secondary" />
+            <h3 className="text-xl font-bold text-secondary">Keine Unterkünfte gefunden</h3>
+            <p className="text-[10px] font-bold text-muted-foreground uppercase">Versuchen Sie es mit einem anderen Suchbegriff.</p>
           </div>
         )}
       </section>
 
-      {/* 05 Shared Components */}
-      <section className="py-8">
-        <ContactSection />
-      </section>
+      <ContactSection />
     </div>
   );
 }
