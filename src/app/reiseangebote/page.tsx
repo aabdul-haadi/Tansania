@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useMemo, useEffect, useRef } from 'react';
@@ -137,7 +138,7 @@ export default function ReiseangebotePage() {
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
-      {/* 01 Hero Section - Increased Padding for Navbar Clearance */}
+      {/* 01 Hero Section - Centered Action Hub */}
       <section className="relative h-[65vh] md:h-[80vh] flex items-center justify-center overflow-hidden bg-secondary">
         <Image 
           src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
@@ -164,11 +165,17 @@ export default function ReiseangebotePage() {
               </p>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
-              <Button onClick={() => document.getElementById('catalog')?.scrollIntoView({ behavior: 'smooth' })} className="w-fit mx-auto sm:w-auto h-12 md:h-14 px-6 md:px-10 rounded-xl font-bold text-xs shadow-2xl border-none">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+              <Button 
+                onClick={() => document.getElementById('catalog')?.scrollIntoView({ behavior: 'smooth' })} 
+                className="w-full sm:w-auto h-12 md:h-14 px-8 md:px-10 rounded-xl font-bold text-xs shadow-2xl border-none"
+              >
                 Alle Angebote ansehen
               </Button>
-              <Button variant="glass" className="w-fit mx-auto sm:w-auto h-12 md:h-14 px-6 md:px-10 rounded-xl font-bold text-xs">
+              <Button 
+                variant="glass" 
+                className="w-full sm:w-auto h-12 md:h-14 px-8 md:px-10 rounded-xl font-bold text-xs"
+              >
                 Sonderangebote & Deals
               </Button>
             </div>
@@ -215,7 +222,7 @@ export default function ReiseangebotePage() {
         </div>
       </section>
 
-      {/* 04 Comparison Matrix with Background Image & Overlay */}
+      {/* 04 Comparison Matrix */}
       <section className="relative pt-8 pb-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image 
@@ -269,7 +276,7 @@ export default function ReiseangebotePage() {
       {/* 05 Destination Discovery */}
       <DestinationDiscovery />
 
-      {/* 06 Bestseller & Favoriten - Compacted for Mobile */}
+      {/* 06 Bestseller & Favoriten */}
       <section className="pt-8 pb-16 bg-white border-t border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 items-start">
@@ -343,10 +350,10 @@ export default function ReiseangebotePage() {
         </div>
       </section>
 
-      {/* 07 FAQ Section */}
+      {/* 07 FAQ Section - Reduced Heading Gap */}
       <section className="py-8 md:py-16 bg-white border-t border-border/40">
         <div className="container mx-auto px-4 max-w-4xl">
-          <div className="text-center mb-10 md:mb-16 space-y-2">
+          <div className="text-center mb-6 md:mb-10 space-y-2">
             <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-normal">
               Häufig gestellte Fragen
             </h2>
@@ -377,7 +384,7 @@ export default function ReiseangebotePage() {
         </div>
       </section>
 
-      {/* 08 Individuelle Beratung - Specialized Embed Protocol */}
+      {/* 08 Individuelle Beratung */}
       <section id="inquiry" className="pt-8 pb-20 bg-[#fdfcfb] scroll-mt-20">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-8 md:mb-12 space-y-2">
