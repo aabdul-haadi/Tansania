@@ -79,8 +79,8 @@ export function MigrationTimeline() {
                 </h4>
               </div>
               <div className="md:w-1/3 flex items-center gap-3">
-                {/* Constant Dark Icon Background Protocol */}
-                <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center text-primary shadow-sm border border-white/5 transition-transform duration-500 group-hover:scale-110">
+                {/* Sand Golden Icon Background Protocol - Constant White Icon */}
+                <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white shadow-sm border border-white/10 transition-transform duration-500 group-hover:scale-110">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <p className="font-bold text-sm text-secondary uppercase tracking-tight">

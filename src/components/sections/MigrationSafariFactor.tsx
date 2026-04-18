@@ -4,7 +4,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Compass } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -73,24 +73,30 @@ export function MigrationSafariFactor() {
                   <div 
                     key={slide.id} 
                     className={cn(
-                      "flex-[0_0_80%] md:flex-[0_0_45%] pl-4 md:pl-12 transition-all duration-700 ease-prestige relative",
+                      "flex-[0_0_85%] md:flex-[0_0_45%] pl-4 md:pl-12 transition-all duration-700 ease-prestige relative",
                       isActive ? "z-20 scale-100 opacity-100" : "z-10 scale-90 opacity-40 blur-[1px]"
                     )}
                   >
-                    <div className="relative aspect-[4/5] rounded-[2rem] md:rounded-[3rem] overflow-hidden bg-secondary shadow-2xl">
+                    <div className="relative aspect-[4/5] md:aspect-[16/11] rounded-[2rem] md:rounded-[3rem] overflow-hidden bg-secondary shadow-2xl">
                       <Image src={slide.img} alt={slide.title} fill className="object-cover" data-ai-hint={slide.hint} />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
                       
-                      <div className="absolute inset-0 p-8 flex flex-col justify-end text-center items-center">
-                        <h3 className="font-headline text-2xl md:text-4xl font-normal text-white mb-3 tracking-tight">
-                          {slide.title}
-                        </h3>
-                        <p className="text-[14px] leading-[20px] text-white/80 font-normal mb-8 max-w-[280px]">
-                          {slide.desc}
-                        </p>
-                        <Button className="rounded-xl h-12 px-8 bg-primary text-white font-bold text-xs border-none shadow-xl">
-                          Anfrage senden
-                        </Button>
+                      <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end text-center items-center">
+                        <motion.div
+                          initial={false}
+                          animate={isActive ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+                          className="space-y-4"
+                        >
+                          <h3 className="font-headline text-2xl md:text-4xl font-normal text-white mb-2 tracking-tight">
+                            {slide.title}
+                          </h3>
+                          <p className="text-[12px] md:text-[14px] leading-[20px] text-white/80 font-normal mb-6 max-w-[320px] mx-auto">
+                            {slide.desc}
+                          </p>
+                          <Button className="rounded-xl h-11 px-8 bg-primary text-white font-bold text-[10px] uppercase tracking-widest border-none shadow-xl hover:bg-white hover:text-primary transition-all">
+                            Anfrage senden
+                          </Button>
+                        </motion.div>
                       </div>
                     </div>
                   </div>
@@ -99,21 +105,35 @@ export function MigrationSafariFactor() {
             </div>
           </div>
 
-          {/* Centered Controls Overlay */}
-          <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between items-center pointer-events-none px-4 md:px-12 z-30">
+          {/* Centered Controls Overlay - Recalibrated for modern UX */}
+          <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between items-center pointer-events-none px-2 md:px-8 z-30">
             <button 
               onClick={() => emblaApi?.scrollPrev()} 
-              className="w-12 h-12 rounded-full bg-white/90 backdrop-blur-md shadow-2xl flex items-center justify-center text-primary pointer-events-auto hover:bg-primary hover:text-white transition-all"
+              className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-white/90 backdrop-blur-md shadow-2xl flex items-center justify-center text-primary pointer-events-auto hover:bg-primary hover:text-white transition-all duration-300"
             >
-              <ChevronLeft className="w-6 h-6" />
+              <ChevronLeft className="w-5 h-5 md:w-8 md:h-8" />
             </button>
             <button 
               onClick={() => emblaApi?.scrollNext()} 
-              className="w-12 h-12 rounded-full bg-white/90 backdrop-blur-md shadow-2xl flex items-center justify-center text-primary pointer-events-auto hover:bg-primary hover:text-white transition-all"
+              className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-white/90 backdrop-blur-md shadow-2xl flex items-center justify-center text-primary pointer-events-auto hover:bg-primary hover:text-white transition-all duration-300"
             >
-              <ChevronRight className="w-6 h-6" />
+              <ChevronRight className="w-5 h-5 md:w-8 md:h-8" />
             </button>
           </div>
+        </div>
+
+        {/* Carousel Progress Registry */}
+        <div className="flex justify-center gap-2 mt-8 md:mt-12">
+          {slides.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => emblaApi?.scrollTo(idx)}
+              className={cn(
+                "h-1 rounded-full transition-all duration-500",
+                selectedIndex === idx ? "bg-primary w-8" : "bg-border w-2"
+              )}
+            />
+          ))}
         </div>
       </div>
     </section>
