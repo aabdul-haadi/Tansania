@@ -1,139 +1,80 @@
+
 "use client";
 
 import React from 'react';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { CheckCircle2, Info, ArrowRight, MapPin, Sparkles } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
+import { MapPin, Info } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 
 const timelineData = [
   {
-    period: "Dez – Mär",
+    period: "Januar – März",
     location: "Südliche Serengeti / Ndutu",
-    observation: "Kalbungszeit – viele Jungtiere, intensive Raubtier-Action.",
-    img: "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=400"
+    observation: "Kalbungszeit – Tausende Gnus werden täglich geboren. Ein Festmahl für Raubtiere."
   },
   {
-    period: "Apr – Mai",
-    location: "Zentral / West",
-    observation: "Herden auf dem Move, dramatische Savannen-Szenen.",
-    img: "https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=400"
+    period: "April – Mai",
+    location: "Zentral-Serengeti",
+    observation: "Die Herden ziehen nach Norden. Grüne Landschaften und dramatische Gewitterstimmungen."
   },
   {
-    period: "Mai – Jun",
-    location: "Westliche Serengeti (Grumeti)",
-    observation: "Grumeti-River-Phase, erste Crossing-Spannung.",
-    img: "https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=400"
+    period: "Juni – Juli",
+    location: "Westlicher Korridor",
+    observation: "Überquerung des Grumeti-Flusses. Erste spektakuläre Szenen an den Wasserstellen."
   },
   {
-    period: "Jul – Sep",
-    location: "Nördliche Serengeti (Mara Region)",
-    observation: "Mara River Crossing Season – Peak-Nachfrage.",
-    img: "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=400"
+    period: "August – Oktober",
+    location: "Nördliche Serengeti",
+    observation: "Höhepunkt: Die berühmten Crossings am Mara-Fluss. Spannung pur an der Grenze zu Kenia."
   },
   {
-    period: "Okt – Nov",
-    location: "Zurück Richtung Zentral / Süd",
-    observation: "Rückwanderung, weniger Trubel möglich.",
-    img: "https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=400"
+    period: "November – Dezember",
+    location: "Rückzug in den Süden",
+    observation: "Mit den kurzen Regenfällen kehren die Herden in ihre Geburtsregionen zurück."
   }
 ];
 
 export function MigrationTimeline() {
   return (
-    <section className="py-10 md:py-20 bg-white overflow-hidden">
-      <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center mb-10 md:mb-16 space-y-3">
-          <h2 className="font-headline text-2xl md:text-5xl font-bold text-secondary uppercase tracking-tighter leading-none">
-            Beste Reisezeit – <br /><span className="text-primary">Monat für Monat</span>
+    <section className="pt-8 pb-16 md:pb-24 bg-[#fdfcfb] overflow-hidden">
+      <div className="container mx-auto px-4 max-w-5xl">
+        <div className="text-center mb-12 md:mb-16 space-y-3">
+          <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tighter">
+            Ihr Migration-Fahrplan
           </h2>
-          <div className="flex items-center justify-center gap-2 text-muted-foreground font-bold text-[7px] md:text-[9px] uppercase tracking-widest">
-            <Info className="w-3 h-3 text-primary" />
-            <p>Hinweis: Richtwerte – genaue Abläufe hängen vom Regen ab.</p>
+          <div className="flex items-center justify-center gap-2 text-muted-foreground font-normal text-[14px] leading-[20px] opacity-70">
+            <Info className="w-4 h-4 text-primary" />
+            <p>Abläufe hängen jährlich vom individuellen Regenfall ab.</p>
           </div>
         </div>
 
-        <div className="bg-[#f8f8f8] rounded-[1.5rem] md:rounded-[3rem] overflow-hidden shadow-sm border border-border/50">
-          <div className="grid grid-cols-1 lg:grid-cols-12">
-            
-            <div className="lg:col-span-8 p-5 md:p-12 space-y-1">
-              <div className="hidden lg:grid grid-cols-12 gap-6 pb-4 border-b border-border/50 text-[8px] font-black uppercase tracking-[0.3em] text-muted-foreground">
-                <div className="col-span-2">Zeitraum</div>
-                <div className="col-span-4">Wo in Tanzania?</div>
-                <div className="col-span-6">Beobachtung</div>
+        <div className="space-y-6">
+          {timelineData.map((item, idx) => (
+            <motion.div 
+              key={idx}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.05 }}
+              className="bg-white p-6 md:p-10 rounded-[1.5rem] md:rounded-[2.5rem] border border-border/40 shadow-sm flex flex-col md:flex-row md:items-center gap-6 md:gap-12 group hover:shadow-xl transition-all duration-500"
+            >
+              <div className="md:w-1/4 shrink-0">
+                <Badge className="bg-primary/10 text-primary border-none px-4 py-1.5 text-xs font-bold mb-2">Saison</Badge>
+                <h4 className="font-headline text-xl md:text-2xl font-normal text-secondary">{item.period}</h4>
               </div>
-
-              {timelineData.map((item, idx) => (
-                <div key={idx} className="grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-6 py-4 md:py-6 border-b border-border/30 last:border-none group transition-all">
-                  <div className="lg:col-span-2 flex items-center">
-                    <span className="text-xs md:text-lg font-headline font-black text-secondary uppercase leading-none group-hover:text-primary transition-colors">
-                      {item.period}
-                    </span>
-                  </div>
-                  <div className="lg:col-span-4 flex flex-col justify-center">
-                    <div className="flex items-center gap-2">
-                      <MapPin className="w-3 h-3 text-primary shrink-0" />
-                      <p className="font-bold text-[10px] md:text-sm text-secondary uppercase tracking-tight">{item.location}</p>
-                    </div>
-                  </div>
-                  <div className="lg:col-span-6 flex flex-col justify-center">
-                    <p className="text-[9px] md:text-xs text-muted-foreground font-bold leading-relaxed uppercase tracking-widest">
-                      {item.observation}
-                    </p>
-                  </div>
+              <div className="md:w-1/3 flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                  <MapPin className="w-5 h-5" />
                 </div>
-              ))}
-
-              <div className="pt-8 mt-4 border-t border-border flex flex-col gap-3">
-                <div className="flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                    <Sparkles className="w-3.5 h-3.5 text-primary" />
-                  </div>
-                  <h4 className="font-black text-[8px] md:text-[10px] uppercase tracking-[0.3em] text-secondary">Mini-Entscheidungshilfe:</h4>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                  {[
-                    { t: "Babytiere?", v: "Feb-Mär (Ndutu)" },
-                    { t: "Fluss-Drama?", v: "Jul-Sep (Mara River)" },
-                    { t: "Weniger Andrang?", v: "Mai-Jun oder Okt-Nov" }
-                  ].map((tip, i) => (
-                    <div key={i} className="flex gap-2.5 items-start">
-                      <CheckCircle2 className="w-3 h-3 text-primary shrink-0 mt-0.5" />
-                      <p className="text-[8px] md:text-[9px] font-bold text-muted-foreground uppercase tracking-widest leading-snug">
-                        {tip.t} <br /><span className="text-secondary">→ {tip.v}</span>
-                      </p>
-                    </div>
-                  ))}
-                </div>
+                <p className="font-bold text-sm text-secondary uppercase tracking-tight">{item.location}</p>
               </div>
-            </div>
-
-            <div className="lg:col-span-4 bg-secondary relative overflow-hidden hidden lg:block">
-              <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-              <div className="relative z-10 h-full flex flex-col">
-                {timelineData.slice(0, 3).map((item, i) => (
-                  <div key={i} className="flex-1 relative group overflow-hidden border-b border-white/5 last:border-none">
-                    <Image 
-                      src={item.img} 
-                      alt="Safari Season" 
-                      fill 
-                      className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 opacity-40 group-hover:opacity-100" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-secondary via-transparent to-transparent pointer-events-none" />
-                  </div>
-                ))}
+              <div className="flex-1">
+                <p className="text-[14px] leading-[20px] text-muted-foreground opacity-80">
+                  {item.observation}
+                </p>
               </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-10 md:mt-16 flex justify-center">
-          <Link href="#contact-form">
-            <Button size="lg" className="rounded-full px-12 h-12 md:h-16 bg-primary text-white font-black text-[8px] md:text-[10px] uppercase tracking-[0.3em] shadow-xl hover:scale-[1.02] transition-transform border-none">
-              JETZT ANFRAGEN
-            </Button>
-          </Link>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
