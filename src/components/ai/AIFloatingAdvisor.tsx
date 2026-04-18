@@ -164,7 +164,7 @@ export function AIFloatingAdvisor() {
               </p>
               <button 
                 onClick={(e) => { e.stopPropagation(); setShowTeaser(false); }}
-                className="absolute -top-2 -left-2 w-5 h-5 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:text-primary shadow-md border border-border"
+                className="absolute -top-2 -left-2 w-5 h-5 rounded-full bg-secondary flex items-center justify-center text-white shadow-md border border-white/10 hover:bg-primary transition-colors"
               >
                 <X className="w-2.5 h-2.5" />
               </button>
@@ -322,7 +322,7 @@ export function AIFloatingAdvisor() {
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 md:h-3 md:w-3 bg-primary border-2 border-secondary"></span>
             </span>
           </div>
-          <div className="absolute inset-0 border-[3px] border-primary/20 rounded-[1.5rem] md:rounded-[2rem] animate-pulse" />
+          <div className="absolute inset-0 opacity-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         </motion.button>
       </div>
     </>
