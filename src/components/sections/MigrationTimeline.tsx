@@ -38,7 +38,7 @@ const timelineData = [
 export function MigrationTimeline() {
   return (
     <section className="relative pt-8 pb-16 md:pb-24 overflow-hidden scroll-mt-32">
-      {/* Cinematic Background Registry */}
+      {/* Cinematic Background Registry - Synchronized with Home Theme */}
       <div className="absolute inset-0 z-0">
         <Image 
           src="/assets/images/home/final-cta-bg.webp" 

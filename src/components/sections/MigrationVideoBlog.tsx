@@ -23,7 +23,7 @@ export function MigrationVideoBlog() {
           viewport={{ once: true }}
           className="relative aspect-video w-full rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl bg-black border-8 border-white group"
         >
-          {/* Native YouTube Player with its own thumbnail protocol */}
+          {/* Native YouTube Player without custom static thumbnail to keep native feel */}
           <iframe
             src="https://www.youtube.com/embed/uVilAKUc8zE?rel=0&modestbranding=1"
             title="Migration Documentary"

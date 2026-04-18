@@ -16,7 +16,7 @@ import { MigrationGallery } from '@/components/sections/MigrationGallery';
 export default function MigrationPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
-      {/* 01 Hero Section - Normalized for Natural Casing */}
+      {/* 01 Hero Section - Recalibrated for Navigation Clearance */}
       <section className="relative h-[65vh] md:h-[80vh] w-full flex flex-col items-center justify-center overflow-hidden bg-secondary">
         <Image 
           src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
@@ -39,7 +39,7 @@ export default function MigrationPage() {
               <h1 className="font-headline text-3xl md:text-7xl lg:text-8xl font-normal text-white leading-tight tracking-tight">
                 Die große Tierwanderung
               </h1>
-              <p className="max-w-2xl mx-auto text-white/90 font-normal text-sm md:text-xl leading-relaxed opacity-80 tracking-normal">
+              <p className="max-w-2xl mx-auto text-white/90 font-normal text-sm md:text-xl leading-relaxed opacity-80">
                 Erleben Sie das grösste Naturschauspiel der Welt in der Serengeti. Wir bringen Sie direkt an das Herz des Geschehens – exklusiv und privat.
               </p>
             </div>
@@ -64,21 +64,20 @@ export default function MigrationPage() {
             ].map((item, idx) => (
               <div key={idx} className="flex flex-col items-center gap-2">
                 <item.icon className="w-5 h-5 text-primary" />
-                <span className="text-[10px] font-bold text-white/60 tracking-normal">{item.label}</span>
+                <span className="text-[10px] font-bold text-white/60">{item.label}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Migration Content Flow - Compact Rhythm */}
-      <MigrationSafariFactor />
-      <MigrationExpertise />
-      <MigrationTimeline />
-      <MigrationGallery />
-      <MigrationVideoBlog />
-      
-      <div className="pt-8">
+      {/* Migration Content Flow - Compacted Vertical Rhythm */}
+      <div className="space-y-0">
+        <MigrationSafariFactor />
+        <MigrationExpertise />
+        <MigrationTimeline />
+        <MigrationGallery />
+        <MigrationVideoBlog />
         <ContactSection />
       </div>
     </div>
