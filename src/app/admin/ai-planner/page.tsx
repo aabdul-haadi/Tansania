@@ -30,7 +30,6 @@ import { useCollection, useFirestore, useMemoFirebase, useUser, useDoc } from '@
 import { collection, doc } from 'firebase/firestore';
 import { generateAdminContentChecklist } from '@/ai/flows/admin-content-checklist-generation';
 import { adminSeoAndLinkingSuggestions } from '@/ai/flows/admin-seo-and-linking-suggestions';
-import { adminNavigationSitemapSuggestions } from '@/ai/flows/admin-navigation-sitemap-suggestions';
 import { cn } from '@/lib/utils';
 
 export default function AIPlannerPage() {
@@ -45,10 +44,13 @@ export default function AIPlannerPage() {
   const adminDocRef = useMemoFirebase(() => (canFetch ? doc(firestore, 'roles_admin', user.uid) : null), [firestore, user, canFetch]);
   const { data: adminRole } = useDoc(adminDocRef);
 
-  // Protected Data Streams - Only fire once admin status is confirmed
-  const packagesQuery = useMemoFirebase(() => (canFetch && adminRole) ? collection(firestore, 'packages') : null, [canFetch, firestore, adminRole]);
-  const pagesQuery = useMemoFirebase(() => (canFetch && adminRole) ? collection(firestore, 'pages') : null, [canFetch, firestore, adminRole]);
-  const blogsQuery = useMemoFirebase(() => (canFetch && adminRole) ? collection(firestore, 'blogPosts') : null, [canFetch, firestore, adminRole]);
+  // Verification Logic: Ensures the exists() check in rules has propagated
+  const isVerifiedAdmin = !!adminRole && adminRole.role === 'ADMIN';
+
+  // Protected Data Streams - Only fire once admin status is 100% confirmed to prevent permission errors
+  const packagesQuery = useMemoFirebase(() => (canFetch && isVerifiedAdmin) ? collection(firestore, 'packages') : null, [canFetch, firestore, isVerifiedAdmin]);
+  const pagesQuery = useMemoFirebase(() => (canFetch && isVerifiedAdmin) ? collection(firestore, 'pages') : null, [canFetch, firestore, isVerifiedAdmin]);
+  const blogsQuery = useMemoFirebase(() => (canFetch && isVerifiedAdmin) ? collection(firestore, 'blogPosts') : null, [canFetch, firestore, isVerifiedAdmin]);
 
   const { data: packages } = useCollection(packagesQuery);
   const { data: pages } = useCollection(pagesQuery);
@@ -56,7 +58,6 @@ export default function AIPlannerPage() {
 
   const [checklistResult, setChecklistResult] = useState<any>(null);
   const [seoResult, setSeoResult] = useState<any>(null);
-  const [navResult, setNavResult] = useState<any>(null);
   const [checklistInput, setChecklistInput] = useState({ type: 'package' as any, title: '', context: '' });
 
   const runContentChecklist = async () => {
@@ -79,7 +80,6 @@ export default function AIPlannerPage() {
     if (!blogs || !packages) return;
     setLoading(prev => ({ ...prev, seo: true }));
     try {
-      // CRITICAL: Defensive mapping ensures Zod schema requirements are met
       const result = await adminSeoAndLinkingSuggestions({
         blogPosts: blogs.map(b => ({
           slug: b.slug || '',
@@ -148,24 +148,8 @@ export default function AIPlannerPage() {
                   <Badge variant="outline" className="text-[9px] font-bold border-none">{packages?.length || 0}</Badge>
                 </div>
               </div>
-              <div className="pt-4 border-t border-border">
-                <p className="text-[8px] font-bold text-muted-foreground uppercase leading-relaxed">
-                  The AI Advisor autonomously indexes these entities every time it is called, ensuring up-to-the-minute site intelligence.
-                </p>
-              </div>
             </CardContent>
           </Card>
-
-          <div className="p-8 bg-secondary rounded-[2.5rem] text-white space-y-6 shadow-xl relative overflow-hidden">
-            <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-            <div className="relative z-10">
-              <Sparkles className="w-8 h-8 text-primary mb-4" />
-              <h4 className="font-headline text-xl font-bold uppercase mb-2">Registry Intelligence</h4>
-              <p className="text-white/40 text-[9px] font-bold uppercase leading-relaxed tracking-widest">
-                Our models leverage the full site registry to generate bespoke internal linking strategies and navigation suggestions.
-              </p>
-            </div>
-          </div>
         </div>
 
         <div className="lg:col-span-8">
@@ -180,7 +164,6 @@ export default function AIPlannerPage() {
               <Card className="border-none shadow-sm rounded-[2.5rem] bg-white border border-border/50 overflow-hidden">
                 <CardHeader className="border-b bg-muted/5">
                   <CardTitle className="text-sm font-bold uppercase tracking-widest text-secondary">Strategy Guide Generator</CardTitle>
-                  <CardDescription className="text-[9px] font-bold uppercase tracking-widest">Structural quality assurance for new pages.</CardDescription>
                 </CardHeader>
                 <CardContent className="p-8 space-y-8">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -213,23 +196,19 @@ export default function AIPlannerPage() {
                   </Button>
 
                   {checklistResult && (
-                    <div className="pt-8 mt-8 border-t border-border space-y-8">
-                      <div className="space-y-4">
-                        <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary">Required Content Regions</h4>
-                        <div className="grid grid-cols-1 gap-3">
-                          {checklistResult.suggestedSections?.map((s: any, idx: number) => (
-                            <div key={idx} className="p-4 bg-muted/20 rounded-xl border border-border/50 flex gap-4">
-                              <div className="w-6 h-6 rounded-lg bg-secondary text-white flex items-center justify-center shrink-0">
-                                <CheckCircle className="w-3.5 h-3.5" />
-                              </div>
-                              <div>
-                                <p className="font-bold text-xs uppercase text-secondary mb-1">{s.title}</p>
-                                <p className="text-[9px] text-muted-foreground font-bold uppercase tracking-tight">{s.description}</p>
-                              </div>
-                            </div>
-                          ))}
+                    <div className="pt-8 mt-8 border-t border-border space-y-4">
+                      <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary">Required Content Regions</h4>
+                      {checklistResult.suggestedSections?.map((s: any, idx: number) => (
+                        <div key={idx} className="p-4 bg-muted/20 rounded-xl border border-border/50 flex gap-4">
+                          <div className="w-6 h-6 rounded-lg bg-secondary text-white flex items-center justify-center shrink-0">
+                            <CheckCircle className="w-3.5 h-3.5" />
+                          </div>
+                          <div>
+                            <p className="font-bold text-xs uppercase text-secondary mb-1">{s.title}</p>
+                            <p className="text-[9px] text-muted-foreground font-bold uppercase tracking-tight">{s.description}</p>
+                          </div>
                         </div>
-                      </div>
+                      ))}
                     </div>
                   )}
                 </CardContent>
@@ -239,8 +218,7 @@ export default function AIPlannerPage() {
             <TabsContent value="seo" className="space-y-6 outline-none">
               <Card className="border-none shadow-sm rounded-[2.5rem] bg-white border border-border/50">
                 <CardHeader>
-                  <CardTitle className="text-sm font-bold uppercase tracking-widest">Internal Linking & Metadata Audit</CardTitle>
-                  <CardDescription className="text-[9px] font-bold uppercase tracking-widest">AI analysis of connectivity between your 500+ pages.</CardDescription>
+                  <CardTitle className="text-sm font-bold uppercase tracking-widest">Connectivity Audit</CardTitle>
                 </CardHeader>
                 <CardContent className="p-8 space-y-8">
                   <Button onClick={runSeoAudit} disabled={loading.seo} className="w-full h-14 rounded-2xl font-bold uppercase tracking-widest text-[10px] shadow-xl border-none bg-secondary text-white">
@@ -249,39 +227,20 @@ export default function AIPlannerPage() {
                   </Button>
 
                   {seoResult && (
-                    <div className="space-y-10 pt-8 border-t border-border">
-                      <div className="space-y-4">
-                        <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary">Recommended Inter-Links</h4>
-                        <div className="grid grid-cols-1 gap-4">
-                          {seoResult.internalLinkSuggestions?.map((link: any, idx: number) => (
-                            <div key={idx} className="p-5 bg-muted/10 rounded-2xl border border-border/50 space-y-3">
-                              <div className="flex items-center justify-between">
-                                <Badge variant="outline" className="text-[7px] font-black">{link.sourcePageSlug} → {link.targetPageSlug}</Badge>
-                                <span className="text-[8px] font-bold uppercase text-primary">Anchor: "{link.anchorText}"</span>
-                              </div>
-                              <p className="text-[9px] font-bold uppercase leading-relaxed text-secondary">{link.suggestion}</p>
-                              <div className="flex items-center gap-2 text-[7px] font-bold text-muted-foreground">
-                                <ShieldCheck className="w-3 h-3 text-green-500" />
-                                <span>SEO IMPACT: {link.reason}</span>
-                              </div>
-                            </div>
-                          ))}
+                    <div className="space-y-6 pt-8 border-t border-border">
+                      {seoResult.internalLinkSuggestions?.map((link: any, idx: number) => (
+                        <div key={idx} className="p-5 bg-muted/10 rounded-2xl border border-border/50 space-y-3">
+                          <div className="flex items-center justify-between">
+                            <Badge variant="outline" className="text-[7px] font-black">{link.sourcePageSlug} → {link.targetPageSlug}</Badge>
+                            <span className="text-[8px] font-bold uppercase text-primary">Anchor: "{link.anchorText}"</span>
+                          </div>
+                          <p className="text-[9px] font-bold uppercase leading-relaxed text-secondary">{link.suggestion}</p>
                         </div>
-                      </div>
+                      ))}
                     </div>
                   )}
                 </CardContent>
               </Card>
-            </TabsContent>
-
-            <TabsContent value="nav" className="space-y-6">
-              <div className="py-20 text-center bg-muted/5 rounded-[3rem] border-2 border-dashed border-muted/50">
-                <MapIcon className="w-12 h-12 mx-auto mb-4 opacity-10" />
-                <h3 className="text-xl font-bold text-secondary uppercase tracking-tight">Sitemap Intelligence Ready</h3>
-                <p className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground mt-2 max-w-xs mx-auto">
-                  Automatically suggests navigation updates as your country hubs and journal entries increase.
-                </p>
-              </div>
             </TabsContent>
           </Tabs>
         </div>
