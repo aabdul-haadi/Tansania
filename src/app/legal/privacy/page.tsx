@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -47,8 +48,8 @@ export default function DatenschutzPage() {
       </section>
 
       {/* 02 Content Grid: Prestige Privacy */}
-      <div className="container mx-auto px-4 max-w-7xl py-12 md:py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <div className="container mx-auto px-4 max-w-7xl py-12 md:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           
           <main className="lg:col-span-8 space-y-12 md:space-y-16">
             
@@ -59,8 +60,8 @@ export default function DatenschutzPage() {
               </p>
             </section>
 
-            <div className="grid grid-cols-1 gap-6">
-              <Card className="bg-white rounded-[2rem] p-8 md:p-10 shadow-sm border border-border/40 space-y-6 group hover:shadow-md transition-all">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <Card className="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-border/40 space-y-6 group hover:shadow-md transition-all">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 transition-colors group-hover:bg-primary">
                     <Eye className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
@@ -72,7 +73,7 @@ export default function DatenschutzPage() {
                 </p>
               </Card>
 
-              <Card className="bg-white rounded-[2rem] p-8 md:p-10 shadow-sm border border-border/40 space-y-6 group hover:shadow-md transition-all">
+              <Card className="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-border/40 space-y-6 group hover:shadow-md transition-all">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 transition-colors group-hover:bg-primary">
                     <Lock className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
@@ -103,7 +104,7 @@ export default function DatenschutzPage() {
               </div>
             </section>
 
-            <section className="p-8 md:p-12 bg-white rounded-[2.5rem] border border-border/50 shadow-sm flex items-start gap-6">
+            <section className="p-8 md:p-12 bg-white rounded-2xl border border-border/50 shadow-sm flex items-start gap-6">
               <Mail className="w-8 h-8 text-primary shrink-0 mt-1" />
               <div className="space-y-4">
                 <h3 className="font-headline text-xl md:text-2xl text-secondary leading-tight">Haben Sie Fragen?</h3>
@@ -116,7 +117,7 @@ export default function DatenschutzPage() {
 
           <aside className="lg:col-span-4">
             <div className="sticky top-24 space-y-8">
-              <Card className="border-none shadow-sm rounded-[2.5rem] bg-white p-8 md:p-10 overflow-hidden relative border border-border/40 group">
+              <Card className="border-none shadow-sm rounded-2xl bg-white p-8 md:p-10 overflow-hidden relative border border-border/40 group">
                 <div className="absolute top-0 right-0 p-10 opacity-[0.02] pointer-events-none group-hover:scale-110 transition-transform duration-1000">
                   <Globe className="w-48 h-48 text-secondary" />
                 </div>
