@@ -20,8 +20,8 @@ import { Card, CardContent } from '@/components/ui/card';
 export default function ImpressumPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
-      {/* 01 Cinematic Hero: Registry Entry */}
-      <section className="bg-secondary pt-32 pb-16 relative overflow-hidden">
+      {/* 01 Cinematic Hero: Official Entry */}
+      <section className="bg-secondary pt-32 md:pt-40 pb-16 md:pb-24 relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <motion.div
@@ -29,13 +29,13 @@ export default function ImpressumPage() {
             animate={{ opacity: 1, y: 0 }}
             className="space-y-4"
           >
-            <span className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] block">
-              Offizielle Registry
+            <span className="text-primary font-bold text-[10px] block tracking-normal">
+              Rechtliche Informationen
             </span>
-            <h1 className="text-white tracking-tighter leading-none">
+            <h1 className="font-headline text-white text-4xl md:text-7xl leading-none tracking-tight">
               Impressum
             </h1>
-            <p className="text-white/60 text-sm md:text-lg font-bold uppercase tracking-widest mt-6 max-w-2xl">
+            <p className="text-white/60 text-sm md:text-lg font-normal leading-relaxed mt-6 max-w-2xl">
               Gesetzliche Anbieterkennung und rechtliche Informationen von Tansania Reiseabenteuer SDL.
             </p>
           </motion.div>
@@ -43,11 +43,11 @@ export default function ImpressumPage() {
       </section>
 
       {/* 02 Content Registry: Natural Theme */}
-      <div className="container mx-auto px-4 max-w-7xl py-12 md:py-16">
+      <div className="container mx-auto px-4 max-w-7xl py-12 md:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
           
-          <main className="lg:col-span-8 space-y-10">
-            <Card className="border-none shadow-sm rounded-[2rem] md:rounded-[2.5rem] overflow-hidden bg-white border border-border/40">
+          <main className="lg:col-span-8 space-y-8">
+            <Card className="border border-border/40 shadow-sm rounded-2xl overflow-hidden bg-white">
               <CardContent className="p-8 md:p-12 space-y-12">
                 
                 {/* Corporate Data */}
@@ -56,24 +56,24 @@ export default function ImpressumPage() {
                     <div className="w-12 h-12 rounded-xl bg-[#FDF7F2] border border-[#F0EBE0] flex items-center justify-center">
                       <Scale className="w-6 h-6 text-primary" />
                     </div>
-                    <h2 className="text-secondary tracking-tight leading-none text-2xl md:text-4xl">Unternehmensangaben</h2>
+                    <h2 className="font-headline text-2xl md:text-4xl text-secondary leading-tight">Unternehmensangaben</h2>
                   </div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="space-y-2">
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Firma</p>
-                      <p className="font-bold text-secondary text-sm md:text-lg uppercase">Tansania Reiseabenteuer SDL GmbH</p>
+                      <p className="text-[10px] font-bold text-primary mb-1">Firma</p>
+                      <p className="font-bold text-secondary text-sm md:text-lg">Tansania Reiseabenteuer SDL GmbH</p>
                     </div>
                     <div className="space-y-2">
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Vertretungsberechtigt</p>
-                      <p className="font-bold text-secondary text-sm md:text-lg uppercase">Samson Kyashama</p>
-                      <p className="text-[9px] text-muted-foreground font-bold uppercase tracking-widest">Geschäftsführer</p>
+                      <p className="text-[10px] font-bold text-primary mb-1">Vertretungsberechtigt</p>
+                      <p className="font-bold text-secondary text-sm md:text-lg">Samson Kyashama</p>
+                      <p className="text-[11px] text-muted-foreground font-bold">Geschäftsführer</p>
                     </div>
                     <div className="space-y-2 md:col-span-2">
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-2">
-                        <MapPin className="w-3 h-3 text-primary" /> Sitz der Gesellschaft
+                      <p className="text-[10px] font-bold text-primary flex items-center gap-2 mb-1">
+                        <MapPin className="w-3.5 h-3.5" /> Sitz der Gesellschaft
                       </p>
-                      <p className="text-secondary font-bold text-xs md:text-sm uppercase tracking-widest leading-relaxed opacity-80">
+                      <p className="text-secondary font-bold text-[14px] leading-[20px]">
                         Bayerischer Platz 7, 10779 Berlin, Deutschland
                       </p>
                     </div>
@@ -88,19 +88,19 @@ export default function ImpressumPage() {
                     <div className="w-12 h-12 rounded-xl bg-[#FDF7F2] border border-[#F0EBE0] flex items-center justify-center">
                       <Phone className="w-6 h-6 text-primary" />
                     </div>
-                    <h2 className="text-secondary tracking-tight leading-none text-2xl md:text-4xl">Direktkontakt</h2>
+                    <h2 className="font-headline text-2xl md:text-4xl text-secondary leading-tight">Direktkontakt</h2>
                   </div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="space-y-2">
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Telefon Berlin</p>
-                      <a href="tel:+493022608080" className="font-bold text-secondary hover:text-primary transition-colors text-sm md:text-lg uppercase tracking-tight">
+                      <p className="text-[10px] font-bold text-primary mb-1">Telefon Berlin</p>
+                      <a href="tel:+493022608080" className="font-bold text-secondary hover:text-primary transition-colors text-sm md:text-lg">
                         +49 30 22608080
                       </a>
                     </div>
                     <div className="space-y-2">
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Offizielles E-Mail</p>
-                      <a href="mailto:info@tansania-reiseabenteuer.de" className="font-bold text-secondary hover:text-primary transition-colors truncate block text-sm md:text-lg uppercase tracking-tight">
+                      <p className="text-[10px] font-bold text-primary mb-1">Offizielles E-Mail</p>
+                      <a href="mailto:info@tansania-reiseabenteuer.de" className="font-bold text-secondary hover:text-primary transition-colors truncate block text-sm md:text-lg">
                         info@tansania-reiseabenteuer.de
                       </a>
                     </div>
@@ -115,20 +115,20 @@ export default function ImpressumPage() {
                     <div className="w-12 h-12 rounded-xl bg-[#FDF7F2] border border-[#F0EBE0] flex items-center justify-center">
                       <FileText className="w-6 h-6 text-primary" />
                     </div>
-                    <h2 className="text-secondary tracking-tight leading-none text-2xl md:text-4xl">Register & Steuern</h2>
+                    <h2 className="font-headline text-2xl md:text-4xl text-secondary leading-tight">Register & Steuern</h2>
                   </div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="space-y-2">
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Registereintrag</p>
-                      <p className="text-secondary font-bold text-[14px] leading-[20px] uppercase tracking-widest opacity-80">
+                      <p className="text-[10px] font-bold text-primary mb-1">Registereintrag</p>
+                      <p className="text-secondary font-bold text-[14px] leading-[20px]">
                         Handelsregister Neuruppin<br />
                         Nummer: HRB 12250 NP
                       </p>
                     </div>
                     <div className="space-y-2">
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Umsatzsteuer-ID</p>
-                      <p className="text-secondary font-bold text-[14px] leading-[20px] uppercase tracking-widest opacity-80">
+                      <p className="text-[10px] font-bold text-primary mb-1">Umsatzsteuer-ID</p>
+                      <p className="text-secondary font-bold text-[14px] leading-[20px]">
                         DE319944951<br />
                         Gemäß §27a UStG
                       </p>
@@ -139,25 +139,25 @@ export default function ImpressumPage() {
             </Card>
 
             {/* ODR Notice */}
-            <Card className="border-none shadow-sm rounded-[2rem] md:rounded-[2.5rem] bg-white border border-border/40 overflow-hidden">
+            <Card className="border border-border/40 shadow-sm rounded-2xl bg-white overflow-hidden">
               <CardContent className="p-8 md:p-12 space-y-6">
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-xl bg-[#FDF7F2] border border-[#F0EBE0] flex items-center justify-center">
                     <Info className="w-5 h-5 text-primary" />
                   </div>
-                  <h3 className="text-secondary tracking-tight leading-none text-xl md:text-2xl">Online-Streitbeilegung</h3>
+                  <h3 className="font-headline text-xl md:text-2xl text-secondary">Online-Streitbeilegung</h3>
                 </div>
                 <div className="space-y-6">
-                  <p className="text-muted-foreground font-normal text-[14px] leading-[20px] uppercase tracking-widest opacity-80">
+                  <p className="text-muted-foreground font-normal text-[14px] leading-[22px]">
                     Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit, die Sie unter http://ec.europa.eu/consumers/odr/ finden. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
                   </p>
                   <div className="flex items-center gap-2 py-2">
                     <a 
                       href="http://ec.europa.eu/consumers/odr/" 
                       target="_blank" 
-                      className="text-secondary hover:text-primary flex items-center gap-2 transition-colors font-black text-[10px] uppercase tracking-widest border-b border-secondary/20 pb-1"
+                      className="text-secondary hover:text-primary flex items-center gap-2 transition-colors font-bold text-xs border-b border-primary/20 pb-1"
                     >
-                      OS-PLATTFORM ÖFFNEN <ExternalLink className="w-3 h-3" />
+                      OS-Plattform öffnen <ExternalLink className="w-3.5 h-3.5" />
                     </a>
                   </div>
                 </div>
@@ -168,7 +168,7 @@ export default function ImpressumPage() {
           {/* Sidebar Architecture */}
           <aside className="lg:col-span-4 space-y-8">
             <div className="sticky top-24 space-y-8">
-              <Card className="bg-white p-10 rounded-[2.5rem] md:rounded-[3rem] shadow-sm border border-border/40 relative overflow-hidden group">
+              <Card className="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-border/40 relative overflow-hidden group">
                 <div className="absolute top-0 right-0 p-10 opacity-[0.03] pointer-events-none group-hover:scale-110 transition-transform duration-1000">
                   <Compass className="w-48 h-48 text-secondary" />
                 </div>
@@ -176,15 +176,15 @@ export default function ImpressumPage() {
                   <div className="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center shadow-inner">
                     <Compass className="w-7 h-7 text-primary" />
                   </div>
-                  <div className="space-y-4">
-                    <h3 className="text-secondary leading-none tracking-tighter text-2xl md:text-3xl">Ihre Reise <br /><span className="text-primary font-bold">nach Maß</span></h3>
-                    <p className="text-muted-foreground text-[10px] font-bold uppercase tracking-widest leading-relaxed">
+                  <div className="space-y-4 text-left">
+                    <h3 className="font-headline text-2xl md:text-3xl text-secondary leading-tight">Ihre Reise <br /><span className="text-primary">nach Maß</span></h3>
+                    <p className="text-muted-foreground text-[14px] leading-[20px] font-normal">
                       Lassen Sie sich von unseren Experten in Berlin persönlich zu Ihrem Afrika-Abenteuer beraten.
                     </p>
                   </div>
                   <Link href="/trip-planner" className="block">
-                    <Button className="w-full h-12 md:h-14 rounded-xl font-bold uppercase tracking-widest text-[9px] bg-secondary text-white border-none shadow-xl transition-all group">
-                      ANFRAGE STARTEN <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    <Button className="w-full h-12 md:h-14 rounded-xl font-bold text-[11px] bg-secondary text-white hover:bg-primary border-none shadow-xl transition-all group">
+                      Anfrage starten <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </Link>
                 </div>
