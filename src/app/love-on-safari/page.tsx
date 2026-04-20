@@ -71,7 +71,7 @@ export default function LoveOnSafariPage() {
           </div>
 
           {/* Centered Narrative Block - Compacted Layout */}
-          <div className="max-w-4xl mx-auto text-center space-y-3 mb-10 md:mb-14">
+          <div className="max-w-4xl mx-auto text-center space-y-3 mb-6 md:mb-10">
             <motion.h1 
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -83,7 +83,7 @@ export default function LoveOnSafariPage() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-muted-foreground text-xs md:text-sm leading-relaxed max-w-4xl mx-auto font-normal uppercase tracking-widest"
+              className="text-muted-foreground text-xs md:text-sm leading-relaxed max-w-4xl mx-auto font-normal tracking-widest"
             >
               Erleben Sie die Weite der Serengeti, die besondere Atmosphäre des Ngorongoro-Kraters und im Anschluss Sansibar mit seinem warmen, türkisfarbenen Meer. Privat geplant und mit ausreichend Zeit für Sie als Paar.
             </motion.p>
@@ -120,9 +120,9 @@ export default function LoveOnSafariPage() {
         </div>
       </section>
 
-      {/* 02 INTRO SECTION: REPLICA OF PROVIDED REFERENCE */}
-      <section className="py-20 md:py-32 bg-white">
-        <div className="container mx-auto px-4 max-w-4xl text-center space-y-10">
+      {/* 02 INTRO SECTION: REFINED DENSITY */}
+      <section className="py-12 md:py-20 bg-white">
+        <div className="container mx-auto px-4 max-w-5xl text-center space-y-8">
           <div className="space-y-4">
             <motion.h2 
               initial={{ opacity: 0, y: 15 }}
@@ -140,14 +140,14 @@ export default function LoveOnSafariPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal max-w-3xl mx-auto"
+            className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal max-w-4xl mx-auto"
           >
             Es gibt Reisen, die man sieht, und solche, die man spürt. Wenn Sie morgens ganz entspannt zur Safari aufbrechen, 
             ohne Eile, ohne Ablenkung, zählt nur dieser Moment: Ihre gemeinsame Zeit. Die Natur übernimmt den Rest – und 
             macht daraus Erinnerungen, die bleiben.
           </motion.p>
 
-          <div className="relative pt-10 group">
+          <div className="space-y-10 group">
             <motion.div 
               initial={{ opacity: 0, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -164,12 +164,12 @@ export default function LoveOnSafariPage() {
               />
             </motion.div>
             
-            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 z-10 w-[90%] sm:w-auto">
+            <div className="flex flex-col items-center">
               <Button 
                 onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-primary hover:bg-secondary text-white w-full sm:px-12 h-12 md:h-14 font-bold text-[10px] uppercase tracking-widest border-none shadow-2xl transition-all"
+                className="bg-primary hover:bg-secondary text-white w-full sm:w-auto sm:px-12 h-12 md:h-14 font-bold text-[10px] tracking-widest border-none shadow-2xl transition-all"
               >
-                JETZT REISE ANFRAGEN
+                Jetzt Reise anfragen
               </Button>
             </div>
           </div>
@@ -181,7 +181,7 @@ export default function LoveOnSafariPage() {
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-16 space-y-3">
             <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tight">Private Refugien</h2>
-            <p className="text-muted-foreground font-normal text-xs md:text-sm uppercase tracking-widest opacity-60">
+            <p className="text-muted-foreground font-normal text-xs md:text-sm tracking-widest opacity-60">
               Exklusiv für Paare kuratierte Erlebnisse
             </p>
           </div>
@@ -217,7 +217,7 @@ export default function LoveOnSafariPage() {
                       {exp.desc}
                     </p>
                     <div className="pt-4 border-t border-border/50 flex items-center justify-between">
-                      <span className="text-[9px] font-black tracking-widest text-primary uppercase">Inklusive Service</span>
+                      <span className="text-[9px] font-black tracking-widest text-primary">Inklusive Service</span>
                       <div className="w-8 h-8 rounded-full border border-border flex items-center justify-center group-hover:bg-primary transition-colors">
                         <ArrowRight className="w-4 h-4 text-secondary group-hover:text-white" />
                       </div>
