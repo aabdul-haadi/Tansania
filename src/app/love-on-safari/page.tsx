@@ -40,7 +40,7 @@ const experiences = [
     title: "Morgendliche Ballon-Safari",
     desc: "Gleiten Sie schweigend über die Serengeti, während die Sonne aufgeht und die Natur unter Ihnen erwacht.",
     icon: Sparkles,
-    img: "https://images.unsplash.com/photo-1523805009345(7448845a9e53?q=80&w=800",
+    img: "https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800",
     hint: "safari balloon"
   }
 ];
@@ -122,8 +122,8 @@ export default function LoveOnSafariPage() {
 
       {/* 02 INTRO SECTION: REFINED DENSITY */}
       <section className="py-12 md:py-20 bg-white">
-        <div className="container mx-auto px-4 max-w-5xl text-center space-y-8">
-          <div className="space-y-2">
+        <div className="container mx-auto px-4 max-w-5xl text-center">
+          <div className="space-y-2 mb-6">
             <motion.h2 
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -140,7 +140,7 @@ export default function LoveOnSafariPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal max-w-4xl mx-auto"
+            className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal max-w-4xl mx-auto mb-10"
           >
             Es gibt Reisen, die man sieht, und solche, die man spürt. Wenn Sie morgens ganz entspannt zur Safari aufbrechen, 
             ohne Eile, ohne Ablenkung, zählt nur dieser Moment: Ihre gemeinsame Zeit. Die Natur übernimmt den Rest – und 
@@ -153,7 +153,7 @@ export default function LoveOnSafariPage() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="relative aspect-video w-full rounded-[2rem] overflow-hidden shadow-2xl border-4 border-[#FDFCFB]"
+              className="relative aspect-video w-full rounded-[2rem] overflow-hidden shadow-2xl"
             >
               <Image 
                 src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
