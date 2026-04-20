@@ -40,7 +40,7 @@ const experiences = [
     title: "Morgendliche Ballon-Safari",
     desc: "Gleiten Sie schweigend über die Serengeti, während die Sonne aufgeht und die Natur unter Ihnen erwacht.",
     icon: Sparkles,
-    img: "https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800",
+    img: "https://images.unsplash.com/photo-1523805009345(7448845a9e53?q=80&w=800",
     hint: "safari balloon"
   }
 ];
@@ -123,7 +123,7 @@ export default function LoveOnSafariPage() {
       {/* 02 INTRO SECTION: REFINED DENSITY */}
       <section className="py-12 md:py-20 bg-white">
         <div className="container mx-auto px-4 max-w-5xl text-center space-y-8">
-          <div className="space-y-4">
+          <div className="space-y-2">
             <motion.h2 
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -204,7 +204,7 @@ export default function LoveOnSafariPage() {
                       className="object-cover transition-transform duration-1000 group-hover:scale-110"
                       data-ai-hint={exp.hint}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
                   <CardContent className="p-8 flex flex-col flex-grow text-left space-y-4">
                     <div className="flex items-center gap-3">
@@ -213,7 +213,7 @@ export default function LoveOnSafariPage() {
                       </div>
                       <h3 className="font-headline text-xl md:text-2xl font-bold text-secondary tracking-tight">{exp.title}</h3>
                     </div>
-                    <p className="text-muted-foreground text-[14px] leading-[22px] font-normal opacity-80 flex-grow">
+                    <p className="text-muted-foreground text-[14px] leading-[20px] font-normal opacity-80 flex-grow">
                       {exp.desc}
                     </p>
                     <div className="pt-4 border-t border-border/50 flex items-center justify-between">
@@ -268,7 +268,7 @@ export default function LoveOnSafariPage() {
                 </div>
                 <div className="space-y-3">
                   <h4 className="font-headline text-xl md:text-2xl font-normal text-secondary tracking-tight">{item.t}</h4>
-                  <p className="text-[14px] leading-[22px] text-muted-foreground font-normal opacity-70 px-4">{item.d}</p>
+                  <p className="text-[14px] leading-[20px] text-muted-foreground font-normal opacity-70 px-4">{item.d}</p>
                 </div>
               </div>
             ))}
