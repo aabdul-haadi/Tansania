@@ -53,10 +53,10 @@ export default function LoveOnSafariPage() {
           
           {/* Top Registry Labels - Centered on Mobile, Split on Desktop */}
           <div className="flex flex-col md:flex-row items-center md:justify-between gap-2 mb-4 md:mb-6">
-            <span className="text-secondary font-bold text-[8px] md:text-[10px] tracking-[0.3em] text-center md:text-left">
+            <span className="text-secondary font-bold text-[10px] md:text-[12px] tracking-[0.3em] text-center md:text-left">
               Luxus Safari für Paare in Tansania
             </span>
-            <span className="text-primary font-bold text-[8px] md:text-[10px] tracking-[0.3em] text-center md:text-right">
+            <span className="text-primary font-bold text-[10px] md:text-[12px] tracking-[0.3em] text-center md:text-right">
               Love on Safari
             </span>
           </div>
@@ -103,7 +103,7 @@ export default function LoveOnSafariPage() {
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20">
             <Button 
               onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-white text-secondary hover:bg-secondary hover:text-white px-8 md:px-14 h-12 md:h-16 font-bold text-[9px] md:text-[11px] tracking-[0.2em] shadow-2xl transition-all duration-500 rounded-none border border-border/60"
+              className="bg-white text-secondary hover:bg-secondary hover:text-white px-8 md:px-14 h-12 md:h-16 font-bold text-[9px] md:text-[11px] tracking-[0.2em] shadow-2xl transition-all duration-500 rounded-none border border-secondary"
             >
               Kostenlose Beratung
             </Button>
@@ -199,7 +199,7 @@ export default function LoveOnSafariPage() {
                         </div>
                         <div className="space-y-3">
                           <h3 className="font-headline text-2xl md:text-4xl font-normal text-secondary tracking-tight">{exp.title}</h3>
-                          <p className="text-muted-foreground font-normal text-[14px] leading-[22px] md:text-base opacity-80 max-w-md">
+                          <p className="text-muted-foreground font-normal text-[14px] leading-[20px] md:text-base opacity-80 max-w-md">
                             {exp.desc}
                           </p>
                         </div>
@@ -242,7 +242,7 @@ export default function LoveOnSafariPage() {
 
       {/* 05 AUTHORITY REGISTRY */}
       <section className="py-16 md:py-32 bg-white">
-        <div className="container mx-auto px-4 max-w-7xl">
+        <div className="container mx-auto px-4 max-get-7xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             {[
               { icon: ShieldCheck, t: "Gesicherte Träume", d: "Durch die DRSF-Mitgliedschaft sind Ihre Anzahlungen und die Reise zu 100% abgesichert." },
