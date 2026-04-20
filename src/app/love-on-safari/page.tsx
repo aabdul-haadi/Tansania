@@ -129,7 +129,7 @@ export default function LoveOnSafariPage() {
       </section>
 
       {/* 02 INTRO SECTION: EMOTIONAL NARRATIVE */}
-      <section className="pt-6 pb-6 md:pt-10 md:pb-12 bg-white">
+      <section className="pt-6 pb-6 md:pt-8 md:pb-12 bg-white">
         <div className="container mx-auto px-4 max-w-5xl text-center">
           <div className="space-y-1 mb-1">
             <motion.h2 
@@ -184,7 +184,7 @@ export default function LoveOnSafariPage() {
       {/* 03 SIGNATURE PACKAGE SECTION */}
       <section className="py-6 md:py-12 bg-[#fdfcfb] border-t border-border/40 overflow-hidden">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="relative aspect-[4/5] md:aspect-[16/9] min-h-[450px] md:min-h-[700px] rounded-[1.5rem] md:rounded-[3rem] overflow-hidden shadow-2xl border border-border/40 bg-secondary group w-[94%] mx-auto md:w-full">
+          <div className="relative aspect-[4/5] md:aspect-[16/9] min-h-[450px] md:min-h-[600px] rounded-[1.5rem] md:rounded-[3rem] overflow-hidden shadow-2xl border border-border/40 bg-secondary group w-[94%] mx-auto md:w-full">
             <Image 
               src="/assets/images/home/pkg-01.webp" 
               alt="Love on Safari Signature Package" 
@@ -215,9 +215,9 @@ export default function LoveOnSafariPage() {
               </motion.div>
             </div>
 
-            {/* Desktop Prestige Card */}
-            <div className="absolute top-8 bottom-8 right-8 w-full max-w-[400px] bg-white p-6 md:p-8 flex flex-col justify-between shadow-2xl hidden lg:flex rounded-none z-30 border border-border/20">
-              <div className="space-y-4">
+            {/* Desktop Prestige Card - Compacted & Centered Height */}
+            <div className="absolute top-1/2 -translate-y-1/2 right-8 w-full max-w-[400px] bg-white p-6 md:p-10 flex flex-col shadow-2xl hidden lg:flex rounded-none z-30 border border-border/20 h-fit">
+              <div className="space-y-5">
                 <div>
                   <p className="text-[#e3510d] font-black text-[12px] md:text-[13px] uppercase tracking-[0.4em] mb-1">Tansania</p>
                   <h4 className="font-headline text-xl md:text-2xl lg:text-[28px] font-bold text-[#141414] leading-[1.1] tracking-tighter normal-case">
@@ -225,7 +225,7 @@ export default function LoveOnSafariPage() {
                   </h4>
                 </div>
                 
-                <div className="space-y-1 text-[10px] md:text-[11px] font-bold text-[#141414]/80 tracking-widest leading-relaxed">
+                <div className="space-y-1.5 text-[10px] md:text-[11px] font-bold text-[#141414]/80 tracking-widest leading-relaxed">
                   <p>Reisedauer: 15-tägig Flüge inklusive</p>
                   <p>Unterkünfte: Handverlesene romantische Lodges, Tented Camps mit Vollpension</p>
                   <p>Zweisamkeit pur: Keine Gruppen, kein Zeitdruck</p>
@@ -241,12 +241,12 @@ export default function LoveOnSafariPage() {
                 </div>
               </div>
 
-              <div className="pt-4 mt-2 border-t border-border/50 flex items-center justify-between gap-6">
+              <div className="pt-6 mt-8 border-t border-border/50 flex items-center justify-between gap-6">
                 <div className="flex flex-col">
                   <span className="text-sm md:text-base text-muted-foreground/50 line-through font-bold">7.299 €</span>
                   <div className="flex items-baseline gap-1">
                     <span className="text-[10px] md:text-[11px] font-black text-secondary uppercase tracking-widest">ab</span>
-                    <span className="text-lg md:text-xl font-black text-secondary tracking-tighter whitespace-nowrap">6.799 €</span>
+                    <span className="text-xl md:text-2xl font-black text-secondary tracking-tighter whitespace-nowrap">6.799 €</span>
                   </div>
                   <p className="text-[7px] md:text-[8px] font-black text-muted-foreground/60 uppercase tracking-widest mt-0.5">pro Person</p>
                 </div>
