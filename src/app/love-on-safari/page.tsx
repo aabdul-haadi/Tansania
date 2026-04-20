@@ -70,13 +70,13 @@ export default function LoveOnSafariPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
       {/* 01 HERO SECTION */}
-      <section className="bg-white pt-24 md:pt-32 pb-4 md:pb-8">
+      <section className="bg-white pt-24 md:pt-32 pb-4">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-2 mb-3">
-            <span className="text-secondary font-bold text-[10px] md:text-[12px] tracking-[0.3em] text-center uppercase">
+            <span className="text-secondary font-bold text-[10px] md:text-[11px] tracking-[0.3em] text-center uppercase">
               Luxus Safari für Paare in Tansania
             </span>
-            <span className="text-primary font-bold text-[10px] md:text-[12px] tracking-[0.3em] text-center uppercase">
+            <span className="text-primary font-bold text-[10px] md:text-[11px] tracking-[0.3em] text-center uppercase">
               Love on Safari
             </span>
           </div>
@@ -85,7 +85,7 @@ export default function LoveOnSafariPage() {
             <motion.h1 
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="font-headline text-2xl md:text-5xl lg:text-6xl font-bold text-secondary leading-tight tracking-tight"
+              className="font-headline text-xl md:text-4xl lg:text-5xl font-bold text-secondary leading-tight tracking-tight normal-case"
             >
               Abenteuer und Romantik im Herzen Tansanias
             </motion.h1>
@@ -93,7 +93,7 @@ export default function LoveOnSafariPage() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-muted-foreground text-xs md:text-sm leading-relaxed max-w-4xl mx-auto font-normal tracking-widest"
+              className="text-muted-foreground text-[11px] md:text-[13px] leading-relaxed max-w-4xl mx-auto font-normal tracking-widest"
             >
               Erleben Sie die Weite der Serengeti, die besondere Atmosphäre des Ngorongoro-Kraters und im Anschluss Sansibar mit seinem warmen, türkisfarbenen Meer. Privat geplant und mit ausreichend Zeit für Sie als Paar.
             </motion.p>
@@ -129,14 +129,14 @@ export default function LoveOnSafariPage() {
       </section>
 
       {/* 02 INTRO SECTION: EMOTIONAL NARRATIVE */}
-      <section className="pt-8 pb-8 md:pt-10 md:pb-16 bg-white">
+      <section className="pt-8 pb-8 md:pt-10 md:pb-12 bg-white">
         <div className="container mx-auto px-4 max-w-5xl text-center">
           <div className="space-y-1 mb-1">
             <motion.h2 
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="font-headline text-2xl md:text-5xl font-bold text-secondary tracking-tight"
+              className="font-headline text-xl md:text-4xl font-bold text-secondary tracking-tight normal-case"
             >
               Wenn nur noch das Wir zählt.
             </motion.h2>
@@ -147,7 +147,7 @@ export default function LoveOnSafariPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal max-w-4xl mx-auto mb-6 md:mb-10"
+            className="text-muted-foreground text-xs md:text-base leading-relaxed font-normal max-w-4xl mx-auto mb-6 md:mb-10"
           >
             Es gibt Reisen, die man sieht, und solche, die man spürt. Wenn Sie morgens ganz entspannt zur Safari aufbrechen, 
             ohne Eile, ohne Ablenkung, zählt nur dieser Moment: Ihre gemeinsame Zeit. Die Natur übernimmt den Rest – und 
@@ -182,7 +182,7 @@ export default function LoveOnSafariPage() {
       </section>
 
       {/* 03 SIGNATURE PACKAGE SECTION */}
-      <section className="py-8 md:py-16 bg-[#fdfcfb] border-t border-border/40 overflow-hidden">
+      <section className="py-6 md:py-12 bg-[#fdfcfb] border-t border-border/40 overflow-hidden">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="relative aspect-[4/5] md:aspect-[16/9] min-h-[450px] md:min-h-[700px] rounded-[1.5rem] md:rounded-[3rem] overflow-hidden shadow-2xl border border-border/40 bg-secondary group">
             <Image 
@@ -194,13 +194,13 @@ export default function LoveOnSafariPage() {
             <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-transparent" />
 
             {/* Overlays (Top Left) */}
-            <div className="absolute top-5 left-5 md:top-10 md:left-12 space-y-2.5 z-30">
+            <div className="absolute top-5 left-5 md:top-10 md:left-12 space-y-2 z-30">
               <motion.div 
                 initial={{ x: -30, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 className="bg-[#7a1818] text-white px-5 py-2.5 md:px-7 md:py-3.5 shadow-2xl rounded-sm w-fit hidden md:block"
               >
-                <h3 className="font-headline font-bold text-xs md:text-sm lg:text-base tracking-widest leading-none text-white">
+                <h3 className="font-headline font-bold text-xs md:text-sm lg:text-base tracking-widest leading-none text-white uppercase">
                   Luxus „Love on Safari“ Paare in Tansania
                 </h3>
               </motion.div>
@@ -216,23 +216,23 @@ export default function LoveOnSafariPage() {
             </div>
 
             {/* Desktop Prestige Card (Hidden on Mobile) */}
-            <div className="absolute top-10 bottom-10 right-10 w-full max-w-[440px] bg-white p-8 md:p-10 lg:p-12 flex flex-col justify-between shadow-2xl hidden lg:flex rounded-none z-30 border border-border/20">
-              <div className="space-y-5">
+            <div className="absolute top-8 bottom-8 right-8 w-full max-w-[400px] bg-white p-8 md:p-10 flex flex-col justify-between shadow-2xl hidden lg:flex rounded-none z-30 border border-border/20">
+              <div className="space-y-4">
                 <div>
-                  <p className="text-[#e3510d] font-black text-[12px] md:text-[13px] uppercase tracking-[0.4em] mb-2">Tansania</p>
-                  <h4 className="font-headline text-xl md:text-2xl lg:text-3xl font-bold text-[#141414] leading-[1.1] tracking-tighter">
+                  <p className="text-[#e3510d] font-black text-[12px] md:text-[13px] uppercase tracking-[0.4em] mb-1">Tansania</p>
+                  <h4 className="font-headline text-xl md:text-2xl lg:text-[28px] font-bold text-[#141414] leading-[1.1] tracking-tighter normal-case">
                     15 Tage Love on Safari – <br />Luxus-Rundreise für Paare
                   </h4>
                 </div>
                 
-                <div className="space-y-2.5 text-[10px] md:text-[11px] font-bold text-[#141414]/80 tracking-widest leading-relaxed">
+                <div className="space-y-2 text-[10px] md:text-[11px] font-bold text-[#141414]/80 tracking-widest leading-relaxed">
                   <p>Reisedauer: 15-tägig Flüge inklusive</p>
                   <p>Unterkünfte: Handverlesene romantische Lodges, Tented Camps mit Vollpension</p>
                   <p>Zweisamkeit pur: Keine Gruppen, kein Zeitdruck</p>
                   <p>Reisezeit: 2026-2027</p>
                 </div>
 
-                <div className="grid grid-cols-2 gap-2 pt-2">
+                <div className="grid grid-cols-2 gap-2 pt-1">
                   {packageTags.map(tag => (
                     <div key={tag} className="px-3 py-1.5 rounded-full border border-border text-[#141414]/80 text-[8px] md:text-[9px] font-bold tracking-tight bg-[#fdfcfb] truncate">
                       {tag}
@@ -241,17 +241,17 @@ export default function LoveOnSafariPage() {
                 </div>
               </div>
 
-              <div className="pt-6 mt-4 border-t border-border/50 flex items-center justify-between gap-6">
+              <div className="pt-5 mt-4 border-t border-border/50 flex items-center justify-between gap-6">
                 <div className="flex flex-col">
-                  <span className="text-sm md:text-base text-muted-foreground/50 line-through font-bold">7.299 €</span>
-                  <div className="flex items-baseline gap-1.5">
-                    <span className="text-[10px] md:text-[12px] font-black text-secondary uppercase tracking-widest">ab</span>
-                    <span className="text-2xl md:text-3xl font-black text-secondary tracking-tighter">6.799 €</span>
+                  <span className="text-xs md:text-sm text-muted-foreground/50 line-through font-bold">7.299 €</span>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-[10px] md:text-[11px] font-black text-secondary uppercase tracking-widest">ab</span>
+                    <span className="text-xl md:text-2xl font-black text-secondary tracking-tighter whitespace-nowrap">6.799 €</span>
                   </div>
-                  <p className="text-[7px] md:text-[9px] font-black text-muted-foreground/60 uppercase tracking-widest mt-1">pro Person</p>
+                  <p className="text-[7px] md:text-[8px] font-black text-muted-foreground/60 uppercase tracking-widest mt-1">pro Person</p>
                 </div>
                 <Link href="/trip-planner">
-                  <Button className="h-12 md:h-14 px-8 md:px-10 bg-[#e3510d] text-white font-black text-[9px] md:text-[11px] uppercase tracking-[0.2em] shadow-xl border-none rounded-none transition-all hover:bg-secondary">
+                  <Button className="h-11 md:h-13 px-8 bg-[#e3510d] text-white font-black text-[9px] md:text-[10px] uppercase tracking-[0.2em] shadow-xl border-none rounded-none transition-all hover:bg-secondary shrink-0">
                     JETZT ANFRAGEN
                   </Button>
                 </Link>
@@ -264,8 +264,8 @@ export default function LoveOnSafariPage() {
             <div className="bg-white p-6 sm:p-8 rounded-[1.5rem] shadow-lg border border-border/40 space-y-6">
               <div className="space-y-5">
                 <div>
-                  <p className="text-[#e3510d] font-black text-[11px] uppercase tracking-[0.4em] mb-1.5">Tansania</p>
-                  <h4 className="font-headline text-xl font-bold text-secondary leading-tight uppercase">15 Tage Love on Safari – Luxus-Rundreise für Paare</h4>
+                  <p className="text-[#e3510d] font-black text-[11px] uppercase tracking-[0.4em] mb-1">Tansania</p>
+                  <h4 className="font-headline text-xl font-bold text-secondary leading-tight normal-case">15 Tage Love on Safari – Luxus-Rundreise für Paare</h4>
                 </div>
                 
                 <div className="space-y-2 text-[10px] font-bold text-muted-foreground uppercase tracking-widest leading-relaxed">
@@ -308,14 +308,14 @@ export default function LoveOnSafariPage() {
       <section className="py-8 md:py-16 bg-white border-b border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-8 md:mb-12 flex flex-col items-center">
-            <h2 className="font-headline text-2xl md:text-5xl font-bold text-secondary leading-tight tracking-tight mb-3">
+            <h2 className="font-headline text-2xl md:text-5xl font-bold text-secondary leading-tight tracking-tight mb-3 normal-case">
               Was „Love on Safari“ besonders macht
             </h2>
             <div className="w-20 h-1 bg-primary rounded-full opacity-60" />
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
-            <div className="space-y-5 md:space-y-7">
+            <div className="space-y-6 md:space-y-10">
               {featureRegistry.map((feature, idx) => (
                 <motion.div 
                   key={idx}
@@ -323,12 +323,12 @@ export default function LoveOnSafariPage() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.05 }}
-                  className="space-y-0.5 text-left"
+                  className="space-y-1 text-left"
                 >
-                  <h4 className="font-bold text-sm md:text-lg text-secondary leading-tight tracking-tight">
+                  <h4 className="font-bold text-base md:text-xl text-secondary leading-tight tracking-tight normal-case">
                     {feature.title}
                   </h4>
-                  <p className="text-[12px] md:text-[14px] font-normal text-muted-foreground leading-relaxed">
+                  <p className="text-[13px] md:text-[16px] font-normal text-muted-foreground leading-relaxed">
                     {feature.desc}
                   </p>
                 </motion.div>
