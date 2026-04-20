@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -14,13 +13,13 @@ import {
   Star,
   Wine,
   ShieldCheck,
-  MapPin
+  MapPin,
+  ChevronRight
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { ContactSection } from '@/components/shared/ContactSection';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const experiences = [
   {
@@ -47,21 +46,23 @@ const experiences = [
 ];
 
 export default function LoveOnSafariPage() {
-  const sunsetImg = PlaceHolderImages.find(img => img.id === 'elephants-sunset-lake');
-
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
-      {/* 01 Re-Engineered Prestige Hero - Match SS */}
-      <header className="pt-32 pb-16 md:pb-24 bg-white border-b border-border/40">
-        <div className="container mx-auto px-4 max-w-7xl space-y-8">
-          {/* Registry Labels */}
-          <div className="flex justify-between items-center text-[9px] md:text-[10px] font-bold tracking-[0.3em] uppercase">
-            <span className="text-secondary opacity-60">Luxus Safari für Paare in Tansania</span>
-            <span className="text-primary">Love on Safari</span>
+      {/* 01 Re-Engineered Hero to Match Screenshot Specification */}
+      <section className="bg-white pt-24 md:pt-32">
+        <div className="container mx-auto px-4 max-w-7xl">
+          {/* Top Registry Labels: High-Contrast Flex Protocol */}
+          <div className="flex justify-between items-center mb-8">
+            <span className="text-[10px] md:text-[12px] font-black uppercase tracking-[0.3em] text-secondary">
+              Luxus Safari für Paare in Tansania
+            </span>
+            <span className="text-[10px] md:text-[12px] font-black uppercase tracking-[0.3em] text-primary">
+              Love on Safari
+            </span>
           </div>
 
-          {/* Narrative Stack */}
-          <div className="text-center space-y-6 max-w-4xl mx-auto">
+          {/* Centered Narrative Protocol */}
+          <div className="max-w-4xl mx-auto text-center space-y-4 md:space-y-6 mb-12">
             <motion.h1 
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -73,45 +74,41 @@ export default function LoveOnSafariPage() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal opacity-80"
+              className="text-muted-foreground text-sm md:text-lg leading-relaxed max-w-3xl mx-auto font-normal opacity-90"
             >
               Erleben Sie die Weite der Serengeti, die besondere Atmosphäre des Ngorongoro-Kraters und im Anschluss Sansibar mit seinem warmen, türkisfarbenen Meer. Privat geplant und mit ausreichend Zeit für Sie als Paar.
             </motion.p>
           </div>
+        </div>
 
-          {/* Cinematic Visual Hub */}
-          <div className="relative mt-12 md:mt-16">
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 1 }}
-              className="relative aspect-[16/9] md:h-[650px] rounded-2xl overflow-hidden shadow-2xl bg-muted"
+        {/* Full-Width Cinematic Visual Hub */}
+        <div className="relative w-full overflow-hidden">
+          <div className="relative w-full aspect-[21/9] min-h-[400px] md:min-h-[650px]">
+            <Image 
+              src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
+              alt="Abenteuer und Romantik in Tansania" 
+              fill 
+              priority
+              className="object-cover brightness-95"
+              data-ai-hint="safari couple"
+            />
+            {/* Subtle Gradient Shadow Base */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+          </div>
+
+          {/* Center-Aligned Trigger Box: Same as SS */}
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-20">
+            <Button 
+              onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-white text-secondary border border-border/60 hover:bg-secondary hover:text-white px-8 md:px-12 h-12 md:h-14 font-bold text-[10px] uppercase tracking-widest shadow-2xl transition-all duration-500 rounded-none border-b-2 border-b-primary/40"
             >
-              <Image 
-                src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=1920" 
-                alt="Abenteuer und Romantik in Tansania" 
-                fill 
-                priority
-                className="object-cover brightness-95"
-                data-ai-hint="safari couple"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
-            </motion.div>
-
-            {/* Overlapping Interaction Trigger */}
-            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-full flex justify-center px-4">
-              <Button 
-                onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-white text-secondary border border-border/60 hover:bg-secondary hover:text-white px-8 md:px-12 h-12 md:h-14 font-bold text-[10px] uppercase tracking-widest shadow-2xl transition-all duration-500 rounded-none border-b-2 border-b-primary/40"
-              >
-                Kostenlose Beratung
-              </Button>
-            </div>
+              Kostenlose Beratung
+            </Button>
           </div>
         </div>
-      </header>
+      </section>
 
-      {/* 02 Narrative Logic */}
+      {/* 02 Narrative Logic Section */}
       <section className="py-16 md:py-32 container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
           <div className="space-y-8 text-left">
@@ -217,7 +214,7 @@ export default function LoveOnSafariPage() {
         </div>
       </section>
 
-      {/* 04 Expert Quote */}
+      {/* 04 Expert Quote Section */}
       <section className="py-24 md:py-40 bg-secondary text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         <div className="container relative z-10 mx-auto px-4 max-w-4xl text-center">
@@ -240,9 +237,9 @@ export default function LoveOnSafariPage() {
         </div>
       </section>
 
-      {/* 05 Trust & Safety */}
+      {/* 05 Authority Registry */}
       <section className="py-16 md:py-32 bg-white">
-        <div className="container mx-auto px-4 max-get-7xl">
+        <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             {[
               { icon: ShieldCheck, t: "Gesicherte Träume", d: "Durch die DRSF-Mitgliedschaft sind Ihre Anzahlungen und die Reise zu 100% abgesichert." },
@@ -263,6 +260,7 @@ export default function LoveOnSafariPage() {
         </div>
       </section>
 
+      {/* Final Inquiry Protocol */}
       <section id="inquiry" className="scroll-mt-20">
         <ContactSection />
       </section>

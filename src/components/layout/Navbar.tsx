@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -55,19 +54,22 @@ export function Navbar() {
     { name: 'Kontakt', href: '/contact' },
   ];
 
+  // Specific pages that require dark text on the transparent/white background
+  const isDarkNav = pathname === '/love-on-safari' || pathname?.startsWith('/legal') || pathname === '/about';
+
   return (
     <header className="absolute top-0 w-full z-[100] bg-transparent py-6 md:py-8">
       <nav className="container mx-auto px-4 max-w-7xl">
         <div className={cn(
           "flex items-center justify-between transition-all duration-500 h-14 md:h-16 w-full",
-          "text-white",
+          isDarkNav ? "text-secondary" : "text-white",
           isOpen ? "opacity-0 pointer-events-none" : "opacity-100"
         )}>
           <Link href="/" className="flex items-center gap-2 md:gap-3 group shrink-0">
             <img 
               src="/iconlogo.jpg" 
               alt="Tansania Reiseabenteuer" 
-              className="h-8 md:h-12 w-auto brightness-110 shrink-0" 
+              className={cn("h-8 md:h-12 w-auto shrink-0", !isDarkNav && "brightness-110")} 
             />
             <div className="hidden min-[340px]:flex flex-col md:flex-row md:items-center gap-0.5 md:gap-2">
               <span className="font-headline font-semibold whitespace-nowrap text-lg sm:text-xl md:text-2xl lg:text-3xl tracking-tight leading-tight normal-case">
@@ -78,7 +80,12 @@ export function Navbar() {
 
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <button className="flex items-center justify-center w-10 h-10 md:w-auto md:h-11 md:px-4 rounded-full bg-white/10 text-white border border-white/20 hover:bg-white hover:text-secondary transition-all shrink-0 group">
+              <button className={cn(
+                "flex items-center justify-center w-10 h-10 md:w-auto md:h-11 md:px-4 rounded-full transition-all shrink-0 group",
+                isDarkNav 
+                  ? "bg-secondary/5 text-secondary border border-secondary/10 hover:bg-secondary hover:text-white" 
+                  : "bg-white/10 text-white border border-white/20 hover:bg-white hover:text-secondary"
+              )}>
                 <Menu className="w-4 h-4 transition-transform group-hover:scale-110" />
               </button>
             </SheetTrigger>
