@@ -69,7 +69,7 @@ export default function LoveOnSafariPage() {
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
-      {/* 01 HERO SECTION - Compacted Protocol */}
+      {/* 01 HERO SECTION */}
       <section className="bg-white pt-24 md:pt-32 pb-4 md:pb-8">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-2 mb-3">
@@ -85,7 +85,7 @@ export default function LoveOnSafariPage() {
             <motion.h1 
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="font-headline text-2xl md:text-5xl lg:text-6xl font-bold text-secondary leading-tight tracking-tight uppercase"
+              className="font-headline text-2xl md:text-5xl lg:text-6xl font-bold text-secondary leading-tight tracking-tight"
             >
               Abenteuer und Romantik im Herzen Tansanias
             </motion.h1>
@@ -129,7 +129,7 @@ export default function LoveOnSafariPage() {
       </section>
 
       {/* 02 INTRO SECTION: EMOTIONAL NARRATIVE */}
-      <section className="pt-12 pb-8 md:pt-16 md:pb-16 bg-white">
+      <section className="pt-8 pb-8 md:pt-10 md:pb-16 bg-white">
         <div className="container mx-auto px-4 max-w-5xl text-center">
           <div className="space-y-1 mb-1">
             <motion.h2 
@@ -181,7 +181,7 @@ export default function LoveOnSafariPage() {
         </div>
       </section>
 
-      {/* 03 SIGNATURE PACKAGE SECTION - 100% Responsive Integrity */}
+      {/* 03 SIGNATURE PACKAGE SECTION */}
       <section className="py-8 md:py-16 bg-[#fdfcfb] border-t border-border/40 overflow-hidden">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="relative aspect-[4/5] md:aspect-[16/9] min-h-[450px] md:min-h-[700px] rounded-[1.5rem] md:rounded-[3rem] overflow-hidden shadow-2xl border border-border/40 bg-secondary group">
@@ -200,8 +200,8 @@ export default function LoveOnSafariPage() {
                 whileInView={{ x: 0, opacity: 1 }}
                 className="bg-[#7a1818] text-white px-5 py-2.5 md:px-7 md:py-3.5 shadow-2xl rounded-sm w-fit hidden md:block"
               >
-                <h3 className="font-headline font-bold text-xs md:text-sm lg:text-base tracking-widest leading-none uppercase text-white">
-                  LUXUS "LOVE ON SAFARI" PAARE IN TANSANIA
+                <h3 className="font-headline font-bold text-xs md:text-sm lg:text-base tracking-widest leading-none text-white">
+                  Luxus „Love on Safari“ Paare in Tansania
                 </h3>
               </motion.div>
               <motion.div 
@@ -219,8 +219,8 @@ export default function LoveOnSafariPage() {
             <div className="absolute top-10 bottom-10 right-10 w-full max-w-[440px] bg-white p-8 md:p-10 lg:p-12 flex flex-col justify-between shadow-2xl hidden lg:flex rounded-none z-30 border border-border/20">
               <div className="space-y-5">
                 <div>
-                  <p className="text-[#e3510d] font-black text-[12px] md:text-[13px] uppercase tracking-[0.4em] mb-2">TANSANIA</p>
-                  <h4 className="font-headline text-xl md:text-2xl lg:text-3xl font-bold text-[#141414] leading-[1.1] tracking-tighter uppercase">
+                  <p className="text-[#e3510d] font-black text-[12px] md:text-[13px] uppercase tracking-[0.4em] mb-2">Tansania</p>
+                  <h4 className="font-headline text-xl md:text-2xl lg:text-3xl font-bold text-[#141414] leading-[1.1] tracking-tighter">
                     15 Tage Love on Safari – <br />Luxus-Rundreise für Paare
                   </h4>
                 </div>
@@ -241,12 +241,12 @@ export default function LoveOnSafariPage() {
                 </div>
               </div>
 
-              <div className="pt-6 mt-4 border-t border-border/50 flex items-end justify-between gap-6">
+              <div className="pt-6 mt-4 border-t border-border/50 flex items-center justify-between gap-6">
                 <div className="flex flex-col">
                   <span className="text-sm md:text-base text-muted-foreground/50 line-through font-bold">7.299 €</span>
                   <div className="flex items-baseline gap-1.5">
                     <span className="text-[10px] md:text-[12px] font-black text-secondary uppercase tracking-widest">ab</span>
-                    <span className="text-2xl md:text-4xl font-black text-secondary tracking-tighter">6.799 €</span>
+                    <span className="text-2xl md:text-3xl font-black text-secondary tracking-tighter">6.799 €</span>
                   </div>
                   <p className="text-[7px] md:text-[9px] font-black text-muted-foreground/60 uppercase tracking-widest mt-1">pro Person</p>
                 </div>
@@ -264,7 +264,7 @@ export default function LoveOnSafariPage() {
             <div className="bg-white p-6 sm:p-8 rounded-[1.5rem] shadow-lg border border-border/40 space-y-6">
               <div className="space-y-5">
                 <div>
-                  <p className="text-[#e3510d] font-black text-[11px] uppercase tracking-[0.4em] mb-1.5">TANSANIA</p>
+                  <p className="text-[#e3510d] font-black text-[11px] uppercase tracking-[0.4em] mb-1.5">Tansania</p>
                   <h4 className="font-headline text-xl font-bold text-secondary leading-tight uppercase">15 Tage Love on Safari – Luxus-Rundreise für Paare</h4>
                 </div>
                 
@@ -308,7 +308,7 @@ export default function LoveOnSafariPage() {
       <section className="py-8 md:py-16 bg-white border-b border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-8 md:mb-12 flex flex-col items-center">
-            <h2 className="font-headline text-2xl md:text-5xl font-bold text-secondary leading-tight tracking-tight mb-3 uppercase">
+            <h2 className="font-headline text-2xl md:text-5xl font-bold text-secondary leading-tight tracking-tight mb-3">
               Was „Love on Safari“ besonders macht
             </h2>
             <div className="w-20 h-1 bg-primary rounded-full opacity-60" />
