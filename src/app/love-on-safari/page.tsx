@@ -11,7 +11,6 @@ import {
   Compass, 
   ArrowRight, 
   CheckCircle2, 
-  Star,
   Wine,
   ShieldCheck,
   MapPin,
@@ -49,22 +48,22 @@ const experiences = [
 export default function LoveOnSafariPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
-      {/* 01 HIGH-PRESTIGE HERO: AS PER SS SPECIFICATION */}
-      <section className="bg-white pt-28 md:pt-36">
+      {/* 01 HIGH-PRESTIGE HERO: EXACT SS REPRODUCTION */}
+      <section className="bg-white pt-32 md:pt-40">
         <div className="container mx-auto px-4 max-w-7xl">
           
           {/* Top Label Bar */}
           <div className="flex items-center justify-between mb-8 md:mb-12">
             <span className="text-secondary font-bold text-[8px] md:text-[10px] uppercase tracking-[0.3em]">
-              Luxus Safari für Paare in Tansania
+              LUXUS SAFARI FÜR PAARE IN TANSANIA
             </span>
             <span className="text-primary font-bold text-[8px] md:text-[10px] uppercase tracking-[0.3em]">
-              Love on Safari
+              LOVE ON SAFARI
             </span>
           </div>
 
           {/* Centered Narrative Block */}
-          <div className="max-w-4xl mx-auto text-center space-y-4 md:space-y-6 mb-12 md:mb-16">
+          <div className="max-w-4xl mx-auto text-center space-y-4 md:space-y-6 mb-12 md:mb-20">
             <motion.h1 
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -81,34 +80,34 @@ export default function LoveOnSafariPage() {
               Erleben Sie die Weite der Serengeti, die besondere Atmosphäre des Ngorongoro-Kraters und im Anschluss Sansibar mit seinem warmen, türkisfarbenen Meer. Privat geplant und mit ausreichend Zeit für Sie als Paar.
             </motion.p>
           </div>
+        </div>
 
-          {/* Visual Hub with Overlapping Button */}
-          <div className="relative w-full pb-12 md:pb-16">
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="relative w-full aspect-video md:aspect-[21/9] min-h-[350px] rounded-2xl overflow-hidden shadow-2xl"
+        {/* Visual Hub: Full-Width Protocol */}
+        <div className="relative w-full pb-12 md:pb-16">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="relative w-full aspect-video md:aspect-[21/9] min-h-[400px] overflow-hidden shadow-2xl"
+          >
+            <Image 
+              src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
+              alt="Love on Safari Hero" 
+              fill 
+              priority
+              className="object-cover brightness-[0.85]"
+              data-ai-hint="safari couple"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+          </motion.div>
+
+          {/* Centered Overlapping Button Protocol */}
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20">
+            <Button 
+              onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-white text-secondary hover:bg-muted px-8 md:px-12 h-12 md:h-16 font-bold text-[9px] md:text-[11px] uppercase tracking-[0.2em] shadow-2xl transition-all duration-300 rounded-none border border-border"
             >
-              <Image 
-                src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
-                alt="Love on Safari Hero" 
-                fill 
-                priority
-                className="object-cover brightness-[0.85] scale-105"
-                data-ai-hint="safari couple"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
-            </motion.div>
-
-            {/* Centered Overlapping Button Protocol */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20">
-              <Button 
-                onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-white text-secondary hover:bg-[#FDF7F2] px-8 md:px-12 h-11 md:h-14 font-bold text-[9px] md:text-[11px] uppercase tracking-[0.2em] shadow-xl transition-all duration-300 rounded-none border border-primary/40"
-              >
-                Kostenlose Beratung
-              </Button>
-            </div>
+              KOSTENLOSE BERATUNG
+            </Button>
           </div>
         </div>
       </section>
@@ -119,7 +118,7 @@ export default function LoveOnSafariPage() {
           <div className="space-y-8 text-left">
             <div className="space-y-4">
               <span className="text-primary font-bold text-[10px] uppercase tracking-widest block">Das Versprechen</span>
-              <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary leading-tight">
+              <h2 className="font-headline text-3xl md:text-6xl font-normal text-secondary leading-tight uppercase tracking-tighter">
                 Ein Abenteuer für <br /><span className="text-primary">zwei Herzen</span>
               </h2>
             </div>
@@ -168,7 +167,7 @@ export default function LoveOnSafariPage() {
       <section className="py-16 md:py-32 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-16 md:mb-24 space-y-4">
-            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary">Private Refugien</h2>
+            <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary uppercase tracking-tighter">Private Refugien</h2>
             <p className="text-muted-foreground font-normal text-sm md:text-lg max-w-2xl mx-auto opacity-70">
               Erlebnisse, die wir exklusiv für Paare kuratiert haben.
             </p>
