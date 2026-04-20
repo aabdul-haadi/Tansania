@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useEffect, useState } from 'react';
@@ -106,7 +105,7 @@ export default function LoveOnSafariPage() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-muted-foreground text-[11px] md:text-[13px] leading-relaxed max-w-4xl mx-auto font-normal tracking-widest"
+              className="text-muted-foreground text-[14px] leading-[20px] max-w-4xl mx-auto font-normal tracking-normal"
             >
               Erleben Sie die Weite der Serengeti, die besondere Atmosphäre des Ngorongoro-Kraters und im Anschluss Sansibar mit seinem warmen, türkisfarbenen Meer. Privat geplant und mit ausreichend Zeit für Sie als Paar.
             </motion.p>
@@ -151,7 +150,7 @@ export default function LoveOnSafariPage() {
               viewport={{ once: true }}
               className="font-headline text-xl md:text-3xl lg:text-4xl font-bold text-secondary tracking-tight"
             >
-              Wenn nur noch das Wir zählt.
+              Wenn nur noch das Wir zählt
             </motion.h2>
           </div>
           
@@ -160,7 +159,7 @@ export default function LoveOnSafariPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground text-xs md:text-base leading-relaxed font-normal max-w-4xl mx-auto mb-6 md:mb-10"
+            className="text-muted-foreground text-[14px] leading-[20px] font-normal max-w-4xl mx-auto mb-6 md:mb-10"
           >
             Es gibt Reisen, die man sieht, und solche, die man spürt. Wenn Sie morgens ganz entspannt zur Safari aufbrechen, 
             ohne Eile, ohne Ablenkung, zählt nur dieser Moment: Ihre gemeinsame Zeit.
@@ -172,7 +171,7 @@ export default function LoveOnSafariPage() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="relative aspect-video w-full max-w-5xl rounded-[1.5rem] md:rounded-[3rem] overflow-hidden shadow-2xl"
+              className="relative aspect-video w-full max-w-5xl rounded-[1.5rem] md:rounded-[3rem] overflow-hidden shadow-2xl bg-muted"
             >
               <Image 
                 src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
@@ -203,7 +202,7 @@ export default function LoveOnSafariPage() {
               <motion.div 
                 initial={{ x: -30, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
-                className="bg-[#7a1818] text-white px-5 py-2.5 md:px-7 md:py-3.5 shadow-2xl rounded-sm w-fit hidden md:block"
+                className="bg-[#7a1818] text-white px-5 py-2 md:px-7 md:py-3 w-fit hidden md:block rounded-sm"
               >
                 <h3 className="font-headline font-bold text-xs md:text-sm lg:text-base tracking-widest leading-none text-white">
                   Luxus „Love on Safari“ Paare in Tansania
@@ -213,10 +212,10 @@ export default function LoveOnSafariPage() {
                 initial={{ x: -30, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.1 }}
-                className="bg-[#e3510d] text-white px-4 py-2 md:px-7 md:py-3.5 shadow-xl rounded-sm flex items-center gap-3 w-fit"
+                className="bg-[#e3510d] text-white px-4 py-2 md:px-7 md:py-3 shadow-xl rounded-sm flex items-center gap-3 w-fit"
               >
                 <ArrowRight className="w-3.5 h-3.5 md:w-5 md:h-5" />
-                <span className="text-[8px] md:text-[11px] font-bold tracking-widest uppercase">Int. Hin- und Rückflug inklusive</span>
+                <span className="text-[8px] md:text-[11px] font-bold tracking-widest">Int. Hin- und Rückflug inklusive</span>
               </motion.div>
             </div>
 
@@ -225,14 +224,14 @@ export default function LoveOnSafariPage() {
               <div className="space-y-4">
                 <div>
                   <p className="text-[#e3510d] font-bold text-[12px] md:text-[13px] tracking-[0.4em] mb-1">Tansania</p>
-                  <h4 className="font-headline text-xl md:text-2xl lg:text-[28px] font-bold text-[#141414] leading-[1.1] tracking-tighter">
+                  <h4 className="font-headline text-xl md:text-2xl font-bold text-[#141414] leading-[1.1] tracking-tighter">
                     15 Tage Love on Safari – <br />Luxus-Rundreise für Paare
                   </h4>
                 </div>
                 
                 <div className="space-y-1.5 text-[10px] md:text-[11px] font-bold text-[#141414]/80 tracking-widest leading-relaxed">
                   <p>Reisedauer: 15-tägig Flüge inklusive</p>
-                  <p>Unterkünfte: Handverlesene romantische Lodges, Tented Camps mit Vollpension</p>
+                  <p>Unterkünfte: Romantische Lodges & Camps</p>
                   <p>Zweisamkeit pur: Keine Gruppen, kein Zeitdruck</p>
                   <p>Reisezeit: 2026-2027</p>
                 </div>
@@ -253,7 +252,7 @@ export default function LoveOnSafariPage() {
                     <span className="text-[10px] md:text-[11px] font-bold text-secondary tracking-widest">ab</span>
                     <span className="text-lg md:text-xl font-black text-secondary tracking-tighter whitespace-nowrap">6.799 €</span>
                   </div>
-                  <p className="text-[7px] md:text-[8px] font-bold text-muted-foreground/60 tracking-widest">pro Person</p>
+                  <p className="text-[8px] font-bold text-muted-foreground/60 tracking-widest">pro Person</p>
                 </div>
                 <Link href="/trip-planner">
                   <Button className="h-11 md:h-12 px-6 bg-[#e3510d] text-white font-bold text-[9px] md:text-[10px] tracking-[0.2em] shadow-xl border-none rounded-none transition-all hover:bg-secondary shrink-0">
@@ -333,7 +332,7 @@ export default function LoveOnSafariPage() {
                   <h4 className="font-bold text-base md:text-xl text-secondary leading-tight tracking-tight">
                     {feature.title}
                   </h4>
-                  <p className="text-[13px] md:text-[16px] font-normal text-muted-foreground leading-relaxed">
+                  <p className="text-[14px] leading-[20px] font-normal text-muted-foreground">
                     {feature.desc}
                   </p>
                 </motion.div>
@@ -373,7 +372,7 @@ export default function LoveOnSafariPage() {
       <section className="py-8 md:py-16 bg-[#fdfcfb]">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center mb-8 md:mb-12">
-            <h2 className="font-headline text-2xl md:text-5xl font-bold text-secondary leading-tight tracking-tight tracking-tighter">
+            <h2 className="font-headline text-2xl md:text-5xl font-bold text-secondary leading-tight tracking-tight">
               Love on Safari – Erleben Sie es selbst
             </h2>
           </div>
@@ -396,14 +395,14 @@ export default function LoveOnSafariPage() {
 
       {/* 06 Trust Section */}
       <section className="py-8 md:py-16 bg-white border-y border-border/40">
-        <div className="container mx-auto px-4 max-w-7xl">
+        <div className="container mx-auto px-4 max-get-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="space-y-8 text-left">
               <div className="space-y-4">
                 <h2 className="font-headline text-3xl md:text-5xl font-bold text-secondary leading-tight tracking-tight">
                   Vertrauen von Anfang an
                 </h2>
-                <p className="text-muted-foreground text-sm md:text-xl font-bold leading-relaxed tracking-widest opacity-80 border-l-4 border-primary/20 pl-6">
+                <p className="text-muted-foreground text-[14px] leading-[20px] font-normal opacity-80 border-l-4 border-primary/20 pl-6">
                   Mehr als eine Reise: eine sorgfältig geplante Auszeit für Sie als Paar – persönlich, stilvoll und unvergesslich.
                 </p>
               </div>
@@ -420,7 +419,7 @@ export default function LoveOnSafariPage() {
               </div>
 
               <div className="space-y-6">
-                <p className="text-secondary font-bold text-xs md:text-sm leading-relaxed tracking-widest">
+                <p className="text-secondary font-bold text-[14px] leading-[20px] tracking-normal">
                   Jetzt Ihre persönliche Safari zu zweit entdecken und unvergessliche Momente erleben.
                 </p>
                 <Button 
@@ -433,7 +432,7 @@ export default function LoveOnSafariPage() {
             </div>
 
             <div className="hidden lg:block relative h-full min-h-[600px]">
-              <div className="absolute inset-0 rounded-[3rem] overflow-hidden shadow-2xl">
+              <div className="absolute inset-0 rounded-[3rem] overflow-hidden shadow-2xl bg-muted">
                 <Image 
                   src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200" 
                   alt="Couple Planning" 
@@ -457,7 +456,7 @@ export default function LoveOnSafariPage() {
             <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary tracking-tighter">
               Ihre Reise – Schritt für Schritt begleitet
             </h2>
-            <p className="text-muted-foreground font-bold text-[10px] md:text-sm tracking-widest">
+            <p className="text-muted-foreground font-bold text-[14px] leading-[20px]">
               Ihre “Love on Safari” Reise, komplett geplant
             </p>
           </div>
@@ -479,8 +478,8 @@ export default function LoveOnSafariPage() {
                 </div>
               </div>
 
-              <div className="p-8 md:p-12 bg-white rounded-[2rem] border border-border/50 shadow-sm space-y-6 text-left">
-                <p className="text-secondary font-bold text-sm md:text-lg leading-relaxed tracking-tight">
+              <div className="lg:hidden p-8 md:p-12 bg-white rounded-[2rem] border border-border/50 shadow-sm space-y-6 text-left">
+                <p className="text-muted-foreground text-[14px] leading-[20px] font-normal">
                   Alles für Ihre perfekte “Love on Safari” Erfahrung – persönlich abgestimmt, hochwertig organisiert und zuverlässig begleitet.
                 </p>
                 <div className="h-px w-20 bg-primary/40" />
@@ -510,10 +509,10 @@ export default function LoveOnSafariPage() {
                       {step.n}
                     </span>
                     <div className="space-y-1">
-                      <h5 className="font-bold text-sm md:text-lg text-secondary tracking-tight group-hover:text-primary transition-colors">
+                      <h5 className="font-bold text-base md:text-lg text-secondary tracking-tight group-hover:text-primary transition-colors">
                         {step.t}
                       </h5>
-                      <p className="text-[10px] md:text-xs font-bold text-muted-foreground tracking-widest opacity-60">
+                      <p className="text-[14px] leading-[20px] font-normal text-muted-foreground opacity-60">
                         {step.s}
                       </p>
                     </div>
