@@ -130,7 +130,7 @@ export default function LoveOnSafariPage() {
       {/* 02 INTRO SECTION: EMOTIONAL NARRATIVE */}
       <section className="py-12 md:py-20 bg-white">
         <div className="container mx-auto px-4 max-w-5xl text-center">
-          <div className="space-y-2 mb-6">
+          <div className="space-y-1 mb-4">
             <motion.h2 
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -147,17 +147,17 @@ export default function LoveOnSafariPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal max-w-4xl mx-auto mb-10"
+            className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal max-w-4xl mx-auto mb-8"
           >
             Es gibt Reisen, die man sieht, und solche, die man spürt. Wenn Sie morgens ganz entspannt zur Safari aufbrechen, 
             ohne Eile, ohne Ablenkung, zählt nur dieser Moment: Ihre gemeinsame Zeit. Die Natur übernimmt den Rest – und 
             macht daraus Erinnerungen, die bleiben.
           </motion.p>
 
-          <div className="space-y-10 group">
+          <div className="space-y-8 group">
             <motion.div 
-              initial={{ opacity: 0, scale: 0.98 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.8 }}
               className="relative aspect-video w-full rounded-[2rem] overflow-hidden shadow-2xl"
@@ -174,7 +174,7 @@ export default function LoveOnSafariPage() {
             <div className="flex flex-col items-center">
               <Button 
                 onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-primary hover:bg-secondary text-white w-auto px-10 h-12 md:h-14 font-bold text-[10px] tracking-widest border-none shadow-2xl transition-all"
+                className="bg-primary hover:bg-secondary text-white w-auto px-10 h-11 md:h-14 font-bold text-[10px] tracking-widest border-none shadow-2xl transition-all"
               >
                 Jetzt Reise anfragen
               </Button>
@@ -183,10 +183,10 @@ export default function LoveOnSafariPage() {
         </div>
       </section>
 
-      {/* 03 SIGNATURE PACKAGE: HIGH-FIDELITY CAMPAIGN (100% SS CLONE) */}
+      {/* 03 SIGNATURE PACKAGE: HIGH-FIDELITY CAMPAIGN */}
       <section className="py-12 md:py-24 bg-[#fdfcfb] border-t border-border/40 overflow-hidden">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="relative aspect-[16/9] min-h-[600px] md:min-h-[650px] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border border-border/40 bg-secondary group">
+          <div className="relative aspect-[16/9] min-h-[650px] md:min-h-[700px] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border border-border/40 bg-secondary group">
             <Image 
               src="https://images.unsplash.com/photo-1590001158193-79013ac7fa77?q=80&w=1920" 
               alt="Love on Safari Signature Package" 
@@ -219,25 +219,25 @@ export default function LoveOnSafariPage() {
             </div>
 
             {/* Prestige Package Card (Right Desktop) */}
-            <div className="absolute top-10 bottom-10 right-10 w-full max-w-[440px] bg-white p-8 md:p-12 lg:p-14 flex flex-col justify-between shadow-2xl hidden md:flex rounded-none z-30">
+            <div className="absolute top-10 bottom-10 right-10 w-full max-w-[480px] bg-white p-8 md:p-12 lg:p-14 flex flex-col justify-between shadow-2xl hidden md:flex rounded-none z-30">
               <div className="space-y-8">
                 <div>
-                  <p className="text-[#e3510d] font-black text-[10px] md:text-[12px] uppercase tracking-[0.4em] mb-4">TANSANIA</p>
+                  <p className="text-[#e3510d] font-black text-[10px] md:text-[14px] uppercase tracking-[0.4em] mb-4">TANSANIA</p>
                   <h4 className="font-headline text-2xl md:text-3xl lg:text-4xl font-bold text-[#141414] leading-[1.1] tracking-tighter">
                     15 Tage Love on Safari – <br />Luxus-Rundreise für Paare
                   </h4>
                 </div>
                 
-                <div className="space-y-4 text-[10px] md:text-[11px] font-bold text-[#141414]/70 uppercase tracking-widest leading-relaxed">
+                <div className="space-y-4 text-[10px] md:text-[11px] font-bold text-[#141414]/80 uppercase tracking-widest leading-relaxed">
                   <div className="flex gap-3 items-start"><p>Reisedauer: 15-tägig Flüge inklusive</p></div>
                   <div className="flex gap-3 items-start"><p>Unterkünfte: Handverlesene romantische Lodges, Tented Camps mit Vollpension</p></div>
                   <div className="flex gap-3 items-start"><p>Zweisamkeit pur: Keine Gruppen, kein Zeitdruck</p></div>
                   <div className="flex gap-3 items-start"><p>Reisezeit: 2026-2027</p></div>
                 </div>
 
-                <div className="flex flex-wrap gap-2 pt-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2">
                   {packageTags.map(tag => (
-                    <div key={tag} className="px-3 py-1.5 rounded-full border border-border text-[#141414]/50 text-[7px] md:text-[8px] font-black uppercase tracking-widest bg-white">
+                    <div key={tag} className="px-3 py-1.5 rounded-full border border-border text-[#141414]/60 text-[7px] md:text-[8px] font-black uppercase tracking-widest bg-[#fdfcfb]">
                       {tag}
                     </div>
                   ))}
@@ -246,12 +246,12 @@ export default function LoveOnSafariPage() {
 
               <div className="pt-10 mt-6 border-t border-border/50 flex items-end justify-between gap-6">
                 <div className="flex flex-col">
-                  <span className="text-[10px] md:text-[12px] text-muted-foreground/50 line-through font-bold">7.200 €</span>
+                  <span className="text-[10px] md:text-[12px] text-muted-foreground/50 line-through font-bold">7.299 €</span>
                   <div className="flex items-baseline gap-1.5">
                     <span className="text-[10px] md:text-[12px] font-black text-secondary uppercase tracking-widest">ab</span>
                     <span className="text-2xl md:text-3xl font-black text-secondary tracking-tighter">6.799 €</span>
                   </div>
-                  <p className="text-[7px] md:text-[9px] font-black text-muted-foreground/60 uppercase tracking-widest">pro Person</p>
+                  <p className="text-[7px] md:text-[9px] font-black text-muted-foreground/60 uppercase tracking-widest mt-1">pro Person</p>
                 </div>
                 <Link href="/trip-planner">
                   <Button className="h-12 md:h-14 px-8 md:px-10 bg-[#e3510d] text-white font-black text-[9px] md:text-[11px] uppercase tracking-[0.2em] shadow-xl border-none rounded-none transition-all hover:bg-secondary">
@@ -265,16 +265,22 @@ export default function LoveOnSafariPage() {
           {/* Mobile Card Layout (Vertical Stack) */}
           <div className="md:hidden mt-8 bg-white p-8 rounded-[2rem] shadow-xl border border-border/40 space-y-8">
             <div className="space-y-4">
-              <p className="text-primary font-black text-[10px] uppercase tracking-[0.4em]">TANSANIA</p>
+              <p className="text-[#e3510d] font-black text-[12px] uppercase tracking-[0.4em]">TANSANIA</p>
               <h4 className="font-headline text-2xl font-bold text-secondary leading-tight uppercase">15 Tage Love on Safari</h4>
               <div className="space-y-4 text-[10px] font-bold text-muted-foreground uppercase tracking-widest leading-relaxed">
                 <p>• 15-tägig Flüge inklusive</p>
                 <p>• Romantische Lodges & Camps</p>
                 <p>• Exklusive Privat-Safari</p>
               </div>
+              <div className="flex flex-wrap gap-2 pt-2">
+                {packageTags.slice(0,3).map(tag => (
+                  <Badge key={tag} variant="outline" className="bg-[#fdfcfb] text-[7px] font-black uppercase">{tag}</Badge>
+                ))}
+              </div>
             </div>
             <div className="pt-6 border-t border-border flex items-center justify-between">
               <div className="flex flex-col">
+                <span className="text-[10px] text-muted-foreground/40 line-through font-bold">7.299 €</span>
                 <span className="text-2xl font-black text-secondary">6.799 €</span>
                 <p className="text-[8px] font-black text-muted-foreground uppercase">pro Person</p>
               </div>
