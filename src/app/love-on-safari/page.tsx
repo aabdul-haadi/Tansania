@@ -70,7 +70,7 @@ export default function LoveOnSafariPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
       {/* 01 HERO SECTION - Compacted Protocol */}
-      <section className="bg-white pt-20 md:pt-24 pb-6 md:pb-10">
+      <section className="bg-white pt-24 md:pt-32 pb-6 md:pb-10">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-2 mb-3">
             <span className="text-secondary font-bold text-[10px] md:text-[12px] tracking-[0.3em] text-center">
@@ -128,15 +128,15 @@ export default function LoveOnSafariPage() {
         </div>
       </section>
 
-      {/* 02 INTRO SECTION: EMOTIONAL NARRATIVE - Compacted Padding */}
-      <section className="pt-10 pb-10 md:pt-16 md:pb-20 bg-white">
+      {/* 02 INTRO SECTION: EMOTIONAL NARRATIVE - High Density Compaction */}
+      <section className="pt-10 pb-8 md:pt-16 md:pb-20 bg-white">
         <div className="container mx-auto px-4 max-w-5xl text-center">
           <div className="space-y-1 mb-2">
             <motion.h2 
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="font-headline text-2xl md:text-5xl font-bold text-secondary tracking-tight"
+              className="font-headline text-xl md:text-5xl font-bold text-secondary tracking-tight"
             >
               Wenn nur noch das Wir zählt.
             </motion.h2>
@@ -160,7 +160,7 @@ export default function LoveOnSafariPage() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="relative aspect-video w-full rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl"
+              className="relative aspect-video w-full rounded-[1.5rem] md:rounded-[3rem] overflow-hidden shadow-2xl"
             >
               <Image 
                 src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
@@ -183,7 +183,7 @@ export default function LoveOnSafariPage() {
         </div>
       </section>
 
-      {/* 03 SIGNATURE PACKAGE SECTION - Extreme Mobile Integrity */}
+      {/* 03 SIGNATURE PACKAGE SECTION - 100% Responsive Integrity */}
       <section className="py-8 md:py-16 bg-[#fdfcfb] border-t border-border/40 overflow-hidden">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="relative aspect-[4/5] md:aspect-[16/9] min-h-[400px] md:min-h-[700px] rounded-[1.5rem] md:rounded-[3rem] overflow-hidden shadow-2xl border border-border/40 bg-secondary group">
@@ -195,7 +195,7 @@ export default function LoveOnSafariPage() {
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-transparent" />
 
-            {/* Overlays (Top Left) - Logic adjusted for mobile */}
+            {/* Overlays (Top Left) */}
             <div className="absolute top-5 left-5 md:top-10 md:left-12 space-y-2.5 z-30">
               <motion.div 
                 initial={{ x: -30, opacity: 0 }}
@@ -261,7 +261,7 @@ export default function LoveOnSafariPage() {
             </div>
           </div>
           
-          {/* Mobile Details Block - Sequential High-Density Stack */}
+          {/* Mobile Details Block */}
           <div className="lg:hidden mt-4 space-y-4">
             <div className="bg-white p-5 sm:p-8 rounded-[1.5rem] shadow-lg border border-border/40 space-y-6">
               <div className="space-y-5">
@@ -304,7 +304,7 @@ export default function LoveOnSafariPage() {
         </div>
       </section>
 
-      {/* 04 EXPERIENCE AUDIT: WHAT MAKES IT SPECIAL - Compacted Gaps */}
+      {/* 04 EXPERIENCE AUDIT: WHAT MAKES IT SPECIAL - Natural Casing Registry */}
       <section className="py-10 md:py-16 bg-white border-b border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-8 md:mb-12 flex flex-col items-center">
@@ -326,7 +326,7 @@ export default function LoveOnSafariPage() {
                   transition={{ delay: idx * 0.05 }}
                   className="space-y-0.5 text-left"
                 >
-                  <h4 className="font-bold text-sm md:text-lg text-secondary leading-tight uppercase tracking-tight">
+                  <h4 className="font-bold text-sm md:text-lg text-secondary leading-tight tracking-tight">
                     {feature.title}
                   </h4>
                   <p className="text-[12px] md:text-[14px] font-normal text-muted-foreground leading-relaxed">
@@ -336,7 +336,7 @@ export default function LoveOnSafariPage() {
               ))}
             </div>
 
-            {/* Organic Visual - 100% Repsonsiveness Centering */}
+            {/* Organic Visual */}
             <div className="relative">
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -366,7 +366,7 @@ export default function LoveOnSafariPage() {
         </div>
       </section>
 
-      {/* 05 FINAL INQUIRY PROTOCOL - Compacted for sequential flow */}
+      {/* 05 FINAL INQUIRY PROTOCOL */}
       <section id="inquiry" className="scroll-mt-20">
         <ContactSection />
       </section>
