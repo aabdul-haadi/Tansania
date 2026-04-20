@@ -36,6 +36,8 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel";
 import { cn } from '@/lib/utils';
 
@@ -183,7 +185,7 @@ export default function LoveOnSafariPage() {
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20">
             <Button 
               onClick={() => scrollTo('inquiry')}
-              className="bg-white text-secondary hover:bg-primary hover:text-white px-8 md:px-14 h-12 md:h-16 font-bold text-[9px] md:text-[10px] tracking-widest shadow-2xl transition-all duration-500 rounded-none border border-secondary whitespace-nowrap"
+              className="bg-white text-secondary hover:bg-primary hover:text-white px-8 md:px-14 h-12 md:h-16 font-bold text-[11px] md:text-[13px] tracking-widest shadow-2xl transition-all duration-500 rounded-none border border-secondary whitespace-nowrap"
             >
               Kostenlose Beratung
             </Button>
@@ -252,7 +254,7 @@ export default function LoveOnSafariPage() {
                 whileInView={{ x: 0, opacity: 1 }}
                 className="bg-[#7a1818] text-white px-5 py-2 md:px-7 md:py-3.5 w-fit hidden md:block rounded-sm"
               >
-                <h3 className="font-headline font-bold text-xs md:text-sm lg:text-base tracking-widest leading-none text-white">
+                <h3 className="font-headline font-bold text-sm md:text-lg lg:text-xl tracking-widest leading-none text-white">
                   Luxus „Love on Safari“ Paare in Tansania
                 </h3>
               </motion.div>
@@ -262,7 +264,7 @@ export default function LoveOnSafariPage() {
                 transition={{ delay: 0.1 }}
                 className="bg-primary text-white px-4 py-2 md:px-7 md:py-3.5 shadow-xl rounded-sm flex items-center gap-3 w-fit"
               >
-                <span className="text-[8px] md:text-[11px] font-bold tracking-widest">Int. Hin- und Rückflug inklusive</span>
+                <span className="text-[10px] md:text-sm font-bold tracking-widest">Int. Hin- und Rückflug inklusive</span>
               </motion.div>
             </div>
 
@@ -301,7 +303,7 @@ export default function LoveOnSafariPage() {
                   <p className="text-[8px] font-bold text-muted-foreground/60 tracking-widest">Pro Person</p>
                 </div>
                 <Link href="/trip-planner">
-                  <Button className="h-11 md:h-12 px-6 bg-primary text-white font-bold text-[9px] md:text-[10px] tracking-widest shadow-xl border-none rounded-none transition-all hover:bg-secondary shrink-0">
+                  <Button className="h-11 md:h-12 px-6 bg-primary text-white font-bold text-[11px] md:text-[13px] tracking-widest shadow-xl border-none rounded-none transition-all hover:bg-secondary shrink-0">
                     Jetzt anfragen
                   </Button>
                 </Link>
@@ -343,7 +345,7 @@ export default function LoveOnSafariPage() {
                   <p className="text-[8px] font-bold text-muted-foreground tracking-widest">Pro Person</p>
                 </div>
                 <Link href="/trip-planner" className="w-full flex justify-center">
-                  <Button className="w-auto px-12 py-7 rounded-none bg-primary text-white font-bold text-[11px] tracking-widest border-none shadow-xl">
+                  <Button className="w-auto px-12 py-7 rounded-none bg-primary text-white font-bold text-[11px] md:text-[13px] tracking-widest border-none shadow-xl">
                     Jetzt anfragen
                   </Button>
                 </Link>
@@ -467,7 +469,7 @@ export default function LoveOnSafariPage() {
                 </p>
                 <Button 
                   onClick={() => scrollTo('inquiry')}
-                  className="h-12 md:h-14 px-8 md:px-12 rounded-xl bg-primary text-white font-bold text-[10px] md:text-[11px] shadow-xl border-none hover:bg-secondary transition-all"
+                  className="h-12 md:h-14 px-8 md:px-12 rounded-xl bg-primary text-white font-bold text-[11px] md:text-[13px] shadow-xl border-none hover:bg-secondary transition-all"
                 >
                   Jetzt Liebe auf Safari planen
                 </Button>
@@ -561,7 +563,7 @@ export default function LoveOnSafariPage() {
               <div className="pt-6 flex justify-center">
                 <Button 
                   onClick={() => scrollTo('inquiry')}
-                  className="h-14 px-10 rounded-xl bg-primary text-white hover:bg-secondary font-bold text-[10px] shadow-xl border-none transition-all w-full sm:w-auto"
+                  className="h-14 px-10 rounded-xl bg-primary text-white hover:bg-secondary font-bold text-[11px] md:text-[13px] shadow-xl border-none transition-all w-full sm:w-auto"
                 >
                   Detaillierten Plan anfordern
                 </Button>
@@ -655,7 +657,7 @@ export default function LoveOnSafariPage() {
               <div className="pt-8 flex justify-center">
                  <Button 
                    onClick={() => scrollTo('inquiry')} 
-                   className="h-auto py-5 px-8 md:px-12 rounded-xl bg-primary text-white hover:bg-secondary font-bold text-[10px] md:text-xs shadow-xl border-none transition-all group w-full sm:w-auto whitespace-normal text-center leading-tight"
+                   className="h-auto py-5 px-8 md:px-12 rounded-xl bg-primary text-white hover:bg-secondary font-bold text-[11px] md:text-[13px] shadow-xl border-none transition-all group w-full sm:w-auto whitespace-normal text-center leading-tight"
                  >
                    Erfahren Sie mehr in <br className="sm:hidden" /> unserer persönlichen Beratung <ArrowRight className="w-4 h-4 ml-2 inline-block group-hover:translate-x-1 transition-transform" />
                  </Button>
@@ -665,7 +667,7 @@ export default function LoveOnSafariPage() {
         </div>
       </section>
 
-      {/* 09 Love on Safari Galerie */}
+      {/* 09 Love on Safari Galerie - Modern Slider Protocol */}
       <section className="py-8 md:py-16 bg-[#fdfcfb]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-10 md:mb-16 space-y-2">
@@ -675,43 +677,31 @@ export default function LoveOnSafariPage() {
             <p className="text-muted-foreground font-bold text-[14px] leading-[20px]">Impressionen gemeinsamer Glücksmomente</p>
           </div>
 
-          <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {galleryImages.map((img, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="group relative aspect-square rounded-[2rem] overflow-hidden shadow-lg bg-muted border border-border/40"
-              >
-                <Image src={img.src} alt={img.t} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" data-ai-hint={img.hint} />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute bottom-6 left-6 right-6 text-white text-left opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                  <h4 className="font-bold text-sm md:text-lg leading-tight mb-1">{img.t}</h4>
-                  <p className="text-[10px] md:text-xs text-white/70 font-medium">{img.s}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="md:hidden -mx-4">
-            <Carousel opts={{ align: "start", loop: true }} className="w-full">
-              <CarouselContent className="-ml-2">
-                {galleryImages.map((img, i) => (
-                  <CarouselItem key={i} className="pl-2 basis-[85%]">
-                    <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-xl bg-muted border border-border/40">
-                      <Image src={img.src} alt={img.t} fill className="object-cover" data-ai-hint={img.hint} />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                      <div className="absolute bottom-6 left-6 right-6 text-white text-left">
-                        <h4 className="font-bold text-sm leading-tight mb-1">{img.t}</h4>
-                      </div>
+          <Carousel opts={{ align: "start", loop: true }} className="w-full">
+            <CarouselContent className="-ml-4">
+              {galleryImages.map((img, i) => (
+                <CarouselItem key={i} className="pl-4 basis-[85%] sm:basis-1/2 lg:basis-1/3">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    className="group relative aspect-square rounded-[2rem] overflow-hidden shadow-lg bg-muted border border-border/40"
+                  >
+                    <Image src={img.src} alt={img.t} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" data-ai-hint={img.hint} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute bottom-6 left-6 right-6 text-white text-left opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                      <h4 className="font-bold text-sm md:text-lg leading-tight mb-1">{img.t}</h4>
+                      <p className="text-[10px] md:text-xs text-white/70 font-medium">{img.s}</p>
                     </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-            </Carousel>
-          </div>
+                  </motion.div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="flex justify-center gap-4 mt-8">
+              <CarouselPrevious className="static translate-y-0 h-10 w-10 md:h-12 md:w-12 bg-white border-border/50 text-secondary hover:bg-primary hover:text-white transition-all shadow-sm" />
+              <CarouselNext className="static translate-y-0 h-10 w-10 md:h-12 md:w-12 bg-white border-border/50 text-secondary hover:bg-primary hover:text-white transition-all shadow-sm" />
+            </div>
+          </Carousel>
         </div>
       </section>
 
@@ -750,7 +740,7 @@ export default function LoveOnSafariPage() {
               </div>
 
               <div className="pt-4">
-                <Button onClick={() => scrollTo('inquiry')} size="lg" className="w-full sm:w-auto h-12 md:h-14 px-10 rounded-xl bg-primary text-white hover:bg-secondary font-bold text-[10px] tracking-widest shadow-xl border-none transition-all">
+                <Button onClick={() => scrollTo('inquiry')} className="w-full sm:w-auto h-12 md:h-14 px-10 rounded-xl bg-primary text-white hover:bg-secondary font-bold text-[11px] md:text-[13px] shadow-xl border-none transition-all">
                   Kostenlose Reiseberatung
                 </Button>
               </div>
@@ -811,7 +801,7 @@ export default function LoveOnSafariPage() {
               </div>
 
               <div className="pt-4">
-                <Button onClick={() => scrollTo('inquiry')} size="lg" className="w-full sm:w-auto h-12 md:h-14 px-10 rounded-xl bg-primary text-white hover:bg-secondary font-bold text-[10px] tracking-widest shadow-xl border-none transition-all">
+                <Button onClick={() => scrollTo('inquiry')} className="w-full sm:w-auto h-12 md:h-14 px-10 rounded-xl bg-primary text-white hover:bg-secondary font-bold text-[11px] md:text-[13px] shadow-xl border-none transition-all">
                   Reise anfragen und Angebot erhalten
                 </Button>
               </div>
@@ -850,7 +840,7 @@ export default function LoveOnSafariPage() {
           </div>
 
           <div className="flex justify-center">
-            <Button onClick={() => scrollTo('inquiry')} size="lg" className="rounded-xl px-12 h-14 bg-primary text-white hover:bg-secondary font-bold text-[10px] tracking-widest shadow-xl border-none transition-all">
+            <Button onClick={() => scrollTo('inquiry')} className="rounded-xl px-12 h-14 bg-primary text-white hover:bg-secondary font-bold text-[11px] md:text-[13px] shadow-xl border-none transition-all">
               Kostenlose Beratung für Paare
             </Button>
           </div>
