@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -50,42 +51,65 @@ export default function LoveOnSafariPage() {
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
-      {/* 01 Prestige Hero */}
-      <section className="relative h-[65vh] md:h-[80vh] flex items-center justify-center overflow-hidden bg-secondary">
-        <Image 
-          src={sunsetImg?.imageUrl || "https://images.unsplash.com/photo-1539760397268-33f5146dd9e2?q=80&w=1920"} 
-          alt="Romantischer Sonnenuntergang Tansania" 
-          fill 
-          priority
-          className="object-cover scale-105 brightness-[0.55]"
-          data-ai-hint="elephants sunset"
-        />
-        <div className="absolute inset-0 bg-black/20 z-10" />
-        
-        <div className="container relative z-20 mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="space-y-6"
-          >
-            <Badge className="bg-primary text-white border-none px-4 py-1 text-[10px] font-bold shadow-xl">
-              Romantik-Angebot
-            </Badge>
-            <h1 className="font-headline text-4xl md:text-8xl font-normal text-white leading-tight tracking-tight">
-              Love on Safari
-            </h1>
-            <p className="max-w-xl mx-auto text-white/90 font-bold text-sm md:text-xl leading-relaxed tracking-normal">
-              Wo die Seele Afrikas auf die Magie der Zweisamkeit trifft. Erleben Sie Ihre Flitterwochen in den exklusivsten Refugien Tansanias.
-            </p>
-            <div className="pt-4">
-              <Button onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })} className="rounded-xl px-10 h-14 bg-primary text-white hover:bg-secondary font-bold text-xs shadow-2xl border-none transition-all">
-                Jetzt gemeinsam planen
+      {/* 01 Re-Engineered Prestige Hero - Match SS */}
+      <header className="pt-32 pb-16 md:pb-24 bg-white border-b border-border/40">
+        <div className="container mx-auto px-4 max-w-7xl space-y-8">
+          {/* Registry Labels */}
+          <div className="flex justify-between items-center text-[9px] md:text-[10px] font-bold tracking-[0.3em] uppercase">
+            <span className="text-secondary opacity-60">Luxus Safari für Paare in Tansania</span>
+            <span className="text-primary">Love on Safari</span>
+          </div>
+
+          {/* Narrative Stack */}
+          <div className="text-center space-y-6 max-w-4xl mx-auto">
+            <motion.h1 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="font-headline text-3xl md:text-5xl lg:text-6xl font-normal text-secondary leading-tight"
+            >
+              Abenteuer und Romantik im Herzen Tansanias
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal opacity-80"
+            >
+              Erleben Sie die Weite der Serengeti, die besondere Atmosphäre des Ngorongoro-Kraters und im Anschluss Sansibar mit seinem warmen, türkisfarbenen Meer. Privat geplant und mit ausreichend Zeit für Sie als Paar.
+            </motion.p>
+          </div>
+
+          {/* Cinematic Visual Hub */}
+          <div className="relative mt-12 md:mt-16">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 1 }}
+              className="relative aspect-[16/9] md:h-[650px] rounded-2xl overflow-hidden shadow-2xl bg-muted"
+            >
+              <Image 
+                src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=1920" 
+                alt="Abenteuer und Romantik in Tansania" 
+                fill 
+                priority
+                className="object-cover brightness-95"
+                data-ai-hint="safari couple"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+            </motion.div>
+
+            {/* Overlapping Interaction Trigger */}
+            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-full flex justify-center px-4">
+              <Button 
+                onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })}
+                className="bg-white text-secondary border border-border/60 hover:bg-secondary hover:text-white px-8 md:px-12 h-12 md:h-14 font-bold text-[10px] uppercase tracking-widest shadow-2xl transition-all duration-500 rounded-none border-b-2 border-b-primary/40"
+              >
+                Kostenlose Beratung
               </Button>
             </div>
-          </motion.div>
+          </div>
         </div>
-      </section>
+      </header>
 
       {/* 02 Narrative Logic */}
       <section className="py-16 md:py-32 container mx-auto px-4 max-w-7xl">
@@ -218,7 +242,7 @@ export default function LoveOnSafariPage() {
 
       {/* 05 Trust & Safety */}
       <section className="py-16 md:py-32 bg-white">
-        <div className="container mx-auto px-4 max-w-7xl">
+        <div className="container mx-auto px-4 max-get-7xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             {[
               { icon: ShieldCheck, t: "Gesicherte Träume", d: "Durch die DRSF-Mitgliedschaft sind Ihre Anzahlungen und die Reise zu 100% abgesichert." },
