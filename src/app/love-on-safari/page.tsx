@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -48,12 +47,12 @@ const experiences = [
 export default function LoveOnSafariPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
-      {/* 01 HIGH-PRESTIGE HERO: EXACT SS REPRODUCTION */}
+      {/* 01 HIGH-PRESTIGE HERO: COMPACTED NARRATIVE HUB */}
       <section className="bg-white pt-32 md:pt-40">
         <div className="container mx-auto px-4 max-w-7xl">
           
-          {/* Top Label Bar */}
-          <div className="flex items-center justify-between mb-8 md:mb-12">
+          {/* Top Registry Labels */}
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-2 mb-10 md:mb-14">
             <span className="text-secondary font-bold text-[8px] md:text-[10px] uppercase tracking-[0.3em]">
               LUXUS SAFARI FÜR PAARE IN TANSANIA
             </span>
@@ -62,12 +61,12 @@ export default function LoveOnSafariPage() {
             </span>
           </div>
 
-          {/* Centered Narrative Block */}
-          <div className="max-w-4xl mx-auto text-center space-y-4 md:space-y-6 mb-12 md:mb-20">
+          {/* Centered Narrative Block - Compacted Spacing */}
+          <div className="max-w-4xl mx-auto text-center space-y-3 md:space-y-5 mb-10 md:mb-16">
             <motion.h1 
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="font-headline text-3xl md:text-5xl lg:text-[56px] font-bold text-secondary leading-tight tracking-tight"
+              className="font-headline text-2xl md:text-5xl lg:text-[52px] font-bold text-secondary leading-tight tracking-tight"
             >
               Abenteuer und Romantik im Herzen Tansanias
             </motion.h1>
@@ -82,16 +81,16 @@ export default function LoveOnSafariPage() {
           </div>
         </div>
 
-        {/* Visual Hub: Full-Width Protocol */}
-        <div className="relative w-full pb-12 md:pb-16">
+        {/* Visual Hub: Full-Width Cinematic Frame */}
+        <div className="relative w-full">
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="relative w-full aspect-video md:aspect-[21/9] min-h-[400px] overflow-hidden shadow-2xl"
+            className="relative w-full aspect-[21/9] min-h-[400px] overflow-hidden shadow-sm"
           >
             <Image 
               src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
-              alt="Love on Safari Hero" 
+              alt="Love on Safari Experience" 
               fill 
               priority
               className="object-cover brightness-[0.85]"
@@ -100,11 +99,11 @@ export default function LoveOnSafariPage() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
           </motion.div>
 
-          {/* Centered Overlapping Button Protocol */}
+          {/* Centered Overlapping Action Protocol - 50% Offset */}
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20">
             <Button 
               onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-white text-secondary hover:bg-muted px-8 md:px-12 h-12 md:h-16 font-bold text-[9px] md:text-[11px] uppercase tracking-[0.2em] shadow-2xl transition-all duration-300 rounded-none border border-border"
+              className="bg-white text-secondary hover:bg-secondary hover:text-white px-8 md:px-14 h-12 md:h-16 font-bold text-[9px] md:text-[11px] uppercase tracking-[0.2em] shadow-2xl transition-all duration-500 rounded-none border border-border/60"
             >
               KOSTENLOSE BERATUNG
             </Button>
