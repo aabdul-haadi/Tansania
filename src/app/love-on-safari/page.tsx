@@ -19,7 +19,8 @@ import {
   Clock,
   Heart,
   Camera,
-  MapPin
+  MapPin,
+  Users
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -31,6 +32,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
 import { cn } from '@/lib/utils';
 
 const packageTags = [
@@ -100,7 +106,7 @@ const faqs = [
   { q: "Wie individuell ist die Route?", a: "Wir entwerfen jede Route von Grund auf neu. Basierend auf Ihren Interessen – ob mehr Fokus auf Wildlife-Fotografie, Entspannung in der Lodge oder kulturelle Begegnungen – passen wir den Ablauf exakt an." },
   { q: "Beste Reisezeit für Paare?", a: "Die Trockenzeiten von Juni bis Oktober sind ideal für klassische Tiersichtungen. Für Paare, die Ruhe suchen, bietet die 'Green Season' von November bis März oft mehr Privatsphäre und blühende Landschaften." },
   { q: "Safari und Sansibar kombinierbar?", a: "Das ist unsere Spezialität. Wir organisieren den nahtlosen Transfer vom Busch direkt an den Strand, meist per Inlandsflug, damit Sie keine Zeit auf staubigen Straßen verlieren." },
-  { q: "Wie romantische ist Sansibar wirklich?", a: "Sansibar bietet mit seinen Boutique-Hotels, privaten Strand-Dinnern und traditionellen Dhow-Fahrten bei Sonnenuntergang eine der romantischsten Kulissen weltweit." },
+  { q: "Wie romantisch ist Sansibar wirklich?", a: "Sansibar bietet mit seinen Boutique-Hotels, privaten Strand-Dinnern und traditionellen Dhow-Fahrten bei Sonnenuntergang eine der romantischsten Kulissen weltweit." },
   { q: "Wie läuft die Planung ab?", a: "Nach Ihrer ersten Anfrage führen wir ein persönliches Gespräch. Wir erstellen einen Entwurf, den wir gemeinsam verfeinern, bis jedes Detail Ihrer Traumreise perfekt ist." },
   { q: "Welche Lodge-Kategorie passt zu uns?", a: "Wir bieten drei Level an: Classic (hochwertig & authentisch), Premium (luxuriös mit Fokus auf Design) und Deluxe (absolute Exklusivität & High-End Service). Wir beraten Sie ehrlich, was zu Ihrem Budget passt." },
   { q: "Was kostet die Reise ungefähr und wovon hängt es ab?", a: "Der Preis hängt stark von der Saison, der Dauer und der gewählten Lodge-Kategorie ab. Eine hochwertige 12-tägige Privat-Safari inkl. Sansibar beginnt meist bei ca. 4.500 € pro Person." }
@@ -654,9 +660,9 @@ export default function LoveOnSafariPage() {
               <div className="pt-8 flex justify-center">
                  <Button 
                    onClick={() => scrollTo('inquiry')} 
-                   className="h-14 px-8 md:px-12 rounded-xl bg-secondary text-white hover:bg-primary font-bold text-[10px] md:text-xs shadow-xl border-none transition-all group w-full sm:w-auto"
+                   className="h-auto py-5 px-8 md:px-12 rounded-xl bg-secondary text-white hover:bg-primary font-bold text-[10px] md:text-xs shadow-xl border-none transition-all group w-full sm:w-auto whitespace-normal text-center leading-tight"
                  >
-                   Erfahren Sie mehr in unserer persönlichen Beratung <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                   Erfahren Sie mehr in <br className="sm:hidden" /> unserer persönlichen Beratung <ArrowRight className="w-4 h-4 ml-2 inline-block group-hover:translate-x-1 transition-transform" />
                  </Button>
               </div>
             </div>
@@ -664,7 +670,7 @@ export default function LoveOnSafariPage() {
         </div>
       </section>
 
-      {/* 09 Love on Safari Galerie */}
+      {/* 09 Love on Safari Galerie - Modern Slider Integration */}
       <section className="py-8 md:py-16 bg-[#fdfcfb]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-10 md:mb-16 space-y-2">
@@ -674,7 +680,8 @@ export default function LoveOnSafariPage() {
             <p className="text-muted-foreground font-bold text-[14px] leading-[20px]">Impressionen gemeinsamer Glücksmomente</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {/* Desktop Grid */}
+          <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {galleryImages.map((img, i) => (
               <motion.div
                 key={i}
@@ -692,6 +699,25 @@ export default function LoveOnSafariPage() {
                 </div>
               </motion.div>
             ))}
+          </div>
+
+          {/* Mobile Modern Slider */}
+          <div className="md:hidden -mx-4">
+            <Carousel opts={{ align: "start", loop: true }} className="w-full">
+              <CarouselContent className="-ml-2">
+                {galleryImages.map((img, i) => (
+                  <CarouselItem key={i} className="pl-2 basis-[85%]">
+                    <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-xl bg-muted border border-border/40">
+                      <Image src={img.src} alt={img.t} fill className="object-cover" data-ai-hint={img.hint} />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                      <div className="absolute bottom-6 left-6 right-6 text-white text-left">
+                        <h4 className="font-bold text-sm leading-tight mb-1">{img.t}</h4>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
           </div>
         </div>
       </section>
