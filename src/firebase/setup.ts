@@ -1,7 +1,8 @@
+
 import { firebaseConfig } from '@/firebase/config';
 import { initializeApp, getApps, getApp, FirebaseApp } from 'firebase/app';
 import { getAuth, Auth } from 'firebase/auth';
-import { getFirestore, Firestore } from 'firebase/firestore';
+import { getFirestore, Firestore, initializeFirestore } from 'firebase/firestore';
 
 interface FirebaseServices {
   firebaseApp: FirebaseApp | null;
@@ -24,7 +25,7 @@ function isConfigValid(): boolean {
   });
 
   if (!isValid) {
-    console.warn("Firebase configuration is incomplete or missing.");
+    console.warn("Firebase configuration is incomplete or missing. Services will initialize as null.");
   }
 
   return isValid;
@@ -32,6 +33,7 @@ function isConfigValid(): boolean {
 
 /**
  * Initializes Firebase using environment variables and ensures a single instance exists.
+ * Implements high-resiliency protocols for specialized workstation environments.
  */
 export function initializeFirebase(): FirebaseServices {
   if (cachedServices) {
@@ -45,7 +47,12 @@ export function initializeFirebase(): FirebaseServices {
   try {
     const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
     const auth = getAuth(app);
-    const firestore = getFirestore(app);
+    
+    // CRITICAL: Resolve Firestore timeout issues by enabling the long-polling protocol.
+    // This bypasses WebSocket restrictions often found in workstation/port-forwarded environments.
+    const firestore = initializeFirestore(app, {
+      experimentalForceLongPolling: true,
+    });
 
     cachedServices = {
       firebaseApp: app,
