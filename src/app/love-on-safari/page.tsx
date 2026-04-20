@@ -9,7 +9,11 @@ import {
   CheckCircle2, 
   Compass, 
   ChevronRight,
-  Sparkles
+  Sparkles,
+  Leaf,
+  Smartphone,
+  ShieldCheck,
+  Globe
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -19,8 +23,8 @@ import { cn } from '@/lib/utils';
 
 const packageTags = [
   "Geführte Erlebnisreisen",
-  "kreativ kombinierbar",
-  "garantierte Durchführung",
+  "Kreativ kombinierbar",
+  "Garantierte Durchführung",
   "Ideal für romantische Paare",
   "Begrenzte Plätze verfügbar"
 ];
@@ -61,11 +65,11 @@ const featureRegistry = [
 ];
 
 const journeySteps = [
-  { n: "①", t: "Ankommen und entspannt starten", s: "in Arusha" },
-  { n: "②", t: "Erste Safari-Momente", s: "im Tarangire, bekannt für große Elefantenherden" },
-  { n: "③", t: "Serengeti erleben", s: "weite Savanne, Löwen, Leoparden und goldene Stunden" },
-  { n: "④", t: "Ngorongoro-Krater entdecken", s: "ein Naturwunder mit hoher Tierdichte" },
-  { n: "⑤", t: "Inlandsflug nach Sansibar", s: "von der Wildnis ans Meer" },
+  { n: "①", t: "Ankommen und entspannt starten", s: "In Arusha" },
+  { n: "②", t: "Erste Safari-Momente", s: "Im Tarangire, bekannt für große Elefantenherden" },
+  { n: "③", t: "Serengeti erleben", s: "Weite Savanne, Löwen, Leoparden und goldene Stunden" },
+  { n: "④", t: "Ngorongoro-Krater entdecken", s: "Ein Naturwunder mit hoher Tierdichte" },
+  { n: "⑤", t: "Inlandsflug nach Sansibar", s: "Von der Wildnis ans Meer" },
   { n: "⑥", t: "Strandtage, Spa und Zeit zu zweit", s: "Entspannung pur" },
   { n: "⑦", t: "Optionale Erlebnisse", s: "Blue Safari, private Bootstour oder Gewürztour" }
 ];
@@ -77,6 +81,13 @@ export default function LoveOnSafariPage() {
     setMounted(true);
   }, []);
 
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
+    }
+  };
+
   if (!mounted) return null;
 
   return (
@@ -85,10 +96,10 @@ export default function LoveOnSafariPage() {
       <section className="bg-white pt-20 md:pt-28 pb-4">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-2 mb-3">
-            <span className="text-secondary font-bold text-[10px] md:text-[11px] tracking-[0.3em] text-center">
+            <span className="text-secondary font-bold text-[10px] md:text-[11px] tracking-widest text-center">
               Luxus Safari für Paare in Tansania
             </span>
-            <span className="text-primary font-bold text-[10px] md:text-[11px] tracking-[0.3em] text-center">
+            <span className="text-primary font-bold text-[10px] md:text-[11px] tracking-widest text-center">
               Love on Safari
             </span>
           </div>
@@ -105,7 +116,7 @@ export default function LoveOnSafariPage() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-muted-foreground text-[14px] leading-[20px] max-w-4xl mx-auto font-normal tracking-normal"
+              className="text-muted-foreground text-[14px] leading-[20px] max-w-4xl mx-auto font-normal"
             >
               Erleben Sie die Weite der Serengeti, die besondere Atmosphäre des Ngorongoro-Kraters und im Anschluss Sansibar mit seinem warmen, türkisfarbenen Meer. Privat geplant und mit ausreichend Zeit für Sie als Paar.
             </motion.p>
@@ -131,8 +142,8 @@ export default function LoveOnSafariPage() {
 
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20">
             <Button 
-              onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-white text-secondary hover:bg-secondary hover:text-white px-8 md:px-14 h-12 md:h-16 font-bold text-[9px] md:text-[10px] tracking-[0.2em] shadow-2xl transition-all duration-500 rounded-none border border-secondary whitespace-nowrap"
+              onClick={() => scrollTo('inquiry')}
+              className="bg-white text-secondary hover:bg-secondary hover:text-white px-8 md:px-14 h-12 md:h-16 font-bold text-[9px] md:text-[10px] tracking-widest shadow-2xl transition-all duration-500 rounded-none border border-secondary whitespace-nowrap"
             >
               Kostenlose Beratung
             </Button>
@@ -197,7 +208,6 @@ export default function LoveOnSafariPage() {
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-transparent" />
 
-            {/* Overlays (Top Left) */}
             <div className="absolute top-5 left-5 md:top-10 md:left-12 space-y-2 z-30">
               <motion.div 
                 initial={{ x: -30, opacity: 0 }}
@@ -214,16 +224,14 @@ export default function LoveOnSafariPage() {
                 transition={{ delay: 0.1 }}
                 className="bg-[#e3510d] text-white px-4 py-2 md:px-7 md:py-3.5 shadow-xl rounded-sm flex items-center gap-3 w-fit"
               >
-                <ArrowRight className="w-3.5 h-3.5 md:w-5 md:h-5" />
                 <span className="text-[8px] md:text-[11px] font-bold tracking-widest">Int. Hin- und Rückflug inklusive</span>
               </motion.div>
             </div>
 
-            {/* Desktop Prestige Card */}
             <div className="absolute top-1/2 -translate-y-1/2 right-8 w-full max-w-[400px] bg-white p-6 md:p-8 flex flex-col shadow-2xl hidden lg:flex rounded-none z-30 border border-border/20 h-fit">
               <div className="space-y-4">
                 <div>
-                  <p className="text-[#e3510d] font-bold text-[12px] md:text-[13px] tracking-[0.4em] mb-1">Tansania</p>
+                  <p className="text-[#e3510d] font-bold text-[12px] md:text-[13px] tracking-widest mb-1">Tansania</p>
                   <h4 className="font-headline text-xl md:text-2xl font-bold text-[#141414] leading-[1.1] tracking-tighter">
                     15 Tage Love on Safari – <br />Luxus-Rundreise für Paare
                   </h4>
@@ -249,13 +257,13 @@ export default function LoveOnSafariPage() {
                 <div className="flex flex-col">
                   <span className="text-sm md:text-base text-muted-foreground/50 line-through font-bold">7.299 €</span>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-[10px] md:text-[11px] font-bold text-secondary tracking-widest">ab</span>
+                    <span className="text-[10px] md:text-[11px] font-bold text-secondary tracking-widest">Ab</span>
                     <span className="text-lg md:text-xl font-black text-secondary tracking-tighter whitespace-nowrap">6.799 €</span>
                   </div>
-                  <p className="text-[8px] font-bold text-muted-foreground/60 tracking-widest">pro Person</p>
+                  <p className="text-[8px] font-bold text-muted-foreground/60 tracking-widest">Pro Person</p>
                 </div>
                 <Link href="/trip-planner">
-                  <Button className="h-11 md:h-12 px-6 bg-[#e3510d] text-white font-bold text-[9px] md:text-[10px] tracking-[0.2em] shadow-xl border-none rounded-none transition-all hover:bg-secondary shrink-0">
+                  <Button className="h-11 md:h-12 px-6 bg-[#e3510d] text-white font-bold text-[9px] md:text-[10px] tracking-widest shadow-xl border-none rounded-none transition-all hover:bg-secondary shrink-0">
                     Jetzt anfragen
                   </Button>
                 </Link>
@@ -263,12 +271,11 @@ export default function LoveOnSafariPage() {
             </div>
           </div>
           
-          {/* Mobile Details Block */}
           <div className="lg:hidden mt-4 space-y-4 px-3">
             <div className="bg-white p-6 sm:p-8 rounded-[1.5rem] shadow-lg border border-border/40 space-y-6">
               <div className="space-y-5">
                 <div>
-                  <p className="text-[#e3510d] font-bold text-[11px] tracking-[0.4em] mb-1">Tansania</p>
+                  <p className="text-[#e3510d] font-bold text-[11px] tracking-widest mb-1">Tansania</p>
                   <h4 className="font-headline text-xl font-bold text-secondary leading-tight">15 Tage Love on Safari – Luxus-Rundreise für Paare</h4>
                 </div>
                 
@@ -292,13 +299,13 @@ export default function LoveOnSafariPage() {
                 <div className="flex flex-col items-center text-center">
                   <span className="text-base text-muted-foreground/40 line-through font-bold">7.299 €</span>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-[9px] font-bold text-muted-foreground">ab</span>
+                    <span className="text-[9px] font-bold text-muted-foreground">Ab</span>
                     <span className="text-3xl font-black text-secondary tracking-tighter">6.799 €</span>
                   </div>
-                  <p className="text-[8px] font-bold text-muted-foreground tracking-widest">pro Person</p>
+                  <p className="text-[8px] font-bold text-muted-foreground tracking-widest">Pro Person</p>
                 </div>
                 <Link href="/trip-planner" className="w-full flex justify-center">
-                  <Button className="w-auto px-12 py-7 rounded-none bg-[#e3510d] text-white font-bold text-[11px] tracking-[0.2em] border-none shadow-xl">
+                  <Button className="w-auto px-12 py-7 rounded-none bg-[#e3510d] text-white font-bold text-[11px] tracking-widest border-none shadow-xl">
                     Jetzt anfragen
                   </Button>
                 </Link>
@@ -329,10 +336,10 @@ export default function LoveOnSafariPage() {
                   transition={{ delay: idx * 0.05 }}
                   className="space-y-1 text-left"
                 >
-                  <h4 className="font-bold text-base md:text-xl text-secondary leading-tight tracking-tight">
+                  <h4 className="font-headline text-xl md:text-2xl font-bold text-secondary tracking-tight">
                     {feature.title}
                   </h4>
-                  <p className="text-[14px] leading-[20px] font-normal text-muted-foreground">
+                  <p className="text-[14px] leading-[20px] text-muted-foreground">
                     {feature.desc}
                   </p>
                 </motion.div>
@@ -395,7 +402,7 @@ export default function LoveOnSafariPage() {
 
       {/* 06 Trust Section */}
       <section className="py-8 md:py-16 bg-white border-y border-border/40">
-        <div className="container mx-auto px-4 max-w-7xl">
+        <div className="container mx-auto px-4 max-get-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="space-y-8 text-left">
               <div className="space-y-4">
@@ -403,7 +410,7 @@ export default function LoveOnSafariPage() {
                   Vertrauen von Anfang an
                 </h2>
                 <p className="text-muted-foreground text-[14px] leading-[20px] font-normal opacity-80 border-l-4 border-primary/20 pl-6">
-                  Mehr als eine Reise: eine sorgfältig geplante Auszeit für Sie als Paar – persönlich, stilvoll und unvergesslich.
+                  Mehr als eine Reise: Eine sorgfältig geplante Auszeit für Sie als Paar – persönlich, stilvoll und unvergesslich.
                 </p>
               </div>
 
@@ -419,12 +426,12 @@ export default function LoveOnSafariPage() {
               </div>
 
               <div className="space-y-6">
-                <p className="text-secondary font-bold text-[14px] leading-[20px] tracking-normal">
+                <p className="text-secondary font-bold text-[14px] leading-[20px]">
                   Jetzt Ihre persönliche Safari zu zweit entdecken und unvergessliche Momente erleben.
                 </p>
                 <Button 
-                  onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="h-12 md:h-14 px-8 md:px-12 rounded-xl bg-secondary text-white font-bold text-[10px] md:text-[11px] tracking-[0.2em] shadow-xl border-none"
+                  onClick={() => scrollTo('inquiry')}
+                  className="h-12 md:h-14 px-8 md:px-12 rounded-xl bg-secondary text-white font-bold text-[10px] md:text-[11px] shadow-xl border-none"
                 >
                   Jetzt Liebe auf Safari planen
                 </Button>
@@ -471,7 +478,7 @@ export default function LoveOnSafariPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 <div className="absolute bottom-10 left-10 right-10">
                   <h4 className="text-white font-headline text-2xl md:text-4xl font-bold mb-2">Mehr als eine Filmromanze</h4>
-                  <p className="text-primary font-bold text-[10px] md:text-xs tracking-[0.4em]">„Love on Safari“</p>
+                  <p className="text-primary font-bold text-[10px] md:text-xs tracking-widest">„Love on Safari“</p>
                 </div>
               </div>
 
@@ -488,7 +495,6 @@ export default function LoveOnSafariPage() {
 
             <div className="lg:col-span-6 space-y-10">
               <div className="flex flex-col gap-2 mb-8 text-left">
-                <span className="text-primary font-bold text-[10px] tracking-[0.4em]">Expeditions-Checkliste</span>
                 <h3 className="font-headline text-2xl md:text-4xl font-bold text-secondary">Ihr kompakter Reiseverlauf</h3>
               </div>
 
@@ -497,7 +503,7 @@ export default function LoveOnSafariPage() {
                   <motion.div 
                     key={idx}
                     initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: idx * 0.05 }}
                     className="flex items-start gap-6 group text-left"
@@ -509,7 +515,7 @@ export default function LoveOnSafariPage() {
                       <h5 className="font-bold text-base md:text-lg text-secondary tracking-tight group-hover:text-primary transition-colors">
                         {step.t}
                       </h5>
-                      <p className="text-[14px] leading-[20px] font-normal text-muted-foreground opacity-60">
+                      <p className="text-[14px] leading-[20px] text-muted-foreground opacity-60">
                         {step.s}
                       </p>
                     </div>
@@ -519,8 +525,8 @@ export default function LoveOnSafariPage() {
 
               <div className="pt-10">
                 <Button 
-                  onClick={() => document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="w-full h-16 rounded-2xl bg-secondary text-white hover:bg-primary font-bold text-[11px] tracking-[0.3em] shadow-2xl border-none transition-all"
+                  onClick={() => scrollTo('inquiry')}
+                  className="h-14 px-10 rounded-xl bg-secondary text-white hover:bg-primary font-bold text-[10px] shadow-xl border-none transition-all w-fit mx-auto lg:mx-0"
                 >
                   Detaillierten Plan anfordern
                 </Button>
@@ -530,7 +536,100 @@ export default function LoveOnSafariPage() {
         </div>
       </section>
 
-      {/* 08 Final Inquiry Protocol */}
+      {/* 08 Moments that Connect Section */}
+      <section className="py-8 md:py-16 bg-white border-t border-border/40">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center mb-12 md:mb-20">
+            <h2 className="font-headline text-2xl md:text-5xl font-bold text-secondary tracking-tight mb-4">
+              Love on Safari: Momente, die verbinden
+            </h2>
+            <p className="text-muted-foreground font-bold text-[14px] leading-[20px]">
+              Warum eine Tansania-Safari mehr ist als nur eine romantische Reise
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 mb-16 md:mb-24 text-left">
+            <div className="space-y-6">
+              <h3 className="font-headline text-xl md:text-2xl font-bold text-secondary">
+                Gemeinsame Momente in der Weite der Natur
+              </h3>
+              <p className="text-[14px] leading-[20px] text-muted-foreground">
+                Gemeinsame Naturerlebnisse fördern das Wohlbefinden und stärken die Verbundenheit. In der Serengeti entsteht ein Raum, in dem Sie zur Ruhe kommen, sich aufeinander konzentrieren und Zeit bewusst miteinander verbringen können. So werden aus Eindrücken echte Erinnerungen.
+              </p>
+              <div className="p-5 bg-[#fdf7f2] rounded-2xl border border-primary/10">
+                <p className="text-[12px] font-bold text-primary leading-relaxed">
+                  Nachhaltiger Tipp: Wählen Sie Unterkünfte, die lokale Mitarbeitende beschäftigen und Community-Projekte vor Ort unterstützen.
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <h3 className="font-headline text-xl md:text-2xl font-bold text-secondary">
+                Digital Detox für zwei
+              </h3>
+              <p className="text-[14px] leading-[20px] text-muted-foreground">
+                Viele exklusive Lodges bieten bewusst eingeschränktes WLAN an – als Einladung, das Handy häufiger beiseitezulegen und sich ganz aufeinander einzulassen. So entstehen tiefere Gespräche, echte Nähe und ein Reiseerlebnis, das langfristig nachwirkt.
+              </p>
+              <div className="p-5 bg-[#fdf7f2] rounded-2xl border border-primary/10">
+                <p className="text-[12px] font-bold text-primary leading-relaxed">
+                  Nachhaltiger Tipp: Nutzen Sie wiederverwendbare Trinkflaschen und vermeiden Sie Einwegplastik während Ihrer Reise.
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <h3 className="font-headline text-xl md:text-2xl font-bold text-secondary">
+                Insider-Tipps
+              </h3>
+              <p className="text-[14px] leading-[20px] text-muted-foreground">
+                Die Green Season von November bis März bietet oft mehr Privatsphäre, stimmungsvolle Landschaften und attraktive Konditionen. In ausgewählten Lodges sind bei Bedarf auch Workation-Möglichkeiten vorhanden. So lässt sich die Reise flexibel gestalten.
+              </p>
+              <div className="p-5 bg-[#fdf7f2] rounded-2xl border border-primary/10">
+                <p className="text-[12px] font-bold text-primary leading-relaxed">
+                  Nachhaltiger Tipp: Fragen Sie nach „Silent Safaris“ mit E-Fahrzeugen, besonders im Tarangire-Nationalpark.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-[#FDF7F2] rounded-[2.5rem] md:rounded-[3.5rem] p-8 md:p-16 relative overflow-hidden text-left border border-[#F0EBE0]">
+            <div className="absolute top-0 right-0 p-12 opacity-[0.03] pointer-events-none">
+              <Compass className="w-64 h-64 text-secondary" />
+            </div>
+            
+            <div className="relative z-10 space-y-12">
+              <div>
+                <h2 className="font-headline text-2xl md:text-4xl font-bold text-secondary mb-4">
+                  Mehr als die Big Five: Kulturelle Begegnungen, die berühren
+                </h2>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+                <div className="space-y-4">
+                  <h4 className="font-bold text-lg text-secondary">Die Hadzabe: Ein Fenster in eine ursprüngliche Lebensweise</h4>
+                  <p className="text-[14px] leading-[20px] text-muted-foreground">
+                    Am Lake Eyasi leben die Hadzabe, eine der letzten Jäger-und-Sammler-Gemeinschaften. Ein Besuch ist keine inszenierte Vorführung, sondern eine respektvolle Begegnung, die Ihnen authentische Einblicke in Ihren Alltag ermöglicht – vom Honigsammeln bis zur traditionellen Jagd mit Pfeil und Bogen.
+                  </p>
+                </div>
+                <div className="space-y-4">
+                  <h4 className="font-bold text-lg text-secondary">Die Datoga: Meister des Feuers</h4>
+                  <p className="text-[14px] leading-[20px] text-muted-foreground">
+                    Die Datoga sind nomadische Hirten und zugleich erfahrene Schmiede. Aus Altmetall fertigen sie beeindruckende Speerspitzen und kunstvollen Armschmuck. Solche Begegnungen geben Ihrer Reise Tiefe und schaffen gemeinsame Erinnerungen, die weit über ein Foto hinausgehen.
+                  </p>
+                </div>
+              </div>
+
+              <div className="pt-8 flex justify-center md:justify-start">
+                 <Button onClick={() => scrollTo('inquiry')} className="h-14 px-12 rounded-xl bg-secondary text-white hover:bg-primary font-bold text-xs shadow-xl border-none transition-all group">
+                   Erfahren Sie mehr in unserer persönlichen Beratung <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                 </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 09 Final Inquiry Protocol */}
       <section id="inquiry" className="scroll-mt-20">
         <ContactSection />
       </section>
