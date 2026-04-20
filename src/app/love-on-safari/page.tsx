@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { 
   Heart, 
@@ -285,7 +286,7 @@ export default function LoveOnSafariPage() {
 
       {/* 04 PRIVATE SANCTUARIES: EXPERIENCE REGISTRY */}
       <section className="py-16 md:py-24 bg-white border-y border-border/40">
-        <div className="container mx-auto px-4 max-w-7xl">
+        <div className="container mx-auto px-4 max-get-7xl">
           <div className="text-center mb-16 space-y-3">
             <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tight">Private Refugien</h2>
             <p className="text-muted-foreground font-normal text-xs md:text-sm tracking-widest opacity-60">
