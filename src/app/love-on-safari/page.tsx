@@ -80,7 +80,7 @@ export default function LoveOnSafariPage() {
             </span>
           </div>
 
-          <div className="max-w-4xl mx-auto text-center space-y-3 mb-6 md:mb-10">
+          <div className="max-w-4xl mx-auto text-center space-y-2 mb-6 md:mb-10">
             <motion.h1 
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -186,7 +186,7 @@ export default function LoveOnSafariPage() {
       {/* 03 SIGNATURE PACKAGE: HIGH-FIDELITY CAMPAIGN */}
       <section className="py-12 md:py-24 bg-[#fdfcfb] border-t border-border/40 overflow-hidden">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="relative aspect-[16/9] min-h-[650px] md:min-h-[700px] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border border-border/40 bg-secondary group">
+          <div className="relative aspect-[16/9] min-h-[650px] md:min-h-[750px] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border border-border/40 bg-secondary group">
             <Image 
               src="https://images.unsplash.com/photo-1590001158193-79013ac7fa77?q=80&w=1920" 
               alt="Love on Safari Signature Package" 
@@ -219,23 +219,23 @@ export default function LoveOnSafariPage() {
             </div>
 
             {/* Prestige Package Card (Right Desktop) */}
-            <div className="absolute top-10 bottom-10 right-10 w-full max-w-[480px] bg-white p-8 md:p-12 lg:p-14 flex flex-col justify-between shadow-2xl hidden md:flex rounded-none z-30">
+            <div className="absolute top-10 bottom-10 right-10 w-full max-w-[500px] bg-white p-8 md:p-12 lg:p-14 flex flex-col justify-between shadow-2xl hidden md:flex rounded-none z-30">
               <div className="space-y-8">
                 <div>
-                  <p className="text-[#e3510d] font-black text-[10px] md:text-[14px] uppercase tracking-[0.4em] mb-4">TANSANIA</p>
+                  <p className="text-[#e3510d] font-black text-[12px] md:text-[16px] uppercase tracking-[0.4em] mb-4">TANSANIA</p>
                   <h4 className="font-headline text-2xl md:text-3xl lg:text-4xl font-bold text-[#141414] leading-[1.1] tracking-tighter">
                     15 Tage Love on Safari – <br />Luxus-Rundreise für Paare
                   </h4>
                 </div>
                 
                 <div className="space-y-4 text-[10px] md:text-[11px] font-bold text-[#141414]/80 uppercase tracking-widest leading-relaxed">
-                  <div className="flex gap-3 items-start"><p>Reisedauer: 15-tägig Flüge inklusive</p></div>
-                  <div className="flex gap-3 items-start"><p>Unterkünfte: Handverlesene romantische Lodges, Tented Camps mit Vollpension</p></div>
-                  <div className="flex gap-3 items-start"><p>Zweisamkeit pur: Keine Gruppen, kein Zeitdruck</p></div>
-                  <div className="flex gap-3 items-start"><p>Reisezeit: 2026-2027</p></div>
+                  <p>Reisedauer: 15-tägig Flüge inklusive</p>
+                  <p>Unterkünfte: Handverlesene romantische Lodges, Tented Camps mit Vollpension</p>
+                  <p>Zweisamkeit pur: Keine Gruppen, kein Zeitdruck</p>
+                  <p>Reisezeit: 2026-2027</p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2">
+                <div className="flex flex-wrap gap-2 pt-2">
                   {packageTags.map(tag => (
                     <div key={tag} className="px-3 py-1.5 rounded-full border border-border text-[#141414]/60 text-[7px] md:text-[8px] font-black uppercase tracking-widest bg-[#fdfcfb]">
                       {tag}
@@ -268,24 +268,28 @@ export default function LoveOnSafariPage() {
               <p className="text-[#e3510d] font-black text-[12px] uppercase tracking-[0.4em]">TANSANIA</p>
               <h4 className="font-headline text-2xl font-bold text-secondary leading-tight uppercase">15 Tage Love on Safari</h4>
               <div className="space-y-4 text-[10px] font-bold text-muted-foreground uppercase tracking-widest leading-relaxed">
-                <p>• 15-tägig Flüge inklusive</p>
-                <p>• Romantische Lodges & Camps</p>
-                <p>• Exklusive Privat-Safari</p>
+                <p>• Reisedauer: 15-tägig Flüge inklusive</p>
+                <p>• Unterkünfte: Romantische Lodges & Camps</p>
+                <p>• Zweisamkeit: Exklusive Privat-Safari</p>
+                <p>• Reisezeit: 2026-2027</p>
               </div>
               <div className="flex flex-wrap gap-2 pt-2">
-                {packageTags.slice(0,3).map(tag => (
-                  <Badge key={tag} variant="outline" className="bg-[#fdfcfb] text-[7px] font-black uppercase">{tag}</Badge>
+                {packageTags.map(tag => (
+                  <Badge key={tag} variant="outline" className="bg-[#fdfcfb] text-[7px] font-black uppercase border-border/60">{tag}</Badge>
                 ))}
               </div>
             </div>
             <div className="pt-6 border-t border-border flex items-center justify-between">
               <div className="flex flex-col">
                 <span className="text-[10px] text-muted-foreground/40 line-through font-bold">7.299 €</span>
-                <span className="text-2xl font-black text-secondary">6.799 €</span>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-[9px] font-bold text-muted-foreground">ab</span>
+                  <span className="text-2xl font-black text-secondary">6.799 €</span>
+                </div>
                 <p className="text-[8px] font-black text-muted-foreground uppercase">pro Person</p>
               </div>
               <Link href="/trip-planner">
-                <Button className="rounded-xl h-12 px-6 bg-primary text-white font-bold text-[10px] uppercase tracking-widest border-none">ANFRAGEN</Button>
+                <Button className="rounded-none h-12 px-6 bg-[#e3510d] text-white font-bold text-[10px] uppercase tracking-widest border-none">JETZT ANFRAGEN</Button>
               </Link>
             </div>
           </div>
@@ -349,7 +353,7 @@ export default function LoveOnSafariPage() {
       {/* 05 EXPERT QUOTE SECTION */}
       <section className="py-24 md:py-40 bg-secondary text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-        <div className="container relative z-10 mx-auto px-4 max-w-4xl text-center">
+        <div className="container relative z-10 mx-auto max-w-4xl text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
