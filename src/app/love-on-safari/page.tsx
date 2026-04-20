@@ -11,22 +11,19 @@ import {
   ChevronRight,
   Sparkles,
   Leaf,
-  Smartphone,
   ShieldCheck,
   Globe
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
-import { ContactSection } from '@/components/shared/ContactSection';
-import { cn } from '@/lib/utils';
 
 const packageTags = [
-  "Geführte Erlebnisreisen",
-  "Kreativ kombinierbar",
-  "Garantierte Durchführung",
-  "Ideal für romantische Paare",
-  "Begrenzte Plätze verfügbar"
+  "geführte Erlebnisreisen",
+  "kreativ kombinierbar",
+  "garantierte Durchführung",
+  "ideal für romantische Paare",
+  "begrenzte Plätze verfügbar"
 ];
 
 const featureRegistry = [
@@ -257,7 +254,7 @@ export default function LoveOnSafariPage() {
                 <div className="flex flex-col">
                   <span className="text-sm md:text-base text-muted-foreground/50 line-through font-bold">7.299 €</span>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-[10px] md:text-[11px] font-bold text-secondary tracking-widest">Ab</span>
+                    <span className="text-[10px] md:text-[11px] font-bold text-secondary tracking-widest">ab</span>
                     <span className="text-lg md:text-xl font-black text-secondary tracking-tighter whitespace-nowrap">6.799 €</span>
                   </div>
                   <p className="text-[8px] font-bold text-muted-foreground/60 tracking-widest">Pro Person</p>
@@ -299,7 +296,7 @@ export default function LoveOnSafariPage() {
                 <div className="flex flex-col items-center text-center">
                   <span className="text-base text-muted-foreground/40 line-through font-bold">7.299 €</span>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-[9px] font-bold text-muted-foreground">Ab</span>
+                    <span className="text-[9px] font-bold text-muted-foreground">ab</span>
                     <span className="text-3xl font-black text-secondary tracking-tighter">6.799 €</span>
                   </div>
                   <p className="text-[8px] font-bold text-muted-foreground tracking-widest">Pro Person</p>
@@ -523,10 +520,10 @@ export default function LoveOnSafariPage() {
                 ))}
               </div>
 
-              <div className="pt-10">
+              <div className="pt-6 flex justify-center">
                 <Button 
                   onClick={() => scrollTo('inquiry')}
-                  className="h-14 px-10 rounded-xl bg-secondary text-white hover:bg-primary font-bold text-[10px] shadow-xl border-none transition-all w-fit mx-auto lg:mx-0"
+                  className="h-14 px-10 rounded-xl bg-secondary text-white hover:bg-primary font-bold text-[10px] shadow-xl border-none transition-all w-full sm:w-auto"
                 >
                   Detaillierten Plan anfordern
                 </Button>
@@ -539,7 +536,7 @@ export default function LoveOnSafariPage() {
       {/* 08 Moments that Connect Section */}
       <section className="py-8 md:py-16 bg-white border-t border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="text-center mb-12 md:mb-20">
+          <div className="text-center mb-10 md:mb-16 space-y-2">
             <h2 className="font-headline text-2xl md:text-5xl font-bold text-secondary tracking-tight mb-4">
               Love on Safari: Momente, die verbinden
             </h2>
@@ -548,7 +545,7 @@ export default function LoveOnSafariPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 mb-16 md:mb-24 text-left">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 mb-10 md:mb-16 text-left">
             <div className="space-y-6">
               <h3 className="font-headline text-xl md:text-2xl font-bold text-secondary">
                 Gemeinsame Momente in der Weite der Natur
@@ -597,7 +594,7 @@ export default function LoveOnSafariPage() {
               <Compass className="w-64 h-64 text-secondary" />
             </div>
             
-            <div className="relative z-10 space-y-12">
+            <div className="relative z-10 space-y-8 md:space-y-10">
               <div>
                 <h2 className="font-headline text-2xl md:text-4xl font-bold text-secondary mb-4">
                   Mehr als die Big Five: Kulturelle Begegnungen, die berühren
@@ -619,8 +616,11 @@ export default function LoveOnSafariPage() {
                 </div>
               </div>
 
-              <div className="pt-8 flex justify-center md:justify-start">
-                 <Button onClick={() => scrollTo('inquiry')} className="h-14 px-12 rounded-xl bg-secondary text-white hover:bg-primary font-bold text-xs shadow-xl border-none transition-all group">
+              <div className="pt-8 flex justify-center">
+                 <Button 
+                   onClick={() => scrollTo('inquiry')} 
+                   className="h-14 px-8 md:px-12 rounded-xl bg-secondary text-white hover:bg-primary font-bold text-[10px] md:text-xs shadow-xl border-none transition-all group w-full sm:w-auto"
+                 >
                    Erfahren Sie mehr in unserer persönlichen Beratung <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                  </Button>
               </div>
