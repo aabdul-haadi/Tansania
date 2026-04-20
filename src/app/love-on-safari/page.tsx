@@ -103,8 +103,8 @@ export default function LoveOnSafariPage() {
 
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
-      {/* 01 HIGH-PRESTIGE HERO: NARRATIVE HUB */}
-      <section className="bg-white pt-24 md:pt-28">
+      {/* 01 COMPACTED HERO: NARRATIVE HUB */}
+      <section className="bg-white pt-24 md:pt-28 pb-8 md:pb-12">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-2 mb-4">
             <span className="text-secondary font-bold text-[10px] md:text-[12px] tracking-[0.3em] text-center">
@@ -115,7 +115,7 @@ export default function LoveOnSafariPage() {
             </span>
           </div>
 
-          <div className="max-w-4xl mx-auto text-center space-y-2 mb-6 md:mb-10">
+          <div className="max-w-4xl mx-auto text-center space-y-3 mb-6 md:mb-8">
             <motion.h1 
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -138,7 +138,7 @@ export default function LoveOnSafariPage() {
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="relative w-full aspect-[21/9] min-h-[350px] overflow-hidden"
+            className="relative w-full aspect-[21/9] min-h-[300px] md:min-h-[450px] overflow-hidden"
           >
             <Image 
               src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
@@ -162,10 +162,10 @@ export default function LoveOnSafariPage() {
         </div>
       </section>
 
-      {/* 02 INTRO SECTION: EMOTIONAL NARRATIVE */}
-      <section className="py-12 md:py-20 bg-white">
+      {/* 02 COMPACTED INTRO: EMOTIONAL NARRATIVE */}
+      <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4 max-w-5xl text-center">
-          <div className="space-y-1 mb-4">
+          <div className="space-y-1 mb-2">
             <motion.h2 
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -182,14 +182,14 @@ export default function LoveOnSafariPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal max-w-4xl mx-auto mb-8"
+            className="text-muted-foreground text-sm md:text-lg leading-relaxed font-normal max-w-4xl mx-auto mb-6"
           >
             Es gibt Reisen, die man sieht, und solche, die man spürt. Wenn Sie morgens ganz entspannt zur Safari aufbrechen, 
             ohne Eile, ohne Ablenkung, zählt nur dieser Moment: Ihre gemeinsame Zeit. Die Natur übernimmt den Rest – und 
             macht daraus Erinnerungen, die bleiben.
           </motion.p>
 
-          <div className="space-y-8 group">
+          <div className="space-y-6 group">
             <motion.div 
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -218,10 +218,10 @@ export default function LoveOnSafariPage() {
         </div>
       </section>
 
-      {/* 03 SIGNATURE PACKAGE: HIGH-FIDELITY CAMPAIGN */}
-      <section className="py-12 md:py-24 bg-[#fdfcfb] border-t border-border/40 overflow-hidden">
+      {/* 03 COMPACTED SIGNATURE PACKAGE: HIGH-FIDELITY CAMPAIGN */}
+      <section className="py-12 md:py-16 bg-[#fdfcfb] border-t border-border/40 overflow-hidden">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="relative aspect-[16/9] min-h-[750px] md:min-h-[850px] lg:min-h-[750px] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border border-border/40 bg-secondary group">
+          <div className="relative aspect-[16/9] min-h-[700px] md:min-h-[800px] lg:min-h-[700px] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border border-border/40 bg-secondary group">
             <Image 
               src="https://images.unsplash.com/photo-1590001158193-79013ac7fa77?q=80&w=1920" 
               alt="Love on Safari Signature Package" 
@@ -231,13 +231,14 @@ export default function LoveOnSafariPage() {
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-transparent" />
 
-            <div className="absolute top-6 left-6 md:top-10 md:left-12 space-y-3 z-30 hidden md:block">
+            {/* Left Overlay Labels */}
+            <div className="absolute top-6 left-6 md:top-10 md:left-12 space-y-2 z-30 hidden md:block">
               <motion.div 
                 initial={{ x: -30, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 className="bg-[#7a1818] text-white px-6 py-4 md:px-10 md:py-5 shadow-2xl rounded-sm w-fit"
               >
-                <h3 className="font-headline font-black text-xs md:text-2xl tracking-widest leading-none uppercase text-white">
+                <h3 className="font-headline font-black text-xs md:text-xl lg:text-2xl tracking-widest leading-none uppercase text-white">
                   LUXUS "LOVE ON SAFARI" PAARE IN TANSANIA
                 </h3>
               </motion.div>
@@ -252,16 +253,17 @@ export default function LoveOnSafariPage() {
               </motion.div>
             </div>
 
-            <div className="absolute top-10 bottom-10 right-10 w-full max-w-[500px] bg-white p-8 md:p-12 lg:p-14 flex flex-col justify-between shadow-2xl hidden lg:flex rounded-none z-30">
-              <div className="space-y-8">
+            {/* Desktop Prestige Card */}
+            <div className="absolute top-10 bottom-10 right-10 w-full max-w-[480px] bg-white p-8 md:p-10 lg:p-12 flex flex-col justify-between shadow-2xl hidden lg:flex rounded-none z-30">
+              <div className="space-y-6">
                 <div>
-                  <p className="text-[#e3510d] font-black text-[12px] md:text-[16px] uppercase tracking-[0.4em] mb-4">TANSANIA</p>
-                  <h4 className="font-headline text-2xl md:text-3xl lg:text-4xl font-bold text-[#141414] leading-[1.1] tracking-tighter uppercase">
+                  <p className="text-[#e3510d] font-black text-[12px] md:text-[14px] uppercase tracking-[0.4em] mb-3">TANSANIA</p>
+                  <h4 className="font-headline text-2xl md:text-3xl font-bold text-[#141414] leading-[1.1] tracking-tighter uppercase">
                     15 Tage Love on Safari – <br />Luxus-Rundreise für Paare
                   </h4>
                 </div>
                 
-                <div className="space-y-4 text-[10px] md:text-[11px] font-bold text-[#141414]/80 uppercase tracking-widest leading-relaxed">
+                <div className="space-y-3 text-[10px] md:text-[11px] font-bold text-[#141414]/80 uppercase tracking-widest leading-relaxed">
                   <p>Reisedauer: 15-tägig Flüge inklusive</p>
                   <p>Unterkünfte: Handverlesene romantische Lodges, Tented Camps mit Vollpension</p>
                   <p>Zweisamkeit pur: Keine Gruppen, kein Zeitdruck</p>
@@ -277,7 +279,7 @@ export default function LoveOnSafariPage() {
                 </div>
               </div>
 
-              <div className="pt-10 mt-6 border-t border-border/50 flex items-end justify-between gap-6">
+              <div className="pt-8 mt-4 border-t border-border/50 flex items-end justify-between gap-6">
                 <div className="flex flex-col">
                   <span className="text-[10px] md:text-[12px] text-muted-foreground/50 line-through font-bold">7.299 €</span>
                   <div className="flex items-baseline gap-1.5">
@@ -295,7 +297,8 @@ export default function LoveOnSafariPage() {
             </div>
           </div>
           
-          <div className="lg:hidden mt-8 space-y-6">
+          {/* Mobile Overlay & Card Logic */}
+          <div className="lg:hidden mt-6 space-y-4">
             <div className="space-y-2">
               <div className="bg-[#7a1818] text-white p-4 rounded-xl shadow-lg">
                 <h3 className="font-headline font-black text-xs md:text-lg tracking-widest uppercase text-white text-center">
@@ -308,7 +311,7 @@ export default function LoveOnSafariPage() {
               </div>
             </div>
 
-            <div className="bg-white p-8 rounded-[2rem] shadow-xl border border-border/40 space-y-8">
+            <div className="bg-white p-8 rounded-[2rem] shadow-xl border border-border/40 space-y-6">
               <div className="space-y-6">
                 <div>
                   <p className="text-[#e3510d] font-black text-[12px] uppercase tracking-[0.4em] mb-2">TANSANIA</p>
@@ -347,20 +350,19 @@ export default function LoveOnSafariPage() {
         </div>
       </section>
 
-      {/* 04 EXPERIENCE AUDIT: WHAT MAKES IT SPECIAL */}
-      <section className="py-16 md:py-32 bg-white">
+      {/* 04 COMPACTED EXPERIENCE AUDIT: WHAT MAKES IT SPECIAL */}
+      <section className="py-12 md:py-20 bg-white">
         <div className="container mx-auto px-4 max-w-7xl">
-          {/* Section Header Protocol */}
-          <div className="text-center mb-16 md:mb-24 flex flex-col items-center">
-            <h2 className="font-headline text-3xl md:text-5xl font-bold text-secondary leading-tight tracking-tight mb-4">
+          <div className="text-center mb-12 md:mb-16 flex flex-col items-center">
+            <h2 className="font-headline text-3xl md:text-5xl font-bold text-secondary leading-tight tracking-tight mb-3">
               Was „Love on Safari“ besonders macht
             </h2>
-            <div className="w-24 h-1 bg-primary rounded-full" />
+            <div className="w-20 h-1 bg-primary rounded-full opacity-60" />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Narrative Registry List */}
-            <div className="space-y-8 md:space-y-10">
+            <div className="space-y-6 md:space-y-8">
               {featureRegistry.map((feature, idx) => (
                 <motion.div 
                   key={idx}
@@ -368,12 +370,12 @@ export default function LoveOnSafariPage() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.05 }}
-                  className="space-y-2 text-left"
+                  className="space-y-1 text-left"
                 >
-                  <h4 className="font-bold text-base md:text-xl text-secondary leading-tight uppercase tracking-tight">
+                  <h4 className="font-bold text-base md:text-lg text-secondary leading-tight uppercase tracking-tight">
                     {feature.title}
                   </h4>
-                  <p className="text-[13px] md:text-[15px] font-normal text-muted-foreground leading-relaxed">
+                  <p className="text-[13px] md:text-[14px] font-normal text-muted-foreground leading-relaxed">
                     {feature.desc}
                   </p>
                 </motion.div>
@@ -388,15 +390,13 @@ export default function LoveOnSafariPage() {
                 viewport={{ once: true }}
                 className="relative"
               >
-                {/* Contextual Badge */}
                 <div className="absolute -top-4 -left-4 z-20">
                   <Badge className="bg-primary text-white border-none px-5 py-2.5 text-[10px] font-black uppercase tracking-widest shadow-2xl rounded-sm">
                     Maßgeschneidert
                   </Badge>
                 </div>
 
-                {/* Pebble Shape Visual Container */}
-                <div className="relative aspect-square w-full max-w-[550px] mx-auto overflow-hidden shadow-2xl bg-muted rounded-[50%_50%_50%_50%_/_60%_60%_40%_40%] group">
+                <div className="relative aspect-square w-full max-w-[500px] mx-auto overflow-hidden shadow-2xl bg-muted rounded-[50%_50%_50%_50%_/_60%_60%_40%_40%] group">
                   <Image 
                     src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200" 
                     alt="Couple toasting at safari sunset" 
@@ -407,25 +407,24 @@ export default function LoveOnSafariPage() {
                   <div className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-transparent pointer-events-none" />
                 </div>
 
-                {/* Decorative Element */}
-                <div className="absolute -bottom-10 -right-10 w-40 h-40 opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '15px 15px' }} />
+                <div className="absolute -bottom-6 -right-6 w-32 h-32 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '15px 15px' }} />
               </motion.div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 05 PRIVATE SANCTUARIES: EXPERIENCE REGISTRY */}
-      <section className="py-16 md:py-24 bg-white border-y border-border/40">
+      {/* 05 COMPACTED PRIVATE SANCTUARIES: EXPERIENCE REGISTRY */}
+      <section className="py-12 md:py-16 bg-white border-y border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="text-center mb-16 space-y-3">
+          <div className="text-center mb-10 md:mb-12 space-y-2">
             <h2 className="font-headline text-3xl md:text-5xl font-normal text-secondary tracking-tight">Private Refugien</h2>
-            <p className="text-muted-foreground font-normal text-xs md:text-sm tracking-widest opacity-60">
+            <p className="text-muted-foreground font-normal text-[10px] md:text-sm tracking-widest opacity-60 uppercase">
               Exklusiv für Paare kuratierte Erlebnisse
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {experiences.map((exp, i) => (
               <motion.div
                 key={i}
@@ -445,12 +444,12 @@ export default function LoveOnSafariPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
-                  <CardContent className="p-8 flex flex-col flex-grow text-left space-y-4">
+                  <CardContent className="p-6 md:p-8 flex flex-col flex-grow text-left space-y-3">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary shadow-inner">
                         <exp.icon className="w-5 h-5" />
                       </div>
-                      <h3 className="font-headline text-xl md:text-2xl font-bold text-secondary tracking-tight">{exp.title}</h3>
+                      <h3 className="font-headline text-xl md:text-2xl font-bold text-secondary tracking-tight uppercase">{exp.title}</h3>
                     </div>
                     <p className="text-muted-foreground text-[14px] leading-[20px] font-normal opacity-80 flex-grow">
                       {exp.desc}
@@ -469,45 +468,45 @@ export default function LoveOnSafariPage() {
         </div>
       </section>
 
-      {/* 06 EXPERT QUOTE SECTION */}
-      <section className="py-24 md:py-40 bg-secondary text-white relative overflow-hidden">
+      {/* 06 COMPACTED EXPERT QUOTE SECTION */}
+      <section className="py-20 md:py-28 bg-secondary text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         <div className="container relative z-10 mx-auto max-w-4xl text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            className="space-y-6"
           >
-            <div className="w-12 h-px bg-primary/40 mx-auto" />
-            <h2 className="font-headline text-3xl md:text-6xl font-normal leading-tight italic">
+            <div className="w-10 h-px bg-primary/40 mx-auto" />
+            <h2 className="font-headline text-2xl md:text-5xl font-normal leading-tight italic px-4">
               „Die Savanne flüstert ihre Geschichten nur denen zu, die sich Zeit für die Stille nehmen.“
             </h2>
-            <div className="flex flex-col items-center gap-4">
-               <p className="text-primary font-bold text-xs tracking-[0.4em]">Samson Kyashama</p>
-               <p className="text-white/40 text-[10px] font-bold tracking-widest uppercase">Founder & Africa Expert</p>
+            <div className="flex flex-col items-center gap-2">
+               <p className="text-primary font-bold text-[10px] md:text-xs tracking-[0.4em]">Samson Kyashama</p>
+               <p className="text-white/40 text-[9px] md:text-[10px] font-bold tracking-widest uppercase">Founder & Africa Expert</p>
             </div>
-            <div className="w-12 h-px bg-primary/40 mx-auto" />
+            <div className="w-10 h-px bg-primary/40 mx-auto" />
           </motion.div>
         </div>
       </section>
 
-      {/* 07 AUTHORITY REGISTRY */}
-      <section className="py-16 md:py-32 bg-white">
+      {/* 07 COMPACTED AUTHORITY REGISTRY */}
+      <section className="py-12 md:py-20 bg-white">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             {[
               { icon: ShieldCheck, t: "Gesicherte Träume", d: "Durch die DRSF-Mitgliedschaft sind Ihre Anzahlungen und die Reise zu 100% abgesichert." },
               { icon: Compass, t: "Eigene Guides", d: "Keine Subunternehmer. Unsere Guides sind Teil der Familie und kennen jeden geheimen Spot." },
               { icon: MapPin, t: "Direktkontakt", d: "Ein fester Ansprechpartner in Berlin begleitet Sie von der ersten Idee bis zur Rückkehr." }
             ].map((item, i) => (
-              <div key={i} className="space-y-6 text-center group">
-                <div className="w-16 h-16 rounded-2xl bg-[#FDF7F2] border border-[#F0EBE0] flex items-center justify-center mx-auto text-primary shadow-sm group-hover:bg-primary group-hover:text-white transition-all duration-500">
-                  <item.icon className="w-8 h-8" />
+              <div key={i} className="space-y-4 text-center group">
+                <div className="w-14 h-14 rounded-2xl bg-[#FDF7F2] border border-[#F0EBE0] flex items-center justify-center mx-auto text-primary shadow-sm group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                  <item.icon className="w-7 h-7" />
                 </div>
-                <div className="space-y-3">
-                  <h4 className="font-headline text-xl md:text-2xl font-normal text-secondary tracking-tight uppercase">{item.t}</h4>
-                  <p className="text-[14px] leading-[20px] text-muted-foreground font-normal opacity-70 px-4">
+                <div className="space-y-2">
+                  <h4 className="font-headline text-lg md:text-2xl font-normal text-secondary tracking-tight uppercase">{item.t}</h4>
+                  <p className="text-[13px] md:text-[14px] leading-[20px] text-muted-foreground font-normal opacity-70 px-4">
                     {item.d}
                   </p>
                 </div>
