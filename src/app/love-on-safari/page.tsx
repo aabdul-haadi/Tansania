@@ -17,6 +17,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
+import { ContactSection } from '@/components/shared/ContactSection';
 
 const packageTags = [
   "geführte Erlebnisreisen",
@@ -113,7 +114,7 @@ export default function LoveOnSafariPage() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-muted-foreground text-[14px] leading-[20px] max-w-4xl mx-auto font-normal"
+              className="text-muted-foreground text-[11px] md:text-[13px] max-w-4xl mx-auto font-normal"
             >
               Erleben Sie die Weite der Serengeti, die besondere Atmosphäre des Ngorongoro-Kraters und im Anschluss Sansibar mit seinem warmen, türkisfarbenen Meer. Privat geplant und mit ausreichend Zeit für Sie als Paar.
             </motion.p>
@@ -236,7 +237,7 @@ export default function LoveOnSafariPage() {
                 
                 <div className="space-y-1.5 text-[10px] md:text-[11px] font-bold text-[#141414]/80 tracking-widest leading-relaxed">
                   <p>Reisedauer: 15-tägig Flüge inklusive</p>
-                  <p>Unterkünfte: Romantische Lodges & Camps</p>
+                  <p>Unterkünfte: Handverlesene romantische Lodges & Camps</p>
                   <p>Zweisamkeit pur: Keine Gruppen, kein Zeitdruck</p>
                   <p>Reisezeit: 2026-2027</p>
                 </div>
@@ -333,10 +334,10 @@ export default function LoveOnSafariPage() {
                   transition={{ delay: idx * 0.05 }}
                   className="space-y-1 text-left"
                 >
-                  <h4 className="font-headline text-xl md:text-2xl font-bold text-secondary tracking-tight">
+                  <h4 className="font-headline text-base md:text-xl font-bold text-secondary tracking-tight">
                     {feature.title}
                   </h4>
-                  <p className="text-[14px] leading-[20px] text-muted-foreground">
+                  <p className="text-[13px] md:text-[16px] text-muted-foreground">
                     {feature.desc}
                   </p>
                 </motion.div>
@@ -399,7 +400,7 @@ export default function LoveOnSafariPage() {
 
       {/* 06 Trust Section */}
       <section className="py-8 md:py-16 bg-white border-y border-border/40">
-        <div className="container mx-auto px-4 max-get-7xl">
+        <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="space-y-8 text-left">
               <div className="space-y-4">
