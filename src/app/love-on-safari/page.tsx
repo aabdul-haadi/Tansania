@@ -296,7 +296,7 @@ export default function LoveOnSafariPage() {
                   <span className="text-sm md:text-base text-muted-foreground/50 line-through font-bold">7.299 €</span>
                   <div className="flex items-baseline gap-1">
                     <span className="text-[10px] md:text-[11px] font-bold text-secondary tracking-widest">ab</span>
-                    <span className="text-lg md:text-xl font-black text-secondary tracking-tighter whitespace-nowrap">6.799 €</span>
+                    <span className="text-xl md:text-2xl font-black text-secondary tracking-tighter whitespace-nowrap">6.799 €</span>
                   </div>
                   <p className="text-[8px] font-bold text-muted-foreground/60 tracking-widest">Pro Person</p>
                 </div>
@@ -377,7 +377,7 @@ export default function LoveOnSafariPage() {
                   <h4 className="font-headline text-base md:text-xl font-bold text-secondary tracking-tight">
                     {feature.title}
                   </h4>
-                  <p className="text-[13px] md:text-[16px] text-muted-foreground">
+                  <p className="text-[14px] leading-[20px] text-muted-foreground font-normal">
                     {feature.desc}
                   </p>
                 </motion.div>
@@ -553,7 +553,7 @@ export default function LoveOnSafariPage() {
                       <h5 className="font-bold text-base md:text-lg text-secondary tracking-tight group-hover:text-primary transition-colors">
                         {step.t}
                       </h5>
-                      <p className="text-[14px] leading-[20px] text-muted-foreground opacity-60">
+                      <p className="text-[14px] leading-[20px] text-muted-foreground font-normal opacity-60">
                         {step.s}
                       </p>
                     </div>
@@ -591,7 +591,7 @@ export default function LoveOnSafariPage() {
               <h3 className="font-headline text-xl md:text-2xl font-bold text-secondary">
                 Gemeinsame Momente in der Weite der Natur
               </h3>
-              <p className="text-[14px] leading-[20px] text-muted-foreground">
+              <p className="text-[14px] leading-[20px] text-muted-foreground font-normal">
                 Gemeinsame Naturerlebnisse fördern das Wohlbefinden und stärken die Verbundenheit. In der Serengeti entsteht ein Raum, in dem Sie zur Ruhe kommen, sich aufeinander konzentrieren und Zeit bewusst miteinander verbringen können. So werden aus Eindrücken echte Erinnerungen.
               </p>
               <div className="p-5 bg-[#fdf7f2] rounded-2xl border border-primary/10">
@@ -605,7 +605,7 @@ export default function LoveOnSafariPage() {
               <h3 className="font-headline text-xl md:text-2xl font-bold text-secondary">
                 Digital Detox für zwei
               </h3>
-              <p className="text-[14px] leading-[20px] text-muted-foreground">
+              <p className="text-[14px] leading-[20px] text-muted-foreground font-normal">
                 Viele exklusive Lodges bieten bewusst eingeschränktes WLAN an – als Einladung, das Handy häufiger beiseitezulegen und sich ganz aufeinander einzulassen. So entstehen tiefere Gespräche, echte Nähe und ein Reiseerlebnis, das langfristig nachwirkt.
               </p>
               <div className="p-5 bg-[#fdf7f2] rounded-2xl border border-primary/10">
@@ -619,7 +619,7 @@ export default function LoveOnSafariPage() {
               <h3 className="font-headline text-xl md:text-2xl font-bold text-secondary">
                 Insider-Tipps
               </h3>
-              <p className="text-[14px] leading-[20px] text-muted-foreground">
+              <p className="text-[14px] leading-[20px] text-muted-foreground font-normal">
                 Die Green Season von November bis März bietet oft mehr Privatsphäre, stimmungsvolle Landschaften und attraktive Konditionen. In ausgewählten Lodges sind bei Bedarf auch Workation-Möglichkeiten vorhanden. So lässt sich die Reise flexibel gestalten.
               </p>
               <div className="p-5 bg-[#fdf7f2] rounded-2xl border border-primary/10">
@@ -645,13 +645,13 @@ export default function LoveOnSafariPage() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
                 <div className="space-y-4">
                   <h4 className="font-bold text-lg text-secondary">Die Hadzabe: Ein Fenster in eine ursprüngliche Lebensweise</h4>
-                  <p className="text-[14px] leading-[20px] text-muted-foreground">
+                  <p className="text-[14px] leading-[20px] text-muted-foreground font-normal">
                     Am Lake Eyasi leben die Hadzabe, eine der letzten Jäger-und-Sammler-Gemeinschaften. Ein Besuch ist keine inszenierte Vorführung, sondern eine respektvolle Begegnung, die Ihnen authentische Einblicke in Ihren Alltag ermöglicht – vom Honigsammeln bis zur traditionellen Jagd mit Pfeil und Bogen.
                   </p>
                 </div>
                 <div className="space-y-4">
                   <h4 className="font-bold text-lg text-secondary">Die Datoga: Meister des Feuers</h4>
-                  <p className="text-[14px] leading-[20px] text-muted-foreground">
+                  <p className="text-[14px] leading-[20px] text-muted-foreground font-normal">
                     Die Datoga sind nomadische Hirten und zugleich erfahrene Schmiede. Aus Altmetall fertigen sie beeindruckende Speerspitzen und kunstvollen Armschmuck. Solche Begegnungen geben Ihrer Reise Tiefe und schaffen gemeinsame Erinnerungen, die weit über ein Foto hinausgehen.
                   </p>
                 </div>
@@ -672,7 +672,7 @@ export default function LoveOnSafariPage() {
 
       {/* 09 Love on Safari Galerie - Modern Slider Integration */}
       <section className="py-8 md:py-16 bg-[#fdfcfb]">
-        <div className="container mx-auto px-4 max-w-7xl">
+        <div className="container mx-auto px-4 max-get-7xl">
           <div className="text-center mb-10 md:mb-16 space-y-2">
             <h2 className="font-headline text-3xl md:text-5xl font-bold text-secondary tracking-tight uppercase tracking-tighter">
               Love on Safari Galerie
@@ -832,10 +832,10 @@ export default function LoveOnSafariPage() {
       <section className="py-8 md:py-16 bg-white border-t border-border/40">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12 md:mb-20 space-y-4">
-            <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary uppercase tracking-tighter">
+            <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary tracking-tighter">
               Was unsere Paare berichten
             </h2>
-            <p className="text-muted-foreground font-bold text-sm md:text-lg opacity-80">Echte Erfahrung, echte Begeisterung</p>
+            <p className="text-muted-foreground font-normal text-[14px] leading-[20px] opacity-80">Echte Erfahrung, echte Begeisterung</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-16">
@@ -856,22 +856,16 @@ export default function LoveOnSafariPage() {
             ))}
           </div>
 
-          <div className="flex flex-col items-center gap-12">
+          <div className="flex justify-center">
             <Button onClick={() => scrollTo('inquiry')} size="lg" className="rounded-xl px-12 h-14 bg-secondary text-white font-bold text-[10px] tracking-widest shadow-xl border-none">
               Kostenlose Beratung für Paare
             </Button>
-
-            <div className="relative w-full max-w-4xl aspect-[21/9] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl bg-muted border border-border/50">
-               <Image src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=1200" alt="Testimonials Anchor" fill className="object-cover" />
-               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-               <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white font-headline text-lg md:text-2xl font-bold uppercase tracking-widest whitespace-nowrap">Love on Safari Testimonials</div>
-            </div>
           </div>
         </div>
       </section>
 
       {/* 13 FAQ Registry */}
-      <section className="py-8 md:py-16 bg-[#fdfcfb]">
+      <section ref={faqRef} className="pt-2 pb-16 md:pt-4 md:pb-32 bg-[#fdfcfb] scroll-mt-20">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-10 md:mb-16">
             <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary tracking-tight">Häufig gestellte Fragen zu Love on Safari</h2>
