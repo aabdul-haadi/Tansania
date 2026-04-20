@@ -1,9 +1,7 @@
-
 "use client";
 
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { 
   Heart, 
@@ -13,9 +11,9 @@ import {
   ArrowRight, 
   CheckCircle2, 
   Star,
-  Sun,
-  Moon,
-  Wine
+  Wine,
+  ShieldCheck,
+  MapPin
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -71,8 +69,8 @@ export default function LoveOnSafariPage() {
             transition={{ duration: 1 }}
             className="space-y-6"
           >
-            <Badge className="bg-primary text-white border-none px-4 py-1 text-[10px] font-bold uppercase tracking-[0.3em] shadow-xl">
-              Romantik Registry
+            <Badge className="bg-primary text-white border-none px-4 py-1 text-[10px] font-bold shadow-xl">
+              Romantik-Angebot
             </Badge>
             <h1 className="font-headline text-4xl md:text-8xl font-normal text-white leading-tight tracking-tight">
               Love on Safari
