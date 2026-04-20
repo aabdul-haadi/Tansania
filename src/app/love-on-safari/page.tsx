@@ -48,11 +48,11 @@ export default function LoveOnSafariPage() {
   return (
     <div className="bg-[#fdfcfb] min-h-screen font-normal">
       {/* 01 HIGH-PRESTIGE HERO: COMPACTED NARRATIVE HUB */}
-      <section className="bg-white pt-32 md:pt-40">
+      <section className="bg-white pt-24 md:pt-28">
         <div className="container mx-auto px-4 max-w-7xl">
           
-          {/* Top Registry Labels */}
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-2 mb-10 md:mb-14">
+          {/* Top Registry Labels - Compact Tracking */}
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-2 mb-8 md:mb-10">
             <span className="text-secondary font-bold text-[8px] md:text-[10px] uppercase tracking-[0.3em]">
               LUXUS SAFARI FÜR PAARE IN TANSANIA
             </span>
@@ -61,12 +61,12 @@ export default function LoveOnSafariPage() {
             </span>
           </div>
 
-          {/* Centered Narrative Block - Compacted Spacing */}
-          <div className="max-w-4xl mx-auto text-center space-y-3 md:space-y-5 mb-10 md:mb-16">
+          {/* Centered Narrative Block - Compacted Layout */}
+          <div className="max-w-5xl mx-auto text-center space-y-3 md:space-y-4 mb-10 md:mb-14">
             <motion.h1 
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="font-headline text-2xl md:text-5xl lg:text-[52px] font-bold text-secondary leading-tight tracking-tight"
+              className="font-headline text-2xl md:text-4xl font-bold text-secondary leading-tight tracking-tight uppercase"
             >
               Abenteuer und Romantik im Herzen Tansanias
             </motion.h1>
@@ -74,7 +74,7 @@ export default function LoveOnSafariPage() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-muted-foreground text-xs md:text-lg leading-relaxed max-w-3xl mx-auto font-normal"
+              className="text-muted-foreground text-xs md:text-base leading-relaxed max-w-4xl mx-auto font-normal"
             >
               Erleben Sie die Weite der Serengeti, die besondere Atmosphäre des Ngorongoro-Kraters und im Anschluss Sansibar mit seinem warmen, türkisfarbenen Meer. Privat geplant und mit ausreichend Zeit für Sie als Paar.
             </motion.p>
@@ -86,7 +86,7 @@ export default function LoveOnSafariPage() {
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="relative w-full aspect-[21/9] min-h-[400px] overflow-hidden shadow-sm"
+            className="relative w-full aspect-[21/9] min-h-[400px] overflow-hidden"
           >
             <Image 
               src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1920" 
@@ -112,7 +112,7 @@ export default function LoveOnSafariPage() {
       </section>
 
       {/* 02 INTRO NARRATIVE SECTION */}
-      <section className="py-24 md:py-40 container mx-auto px-4 max-w-7xl">
+      <section className="py-24 md:py-32 container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
           <div className="space-y-8 text-left">
             <div className="space-y-4">
