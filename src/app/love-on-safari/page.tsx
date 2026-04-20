@@ -12,12 +12,26 @@ import {
   Sparkles,
   Leaf,
   ShieldCheck,
-  Globe
+  Globe,
+  Plus,
+  Star,
+  Quote,
+  Clock,
+  Heart,
+  Camera,
+  MapPin
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { ContactSection } from '@/components/shared/ContactSection';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { cn } from '@/lib/utils';
 
 const packageTags = [
   "geführte Erlebnisreisen",
@@ -70,6 +84,26 @@ const journeySteps = [
   { n: "⑤", t: "Inlandsflug nach Sansibar", s: "Von der Wildnis ans Meer" },
   { n: "⑥", t: "Strandtage, Spa und Zeit zu zweit", s: "Entspannung pur" },
   { n: "⑦", t: "Optionale Erlebnisse", s: "Blue Safari, private Bootstour oder Gewürztour" }
+];
+
+const galleryImages = [
+  { src: "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800", t: "Romantic sunset over Serengeti", s: "Couple enjoying golden hour", hint: "safari couple sunset" },
+  { src: "https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800", t: "Safari adventure", s: "Couple discovering wildlife", hint: "safari jeep couple" },
+  { src: "https://images.unsplash.com/photo-1577971132997-c10be9372519?q=80&w=800", t: "Romantic lodge moments", s: "Privacy with savanna views", hint: "luxury safari lodge" },
+  { src: "https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?q=80&w=800", t: "Elephants in the wild", s: "Incredible wildlife encounters", hint: "elephants safari" },
+  { src: "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800", t: "Exciting safari drives", s: "Exploring the wilderness together", hint: "safari drive" },
+  { src: "https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800", t: "African dusk", s: "Romantic evening atmosphere", hint: "safari dinner" }
+];
+
+const faqs = [
+  { q: "Ist die Safari wirklich privat?", a: "Ja, zu 100%. Sie reisen in einem eigenen 4x4 Safari-Fahrzeug mit Ihrem persönlichen Guide. Es gibt keine fremden Mitreisenden, sodass Sie das Tempo und die Pausen ganz individuell bestimmen können." },
+  { q: "Wie individuell ist die Route?", a: "Wir entwerfen jede Route von Grund auf neu. Basierend auf Ihren Interessen – ob mehr Fokus auf Wildlife-Fotografie, Entspannung in der Lodge oder kulturelle Begegnungen – passen wir den Ablauf exakt an." },
+  { q: "Beste Reisezeit für Paare?", a: "Die Trockenzeiten von Juni bis Oktober sind ideal für klassische Tiersichtungen. Für Paare, die Ruhe suchen, bietet die 'Green Season' von November bis März oft mehr Privatsphäre und blühende Landschaften." },
+  { q: "Safari und Sansibar kombinierbar?", a: "Das ist unsere Spezialität. Wir organisieren den nahtlosen Transfer vom Busch direkt an den Strand, meist per Inlandsflug, damit Sie keine Zeit auf staubigen Straßen verlieren." },
+  { q: "Wie romantische ist Sansibar wirklich?", a: "Sansibar bietet mit seinen Boutique-Hotels, privaten Strand-Dinnern und traditionellen Dhow-Fahrten bei Sonnenuntergang eine der romantischsten Kulissen weltweit." },
+  { q: "Wie läuft die Planung ab?", a: "Nach Ihrer ersten Anfrage führen wir ein persönliches Gespräch. Wir erstellen einen Entwurf, den wir gemeinsam verfeinern, bis jedes Detail Ihrer Traumreise perfekt ist." },
+  { q: "Welche Lodge-Kategorie passt zu uns?", a: "Wir bieten drei Level an: Classic (hochwertig & authentisch), Premium (luxuriös mit Fokus auf Design) und Deluxe (absolute Exklusivität & High-End Service). Wir beraten Sie ehrlich, was zu Ihrem Budget passt." },
+  { q: "Was kostet die Reise ungefähr und wovon hängt es ab?", a: "Der Preis hängt stark von der Saison, der Dauer und der gewählten Lodge-Kategorie ab. Eine hochwertige 12-tägige Privat-Safari inkl. Sansibar beginnt meist bei ca. 4.500 € pro Person." }
 ];
 
 export default function LoveOnSafariPage() {
@@ -591,7 +625,7 @@ export default function LoveOnSafariPage() {
           </div>
 
           <div className="bg-[#FDF7F2] rounded-[2.5rem] md:rounded-[3.5rem] p-8 md:p-16 relative overflow-hidden text-left border border-[#F0EBE0]">
-            <div className="absolute top-0 right-0 p-12 opacity-[0.03] pointer-events-none">
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
               <Compass className="w-64 h-64 text-secondary" />
             </div>
             
@@ -630,7 +664,210 @@ export default function LoveOnSafariPage() {
         </div>
       </section>
 
-      {/* 09 Final Inquiry Protocol */}
+      {/* 09 Love on Safari Galerie */}
+      <section className="py-8 md:py-16 bg-[#fdfcfb]">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center mb-10 md:mb-16 space-y-2">
+            <h2 className="font-headline text-3xl md:text-5xl font-bold text-secondary tracking-tight uppercase tracking-tighter">
+              Love on Safari Galerie
+            </h2>
+            <p className="text-muted-foreground font-bold text-[14px] leading-[20px]">Impressionen gemeinsamer Glücksmomente</p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {galleryImages.map((img, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                className="group relative aspect-square rounded-[2rem] overflow-hidden shadow-lg bg-muted border border-border/40"
+              >
+                <Image src={img.src} alt={img.t} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" data-ai-hint={img.hint} />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute bottom-6 left-6 right-6 text-white text-left opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                  <h4 className="font-bold text-sm md:text-lg leading-tight mb-1">{img.t}</h4>
+                  <p className="text-[10px] md:text-xs text-white/70 font-medium">{img.s}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 10 Target Audience Section */}
+      <section className="py-8 md:py-16 bg-white border-y border-border/40">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="space-y-10 text-left">
+              <div className="space-y-4">
+                <span className="text-primary font-bold text-[10px] tracking-widest uppercase">Zielgruppen-Registry</span>
+                <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary leading-tight tracking-tighter">
+                  Für wen ist diese Reise ideal?
+                </h2>
+                <p className="text-muted-foreground font-bold text-sm md:text-lg opacity-80">
+                  Die perfekte Safari für Ihre besonderen Momente
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                {[
+                  "Für Paare, die Privatsphäre, Ruhe und gemeinsame Zeit schätzen.",
+                  "Für Honeymoon-Reisende, die echte Erlebnisse statt Standardprogramme suchen.",
+                  "Für Jubiläen, Verlobungen und andere besondere Anlässe.",
+                  "Für Überraschungsreisen, die berühren und lange nachwirken.",
+                  "Für Menschen mit Qualitätsanspruch an Lodges, Komfort und Service.",
+                  "Für Reisende, die bewusst keine Gruppenreise möchten.",
+                  "Für alle, die Abenteuer und Entspannung in einer stimmigen Balance erleben wollen."
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-4 items-start group">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0 group-hover:scale-150 transition-transform" />
+                    <p className="text-[14px] leading-[20px] text-muted-foreground font-normal group-hover:text-secondary transition-colors">
+                      {item}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="pt-4">
+                <Button onClick={() => scrollTo('inquiry')} size="lg" className="w-full sm:w-auto h-12 md:h-14 px-10 rounded-xl bg-secondary text-white hover:bg-primary font-bold text-[10px] tracking-widest shadow-xl border-none">
+                  Kostenlose Reiseberatung
+                </Button>
+              </div>
+            </div>
+
+            <div className="relative aspect-[4/5] rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden shadow-2xl bg-muted group">
+              <Image 
+                src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200" 
+                alt="Ideal for Occasions" 
+                fill 
+                className="object-cover transition-transform duration-1000 group-hover:scale-105" 
+                data-ai-hint="safari couple sunset"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute bottom-8 left-8">
+                <p className="text-white font-headline text-xl md:text-2xl font-bold uppercase tracking-tight">Love on Safari für besondere Anlässe</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 11 Luxus und Sicherheit */}
+      <section className="py-8 md:py-16 bg-[#fdfcfb]">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            
+            <div className="relative aspect-[4/5] rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden shadow-2xl bg-muted order-2 lg:order-1">
+              <Image 
+                src="https://images.unsplash.com/photo-1577971132997-c10be9372519?q=80&w=1200" 
+                alt="Luxury and Safety" 
+                fill 
+                className="object-cover" 
+                data-ai-hint="luxury safari lodge"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute bottom-8 left-8 right-8">
+                <p className="text-white font-headline text-xl md:text-2xl font-bold leading-tight">Luxus und Sicherheit auf Love on Safari – Premium Lodge mit persönlichem Service</p>
+              </div>
+            </div>
+
+            <div className="space-y-10 text-left order-1 lg:order-2">
+              <div className="space-y-4">
+                <span className="text-primary font-bold text-[10px] tracking-widest uppercase">Qualitäts-Standards</span>
+                <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary leading-tight tracking-tighter">
+                  Luxus und Sicherheit
+                </h2>
+                <p className="text-muted-foreground font-bold text-sm md:text-lg opacity-80">
+                  Mit durchdachtem Reiseablauf und persönlicher Betreuung reisen
+                </p>
+              </div>
+
+              <div className="space-y-6 text-[14px] leading-[20px] text-muted-foreground font-normal text-justify">
+                <p>Sie reisen nicht einfach los. Sie reisen mit einem Ablauf, der zu Ihnen passt – klar geplant, angenehm getaktet und ohne unnötigen Stress.</p>
+                <p>Tansania Reiseabenteuer arbeitet mit handverlesenen Lodges und Hotels. Sie wählen je nach Wunsch zwischen Standard, Premium und Deluxe – abgestimmt auf Ihren Anspruch an Privatsphäre, Komfort und Stil.</p>
+                <p>Vor Ort setzen wir auf verlässliche Partner und klare Qualitätsstandards. Während der Reise sind Sie persönlich betreut und erhalten Unterstützung, wann immer Sie sie benötigen. Wir beraten Sie ehrlich und passend zu Ihren Vorstellungen – was sinnvoll ist und was nicht.</p>
+                <p>So entsteht eine luxuriöse Safari- und Sansibar-Reise für Paare, bei der Sie sich zurücklehnen und genießen können, weil alles hochwertig und sicher organisiert ist.</p>
+              </div>
+
+              <div className="pt-4">
+                <Button onClick={() => scrollTo('inquiry')} size="lg" className="w-full sm:w-auto h-12 md:h-14 px-10 rounded-xl bg-secondary text-white hover:bg-primary font-bold text-[10px] tracking-widest shadow-xl border-none">
+                  Reise anfragen und Angebot erhalten
+                </Button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 12 Testimonials Section */}
+      <section className="py-8 md:py-16 bg-white border-t border-border/40">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center mb-12 md:mb-20 space-y-4">
+            <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary uppercase tracking-tighter">
+              Was unsere Paare berichten
+            </h2>
+            <p className="text-muted-foreground font-bold text-sm md:text-lg opacity-80">Echte Erfahrung, echte Begeisterung</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-16">
+            {[
+              { q: "Wir suchten vor allem Nähe und entschleunigte Tage und genau das haben wir erlebt. Die Lodges waren traumhaft, die Pirschfahrten spannend, aber nie hetzend.", a: "Laura & Daniel, Schweiz" },
+              { q: "Die Serengeti hat uns wirklich beeindruckt. Unser Guide hatte immer ein Gefühl für den richtigen Moment und uns Dinge gezeigt, die uns immer wieder beeindruckt haben. Sansibar danach war pure Entspannung.", a: "Mira & Jonas, Deutschland" },
+              { q: "Vor der Reise waren wir unsicher, ob eine Safari das Richtige für uns ist, aber die Beratung war ehrlich und individuell abgestimmt. Alles verlief reibungslos und die Mischung aus Natur, Ruhe und Aktivitäten war perfekt.", a: "Sophie & Marc, Österreich" }
+            ].map((t, i) => (
+              <div key={i} className="p-8 bg-[#fdfcfb] rounded-[2rem] border border-border/50 shadow-sm flex flex-col justify-between hover:shadow-xl transition-all duration-500 group relative overflow-hidden">
+                <Quote className="absolute top-6 right-6 w-10 h-10 text-primary opacity-5 group-hover:scale-125 transition-transform" />
+                <div className="space-y-6">
+                  <p className="text-[14px] md:text-base leading-[24px] text-secondary font-medium italic opacity-80">„{t.q}“</p>
+                  <div className="pt-6 border-t border-primary/20">
+                    <p className="font-bold text-primary text-xs md:text-sm tracking-tight">{t.a}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex flex-col items-center gap-12">
+            <Button onClick={() => scrollTo('inquiry')} size="lg" className="rounded-xl px-12 h-14 bg-secondary text-white font-bold text-[10px] tracking-widest shadow-xl border-none">
+              Kostenlose Beratung für Paare
+            </Button>
+
+            <div className="relative w-full max-w-4xl aspect-[21/9] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl bg-muted border border-border/50">
+               <Image src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=1200" alt="Testimonials Anchor" fill className="object-cover" />
+               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+               <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white font-headline text-lg md:text-2xl font-bold uppercase tracking-widest whitespace-nowrap">Love on Safari Testimonials</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 13 FAQ Registry */}
+      <section className="py-8 md:py-16 bg-[#fdfcfb]">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="text-center mb-10 md:mb-16">
+            <h2 className="font-headline text-3xl md:text-6xl font-bold text-secondary tracking-tight">Häufig gestellte Fragen zu Love on Safari</h2>
+          </div>
+
+          <Accordion type="single" collapsible className="space-y-3">
+            {faqs.map((faq, i) => (
+              <AccordionItem key={i} value={`faq-romantic-${i}`} className="border-none bg-white rounded-2xl px-6 md:px-10 shadow-sm hover:shadow-md transition-all border border-transparent hover:border-border group">
+                <AccordionTrigger className="font-bold text-sm md:text-lg py-5 hover:no-underline text-left text-secondary transition-colors [&>svg]:hidden">
+                  <div className="flex items-center justify-between w-full gap-4">
+                    <span className="tracking-tight leading-snug">{i + 1}. {faq.q}</span>
+                    <Plus className="w-4 h-4 text-primary shrink-0 transition-transform group-data-[state=open]:rotate-45" />
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-[14px] leading-[20px] pb-6 font-normal opacity-80 tracking-normal text-left">{faq.a}</AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </section>
+
+      {/* 14 Final Inquiry Protocol */}
       <section id="inquiry" className="scroll-mt-20">
         <ContactSection />
       </section>
